@@ -195,6 +195,7 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -234,6 +235,8 @@ class Model {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -250,6 +253,8 @@ class Model {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -262,11 +267,14 @@ class Model {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -276,12 +284,14 @@ class Model {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -295,6 +305,7 @@ class Model {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -317,6 +328,7 @@ class Model {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -329,6 +341,8 @@ class Model {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -339,6 +353,7 @@ class Model {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -346,6 +361,8 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -353,31 +370,40 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -385,10 +411,12 @@ class Model {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -406,6 +434,7 @@ class Model {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -417,28 +446,35 @@ class Model {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -447,6 +483,9 @@ class Model {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -456,6 +495,9 @@ class Model {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Signals of Dee-1.0.Dee.Model */
@@ -485,6 +527,7 @@ class Model {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -493,6 +536,7 @@ class Model {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -502,6 +546,7 @@ class Model {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -524,6 +569,7 @@ class ResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resourceName The name of the resource to retrieve
      */
     load(resourceName: string): GObject.Object
     /**
@@ -535,6 +581,8 @@ class ResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource A #DeeSerializable to store under `resource_name`
+     * @param resourceName The name to store the resource under. Will overwrite any                 existing resource with the same name
      */
     store(resource: Serializable, resourceName: string): boolean
     static name: string
@@ -577,6 +625,7 @@ class ResultSet {
     /**
      * Set the cursor position. Following calls to dee_result_set_peek()
      * or dee_result_set_next() will read the row at position `pos`.
+     * @param pos The position to seek to
      */
     seek(pos: number): void
     /**
@@ -619,6 +668,8 @@ class Serializable {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -633,6 +684,7 @@ class Serializable {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
 }
@@ -640,7 +692,7 @@ interface Analyzer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Analyzer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Analyzer */
     /**
      * Register a #DeeTermFilterFunc to be called whenever dee_analyzer_analyze()
@@ -648,6 +700,7 @@ class Analyzer {
      * 
      * Term filters can be used to normalize, add, or remove terms from an input
      * data stream.
+     * @param filterFunc Function to call
      */
     addTermFilter(filterFunc: TermFilterFunc): void
     /**
@@ -661,6 +714,9 @@ class Analyzer {
      * The analysis process must call dee_analyzer_tokenize() and run the tokens
      * through all term filters added with dee_analyzer_add_term_filter().
      * Collation keys must be generated with dee_analyzer_collate_key().
+     * @param data The input data to analyze
+     * @param termsOut A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
+     * @param colkeysOut A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
     analyze(data: string, termsOut?: TermList | null, colkeysOut?: TermList | null): void
     /**
@@ -669,6 +725,8 @@ class Analyzer {
      * need a version of this function that works as a #GCompareDataFunc.
      * 
      * The default implementation in #DeeAnalyzer just uses strcmp().
+     * @param key1 The first collation key to compare
+     * @param key2 The second collation key to compare
      */
     collateCmp(key1: string, key2: string): number
     /**
@@ -676,6 +734,7 @@ class Analyzer {
      * passed through tokenization and term filters of the analyzer).
      * 
      * The default implementation just calls g_strdup().
+     * @param data The input data to generate a collation key for
      */
     collateKey(data: string): string
     /**
@@ -685,6 +744,8 @@ class Analyzer {
      * Tokenization splits the input data into constituents (in most cases words),
      * but does not run it through any of the term filters set for the analyzer.
      * It is undefined if the tokenization process itself does any normalization.
+     * @param data The input data to analyze
+     * @param termsOut A #DeeTermList to place the generated tokens in.
      */
     tokenize(data: string, termsOut: TermList): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -722,6 +783,10 @@ class Analyzer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -732,6 +797,12 @@ class Analyzer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -755,6 +826,7 @@ class Analyzer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -774,11 +846,14 @@ class Analyzer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -786,6 +861,8 @@ class Analyzer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -803,6 +880,7 @@ class Analyzer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -848,6 +926,7 @@ class Analyzer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -891,15 +970,20 @@ class Analyzer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -940,6 +1024,7 @@ class Analyzer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -974,6 +1059,7 @@ class Analyzer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1005,6 +1091,7 @@ class Analyzer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1026,6 +1113,9 @@ class Analyzer {
     /**
      * A #GCompareDataFunc using a #DeeAnalyzer to compare the keys. This is just
      * a convenience wrapper around dee_analyzer_collate_cmp().
+     * @param key1 The first key to compare
+     * @param key2 The second key to compare
+     * @param analyzer The #DeeAnalyzer to use for the comparison
      */
     static collateCmpFunc(key1: string, key2: string, analyzer?: object | null): number
     static $gtype: GObject.Type
@@ -1035,11 +1125,14 @@ interface Client_ConstructProps extends Peer_ConstructProps {
     busAddress?: string
 }
 class Client {
+    /* Properties of Dee-1.0.Dee.Client */
+    readonly busAddress: string
     /* Properties of Dee-1.0.Dee.Peer */
     readonly swarmLeader: string
     swarmName: string
+    readonly swarmOwner: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Peer */
     /**
      * Gets list of #GDBusConnection instances used by this #DeePeer instance.
@@ -1102,6 +1195,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1112,6 +1209,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1135,6 +1238,7 @@ class Client {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1154,11 +1258,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1166,6 +1273,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1183,6 +1292,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1228,6 +1338,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1271,15 +1382,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1320,6 +1436,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1354,6 +1471,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dee-1.0.Dee.Peer */
@@ -1365,6 +1483,7 @@ class Client {
     /**
      * Connect to this signal to be notified when peers close
      * their #GDBusConnection.
+     * @param connection the closed #GDBusConnection
      */
     connect(sigName: "connection-closed", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "connection-closed", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -1374,6 +1493,7 @@ class Client {
     /**
      * Connect to this signal to be notified of existing and new peers that are
      *   in your swarm.
+     * @param name the DBus name of the object found
      */
     connect(sigName: "peer-found", callback: ((name: string) => void)): number
     on(sigName: "peer-found", callback: (name: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1382,6 +1502,7 @@ class Client {
     emit(sigName: "peer-found", name: string): void
     /**
      * Connect to this signal to be notified when peers disconnect from the swarm
+     * @param name the DBus name of the object that disconnected
      */
     connect(sigName: "peer-lost", callback: ((name: string) => void)): number
     on(sigName: "peer-lost", callback: (name: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -1417,12 +1538,18 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-address", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-address", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::bus-address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::bus-address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::bus-address", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::swarm-leader", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-leader", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::swarm-leader", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1433,6 +1560,11 @@ class Client {
     on(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::swarm-owner", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::swarm-owner", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1458,13 +1590,19 @@ interface FileResourceManager_ConstructProps extends GObject.Object_ConstructPro
     primaryPath?: string
 }
 class FileResourceManager {
+    /* Properties of Dee-1.0.Dee.FileResourceManager */
+    /**
+     * Property holding the primary path used to store and load resources
+     */
+    readonly primaryPath: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.FileResourceManager */
     /**
      * Add a path to the set of paths searched for resources. The manager will
      * first search the primary path as specified in the constructor and then
      * search paths in the order they where added.
+     * @param path The path to add to the set of searched paths
      */
     addSearchPath(path: string): void
     /**
@@ -1506,6 +1644,10 @@ class FileResourceManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1516,6 +1658,12 @@ class FileResourceManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1539,6 +1687,7 @@ class FileResourceManager {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1558,11 +1707,14 @@ class FileResourceManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1570,6 +1722,8 @@ class FileResourceManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1587,6 +1741,7 @@ class FileResourceManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1632,6 +1787,7 @@ class FileResourceManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1675,15 +1831,20 @@ class FileResourceManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1724,6 +1885,7 @@ class FileResourceManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1758,6 +1920,7 @@ class FileResourceManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.ResourceManager */
@@ -1773,6 +1936,7 @@ class FileResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resourceName The name of the resource to retrieve
      */
     load(resourceName: string): GObject.Object
     /**
@@ -1784,6 +1948,8 @@ class FileResourceManager {
      * Important note: This call may do blocking IO. The resource manager must
      * guarantee that this call is reasonably fast, like writing the externalized
      * resource to a file, but not blocking IO over a network socket.
+     * @param resource A #DeeSerializable to store under `resource_name`
+     * @param resourceName The name to store the resource under. Will overwrite any                 existing resource with the same name
      */
     store(resource: Serializable, resourceName: string): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -1815,12 +1981,18 @@ class FileResourceManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::primary-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::primary-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::primary-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::primary-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::primary-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1848,8 +2020,33 @@ interface FilterModel_ConstructProps extends ProxyModel_ConstructProps {
     filter?: Filter
 }
 class FilterModel {
+    /* Properties of Dee-1.0.Dee.FilterModel */
+    /**
+     * Property holding the #DeeFilter used to filter the model
+     * defined in the #DeeFilterModel:back-end property.
+     */
+    readonly filter: Filter
+    /* Properties of Dee-1.0.Dee.ProxyModel */
+    /**
+     * The backend model used by this proxy model.
+     */
+    readonly backEnd: Model
+    /**
+     * Boolean property defining whether sequence numbers will be inherited
+     * from the back end model.
+     * You will most likely want to set this property to false
+     * if the implementation manipulates with the rows in the model and keep
+     * track of seqnums yourself.
+     */
+    readonly inheritSeqnums: boolean
+    /**
+     * Boolean property defining whether or not to automatically forward signals
+     * from the back end model. This is especially useful for sub classes wishing
+     * to do their own more advanced signal forwarding.
+     */
+    readonly proxySignals: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.FilterModel */
     /**
      * Includes `iter` from the back end model in the filtered model, appending
@@ -1857,10 +2054,12 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
      */
     appendIter(iter: ModelIter): ModelIter
     /**
      * Check if `iter` from the back end model is mapped in `self`.
+     * @param iter The #DeeModelIter to check
      */
     contains(iter: ModelIter): boolean
     /**
@@ -1869,6 +2068,8 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
+     * @param pos 
      */
     insertIter(iter: ModelIter, pos: number): ModelIter
     /**
@@ -1877,6 +2078,8 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
+     * @param pos 
      */
     insertIterBefore(iter: ModelIter, pos: ModelIter): ModelIter
     /**
@@ -1888,6 +2091,7 @@ class FilterModel {
      * This method is mainly intended as a helper for #DeeFilterMapNotify functions
      * of #DeeFilter implementations that creates filter models sorted in
      * accordance with the original models.
+     * @param iter Iterator
      */
     insertIterWithOriginalOrder(iter: ModelIter): ModelIter
     /**
@@ -1896,6 +2100,7 @@ class FilterModel {
      * 
      * This method is usually called when implementing #DeeFilterMapFunc or
      * #DeeFilterMapNotify methods.
+     * @param iter 
      */
     prependIter(iter: ModelIter): ModelIter
     /* Methods of Dee-1.0.Dee.SerializableModel */
@@ -1906,6 +2111,7 @@ class FilterModel {
     incSeqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     setSeqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1943,6 +2149,10 @@ class FilterModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1953,6 +2163,12 @@ class FilterModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1976,6 +2192,7 @@ class FilterModel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1995,11 +2212,14 @@ class FilterModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2007,6 +2227,8 @@ class FilterModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2024,6 +2246,7 @@ class FilterModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2069,6 +2292,7 @@ class FilterModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2112,15 +2336,20 @@ class FilterModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2161,6 +2390,7 @@ class FilterModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2195,6 +2425,7 @@ class FilterModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -2203,6 +2434,7 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -2242,6 +2474,8 @@ class FilterModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -2258,6 +2492,8 @@ class FilterModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -2270,11 +2506,14 @@ class FilterModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -2284,12 +2523,14 @@ class FilterModel {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -2303,6 +2544,7 @@ class FilterModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -2325,6 +2567,7 @@ class FilterModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -2337,6 +2580,8 @@ class FilterModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -2347,6 +2592,7 @@ class FilterModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -2354,6 +2600,8 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -2361,31 +2609,40 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -2393,10 +2650,12 @@ class FilterModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -2414,6 +2673,7 @@ class FilterModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -2425,28 +2685,35 @@ class FilterModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -2455,6 +2722,9 @@ class FilterModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -2464,6 +2734,9 @@ class FilterModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -2514,6 +2787,7 @@ class FilterModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2547,6 +2821,7 @@ class FilterModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -2555,6 +2830,7 @@ class FilterModel {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -2564,12 +2840,33 @@ class FilterModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-removed", callback: (iter: ModelIter) => void): NodeJS.EventEmitter
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::filter", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::filter", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::filter", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::back-end", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::back-end", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::inherit-seqnums", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::inherit-seqnums", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::proxy-signals", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy-signals", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2594,6 +2891,8 @@ class FilterModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -2608,6 +2907,7 @@ class FilterModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -2616,7 +2916,7 @@ interface GListResultSet_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GListResultSet {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2652,6 +2952,10 @@ class GListResultSet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2662,6 +2966,12 @@ class GListResultSet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2685,6 +2995,7 @@ class GListResultSet {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2704,11 +3015,14 @@ class GListResultSet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2716,6 +3030,8 @@ class GListResultSet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2733,6 +3049,7 @@ class GListResultSet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2778,6 +3095,7 @@ class GListResultSet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2821,15 +3139,20 @@ class GListResultSet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2870,6 +3193,7 @@ class GListResultSet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2904,6 +3228,7 @@ class GListResultSet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.ResultSet */
@@ -2938,6 +3263,7 @@ class GListResultSet {
     /**
      * Set the cursor position. Following calls to dee_result_set_peek()
      * or dee_result_set_next() will read the row at position `pos`.
+     * @param pos The position to seek to
      */
     seek(pos: number): void
     /**
@@ -2973,6 +3299,7 @@ class GListResultSet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2994,13 +3321,28 @@ class GListResultSet {
 interface HashIndex_ConstructProps extends Index_ConstructProps {
 }
 class HashIndex {
+    /* Properties of Dee-1.0.Dee.Index */
+    /**
+     * The #DeeAnalyzer used to analyze terms extracted by the model reader
+     */
+    readonly analyzer: Analyzer
+    /**
+     * The #DeeModel being indexed
+     */
+    readonly model: Model
+    /**
+     * The #DeeModelReader used to extract terms from rows in the model
+     */
+    readonly reader: ModelReader
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Index */
     /**
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param startTerm The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     foreach(startTerm: string, func: IndexIterFunc): void
     /**
@@ -3020,6 +3362,7 @@ class HashIndex {
     getNRows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     getNRowsForTerm(term: string): number
     /**
@@ -3043,6 +3386,7 @@ class HashIndex {
      * 
      * The typical use case for this function is if you need something akin to
      * a primary key in a relational database.
+     * @param term The exact term to match
      */
     lookupOne(term: string): ModelIter
     /* Methods of GObject-2.0.GObject.Object */
@@ -3080,6 +3424,10 @@ class HashIndex {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3090,6 +3438,12 @@ class HashIndex {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3113,6 +3467,7 @@ class HashIndex {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3132,11 +3487,14 @@ class HashIndex {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3144,6 +3502,8 @@ class HashIndex {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3161,6 +3521,7 @@ class HashIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3206,6 +3567,7 @@ class HashIndex {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3249,15 +3611,20 @@ class HashIndex {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3298,6 +3665,7 @@ class HashIndex {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3332,6 +3700,7 @@ class HashIndex {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3363,12 +3732,28 @@ class HashIndex {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::analyzer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::analyzer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::reader", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reader", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3399,13 +3784,28 @@ interface Index_ConstructProps extends GObject.Object_ConstructProps {
     reader?: ModelReader
 }
 class Index {
+    /* Properties of Dee-1.0.Dee.Index */
+    /**
+     * The #DeeAnalyzer used to analyze terms extracted by the model reader
+     */
+    readonly analyzer: Analyzer
+    /**
+     * The #DeeModel being indexed
+     */
+    readonly model: Model
+    /**
+     * The #DeeModelReader used to extract terms from rows in the model
+     */
+    readonly reader: ModelReader
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Index */
     /**
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param startTerm The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     foreach(startTerm: string, func: IndexIterFunc): void
     /**
@@ -3425,6 +3825,7 @@ class Index {
     getNRows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     getNRowsForTerm(term: string): number
     /**
@@ -3448,6 +3849,7 @@ class Index {
      * 
      * The typical use case for this function is if you need something akin to
      * a primary key in a relational database.
+     * @param term The exact term to match
      */
     lookupOne(term: string): ModelIter
     /* Methods of GObject-2.0.GObject.Object */
@@ -3485,6 +3887,10 @@ class Index {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3495,6 +3901,12 @@ class Index {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3518,6 +3930,7 @@ class Index {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3537,11 +3950,14 @@ class Index {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3549,6 +3965,8 @@ class Index {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3566,6 +3984,7 @@ class Index {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3611,6 +4030,7 @@ class Index {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3654,15 +4074,20 @@ class Index {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3703,6 +4128,7 @@ class Index {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3737,6 +4163,7 @@ class Index {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3768,12 +4195,28 @@ class Index {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::analyzer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::analyzer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::reader", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reader", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3795,8 +4238,9 @@ class Peer {
     /* Properties of Dee-1.0.Dee.Peer */
     readonly swarmLeader: string
     swarmName: string
+    readonly swarmOwner: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Peer */
     /**
      * Gets list of #GDBusConnection instances used by this #DeePeer instance.
@@ -3859,6 +4303,10 @@ class Peer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3869,6 +4317,12 @@ class Peer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3892,6 +4346,7 @@ class Peer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3911,11 +4366,14 @@ class Peer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3923,6 +4381,8 @@ class Peer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3940,6 +4400,7 @@ class Peer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3985,6 +4446,7 @@ class Peer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4028,15 +4490,20 @@ class Peer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4077,6 +4544,7 @@ class Peer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4111,6 +4579,7 @@ class Peer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dee-1.0.Dee.Peer */
@@ -4122,6 +4591,7 @@ class Peer {
     /**
      * Connect to this signal to be notified when peers close
      * their #GDBusConnection.
+     * @param connection the closed #GDBusConnection
      */
     connect(sigName: "connection-closed", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "connection-closed", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -4131,6 +4601,7 @@ class Peer {
     /**
      * Connect to this signal to be notified of existing and new peers that are
      *   in your swarm.
+     * @param name the DBus name of the object found
      */
     connect(sigName: "peer-found", callback: ((name: string) => void)): number
     on(sigName: "peer-found", callback: (name: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4139,6 +4610,7 @@ class Peer {
     emit(sigName: "peer-found", name: string): void
     /**
      * Connect to this signal to be notified when peers disconnect from the swarm
+     * @param name the DBus name of the object that disconnected
      */
     connect(sigName: "peer-lost", callback: ((name: string) => void)): number
     on(sigName: "peer-lost", callback: (name: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4174,6 +4646,7 @@ class Peer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4190,6 +4663,11 @@ class Peer {
     on(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::swarm-owner", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::swarm-owner", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4226,8 +4704,27 @@ interface ProxyModel_ConstructProps extends SerializableModel_ConstructProps {
     proxySignals?: boolean
 }
 class ProxyModel {
+    /* Properties of Dee-1.0.Dee.ProxyModel */
+    /**
+     * The backend model used by this proxy model.
+     */
+    readonly backEnd: Model
+    /**
+     * Boolean property defining whether sequence numbers will be inherited
+     * from the back end model.
+     * You will most likely want to set this property to false
+     * if the implementation manipulates with the rows in the model and keep
+     * track of seqnums yourself.
+     */
+    readonly inheritSeqnums: boolean
+    /**
+     * Boolean property defining whether or not to automatically forward signals
+     * from the back end model. This is especially useful for sub classes wishing
+     * to do their own more advanced signal forwarding.
+     */
+    readonly proxySignals: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SerializableModel */
     getSeqnum(): number
     /**
@@ -4236,6 +4733,7 @@ class ProxyModel {
     incSeqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     setSeqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4273,6 +4771,10 @@ class ProxyModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4283,6 +4785,12 @@ class ProxyModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4306,6 +4814,7 @@ class ProxyModel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4325,11 +4834,14 @@ class ProxyModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4337,6 +4849,8 @@ class ProxyModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4354,6 +4868,7 @@ class ProxyModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4399,6 +4914,7 @@ class ProxyModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4442,15 +4958,20 @@ class ProxyModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4491,6 +5012,7 @@ class ProxyModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4525,6 +5047,7 @@ class ProxyModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -4533,6 +5056,7 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -4572,6 +5096,8 @@ class ProxyModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -4588,6 +5114,8 @@ class ProxyModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -4600,11 +5128,14 @@ class ProxyModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -4614,12 +5145,14 @@ class ProxyModel {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -4633,6 +5166,7 @@ class ProxyModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -4655,6 +5189,7 @@ class ProxyModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -4667,6 +5202,8 @@ class ProxyModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -4677,6 +5214,7 @@ class ProxyModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -4684,6 +5222,8 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -4691,31 +5231,40 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -4723,10 +5272,12 @@ class ProxyModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -4744,6 +5295,7 @@ class ProxyModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -4755,28 +5307,35 @@ class ProxyModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -4785,6 +5344,9 @@ class ProxyModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -4794,6 +5356,9 @@ class ProxyModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -4844,6 +5409,7 @@ class ProxyModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4877,6 +5443,7 @@ class ProxyModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -4885,6 +5452,7 @@ class ProxyModel {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -4894,12 +5462,28 @@ class ProxyModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-removed", callback: (iter: ModelIter) => void): NodeJS.EventEmitter
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::back-end", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::back-end", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::inherit-seqnums", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::inherit-seqnums", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::proxy-signals", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy-signals", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4923,6 +5507,8 @@ class ProxyModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -4937,6 +5523,7 @@ class ProxyModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -4945,7 +5532,7 @@ interface SequenceModel_ConstructProps extends SerializableModel_ConstructProps 
 }
 class SequenceModel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SerializableModel */
     getSeqnum(): number
     /**
@@ -4954,6 +5541,7 @@ class SequenceModel {
     incSeqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     setSeqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4991,6 +5579,10 @@ class SequenceModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5001,6 +5593,12 @@ class SequenceModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5024,6 +5622,7 @@ class SequenceModel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5043,11 +5642,14 @@ class SequenceModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5055,6 +5657,8 @@ class SequenceModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5072,6 +5676,7 @@ class SequenceModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5117,6 +5722,7 @@ class SequenceModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5160,15 +5766,20 @@ class SequenceModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5209,6 +5820,7 @@ class SequenceModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5243,6 +5855,7 @@ class SequenceModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -5251,6 +5864,7 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -5290,6 +5904,8 @@ class SequenceModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -5306,6 +5922,8 @@ class SequenceModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -5318,11 +5936,14 @@ class SequenceModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -5332,12 +5953,14 @@ class SequenceModel {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -5351,6 +5974,7 @@ class SequenceModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -5373,6 +5997,7 @@ class SequenceModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -5385,6 +6010,8 @@ class SequenceModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -5395,6 +6022,7 @@ class SequenceModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -5402,6 +6030,8 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -5409,31 +6039,40 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -5441,10 +6080,12 @@ class SequenceModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -5462,6 +6103,7 @@ class SequenceModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -5473,28 +6115,35 @@ class SequenceModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -5503,6 +6152,9 @@ class SequenceModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -5512,6 +6164,9 @@ class SequenceModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -5562,6 +6217,7 @@ class SequenceModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5595,6 +6251,7 @@ class SequenceModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -5603,6 +6260,7 @@ class SequenceModel {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -5612,6 +6270,7 @@ class SequenceModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -5642,6 +6301,8 @@ class SequenceModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -5656,6 +6317,7 @@ class SequenceModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -5664,7 +6326,7 @@ interface SerializableModel_ConstructProps extends GObject.Object_ConstructProps
 }
 class SerializableModel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SerializableModel */
     getSeqnum(): number
     /**
@@ -5673,6 +6335,7 @@ class SerializableModel {
     incSeqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     setSeqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5710,6 +6373,10 @@ class SerializableModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5720,6 +6387,12 @@ class SerializableModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5743,6 +6416,7 @@ class SerializableModel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5762,11 +6436,14 @@ class SerializableModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5774,6 +6451,8 @@ class SerializableModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5791,6 +6470,7 @@ class SerializableModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5836,6 +6516,7 @@ class SerializableModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5879,15 +6560,20 @@ class SerializableModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5928,6 +6614,7 @@ class SerializableModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5962,6 +6649,7 @@ class SerializableModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -5970,6 +6658,7 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -6009,6 +6698,8 @@ class SerializableModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -6025,6 +6716,8 @@ class SerializableModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -6037,11 +6730,14 @@ class SerializableModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -6051,12 +6747,14 @@ class SerializableModel {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -6070,6 +6768,7 @@ class SerializableModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -6092,6 +6791,7 @@ class SerializableModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -6104,6 +6804,8 @@ class SerializableModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -6114,6 +6816,7 @@ class SerializableModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -6121,6 +6824,8 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -6128,31 +6833,40 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -6160,10 +6874,12 @@ class SerializableModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -6181,6 +6897,7 @@ class SerializableModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -6192,28 +6909,35 @@ class SerializableModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -6222,6 +6946,9 @@ class SerializableModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -6231,6 +6958,9 @@ class SerializableModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -6281,6 +7011,7 @@ class SerializableModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6314,6 +7045,7 @@ class SerializableModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -6322,6 +7054,7 @@ class SerializableModel {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -6331,6 +7064,7 @@ class SerializableModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -6360,6 +7094,8 @@ class SerializableModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -6374,6 +7110,7 @@ class SerializableModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -6384,11 +7121,15 @@ interface Server_ConstructProps extends Peer_ConstructProps {
     sameUserOnly?: boolean
 }
 class Server {
+    /* Properties of Dee-1.0.Dee.Server */
+    readonly busAddress: string
+    readonly sameUserOnly: boolean
     /* Properties of Dee-1.0.Dee.Peer */
     readonly swarmLeader: string
     swarmName: string
+    readonly swarmOwner: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Server */
     /**
      * Gets a D-Bus address string that can be used by clients to connect to server.
@@ -6456,6 +7197,10 @@ class Server {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6466,6 +7211,12 @@ class Server {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6489,6 +7240,7 @@ class Server {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6508,11 +7260,14 @@ class Server {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6520,6 +7275,8 @@ class Server {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6537,6 +7294,7 @@ class Server {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6582,6 +7340,7 @@ class Server {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6625,15 +7384,20 @@ class Server {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6674,6 +7438,7 @@ class Server {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6708,6 +7473,7 @@ class Server {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Dee-1.0.Dee.Peer */
@@ -6719,6 +7485,7 @@ class Server {
     /**
      * Connect to this signal to be notified when peers close
      * their #GDBusConnection.
+     * @param connection the closed #GDBusConnection
      */
     connect(sigName: "connection-closed", callback: ((connection: Gio.DBusConnection) => void)): number
     on(sigName: "connection-closed", callback: (connection: Gio.DBusConnection) => void, after?: boolean): NodeJS.EventEmitter
@@ -6728,6 +7495,7 @@ class Server {
     /**
      * Connect to this signal to be notified of existing and new peers that are
      *   in your swarm.
+     * @param name the DBus name of the object found
      */
     connect(sigName: "peer-found", callback: ((name: string) => void)): number
     on(sigName: "peer-found", callback: (name: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -6736,6 +7504,7 @@ class Server {
     emit(sigName: "peer-found", name: string): void
     /**
      * Connect to this signal to be notified when peers disconnect from the swarm
+     * @param name the DBus name of the object that disconnected
      */
     connect(sigName: "peer-lost", callback: ((name: string) => void)): number
     on(sigName: "peer-lost", callback: (name: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -6771,12 +7540,23 @@ class Server {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::bus-address", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-address", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::bus-address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::bus-address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::bus-address", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::same-user-only", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::same-user-only", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::same-user-only", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::same-user-only", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::same-user-only", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::swarm-leader", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::swarm-leader", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::swarm-leader", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -6787,6 +7567,11 @@ class Server {
     on(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::swarm-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::swarm-owner", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::swarm-owner", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::swarm-owner", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6805,6 +7590,8 @@ class Server {
     /**
      * Helper method which creates bus address string for the given name, which
      * should have the same format as a DBus unique name.
+     * @param name A name to create bus address for.
+     * @param includeUsername Include current user name as part of the bus address.
      */
     static busAddressForName(name: string, includeUsername: boolean): string
     static $gtype: GObject.Type
@@ -6840,6 +7627,16 @@ interface SharedModel_ConstructProps extends ProxyModel_ConstructProps {
 class SharedModel {
     /* Properties of Dee-1.0.Dee.SharedModel */
     /**
+     * Enumeration defining behavior of this model when trying to write to it.
+     * 
+     * Setting this to #DEE_SHARED_MODEL_ACCESS_MODE_LEADER_WRITABLE is useful
+     * when one process is considered an "owner" of a model and all the other
+     * peers are supposed to only synchronize it for reading.
+     * 
+     * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
+     */
+    readonly accessMode: SharedModelAccessMode
+    /**
      * Enumeration defining the flushing behavior.
      * 
      * Setting this to #DEE_SHARED_MODEL_FLUSH_MODE_MANUAL will disable
@@ -6851,6 +7648,10 @@ class SharedModel {
      */
     flushMode: SharedModelFlushMode
     /**
+     * The #DeePeer that this model uses to connect to the swarm
+     */
+    readonly peer: Peer
+    /**
      * Boolean property defining whether or not the model has synchronized with
      * its peers (if any) yet.
      * 
@@ -6859,8 +7660,27 @@ class SharedModel {
      * you should wait for it to become synchronized.
      */
     readonly synchronized: boolean
+    /* Properties of Dee-1.0.Dee.ProxyModel */
+    /**
+     * The backend model used by this proxy model.
+     */
+    readonly backEnd: Model
+    /**
+     * Boolean property defining whether sequence numbers will be inherited
+     * from the back end model.
+     * You will most likely want to set this property to false
+     * if the implementation manipulates with the rows in the model and keep
+     * track of seqnums yourself.
+     */
+    readonly inheritSeqnums: boolean
+    /**
+     * Boolean property defining whether or not to automatically forward signals
+     * from the back end model. This is especially useful for sub classes wishing
+     * to do their own more advanced signal forwarding.
+     */
+    readonly proxySignals: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.SharedModel */
     /**
      * Expert: All changes to `self` that has not yet been propagated to the peer
@@ -6918,6 +7738,7 @@ class SharedModel {
     isSynchronized(): boolean
     /**
      * Convenience function for setting the #DeeSharedModel:flush-mode property.
+     * @param mode Flush mode to use
      */
     setFlushMode(mode: SharedModelFlushMode): void
     /* Methods of Dee-1.0.Dee.SerializableModel */
@@ -6928,6 +7749,7 @@ class SharedModel {
     incSeqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     setSeqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6965,6 +7787,10 @@ class SharedModel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6975,6 +7801,12 @@ class SharedModel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6998,6 +7830,7 @@ class SharedModel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7017,11 +7850,14 @@ class SharedModel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7029,6 +7865,8 @@ class SharedModel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7046,6 +7884,7 @@ class SharedModel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7091,6 +7930,7 @@ class SharedModel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7134,15 +7974,20 @@ class SharedModel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7183,6 +8028,7 @@ class SharedModel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7217,6 +8063,7 @@ class SharedModel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -7225,6 +8072,7 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -7264,6 +8112,8 @@ class SharedModel {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -7280,6 +8130,8 @@ class SharedModel {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -7292,11 +8144,14 @@ class SharedModel {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -7306,12 +8161,14 @@ class SharedModel {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -7325,6 +8182,7 @@ class SharedModel {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -7347,6 +8205,7 @@ class SharedModel {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -7359,6 +8218,8 @@ class SharedModel {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -7369,6 +8230,7 @@ class SharedModel {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -7376,6 +8238,8 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -7383,31 +8247,40 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -7415,10 +8288,12 @@ class SharedModel {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -7436,6 +8311,7 @@ class SharedModel {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -7447,28 +8323,35 @@ class SharedModel {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -7477,6 +8360,9 @@ class SharedModel {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -7486,6 +8372,9 @@ class SharedModel {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -7510,6 +8399,8 @@ class SharedModel {
     /* Signals of Dee-1.0.Dee.SharedModel */
     /**
      * Emitted right before a remote transaction will be committed to the model.
+     * @param beginSeqnum The seqnum the model has now
+     * @param endSeqnum The seqnum the model will have after the transaction is applied
      */
     connect(sigName: "begin-transaction", callback: ((beginSeqnum: number, endSeqnum: number) => void)): number
     on(sigName: "begin-transaction", callback: (beginSeqnum: number, endSeqnum: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7518,6 +8409,8 @@ class SharedModel {
     emit(sigName: "begin-transaction", beginSeqnum: number, endSeqnum: number): void
     /**
      * Emitted right after a remote transaction has been committed to the model.
+     * @param beginSeqnum The seqnum the model had before the transaction was applied
+     * @param endSeqnum The seqnum the model has now
      */
     connect(sigName: "end-transaction", callback: ((beginSeqnum: number, endSeqnum: number) => void)): number
     on(sigName: "end-transaction", callback: (beginSeqnum: number, endSeqnum: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -7553,6 +8446,7 @@ class SharedModel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7586,6 +8480,7 @@ class SharedModel {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -7594,6 +8489,7 @@ class SharedModel {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -7603,22 +8499,48 @@ class SharedModel {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-removed", callback: (iter: ModelIter) => void): NodeJS.EventEmitter
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::access-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::access-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::access-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::access-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::access-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::flush-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::flush-mode", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::flush-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::flush-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::flush-mode", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::peer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::peer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::peer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::peer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::peer", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::synchronized", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::synchronized", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::synchronized", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::synchronized", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::synchronized", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::back-end", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::back-end", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::back-end", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::inherit-seqnums", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::inherit-seqnums", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::inherit-seqnums", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::proxy-signals", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::proxy-signals", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::proxy-signals", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -7645,6 +8567,8 @@ class SharedModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -7659,6 +8583,7 @@ class SharedModel {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -7667,12 +8592,13 @@ interface TermList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class TermList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.TermList */
     /**
      * Add a term to the termlist. Note that it is possible to add a term multiple
      * times. The effect of this is determined by the #DeeModelIndex consuming the
      * #DeeTermList.
+     * @param term The term to add
      */
     addTerm(term: string): TermList
     /**
@@ -7704,6 +8630,7 @@ class TermList {
      * 
      * Note that in the default implementation it is guaranteed that the returned
      * string is valid for the entire lifetime of the #DeeTermList.
+     * @param n The (zero based) offset into the term list
      */
     getTerm(n: number): string
     numTerms(): number
@@ -7742,6 +8669,10 @@ class TermList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7752,6 +8683,12 @@ class TermList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7775,6 +8712,7 @@ class TermList {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7794,11 +8732,14 @@ class TermList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7806,6 +8747,8 @@ class TermList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7823,6 +8766,7 @@ class TermList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7868,6 +8812,7 @@ class TermList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7911,15 +8856,20 @@ class TermList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7960,6 +8910,7 @@ class TermList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7994,6 +8945,7 @@ class TermList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8025,6 +8977,7 @@ class TermList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8047,7 +9000,7 @@ interface TextAnalyzer_ConstructProps extends Analyzer_ConstructProps {
 }
 class TextAnalyzer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Analyzer */
     /**
      * Register a #DeeTermFilterFunc to be called whenever dee_analyzer_analyze()
@@ -8055,6 +9008,7 @@ class TextAnalyzer {
      * 
      * Term filters can be used to normalize, add, or remove terms from an input
      * data stream.
+     * @param filterFunc Function to call
      */
     addTermFilter(filterFunc: TermFilterFunc): void
     /**
@@ -8068,6 +9022,9 @@ class TextAnalyzer {
      * The analysis process must call dee_analyzer_tokenize() and run the tokens
      * through all term filters added with dee_analyzer_add_term_filter().
      * Collation keys must be generated with dee_analyzer_collate_key().
+     * @param data The input data to analyze
+     * @param termsOut A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
+     * @param colkeysOut A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
     analyze(data: string, termsOut?: TermList | null, colkeysOut?: TermList | null): void
     /**
@@ -8076,6 +9033,8 @@ class TextAnalyzer {
      * need a version of this function that works as a #GCompareDataFunc.
      * 
      * The default implementation in #DeeAnalyzer just uses strcmp().
+     * @param key1 The first collation key to compare
+     * @param key2 The second collation key to compare
      */
     collateCmp(key1: string, key2: string): number
     /**
@@ -8083,6 +9042,7 @@ class TextAnalyzer {
      * passed through tokenization and term filters of the analyzer).
      * 
      * The default implementation just calls g_strdup().
+     * @param data The input data to generate a collation key for
      */
     collateKey(data: string): string
     /**
@@ -8092,6 +9052,8 @@ class TextAnalyzer {
      * Tokenization splits the input data into constituents (in most cases words),
      * but does not run it through any of the term filters set for the analyzer.
      * It is undefined if the tokenization process itself does any normalization.
+     * @param data The input data to analyze
+     * @param termsOut A #DeeTermList to place the generated tokens in.
      */
     tokenize(data: string, termsOut: TermList): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8129,6 +9091,10 @@ class TextAnalyzer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8139,6 +9105,12 @@ class TextAnalyzer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8162,6 +9134,7 @@ class TextAnalyzer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8181,11 +9154,14 @@ class TextAnalyzer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8193,6 +9169,8 @@ class TextAnalyzer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8210,6 +9188,7 @@ class TextAnalyzer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8255,6 +9234,7 @@ class TextAnalyzer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8298,15 +9278,20 @@ class TextAnalyzer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8347,6 +9332,7 @@ class TextAnalyzer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8381,6 +9367,7 @@ class TextAnalyzer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8412,6 +9399,7 @@ class TextAnalyzer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8439,8 +9427,10 @@ interface Transaction_ConstructProps extends SerializableModel_ConstructProps {
     target?: Model
 }
 class Transaction {
+    /* Properties of Dee-1.0.Dee.Transaction */
+    readonly target: Model
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Transaction */
     /**
      * Apply a transaction to its target model. After this call the transaction
@@ -8465,6 +9455,7 @@ class Transaction {
     incSeqnum(): number
     /**
      * Sets sequence number of this #DeeSerializableModel.
+     * @param seqnum Sequence number
      */
     setSeqnum(seqnum: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8502,6 +9493,10 @@ class Transaction {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8512,6 +9507,12 @@ class Transaction {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8535,6 +9536,7 @@ class Transaction {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8554,11 +9556,14 @@ class Transaction {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8566,6 +9571,8 @@ class Transaction {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8583,6 +9590,7 @@ class Transaction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8628,6 +9636,7 @@ class Transaction {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8671,15 +9680,20 @@ class Transaction {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8720,6 +9734,7 @@ class Transaction {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8754,6 +9769,7 @@ class Transaction {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Dee-1.0.Dee.Model */
@@ -8762,6 +9778,7 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a prior knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of  #GVariants with type               signature matching those of the column schemas of `self`.               If any of the variants have floating references they will be               consumed
      */
     appendRow(rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -8801,6 +9818,8 @@ class Transaction {
      * This method is purely syntactic sugar for calling dee_model_set_tag() with
      * a `value` of %NULL. It's included in order to help developers write more
      * readable code.
+     * @param iter The row to clear the tag from
+     * @param tag The tag to clear from `iter`
      */
     clearTag(iter: ModelIter, tag: ModelTag): void
     /**
@@ -8817,6 +9836,8 @@ class Transaction {
      * 
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSorted(rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     /**
@@ -8829,11 +9850,14 @@ class Transaction {
      * If you use this method for searching you should only use
      * dee_model_insert_row_sorted() (or dee_model_insert_row_sorted_with_sizes())
      * to insert rows in the model.
+     * @param rowSpec An array of       #GVariants with type signature matching those of the       column schemas of `self`. No references will be taken on the variants.
+     * @param cmpFunc Callback used for comparison or rows
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     getBool(iter: ModelIter, column: number): boolean
     /**
      * Get the column index of a column.
+     * @param columnName the column name to retrieve the index of
      */
     getColumnIndex(columnName: string): number
     /**
@@ -8843,12 +9867,14 @@ class Transaction {
     getColumnNames(): string[]
     /**
      * Get the #GVariant signature of a column
+     * @param column the column to get retrieve the #GVariant type string of
      */
     getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
      * dee_model_register_vardict_schema().
+     * @param fieldName name of vardict field to get schema of
      */
     getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
@@ -8862,6 +9888,7 @@ class Transaction {
      * 
      * Note that this method does not have any performance guarantees. In particular
      * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param row position of the row to retrieve
      */
     getIterAtRow(row: number): ModelIter
     /**
@@ -8884,6 +9911,7 @@ class Transaction {
     /**
      * Get the numeric offset of `iter` into `self`. Note that this method is
      * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+     * @param iter The iter to get the position of
      */
     getPosition(iter: ModelIter): number
     getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] | null ]
@@ -8896,6 +9924,8 @@ class Transaction {
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
+     * @param iter A #DeeModelIter pointing to the row to get the tag from
+     * @param tag The tag handle to retrieve the tag value for
      */
     getTag(iter: ModelIter, tag: ModelTag): object | null
     getUchar(iter: ModelIter, column: number): number
@@ -8906,6 +9936,7 @@ class Transaction {
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
+     * @param column the column index to get the schemas for
      */
     getVardictSchema(column: number): GLib.HashTable
     /**
@@ -8913,6 +9944,8 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param pos The index to insert the row on. The existing row will be pushed down.
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     /**
@@ -8920,31 +9953,40 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param iter An iter pointing to the row before which to insert the new one
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
      */
     insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSorted(rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc): ModelIter
     /**
      * Inserts a row in `self` according to the sorting specified by `cmp_func`.
      * If you use this method for insertion you should not use other methods as this
      * method assumes the model to be already sorted by `cmp_func`.
+     * @param rowMembers An array of       #GVariants with type signature matching those of the       column schemas of `self`. If any of the variants have floating       references they will be consumed.
+     * @param cmpFunc Callback used for comparison or rows
      */
     insertRowSortedWithSizes(rowMembers: GLib.Variant[], cmpFunc: CompareRowSizedFunc): ModelIter
     /**
      * Checks if `iter` is the very first iter `self`.
+     * @param iter a #DeeModelIter
      */
     isFirst(iter: ModelIter): boolean
     /**
      * Whether `iter` is the end iter of `self`. Note that the end iter points
      * right <emphasis>after</emphasis> the last valid row in `self`.
+     * @param iter a #DeeModelIter
      */
     isLast(iter: ModelIter): boolean
     /**
      * Returns a #DeeModelIter that points to the next position in the model.
+     * @param iter a #DeeModelIter
      */
     next(iter: ModelIter): ModelIter
     /**
@@ -8952,10 +9994,12 @@ class Transaction {
      * situations where you work with models on a meta level and may not have
      * a priori knowledge of the column schemas of the models. See also
      * dee_model_build_row().
+     * @param rowMembers An array of               #GVariants with type signature matching those of               the column schemas of `self`. If any of the variants have               floating references they will be consumed.
      */
     prependRow(rowMembers: GLib.Variant[]): ModelIter
     /**
      * Returns a #DeeModelIter that points to the previous position in the model.
+     * @param iter a #DeeModelIter
      */
     prev(iter: ModelIter): ModelIter
     /**
@@ -8973,6 +10017,7 @@ class Transaction {
      * The private nature of tags and the fact that you can store arbitrary pointers
      * and binary data in them also means that they are not serialized if you
      * utilize a model implementation that exposes the #DeeSerializable interface.
+     * @param tagDestroy Function called when a tagged row is removed from the model.               This function will also be called on all tagged rows when the               model is finalized.
      */
     registerTag(tagDestroy: GLib.DestroyNotify): ModelTag
     /**
@@ -8984,28 +10029,35 @@ class Transaction {
      * the same field name for multiple columns, in which case you need to use
      * fully-qualified "column_name::field" name in the calls to
      * dee_model_build_named_row() and dee_model_get_field_schema().
+     * @param column the column index to register the schemas with
+     * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
      */
     registerVardictSchema(column: number, schemas: GLib.HashTable): void
     /**
      * Removes the row at the given position from the model.
+     * @param iter a #DeeModelIter pointing to the row to remove
      */
     remove(iter: ModelIter): void
     /**
      * Set column names used by `self`.
      * This method must be called exactly once, but only after setting
      * a schema of the model. Note that some constructors will do this for you.
+     * @param columnNames A list of column names terminated by a %NULL
      */
     setColumnNamesFull(columnNames: string[]): void
     /**
      * Sets all columns in the row `iter` points to, to those found in
      * `row_members`. The variants in `row_members` must match the types defined in
      * the model's schema.
+     * @param iter a #DeeModelIter
+     * @param rowMembers And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
      */
     setRow(iter: ModelIter, rowMembers: GLib.Variant[]): void
     /**
      * Set the #GVariant types and the number of columns used by `self`.
      * This method must be called exactly once before using `self`. Note that
      * some constructors will do this for you.
+     * @param columnSchemas A list of #GVariant type strings terminated by a %NULL
      */
     setSchemaFull(columnSchemas: string[]): void
     /**
@@ -9014,6 +10066,9 @@ class Transaction {
      * 
      * If `tag` is already set on this row the existing tag value will be destroyed
      * with the #GDestroyNotify passed to the dee_model_register_tag().
+     * @param iter The row to set the tag on
+     * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+     * @param value The value to set for `tag`. Note that %NULL represents an unset tag
      */
     setTag(iter: ModelIter, tag: ModelTag, value?: object | null): void
     /**
@@ -9023,6 +10078,9 @@ class Transaction {
      * When this method call completes the model will emit ::row-changed. You can
      * edit the model in place without triggering the change signals by calling
      * dee_model_set_value_silently().
+     * @param iter a #DeeModelIter
+     * @param column column number to set the value
+     * @param value New value for cell. If `value` is a floating reference the model         will assume ownership of the variant
      */
     setValue(iter: ModelIter, column: number, value: GLib.Variant): void
     /* Methods of Dee-1.0.Dee.Serializable */
@@ -9073,6 +10131,7 @@ class Transaction {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9106,6 +10165,7 @@ class Transaction {
     emit(sigName: "changeset-started"): void
     /**
      * Connect to this signal to be notified when a row is added to `self`.
+     * @param iter a #DeeModelIter pointing to the newly added row
      */
     connect(sigName: "row-added", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-added", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -9114,6 +10174,7 @@ class Transaction {
     emit(sigName: "row-added", iter: ModelIter): void
     /**
      * Connect to this signal to be notified when a row is changed.
+     * @param iter a #DeeModelIter pointing to the changed row
      */
     connect(sigName: "row-changed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-changed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
@@ -9123,12 +10184,18 @@ class Transaction {
     /**
      * Connect to this signal to be notified when a row is removed from `self`.
      *   The row is still valid while the signal is being emitted.
+     * @param iter a #DeeModelIter pointing to the removed row
      */
     connect(sigName: "row-removed", callback: ((iter: ModelIter) => void)): number
     on(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "row-removed", callback: (iter: ModelIter) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "row-removed", callback: (iter: ModelIter) => void): NodeJS.EventEmitter
     emit(sigName: "row-removed", iter: ModelIter): void
+    connect(sigName: "notify::target", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::target", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::target", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9154,6 +10221,8 @@ class Transaction {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for `type` and #GVariant signature of `data`.
+     * @param data The #GVariant data to parse. If this is a floating reference it will        be consumed
+     * @param type The #GType of the class to instantiate from `data`
      */
     static parse(data: GLib.Variant, type: GObject.Type): GObject.Object
     /**
@@ -9168,6 +10237,7 @@ class Transaction {
      * Since a #DeeSerializableParseFunc is not allowed to fail - by contract -
      * it can be guaranteed that this function only returns %NULL in case there
      * is no known parser for the #GType or #GVariant signature of `data`.
+     * @param data The #GVariant data to parse
      */
     static parseExternal(data: GLib.Variant): GObject.Object
     static $gtype: GObject.Type
@@ -9175,13 +10245,28 @@ class Transaction {
 interface TreeIndex_ConstructProps extends Index_ConstructProps {
 }
 class TreeIndex {
+    /* Properties of Dee-1.0.Dee.Index */
+    /**
+     * The #DeeAnalyzer used to analyze terms extracted by the model reader
+     */
+    readonly analyzer: Analyzer
+    /**
+     * The #DeeModel being indexed
+     */
+    readonly model: Model
+    /**
+     * The #DeeModelReader used to extract terms from rows in the model
+     */
+    readonly reader: ModelReader
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Dee-1.0.Dee.Index */
     /**
      * Iterate over an index optionally starting from some given term. Note that
      * unordered indexes (like #DeeHashIndex) has undefined behaviour with
      * this method.
+     * @param startTerm The term to start from or %NULL to iterate over all terms
+     * @param func Called for each term in the index
      */
     foreach(startTerm: string, func: IndexIterFunc): void
     /**
@@ -9201,6 +10286,7 @@ class TreeIndex {
     getNRows(): number
     /**
      * Get the number of rows that matches a given term
+     * @param term The term to look for
      */
     getNRowsForTerm(term: string): number
     /**
@@ -9224,6 +10310,7 @@ class TreeIndex {
      * 
      * The typical use case for this function is if you need something akin to
      * a primary key in a relational database.
+     * @param term The exact term to match
      */
     lookupOne(term: string): ModelIter
     /* Methods of GObject-2.0.GObject.Object */
@@ -9261,6 +10348,10 @@ class TreeIndex {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9271,6 +10362,12 @@ class TreeIndex {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9294,6 +10391,7 @@ class TreeIndex {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9313,11 +10411,14 @@ class TreeIndex {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9325,6 +10426,8 @@ class TreeIndex {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9342,6 +10445,7 @@ class TreeIndex {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9387,6 +10491,7 @@ class TreeIndex {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9430,15 +10535,20 @@ class TreeIndex {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9479,6 +10589,7 @@ class TreeIndex {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9513,6 +10624,7 @@ class TreeIndex {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -9544,12 +10656,28 @@ class TreeIndex {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::analyzer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::analyzer", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::analyzer", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::model", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::model", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::reader", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::reader", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::reader", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -9566,11 +10694,11 @@ class TreeIndex {
 }
 abstract class AnalyzerClass {
     /* Fields of Dee-1.0.Dee.AnalyzerClass */
-    readonly analyze: (self: Analyzer, data: string, termsOut?: TermList | null, colkeysOut?: TermList | null) => void
-    readonly tokenize: (self: Analyzer, data: string, termsOut: TermList) => void
-    readonly addTermFilter: (self: Analyzer, filterFunc: TermFilterFunc) => void
-    readonly collateKey: (self: Analyzer, data: string) => string
-    readonly collateCmp: (self: Analyzer, key1: string, key2: string) => number
+    analyze: (self: Analyzer, data: string, termsOut?: TermList | null, colkeysOut?: TermList | null) => void
+    tokenize: (self: Analyzer, data: string, termsOut: TermList) => void
+    addTermFilter: (self: Analyzer, filterFunc: TermFilterFunc) => void
+    collateKey: (self: Analyzer, data: string) => string
+    collateCmp: (self: Analyzer, key1: string, key2: string) => number
     static name: string
 }
 class AnalyzerPrivate {
@@ -9584,7 +10712,7 @@ class ClientPrivate {
 }
 abstract class FileResourceManagerClass {
     /* Fields of Dee-1.0.Dee.FileResourceManagerClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Filter {
@@ -9593,27 +10721,32 @@ class Filter {
      * The #DeeModelMapFunc used to construct
      *                              the initial contents of a #DeeFilterModel
      */
-    readonly mapFunc: FilterMapFunc
+    mapFunc: FilterMapFunc
     /**
      * Callback invoked when the original model changes
      */
-    readonly mapNotify: FilterMapNotify
+    mapNotify: FilterMapNotify
     /**
      * Callback for freeing the `user_data`
      * `userdata` (closure): Free form user data associated with the filter.
      *                       This pointer will be passed to `map_func` and `map_notify`
      */
-    readonly destroy: GLib.DestroyNotify
-    readonly userdata: object
+    destroy: GLib.DestroyNotify
+    userdata: object
     /* Methods of Dee-1.0.Dee.Filter */
     /**
      * Call the #DeeFilterMapFunc function of a #DeeFilter.
      * When using a #DeeFilterModel you should not call this method yourself.
+     * @param origModel The model that is being filtered
+     * @param filterModel The #DeeFilterModel that holds the                filtered subset of `orig_model`
      */
     map(origModel: Model, filterModel: FilterModel): void
     /**
      * Call the #DeeFilterMapNotify function of a #DeeFilter.
      * When using a #DeeFilterModel you should not call this method yourself.
+     * @param origIter The #DeeModelIter added to `orig_model`
+     * @param origModel The model that is being filtered
+     * @param filterModel The #DeeFilterModel that holds the                filtered subset of `orig_model`
      */
     notify(origIter: ModelIter, origModel: Model, filterModel: FilterModel): boolean
     static name: string
@@ -9622,12 +10755,14 @@ class Filter {
      * Create a #DeeFilter that takes string values from a column in the model
      * and builds a #DeeFilterModel with the rows sorted according to the
      * collation rules of the current locale.
+     * @param column The index of a column containing the strings to sort after
      */
     static newCollator(column: number): /* outFilter */ Filter
     /**
      * Create a #DeeFilter that takes string values from a column in the model
      * and builds a #DeeFilterModel with the rows sorted descending according to the
      * collation rules of the current locale.
+     * @param column The index of a column containing the strings to sort after
      */
     static newCollatorDesc(column: number): /* outFilter */ Filter
     /**
@@ -9639,22 +10774,29 @@ class Filter {
      * value comparison is done using g_variant_equal(). This means you can use
      * this filter as a convenient fallback when there is no predefined filter
      * for your column type if raw performance is not paramount.
+     * @param column The index of a column containing the string to match
+     * @param value A #GVariant value columns must match exactly.         The matching semantics are those of g_variant_equal(). If `value`         is floating the ownership will be transfered to the filter
      */
     static newForAnyColumn(column: number, value: GLib.Variant): /* outFilter */ Filter
     /**
      * Create a #DeeFilter that only includes rows from the original model
      * which has an exact match on some string column. A #DeeFilterModel created
      * with this filter will be ordered in accordance with its parent model.
+     * @param column The index of a column containing the string key to match
+     * @param key 
      */
     static newForKeyColumn(column: number, key: string): /* outFilter */ Filter
     /**
      * Create a #DeeFilter that only includes rows from the original model
      * which match a regular expression on some string column. A #DeeFilterModel
      * created with this filter will be ordered in accordance with its parent model.
+     * @param column The index of a column containing the string to match
+     * @param regex The regular expression `column` must match
      */
     static newRegex(column: number, regex: GLib.Regex): /* outFilter */ Filter
     /**
      * Create a new #DeeFilter sorting a model according to a #DeeCompareRowFunc.
+     * @param cmpRow A #DeeCompareRowFunc to use for sorting
      */
     static newSort(cmpRow: CompareRowFunc): /* outFilter */ Filter
 }
@@ -9666,12 +10808,12 @@ class FilterModelPrivate {
 }
 abstract class GListResultSetClass {
     /* Fields of Dee-1.0.Dee.GListResultSetClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class HashIndexClass {
     /* Fields of Dee-1.0.Dee.HashIndexClass */
-    readonly parentClass: IndexClass
+    parentClass: IndexClass
     static name: string
 }
 class HashIndexPrivate {
@@ -9681,6 +10823,7 @@ class ICUTermFilter {
     /* Methods of Dee-1.0.Dee.ICUTermFilter */
     /**
      * Apply a #DeeICUTermFilter on a piece of UTF-8 text.
+     * @param text The text to apply the filter on
      */
     apply(text: string): string
     /**
@@ -9691,13 +10834,13 @@ class ICUTermFilter {
 }
 abstract class IndexClass {
     /* Fields of Dee-1.0.Dee.IndexClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly lookup: (self: Index, term: string, flags: TermMatchFlag) => ResultSet
-    readonly foreach: (self: Index, startTerm: string, func: IndexIterFunc) => void
-    readonly getNTerms: (self: Index) => number
-    readonly getNRows: (self: Index) => number
-    readonly getNRowsForTerm: (self: Index, term: string) => number
-    readonly getSupportedTermMatchFlags: (self: Index) => number
+    parentClass: GObject.ObjectClass
+    lookup: (self: Index, term: string, flags: TermMatchFlag) => ResultSet
+    foreach: (self: Index, startTerm: string, func: IndexIterFunc) => void
+    getNTerms: (self: Index) => number
+    getNRows: (self: Index) => number
+    getNRowsForTerm: (self: Index, term: string) => number
+    getSupportedTermMatchFlags: (self: Index) => number
     static name: string
 }
 class IndexPrivate {
@@ -9705,57 +10848,57 @@ class IndexPrivate {
 }
 abstract class ModelIface {
     /* Fields of Dee-1.0.Dee.ModelIface */
-    readonly gIface: GObject.TypeInterface
-    readonly rowAdded: (self: Model, iter: ModelIter) => void
-    readonly rowRemoved: (self: Model, iter: ModelIter) => void
-    readonly rowChanged: (self: Model, iter: ModelIter) => void
-    readonly setSchemaFull: (self: Model, columnSchemas: string[]) => void
-    readonly getSchema: (self: Model) => string[]
-    readonly getColumnSchema: (self: Model, column: number) => string
-    readonly getFieldSchema: (self: Model, fieldName: string) => [ /* returnType */ string, /* outColumn */ number ]
-    readonly getColumnIndex: (self: Model, columnName: string) => number
-    readonly setColumnNamesFull: (self: Model, columnNames: string[]) => void
-    readonly getColumnNames: (self: Model) => string[]
-    readonly registerVardictSchema: (self: Model, numColumn: number, schemas: GLib.HashTable) => void
-    readonly getVardictSchema: (self: Model, numColumn: number) => GLib.HashTable
-    readonly getNColumns: (self: Model) => number
-    readonly getNRows: (self: Model) => number
-    readonly appendRow: (self: Model, rowMembers: GLib.Variant[]) => ModelIter
-    readonly prependRow: (self: Model, rowMembers: GLib.Variant[]) => ModelIter
-    readonly insertRow: (self: Model, pos: number, rowMembers: GLib.Variant[]) => ModelIter
-    readonly insertRowBefore: (self: Model, iter: ModelIter, rowMembers: GLib.Variant[]) => ModelIter
-    readonly insertRowSorted: (self: Model, rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc) => ModelIter
-    readonly findRowSorted: (self: Model, rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc) => [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
-    readonly remove: (self: Model, iter: ModelIter) => void
-    readonly clear: (self: Model) => void
-    readonly setValue: (self: Model, iter: ModelIter, column: number, value: GLib.Variant) => void
-    readonly setRow: (self: Model, iter: ModelIter, rowMembers: GLib.Variant[]) => void
-    readonly getValue: (self: Model, iter: ModelIter, column: number) => GLib.Variant
-    readonly getValueByName: (self: Model, iter: ModelIter, columnName: string) => GLib.Variant
-    readonly getFirstIter: (self: Model) => ModelIter
-    readonly getLastIter: (self: Model) => ModelIter
-    readonly getIterAtRow: (self: Model, row: number) => ModelIter
-    readonly getBool: (self: Model, iter: ModelIter, column: number) => boolean
-    readonly getUchar: (self: Model, iter: ModelIter, column: number) => number
-    readonly getInt32: (self: Model, iter: ModelIter, column: number) => number
-    readonly getUint32: (self: Model, iter: ModelIter, column: number) => number
-    readonly getInt64: (self: Model, iter: ModelIter, column: number) => number
-    readonly getUint64: (self: Model, iter: ModelIter, column: number) => number
-    readonly getDouble: (self: Model, iter: ModelIter, column: number) => number
-    readonly getString: (self: Model, iter: ModelIter, column: number) => string
-    readonly next: (self: Model, iter: ModelIter) => ModelIter
-    readonly prev: (self: Model, iter: ModelIter) => ModelIter
-    readonly isFirst: (self: Model, iter: ModelIter) => boolean
-    readonly isLast: (self: Model, iter: ModelIter) => boolean
-    readonly getPosition: (self: Model, iter: ModelIter) => number
-    readonly registerTag: (self: Model, tagDestroy: GLib.DestroyNotify) => ModelTag
-    readonly getTag: (self: Model, iter: ModelIter, tag: ModelTag) => object | null
-    readonly setTag: (self: Model, iter: ModelIter, tag: ModelTag, value?: object | null) => void
-    readonly getRow: (self: Model, iter: ModelIter, outRowMembers: GLib.Variant) => GLib.Variant
-    readonly beginChangeset: (self: Model) => void
-    readonly endChangeset: (self: Model) => void
-    readonly changesetStarted: (self: Model) => void
-    readonly changesetFinished: (self: Model) => void
+    gIface: GObject.TypeInterface
+    rowAdded: (self: Model, iter: ModelIter) => void
+    rowRemoved: (self: Model, iter: ModelIter) => void
+    rowChanged: (self: Model, iter: ModelIter) => void
+    setSchemaFull: (self: Model, columnSchemas: string[]) => void
+    getSchema: (self: Model) => string[]
+    getColumnSchema: (self: Model, column: number) => string
+    getFieldSchema: (self: Model, fieldName: string) => [ /* returnType */ string, /* outColumn */ number ]
+    getColumnIndex: (self: Model, columnName: string) => number
+    setColumnNamesFull: (self: Model, columnNames: string[]) => void
+    getColumnNames: (self: Model) => string[]
+    registerVardictSchema: (self: Model, numColumn: number, schemas: GLib.HashTable) => void
+    getVardictSchema: (self: Model, numColumn: number) => GLib.HashTable
+    getNColumns: (self: Model) => number
+    getNRows: (self: Model) => number
+    appendRow: (self: Model, rowMembers: GLib.Variant[]) => ModelIter
+    prependRow: (self: Model, rowMembers: GLib.Variant[]) => ModelIter
+    insertRow: (self: Model, pos: number, rowMembers: GLib.Variant[]) => ModelIter
+    insertRowBefore: (self: Model, iter: ModelIter, rowMembers: GLib.Variant[]) => ModelIter
+    insertRowSorted: (self: Model, rowMembers: GLib.Variant[], cmpFunc: CompareRowFunc) => ModelIter
+    findRowSorted: (self: Model, rowSpec: GLib.Variant[], cmpFunc: CompareRowFunc) => [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
+    remove: (self: Model, iter: ModelIter) => void
+    clear: (self: Model) => void
+    setValue: (self: Model, iter: ModelIter, column: number, value: GLib.Variant) => void
+    setRow: (self: Model, iter: ModelIter, rowMembers: GLib.Variant[]) => void
+    getValue: (self: Model, iter: ModelIter, column: number) => GLib.Variant
+    getValueByName: (self: Model, iter: ModelIter, columnName: string) => GLib.Variant
+    getFirstIter: (self: Model) => ModelIter
+    getLastIter: (self: Model) => ModelIter
+    getIterAtRow: (self: Model, row: number) => ModelIter
+    getBool: (self: Model, iter: ModelIter, column: number) => boolean
+    getUchar: (self: Model, iter: ModelIter, column: number) => number
+    getInt32: (self: Model, iter: ModelIter, column: number) => number
+    getUint32: (self: Model, iter: ModelIter, column: number) => number
+    getInt64: (self: Model, iter: ModelIter, column: number) => number
+    getUint64: (self: Model, iter: ModelIter, column: number) => number
+    getDouble: (self: Model, iter: ModelIter, column: number) => number
+    getString: (self: Model, iter: ModelIter, column: number) => string
+    next: (self: Model, iter: ModelIter) => ModelIter
+    prev: (self: Model, iter: ModelIter) => ModelIter
+    isFirst: (self: Model, iter: ModelIter) => boolean
+    isLast: (self: Model, iter: ModelIter) => boolean
+    getPosition: (self: Model, iter: ModelIter) => number
+    registerTag: (self: Model, tagDestroy: GLib.DestroyNotify) => ModelTag
+    getTag: (self: Model, iter: ModelIter, tag: ModelTag) => object | null
+    setTag: (self: Model, iter: ModelIter, tag: ModelTag, value?: object | null) => void
+    getRow: (self: Model, iter: ModelIter, outRowMembers: GLib.Variant) => GLib.Variant
+    beginChangeset: (self: Model) => void
+    endChangeset: (self: Model) => void
+    changesetStarted: (self: Model) => void
+    changesetFinished: (self: Model) => void
     static name: string
 }
 class ModelIter {
@@ -9767,15 +10910,15 @@ class ModelReader {
      * The #DeeModelReaderFunc used to extract
      *                                 string from a model
      */
-    readonly readerFunc: ModelReaderFunc
+    readerFunc: ModelReaderFunc
     /**
      * user data to pass to `reader_func`
      */
-    readonly userdata: object
+    userdata: object
     /**
      * Called when the reader is destroyed
      */
-    readonly destroy: GLib.DestroyNotify
+    destroy: GLib.DestroyNotify
     /* Methods of Dee-1.0.Dee.ModelReader */
     /**
      * Read data from a row in a #DeeModel and extract a string representation from
@@ -9783,20 +10926,25 @@ class ModelReader {
      * 
      * Note that generally a #DeeModelReader need not be confined to reading from
      * one specific column, although in practice most are.
+     * @param model The #DeeModel to read a string from
+     * @param iter The row to read a string from
      */
     read(model: Model, iter: ModelIter): string
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * A #DeeModelReader reading a %gint32 from a #DeeModel at a given column
+     * @param column The column index to read a %gint32 from
      */
     static newForInt32Column(column: number): /* outReader */ ModelReader
     /**
      * A #DeeModelReader reading a string from a #DeeModel at a given column
+     * @param column The column index to read a string from
      */
     static newForStringColumn(column: number): /* outReader */ ModelReader
     /**
      * A #DeeModelReader reading a %guint32 from a #DeeModel at a given column
+     * @param column The column index to read a %guint32 from
      */
     static newForUint32Column(column: number): /* outReader */ ModelReader
 }
@@ -9805,14 +10953,14 @@ class ModelTag {
 }
 abstract class PeerClass {
     /* Fields of Dee-1.0.Dee.PeerClass */
-    readonly peerFound: (self: Peer, name: string) => void
-    readonly peerLost: (self: Peer, name: string) => void
-    readonly connectionAcquired: (self: Peer, connection: Gio.DBusConnection) => void
-    readonly connectionClosed: (self: Peer, connection: Gio.DBusConnection) => void
-    readonly getSwarmLeader: (self: Peer) => string
-    readonly isSwarmLeader: (self: Peer) => boolean
-    readonly getConnections: (self: Peer) => Gio.DBusConnection[]
-    readonly listPeers: (self: Peer) => string[]
+    peerFound: (self: Peer, name: string) => void
+    peerLost: (self: Peer, name: string) => void
+    connectionAcquired: (self: Peer, connection: Gio.DBusConnection) => void
+    connectionClosed: (self: Peer, connection: Gio.DBusConnection) => void
+    getSwarmLeader: (self: Peer) => string
+    isSwarmLeader: (self: Peer) => boolean
+    getConnections: (self: Peer) => Gio.DBusConnection[]
+    listPeers: (self: Peer) => string[]
     static name: string
 }
 class PeerPrivate {
@@ -9826,21 +10974,21 @@ class ProxyModelPrivate {
 }
 abstract class ResourceManagerIface {
     /* Fields of Dee-1.0.Dee.ResourceManagerIface */
-    readonly gIface: GObject.TypeInterface
-    readonly store: (self: ResourceManager, resource: Serializable, resourceName: string) => boolean
-    readonly load: (self: ResourceManager, resourceName: string) => GObject.Object
+    gIface: GObject.TypeInterface
+    store: (self: ResourceManager, resource: Serializable, resourceName: string) => boolean
+    load: (self: ResourceManager, resourceName: string) => GObject.Object
     static name: string
 }
 abstract class ResultSetIface {
     /* Fields of Dee-1.0.Dee.ResultSetIface */
-    readonly gIface: GObject.TypeInterface
-    readonly getNRows: (self: ResultSet) => number
-    readonly next: (self: ResultSet) => ModelIter
-    readonly hasNext: (self: ResultSet) => boolean
-    readonly peek: (self: ResultSet) => ModelIter
-    readonly seek: (self: ResultSet, pos: number) => void
-    readonly tell: (self: ResultSet) => number
-    readonly getModel: (self: ResultSet) => Model
+    gIface: GObject.TypeInterface
+    getNRows: (self: ResultSet) => number
+    next: (self: ResultSet) => ModelIter
+    hasNext: (self: ResultSet) => boolean
+    peek: (self: ResultSet) => ModelIter
+    seek: (self: ResultSet, pos: number) => void
+    tell: (self: ResultSet) => number
+    getModel: (self: ResultSet) => Model
     static name: string
 }
 abstract class SequenceModelClass {
@@ -9851,15 +10999,15 @@ class SequenceModelPrivate {
 }
 abstract class SerializableIface {
     /* Fields of Dee-1.0.Dee.SerializableIface */
-    readonly gIface: GObject.TypeInterface
-    readonly serialize: (self: Serializable) => GLib.Variant
+    gIface: GObject.TypeInterface
+    serialize: (self: Serializable) => GLib.Variant
     static name: string
 }
 abstract class SerializableModelClass {
     /* Fields of Dee-1.0.Dee.SerializableModelClass */
-    readonly getSeqnum: (self: Model) => number
-    readonly setSeqnum: (self: Model, seqnum: number) => void
-    readonly incSeqnum: (self: Model) => number
+    getSeqnum: (self: Model) => number
+    setSeqnum: (self: Model, seqnum: number) => void
+    incSeqnum: (self: Model) => number
     static name: string
 }
 class SerializableModelPrivate {
@@ -9879,12 +11027,12 @@ class SharedModelPrivate {
 }
 abstract class TermListClass {
     /* Fields of Dee-1.0.Dee.TermListClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly getTerm: (self: TermList, n: number) => string
-    readonly addTerm: (self: TermList, term: string) => TermList
-    readonly numTerms: (self: TermList) => number
-    readonly clear: (self: TermList) => TermList
-    readonly clone: (self: TermList) => TermList
+    parentClass: GObject.ObjectClass
+    getTerm: (self: TermList, n: number) => string
+    addTerm: (self: TermList, term: string) => TermList
+    numTerms: (self: TermList) => number
+    clear: (self: TermList) => TermList
+    clone: (self: TermList) => TermList
     static name: string
 }
 class TermListPrivate {
@@ -9904,7 +11052,7 @@ class TransactionPrivate {
 }
 abstract class TreeIndexClass {
     /* Fields of Dee-1.0.Dee.TreeIndexClass */
-    readonly parentClass: IndexClass
+    parentClass: IndexClass
     static name: string
 }
 class TreeIndexPrivate {

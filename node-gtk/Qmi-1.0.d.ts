@@ -11874,11 +11874,13 @@ class Client {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -11900,6 +11902,8 @@ class Client {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -11953,6 +11957,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11963,6 +11971,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11986,6 +12000,7 @@ class Client {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -12005,11 +12020,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -12017,6 +12035,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12034,6 +12054,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -12079,6 +12100,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12122,15 +12144,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12171,6 +12198,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12205,6 +12233,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -12236,6 +12265,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12295,7 +12325,7 @@ class ClientDms {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientDms */
     /**
      * Asynchronously sends a Activate Automatic request to the device.
@@ -12303,10 +12333,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_activate_automatic_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsActivateAutomaticInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     activateAutomatic(input: MessageDmsActivateAutomaticInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_activate_automatic().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_activate_automatic().
      */
     activateAutomaticFinish(res: Gio.AsyncResult): MessageDmsActivateAutomaticOutput
     /**
@@ -12315,10 +12350,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_activate_manual_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsActivateManualInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     activateManual(input: MessageDmsActivateManualInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_activate_manual().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_activate_manual().
      */
     activateManualFinish(res: Gio.AsyncResult): MessageDmsActivateManualOutput
     /**
@@ -12327,10 +12367,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_delete_stored_image_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsDeleteStoredImageInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     deleteStoredImage(input: MessageDmsDeleteStoredImageInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_delete_stored_image().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_delete_stored_image().
      */
     deleteStoredImageFinish(res: Gio.AsyncResult): MessageDmsDeleteStoredImageOutput
     /**
@@ -12339,10 +12384,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_foxconn_change_device_mode_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsFoxconnChangeDeviceModeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     foxconnChangeDeviceMode(input: MessageDmsFoxconnChangeDeviceModeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_foxconn_change_device_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_change_device_mode().
      */
     foxconnChangeDeviceModeFinish(res: Gio.AsyncResult): MessageDmsFoxconnChangeDeviceModeOutput
     /**
@@ -12351,10 +12401,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_foxconn_get_firmware_version_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsFoxconnGetFirmwareVersionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     foxconnGetFirmwareVersion(input: MessageDmsFoxconnGetFirmwareVersionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_foxconn_get_firmware_version().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_get_firmware_version().
      */
     foxconnGetFirmwareVersionFinish(res: Gio.AsyncResult): MessageDmsFoxconnGetFirmwareVersionOutput
     /**
@@ -12363,10 +12418,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_foxconn_set_fcc_authentication_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsFoxconnSetFccAuthenticationInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     foxconnSetFccAuthentication(input: MessageDmsFoxconnSetFccAuthenticationInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_foxconn_set_fcc_authentication().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_set_fcc_authentication().
      */
     foxconnSetFccAuthenticationFinish(res: Gio.AsyncResult): MessageDmsFoxconnSetFccAuthenticationOutput
     /**
@@ -12375,10 +12435,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_activation_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getActivationState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_activation_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_activation_state().
      */
     getActivationStateFinish(res: Gio.AsyncResult): MessageDmsGetActivationStateOutput
     /**
@@ -12387,10 +12452,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_alt_net_config_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getAltNetConfig(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_alt_net_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_alt_net_config().
      */
     getAltNetConfigFinish(res: Gio.AsyncResult): MessageDmsGetAltNetConfigOutput
     /**
@@ -12399,10 +12469,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_band_capabilities_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getBandCapabilities(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_band_capabilities().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_band_capabilities().
      */
     getBandCapabilitiesFinish(res: Gio.AsyncResult): MessageDmsGetBandCapabilitiesOutput
     /**
@@ -12411,10 +12486,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_boot_image_download_mode_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getBootImageDownloadMode(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_boot_image_download_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_boot_image_download_mode().
      */
     getBootImageDownloadModeFinish(res: Gio.AsyncResult): MessageDmsGetBootImageDownloadModeOutput
     /**
@@ -12423,10 +12503,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_capabilities_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCapabilities(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_capabilities().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_capabilities().
      */
     getCapabilitiesFinish(res: Gio.AsyncResult): MessageDmsGetCapabilitiesOutput
     /**
@@ -12435,10 +12520,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_factory_sku_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getFactorySku(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_factory_sku().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_factory_sku().
      */
     getFactorySkuFinish(res: Gio.AsyncResult): MessageDmsGetFactorySkuOutput
     /**
@@ -12447,10 +12537,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_firmware_preference_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getFirmwarePreference(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_firmware_preference().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_firmware_preference().
      */
     getFirmwarePreferenceFinish(res: Gio.AsyncResult): MessageDmsGetFirmwarePreferenceOutput
     /**
@@ -12459,10 +12554,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_hardware_revision_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getHardwareRevision(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_hardware_revision().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_hardware_revision().
      */
     getHardwareRevisionFinish(res: Gio.AsyncResult): MessageDmsGetHardwareRevisionOutput
     /**
@@ -12471,10 +12571,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_ids_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getIds(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_ids().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_ids().
      */
     getIdsFinish(res: Gio.AsyncResult): MessageDmsGetIdsOutput
     /**
@@ -12483,10 +12588,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_mac_address_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsGetMacAddressInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getMacAddress(input: MessageDmsGetMacAddressInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_mac_address().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_mac_address().
      */
     getMacAddressFinish(res: Gio.AsyncResult): MessageDmsGetMacAddressOutput
     /**
@@ -12495,10 +12605,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_manufacturer_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getManufacturer(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_manufacturer().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_manufacturer().
      */
     getManufacturerFinish(res: Gio.AsyncResult): MessageDmsGetManufacturerOutput
     /**
@@ -12507,10 +12622,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_model_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getModel(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_model().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_model().
      */
     getModelFinish(res: Gio.AsyncResult): MessageDmsGetModelOutput
     /**
@@ -12519,10 +12639,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_msisdn_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getMsisdn(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_msisdn().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_msisdn().
      */
     getMsisdnFinish(res: Gio.AsyncResult): MessageDmsGetMsisdnOutput
     /**
@@ -12531,10 +12656,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_operating_mode_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getOperatingMode(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_operating_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_operating_mode().
      */
     getOperatingModeFinish(res: Gio.AsyncResult): MessageDmsGetOperatingModeOutput
     /**
@@ -12543,10 +12673,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_power_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPowerState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_power_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_power_state().
      */
     getPowerStateFinish(res: Gio.AsyncResult): MessageDmsGetPowerStateOutput
     /**
@@ -12555,10 +12690,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_prl_version_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPrlVersion(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_prl_version().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_prl_version().
      */
     getPrlVersionFinish(res: Gio.AsyncResult): MessageDmsGetPrlVersionOutput
     /**
@@ -12567,10 +12707,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_revision_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getRevision(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_revision().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_revision().
      */
     getRevisionFinish(res: Gio.AsyncResult): MessageDmsGetRevisionOutput
     /**
@@ -12579,10 +12724,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_software_version_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSoftwareVersion(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_software_version().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_software_version().
      */
     getSoftwareVersionFinish(res: Gio.AsyncResult): MessageDmsGetSoftwareVersionOutput
     /**
@@ -12591,10 +12741,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_stored_image_info_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsGetStoredImageInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getStoredImageInfo(input: MessageDmsGetStoredImageInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_stored_image_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_stored_image_info().
      */
     getStoredImageInfoFinish(res: Gio.AsyncResult): MessageDmsGetStoredImageInfoOutput
     /**
@@ -12603,10 +12758,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageDmsGetSupportedMessagesOutput
     /**
@@ -12615,10 +12775,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_time_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getTime(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_time().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_time().
      */
     getTimeFinish(res: Gio.AsyncResult): MessageDmsGetTimeOutput
     /**
@@ -12627,10 +12792,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_get_user_lock_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getUserLockState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_get_user_lock_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_user_lock_state().
      */
     getUserLockStateFinish(res: Gio.AsyncResult): MessageDmsGetUserLockStateOutput
     /**
@@ -12639,10 +12809,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_hp_change_device_mode_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsHpChangeDeviceModeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     hpChangeDeviceMode(input: MessageDmsHpChangeDeviceModeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_hp_change_device_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_hp_change_device_mode().
      */
     hpChangeDeviceModeFinish(res: Gio.AsyncResult): MessageDmsHpChangeDeviceModeOutput
     /**
@@ -12651,10 +12826,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_list_stored_images_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     listStoredImages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_list_stored_images().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_list_stored_images().
      */
     listStoredImagesFinish(res: Gio.AsyncResult): MessageDmsListStoredImagesOutput
     /**
@@ -12663,10 +12843,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_read_eri_file_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     readEriFile(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_read_eri_file().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_read_eri_file().
      */
     readEriFileFinish(res: Gio.AsyncResult): MessageDmsReadEriFileOutput
     /**
@@ -12675,10 +12860,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_read_user_data_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     readUserData(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_read_user_data().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_read_user_data().
      */
     readUserDataFinish(res: Gio.AsyncResult): MessageDmsReadUserDataOutput
     /**
@@ -12687,10 +12877,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageDmsResetOutput
     /**
@@ -12699,10 +12894,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_restore_factory_defaults_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsRestoreFactoryDefaultsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     restoreFactoryDefaults(input: MessageDmsRestoreFactoryDefaultsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_restore_factory_defaults().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_restore_factory_defaults().
      */
     restoreFactoryDefaultsFinish(res: Gio.AsyncResult): MessageDmsRestoreFactoryDefaultsOutput
     /**
@@ -12711,10 +12911,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_alt_net_config_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetAltNetConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setAltNetConfig(input: MessageDmsSetAltNetConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_alt_net_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_alt_net_config().
      */
     setAltNetConfigFinish(res: Gio.AsyncResult): MessageDmsSetAltNetConfigOutput
     /**
@@ -12723,10 +12928,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_boot_image_download_mode_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetBootImageDownloadModeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setBootImageDownloadMode(input: MessageDmsSetBootImageDownloadModeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_boot_image_download_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_boot_image_download_mode().
      */
     setBootImageDownloadModeFinish(res: Gio.AsyncResult): MessageDmsSetBootImageDownloadModeOutput
     /**
@@ -12735,10 +12945,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_event_report_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetEventReportInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEventReport(input: MessageDmsSetEventReportInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_event_report().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_event_report().
      */
     setEventReportFinish(res: Gio.AsyncResult): MessageDmsSetEventReportOutput
     /**
@@ -12747,10 +12962,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_fcc_authentication_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setFccAuthentication(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_fcc_authentication().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_fcc_authentication().
      */
     setFccAuthenticationFinish(res: Gio.AsyncResult): MessageDmsSetFccAuthenticationOutput
     /**
@@ -12759,10 +12979,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_firmware_id_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setFirmwareId(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_firmware_id().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_firmware_id().
      */
     setFirmwareIdFinish(res: Gio.AsyncResult): MessageDmsSetFirmwareIdOutput
     /**
@@ -12771,10 +12996,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_firmware_preference_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetFirmwarePreferenceInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setFirmwarePreference(input: MessageDmsSetFirmwarePreferenceInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_firmware_preference().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_firmware_preference().
      */
     setFirmwarePreferenceFinish(res: Gio.AsyncResult): MessageDmsSetFirmwarePreferenceOutput
     /**
@@ -12783,10 +13013,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_operating_mode_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetOperatingModeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setOperatingMode(input: MessageDmsSetOperatingModeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_operating_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_operating_mode().
      */
     setOperatingModeFinish(res: Gio.AsyncResult): MessageDmsSetOperatingModeOutput
     /**
@@ -12795,10 +13030,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_service_programming_code_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetServiceProgrammingCodeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setServiceProgrammingCode(input: MessageDmsSetServiceProgrammingCodeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_service_programming_code().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_service_programming_code().
      */
     setServiceProgrammingCodeFinish(res: Gio.AsyncResult): MessageDmsSetServiceProgrammingCodeOutput
     /**
@@ -12807,10 +13047,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_time_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetTimeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setTime(input: MessageDmsSetTimeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_time().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_time().
      */
     setTimeFinish(res: Gio.AsyncResult): MessageDmsSetTimeOutput
     /**
@@ -12819,10 +13064,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_user_lock_code_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetUserLockCodeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setUserLockCode(input: MessageDmsSetUserLockCodeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_user_lock_code().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_user_lock_code().
      */
     setUserLockCodeFinish(res: Gio.AsyncResult): MessageDmsSetUserLockCodeOutput
     /**
@@ -12831,10 +13081,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_set_user_lock_state_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSetUserLockStateInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setUserLockState(input: MessageDmsSetUserLockStateInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_set_user_lock_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_user_lock_state().
      */
     setUserLockStateFinish(res: Gio.AsyncResult): MessageDmsSetUserLockStateOutput
     /**
@@ -12843,10 +13098,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_swi_get_current_firmware_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     swiGetCurrentFirmware(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_swi_get_current_firmware().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_swi_get_current_firmware().
      */
     swiGetCurrentFirmwareFinish(res: Gio.AsyncResult): MessageDmsSwiGetCurrentFirmwareOutput
     /**
@@ -12855,10 +13115,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_swi_get_usb_composition_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     swiGetUsbComposition(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_swi_get_usb_composition().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_swi_get_usb_composition().
      */
     swiGetUsbCompositionFinish(res: Gio.AsyncResult): MessageDmsSwiGetUsbCompositionOutput
     /**
@@ -12867,10 +13132,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_swi_set_usb_composition_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsSwiSetUsbCompositionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     swiSetUsbComposition(input: MessageDmsSwiSetUsbCompositionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_swi_set_usb_composition().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_swi_set_usb_composition().
      */
     swiSetUsbCompositionFinish(res: Gio.AsyncResult): MessageDmsSwiSetUsbCompositionOutput
     /**
@@ -12879,10 +13149,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_change_pin_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimChangePinInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimChangePin(input: MessageDmsUimChangePinInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_change_pin().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_change_pin().
      */
     uimChangePinFinish(res: Gio.AsyncResult): MessageDmsUimChangePinOutput
     /**
@@ -12891,10 +13166,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_get_ck_status_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimGetCkStatusInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimGetCkStatus(input: MessageDmsUimGetCkStatusInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_get_ck_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_ck_status().
      */
     uimGetCkStatusFinish(res: Gio.AsyncResult): MessageDmsUimGetCkStatusOutput
     /**
@@ -12903,10 +13183,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_get_iccid_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimGetIccid(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_get_iccid().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_iccid().
      */
     uimGetIccidFinish(res: Gio.AsyncResult): MessageDmsUimGetIccidOutput
     /**
@@ -12915,10 +13200,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_get_imsi_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimGetImsi(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_get_imsi().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_imsi().
      */
     uimGetImsiFinish(res: Gio.AsyncResult): MessageDmsUimGetImsiOutput
     /**
@@ -12927,10 +13217,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_get_pin_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimGetPinStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_get_pin_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_pin_status().
      */
     uimGetPinStatusFinish(res: Gio.AsyncResult): MessageDmsUimGetPinStatusOutput
     /**
@@ -12939,10 +13234,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_get_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimGetState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_get_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_state().
      */
     uimGetStateFinish(res: Gio.AsyncResult): MessageDmsUimGetStateOutput
     /**
@@ -12951,10 +13251,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_set_ck_protection_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimSetCkProtectionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimSetCkProtection(input: MessageDmsUimSetCkProtectionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_set_ck_protection().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_set_ck_protection().
      */
     uimSetCkProtectionFinish(res: Gio.AsyncResult): MessageDmsUimSetCkProtectionOutput
     /**
@@ -12963,10 +13268,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_set_pin_protection_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimSetPinProtectionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimSetPinProtection(input: MessageDmsUimSetPinProtectionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_set_pin_protection().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_set_pin_protection().
      */
     uimSetPinProtectionFinish(res: Gio.AsyncResult): MessageDmsUimSetPinProtectionOutput
     /**
@@ -12975,10 +13285,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_unblock_ck_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimUnblockCkInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimUnblockCk(input: MessageDmsUimUnblockCkInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_unblock_ck().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_unblock_ck().
      */
     uimUnblockCkFinish(res: Gio.AsyncResult): MessageDmsUimUnblockCkOutput
     /**
@@ -12987,10 +13302,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_unblock_pin_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimUnblockPinInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimUnblockPin(input: MessageDmsUimUnblockPinInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_unblock_pin().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_unblock_pin().
      */
     uimUnblockPinFinish(res: Gio.AsyncResult): MessageDmsUimUnblockPinOutput
     /**
@@ -12999,10 +13319,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_uim_verify_pin_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsUimVerifyPinInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     uimVerifyPin(input: MessageDmsUimVerifyPinInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_uim_verify_pin().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_verify_pin().
      */
     uimVerifyPinFinish(res: Gio.AsyncResult): MessageDmsUimVerifyPinOutput
     /**
@@ -13011,10 +13336,15 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_validate_service_programming_code_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsValidateServiceProgrammingCodeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     validateServiceProgrammingCode(input: MessageDmsValidateServiceProgrammingCodeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_validate_service_programming_code().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_validate_service_programming_code().
      */
     validateServiceProgrammingCodeFinish(res: Gio.AsyncResult): MessageDmsValidateServiceProgrammingCodeOutput
     /**
@@ -13023,16 +13353,23 @@ class ClientDms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dms_write_user_data_finish() to get the result of the operation.
+     * @param input a #QmiMessageDmsWriteUserDataInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     writeUserData(input: MessageDmsWriteUserDataInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dms_write_user_data().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_write_user_data().
      */
     writeUserDataFinish(res: Gio.AsyncResult): MessageDmsWriteUserDataOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -13054,6 +13391,8 @@ class ClientDms {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -13107,6 +13446,10 @@ class ClientDms {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13117,6 +13460,12 @@ class ClientDms {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13140,6 +13489,7 @@ class ClientDms {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13159,11 +13509,14 @@ class ClientDms {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13171,6 +13524,8 @@ class ClientDms {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13188,6 +13543,7 @@ class ClientDms {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13233,6 +13589,7 @@ class ClientDms {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13276,15 +13633,20 @@ class ClientDms {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13325,6 +13687,7 @@ class ClientDms {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13359,11 +13722,13 @@ class ClientDms {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientDms */
     /**
      * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-DMS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
+     * @param output A #QmiIndicationDmsEventReportOutput.
      */
     connect(sigName: "event-report", callback: ((output: IndicationDmsEventReportOutput) => void)): number
     on(sigName: "event-report", callback: (output: IndicationDmsEventReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -13399,6 +13764,7 @@ class ClientDms {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13458,7 +13824,7 @@ class ClientDpm {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientDpm */
     /**
      * Asynchronously sends a Close Port request to the device.
@@ -13466,10 +13832,15 @@ class ClientDpm {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dpm_close_port_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     closePort(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dpm_close_port().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dpm_close_port().
      */
     closePortFinish(res: Gio.AsyncResult): MessageDpmClosePortOutput
     /**
@@ -13478,16 +13849,23 @@ class ClientDpm {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dpm_open_port_finish() to get the result of the operation.
+     * @param input a #QmiMessageDpmOpenPortInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     openPort(input: MessageDpmOpenPortInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dpm_open_port().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dpm_open_port().
      */
     openPortFinish(res: Gio.AsyncResult): MessageDpmOpenPortOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -13509,6 +13887,8 @@ class ClientDpm {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -13562,6 +13942,10 @@ class ClientDpm {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13572,6 +13956,12 @@ class ClientDpm {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13595,6 +13985,7 @@ class ClientDpm {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13614,11 +14005,14 @@ class ClientDpm {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13626,6 +14020,8 @@ class ClientDpm {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13643,6 +14039,7 @@ class ClientDpm {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13688,6 +14085,7 @@ class ClientDpm {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13731,15 +14129,20 @@ class ClientDpm {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13780,6 +14183,7 @@ class ClientDpm {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13814,6 +14218,7 @@ class ClientDpm {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -13845,6 +14250,7 @@ class ClientDpm {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13904,7 +14310,7 @@ class ClientDsd {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientDsd */
     /**
      * Asynchronously sends a Get APN Info request to the device.
@@ -13912,10 +14318,15 @@ class ClientDsd {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dsd_get_apn_info_finish() to get the result of the operation.
+     * @param input a #QmiMessageDsdGetApnInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getApnInfo(input: MessageDsdGetApnInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dsd_get_apn_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dsd_get_apn_info().
      */
     getApnInfoFinish(res: Gio.AsyncResult): MessageDsdGetApnInfoOutput
     /**
@@ -13924,16 +14335,23 @@ class ClientDsd {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_dsd_set_apn_type_finish() to get the result of the operation.
+     * @param input a #QmiMessageDsdSetApnTypeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setApnType(input: MessageDsdSetApnTypeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_dsd_set_apn_type().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dsd_set_apn_type().
      */
     setApnTypeFinish(res: Gio.AsyncResult): MessageDsdSetApnTypeOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -13955,6 +14373,8 @@ class ClientDsd {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -14008,6 +14428,10 @@ class ClientDsd {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14018,6 +14442,12 @@ class ClientDsd {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14041,6 +14471,7 @@ class ClientDsd {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14060,11 +14491,14 @@ class ClientDsd {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14072,6 +14506,8 @@ class ClientDsd {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14089,6 +14525,7 @@ class ClientDsd {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14134,6 +14571,7 @@ class ClientDsd {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14177,15 +14615,20 @@ class ClientDsd {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14226,6 +14669,7 @@ class ClientDsd {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14260,6 +14704,7 @@ class ClientDsd {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14291,6 +14736,7 @@ class ClientDsd {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14350,7 +14796,7 @@ class ClientFox {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientFox */
     /**
      * Asynchronously sends a Get Firmware Version request to the device.
@@ -14358,16 +14804,23 @@ class ClientFox {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_fox_get_firmware_version_finish() to get the result of the operation.
+     * @param input a #QmiMessageFoxGetFirmwareVersionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getFirmwareVersion(input: MessageFoxGetFirmwareVersionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_fox_get_firmware_version().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_fox_get_firmware_version().
      */
     getFirmwareVersionFinish(res: Gio.AsyncResult): MessageFoxGetFirmwareVersionOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -14389,6 +14842,8 @@ class ClientFox {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -14442,6 +14897,10 @@ class ClientFox {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14452,6 +14911,12 @@ class ClientFox {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14475,6 +14940,7 @@ class ClientFox {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14494,11 +14960,14 @@ class ClientFox {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14506,6 +14975,8 @@ class ClientFox {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14523,6 +14994,7 @@ class ClientFox {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14568,6 +15040,7 @@ class ClientFox {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14611,15 +15084,20 @@ class ClientFox {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -14660,6 +15138,7 @@ class ClientFox {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -14694,6 +15173,7 @@ class ClientFox {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -14725,6 +15205,7 @@ class ClientFox {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -14784,7 +15265,7 @@ class ClientGas {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientGas */
     /**
      * Asynchronously sends a DMS Get Firmware List request to the device.
@@ -14792,10 +15273,15 @@ class ClientGas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_gas_dms_get_firmware_list_finish() to get the result of the operation.
+     * @param input a #QmiMessageGasDmsGetFirmwareListInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     dmsGetFirmwareList(input: MessageGasDmsGetFirmwareListInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_gas_dms_get_firmware_list().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_get_firmware_list().
      */
     dmsGetFirmwareListFinish(res: Gio.AsyncResult): MessageGasDmsGetFirmwareListOutput
     /**
@@ -14804,10 +15290,15 @@ class ClientGas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_gas_dms_get_usb_composition_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     dmsGetUsbComposition(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_gas_dms_get_usb_composition().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_get_usb_composition().
      */
     dmsGetUsbCompositionFinish(res: Gio.AsyncResult): MessageGasDmsGetUsbCompositionOutput
     /**
@@ -14816,10 +15307,15 @@ class ClientGas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_gas_dms_set_active_firmware_finish() to get the result of the operation.
+     * @param input a #QmiMessageGasDmsSetActiveFirmwareInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     dmsSetActiveFirmware(input: MessageGasDmsSetActiveFirmwareInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_gas_dms_set_active_firmware().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_set_active_firmware().
      */
     dmsSetActiveFirmwareFinish(res: Gio.AsyncResult): MessageGasDmsSetActiveFirmwareOutput
     /**
@@ -14828,16 +15324,23 @@ class ClientGas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_gas_dms_set_usb_composition_finish() to get the result of the operation.
+     * @param input a #QmiMessageGasDmsSetUsbCompositionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     dmsSetUsbComposition(input: MessageGasDmsSetUsbCompositionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_gas_dms_set_usb_composition().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_set_usb_composition().
      */
     dmsSetUsbCompositionFinish(res: Gio.AsyncResult): MessageGasDmsSetUsbCompositionOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -14859,6 +15362,8 @@ class ClientGas {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -14912,6 +15417,10 @@ class ClientGas {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14922,6 +15431,12 @@ class ClientGas {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14945,6 +15460,7 @@ class ClientGas {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14964,11 +15480,14 @@ class ClientGas {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14976,6 +15495,8 @@ class ClientGas {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14993,6 +15514,7 @@ class ClientGas {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15038,6 +15560,7 @@ class ClientGas {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15081,15 +15604,20 @@ class ClientGas {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15130,6 +15658,7 @@ class ClientGas {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15164,6 +15693,7 @@ class ClientGas {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -15195,6 +15725,7 @@ class ClientGas {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15254,7 +15785,7 @@ class ClientGms {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientGms */
     /**
      * Asynchronously sends a Test Get Value request to the device.
@@ -15262,10 +15793,15 @@ class ClientGms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_gms_test_get_value_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     testGetValue(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_gms_test_get_value().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gms_test_get_value().
      */
     testGetValueFinish(res: Gio.AsyncResult): MessageGmsTestGetValueOutput
     /**
@@ -15274,16 +15810,23 @@ class ClientGms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_gms_test_set_value_finish() to get the result of the operation.
+     * @param input a #QmiMessageGmsTestSetValueInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     testSetValue(input: MessageGmsTestSetValueInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_gms_test_set_value().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gms_test_set_value().
      */
     testSetValueFinish(res: Gio.AsyncResult): MessageGmsTestSetValueOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -15305,6 +15848,8 @@ class ClientGms {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -15358,6 +15903,10 @@ class ClientGms {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15368,6 +15917,12 @@ class ClientGms {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15391,6 +15946,7 @@ class ClientGms {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -15410,11 +15966,14 @@ class ClientGms {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -15422,6 +15981,8 @@ class ClientGms {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15439,6 +16000,7 @@ class ClientGms {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -15484,6 +16046,7 @@ class ClientGms {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -15527,15 +16090,20 @@ class ClientGms {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15576,6 +16144,7 @@ class ClientGms {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15610,6 +16179,7 @@ class ClientGms {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -15641,6 +16211,7 @@ class ClientGms {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15700,7 +16271,7 @@ class ClientLoc {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientLoc */
     /**
      * Asynchronously sends a Delete Assistance Data request to the device.
@@ -15708,10 +16279,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_delete_assistance_data_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocDeleteAssistanceDataInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     deleteAssistanceData(input: MessageLocDeleteAssistanceDataInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_delete_assistance_data().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_delete_assistance_data().
      */
     deleteAssistanceDataFinish(res: Gio.AsyncResult): MessageLocDeleteAssistanceDataOutput
     /**
@@ -15720,10 +16296,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_get_engine_lock_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getEngineLock(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_get_engine_lock().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_engine_lock().
      */
     getEngineLockFinish(res: Gio.AsyncResult): MessageLocGetEngineLockOutput
     /**
@@ -15732,10 +16313,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_get_nmea_types_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getNmeaTypes(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_get_nmea_types().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_nmea_types().
      */
     getNmeaTypesFinish(res: Gio.AsyncResult): MessageLocGetNmeaTypesOutput
     /**
@@ -15744,10 +16330,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_get_operation_mode_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getOperationMode(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_get_operation_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_operation_mode().
      */
     getOperationModeFinish(res: Gio.AsyncResult): MessageLocGetOperationModeOutput
     /**
@@ -15756,10 +16347,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_get_predicted_orbits_data_source_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPredictedOrbitsDataSource(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_get_predicted_orbits_data_source().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_predicted_orbits_data_source().
      */
     getPredictedOrbitsDataSourceFinish(res: Gio.AsyncResult): MessageLocGetPredictedOrbitsDataSourceOutput
     /**
@@ -15768,10 +16364,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_get_server_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocGetServerInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getServer(input: MessageLocGetServerInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_get_server().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_server().
      */
     getServerFinish(res: Gio.AsyncResult): MessageLocGetServerOutput
     /**
@@ -15780,10 +16381,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_inject_predicted_orbits_data_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocInjectPredictedOrbitsDataInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     injectPredictedOrbitsData(input: MessageLocInjectPredictedOrbitsDataInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_inject_predicted_orbits_data().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_inject_predicted_orbits_data().
      */
     injectPredictedOrbitsDataFinish(res: Gio.AsyncResult): MessageLocInjectPredictedOrbitsDataOutput
     /**
@@ -15792,10 +16398,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_inject_xtra_data_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocInjectXtraDataInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     injectXtraData(input: MessageLocInjectXtraDataInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_inject_xtra_data().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_inject_xtra_data().
      */
     injectXtraDataFinish(res: Gio.AsyncResult): MessageLocInjectXtraDataOutput
     /**
@@ -15804,10 +16415,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_register_events_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocRegisterEventsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     registerEvents(input: MessageLocRegisterEventsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_register_events().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_register_events().
      */
     registerEventsFinish(res: Gio.AsyncResult): MessageLocRegisterEventsOutput
     /**
@@ -15816,10 +16432,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_set_engine_lock_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocSetEngineLockInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEngineLock(input: MessageLocSetEngineLockInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_set_engine_lock().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_engine_lock().
      */
     setEngineLockFinish(res: Gio.AsyncResult): MessageLocSetEngineLockOutput
     /**
@@ -15828,10 +16449,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_set_nmea_types_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocSetNmeaTypesInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setNmeaTypes(input: MessageLocSetNmeaTypesInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_set_nmea_types().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_nmea_types().
      */
     setNmeaTypesFinish(res: Gio.AsyncResult): MessageLocSetNmeaTypesOutput
     /**
@@ -15840,10 +16466,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_set_operation_mode_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocSetOperationModeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setOperationMode(input: MessageLocSetOperationModeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_set_operation_mode().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_operation_mode().
      */
     setOperationModeFinish(res: Gio.AsyncResult): MessageLocSetOperationModeOutput
     /**
@@ -15852,10 +16483,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_set_server_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocSetServerInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setServer(input: MessageLocSetServerInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_set_server().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_server().
      */
     setServerFinish(res: Gio.AsyncResult): MessageLocSetServerOutput
     /**
@@ -15864,10 +16500,15 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_start_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocStartInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     start(input: MessageLocStartInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_start().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_start().
      */
     startFinish(res: Gio.AsyncResult): MessageLocStartOutput
     /**
@@ -15876,16 +16517,23 @@ class ClientLoc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_loc_stop_finish() to get the result of the operation.
+     * @param input a #QmiMessageLocStopInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     stop(input: MessageLocStopInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_loc_stop().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_stop().
      */
     stopFinish(res: Gio.AsyncResult): MessageLocStopOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -15907,6 +16555,8 @@ class ClientLoc {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -15960,6 +16610,10 @@ class ClientLoc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15970,6 +16624,12 @@ class ClientLoc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -15993,6 +16653,7 @@ class ClientLoc {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16012,11 +16673,14 @@ class ClientLoc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16024,6 +16688,8 @@ class ClientLoc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16041,6 +16707,7 @@ class ClientLoc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -16086,6 +16753,7 @@ class ClientLoc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -16129,15 +16797,20 @@ class ClientLoc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -16178,6 +16851,7 @@ class ClientLoc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -16212,11 +16886,13 @@ class ClientLoc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientLoc */
     /**
      * The ::delete-assistance-data signal gets emitted when a '<link linkend="libqmi-glib-LOC-Delete-Assistance-Data-indication.top_of_page">Delete Assistance Data</link>' indication is received.
+     * @param output A #QmiIndicationLocDeleteAssistanceDataOutput.
      */
     connect(sigName: "delete-assistance-data", callback: ((output: IndicationLocDeleteAssistanceDataOutput) => void)): number
     on(sigName: "delete-assistance-data", callback: (output: IndicationLocDeleteAssistanceDataOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16225,6 +16901,7 @@ class ClientLoc {
     emit(sigName: "delete-assistance-data", output: IndicationLocDeleteAssistanceDataOutput): void
     /**
      * The ::engine-state signal gets emitted when a '<link linkend="libqmi-glib-LOC-Engine-State-indication.top_of_page">Engine State</link>' indication is received.
+     * @param output A #QmiIndicationLocEngineStateOutput.
      */
     connect(sigName: "engine-state", callback: ((output: IndicationLocEngineStateOutput) => void)): number
     on(sigName: "engine-state", callback: (output: IndicationLocEngineStateOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16233,6 +16910,7 @@ class ClientLoc {
     emit(sigName: "engine-state", output: IndicationLocEngineStateOutput): void
     /**
      * The ::fix-recurrence-type signal gets emitted when a '<link linkend="libqmi-glib-LOC-Fix-Recurrence-Type-indication.top_of_page">Fix Recurrence Type</link>' indication is received.
+     * @param output A #QmiIndicationLocFixRecurrenceTypeOutput.
      */
     connect(sigName: "fix-recurrence-type", callback: ((output: IndicationLocFixRecurrenceTypeOutput) => void)): number
     on(sigName: "fix-recurrence-type", callback: (output: IndicationLocFixRecurrenceTypeOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16241,6 +16919,7 @@ class ClientLoc {
     emit(sigName: "fix-recurrence-type", output: IndicationLocFixRecurrenceTypeOutput): void
     /**
      * The ::get-engine-lock signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Engine-Lock-indication.top_of_page">Get Engine Lock</link>' indication is received.
+     * @param output A #QmiIndicationLocGetEngineLockOutput.
      */
     connect(sigName: "get-engine-lock", callback: ((output: IndicationLocGetEngineLockOutput) => void)): number
     on(sigName: "get-engine-lock", callback: (output: IndicationLocGetEngineLockOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16249,6 +16928,7 @@ class ClientLoc {
     emit(sigName: "get-engine-lock", output: IndicationLocGetEngineLockOutput): void
     /**
      * The ::get-nmea-types signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-NMEA-Types-indication.top_of_page">Get NMEA Types</link>' indication is received.
+     * @param output A #QmiIndicationLocGetNmeaTypesOutput.
      */
     connect(sigName: "get-nmea-types", callback: ((output: IndicationLocGetNmeaTypesOutput) => void)): number
     on(sigName: "get-nmea-types", callback: (output: IndicationLocGetNmeaTypesOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16257,6 +16937,7 @@ class ClientLoc {
     emit(sigName: "get-nmea-types", output: IndicationLocGetNmeaTypesOutput): void
     /**
      * The ::get-operation-mode signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Operation-Mode-indication.top_of_page">Get Operation Mode</link>' indication is received.
+     * @param output A #QmiIndicationLocGetOperationModeOutput.
      */
     connect(sigName: "get-operation-mode", callback: ((output: IndicationLocGetOperationModeOutput) => void)): number
     on(sigName: "get-operation-mode", callback: (output: IndicationLocGetOperationModeOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16265,6 +16946,7 @@ class ClientLoc {
     emit(sigName: "get-operation-mode", output: IndicationLocGetOperationModeOutput): void
     /**
      * The ::get-predicted-orbits-data-source signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Predicted-Orbits-Data-Source-indication.top_of_page">Get Predicted Orbits Data Source</link>' indication is received.
+     * @param output A #QmiIndicationLocGetPredictedOrbitsDataSourceOutput.
      */
     connect(sigName: "get-predicted-orbits-data-source", callback: ((output: IndicationLocGetPredictedOrbitsDataSourceOutput) => void)): number
     on(sigName: "get-predicted-orbits-data-source", callback: (output: IndicationLocGetPredictedOrbitsDataSourceOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16273,6 +16955,7 @@ class ClientLoc {
     emit(sigName: "get-predicted-orbits-data-source", output: IndicationLocGetPredictedOrbitsDataSourceOutput): void
     /**
      * The ::get-server signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Server-indication.top_of_page">Get Server</link>' indication is received.
+     * @param output A #QmiIndicationLocGetServerOutput.
      */
     connect(sigName: "get-server", callback: ((output: IndicationLocGetServerOutput) => void)): number
     on(sigName: "get-server", callback: (output: IndicationLocGetServerOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16281,6 +16964,7 @@ class ClientLoc {
     emit(sigName: "get-server", output: IndicationLocGetServerOutput): void
     /**
      * The ::gnss-sv-info signal gets emitted when a '<link linkend="libqmi-glib-LOC-GNSS-Sv-Info-indication.top_of_page">GNSS Sv Info</link>' indication is received.
+     * @param output A #QmiIndicationLocGnssSvInfoOutput.
      */
     connect(sigName: "gnss-sv-info", callback: ((output: IndicationLocGnssSvInfoOutput) => void)): number
     on(sigName: "gnss-sv-info", callback: (output: IndicationLocGnssSvInfoOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16289,6 +16973,7 @@ class ClientLoc {
     emit(sigName: "gnss-sv-info", output: IndicationLocGnssSvInfoOutput): void
     /**
      * The ::inject-predicted-orbits-data signal gets emitted when a '<link linkend="libqmi-glib-LOC-Inject-Predicted-Orbits-Data-indication.top_of_page">Inject Predicted Orbits Data</link>' indication is received.
+     * @param output A #QmiIndicationLocInjectPredictedOrbitsDataOutput.
      */
     connect(sigName: "inject-predicted-orbits-data", callback: ((output: IndicationLocInjectPredictedOrbitsDataOutput) => void)): number
     on(sigName: "inject-predicted-orbits-data", callback: (output: IndicationLocInjectPredictedOrbitsDataOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16297,6 +16982,7 @@ class ClientLoc {
     emit(sigName: "inject-predicted-orbits-data", output: IndicationLocInjectPredictedOrbitsDataOutput): void
     /**
      * The ::inject-xtra-data signal gets emitted when a '<link linkend="libqmi-glib-LOC-Inject-Xtra-Data-indication.top_of_page">Inject Xtra Data</link>' indication is received.
+     * @param output A #QmiIndicationLocInjectXtraDataOutput.
      */
     connect(sigName: "inject-xtra-data", callback: ((output: IndicationLocInjectXtraDataOutput) => void)): number
     on(sigName: "inject-xtra-data", callback: (output: IndicationLocInjectXtraDataOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16305,6 +16991,7 @@ class ClientLoc {
     emit(sigName: "inject-xtra-data", output: IndicationLocInjectXtraDataOutput): void
     /**
      * The ::nmea signal gets emitted when a '<link linkend="libqmi-glib-LOC-NMEA-indication.top_of_page">NMEA</link>' indication is received.
+     * @param output A #QmiIndicationLocNmeaOutput.
      */
     connect(sigName: "nmea", callback: ((output: IndicationLocNmeaOutput) => void)): number
     on(sigName: "nmea", callback: (output: IndicationLocNmeaOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16313,6 +17000,7 @@ class ClientLoc {
     emit(sigName: "nmea", output: IndicationLocNmeaOutput): void
     /**
      * The ::position-report signal gets emitted when a '<link linkend="libqmi-glib-LOC-Position-Report-indication.top_of_page">Position Report</link>' indication is received.
+     * @param output A #QmiIndicationLocPositionReportOutput.
      */
     connect(sigName: "position-report", callback: ((output: IndicationLocPositionReportOutput) => void)): number
     on(sigName: "position-report", callback: (output: IndicationLocPositionReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16321,6 +17009,7 @@ class ClientLoc {
     emit(sigName: "position-report", output: IndicationLocPositionReportOutput): void
     /**
      * The ::set-engine-lock signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-Engine-Lock-indication.top_of_page">Set Engine Lock</link>' indication is received.
+     * @param output A #QmiIndicationLocSetEngineLockOutput.
      */
     connect(sigName: "set-engine-lock", callback: ((output: IndicationLocSetEngineLockOutput) => void)): number
     on(sigName: "set-engine-lock", callback: (output: IndicationLocSetEngineLockOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16329,6 +17018,7 @@ class ClientLoc {
     emit(sigName: "set-engine-lock", output: IndicationLocSetEngineLockOutput): void
     /**
      * The ::set-nmea-types signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-NMEA-Types-indication.top_of_page">Set NMEA Types</link>' indication is received.
+     * @param output A #QmiIndicationLocSetNmeaTypesOutput.
      */
     connect(sigName: "set-nmea-types", callback: ((output: IndicationLocSetNmeaTypesOutput) => void)): number
     on(sigName: "set-nmea-types", callback: (output: IndicationLocSetNmeaTypesOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16337,6 +17027,7 @@ class ClientLoc {
     emit(sigName: "set-nmea-types", output: IndicationLocSetNmeaTypesOutput): void
     /**
      * The ::set-operation-mode signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-Operation-Mode-indication.top_of_page">Set Operation Mode</link>' indication is received.
+     * @param output A #QmiIndicationLocSetOperationModeOutput.
      */
     connect(sigName: "set-operation-mode", callback: ((output: IndicationLocSetOperationModeOutput) => void)): number
     on(sigName: "set-operation-mode", callback: (output: IndicationLocSetOperationModeOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16345,6 +17036,7 @@ class ClientLoc {
     emit(sigName: "set-operation-mode", output: IndicationLocSetOperationModeOutput): void
     /**
      * The ::set-server signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-Server-indication.top_of_page">Set Server</link>' indication is received.
+     * @param output A #QmiIndicationLocSetServerOutput.
      */
     connect(sigName: "set-server", callback: ((output: IndicationLocSetServerOutput) => void)): number
     on(sigName: "set-server", callback: (output: IndicationLocSetServerOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -16380,6 +17072,7 @@ class ClientLoc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -16439,7 +17132,7 @@ class ClientNas {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientNas */
     /**
      * Asynchronously sends a Attach Detach request to the device.
@@ -16447,10 +17140,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_attach_detach_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasAttachDetachInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     attachDetach(input: MessageNasAttachDetachInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_attach_detach().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_attach_detach().
      */
     attachDetachFinish(res: Gio.AsyncResult): MessageNasAttachDetachOutput
     /**
@@ -16459,10 +17157,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_config_signal_info_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasConfigSignalInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     configSignalInfo(input: MessageNasConfigSignalInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_config_signal_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_config_signal_info().
      */
     configSignalInfoFinish(res: Gio.AsyncResult): MessageNasConfigSignalInfoOutput
     /**
@@ -16471,10 +17174,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_force_network_search_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     forceNetworkSearch(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_force_network_search().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_force_network_search().
      */
     forceNetworkSearchFinish(res: Gio.AsyncResult): MessageNasForceNetworkSearchOutput
     /**
@@ -16483,10 +17191,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_cdma_position_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCdmaPositionInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_cdma_position_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_cdma_position_info().
      */
     getCdmaPositionInfoFinish(res: Gio.AsyncResult): MessageNasGetCdmaPositionInfoOutput
     /**
@@ -16495,10 +17208,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_cell_location_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCellLocationInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_cell_location_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_cell_location_info().
      */
     getCellLocationInfoFinish(res: Gio.AsyncResult): MessageNasGetCellLocationInfoOutput
     /**
@@ -16507,10 +17225,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_drx_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDrx(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_drx().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_drx().
      */
     getDrxFinish(res: Gio.AsyncResult): MessageNasGetDrxOutput
     /**
@@ -16519,10 +17242,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_home_network_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getHomeNetwork(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_home_network().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_home_network().
      */
     getHomeNetworkFinish(res: Gio.AsyncResult): MessageNasGetHomeNetworkOutput
     /**
@@ -16531,10 +17259,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_lte_cphy_ca_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getLteCphyCaInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_lte_cphy_ca_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_lte_cphy_ca_info().
      */
     getLteCphyCaInfoFinish(res: Gio.AsyncResult): MessageNasGetLteCphyCaInfoOutput
     /**
@@ -16543,10 +17276,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_operator_name_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getOperatorName(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_operator_name().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_operator_name().
      */
     getOperatorNameFinish(res: Gio.AsyncResult): MessageNasGetOperatorNameOutput
     /**
@@ -16555,10 +17293,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_plmn_name_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasGetPlmnNameInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPlmnName(input: MessageNasGetPlmnNameInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_plmn_name().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_plmn_name().
      */
     getPlmnNameFinish(res: Gio.AsyncResult): MessageNasGetPlmnNameOutput
     /**
@@ -16567,10 +17310,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_preferred_networks_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPreferredNetworks(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_preferred_networks().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_preferred_networks().
      */
     getPreferredNetworksFinish(res: Gio.AsyncResult): MessageNasGetPreferredNetworksOutput
     /**
@@ -16579,10 +17327,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_rf_band_information_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getRfBandInformation(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_rf_band_information().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_rf_band_information().
      */
     getRfBandInformationFinish(res: Gio.AsyncResult): MessageNasGetRfBandInformationOutput
     /**
@@ -16591,10 +17344,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_serving_system_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getServingSystem(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_serving_system().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_serving_system().
      */
     getServingSystemFinish(res: Gio.AsyncResult): MessageNasGetServingSystemOutput
     /**
@@ -16603,10 +17361,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_signal_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSignalInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_signal_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_signal_info().
      */
     getSignalInfoFinish(res: Gio.AsyncResult): MessageNasGetSignalInfoOutput
     /**
@@ -16615,10 +17378,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_signal_strength_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasGetSignalStrengthInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSignalStrength(input: MessageNasGetSignalStrengthInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_signal_strength().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_signal_strength().
      */
     getSignalStrengthFinish(res: Gio.AsyncResult): MessageNasGetSignalStrengthOutput
     /**
@@ -16627,10 +17395,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageNasGetSupportedMessagesOutput
     /**
@@ -16639,10 +17412,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_system_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSystemInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_system_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_system_info().
      */
     getSystemInfoFinish(res: Gio.AsyncResult): MessageNasGetSystemInfoOutput
     /**
@@ -16651,10 +17429,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_system_selection_preference_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSystemSelectionPreference(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_system_selection_preference().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_system_selection_preference().
      */
     getSystemSelectionPreferenceFinish(res: Gio.AsyncResult): MessageNasGetSystemSelectionPreferenceOutput
     /**
@@ -16663,10 +17446,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_technology_preference_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getTechnologyPreference(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_technology_preference().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_technology_preference().
      */
     getTechnologyPreferenceFinish(res: Gio.AsyncResult): MessageNasGetTechnologyPreferenceOutput
     /**
@@ -16675,10 +17463,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_get_tx_rx_info_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasGetTxRxInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getTxRxInfo(input: MessageNasGetTxRxInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_get_tx_rx_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_tx_rx_info().
      */
     getTxRxInfoFinish(res: Gio.AsyncResult): MessageNasGetTxRxInfoOutput
     /**
@@ -16687,10 +17480,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_initiate_network_register_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasInitiateNetworkRegisterInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     initiateNetworkRegister(input: MessageNasInitiateNetworkRegisterInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_initiate_network_register().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_initiate_network_register().
      */
     initiateNetworkRegisterFinish(res: Gio.AsyncResult): MessageNasInitiateNetworkRegisterOutput
     /**
@@ -16706,10 +17504,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_network_scan_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasNetworkScanInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     networkScan(input: MessageNasNetworkScanInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_network_scan().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_network_scan().
      */
     networkScanFinish(res: Gio.AsyncResult): MessageNasNetworkScanOutput
     /**
@@ -16718,10 +17521,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_register_indications_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasRegisterIndicationsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     registerIndications(input: MessageNasRegisterIndicationsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_register_indications().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_register_indications().
      */
     registerIndicationsFinish(res: Gio.AsyncResult): MessageNasRegisterIndicationsOutput
     /**
@@ -16730,10 +17538,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageNasResetOutput
     /**
@@ -16742,10 +17555,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_set_event_report_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasSetEventReportInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEventReport(input: MessageNasSetEventReportInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_set_event_report().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_event_report().
      */
     setEventReportFinish(res: Gio.AsyncResult): MessageNasSetEventReportOutput
     /**
@@ -16754,10 +17572,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_set_preferred_networks_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasSetPreferredNetworksInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setPreferredNetworks(input: MessageNasSetPreferredNetworksInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_set_preferred_networks().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_preferred_networks().
      */
     setPreferredNetworksFinish(res: Gio.AsyncResult): MessageNasSetPreferredNetworksOutput
     /**
@@ -16766,10 +17589,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_set_system_selection_preference_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasSetSystemSelectionPreferenceInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setSystemSelectionPreference(input: MessageNasSetSystemSelectionPreferenceInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_set_system_selection_preference().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_system_selection_preference().
      */
     setSystemSelectionPreferenceFinish(res: Gio.AsyncResult): MessageNasSetSystemSelectionPreferenceOutput
     /**
@@ -16778,10 +17606,15 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_set_technology_preference_finish() to get the result of the operation.
+     * @param input a #QmiMessageNasSetTechnologyPreferenceInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setTechnologyPreference(input: MessageNasSetTechnologyPreferenceInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_set_technology_preference().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_technology_preference().
      */
     setTechnologyPreferenceFinish(res: Gio.AsyncResult): MessageNasSetTechnologyPreferenceOutput
     /**
@@ -16790,16 +17623,23 @@ class ClientNas {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_nas_swi_get_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     swiGetStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_nas_swi_get_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_swi_get_status().
      */
     swiGetStatusFinish(res: Gio.AsyncResult): MessageNasSwiGetStatusOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -16821,6 +17661,8 @@ class ClientNas {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -16874,6 +17716,10 @@ class ClientNas {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16884,6 +17730,12 @@ class ClientNas {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -16907,6 +17759,7 @@ class ClientNas {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -16926,11 +17779,14 @@ class ClientNas {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -16938,6 +17794,8 @@ class ClientNas {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16955,6 +17813,7 @@ class ClientNas {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17000,6 +17859,7 @@ class ClientNas {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17043,15 +17903,20 @@ class ClientNas {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17092,6 +17957,7 @@ class ClientNas {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17126,11 +17992,13 @@ class ClientNas {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientNas */
     /**
      * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-NAS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
+     * @param output A #QmiIndicationNasEventReportOutput.
      */
     connect(sigName: "event-report", callback: ((output: IndicationNasEventReportOutput) => void)): number
     on(sigName: "event-report", callback: (output: IndicationNasEventReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17139,6 +18007,7 @@ class ClientNas {
     emit(sigName: "event-report", output: IndicationNasEventReportOutput): void
     /**
      * The ::network-reject signal gets emitted when a '<link linkend="libqmi-glib-NAS-Network-Reject-indication.top_of_page">Network Reject</link>' indication is received.
+     * @param output A #QmiIndicationNasNetworkRejectOutput.
      */
     connect(sigName: "network-reject", callback: ((output: IndicationNasNetworkRejectOutput) => void)): number
     on(sigName: "network-reject", callback: (output: IndicationNasNetworkRejectOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17147,6 +18016,7 @@ class ClientNas {
     emit(sigName: "network-reject", output: IndicationNasNetworkRejectOutput): void
     /**
      * The ::network-time signal gets emitted when a '<link linkend="libqmi-glib-NAS-Network-Time-indication.top_of_page">Network Time</link>' indication is received.
+     * @param output A #QmiIndicationNasNetworkTimeOutput.
      */
     connect(sigName: "network-time", callback: ((output: IndicationNasNetworkTimeOutput) => void)): number
     on(sigName: "network-time", callback: (output: IndicationNasNetworkTimeOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17155,6 +18025,7 @@ class ClientNas {
     emit(sigName: "network-time", output: IndicationNasNetworkTimeOutput): void
     /**
      * The ::operator-name signal gets emitted when a '<link linkend="libqmi-glib-NAS-Operator-Name-indication.top_of_page">Operator Name</link>' indication is received.
+     * @param output A #QmiIndicationNasOperatorNameOutput.
      */
     connect(sigName: "operator-name", callback: ((output: IndicationNasOperatorNameOutput) => void)): number
     on(sigName: "operator-name", callback: (output: IndicationNasOperatorNameOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17163,6 +18034,7 @@ class ClientNas {
     emit(sigName: "operator-name", output: IndicationNasOperatorNameOutput): void
     /**
      * The ::serving-system signal gets emitted when a '<link linkend="libqmi-glib-NAS-Serving-System-indication.top_of_page">Serving System</link>' indication is received.
+     * @param output A #QmiIndicationNasServingSystemOutput.
      */
     connect(sigName: "serving-system", callback: ((output: IndicationNasServingSystemOutput) => void)): number
     on(sigName: "serving-system", callback: (output: IndicationNasServingSystemOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17171,6 +18043,7 @@ class ClientNas {
     emit(sigName: "serving-system", output: IndicationNasServingSystemOutput): void
     /**
      * The ::signal-info signal gets emitted when a '<link linkend="libqmi-glib-NAS-Signal-Info-indication.top_of_page">Signal Info</link>' indication is received.
+     * @param output A #QmiIndicationNasSignalInfoOutput.
      */
     connect(sigName: "signal-info", callback: ((output: IndicationNasSignalInfoOutput) => void)): number
     on(sigName: "signal-info", callback: (output: IndicationNasSignalInfoOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17179,6 +18052,7 @@ class ClientNas {
     emit(sigName: "signal-info", output: IndicationNasSignalInfoOutput): void
     /**
      * The ::system-info signal gets emitted when a '<link linkend="libqmi-glib-NAS-System-Info-indication.top_of_page">System Info</link>' indication is received.
+     * @param output A #QmiIndicationNasSystemInfoOutput.
      */
     connect(sigName: "system-info", callback: ((output: IndicationNasSystemInfoOutput) => void)): number
     on(sigName: "system-info", callback: (output: IndicationNasSystemInfoOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17214,6 +18088,7 @@ class ClientNas {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17273,7 +18148,7 @@ class ClientOma {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientOma */
     /**
      * Asynchronously sends a Cancel Session request to the device.
@@ -17281,10 +18156,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_cancel_session_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     cancelSession(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_cancel_session().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_cancel_session().
      */
     cancelSessionFinish(res: Gio.AsyncResult): MessageOmaCancelSessionOutput
     /**
@@ -17293,10 +18173,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_get_feature_setting_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getFeatureSetting(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_get_feature_setting().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_get_feature_setting().
      */
     getFeatureSettingFinish(res: Gio.AsyncResult): MessageOmaGetFeatureSettingOutput
     /**
@@ -17305,10 +18190,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_get_session_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSessionInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_get_session_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_get_session_info().
      */
     getSessionInfoFinish(res: Gio.AsyncResult): MessageOmaGetSessionInfoOutput
     /**
@@ -17317,10 +18207,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageOmaResetOutput
     /**
@@ -17329,10 +18224,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_send_selection_finish() to get the result of the operation.
+     * @param input a #QmiMessageOmaSendSelectionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     sendSelection(input: MessageOmaSendSelectionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_send_selection().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_send_selection().
      */
     sendSelectionFinish(res: Gio.AsyncResult): MessageOmaSendSelectionOutput
     /**
@@ -17341,10 +18241,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_set_event_report_finish() to get the result of the operation.
+     * @param input a #QmiMessageOmaSetEventReportInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEventReport(input: MessageOmaSetEventReportInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_set_event_report().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_set_event_report().
      */
     setEventReportFinish(res: Gio.AsyncResult): MessageOmaSetEventReportOutput
     /**
@@ -17353,10 +18258,15 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_set_feature_setting_finish() to get the result of the operation.
+     * @param input a #QmiMessageOmaSetFeatureSettingInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setFeatureSetting(input: MessageOmaSetFeatureSettingInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_set_feature_setting().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_set_feature_setting().
      */
     setFeatureSettingFinish(res: Gio.AsyncResult): MessageOmaSetFeatureSettingOutput
     /**
@@ -17365,16 +18275,23 @@ class ClientOma {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_oma_start_session_finish() to get the result of the operation.
+     * @param input a #QmiMessageOmaStartSessionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     startSession(input: MessageOmaStartSessionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_oma_start_session().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_start_session().
      */
     startSessionFinish(res: Gio.AsyncResult): MessageOmaStartSessionOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -17396,6 +18313,8 @@ class ClientOma {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -17449,6 +18368,10 @@ class ClientOma {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17459,6 +18382,12 @@ class ClientOma {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17482,6 +18411,7 @@ class ClientOma {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17501,11 +18431,14 @@ class ClientOma {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17513,6 +18446,8 @@ class ClientOma {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17530,6 +18465,7 @@ class ClientOma {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -17575,6 +18511,7 @@ class ClientOma {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -17618,15 +18555,20 @@ class ClientOma {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -17667,6 +18609,7 @@ class ClientOma {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -17701,11 +18644,13 @@ class ClientOma {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientOma */
     /**
      * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-OMA-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
+     * @param output A #QmiIndicationOmaEventReportOutput.
      */
     connect(sigName: "event-report", callback: ((output: IndicationOmaEventReportOutput) => void)): number
     on(sigName: "event-report", callback: (output: IndicationOmaEventReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -17741,6 +18686,7 @@ class ClientOma {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -17800,7 +18746,7 @@ class ClientPbm {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientPbm */
     /**
      * Asynchronously sends a Get All Capabilities request to the device.
@@ -17808,10 +18754,15 @@ class ClientPbm {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pbm_get_all_capabilities_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getAllCapabilities(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pbm_get_all_capabilities().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pbm_get_all_capabilities().
      */
     getAllCapabilitiesFinish(res: Gio.AsyncResult): MessagePbmGetAllCapabilitiesOutput
     /**
@@ -17820,10 +18771,15 @@ class ClientPbm {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pbm_get_capabilities_finish() to get the result of the operation.
+     * @param input a #QmiMessagePbmGetCapabilitiesInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCapabilities(input: MessagePbmGetCapabilitiesInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pbm_get_capabilities().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pbm_get_capabilities().
      */
     getCapabilitiesFinish(res: Gio.AsyncResult): MessagePbmGetCapabilitiesOutput
     /**
@@ -17832,16 +18788,23 @@ class ClientPbm {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pbm_indication_register_finish() to get the result of the operation.
+     * @param input a #QmiMessagePbmIndicationRegisterInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     indicationRegister(input: MessagePbmIndicationRegisterInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pbm_indication_register().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pbm_indication_register().
      */
     indicationRegisterFinish(res: Gio.AsyncResult): MessagePbmIndicationRegisterOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -17863,6 +18826,8 @@ class ClientPbm {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -17916,6 +18881,10 @@ class ClientPbm {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17926,6 +18895,12 @@ class ClientPbm {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -17949,6 +18924,7 @@ class ClientPbm {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -17968,11 +18944,14 @@ class ClientPbm {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -17980,6 +18959,8 @@ class ClientPbm {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17997,6 +18978,7 @@ class ClientPbm {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18042,6 +19024,7 @@ class ClientPbm {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18085,15 +19068,20 @@ class ClientPbm {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18134,6 +19122,7 @@ class ClientPbm {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18168,6 +19157,7 @@ class ClientPbm {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -18199,6 +19189,7 @@ class ClientPbm {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18258,7 +19249,7 @@ class ClientPdc {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientPdc */
     /**
      * Asynchronously sends a Activate Config request to the device.
@@ -18266,10 +19257,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_activate_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcActivateConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     activateConfig(input: MessagePdcActivateConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_activate_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_activate_config().
      */
     activateConfigFinish(res: Gio.AsyncResult): MessagePdcActivateConfigOutput
     /**
@@ -18278,10 +19274,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_config_change_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcConfigChangeInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     configChange(input: MessagePdcConfigChangeInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_config_change().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_config_change().
      */
     configChangeFinish(res: Gio.AsyncResult): MessagePdcConfigChangeOutput
     /**
@@ -18290,10 +19291,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_deactivate_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcDeactivateConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     deactivateConfig(input: MessagePdcDeactivateConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_deactivate_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_deactivate_config().
      */
     deactivateConfigFinish(res: Gio.AsyncResult): MessagePdcDeactivateConfigOutput
     /**
@@ -18302,10 +19308,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_delete_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcDeleteConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     deleteConfig(input: MessagePdcDeleteConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_delete_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_delete_config().
      */
     deleteConfigFinish(res: Gio.AsyncResult): MessagePdcDeleteConfigOutput
     /**
@@ -18314,10 +19325,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_get_config_info_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcGetConfigInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getConfigInfo(input: MessagePdcGetConfigInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_get_config_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_config_info().
      */
     getConfigInfoFinish(res: Gio.AsyncResult): MessagePdcGetConfigInfoOutput
     /**
@@ -18326,10 +19342,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_get_config_limits_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcGetConfigLimitsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getConfigLimits(input: MessagePdcGetConfigLimitsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_get_config_limits().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_config_limits().
      */
     getConfigLimitsFinish(res: Gio.AsyncResult): MessagePdcGetConfigLimitsOutput
     /**
@@ -18338,10 +19359,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_get_default_config_info_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcGetDefaultConfigInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDefaultConfigInfo(input: MessagePdcGetDefaultConfigInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_get_default_config_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_default_config_info().
      */
     getDefaultConfigInfoFinish(res: Gio.AsyncResult): MessagePdcGetDefaultConfigInfoOutput
     /**
@@ -18350,10 +19376,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_get_selected_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcGetSelectedConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSelectedConfig(input: MessagePdcGetSelectedConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_get_selected_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_selected_config().
      */
     getSelectedConfigFinish(res: Gio.AsyncResult): MessagePdcGetSelectedConfigOutput
     /**
@@ -18362,10 +19393,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_list_configs_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcListConfigsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     listConfigs(input: MessagePdcListConfigsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_list_configs().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_list_configs().
      */
     listConfigsFinish(res: Gio.AsyncResult): MessagePdcListConfigsOutput
     /**
@@ -18374,10 +19410,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_load_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcLoadConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     loadConfig(input: MessagePdcLoadConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_load_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_load_config().
      */
     loadConfigFinish(res: Gio.AsyncResult): MessagePdcLoadConfigOutput
     /**
@@ -18386,10 +19427,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_register_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcRegisterInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     register(input: MessagePdcRegisterInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_register().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_register().
      */
     registerFinish(res: Gio.AsyncResult): MessagePdcRegisterOutput
     /**
@@ -18398,10 +19444,15 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessagePdcResetOutput
     /**
@@ -18410,16 +19461,23 @@ class ClientPdc {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pdc_set_selected_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdcSetSelectedConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setSelectedConfig(input: MessagePdcSetSelectedConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pdc_set_selected_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_set_selected_config().
      */
     setSelectedConfigFinish(res: Gio.AsyncResult): MessagePdcSetSelectedConfigOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -18441,6 +19499,8 @@ class ClientPdc {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -18494,6 +19554,10 @@ class ClientPdc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18504,6 +19568,12 @@ class ClientPdc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -18527,6 +19597,7 @@ class ClientPdc {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -18546,11 +19617,14 @@ class ClientPdc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -18558,6 +19632,8 @@ class ClientPdc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18575,6 +19651,7 @@ class ClientPdc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -18620,6 +19697,7 @@ class ClientPdc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -18663,15 +19741,20 @@ class ClientPdc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -18712,6 +19795,7 @@ class ClientPdc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -18746,11 +19830,13 @@ class ClientPdc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientPdc */
     /**
      * The ::activate-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Activate-Config-indication.top_of_page">Activate Config</link>' indication is received.
+     * @param output A #QmiIndicationPdcActivateConfigOutput.
      */
     connect(sigName: "activate-config", callback: ((output: IndicationPdcActivateConfigOutput) => void)): number
     on(sigName: "activate-config", callback: (output: IndicationPdcActivateConfigOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18759,6 +19845,7 @@ class ClientPdc {
     emit(sigName: "activate-config", output: IndicationPdcActivateConfigOutput): void
     /**
      * The ::deactivate-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Deactivate-Config-indication.top_of_page">Deactivate Config</link>' indication is received.
+     * @param output A #QmiIndicationPdcDeactivateConfigOutput.
      */
     connect(sigName: "deactivate-config", callback: ((output: IndicationPdcDeactivateConfigOutput) => void)): number
     on(sigName: "deactivate-config", callback: (output: IndicationPdcDeactivateConfigOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18767,6 +19854,7 @@ class ClientPdc {
     emit(sigName: "deactivate-config", output: IndicationPdcDeactivateConfigOutput): void
     /**
      * The ::get-config-info signal gets emitted when a '<link linkend="libqmi-glib-PDC-Get-Config-Info-indication.top_of_page">Get Config Info</link>' indication is received.
+     * @param output A #QmiIndicationPdcGetConfigInfoOutput.
      */
     connect(sigName: "get-config-info", callback: ((output: IndicationPdcGetConfigInfoOutput) => void)): number
     on(sigName: "get-config-info", callback: (output: IndicationPdcGetConfigInfoOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18775,6 +19863,7 @@ class ClientPdc {
     emit(sigName: "get-config-info", output: IndicationPdcGetConfigInfoOutput): void
     /**
      * The ::get-selected-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Get-Selected-Config-indication.top_of_page">Get Selected Config</link>' indication is received.
+     * @param output A #QmiIndicationPdcGetSelectedConfigOutput.
      */
     connect(sigName: "get-selected-config", callback: ((output: IndicationPdcGetSelectedConfigOutput) => void)): number
     on(sigName: "get-selected-config", callback: (output: IndicationPdcGetSelectedConfigOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18783,6 +19872,7 @@ class ClientPdc {
     emit(sigName: "get-selected-config", output: IndicationPdcGetSelectedConfigOutput): void
     /**
      * The ::list-configs signal gets emitted when a '<link linkend="libqmi-glib-PDC-List-Configs-indication.top_of_page">List Configs</link>' indication is received.
+     * @param output A #QmiIndicationPdcListConfigsOutput.
      */
     connect(sigName: "list-configs", callback: ((output: IndicationPdcListConfigsOutput) => void)): number
     on(sigName: "list-configs", callback: (output: IndicationPdcListConfigsOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18791,6 +19881,7 @@ class ClientPdc {
     emit(sigName: "list-configs", output: IndicationPdcListConfigsOutput): void
     /**
      * The ::load-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Load-Config-indication.top_of_page">Load Config</link>' indication is received.
+     * @param output A #QmiIndicationPdcLoadConfigOutput.
      */
     connect(sigName: "load-config", callback: ((output: IndicationPdcLoadConfigOutput) => void)): number
     on(sigName: "load-config", callback: (output: IndicationPdcLoadConfigOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18799,6 +19890,7 @@ class ClientPdc {
     emit(sigName: "load-config", output: IndicationPdcLoadConfigOutput): void
     /**
      * The ::refresh signal gets emitted when a '<link linkend="libqmi-glib-PDC-Refresh-indication.top_of_page">Refresh</link>' indication is received.
+     * @param output A #QmiIndicationPdcRefreshOutput.
      */
     connect(sigName: "refresh", callback: ((output: IndicationPdcRefreshOutput) => void)): number
     on(sigName: "refresh", callback: (output: IndicationPdcRefreshOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18807,6 +19899,7 @@ class ClientPdc {
     emit(sigName: "refresh", output: IndicationPdcRefreshOutput): void
     /**
      * The ::set-selected-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Set-Selected-Config-indication.top_of_page">Set Selected Config</link>' indication is received.
+     * @param output A #QmiIndicationPdcSetSelectedConfigOutput.
      */
     connect(sigName: "set-selected-config", callback: ((output: IndicationPdcSetSelectedConfigOutput) => void)): number
     on(sigName: "set-selected-config", callback: (output: IndicationPdcSetSelectedConfigOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -18842,6 +19935,7 @@ class ClientPdc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -18901,7 +19995,7 @@ class ClientPds {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientPds */
     /**
      * Asynchronously sends a Get AGPS Config request to the device.
@@ -18909,10 +20003,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_get_agps_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdsGetAgpsConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getAgpsConfig(input: MessagePdsGetAgpsConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_get_agps_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_agps_config().
      */
     getAgpsConfigFinish(res: Gio.AsyncResult): MessagePdsGetAgpsConfigOutput
     /**
@@ -18921,10 +20020,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_get_auto_tracking_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getAutoTrackingState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_get_auto_tracking_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_auto_tracking_state().
      */
     getAutoTrackingStateFinish(res: Gio.AsyncResult): MessagePdsGetAutoTrackingStateOutput
     /**
@@ -18933,10 +20037,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_get_default_tracking_session_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDefaultTrackingSession(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_get_default_tracking_session().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_default_tracking_session().
      */
     getDefaultTrackingSessionFinish(res: Gio.AsyncResult): MessagePdsGetDefaultTrackingSessionOutput
     /**
@@ -18945,10 +20054,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_get_gps_service_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getGpsServiceState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_get_gps_service_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_gps_service_state().
      */
     getGpsServiceStateFinish(res: Gio.AsyncResult): MessagePdsGetGpsServiceStateOutput
     /**
@@ -18957,10 +20071,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessagePdsResetOutput
     /**
@@ -18969,10 +20088,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_set_agps_config_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdsSetAgpsConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setAgpsConfig(input: MessagePdsSetAgpsConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_set_agps_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_agps_config().
      */
     setAgpsConfigFinish(res: Gio.AsyncResult): MessagePdsSetAgpsConfigOutput
     /**
@@ -18981,10 +20105,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_set_auto_tracking_state_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdsSetAutoTrackingStateInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setAutoTrackingState(input: MessagePdsSetAutoTrackingStateInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_set_auto_tracking_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_auto_tracking_state().
      */
     setAutoTrackingStateFinish(res: Gio.AsyncResult): MessagePdsSetAutoTrackingStateOutput
     /**
@@ -18993,10 +20122,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_set_default_tracking_session_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdsSetDefaultTrackingSessionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setDefaultTrackingSession(input: MessagePdsSetDefaultTrackingSessionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_set_default_tracking_session().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_default_tracking_session().
      */
     setDefaultTrackingSessionFinish(res: Gio.AsyncResult): MessagePdsSetDefaultTrackingSessionOutput
     /**
@@ -19005,10 +20139,15 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_set_event_report_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdsSetEventReportInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEventReport(input: MessagePdsSetEventReportInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_set_event_report().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_event_report().
      */
     setEventReportFinish(res: Gio.AsyncResult): MessagePdsSetEventReportOutput
     /**
@@ -19017,16 +20156,23 @@ class ClientPds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_pds_set_gps_service_state_finish() to get the result of the operation.
+     * @param input a #QmiMessagePdsSetGpsServiceStateInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setGpsServiceState(input: MessagePdsSetGpsServiceStateInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_pds_set_gps_service_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_gps_service_state().
      */
     setGpsServiceStateFinish(res: Gio.AsyncResult): MessagePdsSetGpsServiceStateOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -19048,6 +20194,8 @@ class ClientPds {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -19101,6 +20249,10 @@ class ClientPds {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19111,6 +20263,12 @@ class ClientPds {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19134,6 +20292,7 @@ class ClientPds {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19153,11 +20312,14 @@ class ClientPds {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19165,6 +20327,8 @@ class ClientPds {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19182,6 +20346,7 @@ class ClientPds {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19227,6 +20392,7 @@ class ClientPds {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19270,15 +20436,20 @@ class ClientPds {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19319,6 +20490,7 @@ class ClientPds {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19353,11 +20525,13 @@ class ClientPds {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientPds */
     /**
      * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-PDS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
+     * @param output A #QmiIndicationPdsEventReportOutput.
      */
     connect(sigName: "event-report", callback: ((output: IndicationPdsEventReportOutput) => void)): number
     on(sigName: "event-report", callback: (output: IndicationPdsEventReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -19401,6 +20575,7 @@ class ClientPds {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19460,7 +20635,7 @@ class ClientQos {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientQos */
     /**
      * Asynchronously sends a Get Flow Status request to the device.
@@ -19468,10 +20643,15 @@ class ClientQos {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_qos_get_flow_status_finish() to get the result of the operation.
+     * @param input a #QmiMessageQosGetFlowStatusInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getFlowStatus(input: MessageQosGetFlowStatusInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_qos_get_flow_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_get_flow_status().
      */
     getFlowStatusFinish(res: Gio.AsyncResult): MessageQosGetFlowStatusOutput
     /**
@@ -19480,10 +20660,15 @@ class ClientQos {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_qos_get_network_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getNetworkStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_qos_get_network_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_get_network_status().
      */
     getNetworkStatusFinish(res: Gio.AsyncResult): MessageQosGetNetworkStatusOutput
     /**
@@ -19492,10 +20677,15 @@ class ClientQos {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_qos_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_qos_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageQosResetOutput
     /**
@@ -19504,16 +20694,23 @@ class ClientQos {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_qos_swi_read_data_stats_finish() to get the result of the operation.
+     * @param input a #QmiMessageQosSwiReadDataStatsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     swiReadDataStats(input: MessageQosSwiReadDataStatsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_qos_swi_read_data_stats().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_swi_read_data_stats().
      */
     swiReadDataStatsFinish(res: Gio.AsyncResult): MessageQosSwiReadDataStatsOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -19535,6 +20732,8 @@ class ClientQos {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -19588,6 +20787,10 @@ class ClientQos {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19598,6 +20801,12 @@ class ClientQos {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -19621,6 +20830,7 @@ class ClientQos {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -19640,11 +20850,14 @@ class ClientQos {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -19652,6 +20865,8 @@ class ClientQos {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19669,6 +20884,7 @@ class ClientQos {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -19714,6 +20930,7 @@ class ClientQos {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -19757,15 +20974,20 @@ class ClientQos {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -19806,6 +21028,7 @@ class ClientQos {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -19840,11 +21063,13 @@ class ClientQos {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientQos */
     /**
      * The ::flow-status signal gets emitted when a '<link linkend="libqmi-glib-QOS-Flow-Status-indication.top_of_page">Flow Status</link>' indication is received.
+     * @param output A #QmiIndicationQosFlowStatusOutput.
      */
     connect(sigName: "flow-status", callback: ((output: IndicationQosFlowStatusOutput) => void)): number
     on(sigName: "flow-status", callback: (output: IndicationQosFlowStatusOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -19853,6 +21078,7 @@ class ClientQos {
     emit(sigName: "flow-status", output: IndicationQosFlowStatusOutput): void
     /**
      * The ::network-status signal gets emitted when a '<link linkend="libqmi-glib-QOS-Network-Status-indication.top_of_page">Network Status</link>' indication is received.
+     * @param output A #QmiIndicationQosNetworkStatusOutput.
      */
     connect(sigName: "network-status", callback: ((output: IndicationQosNetworkStatusOutput) => void)): number
     on(sigName: "network-status", callback: (output: IndicationQosNetworkStatusOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -19888,6 +21114,7 @@ class ClientQos {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -19947,7 +21174,7 @@ class ClientSar {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientSar */
     /**
      * Asynchronously sends a RF Get State request to the device.
@@ -19955,10 +21182,15 @@ class ClientSar {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_sar_rf_get_state_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     rfGetState(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_sar_rf_get_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_sar_rf_get_state().
      */
     rfGetStateFinish(res: Gio.AsyncResult): MessageSarRfGetStateOutput
     /**
@@ -19967,16 +21199,23 @@ class ClientSar {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_sar_rf_set_state_finish() to get the result of the operation.
+     * @param input a #QmiMessageSarRfSetStateInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     rfSetState(input: MessageSarRfSetStateInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_sar_rf_set_state().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_sar_rf_set_state().
      */
     rfSetStateFinish(res: Gio.AsyncResult): MessageSarRfSetStateOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -19998,6 +21237,8 @@ class ClientSar {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -20051,6 +21292,10 @@ class ClientSar {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20061,6 +21306,12 @@ class ClientSar {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -20084,6 +21335,7 @@ class ClientSar {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -20103,11 +21355,14 @@ class ClientSar {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -20115,6 +21370,8 @@ class ClientSar {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20132,6 +21389,7 @@ class ClientSar {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -20177,6 +21435,7 @@ class ClientSar {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -20220,15 +21479,20 @@ class ClientSar {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -20269,6 +21533,7 @@ class ClientSar {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -20303,6 +21568,7 @@ class ClientSar {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -20334,6 +21600,7 @@ class ClientSar {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -20393,7 +21660,7 @@ class ClientUim {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientUim */
     /**
      * Asynchronously sends a Change PIN request to the device.
@@ -20401,10 +21668,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_change_pin_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimChangePinInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     changePin(input: MessageUimChangePinInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_change_pin().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_change_pin().
      */
     changePinFinish(res: Gio.AsyncResult): MessageUimChangePinOutput
     /**
@@ -20413,10 +21685,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_change_provisioning_session_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimChangeProvisioningSessionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     changeProvisioningSession(input: MessageUimChangeProvisioningSessionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_change_provisioning_session().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_change_provisioning_session().
      */
     changeProvisioningSessionFinish(res: Gio.AsyncResult): MessageUimChangeProvisioningSessionOutput
     /**
@@ -20425,10 +21702,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_depersonalization_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimDepersonalizationInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     depersonalization(input: MessageUimDepersonalizationInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_depersonalization().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_depersonalization().
      */
     depersonalizationFinish(res: Gio.AsyncResult): MessageUimDepersonalizationOutput
     /**
@@ -20437,10 +21719,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_get_card_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCardStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_get_card_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_card_status().
      */
     getCardStatusFinish(res: Gio.AsyncResult): MessageUimGetCardStatusOutput
     /**
@@ -20449,10 +21736,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_get_configuration_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimGetConfigurationInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getConfiguration(input: MessageUimGetConfigurationInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_get_configuration().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_configuration().
      */
     getConfigurationFinish(res: Gio.AsyncResult): MessageUimGetConfigurationOutput
     /**
@@ -20461,10 +21753,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_get_file_attributes_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimGetFileAttributesInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getFileAttributes(input: MessageUimGetFileAttributesInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_get_file_attributes().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_file_attributes().
      */
     getFileAttributesFinish(res: Gio.AsyncResult): MessageUimGetFileAttributesOutput
     /**
@@ -20473,10 +21770,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_get_slot_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSlotStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_get_slot_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_slot_status().
      */
     getSlotStatusFinish(res: Gio.AsyncResult): MessageUimGetSlotStatusOutput
     /**
@@ -20485,10 +21787,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageUimGetSupportedMessagesOutput
     /**
@@ -20497,10 +21804,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_power_off_sim_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimPowerOffSimInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     powerOffSim(input: MessageUimPowerOffSimInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_power_off_sim().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_power_off_sim().
      */
     powerOffSimFinish(res: Gio.AsyncResult): MessageUimPowerOffSimOutput
     /**
@@ -20509,10 +21821,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_power_on_sim_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimPowerOnSimInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     powerOnSim(input: MessageUimPowerOnSimInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_power_on_sim().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_power_on_sim().
      */
     powerOnSimFinish(res: Gio.AsyncResult): MessageUimPowerOnSimOutput
     /**
@@ -20521,10 +21838,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_read_record_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimReadRecordInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     readRecord(input: MessageUimReadRecordInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_read_record().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_read_record().
      */
     readRecordFinish(res: Gio.AsyncResult): MessageUimReadRecordOutput
     /**
@@ -20533,10 +21855,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_read_transparent_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimReadTransparentInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     readTransparent(input: MessageUimReadTransparentInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_read_transparent().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_read_transparent().
      */
     readTransparentFinish(res: Gio.AsyncResult): MessageUimReadTransparentOutput
     /**
@@ -20545,10 +21872,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_refresh_complete_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimRefreshCompleteInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     refreshComplete(input: MessageUimRefreshCompleteInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_refresh_complete().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_refresh_complete().
      */
     refreshCompleteFinish(res: Gio.AsyncResult): MessageUimRefreshCompleteOutput
     /**
@@ -20557,6 +21889,10 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_refresh_register_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimRefreshRegisterInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     refreshRegister(input: MessageUimRefreshRegisterInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -20565,14 +21901,20 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_refresh_register_all_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimRefreshRegisterAllInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     refreshRegisterAll(input: MessageUimRefreshRegisterAllInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_refresh_register_all().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_refresh_register_all().
      */
     refreshRegisterAllFinish(res: Gio.AsyncResult): MessageUimRefreshRegisterAllOutput
     /**
      * Finishes an async operation started with qmi_client_uim_refresh_register().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_refresh_register().
      */
     refreshRegisterFinish(res: Gio.AsyncResult): MessageUimRefreshRegisterOutput
     /**
@@ -20581,10 +21923,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_register_events_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimRegisterEventsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     registerEvents(input: MessageUimRegisterEventsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_register_events().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_register_events().
      */
     registerEventsFinish(res: Gio.AsyncResult): MessageUimRegisterEventsOutput
     /**
@@ -20593,10 +21940,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageUimResetOutput
     /**
@@ -20605,10 +21957,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_set_pin_protection_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimSetPinProtectionInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setPinProtection(input: MessageUimSetPinProtectionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_set_pin_protection().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_set_pin_protection().
      */
     setPinProtectionFinish(res: Gio.AsyncResult): MessageUimSetPinProtectionOutput
     /**
@@ -20617,10 +21974,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_switch_slot_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimSwitchSlotInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     switchSlot(input: MessageUimSwitchSlotInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_switch_slot().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_switch_slot().
      */
     switchSlotFinish(res: Gio.AsyncResult): MessageUimSwitchSlotOutput
     /**
@@ -20629,10 +21991,15 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_unblock_pin_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimUnblockPinInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     unblockPin(input: MessageUimUnblockPinInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_unblock_pin().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_unblock_pin().
      */
     unblockPinFinish(res: Gio.AsyncResult): MessageUimUnblockPinOutput
     /**
@@ -20641,16 +22008,23 @@ class ClientUim {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_uim_verify_pin_finish() to get the result of the operation.
+     * @param input a #QmiMessageUimVerifyPinInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     verifyPin(input: MessageUimVerifyPinInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_uim_verify_pin().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_verify_pin().
      */
     verifyPinFinish(res: Gio.AsyncResult): MessageUimVerifyPinOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -20672,6 +22046,8 @@ class ClientUim {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -20725,6 +22101,10 @@ class ClientUim {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20735,6 +22115,12 @@ class ClientUim {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -20758,6 +22144,7 @@ class ClientUim {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -20777,11 +22164,14 @@ class ClientUim {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -20789,6 +22179,8 @@ class ClientUim {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20806,6 +22198,7 @@ class ClientUim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -20851,6 +22244,7 @@ class ClientUim {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -20894,15 +22288,20 @@ class ClientUim {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -20943,6 +22342,7 @@ class ClientUim {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -20977,11 +22377,13 @@ class ClientUim {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientUim */
     /**
      * The ::card-status signal gets emitted when a '<link linkend="libqmi-glib-UIM-Card-Status-indication.top_of_page">Card Status</link>' indication is received.
+     * @param output A #QmiIndicationUimCardStatusOutput.
      */
     connect(sigName: "card-status", callback: ((output: IndicationUimCardStatusOutput) => void)): number
     on(sigName: "card-status", callback: (output: IndicationUimCardStatusOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -20990,6 +22392,7 @@ class ClientUim {
     emit(sigName: "card-status", output: IndicationUimCardStatusOutput): void
     /**
      * The ::refresh signal gets emitted when a '<link linkend="libqmi-glib-UIM-Refresh-indication.top_of_page">Refresh</link>' indication is received.
+     * @param output A #QmiIndicationUimRefreshOutput.
      */
     connect(sigName: "refresh", callback: ((output: IndicationUimRefreshOutput) => void)): number
     on(sigName: "refresh", callback: (output: IndicationUimRefreshOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -20998,6 +22401,7 @@ class ClientUim {
     emit(sigName: "refresh", output: IndicationUimRefreshOutput): void
     /**
      * The ::slot-status signal gets emitted when a '<link linkend="libqmi-glib-UIM-Slot-Status-indication.top_of_page">Slot Status</link>' indication is received.
+     * @param output A #QmiIndicationUimSlotStatusOutput.
      */
     connect(sigName: "slot-status", callback: ((output: IndicationUimSlotStatusOutput) => void)): number
     on(sigName: "slot-status", callback: (output: IndicationUimSlotStatusOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -21033,6 +22437,7 @@ class ClientUim {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -21092,7 +22497,7 @@ class ClientVoice {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientVoice */
     /**
      * Asynchronously sends a Answer Call request to the device.
@@ -21100,10 +22505,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_answer_call_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceAnswerCallInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     answerCall(input: MessageVoiceAnswerCallInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_answer_call().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_answer_call().
      */
     answerCallFinish(res: Gio.AsyncResult): MessageVoiceAnswerCallOutput
     /**
@@ -21112,10 +22522,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_answer_ussd_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceAnswerUssdInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     answerUssd(input: MessageVoiceAnswerUssdInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_answer_ussd().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_answer_ussd().
      */
     answerUssdFinish(res: Gio.AsyncResult): MessageVoiceAnswerUssdOutput
     /**
@@ -21124,10 +22539,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_cancel_ussd_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     cancelUssd(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_cancel_ussd().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_cancel_ussd().
      */
     cancelUssdFinish(res: Gio.AsyncResult): MessageVoiceCancelUssdOutput
     /**
@@ -21136,10 +22556,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_dial_call_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceDialCallInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     dialCall(input: MessageVoiceDialCallInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_dial_call().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_dial_call().
      */
     dialCallFinish(res: Gio.AsyncResult): MessageVoiceDialCallOutput
     /**
@@ -21148,10 +22573,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_end_call_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceEndCallInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     endCall(input: MessageVoiceEndCallInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_end_call().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_end_call().
      */
     endCallFinish(res: Gio.AsyncResult): MessageVoiceEndCallOutput
     /**
@@ -21160,10 +22590,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_get_all_call_info_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getAllCallInfo(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_get_all_call_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_all_call_info().
      */
     getAllCallInfoFinish(res: Gio.AsyncResult): MessageVoiceGetAllCallInfoOutput
     /**
@@ -21172,10 +22607,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_get_call_waiting_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceGetCallWaitingInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCallWaiting(input: MessageVoiceGetCallWaitingInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_get_call_waiting().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_call_waiting().
      */
     getCallWaitingFinish(res: Gio.AsyncResult): MessageVoiceGetCallWaitingOutput
     /**
@@ -21184,10 +22624,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_get_config_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceGetConfigInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getConfig(input: MessageVoiceGetConfigInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_get_config().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_config().
      */
     getConfigFinish(res: Gio.AsyncResult): MessageVoiceGetConfigOutput
     /**
@@ -21196,10 +22641,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageVoiceGetSupportedMessagesOutput
     /**
@@ -21208,10 +22658,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_indication_register_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceIndicationRegisterInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     indicationRegister(input: MessageVoiceIndicationRegisterInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_indication_register().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_indication_register().
      */
     indicationRegisterFinish(res: Gio.AsyncResult): MessageVoiceIndicationRegisterOutput
     /**
@@ -21220,10 +22675,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_manage_calls_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceManageCallsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     manageCalls(input: MessageVoiceManageCallsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_manage_calls().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_manage_calls().
      */
     manageCallsFinish(res: Gio.AsyncResult): MessageVoiceManageCallsOutput
     /**
@@ -21232,10 +22692,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_originate_ussd_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceOriginateUssdInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     originateUssd(input: MessageVoiceOriginateUssdInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_originate_ussd().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_originate_ussd().
      */
     originateUssdFinish(res: Gio.AsyncResult): MessageVoiceOriginateUssdOutput
     /**
@@ -21244,10 +22709,15 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_originate_ussd_no_wait_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceOriginateUssdNoWaitInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     originateUssdNoWait(input: MessageVoiceOriginateUssdNoWaitInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_originate_ussd_no_wait().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_originate_ussd_no_wait().
      */
     originateUssdNoWaitFinish(res: Gio.AsyncResult): MessageVoiceOriginateUssdNoWaitOutput
     /**
@@ -21256,16 +22726,23 @@ class ClientVoice {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_voice_set_supplementary_service_finish() to get the result of the operation.
+     * @param input a #QmiMessageVoiceSetSupplementaryServiceInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setSupplementaryService(input: MessageVoiceSetSupplementaryServiceInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_voice_set_supplementary_service().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_set_supplementary_service().
      */
     setSupplementaryServiceFinish(res: Gio.AsyncResult): MessageVoiceSetSupplementaryServiceOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -21287,6 +22764,8 @@ class ClientVoice {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -21340,6 +22819,10 @@ class ClientVoice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21350,6 +22833,12 @@ class ClientVoice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -21373,6 +22862,7 @@ class ClientVoice {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -21392,11 +22882,14 @@ class ClientVoice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -21404,6 +22897,8 @@ class ClientVoice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21421,6 +22916,7 @@ class ClientVoice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -21466,6 +22962,7 @@ class ClientVoice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -21509,15 +23006,20 @@ class ClientVoice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -21558,6 +23060,7 @@ class ClientVoice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -21592,11 +23095,13 @@ class ClientVoice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientVoice */
     /**
      * The ::all-call-status signal gets emitted when a '<link linkend="libqmi-glib-VOICE-All-Call-Status-indication.top_of_page">All Call Status</link>' indication is received.
+     * @param output A #QmiIndicationVoiceAllCallStatusOutput.
      */
     connect(sigName: "all-call-status", callback: ((output: IndicationVoiceAllCallStatusOutput) => void)): number
     on(sigName: "all-call-status", callback: (output: IndicationVoiceAllCallStatusOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -21605,6 +23110,7 @@ class ClientVoice {
     emit(sigName: "all-call-status", output: IndicationVoiceAllCallStatusOutput): void
     /**
      * The ::originate-ussd-no-wait signal gets emitted when a '<link linkend="libqmi-glib-VOICE-Originate-USSD-No-Wait-indication.top_of_page">Originate USSD No Wait</link>' indication is received.
+     * @param output A #QmiIndicationVoiceOriginateUssdNoWaitOutput.
      */
     connect(sigName: "originate-ussd-no-wait", callback: ((output: IndicationVoiceOriginateUssdNoWaitOutput) => void)): number
     on(sigName: "originate-ussd-no-wait", callback: (output: IndicationVoiceOriginateUssdNoWaitOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -21621,6 +23127,7 @@ class ClientVoice {
     emit(sigName: "release-ussd"): void
     /**
      * The ::supplementary-service signal gets emitted when a '<link linkend="libqmi-glib-VOICE-Supplementary-Service-indication.top_of_page">Supplementary Service</link>' indication is received.
+     * @param output A #QmiIndicationVoiceSupplementaryServiceOutput.
      */
     connect(sigName: "supplementary-service", callback: ((output: IndicationVoiceSupplementaryServiceOutput) => void)): number
     on(sigName: "supplementary-service", callback: (output: IndicationVoiceSupplementaryServiceOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -21629,6 +23136,7 @@ class ClientVoice {
     emit(sigName: "supplementary-service", output: IndicationVoiceSupplementaryServiceOutput): void
     /**
      * The ::ussd signal gets emitted when a '<link linkend="libqmi-glib-VOICE-USSD-indication.top_of_page">USSD</link>' indication is received.
+     * @param output A #QmiIndicationVoiceUssdOutput.
      */
     connect(sigName: "ussd", callback: ((output: IndicationVoiceUssdOutput) => void)): number
     on(sigName: "ussd", callback: (output: IndicationVoiceUssdOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -21664,6 +23172,7 @@ class ClientVoice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -21723,7 +23232,7 @@ class ClientWda {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientWda */
     /**
      * Asynchronously sends a Get Data Format request to the device.
@@ -21731,10 +23240,15 @@ class ClientWda {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wda_get_data_format_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdaGetDataFormatInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDataFormat(input: MessageWdaGetDataFormatInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wda_get_data_format().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wda_get_data_format().
      */
     getDataFormatFinish(res: Gio.AsyncResult): MessageWdaGetDataFormatOutput
     /**
@@ -21743,10 +23257,15 @@ class ClientWda {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wda_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wda_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wda_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageWdaGetSupportedMessagesOutput
     /**
@@ -21755,16 +23274,23 @@ class ClientWda {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wda_set_data_format_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdaSetDataFormatInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setDataFormat(input: MessageWdaSetDataFormatInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wda_set_data_format().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wda_set_data_format().
      */
     setDataFormatFinish(res: Gio.AsyncResult): MessageWdaSetDataFormatOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -21786,6 +23312,8 @@ class ClientWda {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -21839,6 +23367,10 @@ class ClientWda {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21849,6 +23381,12 @@ class ClientWda {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -21872,6 +23410,7 @@ class ClientWda {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -21891,11 +23430,14 @@ class ClientWda {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -21903,6 +23445,8 @@ class ClientWda {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21920,6 +23464,7 @@ class ClientWda {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -21965,6 +23510,7 @@ class ClientWda {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22008,15 +23554,20 @@ class ClientWda {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22057,6 +23608,7 @@ class ClientWda {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22091,6 +23643,7 @@ class ClientWda {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -22122,6 +23675,7 @@ class ClientWda {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -22181,7 +23735,7 @@ class ClientWds {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientWds */
     /**
      * Asynchronously sends a Bind Data Port request to the device.
@@ -22189,10 +23743,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_bind_data_port_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsBindDataPortInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     bindDataPort(input: MessageWdsBindDataPortInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_bind_data_port().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_bind_data_port().
      */
     bindDataPortFinish(res: Gio.AsyncResult): MessageWdsBindDataPortOutput
     /**
@@ -22201,10 +23760,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_bind_mux_data_port_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsBindMuxDataPortInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     bindMuxDataPort(input: MessageWdsBindMuxDataPortInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_bind_mux_data_port().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_bind_mux_data_port().
      */
     bindMuxDataPortFinish(res: Gio.AsyncResult): MessageWdsBindMuxDataPortOutput
     /**
@@ -22213,10 +23777,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_create_profile_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsCreateProfileInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     createProfile(input: MessageWdsCreateProfileInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_create_profile().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_create_profile().
      */
     createProfileFinish(res: Gio.AsyncResult): MessageWdsCreateProfileOutput
     /**
@@ -22225,10 +23794,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_delete_profile_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsDeleteProfileInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     deleteProfile(input: MessageWdsDeleteProfileInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_delete_profile().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_delete_profile().
      */
     deleteProfileFinish(res: Gio.AsyncResult): MessageWdsDeleteProfileOutput
     /**
@@ -22237,10 +23811,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_autoconnect_settings_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getAutoconnectSettings(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_autoconnect_settings().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_autoconnect_settings().
      */
     getAutoconnectSettingsFinish(res: Gio.AsyncResult): MessageWdsGetAutoconnectSettingsOutput
     /**
@@ -22249,10 +23828,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_channel_rates_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getChannelRates(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_channel_rates().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_channel_rates().
      */
     getChannelRatesFinish(res: Gio.AsyncResult): MessageWdsGetChannelRatesOutput
     /**
@@ -22261,10 +23845,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_current_data_bearer_technology_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCurrentDataBearerTechnology(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_current_data_bearer_technology().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_current_data_bearer_technology().
      */
     getCurrentDataBearerTechnologyFinish(res: Gio.AsyncResult): MessageWdsGetCurrentDataBearerTechnologyOutput
     /**
@@ -22273,10 +23862,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_current_settings_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetCurrentSettingsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getCurrentSettings(input: MessageWdsGetCurrentSettingsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_current_settings().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_current_settings().
      */
     getCurrentSettingsFinish(res: Gio.AsyncResult): MessageWdsGetCurrentSettingsOutput
     /**
@@ -22285,10 +23879,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_data_bearer_technology_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDataBearerTechnology(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_data_bearer_technology().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_data_bearer_technology().
      */
     getDataBearerTechnologyFinish(res: Gio.AsyncResult): MessageWdsGetDataBearerTechnologyOutput
     /**
@@ -22297,10 +23896,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_default_profile_number_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetDefaultProfileNumberInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDefaultProfileNumber(input: MessageWdsGetDefaultProfileNumberInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_default_profile_number().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_default_profile_number().
      */
     getDefaultProfileNumberFinish(res: Gio.AsyncResult): MessageWdsGetDefaultProfileNumberOutput
     /**
@@ -22309,10 +23913,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_default_settings_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetDefaultSettingsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDefaultSettings(input: MessageWdsGetDefaultSettingsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_default_settings().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_default_settings().
      */
     getDefaultSettingsFinish(res: Gio.AsyncResult): MessageWdsGetDefaultSettingsOutput
     /**
@@ -22321,10 +23930,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_dormancy_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getDormancyStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_dormancy_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_dormancy_status().
      */
     getDormancyStatusFinish(res: Gio.AsyncResult): MessageWdsGetDormancyStatusOutput
     /**
@@ -22333,10 +23947,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_lte_attach_parameters_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getLteAttachParameters(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_lte_attach_parameters().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_lte_attach_parameters().
      */
     getLteAttachParametersFinish(res: Gio.AsyncResult): MessageWdsGetLteAttachParametersOutput
     /**
@@ -22345,10 +23964,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_lte_attach_pdn_list_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getLteAttachPdnList(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_lte_attach_pdn_list().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_lte_attach_pdn_list().
      */
     getLteAttachPdnListFinish(res: Gio.AsyncResult): MessageWdsGetLteAttachPdnListOutput
     /**
@@ -22357,10 +23981,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_max_lte_attach_pdn_number_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getMaxLteAttachPdnNumber(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_max_lte_attach_pdn_number().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_max_lte_attach_pdn_number().
      */
     getMaxLteAttachPdnNumberFinish(res: Gio.AsyncResult): MessageWdsGetMaxLteAttachPdnNumberOutput
     /**
@@ -22369,10 +23998,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_packet_service_status_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPacketServiceStatus(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_packet_service_status().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_packet_service_status().
      */
     getPacketServiceStatusFinish(res: Gio.AsyncResult): MessageWdsGetPacketServiceStatusOutput
     /**
@@ -22381,10 +24015,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_packet_statistics_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetPacketStatisticsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPacketStatistics(input: MessageWdsGetPacketStatisticsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_packet_statistics().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_packet_statistics().
      */
     getPacketStatisticsFinish(res: Gio.AsyncResult): MessageWdsGetPacketStatisticsOutput
     /**
@@ -22393,10 +24032,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_pdn_throttle_info_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetPdnThrottleInfoInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getPdnThrottleInfo(input: MessageWdsGetPdnThrottleInfoInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_pdn_throttle_info().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_pdn_throttle_info().
      */
     getPdnThrottleInfoFinish(res: Gio.AsyncResult): MessageWdsGetPdnThrottleInfoOutput
     /**
@@ -22405,10 +24049,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_profile_list_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetProfileListInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getProfileList(input: MessageWdsGetProfileListInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_profile_list().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_profile_list().
      */
     getProfileListFinish(res: Gio.AsyncResult): MessageWdsGetProfileListOutput
     /**
@@ -22417,10 +24066,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_profile_settings_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsGetProfileSettingsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getProfileSettings(input: MessageWdsGetProfileSettingsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_profile_settings().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_profile_settings().
      */
     getProfileSettingsFinish(res: Gio.AsyncResult): MessageWdsGetProfileSettingsOutput
     /**
@@ -22429,10 +24083,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageWdsGetSupportedMessagesOutput
     /**
@@ -22441,10 +24100,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_go_active_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     goActive(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_go_active().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_go_active().
      */
     goActiveFinish(res: Gio.AsyncResult): MessageWdsGoActiveOutput
     /**
@@ -22453,10 +24117,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_go_dormant_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     goDormant(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_go_dormant().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_go_dormant().
      */
     goDormantFinish(res: Gio.AsyncResult): MessageWdsGoDormantOutput
     /**
@@ -22465,10 +24134,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_modify_profile_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsModifyProfileInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     modifyProfile(input: MessageWdsModifyProfileInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_modify_profile().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_modify_profile().
      */
     modifyProfileFinish(res: Gio.AsyncResult): MessageWdsModifyProfileOutput
     /**
@@ -22477,10 +24151,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageWdsResetOutput
     /**
@@ -22489,10 +24168,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_set_autoconnect_settings_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsSetAutoconnectSettingsInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setAutoconnectSettings(input: MessageWdsSetAutoconnectSettingsInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_set_autoconnect_settings().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_autoconnect_settings().
      */
     setAutoconnectSettingsFinish(res: Gio.AsyncResult): MessageWdsSetAutoconnectSettingsOutput
     /**
@@ -22501,10 +24185,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_set_default_profile_number_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsSetDefaultProfileNumberInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setDefaultProfileNumber(input: MessageWdsSetDefaultProfileNumberInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_set_default_profile_number().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_default_profile_number().
      */
     setDefaultProfileNumberFinish(res: Gio.AsyncResult): MessageWdsSetDefaultProfileNumberOutput
     /**
@@ -22513,10 +24202,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_set_event_report_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsSetEventReportInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEventReport(input: MessageWdsSetEventReportInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_set_event_report().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_event_report().
      */
     setEventReportFinish(res: Gio.AsyncResult): MessageWdsSetEventReportOutput
     /**
@@ -22525,10 +24219,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_set_ip_family_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsSetIpFamilyInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setIpFamily(input: MessageWdsSetIpFamilyInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_set_ip_family().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_ip_family().
      */
     setIpFamilyFinish(res: Gio.AsyncResult): MessageWdsSetIpFamilyOutput
     /**
@@ -22537,10 +24236,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_set_lte_attach_pdn_list_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsSetLteAttachPdnListInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setLteAttachPdnList(input: MessageWdsSetLteAttachPdnListInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_set_lte_attach_pdn_list().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_lte_attach_pdn_list().
      */
     setLteAttachPdnListFinish(res: Gio.AsyncResult): MessageWdsSetLteAttachPdnListOutput
     /**
@@ -22556,10 +24260,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_start_network_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsStartNetworkInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     startNetwork(input: MessageWdsStartNetworkInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_start_network().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_start_network().
      */
     startNetworkFinish(res: Gio.AsyncResult): MessageWdsStartNetworkOutput
     /**
@@ -22568,10 +24277,15 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_stop_network_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsStopNetworkInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     stopNetwork(input: MessageWdsStopNetworkInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_stop_network().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_stop_network().
      */
     stopNetworkFinish(res: Gio.AsyncResult): MessageWdsStopNetworkOutput
     /**
@@ -22580,16 +24294,23 @@ class ClientWds {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wds_swi_create_profile_indexed_finish() to get the result of the operation.
+     * @param input a #QmiMessageWdsSwiCreateProfileIndexedInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     swiCreateProfileIndexed(input: MessageWdsSwiCreateProfileIndexedInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wds_swi_create_profile_indexed().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_swi_create_profile_indexed().
      */
     swiCreateProfileIndexedFinish(res: Gio.AsyncResult): MessageWdsSwiCreateProfileIndexedOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -22611,6 +24332,8 @@ class ClientWds {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -22664,6 +24387,10 @@ class ClientWds {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22674,6 +24401,12 @@ class ClientWds {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -22697,6 +24430,7 @@ class ClientWds {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -22716,11 +24450,14 @@ class ClientWds {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -22728,6 +24465,8 @@ class ClientWds {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22745,6 +24484,7 @@ class ClientWds {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -22790,6 +24530,7 @@ class ClientWds {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -22833,15 +24574,20 @@ class ClientWds {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -22882,6 +24628,7 @@ class ClientWds {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -22916,11 +24663,13 @@ class ClientWds {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientWds */
     /**
      * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-WDS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
+     * @param output A #QmiIndicationWdsEventReportOutput.
      */
     connect(sigName: "event-report", callback: ((output: IndicationWdsEventReportOutput) => void)): number
     on(sigName: "event-report", callback: (output: IndicationWdsEventReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -22929,6 +24678,7 @@ class ClientWds {
     emit(sigName: "event-report", output: IndicationWdsEventReportOutput): void
     /**
      * The ::packet-service-status signal gets emitted when a '<link linkend="libqmi-glib-WDS-Packet-Service-Status-indication.top_of_page">Packet Service Status</link>' indication is received.
+     * @param output A #QmiIndicationWdsPacketServiceStatusOutput.
      */
     connect(sigName: "packet-service-status", callback: ((output: IndicationWdsPacketServiceStatusOutput) => void)): number
     on(sigName: "packet-service-status", callback: (output: IndicationWdsPacketServiceStatusOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -22937,6 +24687,7 @@ class ClientWds {
     emit(sigName: "packet-service-status", output: IndicationWdsPacketServiceStatusOutput): void
     /**
      * The ::set-lte-attach-pdn-list signal gets emitted when a '<link linkend="libqmi-glib-WDS-Set-LTE-Attach-PDN-List-indication.top_of_page">Set LTE Attach PDN List</link>' indication is received.
+     * @param output A #QmiIndicationWdsSetLteAttachPdnListOutput.
      */
     connect(sigName: "set-lte-attach-pdn-list", callback: ((output: IndicationWdsSetLteAttachPdnListOutput) => void)): number
     on(sigName: "set-lte-attach-pdn-list", callback: (output: IndicationWdsSetLteAttachPdnListOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -22972,6 +24723,7 @@ class ClientWds {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -23031,7 +24783,7 @@ class ClientWms {
     clientVersionMajor: number
     clientVersionMinor: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.ClientWms */
     /**
      * Asynchronously sends a Delete request to the device.
@@ -23039,10 +24791,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_delete_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsDeleteInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     delete(input: MessageWmsDeleteInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_delete().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_delete().
      */
     deleteFinish(res: Gio.AsyncResult): MessageWmsDeleteOutput
     /**
@@ -23051,10 +24808,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_get_message_protocol_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getMessageProtocol(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_get_message_protocol().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_get_message_protocol().
      */
     getMessageProtocolFinish(res: Gio.AsyncResult): MessageWmsGetMessageProtocolOutput
     /**
@@ -23063,10 +24825,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_get_routes_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getRoutes(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_get_routes().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_get_routes().
      */
     getRoutesFinish(res: Gio.AsyncResult): MessageWmsGetRoutesOutput
     /**
@@ -23075,10 +24842,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_get_supported_messages_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getSupportedMessages(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_get_supported_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_get_supported_messages().
      */
     getSupportedMessagesFinish(res: Gio.AsyncResult): MessageWmsGetSupportedMessagesOutput
     /**
@@ -23087,10 +24859,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_list_messages_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsListMessagesInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     listMessages(input: MessageWmsListMessagesInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_list_messages().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_list_messages().
      */
     listMessagesFinish(res: Gio.AsyncResult): MessageWmsListMessagesOutput
     /**
@@ -23099,10 +24876,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_modify_tag_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsModifyTagInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     modifyTag(input: MessageWmsModifyTagInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_modify_tag().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_modify_tag().
      */
     modifyTagFinish(res: Gio.AsyncResult): MessageWmsModifyTagOutput
     /**
@@ -23111,10 +24893,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_raw_read_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsRawReadInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     rawRead(input: MessageWmsRawReadInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_raw_read().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_raw_read().
      */
     rawReadFinish(res: Gio.AsyncResult): MessageWmsRawReadOutput
     /**
@@ -23123,10 +24910,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_raw_send_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsRawSendInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     rawSend(input: MessageWmsRawSendInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_raw_send().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_raw_send().
      */
     rawSendFinish(res: Gio.AsyncResult): MessageWmsRawSendOutput
     /**
@@ -23135,10 +24927,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_raw_write_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsRawWriteInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     rawWrite(input: MessageWmsRawWriteInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_raw_write().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_raw_write().
      */
     rawWriteFinish(res: Gio.AsyncResult): MessageWmsRawWriteOutput
     /**
@@ -23147,10 +24944,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_reset_finish() to get the result of the operation.
+     * @param unused %NULL. This message doesn't have any input bundle.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     reset(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_reset().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_reset().
      */
     resetFinish(res: Gio.AsyncResult): MessageWmsResetOutput
     /**
@@ -23159,10 +24961,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_send_ack_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsSendAckInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     sendAck(input: MessageWmsSendAckInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_send_ack().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_send_ack().
      */
     sendAckFinish(res: Gio.AsyncResult): MessageWmsSendAckOutput
     /**
@@ -23171,10 +24978,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_send_from_memory_storage_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsSendFromMemoryStorageInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     sendFromMemoryStorage(input: MessageWmsSendFromMemoryStorageInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_send_from_memory_storage().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_send_from_memory_storage().
      */
     sendFromMemoryStorageFinish(res: Gio.AsyncResult): MessageWmsSendFromMemoryStorageOutput
     /**
@@ -23183,10 +24995,15 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_set_event_report_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsSetEventReportInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setEventReport(input: MessageWmsSetEventReportInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_set_event_report().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_set_event_report().
      */
     setEventReportFinish(res: Gio.AsyncResult): MessageWmsSetEventReportOutput
     /**
@@ -23195,16 +25012,23 @@ class ClientWms {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_client_wms_set_routes_finish() to get the result of the operation.
+     * @param input a #QmiMessageWmsSetRoutesInput.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     setRoutes(input: MessageWmsSetRoutesInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation started with qmi_client_wms_set_routes().
+     * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_set_routes().
      */
     setRoutesFinish(res: Gio.AsyncResult): MessageWmsSetRoutesOutput
     /* Methods of Qmi-1.0.Qmi.Client */
     /**
      * Checks if the version of the service handled by this #QmiClient is greater
      * or equal than the given version.
+     * @param major a major version.
+     * @param minor a minor version.
      */
     checkVersion(major: number, minor: number): boolean
     /**
@@ -23226,6 +25050,8 @@ class ClientWms {
     getService(): Service
     /**
      * Get the version of the service handled by this #QmiClient.
+     * @param major placeholder for the output major version.
+     * @param minor placeholder for the output minor version.
      */
     getVersion(major: number, minor: number): boolean
     /**
@@ -23279,6 +25105,10 @@ class ClientWms {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23289,6 +25119,12 @@ class ClientWms {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -23312,6 +25148,7 @@ class ClientWms {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -23331,11 +25168,14 @@ class ClientWms {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -23343,6 +25183,8 @@ class ClientWms {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23360,6 +25202,7 @@ class ClientWms {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -23405,6 +25248,7 @@ class ClientWms {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -23448,15 +25292,20 @@ class ClientWms {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -23497,6 +25346,7 @@ class ClientWms {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -23531,11 +25381,13 @@ class ClientWms {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Qmi-1.0.Qmi.ClientWms */
     /**
      * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-WMS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
+     * @param output A #QmiIndicationWmsEventReportOutput.
      */
     connect(sigName: "event-report", callback: ((output: IndicationWmsEventReportOutput) => void)): number
     on(sigName: "event-report", callback: (output: IndicationWmsEventReportOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -23544,6 +25396,7 @@ class ClientWms {
     emit(sigName: "event-report", output: IndicationWmsEventReportOutput): void
     /**
      * The ::smsc-address signal gets emitted when a '<link linkend="libqmi-glib-WMS-SMSC-Address-indication.top_of_page">SMSC Address</link>' indication is received.
+     * @param output A #QmiIndicationWmsSmscAddressOutput.
      */
     connect(sigName: "smsc-address", callback: ((output: IndicationWmsSmscAddressOutput) => void)): number
     on(sigName: "smsc-address", callback: (output: IndicationWmsSmscAddressOutput) => void, after?: boolean): NodeJS.EventEmitter
@@ -23579,6 +25432,7 @@ class ClientWms {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -23635,9 +25489,12 @@ interface Device_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Device {
     /* Properties of Qmi-1.0.Qmi.Device */
+    readonly deviceFile: Gio.File
+    readonly deviceNoFileCheck: boolean
+    readonly deviceProxyPath: string
     readonly deviceWwanIface: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.Device */
     /**
      * Asynchronously creates a new virtual network device node with a custom prefix
@@ -23677,10 +25534,17 @@ class Device {
      * available for programs that use ephimeral #QmiDevice objects for single
      * operations.
      * </para></note>
+     * @param muxId the mux id for the link, in the   [%QMI_DEVICE_MUX_ID_MIN,%QMI_DEVICE_MUX_ID_MAX] range, or   %QMI_DEVICE_MUX_ID_AUTOMATIC to find the first available mux id.
+     * @param baseIfname the interface which the new link will be created on.
+     * @param ifnamePrefix the prefix suggested to be used for the name of the new link   created.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     addLink(muxId: number, baseIfname: string, ifnamePrefix: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_add_link().
+     * @param res a #GAsyncResult.
+     * @param muxId the mux ID for the link created.
      */
     addLinkFinish(res: Gio.AsyncResult, muxId: number): string
     /**
@@ -23699,10 +25563,18 @@ class Device {
      * support provided by the qmi_wwan kernel driver, they are only used if using
      * the rmnet backend for link management support.
      * </para></note>
+     * @param muxId the mux id for the link, in the   [%QMI_DEVICE_MUX_ID_MIN,%QMI_DEVICE_MUX_ID_MAX] range, or   %QMI_DEVICE_MUX_ID_AUTOMATIC to find the first available mux id.
+     * @param baseIfname the interface which the new link will be created on.
+     * @param ifnamePrefix the prefix suggested to be used for the name of the new link   created.
+     * @param flags bitmask of %QmiDeviceAddLinkFlags values to pass to the kernel when   creating the new link.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     addLinkWithFlags(muxId: number, baseIfname: string, ifnamePrefix: string, flags: DeviceAddLinkFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_add_link_finish().
+     * @param res a #GAsyncResult.
+     * @param muxId the mux ID for the link created.
      */
     addLinkWithFlagsFinish(res: Gio.AsyncResult, muxId: number): string
     /**
@@ -23716,10 +25588,16 @@ class Device {
      * 
      * Note: Clients for the %QMI_SERVICE_CTL cannot be created with this method;
      * instead get/peek the implicit one from `self`.
+     * @param service a valid #QmiService.
+     * @param cid a valid client ID, or %QMI_CID_NONE.
+     * @param timeout maximum time to wait.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     allocateClient(service: Service, cid: number, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_allocate_client().
+     * @param res a #GAsyncResult.
      */
     allocateClientFinish(res: Gio.AsyncResult): Client
     /**
@@ -23729,6 +25607,7 @@ class Device {
      * <note><para>
      * This method is only applicable when using the qmi_wwan kernel driver.
      * </para></note>
+     * @param format a known #QmiDeviceExpectedDataFormat.
      */
     checkExpectedDataFormatSupported(format: DeviceExpectedDataFormat): boolean
     /**
@@ -23746,14 +25625,19 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * qmi_device_close_finish() to get the result of the operation.
+     * @param timeout maximum time, in seconds, to wait for the device to be closed.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     closeAsync(timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_close_async().
+     * @param res a #GAsyncResult.
      */
     closeFinish(res: Gio.AsyncResult): boolean
     /**
      * Finishes an operation started with qmi_device_command_abortable().
+     * @param res a #GAsyncResult.
      */
     commandAbortableFinish(res: Gio.AsyncResult): Message
     /**
@@ -23772,10 +25656,16 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * qmi_device_command_full_finish() to get the result of the operation.
+     * @param message the message to send.
+     * @param messageContext the context of the message.
+     * @param timeout maximum time, in seconds, to wait for the response.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     commandFull(message: Message, messageContext: MessageContext, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_command_full().
+     * @param res a #GAsyncResult.
      */
     commandFullFinish(res: Gio.AsyncResult): Message
     /**
@@ -23791,10 +25681,14 @@ class Device {
      * where only one single process is expected to do QMI network interface link
      * management.
      * </para></note>
+     * @param baseIfname the interface where all links are available.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     deleteAllLinks(baseIfname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_delete_all_links().
+     * @param res a #GAsyncResult.
      */
     deleteAllLinksFinish(res: Gio.AsyncResult): boolean
     /**
@@ -23813,10 +25707,15 @@ class Device {
      * mux id info to delete the link. When using the qmi_wwan driver from a kernel
      * older than v5.12, a valid `mux_id` is required.
      * </para></note>
+     * @param ifname the name of the link to remove.
+     * @param muxId the mux ID of the link to remove.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     deleteLink(ifname: string, muxId: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_delete_link().
+     * @param res a #GAsyncResult.
      */
     deleteLinkFinish(res: Gio.AsyncResult): boolean
     /**
@@ -23850,10 +25749,14 @@ class Device {
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
      * 
      * You can then call qmi_device_get_service_version_info_finish() to get the result of the operation.
+     * @param timeout maximum time to wait for the method to complete, in seconds.
+     * @param cancellable a #GCancellable or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
     getServiceVersionInfo(timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_get_service_version_info().
+     * @param res a #GAsyncResult.
      */
     getServiceVersionInfoFinish(res: Gio.AsyncResult): DeviceServiceVersionInfo[]
     /**
@@ -23872,6 +25775,7 @@ class Device {
     /**
      * Synchronously lists all virtual network interfaces that have been previously
      * created with qmi_device_add_link() in `base_ifname`.
+     * @param baseIfname the base interface.
      */
     listLinks(baseIfname: string): [ /* returnType */ boolean, /* outLinks */ string[] ]
     /**
@@ -23879,10 +25783,15 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * qmi_device_open_finish() to get the result of the operation.
+     * @param flags mask of #QmiDeviceOpenFlags specifying how the device should be opened.
+     * @param timeout maximum time, in seconds, to wait for the device to be opened.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     open(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous open operation started with qmi_device_open().
+     * @param res a #GAsyncResult.
      */
     openFinish(res: Gio.AsyncResult): boolean
     /**
@@ -23899,6 +25808,11 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * qmi_device_release_client_finish() to get the result of the operation.
+     * @param client the #QmiClient to release.
+     * @param flags mask of #QmiDeviceReleaseClientFlags specifying how the client should be released.
+     * @param timeout maximum time to wait.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     releaseClient(client: Client, flags: DeviceReleaseClientFlags, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -23906,6 +25820,7 @@ class Device {
      * 
      * Note that even if the release operation returns an error, the client should
      * anyway be considered released, and shouldn't be used afterwards.
+     * @param res a #GAsyncResult.
      */
     releaseClientFinish(res: Gio.AsyncResult): boolean
     /**
@@ -23915,6 +25830,7 @@ class Device {
      * <note><para>
      * This method is only applicable when using the qmi_wwan kernel driver.
      * </para></note>
+     * @param format a known #QmiDeviceExpectedDataFormat.
      */
     setExpectedDataFormat(format: DeviceExpectedDataFormat): boolean
     /**
@@ -23922,10 +25838,16 @@ class Device {
      * 
      * When the operation is finished `callback` will be called. You can then call
      * qmi_device_set_instance_id_finish() to get the result of the operation.
+     * @param instanceId the instance ID.
+     * @param timeout maximum time to wait.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     setInstanceId(instanceId: number, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_set_instance_id().
+     * @param res a #GAsyncResult.
+     * @param linkId a placeholder for the output #guint16, or %NULL if not required.
      */
     setInstanceIdFinish(res: Gio.AsyncResult, linkId: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -23963,6 +25885,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23973,6 +25899,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -23996,6 +25928,7 @@ class Device {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -24015,11 +25948,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -24027,6 +25963,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24044,6 +25982,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -24089,6 +26028,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -24132,15 +26072,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -24181,6 +26126,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -24215,6 +26161,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -24255,16 +26202,21 @@ class Device {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     initAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     initFinish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     newFinish(res: Gio.AsyncResult): GObject.Object
     /* Signals of Qmi-1.0.Qmi.Device */
@@ -24278,6 +26230,7 @@ class Device {
     emit(sigName: "device-removed"): void
     /**
      * The ::indication signal gets emitted when a QMI indication is received.
+     * @param output A #QmiMessage.
      */
     connect(sigName: "indication", callback: ((output: Uint8Array) => void)): number
     on(sigName: "indication", callback: (output: Uint8Array) => void, after?: boolean): NodeJS.EventEmitter
@@ -24313,12 +26266,28 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::device-file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::device-file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::device-no-file-check", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-no-file-check", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::device-no-file-check", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::device-no-file-check", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::device-no-file-check", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::device-proxy-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::device-proxy-path", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::device-proxy-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::device-proxy-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::device-proxy-path", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::device-wwan-iface", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::device-wwan-iface", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::device-wwan-iface", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -24343,6 +26312,12 @@ class Device {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param objectType a #GType supporting #GAsyncInitable.
+     * @param nParameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newvAsync(objectType: GObject.Type, nParameters: number, parameters: GObject.Parameter, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -24353,7 +26328,7 @@ class Proxy {
     /* Properties of Qmi-1.0.Qmi.Proxy */
     readonly qmiProxyNClients: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Qmi-1.0.Qmi.Proxy */
     /**
      * Get the number of clients currently connected to the proxy.
@@ -24394,6 +26369,10 @@ class Proxy {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24404,6 +26383,12 @@ class Proxy {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -24427,6 +26412,7 @@ class Proxy {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -24446,11 +26432,14 @@ class Proxy {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -24458,6 +26447,8 @@ class Proxy {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24475,6 +26466,7 @@ class Proxy {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -24520,6 +26512,7 @@ class Proxy {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -24563,15 +26556,20 @@ class Proxy {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -24612,6 +26610,7 @@ class Proxy {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -24646,6 +26645,7 @@ class Proxy {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -24677,6 +26677,7 @@ class Proxy {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -24704,7 +26705,7 @@ class Proxy {
 }
 abstract class ClientClass {
     /* Fields of Qmi-1.0.Qmi.ClientClass */
-    readonly processIndication: (self: Client, message: Message) => void
+    processIndication: (self: Client, message: Message) => void
     static name: string
 }
 abstract class ClientDmsClass {
@@ -24778,15 +26779,15 @@ class DeviceServiceVersionInfo {
     /**
      * a #QmiService.
      */
-    readonly service: Service
+    service: Service
     /**
      * major version of the service.
      */
-    readonly majorVersion: number
+    majorVersion: number
     /**
      * minor version of the service.
      */
-    readonly minorVersion: number
+    minorVersion: number
     static name: string
 }
 class IndicationDmsEventReportOutput {
@@ -25014,8 +27015,11 @@ class IndicationLocGnssSvInfoOutput {
     getAltitudeAssumed(): [ /* returnType */ boolean, /* valueAltitudeAssumed */ boolean | null ]
     /**
      * Get the 'List' field from `self`.
+     * 
+     * Version of qmi_indication_loc_gnss_sv_info_output_get_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getList(): [ /* returnType */ boolean, /* valueList */ IndicationLocGnssSvInfoOutputListElement[] | null ]
+    getList(): [ /* returnType */ boolean, /* valueListPtr */ IndicationLocGnssSvInfoOutputListElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -25032,39 +27036,39 @@ class IndicationLocGnssSvInfoOutputListElement {
     /**
      * a #QmiLocSatelliteValidInformation.
      */
-    readonly validInformation: LocSatelliteValidInformation
+    validInformation: LocSatelliteValidInformation
     /**
      * a #QmiLocSystem.
      */
-    readonly system: LocSystem
+    system: LocSystem
     /**
      * a #guint16.
      */
-    readonly gnssSatelliteId: number
+    gnssSatelliteId: number
     /**
      * a #QmiLocHealthStatus.
      */
-    readonly healthStatus: LocHealthStatus
+    healthStatus: LocHealthStatus
     /**
      * a #QmiLocSatelliteStatus.
      */
-    readonly satelliteStatus: LocSatelliteStatus
+    satelliteStatus: LocSatelliteStatus
     /**
      * a #QmiLocNavigationData.
      */
-    readonly navigationData: LocNavigationData
+    navigationData: LocNavigationData
     /**
      * a #gfloat.
      */
-    readonly elevationDegrees: number
+    elevationDegrees: number
     /**
      * a #gfloat.
      */
-    readonly azimuthDegrees: number
+    azimuthDegrees: number
     /**
      * a #gfloat.
      */
-    readonly signalToNoiseRatioBhz: number
+    signalToNoiseRatioBhz: number
     static name: string
 }
 class IndicationLocInjectPredictedOrbitsDataOutput {
@@ -25363,8 +27367,11 @@ class IndicationNasEventReportOutput {
     getRegistrationRejectReason(): [ /* returnType */ boolean, /* valueRegistrationRejectReasonServiceDomain */ NasNetworkServiceDomain | null, /* valueRegistrationRejectReasonRejectCause */ number | null ]
     /**
      * Get the 'RF Band Information' field from `self`.
+     * 
+     * Version of qmi_indication_nas_event_report_output_get_rf_band_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRfBandInformation(): [ /* returnType */ boolean, /* valueRfBandInformation */ IndicationNasEventReportOutputRfBandInformationElement[] | null ]
+    getRfBandInformation(): [ /* returnType */ boolean, /* valueRfBandInformationPtr */ IndicationNasEventReportOutputRfBandInformationElement[] | null ]
     /**
      * Get the 'RSRQ' field from `self`.
      */
@@ -25397,15 +27404,15 @@ class IndicationNasEventReportOutputRfBandInformationElement {
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     /**
      * a #QmiNasActiveBand.
      */
-    readonly activeBandClass: NasActiveBand
+    activeBandClass: NasActiveBand
     /**
      * a #guint16.
      */
-    readonly activeChannel: number
+    activeChannel: number
     static name: string
 }
 class IndicationNasNetworkRejectOutput {
@@ -25478,12 +27485,18 @@ class IndicationNasOperatorNameOutput {
     getNitzInformation(): [ /* returnType */ boolean, /* valueNitzInformationNameEncoding */ NasPlmnEncodingScheme | null, /* valueNitzInformationShortCountryInitials */ NasPlmnNameCountryInitials | null, /* valueNitzInformationLongNameSpareBits */ NasPlmnNameSpareBits | null, /* valueNitzInformationShortNameSpareBits */ NasPlmnNameSpareBits | null, /* valueNitzInformationLongName */ Uint8Array | null, /* valueNitzInformationShortName */ Uint8Array | null ]
     /**
      * Get the 'Operator PLMN List' field from `self`.
+     * 
+     * Version of qmi_indication_nas_operator_name_output_get_operator_plmn_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getOperatorPlmnList(): [ /* returnType */ boolean, /* valueOperatorPlmnList */ IndicationNasOperatorNameOutputOperatorPlmnListElement[] | null ]
+    getOperatorPlmnList(): [ /* returnType */ boolean, /* valueOperatorPlmnListPtr */ IndicationNasOperatorNameOutputOperatorPlmnListElement[] | null ]
     /**
      * Get the 'Operator PLMN Name' field from `self`.
+     * 
+     * Version of qmi_indication_nas_operator_name_output_get_operator_plmn_name() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getOperatorPlmnName(): [ /* returnType */ boolean, /* valueOperatorPlmnName */ IndicationNasOperatorNameOutputOperatorPlmnNameElement[] | null ]
+    getOperatorPlmnName(): [ /* returnType */ boolean, /* valueOperatorPlmnNamePtr */ IndicationNasOperatorNameOutputOperatorPlmnNameElement[] | null ]
     /**
      * Get the 'Operator String Name' field from `self`.
      */
@@ -25508,23 +27521,23 @@ class IndicationNasOperatorNameOutputOperatorPlmnListElement {
     /**
      * a string of exactly 3 characters.
      */
-    readonly mcc: string
+    mcc: string
     /**
      * a string of exactly 3 characters.
      */
-    readonly mnc: string
+    mnc: string
     /**
      * a #guint16.
      */
-    readonly lac1: number
+    lac1: number
     /**
      * a #guint16.
      */
-    readonly lac2: number
+    lac2: number
     /**
      * a #guint8.
      */
-    readonly plmnNameRecordIdentifier: number
+    plmnNameRecordIdentifier: number
     static name: string
 }
 class IndicationNasOperatorNameOutputOperatorPlmnNameElement {
@@ -25532,27 +27545,27 @@ class IndicationNasOperatorNameOutputOperatorPlmnNameElement {
     /**
      * a #QmiNasPlmnEncodingScheme.
      */
-    readonly nameEncoding: NasPlmnEncodingScheme
+    nameEncoding: NasPlmnEncodingScheme
     /**
      * a #QmiNasPlmnNameCountryInitials.
      */
-    readonly shortCountryInitials: NasPlmnNameCountryInitials
+    shortCountryInitials: NasPlmnNameCountryInitials
     /**
      * a #QmiNasPlmnNameSpareBits.
      */
-    readonly longNameSpareBits: NasPlmnNameSpareBits
+    longNameSpareBits: NasPlmnNameSpareBits
     /**
      * a #QmiNasPlmnNameSpareBits.
      */
-    readonly shortNameSpareBits: NasPlmnNameSpareBits
+    shortNameSpareBits: NasPlmnNameSpareBits
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly longName: object[]
+    longName: object[]
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly shortName: object[]
+    shortName: object[]
     static name: string
 }
 class IndicationNasServingSystemOutput {
@@ -25647,8 +27660,11 @@ class IndicationNasServingSystemOutput {
     getRoamingIndicator(): [ /* returnType */ boolean, /* valueRoamingIndicator */ NasRoamingIndicatorStatus | null ]
     /**
      * Get the 'Roaming Indicator List' field from `self`.
+     * 
+     * Version of qmi_indication_nas_serving_system_output_get_roaming_indicator_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRoamingIndicatorList(): [ /* returnType */ boolean, /* valueRoamingIndicatorList */ IndicationNasServingSystemOutputRoamingIndicatorListElement[] | null ]
+    getRoamingIndicatorList(): [ /* returnType */ boolean, /* valueRoamingIndicatorListPtr */ IndicationNasServingSystemOutputRoamingIndicatorListElement[] | null ]
     /**
      * Get the 'Serving System' field from `self`.
      */
@@ -25685,11 +27701,11 @@ class IndicationNasServingSystemOutputRoamingIndicatorListElement {
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     /**
      * a #QmiNasRoamingIndicatorStatus.
      */
-    readonly roamingIndicator: NasRoamingIndicatorStatus
+    roamingIndicator: NasRoamingIndicatorStatus
     static name: string
 }
 class IndicationNasSignalInfoOutput {
@@ -26003,8 +28019,11 @@ class IndicationPdcListConfigsOutput {
     /* Methods of Qmi-1.0.Qmi.IndicationPdcListConfigsOutput */
     /**
      * Get the 'Configs' field from `self`.
+     * 
+     * Version of qmi_indication_pdc_list_configs_output_get_configs() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getConfigs(): [ /* returnType */ boolean, /* valueConfigs */ IndicationPdcListConfigsOutputConfigsElement[] | null ]
+    getConfigs(): [ /* returnType */ boolean, /* valueConfigsPtr */ IndicationPdcListConfigsOutputConfigsElement[] | null ]
     /**
      * Get the 'Indication Result' field from `self`.
      */
@@ -26029,11 +28048,11 @@ class IndicationPdcListConfigsOutputConfigsElement {
     /**
      * a #QmiPdcConfigurationType.
      */
-    readonly configType: PdcConfigurationType
+    configType: PdcConfigurationType
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly id: object[]
+    id: object[]
     static name: string
 }
 class IndicationPdcLoadConfigOutput {
@@ -26178,8 +28197,11 @@ class IndicationUimCardStatusOutput {
     /* Methods of Qmi-1.0.Qmi.IndicationUimCardStatusOutput */
     /**
      * Get the 'Card Status' field from `self`.
+     * 
+     * Version of qmi_indication_uim_card_status_output_get_card_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getCardStatus(): [ /* returnType */ boolean, /* valueCardStatusIndexGwPrimary */ number | null, /* valueCardStatusIndex1xPrimary */ number | null, /* valueCardStatusIndexGwSecondary */ number | null, /* valueCardStatusIndex1xSecondary */ number | null, /* valueCardStatusCards */ IndicationUimCardStatusOutputCardStatusCardsElement[] | null ]
+    getCardStatus(): [ /* returnType */ boolean, /* valueCardStatusIndexGwPrimary */ number | null, /* valueCardStatusIndex1xPrimary */ number | null, /* valueCardStatusIndexGwSecondary */ number | null, /* valueCardStatusIndex1xSecondary */ number | null, /* valueCardStatusCardsPtr */ IndicationUimCardStatusOutputCardStatusCardsElementGir[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -26196,27 +28218,27 @@ class IndicationUimCardStatusOutputCardStatusCardsElement {
     /**
      * a #QmiUimCardState.
      */
-    readonly cardState: UimCardState
+    cardState: UimCardState
     /**
      * a #QmiUimPinState.
      */
-    readonly upinState: UimPinState
+    upinState: UimPinState
     /**
      * a #guint8.
      */
-    readonly upinRetries: number
+    upinRetries: number
     /**
      * a #guint8.
      */
-    readonly upukRetries: number
+    upukRetries: number
     /**
      * a #QmiUimCardError.
      */
-    readonly errorCode: UimCardError
+    errorCode: UimCardError
     /**
      * a #GArray of #QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement elements.
      */
-    readonly applications: object[]
+    applications: object[]
     static name: string
 }
 class IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement {
@@ -26224,67 +28246,98 @@ class IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement {
     /**
      * a #QmiUimCardApplicationType.
      */
-    readonly type: UimCardApplicationType
+    type: UimCardApplicationType
     /**
      * a #QmiUimCardApplicationState.
      */
-    readonly state: UimCardApplicationState
+    state: UimCardApplicationState
     /**
      * a #QmiUimCardApplicationPersonalizationState.
      */
-    readonly personalizationState: UimCardApplicationPersonalizationState
+    personalizationState: UimCardApplicationPersonalizationState
     /**
      * a #QmiUimCardApplicationPersonalizationFeature.
      */
-    readonly personalizationFeature: UimCardApplicationPersonalizationFeature
+    personalizationFeature: UimCardApplicationPersonalizationFeature
     /**
      * a #guint8.
      */
-    readonly personalizationRetries: number
+    personalizationRetries: number
     /**
      * a #guint8.
      */
-    readonly personalizationUnblockRetries: number
+    personalizationUnblockRetries: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly applicationIdentifierValue: object[]
+    applicationIdentifierValue: object[]
     /**
      * a #gboolean.
      */
-    readonly upinReplacesPin1: boolean
+    upinReplacesPin1: boolean
     /**
      * a #QmiUimPinState.
      */
-    readonly pin1State: UimPinState
+    pin1State: UimPinState
     /**
      * a #guint8.
      */
-    readonly pin1Retries: number
+    pin1Retries: number
     /**
      * a #guint8.
      */
-    readonly puk1Retries: number
+    puk1Retries: number
     /**
      * a #QmiUimPinState.
      */
-    readonly pin2State: UimPinState
+    pin2State: UimPinState
     /**
      * a #guint8.
      */
-    readonly pin2Retries: number
+    pin2Retries: number
     /**
      * a #guint8.
      */
-    readonly puk2Retries: number
+    puk2Retries: number
+    static name: string
+}
+class IndicationUimCardStatusOutputCardStatusCardsElementGir {
+    /* Fields of Qmi-1.0.Qmi.IndicationUimCardStatusOutputCardStatusCardsElementGir */
+    /**
+     * a #QmiUimCardState.
+     */
+    cardState: UimCardState
+    /**
+     * a #QmiUimPinState.
+     */
+    upinState: UimPinState
+    /**
+     * a #guint8.
+     */
+    upinRetries: number
+    /**
+     * a #guint8.
+     */
+    upukRetries: number
+    /**
+     * a #QmiUimCardError.
+     */
+    errorCode: UimCardError
+    /**
+     * an array of #QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement elements.
+     */
+    applications: IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElement[]
     static name: string
 }
 class IndicationUimRefreshOutput {
     /* Methods of Qmi-1.0.Qmi.IndicationUimRefreshOutput */
     /**
      * Get the 'Event' field from `self`.
+     * 
+     * Version of qmi_indication_uim_refresh_output_get_event() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getEvent(): [ /* returnType */ boolean, /* valueEventStage */ UimRefreshStage | null, /* valueEventMode */ UimRefreshMode | null, /* valueEventSessionType */ UimSessionType | null, /* valueEventApplicationIdentifier */ Uint8Array | null, /* valueEventFiles */ IndicationUimRefreshOutputEventFilesElement[] | null ]
+    getEvent(): [ /* returnType */ boolean, /* valueEventStage */ UimRefreshStage | null, /* valueEventMode */ UimRefreshMode | null, /* valueEventSessionType */ UimSessionType | null, /* valueEventApplicationIdentifier */ Uint8Array | null, /* valueEventFilesPtr */ IndicationUimRefreshOutputEventFilesElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -26301,11 +28354,11 @@ class IndicationUimRefreshOutputEventFilesElement {
     /**
      * a #guint16.
      */
-    readonly fileId: number
+    fileId: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly path: object[]
+    path: object[]
     static name: string
 }
 class IndicationUimSlotStatusOutput {
@@ -26313,16 +28366,25 @@ class IndicationUimSlotStatusOutput {
     getCompatContext(): object | null
     /**
      * Get the 'Physical Slot Information' field from `self`.
+     * 
+     * Version of qmi_indication_uim_slot_status_output_get_physical_slot_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPhysicalSlotInformation(): [ /* returnType */ boolean, /* valuePhysicalSlotInformation */ PhysicalSlotInformationSlot[] | null ]
+    getPhysicalSlotInformation(): [ /* returnType */ boolean, /* valuePhysicalSlotInformationPtr */ PhysicalSlotInformationSlot[] | null ]
     /**
      * Get the 'Physical Slot Status' field from `self`.
+     * 
+     * Version of qmi_indication_uim_slot_status_output_get_physical_slot_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPhysicalSlotStatus(): [ /* returnType */ boolean, /* valuePhysicalSlotStatus */ PhysicalSlotStatusSlot[] | null ]
+    getPhysicalSlotStatus(): [ /* returnType */ boolean, /* valuePhysicalSlotStatusPtr */ PhysicalSlotStatusSlot[] | null ]
     /**
      * Get the 'Slot EID' field from `self`.
+     * 
+     * Version of qmi_indication_uim_slot_status_output_get_slot_eid() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getSlotEid(): [ /* returnType */ boolean, /* valueSlotEid */ SlotEidElement[] | null ]
+    getSlotEid(): [ /* returnType */ boolean, /* valueSlotEidPtr */ SlotEidElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -26339,12 +28401,18 @@ class IndicationVoiceAllCallStatusOutput {
     /* Methods of Qmi-1.0.Qmi.IndicationVoiceAllCallStatusOutput */
     /**
      * Get the 'Call Information' field from `self`.
+     * 
+     * Version of qmi_indication_voice_all_call_status_output_get_call_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getCallInformation(): [ /* returnType */ boolean, /* valueCallInformation */ IndicationVoiceAllCallStatusOutputCallInformationCall[] | null ]
+    getCallInformation(): [ /* returnType */ boolean, /* valueCallInformationPtr */ IndicationVoiceAllCallStatusOutputCallInformationCall[] | null ]
     /**
      * Get the 'Remote Party Number' field from `self`.
+     * 
+     * Version of qmi_indication_voice_all_call_status_output_get_remote_party_number() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRemotePartyNumber(): [ /* returnType */ boolean, /* valueRemotePartyNumber */ IndicationVoiceAllCallStatusOutputRemotePartyNumberCall[] | null ]
+    getRemotePartyNumber(): [ /* returnType */ boolean, /* valueRemotePartyNumberPtr */ IndicationVoiceAllCallStatusOutputRemotePartyNumberCall[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -26361,31 +28429,31 @@ class IndicationVoiceAllCallStatusOutputCallInformationCall {
     /**
      * a #guint8.
      */
-    readonly id: number
+    id: number
     /**
      * a #QmiVoiceCallState.
      */
-    readonly state: VoiceCallState
+    state: VoiceCallState
     /**
      * a #QmiVoiceCallType.
      */
-    readonly type: VoiceCallType
+    type: VoiceCallType
     /**
      * a #QmiVoiceCallDirection.
      */
-    readonly direction: VoiceCallDirection
+    direction: VoiceCallDirection
     /**
      * a #QmiVoiceCallMode.
      */
-    readonly mode: VoiceCallMode
+    mode: VoiceCallMode
     /**
      * a #gboolean.
      */
-    readonly multipartIndicator: boolean
+    multipartIndicator: boolean
     /**
      * a #QmiVoiceAls.
      */
-    readonly als: VoiceAls
+    als: VoiceAls
     static name: string
 }
 class IndicationVoiceAllCallStatusOutputRemotePartyNumberCall {
@@ -26393,15 +28461,15 @@ class IndicationVoiceAllCallStatusOutputRemotePartyNumberCall {
     /**
      * a #guint8.
      */
-    readonly id: number
+    id: number
     /**
      * a #QmiVoicePresentation.
      */
-    readonly presentationIndicator: VoicePresentation
+    presentationIndicator: VoicePresentation
     /**
      * a string.
      */
-    readonly type: string
+    type: string
     static name: string
 }
 class IndicationVoiceOriginateUssdNoWaitOutput {
@@ -26507,8 +28575,11 @@ class IndicationWdsEventReportOutput {
     getDataCallType(): [ /* returnType */ boolean, /* valueDataCallTypeDataCallType */ WdsDataCallType | null, /* valueDataCallTypeTetheredCallType */ WdsTetheredCallType | null ]
     /**
      * Get the 'Data Systems' field from `self`.
+     * 
+     * Version of qmi_indication_wds_event_report_output_get_data_systems() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getDataSystems(): [ /* returnType */ boolean, /* valueDataSystemsPreferredNetworkType */ WdsDataSystemNetworkType | null, /* valueDataSystemsNetworks */ IndicationWdsEventReportOutputDataSystemsNetworksNetwork[] | null ]
+    getDataSystems(): [ /* returnType */ boolean, /* valueDataSystemsPreferredNetworkType */ WdsDataSystemNetworkType | null, /* valueDataSystemsNetworksPtr */ IndicationWdsEventReportOutputDataSystemsNetworksNetwork[] | null ]
     /**
      * Get the 'Dormancy Status' field from `self`.
      */
@@ -26593,15 +28664,15 @@ class IndicationWdsEventReportOutputDataSystemsNetworksNetwork {
     /**
      * a #QmiWdsDataSystemNetworkType.
      */
-    readonly networkType: WdsDataSystemNetworkType
+    networkType: WdsDataSystemNetworkType
     /**
      * a #guint32.
      */
-    readonly ratMask: number
+    ratMask: number
     /**
      * a #guint32.
      */
-    readonly soMask: number
+    soMask: number
     static name: string
 }
 class IndicationWdsPacketServiceStatusOutput {
@@ -26728,6 +28799,7 @@ class MessageContext {
     ref(): MessageContext
     /**
      * Sets the vendor ID associated to the message.
+     * @param vendorId the vendor ID.
      */
     setVendorId(vendorId: number): void
     /**
@@ -26753,6 +28825,7 @@ class MessageDmsActivateAutomaticInput {
     ref(): MessageDmsActivateAutomaticInput
     /**
      * Set the 'Activation Code' field in the message.
+     * @param valueActivationCode a constant string.
      */
     setActivationCode(valueActivationCode: string): boolean
     /**
@@ -26807,18 +28880,27 @@ class MessageDmsActivateManualInput {
     ref(): MessageDmsActivateManualInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoServiceProgrammingCode a constant string of exactly 6 characters.
+     * @param valueInfoSystemIdentificationNumber a #guint16.
+     * @param valueInfoMobileDirectoryNumber a constant string with a maximum length of 15 characters.
+     * @param valueInfoMobileIdentificationNumber a constant string with a maximum length of 15 characters.
      */
     setInfo(valueInfoServiceProgrammingCode: string, valueInfoSystemIdentificationNumber: number, valueInfoMobileDirectoryNumber: string, valueInfoMobileIdentificationNumber: string): boolean
     /**
      * Set the 'MN AAA key' field in the message.
+     * @param valueMnAaaKey a constant string with a maximum length of 16 characters.
      */
     setMnAaaKey(valueMnAaaKey: string): boolean
     /**
      * Set the 'MN HA key' field in the message.
+     * @param valueMnHaKey a constant string with a maximum length of 16 characters.
      */
     setMnHaKey(valueMnHaKey: string): boolean
     /**
      * Set the 'PRL' field in the message.
+     * @param valuePrlPrlTotalLength a #guint16.
+     * @param valuePrlPrlSegmentSequence the sequence number.
+     * @param valuePrlPrlSegment a #GArray of #guint8 elements. A new reference to `value_prl_prl_segment` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setPrl(valuePrlPrlTotalLength: number, valuePrlPrlSegmentSequence: number, valuePrlPrlSegment: Uint8Array): boolean
     /**
@@ -26861,6 +28943,9 @@ class MessageDmsDeleteStoredImageInput {
     ref(): MessageDmsDeleteStoredImageInput
     /**
      * Set the 'Image Details' field in the message.
+     * @param valueImageDetailsType a #QmiDmsFirmwareImageType.
+     * @param valueImageDetailsUniqueId a #GArray of #guint8 elements. A new reference to `value_image_details_unique_id` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
+     * @param valueImageDetailsBuildId a constant string.
      */
     setImageDetails(valueImageDetailsType: DmsFirmwareImageType, valueImageDetailsUniqueId: Uint8Array, valueImageDetailsBuildId: string): boolean
     /**
@@ -26903,6 +28988,7 @@ class MessageDmsFoxconnChangeDeviceModeInput {
     ref(): MessageDmsFoxconnChangeDeviceModeInput
     /**
      * Set the 'Mode' field in the message.
+     * @param valueMode a #QmiDmsFoxconnDeviceMode.
      */
     setMode(valueMode: DmsFoxconnDeviceMode): boolean
     /**
@@ -26945,6 +29031,7 @@ class MessageDmsFoxconnGetFirmwareVersionInput {
     ref(): MessageDmsFoxconnGetFirmwareVersionInput
     /**
      * Set the 'Version Type' field in the message.
+     * @param valueVersionType a #QmiDmsFoxconnFirmwareVersionType.
      */
     setVersionType(valueVersionType: DmsFoxconnFirmwareVersionType): boolean
     /**
@@ -26991,6 +29078,7 @@ class MessageDmsFoxconnSetFccAuthenticationInput {
     ref(): MessageDmsFoxconnSetFccAuthenticationInput
     /**
      * Set the 'Value' field in the message.
+     * @param valueValue a #guint8.
      */
     setValue(valueValue: number): boolean
     /**
@@ -27163,8 +29251,11 @@ class MessageDmsGetFirmwarePreferenceOutput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsGetFirmwarePreferenceOutput */
     /**
      * Get the 'List' field from `self`.
+     * 
+     * Version of qmi_message_dms_get_firmware_preference_output_get_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getList(): [ /* returnType */ boolean, /* valueList */ MessageDmsGetFirmwarePreferenceOutputListImage[] | null ]
+    getList(): [ /* returnType */ boolean, /* valueListPtr */ MessageDmsGetFirmwarePreferenceOutputListImage[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -27185,15 +29276,15 @@ class MessageDmsGetFirmwarePreferenceOutputListImage {
     /**
      * a #QmiDmsFirmwareImageType.
      */
-    readonly type: DmsFirmwareImageType
+    type: DmsFirmwareImageType
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly uniqueId: object[]
+    uniqueId: object[]
     /**
      * a string.
      */
-    readonly buildId: string
+    buildId: string
     static name: string
 }
 class MessageDmsGetHardwareRevisionOutput {
@@ -27262,6 +29353,7 @@ class MessageDmsGetMacAddressInput {
     ref(): MessageDmsGetMacAddressInput
     /**
      * Set the 'Device' field in the message.
+     * @param valueDevice a #QmiDmsMacType.
      */
     setDevice(valueDevice: DmsMacType): boolean
     /**
@@ -27488,6 +29580,9 @@ class MessageDmsGetStoredImageInfoInput {
     ref(): MessageDmsGetStoredImageInfoInput
     /**
      * Set the 'Image Details' field in the message.
+     * @param valueImageDetailsType a #QmiDmsFirmwareImageType.
+     * @param valueImageDetailsUniqueId a #GArray of #guint8 elements. A new reference to `value_image_details_unique_id` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
+     * @param valueImageDetailsBuildId a constant string.
      */
     setImageDetails(valueImageDetailsType: DmsFirmwareImageType, valueImageDetailsUniqueId: Uint8Array, valueImageDetailsBuildId: string): boolean
     /**
@@ -27613,6 +29708,7 @@ class MessageDmsHpChangeDeviceModeInput {
     ref(): MessageDmsHpChangeDeviceModeInput
     /**
      * Set the 'Mode' field in the message.
+     * @param valueMode a #QmiDmsHpDeviceMode.
      */
     setMode(valueMode: DmsHpDeviceMode): boolean
     /**
@@ -27647,8 +29743,11 @@ class MessageDmsListStoredImagesOutput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsListStoredImagesOutput */
     /**
      * Get the 'List' field from `self`.
+     * 
+     * Version of qmi_message_dms_list_stored_images_output_get_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getList(): [ /* returnType */ boolean, /* valueList */ MessageDmsListStoredImagesOutputListImage[] | null ]
+    getList(): [ /* returnType */ boolean, /* valueListPtr */ MessageDmsListStoredImagesOutputListImageGir[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -27669,19 +29768,39 @@ class MessageDmsListStoredImagesOutputListImage {
     /**
      * a #QmiDmsFirmwareImageType.
      */
-    readonly type: DmsFirmwareImageType
+    type: DmsFirmwareImageType
     /**
      * a #guint8.
      */
-    readonly maximumImages: number
+    maximumImages: number
     /**
      * a #guint8.
      */
-    readonly indexOfRunningImage: number
+    indexOfRunningImage: number
     /**
      * a #GArray of #QmiMessageDmsListStoredImagesOutputListImageSublistSublistElement elements.
      */
-    readonly sublist: object[]
+    sublist: object[]
+    static name: string
+}
+class MessageDmsListStoredImagesOutputListImageGir {
+    /* Fields of Qmi-1.0.Qmi.MessageDmsListStoredImagesOutputListImageGir */
+    /**
+     * a #QmiDmsFirmwareImageType.
+     */
+    type: DmsFirmwareImageType
+    /**
+     * a #guint8.
+     */
+    maximumImages: number
+    /**
+     * a #guint8.
+     */
+    indexOfRunningImage: number
+    /**
+     * an array of #QmiMessageDmsListStoredImagesOutputListImageSublistSublistElement elements.
+     */
+    sublist: MessageDmsListStoredImagesOutputListImageSublistSublistElement[]
     static name: string
 }
 class MessageDmsListStoredImagesOutputListImageSublistSublistElement {
@@ -27689,19 +29808,19 @@ class MessageDmsListStoredImagesOutputListImageSublistSublistElement {
     /**
      * a #guint8.
      */
-    readonly storageIndex: number
+    storageIndex: number
     /**
      * a #guint8.
      */
-    readonly failureCount: number
+    failureCount: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly uniqueId: object[]
+    uniqueId: object[]
     /**
      * a string.
      */
-    readonly buildId: string
+    buildId: string
     static name: string
 }
 class MessageDmsReadEriFileOutput {
@@ -27775,6 +29894,7 @@ class MessageDmsRestoreFactoryDefaultsInput {
     ref(): MessageDmsRestoreFactoryDefaultsInput
     /**
      * Set the 'Service Programming Code' field in the message.
+     * @param valueServiceProgrammingCode a constant string of exactly 6 characters.
      */
     setServiceProgrammingCode(valueServiceProgrammingCode: string): boolean
     /**
@@ -27817,6 +29937,7 @@ class MessageDmsSetAltNetConfigInput {
     ref(): MessageDmsSetAltNetConfigInput
     /**
      * Set the 'Config' field in the message.
+     * @param valueConfig a #gboolean.
      */
     setConfig(valueConfig: boolean): boolean
     /**
@@ -27859,6 +29980,7 @@ class MessageDmsSetBootImageDownloadModeInput {
     ref(): MessageDmsSetBootImageDownloadModeInput
     /**
      * Set the 'Mode' field in the message.
+     * @param valueMode a #QmiDmsBootImageDownloadMode.
      */
     setMode(valueMode: DmsBootImageDownloadMode): boolean
     /**
@@ -27929,34 +30051,43 @@ class MessageDmsSetEventReportInput {
     ref(): MessageDmsSetEventReportInput
     /**
      * Set the 'Activation State Reporting' field in the message.
+     * @param valueActivationStateReporting a #gboolean.
      */
     setActivationStateReporting(valueActivationStateReporting: boolean): boolean
     /**
      * Set the 'Battery Level Report Limits' field in the message.
+     * @param valueBatteryLevelReportLimitsLowerLimit a #guint8.
+     * @param valueBatteryLevelReportLimitsUpperLimit a #guint8.
      */
     setBatteryLevelReportLimits(valueBatteryLevelReportLimitsLowerLimit: number, valueBatteryLevelReportLimitsUpperLimit: number): boolean
     /**
      * Set the 'Operating Mode Reporting' field in the message.
+     * @param valueOperatingModeReporting a #gboolean.
      */
     setOperatingModeReporting(valueOperatingModeReporting: boolean): boolean
     /**
      * Set the 'PIN State Reporting' field in the message.
+     * @param valuePinStateReporting a #gboolean.
      */
     setPinStateReporting(valuePinStateReporting: boolean): boolean
     /**
      * Set the 'Power State Reporting' field in the message.
+     * @param valuePowerStateReporting a #gboolean.
      */
     setPowerStateReporting(valuePowerStateReporting: boolean): boolean
     /**
      * Set the 'PRL Init Reporting' field in the message.
+     * @param valuePrlInitReporting a #gboolean.
      */
     setPrlInitReporting(valuePrlInitReporting: boolean): boolean
     /**
      * Set the 'UIM State Reporting' field in the message.
+     * @param valueUimStateReporting a #gboolean.
      */
     setUimStateReporting(valueUimStateReporting: boolean): boolean
     /**
      * Set the 'Wireless Disable State Reporting' field in the message.
+     * @param valueWirelessDisableStateReporting a #gboolean.
      */
     setWirelessDisableStateReporting(valueWirelessDisableStateReporting: boolean): boolean
     /**
@@ -28029,8 +30160,11 @@ class MessageDmsSetFirmwarePreferenceInput {
     getDownloadOverride(): [ /* returnType */ boolean, /* valueDownloadOverride */ boolean | null ]
     /**
      * Get the 'List' field from `self`.
+     * 
+     * Version of qmi_message_dms_set_firmware_preference_input_get_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getList(): [ /* returnType */ boolean, /* valueList */ MessageDmsSetFirmwarePreferenceInputListImage[] | null ]
+    getList(): [ /* returnType */ boolean, /* valueListPtr */ MessageDmsSetFirmwarePreferenceInputListImage[] | null ]
     /**
      * Get the 'Modem Storage Index' field from `self`.
      */
@@ -28041,14 +30175,17 @@ class MessageDmsSetFirmwarePreferenceInput {
     ref(): MessageDmsSetFirmwarePreferenceInput
     /**
      * Set the 'Download Override' field in the message.
+     * @param valueDownloadOverride a #gboolean.
      */
     setDownloadOverride(valueDownloadOverride: boolean): boolean
     /**
      * Set the 'List' field in the message.
+     * @param valueListPtr array of #QmiMessageDmsSetFirmwarePreferenceInputListImage elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setList(valueList: MessageDmsSetFirmwarePreferenceInputListImage[]): boolean
+    setList(valueListPtr: MessageDmsSetFirmwarePreferenceInputListImage[]): boolean
     /**
      * Set the 'Modem Storage Index' field in the message.
+     * @param valueModemStorageIndex a #guint8.
      */
     setModemStorageIndex(valueModemStorageIndex: number): boolean
     /**
@@ -28067,15 +30204,15 @@ class MessageDmsSetFirmwarePreferenceInputListImage {
     /**
      * a #QmiDmsFirmwareImageType.
      */
-    readonly type: DmsFirmwareImageType
+    type: DmsFirmwareImageType
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly uniqueId: object[]
+    uniqueId: object[]
     /**
      * a string.
      */
-    readonly buildId: string
+    buildId: string
     static name: string
 }
 class MessageDmsSetFirmwarePreferenceOutput {
@@ -28111,6 +30248,7 @@ class MessageDmsSetOperatingModeInput {
     ref(): MessageDmsSetOperatingModeInput
     /**
      * Set the 'Mode' field in the message.
+     * @param valueMode a #QmiDmsOperatingMode.
      */
     setMode(valueMode: DmsOperatingMode): boolean
     /**
@@ -28157,10 +30295,12 @@ class MessageDmsSetServiceProgrammingCodeInput {
     ref(): MessageDmsSetServiceProgrammingCodeInput
     /**
      * Set the 'Current Code' field in the message.
+     * @param valueCurrentCode a constant string of exactly 6 characters.
      */
     setCurrentCode(valueCurrentCode: string): boolean
     /**
      * Set the 'New Code' field in the message.
+     * @param valueNewCode a constant string of exactly 6 characters.
      */
     setNewCode(valueNewCode: string): boolean
     /**
@@ -28207,10 +30347,12 @@ class MessageDmsSetTimeInput {
     ref(): MessageDmsSetTimeInput
     /**
      * Set the 'Time Reference Type' field in the message.
+     * @param valueTimeReferenceType a #QmiDmsTimeReferenceType.
      */
     setTimeReferenceType(valueTimeReferenceType: DmsTimeReferenceType): boolean
     /**
      * Set the 'Time Value' field in the message.
+     * @param valueTimeValue a #guint64.
      */
     setTimeValue(valueTimeValue: number): boolean
     /**
@@ -28253,6 +30395,8 @@ class MessageDmsSetUserLockCodeInput {
     ref(): MessageDmsSetUserLockCodeInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoOldCode a constant string of exactly 4 characters.
+     * @param valueInfoNewCode a constant string of exactly 4 characters.
      */
     setInfo(valueInfoOldCode: string, valueInfoNewCode: string): boolean
     /**
@@ -28295,6 +30439,8 @@ class MessageDmsSetUserLockStateInput {
     ref(): MessageDmsSetUserLockStateInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoEnabled a #gboolean.
+     * @param valueInfoLockCode a constant string of exactly 4 characters.
      */
     setInfo(valueInfoEnabled: boolean, valueInfoLockCode: string): boolean
     /**
@@ -28415,6 +30561,7 @@ class MessageDmsSwiSetUsbCompositionInput {
     ref(): MessageDmsSwiSetUsbCompositionInput
     /**
      * Set the 'Current' field in the message.
+     * @param valueCurrent a #QmiDmsSwiUsbComposition.
      */
     setCurrent(valueCurrent: DmsSwiUsbComposition): boolean
     /**
@@ -28457,6 +30604,9 @@ class MessageDmsUimChangePinInput {
     ref(): MessageDmsUimChangePinInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiDmsUimPinId.
+     * @param valueInfoOldPin a constant string.
+     * @param valueInfoNewPin a constant string.
      */
     setInfo(valueInfoPinId: DmsUimPinId, valueInfoOldPin: string, valueInfoNewPin: string): boolean
     /**
@@ -28503,6 +30653,7 @@ class MessageDmsUimGetCkStatusInput {
     ref(): MessageDmsUimGetCkStatusInput
     /**
      * Set the 'Facility' field in the message.
+     * @param valueFacility a #QmiDmsUimFacility.
      */
     setFacility(valueFacility: DmsUimFacility): boolean
     /**
@@ -28641,6 +30792,9 @@ class MessageDmsUimSetCkProtectionInput {
     ref(): MessageDmsUimSetCkProtectionInput
     /**
      * Set the 'Facility' field in the message.
+     * @param valueFacilityFacility a #QmiDmsUimFacility.
+     * @param valueFacilityFacilityState a #QmiDmsUimFacilityState.
+     * @param valueFacilityFacilityDepersonalizationControlKey a constant string.
      */
     setFacility(valueFacilityFacility: DmsUimFacility, valueFacilityFacilityState: DmsUimFacilityState, valueFacilityFacilityDepersonalizationControlKey: string): boolean
     /**
@@ -28687,6 +30841,9 @@ class MessageDmsUimSetPinProtectionInput {
     ref(): MessageDmsUimSetPinProtectionInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiDmsUimPinId.
+     * @param valueInfoProtectionEnabled a #gboolean.
+     * @param valueInfoPin a constant string.
      */
     setInfo(valueInfoPinId: DmsUimPinId, valueInfoProtectionEnabled: boolean, valueInfoPin: string): boolean
     /**
@@ -28733,6 +30890,8 @@ class MessageDmsUimUnblockCkInput {
     ref(): MessageDmsUimUnblockCkInput
     /**
      * Set the 'Facility' field in the message.
+     * @param valueFacilityFacility a #QmiDmsUimFacility.
+     * @param valueFacilityFacilityControlKey a constant string.
      */
     setFacility(valueFacilityFacility: DmsUimFacility, valueFacilityFacilityControlKey: string): boolean
     /**
@@ -28779,6 +30938,9 @@ class MessageDmsUimUnblockPinInput {
     ref(): MessageDmsUimUnblockPinInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiDmsUimPinId.
+     * @param valueInfoPuk a constant string.
+     * @param valueInfoNewPin a constant string.
      */
     setInfo(valueInfoPinId: DmsUimPinId, valueInfoPuk: string, valueInfoNewPin: string): boolean
     /**
@@ -28825,6 +30987,8 @@ class MessageDmsUimVerifyPinInput {
     ref(): MessageDmsUimVerifyPinInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiDmsUimPinId.
+     * @param valueInfoPin a constant string.
      */
     setInfo(valueInfoPinId: DmsUimPinId, valueInfoPin: string): boolean
     /**
@@ -28871,6 +31035,7 @@ class MessageDmsValidateServiceProgrammingCodeInput {
     ref(): MessageDmsValidateServiceProgrammingCodeInput
     /**
      * Set the 'Service Programming Code' field in the message.
+     * @param valueServiceProgrammingCode a constant string of exactly 6 characters.
      */
     setServiceProgrammingCode(valueServiceProgrammingCode: string): boolean
     /**
@@ -28913,6 +31078,7 @@ class MessageDmsWriteUserDataInput {
     ref(): MessageDmsWriteUserDataInput
     /**
      * Set the 'User Data' field in the message.
+     * @param valueUserData a #GArray of #guint8 elements. A new reference to `value_user_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setUserData(valueUserData: Uint8Array): boolean
     /**
@@ -28964,32 +31130,44 @@ class MessageDpmOpenPortInput {
     /* Methods of Qmi-1.0.Qmi.MessageDpmOpenPortInput */
     /**
      * Get the 'Control Ports' field from `self`.
+     * 
+     * Version of qmi_message_dpm_open_port_input_get_control_ports() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getControlPorts(): [ /* returnType */ boolean, /* valueControlPorts */ MessageDpmOpenPortInputControlPortsElement[] | null ]
+    getControlPorts(): [ /* returnType */ boolean, /* valueControlPortsPtr */ MessageDpmOpenPortInputControlPortsElement[] | null ]
     /**
      * Get the 'Hardware Data Ports' field from `self`.
+     * 
+     * Version of qmi_message_dpm_open_port_input_get_hardware_data_ports() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getHardwareDataPorts(): [ /* returnType */ boolean, /* valueHardwareDataPorts */ MessageDpmOpenPortInputHardwareDataPortsElement[] | null ]
+    getHardwareDataPorts(): [ /* returnType */ boolean, /* valueHardwareDataPortsPtr */ MessageDpmOpenPortInputHardwareDataPortsElement[] | null ]
     /**
      * Get the 'Software Data Ports' field from `self`.
+     * 
+     * Version of qmi_message_dpm_open_port_input_get_software_data_ports() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getSoftwareDataPorts(): [ /* returnType */ boolean, /* valueSoftwareDataPorts */ MessageDpmOpenPortInputSoftwareDataPortsElement[] | null ]
+    getSoftwareDataPorts(): [ /* returnType */ boolean, /* valueSoftwareDataPortsPtr */ MessageDpmOpenPortInputSoftwareDataPortsElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageDpmOpenPortInput
     /**
      * Set the 'Control Ports' field in the message.
+     * @param valueControlPortsPtr array of #QmiMessageDpmOpenPortInputControlPortsElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setControlPorts(valueControlPorts: MessageDpmOpenPortInputControlPortsElement[]): boolean
+    setControlPorts(valueControlPortsPtr: MessageDpmOpenPortInputControlPortsElement[]): boolean
     /**
      * Set the 'Hardware Data Ports' field in the message.
+     * @param valueHardwareDataPortsPtr array of #QmiMessageDpmOpenPortInputHardwareDataPortsElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setHardwareDataPorts(valueHardwareDataPorts: MessageDpmOpenPortInputHardwareDataPortsElement[]): boolean
+    setHardwareDataPorts(valueHardwareDataPortsPtr: MessageDpmOpenPortInputHardwareDataPortsElement[]): boolean
     /**
      * Set the 'Software Data Ports' field in the message.
+     * @param valueSoftwareDataPortsPtr array of #QmiMessageDpmOpenPortInputSoftwareDataPortsElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setSoftwareDataPorts(valueSoftwareDataPorts: MessageDpmOpenPortInputSoftwareDataPortsElement[]): boolean
+    setSoftwareDataPorts(valueSoftwareDataPortsPtr: MessageDpmOpenPortInputSoftwareDataPortsElement[]): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -29006,15 +31184,15 @@ class MessageDpmOpenPortInputControlPortsElement {
     /**
      * a string.
      */
-    readonly portName: string
+    portName: string
     /**
      * a #QmiDataEndpointType.
      */
-    readonly endpointType: DataEndpointType
+    endpointType: DataEndpointType
     /**
      * a #guint32.
      */
-    readonly interfaceNumber: number
+    interfaceNumber: number
     static name: string
 }
 class MessageDpmOpenPortInputHardwareDataPortsElement {
@@ -29022,19 +31200,19 @@ class MessageDpmOpenPortInputHardwareDataPortsElement {
     /**
      * a #QmiDataEndpointType.
      */
-    readonly endpointType: DataEndpointType
+    endpointType: DataEndpointType
     /**
      * a #guint32.
      */
-    readonly interfaceNumber: number
+    interfaceNumber: number
     /**
      * a #guint32.
      */
-    readonly rxEndpointNumber: number
+    rxEndpointNumber: number
     /**
      * a #guint32.
      */
-    readonly txEndpointNumber: number
+    txEndpointNumber: number
     static name: string
 }
 class MessageDpmOpenPortInputSoftwareDataPortsElement {
@@ -29042,15 +31220,15 @@ class MessageDpmOpenPortInputSoftwareDataPortsElement {
     /**
      * a #QmiDataEndpointType.
      */
-    readonly endpointType: DataEndpointType
+    endpointType: DataEndpointType
     /**
      * a #guint32.
      */
-    readonly interfaceNumber: number
+    interfaceNumber: number
     /**
      * a string.
      */
-    readonly portName: string
+    portName: string
     static name: string
 }
 class MessageDpmOpenPortOutput {
@@ -29082,6 +31260,7 @@ class MessageDsdGetApnInfoInput {
     ref(): MessageDsdGetApnInfoInput
     /**
      * Set the 'APN Type' field in the message.
+     * @param valueApnType a #QmiDsdApnType.
      */
     setApnType(valueApnType: DsdApnType): boolean
     /**
@@ -29132,10 +31311,13 @@ class MessageDsdSetApnTypeInput {
     ref(): MessageDsdSetApnTypeInput
     /**
      * Set the 'APN Type' field in the message.
+     * @param valueApnTypeName a constant string.
+     * @param valueApnTypeType a #QmiDsdApnTypePreference.
      */
     setApnType(valueApnTypeName: string, valueApnTypeType: DsdApnTypePreference): boolean
     /**
      * Set the 'APN Type Preference Mask' field in the message.
+     * @param valueApnTypePreferenceMask a #QmiDsdApnTypePreference.
      */
     setApnTypePreferenceMask(valueApnTypePreferenceMask: DsdApnTypePreference): boolean
     /**
@@ -29178,6 +31360,7 @@ class MessageFoxGetFirmwareVersionInput {
     ref(): MessageFoxGetFirmwareVersionInput
     /**
      * Set the 'Version Type' field in the message.
+     * @param valueVersionType a #QmiFoxFirmwareVersionType.
      */
     setVersionType(valueVersionType: FoxFirmwareVersionType): boolean
     /**
@@ -29236,18 +31419,22 @@ class MessageGasDmsGetFirmwareListInput {
     ref(): MessageGasDmsGetFirmwareListInput
     /**
      * Set the 'Mode' field in the message.
+     * @param valueMode a #QmiGasFirmwareListingMode.
      */
     setMode(valueMode: GasFirmwareListingMode): boolean
     /**
      * Set the 'Name' field in the message.
+     * @param valueName a constant string.
      */
     setName(valueName: string): boolean
     /**
      * Set the 'Slot Index' field in the message.
+     * @param valueSlotIndex a #guint8.
      */
     setSlotIndex(valueSlotIndex: number): boolean
     /**
      * Set the 'Version' field in the message.
+     * @param valueVersion a constant string.
      */
     setVersion(valueVersion: string): boolean
     /**
@@ -29355,14 +31542,17 @@ class MessageGasDmsSetActiveFirmwareInput {
     ref(): MessageGasDmsSetActiveFirmwareInput
     /**
      * Set the 'Carrier Name' field in the message.
+     * @param valueCarrierName a constant string.
      */
     setCarrierName(valueCarrierName: string): boolean
     /**
      * Set the 'Slot Index' field in the message.
+     * @param valueSlotIndex a #guint8.
      */
     setSlotIndex(valueSlotIndex: number): boolean
     /**
      * Set the 'Version' field in the message.
+     * @param valueVersion a constant string.
      */
     setVersion(valueVersion: string): boolean
     /**
@@ -29421,22 +31611,27 @@ class MessageGasDmsSetUsbCompositionInput {
     ref(): MessageGasDmsSetUsbCompositionInput
     /**
      * Set the 'Composition Persistence' field in the message.
+     * @param valueCompositionPersistence a #gboolean.
      */
     setCompositionPersistence(valueCompositionPersistence: boolean): boolean
     /**
      * Set the 'Endpoint Type' field in the message.
+     * @param valueEndpointType a #QmiGasUsbCompositionEndpointType.
      */
     setEndpointType(valueEndpointType: GasUsbCompositionEndpointType): boolean
     /**
      * Set the 'Immediate Setting' field in the message.
+     * @param valueImmediateSetting a #gboolean.
      */
     setImmediateSetting(valueImmediateSetting: boolean): boolean
     /**
      * Set the 'Reboot After Setting' field in the message.
+     * @param valueRebootAfterSetting a #gboolean.
      */
     setRebootAfterSetting(valueRebootAfterSetting: boolean): boolean
     /**
      * Set the 'USB Composition' field in the message.
+     * @param valueUsbComposition a #guint32.
      */
     setUsbComposition(valueUsbComposition: number): boolean
     /**
@@ -29508,10 +31703,12 @@ class MessageGmsTestSetValueInput {
     ref(): MessageGmsTestSetValueInput
     /**
      * Set the 'Test Mandatory Value' field in the message.
+     * @param valueTestMandatoryValue a #guint8.
      */
     setTestMandatoryValue(valueTestMandatoryValue: number): boolean
     /**
      * Set the 'Test Optional Value' field in the message.
+     * @param valueTestOptionalValue a #guint8.
      */
     setTestOptionalValue(valueTestOptionalValue: number): boolean
     /**
@@ -29562,32 +31759,40 @@ class MessageLocDeleteAssistanceDataInput {
     getDeleteGnssDataMask(): [ /* returnType */ boolean, /* valueDeleteGnssDataMask */ LocDeleteGnssData | null ]
     /**
      * Get the 'Delete SV Info' field from `self`.
+     * 
+     * Version of qmi_message_loc_delete_assistance_data_input_get_delete_sv_info() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getDeleteSvInfo(): [ /* returnType */ boolean, /* valueDeleteSvInfo */ MessageLocDeleteAssistanceDataInputDeleteSvInfoElement[] | null ]
+    getDeleteSvInfo(): [ /* returnType */ boolean, /* valueDeleteSvInfoPtr */ MessageLocDeleteAssistanceDataInputDeleteSvInfoElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageLocDeleteAssistanceDataInput
     /**
      * Set the 'Delete All' field in the message.
+     * @param valueDeleteAll a #gboolean.
      */
     setDeleteAll(valueDeleteAll: boolean): boolean
     /**
      * Set the 'Delete Cell Database Mask' field in the message.
+     * @param valueDeleteCellDatabaseMask a #QmiLocDeleteCellDatabase.
      */
     setDeleteCellDatabaseMask(valueDeleteCellDatabaseMask: LocDeleteCellDatabase): boolean
     /**
      * Set the 'Delete Clock Info Mask' field in the message.
+     * @param valueDeleteClockInfoMask a #QmiLocDeleteClockInfo.
      */
     setDeleteClockInfoMask(valueDeleteClockInfoMask: LocDeleteClockInfo): boolean
     /**
      * Set the 'Delete GNSS Data Mask' field in the message.
+     * @param valueDeleteGnssDataMask a #QmiLocDeleteGnssData.
      */
     setDeleteGnssDataMask(valueDeleteGnssDataMask: LocDeleteGnssData): boolean
     /**
      * Set the 'Delete SV Info' field in the message.
+     * @param valueDeleteSvInfoPtr array of #QmiMessageLocDeleteAssistanceDataInputDeleteSvInfoElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setDeleteSvInfo(valueDeleteSvInfo: MessageLocDeleteAssistanceDataInputDeleteSvInfoElement[]): boolean
+    setDeleteSvInfo(valueDeleteSvInfoPtr: MessageLocDeleteAssistanceDataInputDeleteSvInfoElement[]): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -29604,15 +31809,15 @@ class MessageLocDeleteAssistanceDataInputDeleteSvInfoElement {
     /**
      * a #guint16.
      */
-    readonly gnssSvId: number
+    gnssSvId: number
     /**
      * a #QmiLocSystem.
      */
-    readonly system: LocSystem
+    system: LocSystem
     /**
      * a #QmiLocDeleteSvInfo.
      */
-    readonly deleteSvInfoMask: LocDeleteSvInfo
+    deleteSvInfoMask: LocDeleteSvInfo
     static name: string
 }
 class MessageLocDeleteAssistanceDataOutput {
@@ -29716,10 +31921,12 @@ class MessageLocGetServerInput {
     ref(): MessageLocGetServerInput
     /**
      * Set the 'Server Address Type' field in the message.
+     * @param valueServerAddressType a #QmiLocServerAddressType.
      */
     setServerAddressType(valueServerAddressType: LocServerAddressType): boolean
     /**
      * Set the 'Server Type' field in the message.
+     * @param valueServerType a #QmiLocServerType.
      */
     setServerType(valueServerType: LocServerType): boolean
     /**
@@ -29778,22 +31985,27 @@ class MessageLocInjectPredictedOrbitsDataInput {
     ref(): MessageLocInjectPredictedOrbitsDataInput
     /**
      * Set the 'Format Type' field in the message.
+     * @param valueFormatType a #QmiLocPredictedOrbitsDataFormat.
      */
     setFormatType(valueFormatType: LocPredictedOrbitsDataFormat): boolean
     /**
      * Set the 'Part Data' field in the message.
+     * @param valuePartData a #GArray of #guint8 elements. A new reference to `value_part_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setPartData(valuePartData: Uint8Array): boolean
     /**
      * Set the 'Part Number' field in the message.
+     * @param valuePartNumber a #guint16.
      */
     setPartNumber(valuePartNumber: number): boolean
     /**
      * Set the 'Total Parts' field in the message.
+     * @param valueTotalParts a #guint16.
      */
     setTotalParts(valueTotalParts: number): boolean
     /**
      * Set the 'Total Size' field in the message.
+     * @param valueTotalSize a #guint32.
      */
     setTotalSize(valueTotalSize: number): boolean
     /**
@@ -29848,18 +32060,22 @@ class MessageLocInjectXtraDataInput {
     ref(): MessageLocInjectXtraDataInput
     /**
      * Set the 'Part Data' field in the message.
+     * @param valuePartData a #GArray of #guint8 elements. A new reference to `value_part_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setPartData(valuePartData: Uint8Array): boolean
     /**
      * Set the 'Part Number' field in the message.
+     * @param valuePartNumber a #guint16.
      */
     setPartNumber(valuePartNumber: number): boolean
     /**
      * Set the 'Total Parts' field in the message.
+     * @param valueTotalParts a #guint16.
      */
     setTotalParts(valueTotalParts: number): boolean
     /**
      * Set the 'Total Size' field in the message.
+     * @param valueTotalSize a #guint32.
      */
     setTotalSize(valueTotalSize: number): boolean
     /**
@@ -29902,6 +32118,7 @@ class MessageLocRegisterEventsInput {
     ref(): MessageLocRegisterEventsInput
     /**
      * Set the 'Event Registration Mask' field in the message.
+     * @param valueEventRegistrationMask a #QmiLocEventRegistrationFlag.
      */
     setEventRegistrationMask(valueEventRegistrationMask: LocEventRegistrationFlag): boolean
     /**
@@ -29944,6 +32161,7 @@ class MessageLocSetEngineLockInput {
     ref(): MessageLocSetEngineLockInput
     /**
      * Set the 'Lock Type' field in the message.
+     * @param valueLockType a #QmiLocLockType.
      */
     setLockType(valueLockType: LocLockType): boolean
     /**
@@ -29986,6 +32204,7 @@ class MessageLocSetNmeaTypesInput {
     ref(): MessageLocSetNmeaTypesInput
     /**
      * Set the 'NMEA Types' field in the message.
+     * @param valueNmeaTypes a #QmiLocNmeaType.
      */
     setNmeaTypes(valueNmeaTypes: LocNmeaType): boolean
     /**
@@ -30028,6 +32247,7 @@ class MessageLocSetOperationModeInput {
     ref(): MessageLocSetOperationModeInput
     /**
      * Set the 'Operation Mode' field in the message.
+     * @param valueOperationMode a #QmiLocOperationMode.
      */
     setOperationMode(valueOperationMode: LocOperationMode): boolean
     /**
@@ -30082,18 +32302,24 @@ class MessageLocSetServerInput {
     ref(): MessageLocSetServerInput
     /**
      * Set the 'IPv4' field in the message.
+     * @param valueIpv4Ipv4Address a #guint32.
+     * @param valueIpv4Ipv4Port a #guint16.
      */
     setIpv4(valueIpv4Ipv4Address: number, valueIpv4Ipv4Port: number): boolean
     /**
      * Set the 'IPv6' field in the message.
+     * @param valueIpv6Ipv6Address a #GArray of #guint16 elements. A new reference to `value_ipv6`_ipv6_address will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
+     * @param valueIpv6Ipv6Port a #guint32.
      */
     setIpv6(valueIpv6Ipv6Address: number[], valueIpv6Ipv6Port: number): boolean
     /**
      * Set the 'Server Type' field in the message.
+     * @param valueServerType a #QmiLocServerType.
      */
     setServerType(valueServerType: LocServerType): boolean
     /**
      * Set the 'URL' field in the message.
+     * @param valueUrl a constant string with a maximum length of 256 characters.
      */
     setUrl(valueUrl: string): boolean
     /**
@@ -30148,18 +32374,22 @@ class MessageLocStartInput {
     ref(): MessageLocStartInput
     /**
      * Set the 'Fix Recurrence Type' field in the message.
+     * @param valueFixRecurrenceType a #QmiLocFixRecurrenceType.
      */
     setFixRecurrenceType(valueFixRecurrenceType: LocFixRecurrenceType): boolean
     /**
      * Set the 'Intermediate Report State' field in the message.
+     * @param valueIntermediateReportState a #QmiLocIntermediateReportState.
      */
     setIntermediateReportState(valueIntermediateReportState: LocIntermediateReportState): boolean
     /**
      * Set the 'Minimum Interval between Position Reports' field in the message.
+     * @param valueMinimumIntervalBetweenPositionReports a #guint32.
      */
     setMinimumIntervalBetweenPositionReports(valueMinimumIntervalBetweenPositionReports: number): boolean
     /**
      * Set the 'Session ID' field in the message.
+     * @param valueSessionId a #guint8.
      */
     setSessionId(valueSessionId: number): boolean
     /**
@@ -30202,6 +32432,7 @@ class MessageLocStopInput {
     ref(): MessageLocStopInput
     /**
      * Set the 'Session ID' field in the message.
+     * @param valueSessionId a #guint8.
      */
     setSessionId(valueSessionId: number): boolean
     /**
@@ -30244,6 +32475,7 @@ class MessageNasAttachDetachInput {
     ref(): MessageNasAttachDetachInput
     /**
      * Set the 'Action' field in the message.
+     * @param valueAction a #QmiNasPsAttachAction.
      */
     setAction(valueAction: NasPsAttachAction): boolean
     /**
@@ -30318,38 +32550,48 @@ class MessageNasConfigSignalInfoInput {
     ref(): MessageNasConfigSignalInfoInput
     /**
      * Set the 'ECIO Threshold' field in the message.
+     * @param valueEcioThreshold a #GArray of #gint16 elements. A new reference to `value_ecio_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setEcioThreshold(valueEcioThreshold: number[]): boolean
     /**
      * Set the 'IO Threshold' field in the message.
+     * @param valueIoThreshold a #GArray of #gint32 elements. A new reference to `value_io_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIoThreshold(valueIoThreshold: number[]): boolean
     /**
      * Set the 'LTE Report' field in the message.
+     * @param valueLteReportRate a #guint8.
+     * @param valueLteReportAveragePeriod a #guint8.
      */
     setLteReport(valueLteReportRate: number, valueLteReportAveragePeriod: number): boolean
     /**
      * Set the 'LTE SNR Threshold' field in the message.
+     * @param valueLteSnrThreshold a #GArray of #gint16 elements. A new reference to `value_lte_snr_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setLteSnrThreshold(valueLteSnrThreshold: number[]): boolean
     /**
      * Set the 'RSCP Threshold' field in the message.
+     * @param valueRscpThreshold a #GArray of #gint8 elements. A new reference to `value_rscp_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setRscpThreshold(valueRscpThreshold: Uint8Array): boolean
     /**
      * Set the 'RSRP Threshold' field in the message.
+     * @param valueRsrpThreshold a #GArray of #gint16 elements. A new reference to `value_rsrp_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setRsrpThreshold(valueRsrpThreshold: number[]): boolean
     /**
      * Set the 'RSRQ Threshold' field in the message.
+     * @param valueRsrqThreshold a #GArray of #gint8 elements. A new reference to `value_rsrq_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setRsrqThreshold(valueRsrqThreshold: Uint8Array): boolean
     /**
      * Set the 'RSSI Threshold' field in the message.
+     * @param valueRssiThreshold a #GArray of #gint8 elements. A new reference to `value_rssi_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setRssiThreshold(valueRssiThreshold: Uint8Array): boolean
     /**
      * Set the 'SINR Threshold' field in the message.
+     * @param valueSinrThreshold a #GArray of #guint8 elements. A new reference to `value_sinr_threshold` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSinrThreshold(valueSinrThreshold: Uint8Array): boolean
     /**
@@ -30401,8 +32643,11 @@ class MessageNasGetCdmaPositionInfoOutput {
     /* Methods of Qmi-1.0.Qmi.MessageNasGetCdmaPositionInfoOutput */
     /**
      * Get the 'CDMA Position Info' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cdma_position_info_output_get_cdma_position_info() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getCdmaPositionInfo(): [ /* returnType */ boolean, /* valueCdmaPositionInfoUiInIdleMode */ number | null, /* valueCdmaPositionInfoBasestations */ MessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation[] | null ]
+    getCdmaPositionInfo(): [ /* returnType */ boolean, /* valueCdmaPositionInfoUiInIdleMode */ number | null, /* valueCdmaPositionInfoBasestationsPtr */ MessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -30423,39 +32668,39 @@ class MessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation
     /**
      * a #QmiNasCdmaPilotType.
      */
-    readonly pilotType: NasCdmaPilotType
+    pilotType: NasCdmaPilotType
     /**
      * a #guint16.
      */
-    readonly systemId: number
+    systemId: number
     /**
      * a #guint16.
      */
-    readonly networkId: number
+    networkId: number
     /**
      * a #guint16.
      */
-    readonly baseStationId: number
+    baseStationId: number
     /**
      * a #guint16.
      */
-    readonly pilotPn: number
+    pilotPn: number
     /**
      * a #guint16.
      */
-    readonly pilotStrength: number
+    pilotStrength: number
     /**
      * a #gint32.
      */
-    readonly latitude: number
+    latitude: number
     /**
      * a #gint32.
      */
-    readonly longitude: number
+    longitude: number
     /**
      * a #guint64.
      */
-    readonly gpsTimeInMilliseconds: number
+    gpsTimeInMilliseconds: number
     static name: string
 }
 class MessageNasGetCellLocationInfoOutput {
@@ -30467,24 +32712,39 @@ class MessageNasGetCellLocationInfoOutput {
     getCompatContext(): object | null
     /**
      * Get the 'GERAN Info v2' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_geran_info_v2() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getGeranInfoV2(): [ /* returnType */ boolean, /* valueGeranInfoV2CellId */ number | null, /* valueGeranInfoV2Plmn */ Uint8Array | null, /* valueGeranInfoV2Lac */ number | null, /* valueGeranInfoV2GeranAbsoluteRfChannelNumber */ number | null, /* valueGeranInfoV2BaseStationIdentityCode */ number | null, /* valueGeranInfoV2TimingAdvance */ number | null, /* valueGeranInfoV2RxLevel */ number | null, /* valueGeranInfoV2Cell */ MessageNasGetCellLocationInfoOutputGeranInfoV2CellElement[] | null ]
+    getGeranInfoV2(): [ /* returnType */ boolean, /* valueGeranInfoV2CellId */ number | null, /* valueGeranInfoV2Plmn */ Uint8Array | null, /* valueGeranInfoV2Lac */ number | null, /* valueGeranInfoV2GeranAbsoluteRfChannelNumber */ number | null, /* valueGeranInfoV2BaseStationIdentityCode */ number | null, /* valueGeranInfoV2TimingAdvance */ number | null, /* valueGeranInfoV2RxLevel */ number | null, /* valueGeranInfoV2CellPtr */ MessageNasGetCellLocationInfoOutputGeranInfoV2CellElement[] | null ]
     /**
      * Get the 'Interfrequency LTE Info' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_interfrequency_lte_info() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getInterfrequencyLteInfo(): [ /* returnType */ boolean, /* valueInterfrequencyLteInfoUeInIdle */ boolean | null, /* valueInterfrequencyLteInfoFrequency */ MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElement[] | null ]
+    getInterfrequencyLteInfo(): [ /* returnType */ boolean, /* valueInterfrequencyLteInfoUeInIdle */ boolean | null, /* valueInterfrequencyLteInfoFrequencyPtr */ MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementGir[] | null ]
     /**
      * Get the 'Intrafrequency LTE Info v2' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_intrafrequency_lte_info_v2() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getIntrafrequencyLteInfoV2(): [ /* returnType */ boolean, /* valueIntrafrequencyLteInfoV2UeInIdle */ boolean | null, /* valueIntrafrequencyLteInfoV2Plmn */ Uint8Array | null, /* valueIntrafrequencyLteInfoV2TrackingAreaCode */ number | null, /* valueIntrafrequencyLteInfoV2GlobalCellId */ number | null, /* valueIntrafrequencyLteInfoV2EutraAbsoluteRfChannelNumber */ number | null, /* valueIntrafrequencyLteInfoV2ServingCellId */ number | null, /* valueIntrafrequencyLteInfoV2CellReselectionPriority */ number | null, /* valueIntrafrequencyLteInfoV2SNonIntraSearchThreshold */ number | null, /* valueIntrafrequencyLteInfoV2ServingCellLowThreshold */ number | null, /* valueIntrafrequencyLteInfoV2SIntraSearchThreshold */ number | null, /* valueIntrafrequencyLteInfoV2Cell */ MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement[] | null ]
+    getIntrafrequencyLteInfoV2(): [ /* returnType */ boolean, /* valueIntrafrequencyLteInfoV2UeInIdle */ boolean | null, /* valueIntrafrequencyLteInfoV2Plmn */ Uint8Array | null, /* valueIntrafrequencyLteInfoV2TrackingAreaCode */ number | null, /* valueIntrafrequencyLteInfoV2GlobalCellId */ number | null, /* valueIntrafrequencyLteInfoV2EutraAbsoluteRfChannelNumber */ number | null, /* valueIntrafrequencyLteInfoV2ServingCellId */ number | null, /* valueIntrafrequencyLteInfoV2CellReselectionPriority */ number | null, /* valueIntrafrequencyLteInfoV2SNonIntraSearchThreshold */ number | null, /* valueIntrafrequencyLteInfoV2ServingCellLowThreshold */ number | null, /* valueIntrafrequencyLteInfoV2SIntraSearchThreshold */ number | null, /* valueIntrafrequencyLteInfoV2CellPtr */ MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement[] | null ]
     /**
      * Get the 'LTE Info Neighboring GSM' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_lte_info_neighboring_gsm() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getLteInfoNeighboringGsm(): [ /* returnType */ boolean, /* valueLteInfoNeighboringGsmUeInIdle */ boolean | null, /* valueLteInfoNeighboringGsmFrequency */ MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElement[] | null ]
+    getLteInfoNeighboringGsm(): [ /* returnType */ boolean, /* valueLteInfoNeighboringGsmUeInIdle */ boolean | null, /* valueLteInfoNeighboringGsmFrequencyPtr */ MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementGir[] | null ]
     /**
      * Get the 'LTE Info Neighboring WCDMA' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_lte_info_neighboring_wcdma() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getLteInfoNeighboringWcdma(): [ /* returnType */ boolean, /* valueLteInfoNeighboringWcdmaUeInIdle */ boolean | null, /* valueLteInfoNeighboringWcdmaFrequency */ MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElement[] | null ]
+    getLteInfoNeighboringWcdma(): [ /* returnType */ boolean, /* valueLteInfoNeighboringWcdmaUeInIdle */ boolean | null, /* valueLteInfoNeighboringWcdmaFrequencyPtr */ MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementGir[] | null ]
     /**
      * Get the 'LTE Info Timing Advance' field from `self`.
      */
@@ -30507,12 +32767,18 @@ class MessageNasGetCellLocationInfoOutput {
     getUmtsCellId(): [ /* returnType */ boolean, /* valueUmtsCellId */ number | null ]
     /**
      * Get the 'UMTS Info Neighboring LTE' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_umts_info_neighboring_lte() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getUmtsInfoNeighboringLte(): [ /* returnType */ boolean, /* valueUmtsInfoNeighboringLteRrcState */ NasWcdmaRrcState | null, /* valueUmtsInfoNeighboringLteFrequency */ MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement[] | null ]
+    getUmtsInfoNeighboringLte(): [ /* returnType */ boolean, /* valueUmtsInfoNeighboringLteRrcState */ NasWcdmaRrcState | null, /* valueUmtsInfoNeighboringLteFrequencyPtr */ MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement[] | null ]
     /**
      * Get the 'UMTS Info v2' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_cell_location_info_output_get_umts_info_v2() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getUmtsInfoV2(): [ /* returnType */ boolean, /* valueUmtsInfoV2CellId */ number | null, /* valueUmtsInfoV2Plmn */ Uint8Array | null, /* valueUmtsInfoV2Lac */ number | null, /* valueUmtsInfoV2UtraAbsoluteRfChannelNumber */ number | null, /* valueUmtsInfoV2PrimaryScramblingCode */ number | null, /* valueUmtsInfoV2Rscp */ number | null, /* valueUmtsInfoV2Ecio */ number | null, /* valueUmtsInfoV2Cell */ MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement[] | null, /* valueUmtsInfoV2NeighboringGeran */ MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement[] | null ]
+    getUmtsInfoV2(): [ /* returnType */ boolean, /* valueUmtsInfoV2CellId */ number | null, /* valueUmtsInfoV2Plmn */ Uint8Array | null, /* valueUmtsInfoV2Lac */ number | null, /* valueUmtsInfoV2UtraAbsoluteRfChannelNumber */ number | null, /* valueUmtsInfoV2PrimaryScramblingCode */ number | null, /* valueUmtsInfoV2Rscp */ number | null, /* valueUmtsInfoV2Ecio */ number | null, /* valueUmtsInfoV2CellPtr */ MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement[] | null, /* valueUmtsInfoV2NeighboringGeranPtr */ MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -30530,27 +32796,27 @@ class MessageNasGetCellLocationInfoOutputGeranInfoV2CellElement {
     /**
      * a #guint32.
      */
-    readonly cellId: number
+    cellId: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly plmn: object[]
+    plmn: object[]
     /**
      * a #guint16.
      */
-    readonly lac: number
+    lac: number
     /**
      * a #guint16.
      */
-    readonly geranAbsoluteRfChannelNumber: number
+    geranAbsoluteRfChannelNumber: number
     /**
      * a #guint8.
      */
-    readonly baseStationIdentityCode: number
+    baseStationIdentityCode: number
     /**
      * a #guint16.
      */
-    readonly rxLevel: number
+    rxLevel: number
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElement {
@@ -30558,23 +32824,23 @@ class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElement {
     /**
      * a #guint16.
      */
-    readonly eutraAbsoluteRfChannelNumber: number
+    eutraAbsoluteRfChannelNumber: number
     /**
      * a #guint8.
      */
-    readonly cellSelectionRxLevelLowThreshold: number
+    cellSelectionRxLevelLowThreshold: number
     /**
      * a #guint8.
      */
-    readonly cellSelectionRxLevelHighThreshold: number
+    cellSelectionRxLevelHighThreshold: number
     /**
      * a #guint8.
      */
-    readonly cellReselectionPriority: number
+    cellReselectionPriority: number
     /**
      * a #GArray of #QmiMessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement elements.
      */
-    readonly cell: object[]
+    cell: object[]
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement {
@@ -30582,23 +32848,47 @@ class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCe
     /**
      * a #guint16.
      */
-    readonly physicalCellId: number
+    physicalCellId: number
     /**
      * a #gint16.
      */
-    readonly rsrq: number
+    rsrq: number
     /**
      * a #gint16.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #gint16.
      */
-    readonly rssi: number
+    rssi: number
     /**
      * a #gint16.
      */
-    readonly cellSelectionRxLevel: number
+    cellSelectionRxLevel: number
+    static name: string
+}
+class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementGir {
+    /* Fields of Qmi-1.0.Qmi.MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementGir */
+    /**
+     * a #guint16.
+     */
+    eutraAbsoluteRfChannelNumber: number
+    /**
+     * a #guint8.
+     */
+    cellSelectionRxLevelLowThreshold: number
+    /**
+     * a #guint8.
+     */
+    cellSelectionRxLevelHighThreshold: number
+    /**
+     * a #guint8.
+     */
+    cellReselectionPriority: number
+    /**
+     * an array of #QmiMessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement elements.
+     */
+    cell: MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement[]
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement {
@@ -30606,23 +32896,23 @@ class MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement {
     /**
      * a #guint16.
      */
-    readonly physicalCellId: number
+    physicalCellId: number
     /**
      * a #gint16.
      */
-    readonly rsrq: number
+    rsrq: number
     /**
      * a #gint16.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #gint16.
      */
-    readonly rssi: number
+    rssi: number
     /**
      * a #gint16.
      */
-    readonly cellSelectionRxLevel: number
+    cellSelectionRxLevel: number
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElement {
@@ -30630,23 +32920,23 @@ class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElement {
     /**
      * a #guint8.
      */
-    readonly cellReselectionPriority: number
+    cellReselectionPriority: number
     /**
      * a #guint8.
      */
-    readonly cellReselectionHighThreshold: number
+    cellReselectionHighThreshold: number
     /**
      * a #guint8.
      */
-    readonly cellReselectionLowThreshold: number
+    cellReselectionLowThreshold: number
     /**
      * a #guint8.
      */
-    readonly nccPermitted: number
+    nccPermitted: number
     /**
      * a #GArray of #QmiMessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement elements.
      */
-    readonly cell: object[]
+    cell: object[]
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement {
@@ -30654,27 +32944,51 @@ class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCe
     /**
      * a #guint16.
      */
-    readonly geranAbsoluteRfChannelNumber: number
+    geranAbsoluteRfChannelNumber: number
     /**
      * a #gboolean.
      */
-    readonly bandIs1900: boolean
+    bandIs1900: boolean
     /**
      * a #gboolean.
      */
-    readonly cellIdValid: boolean
+    cellIdValid: boolean
     /**
      * a #guint8.
      */
-    readonly baseStationIdentityCode: number
+    baseStationIdentityCode: number
     /**
      * a #gint16.
      */
-    readonly rssi: number
+    rssi: number
     /**
      * a #gint16.
      */
-    readonly cellSelectionRxLevel: number
+    cellSelectionRxLevel: number
+    static name: string
+}
+class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementGir {
+    /* Fields of Qmi-1.0.Qmi.MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementGir */
+    /**
+     * a #guint8.
+     */
+    cellReselectionPriority: number
+    /**
+     * a #guint8.
+     */
+    cellReselectionHighThreshold: number
+    /**
+     * a #guint8.
+     */
+    cellReselectionLowThreshold: number
+    /**
+     * a #guint8.
+     */
+    nccPermitted: number
+    /**
+     * an array of #QmiMessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement elements.
+     */
+    cell: MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement[]
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElement {
@@ -30682,23 +32996,23 @@ class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElement
     /**
      * a #guint16.
      */
-    readonly utraAbsoluteRfChannelNumber: number
+    utraAbsoluteRfChannelNumber: number
     /**
      * a #guint8.
      */
-    readonly cellReselectionPriority: number
+    cellReselectionPriority: number
     /**
      * a #guint16.
      */
-    readonly cellReselectionHighThreshold: number
+    cellReselectionHighThreshold: number
     /**
      * a #guint16.
      */
-    readonly cellReselectionLowThreshold: number
+    cellReselectionLowThreshold: number
     /**
      * a #GArray of #QmiMessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement elements.
      */
-    readonly cell: object[]
+    cell: object[]
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement {
@@ -30706,19 +33020,43 @@ class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElement
     /**
      * a #guint16.
      */
-    readonly primaryScramblingCode: number
+    primaryScramblingCode: number
     /**
      * a #gint16.
      */
-    readonly cpichRscp: number
+    cpichRscp: number
     /**
      * a #gint16.
      */
-    readonly cpichEcno: number
+    cpichEcno: number
     /**
      * a #gint16.
      */
-    readonly cellSelectionRxLevel: number
+    cellSelectionRxLevel: number
+    static name: string
+}
+class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementGir {
+    /* Fields of Qmi-1.0.Qmi.MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementGir */
+    /**
+     * a #guint16.
+     */
+    utraAbsoluteRfChannelNumber: number
+    /**
+     * a #guint8.
+     */
+    cellReselectionPriority: number
+    /**
+     * a #guint16.
+     */
+    cellReselectionHighThreshold: number
+    /**
+     * a #guint16.
+     */
+    cellReselectionLowThreshold: number
+    /**
+     * an array of #QmiMessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement elements.
+     */
+    cell: MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement[]
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement {
@@ -30726,27 +33064,27 @@ class MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement 
     /**
      * a #guint16.
      */
-    readonly eutraAbsoluteRfChannelNumber: number
+    eutraAbsoluteRfChannelNumber: number
     /**
      * a #guint16.
      */
-    readonly physicalCellId: number
+    physicalCellId: number
     /**
      * a #gfloat.
      */
-    readonly rsrp: number
+    rsrp: number
     /**
      * a #gfloat.
      */
-    readonly rsrq: number
+    rsrq: number
     /**
      * a #gint16.
      */
-    readonly cellSelectionRxLevel: number
+    cellSelectionRxLevel: number
     /**
      * a #gboolean.
      */
-    readonly isTdd: boolean
+    isTdd: boolean
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement {
@@ -30754,19 +33092,19 @@ class MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement {
     /**
      * a #guint16.
      */
-    readonly utraAbsoluteRfChannelNumber: number
+    utraAbsoluteRfChannelNumber: number
     /**
      * a #guint16.
      */
-    readonly primaryScramblingCode: number
+    primaryScramblingCode: number
     /**
      * a #gint16.
      */
-    readonly rscp: number
+    rscp: number
     /**
      * a #gint16.
      */
-    readonly ecio: number
+    ecio: number
     static name: string
 }
 class MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement {
@@ -30774,19 +33112,19 @@ class MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement {
     /**
      * a #guint16.
      */
-    readonly geranAbsoluteRfChannelNumber: number
+    geranAbsoluteRfChannelNumber: number
     /**
      * a #guint8.
      */
-    readonly networkColorCode: number
+    networkColorCode: number
     /**
      * a #guint8.
      */
-    readonly baseStationColorCode: number
+    baseStationColorCode: number
     /**
      * a #gint16.
      */
-    readonly rssi: number
+    rssi: number
     static name: string
 }
 class MessageNasGetDrxOutput {
@@ -30863,8 +33201,11 @@ class MessageNasGetLteCphyCaInfoOutput {
     getPhyCaAggScellInfo(): [ /* returnType */ boolean, /* valuePhyCaAggScellInfoPhysicalCellId */ number | null, /* valuePhyCaAggScellInfoRxChannel */ number | null, /* valuePhyCaAggScellInfoDlBandwidth */ NasDLBandwidth | null, /* valuePhyCaAggScellInfoLteBand */ NasActiveBand | null, /* valuePhyCaAggScellInfoState */ NasScellState | null ]
     /**
      * Get the 'Phy CA Agg Secondary Cells' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_lte_cphy_ca_info_output_get_phy_ca_agg_secondary_cells() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPhyCaAggSecondaryCells(): [ /* returnType */ boolean, /* valuePhyCaAggSecondaryCells */ MessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc[] | null ]
+    getPhyCaAggSecondaryCells(): [ /* returnType */ boolean, /* valuePhyCaAggSecondaryCellsPtr */ MessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -30889,27 +33230,27 @@ class MessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc {
     /**
      * a #guint16.
      */
-    readonly physicalCellId: number
+    physicalCellId: number
     /**
      * a #guint16.
      */
-    readonly rxChannel: number
+    rxChannel: number
     /**
      * a #QmiNasDLBandwidth.
      */
-    readonly dlBandwidth: NasDLBandwidth
+    dlBandwidth: NasDLBandwidth
     /**
      * a #QmiNasActiveBand.
      */
-    readonly lteBand: NasActiveBand
+    lteBand: NasActiveBand
     /**
      * a #QmiNasScellState.
      */
-    readonly state: NasScellState
+    state: NasScellState
     /**
      * a #guint8.
      */
-    readonly cellIndex: number
+    cellIndex: number
     static name: string
 }
 class MessageNasGetOperatorNameOutput {
@@ -30920,12 +33261,18 @@ class MessageNasGetOperatorNameOutput {
     getNitzInformation(): [ /* returnType */ boolean, /* valueNitzInformationNameEncoding */ NasPlmnEncodingScheme | null, /* valueNitzInformationShortCountryInitials */ NasPlmnNameCountryInitials | null, /* valueNitzInformationLongNameSpareBits */ NasPlmnNameSpareBits | null, /* valueNitzInformationShortNameSpareBits */ NasPlmnNameSpareBits | null, /* valueNitzInformationLongName */ Uint8Array | null, /* valueNitzInformationShortName */ Uint8Array | null ]
     /**
      * Get the 'Operator PLMN List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_operator_name_output_get_operator_plmn_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getOperatorPlmnList(): [ /* returnType */ boolean, /* valueOperatorPlmnList */ MessageNasGetOperatorNameOutputOperatorPlmnListElement[] | null ]
+    getOperatorPlmnList(): [ /* returnType */ boolean, /* valueOperatorPlmnListPtr */ MessageNasGetOperatorNameOutputOperatorPlmnListElement[] | null ]
     /**
      * Get the 'Operator PLMN Name' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_operator_name_output_get_operator_plmn_name() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getOperatorPlmnName(): [ /* returnType */ boolean, /* valueOperatorPlmnName */ MessageNasGetOperatorNameOutputOperatorPlmnNameElement[] | null ]
+    getOperatorPlmnName(): [ /* returnType */ boolean, /* valueOperatorPlmnNamePtr */ MessageNasGetOperatorNameOutputOperatorPlmnNameElement[] | null ]
     /**
      * Get the 'Operator String Name' field from `self`.
      */
@@ -30954,23 +33301,23 @@ class MessageNasGetOperatorNameOutputOperatorPlmnListElement {
     /**
      * a string of exactly 3 characters.
      */
-    readonly mcc: string
+    mcc: string
     /**
      * a string of exactly 3 characters.
      */
-    readonly mnc: string
+    mnc: string
     /**
      * a #guint16.
      */
-    readonly lac1: number
+    lac1: number
     /**
      * a #guint16.
      */
-    readonly lac2: number
+    lac2: number
     /**
      * a #guint8.
      */
-    readonly plmnNameRecordIdentifier: number
+    plmnNameRecordIdentifier: number
     static name: string
 }
 class MessageNasGetOperatorNameOutputOperatorPlmnNameElement {
@@ -30978,27 +33325,27 @@ class MessageNasGetOperatorNameOutputOperatorPlmnNameElement {
     /**
      * a #QmiNasPlmnEncodingScheme.
      */
-    readonly nameEncoding: NasPlmnEncodingScheme
+    nameEncoding: NasPlmnEncodingScheme
     /**
      * a #QmiNasPlmnNameCountryInitials.
      */
-    readonly shortCountryInitials: NasPlmnNameCountryInitials
+    shortCountryInitials: NasPlmnNameCountryInitials
     /**
      * a #QmiNasPlmnNameSpareBits.
      */
-    readonly longNameSpareBits: NasPlmnNameSpareBits
+    longNameSpareBits: NasPlmnNameSpareBits
     /**
      * a #QmiNasPlmnNameSpareBits.
      */
-    readonly shortNameSpareBits: NasPlmnNameSpareBits
+    shortNameSpareBits: NasPlmnNameSpareBits
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly longName: object[]
+    longName: object[]
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly shortName: object[]
+    shortName: object[]
     static name: string
 }
 class MessageNasGetPlmnNameInput {
@@ -31041,34 +33388,43 @@ class MessageNasGetPlmnNameInput {
     ref(): MessageNasGetPlmnNameInput
     /**
      * Set the 'Always Send PLMN Name' field in the message.
+     * @param valueAlwaysSendPlmnName a #gboolean.
      */
     setAlwaysSendPlmnName(valueAlwaysSendPlmnName: boolean): boolean
     /**
      * Set the 'CSG ID' field in the message.
+     * @param valueCsgId a #guint32.
      */
     setCsgId(valueCsgId: number): boolean
     /**
      * Set the 'MNC PCS Digit Include Status' field in the message.
+     * @param valueMncPcsDigitIncludeStatus a #gboolean.
      */
     setMncPcsDigitIncludeStatus(valueMncPcsDigitIncludeStatus: boolean): boolean
     /**
      * Set the 'PLMN' field in the message.
+     * @param valuePlmnMcc a #guint16.
+     * @param valuePlmnMnc a #guint16.
      */
     setPlmn(valuePlmnMcc: number, valuePlmnMnc: number): boolean
     /**
      * Set the 'Radio Access Technology' field in the message.
+     * @param valueRadioAccessTechnology a #QmiNasRadioInterface.
      */
     setRadioAccessTechnology(valueRadioAccessTechnology: NasRadioInterface): boolean
     /**
      * Set the 'Send All Information' field in the message.
+     * @param valueSendAllInformation a #gboolean.
      */
     setSendAllInformation(valueSendAllInformation: boolean): boolean
     /**
      * Set the 'Suppress SIM Error' field in the message.
+     * @param valueSuppressSimError a #gboolean.
      */
     setSuppressSimError(valueSuppressSimError: boolean): boolean
     /**
      * Set the 'Use Static Table Only' field in the message.
+     * @param valueUseStaticTableOnly a #gboolean.
      */
     setUseStaticTableOnly(valueUseStaticTableOnly: boolean): boolean
     /**
@@ -31106,8 +33462,11 @@ class MessageNasGetPlmnNameOutput {
     getNetworkNameSource(): [ /* returnType */ boolean, /* valueNetworkNameSource */ NasNetworkNameSource | null ]
     /**
      * Get the 'PLMN Name With Language Id' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_plmn_name_output_get_plmn_name_with_language_id() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPlmnNameWithLanguageId(): [ /* returnType */ boolean, /* valuePlmnNameWithLanguageId */ MessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement[] | null ]
+    getPlmnNameWithLanguageId(): [ /* returnType */ boolean, /* valuePlmnNameWithLanguageIdPtr */ MessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -31128,27 +33487,33 @@ class MessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement {
     /**
      * a #GArray of #guint16 elements.
      */
-    readonly longName: object[]
+    longName: object[]
     /**
      * a #GArray of #guint16 elements.
      */
-    readonly shortName: object[]
+    shortName: object[]
     /**
      * a #QmiNasPlmnLanguageId.
      */
-    readonly languageId: NasPlmnLanguageId
+    languageId: NasPlmnLanguageId
     static name: string
 }
 class MessageNasGetPreferredNetworksOutput {
     /* Methods of Qmi-1.0.Qmi.MessageNasGetPreferredNetworksOutput */
     /**
      * Get the 'MNC PCS Digit Include Status' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_preferred_networks_output_get_mnc_pcs_digit_include_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getMncPcsDigitIncludeStatus(): [ /* returnType */ boolean, /* valueMncPcsDigitIncludeStatus */ MessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement[] | null ]
+    getMncPcsDigitIncludeStatus(): [ /* returnType */ boolean, /* valueMncPcsDigitIncludeStatusPtr */ MessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement[] | null ]
     /**
      * Get the 'Preferred Networks' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_preferred_networks_output_get_preferred_networks() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPreferredNetworks(): [ /* returnType */ boolean, /* valuePreferredNetworks */ MessageNasGetPreferredNetworksOutputPreferredNetworksElement[] | null ]
+    getPreferredNetworks(): [ /* returnType */ boolean, /* valuePreferredNetworksPtr */ MessageNasGetPreferredNetworksOutputPreferredNetworksElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -31169,15 +33534,15 @@ class MessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #gboolean.
      */
-    readonly includesPcsDigit: boolean
+    includesPcsDigit: boolean
     static name: string
 }
 class MessageNasGetPreferredNetworksOutputPreferredNetworksElement {
@@ -31185,31 +33550,40 @@ class MessageNasGetPreferredNetworksOutputPreferredNetworksElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #QmiNasPlmnAccessTechnologyIdentifier.
      */
-    readonly radioAccessTechnology: NasPlmnAccessTechnologyIdentifier
+    radioAccessTechnology: NasPlmnAccessTechnologyIdentifier
     static name: string
 }
 class MessageNasGetRfBandInformationOutput {
     /* Methods of Qmi-1.0.Qmi.MessageNasGetRfBandInformationOutput */
     /**
      * Get the 'Bandwidth List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_rf_band_information_output_get_bandwidth_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getBandwidthList(): [ /* returnType */ boolean, /* valueBandwidthList */ MessageNasGetRfBandInformationOutputBandwidthListElement[] | null ]
+    getBandwidthList(): [ /* returnType */ boolean, /* valueBandwidthListPtr */ MessageNasGetRfBandInformationOutputBandwidthListElement[] | null ]
     /**
      * Get the 'Extended List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_rf_band_information_output_get_extended_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getExtendedList(): [ /* returnType */ boolean, /* valueExtendedList */ MessageNasGetRfBandInformationOutputExtendedListElement[] | null ]
+    getExtendedList(): [ /* returnType */ boolean, /* valueExtendedListPtr */ MessageNasGetRfBandInformationOutputExtendedListElement[] | null ]
     /**
      * Get the 'List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_rf_band_information_output_get_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getList(): [ /* returnType */ boolean, /* valueList */ MessageNasGetRfBandInformationOutputListElement[] | null ]
+    getList(): [ /* returnType */ boolean, /* valueListPtr */ MessageNasGetRfBandInformationOutputListElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -31230,11 +33604,11 @@ class MessageNasGetRfBandInformationOutputBandwidthListElement {
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     /**
      * a #QmiNasDLBandwidth.
      */
-    readonly bandwidth: NasDLBandwidth
+    bandwidth: NasDLBandwidth
     static name: string
 }
 class MessageNasGetRfBandInformationOutputExtendedListElement {
@@ -31242,15 +33616,15 @@ class MessageNasGetRfBandInformationOutputExtendedListElement {
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     /**
      * a #QmiNasActiveBand.
      */
-    readonly activeBandClass: NasActiveBand
+    activeBandClass: NasActiveBand
     /**
      * a #guint32.
      */
-    readonly activeChannel: number
+    activeChannel: number
     static name: string
 }
 class MessageNasGetRfBandInformationOutputListElement {
@@ -31258,15 +33632,15 @@ class MessageNasGetRfBandInformationOutputListElement {
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     /**
      * a #QmiNasActiveBand.
      */
-    readonly activeBandClass: NasActiveBand
+    activeBandClass: NasActiveBand
     /**
      * a #guint16.
      */
-    readonly activeChannel: number
+    activeChannel: number
     static name: string
 }
 class MessageNasGetServingSystemOutput {
@@ -31357,8 +33731,11 @@ class MessageNasGetServingSystemOutput {
     getRoamingIndicator(): [ /* returnType */ boolean, /* valueRoamingIndicator */ NasRoamingIndicatorStatus | null ]
     /**
      * Get the 'Roaming Indicator List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_serving_system_output_get_roaming_indicator_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRoamingIndicatorList(): [ /* returnType */ boolean, /* valueRoamingIndicatorList */ MessageNasGetServingSystemOutputRoamingIndicatorListElement[] | null ]
+    getRoamingIndicatorList(): [ /* returnType */ boolean, /* valueRoamingIndicatorListPtr */ MessageNasGetServingSystemOutputRoamingIndicatorListElement[] | null ]
     /**
      * Get the 'Serving System' field from `self`.
      */
@@ -31391,11 +33768,11 @@ class MessageNasGetServingSystemOutputRoamingIndicatorListElement {
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     /**
      * a #QmiNasRoamingIndicatorStatus.
      */
-    readonly roamingIndicator: NasRoamingIndicatorStatus
+    roamingIndicator: NasRoamingIndicatorStatus
     static name: string
 }
 class MessageNasGetSignalInfoOutput {
@@ -31463,6 +33840,7 @@ class MessageNasGetSignalStrengthInput {
     ref(): MessageNasGetSignalStrengthInput
     /**
      * Set the 'Request Mask' field in the message.
+     * @param valueRequestMask a #QmiNasSignalStrengthRequest.
      */
     setRequestMask(valueRequestMask: NasSignalStrengthRequest): boolean
     /**
@@ -31480,12 +33858,18 @@ class MessageNasGetSignalStrengthOutput {
     /* Methods of Qmi-1.0.Qmi.MessageNasGetSignalStrengthOutput */
     /**
      * Get the 'ECIO List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_signal_strength_output_get_ecio_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getEcioList(): [ /* returnType */ boolean, /* valueEcioList */ MessageNasGetSignalStrengthOutputEcioListElement[] | null ]
+    getEcioList(): [ /* returnType */ boolean, /* valueEcioListPtr */ MessageNasGetSignalStrengthOutputEcioListElement[] | null ]
     /**
      * Get the 'Error Rate List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_signal_strength_output_get_error_rate_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getErrorRateList(): [ /* returnType */ boolean, /* valueErrorRateList */ MessageNasGetSignalStrengthOutputErrorRateListElement[] | null ]
+    getErrorRateList(): [ /* returnType */ boolean, /* valueErrorRateListPtr */ MessageNasGetSignalStrengthOutputErrorRateListElement[] | null ]
     /**
      * Get the 'IO' field from `self`.
      */
@@ -31508,8 +33892,11 @@ class MessageNasGetSignalStrengthOutput {
     getRsrq(): [ /* returnType */ boolean, /* valueRsrqRsrq */ number | null, /* valueRsrqRadioInterface */ NasRadioInterface | null ]
     /**
      * Get the 'RSSI List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_signal_strength_output_get_rssi_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRssiList(): [ /* returnType */ boolean, /* valueRssiList */ MessageNasGetSignalStrengthOutputRssiListElement[] | null ]
+    getRssiList(): [ /* returnType */ boolean, /* valueRssiListPtr */ MessageNasGetSignalStrengthOutputRssiListElement[] | null ]
     /**
      * Get the 'Signal Strength' field from `self`.
      */
@@ -31520,8 +33907,11 @@ class MessageNasGetSignalStrengthOutput {
     getSinr(): [ /* returnType */ boolean, /* valueSinr */ NasEvdoSinrLevel | null ]
     /**
      * Get the 'Strength List' field from `self`.
+     * 
+     * Version of qmi_message_nas_get_signal_strength_output_get_strength_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getStrengthList(): [ /* returnType */ boolean, /* valueStrengthList */ MessageNasGetSignalStrengthOutputStrengthListElement[] | null ]
+    getStrengthList(): [ /* returnType */ boolean, /* valueStrengthListPtr */ MessageNasGetSignalStrengthOutputStrengthListElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -31538,11 +33928,11 @@ class MessageNasGetSignalStrengthOutputEcioListElement {
     /**
      * a #guint8.
      */
-    readonly ecio: number
+    ecio: number
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     static name: string
 }
 class MessageNasGetSignalStrengthOutputErrorRateListElement {
@@ -31550,11 +33940,11 @@ class MessageNasGetSignalStrengthOutputErrorRateListElement {
     /**
      * a #guint16.
      */
-    readonly rate: number
+    rate: number
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     static name: string
 }
 class MessageNasGetSignalStrengthOutputRssiListElement {
@@ -31562,11 +33952,11 @@ class MessageNasGetSignalStrengthOutputRssiListElement {
     /**
      * a #guint8.
      */
-    readonly rssi: number
+    rssi: number
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     static name: string
 }
 class MessageNasGetSignalStrengthOutputStrengthListElement {
@@ -31574,11 +33964,11 @@ class MessageNasGetSignalStrengthOutputStrengthListElement {
     /**
      * a #gint8.
      */
-    readonly strength: number
+    strength: number
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     static name: string
 }
 class MessageNasGetSupportedMessagesOutput {
@@ -31905,6 +34295,7 @@ class MessageNasGetTxRxInfoInput {
     ref(): MessageNasGetTxRxInfoInput
     /**
      * Set the 'Radio Interface' field in the message.
+     * @param valueRadioInterface a #QmiNasRadioInterface.
      */
     setRadioInterface(valueRadioInterface: NasRadioInterface): boolean
     /**
@@ -31979,18 +34370,24 @@ class MessageNasInitiateNetworkRegisterInput {
     ref(): MessageNasInitiateNetworkRegisterInput
     /**
      * Set the 'Action' field in the message.
+     * @param valueAction a #QmiNasNetworkRegisterType.
      */
     setAction(valueAction: NasNetworkRegisterType): boolean
     /**
      * Set the 'Change Duration' field in the message.
+     * @param valueChangeDuration a #QmiNasChangeDuration.
      */
     setChangeDuration(valueChangeDuration: NasChangeDuration): boolean
     /**
      * Set the 'Manual Registration Info 3GPP' field in the message.
+     * @param valueManualRegistrationInfo3gppMcc a #guint16.
+     * @param valueManualRegistrationInfo3gppMnc a #guint16.
+     * @param valueManualRegistrationInfo3gppRadioInterface a #QmiNasRadioInterface.
      */
     setManualRegistrationInfo3gpp(valueManualRegistrationInfo3gppMcc: number, valueManualRegistrationInfo3gppMnc: number, valueManualRegistrationInfo3gppRadioInterface: NasRadioInterface): boolean
     /**
      * Set the 'MNC PCS Digit Include Status' field in the message.
+     * @param valueMncPcsDigitIncludeStatus a #gboolean.
      */
     setMncPcsDigitIncludeStatus(valueMncPcsDigitIncludeStatus: boolean): boolean
     /**
@@ -32033,6 +34430,7 @@ class MessageNasNetworkScanInput {
     ref(): MessageNasNetworkScanInput
     /**
      * Set the 'Network Type' field in the message.
+     * @param valueNetworkType a #QmiNasNetworkScanType.
      */
     setNetworkType(valueNetworkType: NasNetworkScanType): boolean
     /**
@@ -32050,20 +34448,29 @@ class MessageNasNetworkScanOutput {
     /* Methods of Qmi-1.0.Qmi.MessageNasNetworkScanOutput */
     /**
      * Get the 'MNC PCS Digit Include Status' field from `self`.
+     * 
+     * Version of qmi_message_nas_network_scan_output_get_mnc_pcs_digit_include_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getMncPcsDigitIncludeStatus(): [ /* returnType */ boolean, /* valueMncPcsDigitIncludeStatus */ MessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement[] | null ]
+    getMncPcsDigitIncludeStatus(): [ /* returnType */ boolean, /* valueMncPcsDigitIncludeStatusPtr */ MessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement[] | null ]
     /**
      * Get the 'Network Information' field from `self`.
+     * 
+     * Version of qmi_message_nas_network_scan_output_get_network_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getNetworkInformation(): [ /* returnType */ boolean, /* valueNetworkInformation */ MessageNasNetworkScanOutputNetworkInformationElement[] | null ]
+    getNetworkInformation(): [ /* returnType */ boolean, /* valueNetworkInformationPtr */ MessageNasNetworkScanOutputNetworkInformationElement[] | null ]
     /**
      * Get the 'Network Scan Result' field from `self`.
      */
     getNetworkScanResult(): [ /* returnType */ boolean, /* valueNetworkScanResult */ NasNetworkScanResult | null ]
     /**
      * Get the 'Radio Access Technology' field from `self`.
+     * 
+     * Version of qmi_message_nas_network_scan_output_get_radio_access_technology() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRadioAccessTechnology(): [ /* returnType */ boolean, /* valueRadioAccessTechnology */ MessageNasNetworkScanOutputRadioAccessTechnologyElement[] | null ]
+    getRadioAccessTechnology(): [ /* returnType */ boolean, /* valueRadioAccessTechnologyPtr */ MessageNasNetworkScanOutputRadioAccessTechnologyElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -32084,15 +34491,15 @@ class MessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #gboolean.
      */
-    readonly includesPcsDigit: boolean
+    includesPcsDigit: boolean
     static name: string
 }
 class MessageNasNetworkScanOutputNetworkInformationElement {
@@ -32100,19 +34507,19 @@ class MessageNasNetworkScanOutputNetworkInformationElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #QmiNasNetworkStatus.
      */
-    readonly networkStatus: NasNetworkStatus
+    networkStatus: NasNetworkStatus
     /**
      * a string.
      */
-    readonly description: string
+    description: string
     static name: string
 }
 class MessageNasNetworkScanOutputRadioAccessTechnologyElement {
@@ -32120,15 +34527,15 @@ class MessageNasNetworkScanOutputRadioAccessTechnologyElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #QmiNasRadioInterface.
      */
-    readonly radioInterface: NasRadioInterface
+    radioInterface: NasRadioInterface
     static name: string
 }
 class MessageNasRegisterIndicationsInput {
@@ -32203,66 +34610,83 @@ class MessageNasRegisterIndicationsInput {
     ref(): MessageNasRegisterIndicationsInput
     /**
      * Set the 'Current PLMN Name' field in the message.
+     * @param valueCurrentPlmnName a #gboolean.
      */
     setCurrentPlmnName(valueCurrentPlmnName: boolean): boolean
     /**
      * Set the 'DDTM Events' field in the message.
+     * @param valueDdtmEvents a #gboolean.
      */
     setDdtmEvents(valueDdtmEvents: boolean): boolean
     /**
      * Set the 'Dual Standby Preference' field in the message.
+     * @param valueDualStandbyPreference a #gboolean.
      */
     setDualStandbyPreference(valueDualStandbyPreference: boolean): boolean
     /**
      * Set the 'eMBMS Status' field in the message.
+     * @param valueEmbmsStatus a #gboolean.
      */
     setEmbmsStatus(valueEmbmsStatus: boolean): boolean
     /**
      * Set the 'Error Rate' field in the message.
+     * @param valueErrorRate a #gboolean.
      */
     setErrorRate(valueErrorRate: boolean): boolean
     /**
      * Set the 'HDR New UATI Assigned' field in the message.
+     * @param valueHdrNewUatiAssigned a #gboolean.
      */
     setHdrNewUatiAssigned(valueHdrNewUatiAssigned: boolean): boolean
     /**
      * Set the 'HDR Session Closed' field in the message.
+     * @param valueHdrSessionClosed a #gboolean.
      */
     setHdrSessionClosed(valueHdrSessionClosed: boolean): boolean
     /**
      * Set the 'Managed Roaming' field in the message.
+     * @param valueManagedRoaming a #gboolean.
      */
     setManagedRoaming(valueManagedRoaming: boolean): boolean
     /**
      * Set the 'Network Reject Information' field in the message.
+     * @param valueNetworkRejectInformationEnableNetworkRejectIndications a #gboolean.
+     * @param valueNetworkRejectInformationSupressSystemInfoIndications a #gboolean.
      */
     setNetworkRejectInformation(valueNetworkRejectInformationEnableNetworkRejectIndications: boolean, valueNetworkRejectInformationSupressSystemInfoIndications: boolean): boolean
     /**
      * Set the 'Network Time' field in the message.
+     * @param valueNetworkTime a #gboolean.
      */
     setNetworkTime(valueNetworkTime: boolean): boolean
     /**
      * Set the 'RF Band Information' field in the message.
+     * @param valueRfBandInformation a #gboolean.
      */
     setRfBandInformation(valueRfBandInformation: boolean): boolean
     /**
      * Set the 'Serving System Events' field in the message.
+     * @param valueServingSystemEvents a #gboolean.
      */
     setServingSystemEvents(valueServingSystemEvents: boolean): boolean
     /**
      * Set the 'Signal Info' field in the message.
+     * @param valueSignalInfo a #gboolean.
      */
     setSignalInfo(valueSignalInfo: boolean): boolean
     /**
      * Set the 'Subscription Info' field in the message.
+     * @param valueSubscriptionInfo a #gboolean.
      */
     setSubscriptionInfo(valueSubscriptionInfo: boolean): boolean
     /**
      * Set the 'System Info' field in the message.
+     * @param valueSystemInfo a #gboolean.
      */
     setSystemInfo(valueSystemInfo: boolean): boolean
     /**
      * Set the 'System Selection Preference' field in the message.
+     * @param valueSystemSelectionPreference a #gboolean.
      */
     setSystemSelectionPreference(valueSystemSelectionPreference: boolean): boolean
     /**
@@ -32366,50 +34790,71 @@ class MessageNasSetEventReportInput {
     ref(): MessageNasSetEventReportInput
     /**
      * Set the 'ECIO Indicator' field in the message.
+     * @param valueEcioIndicatorReport a #gboolean.
+     * @param valueEcioIndicatorEcioDelta a #guint8.
      */
     setEcioIndicator(valueEcioIndicatorReport: boolean, valueEcioIndicatorEcioDelta: number): boolean
     /**
      * Set the 'ECIO Threshold' field in the message.
+     * @param valueEcioThresholdReport a #gboolean.
+     * @param valueEcioThresholdThresholds a #GArray of #gint16 elements. A new reference to `value_ecio_threshold_thresholds` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setEcioThreshold(valueEcioThresholdReport: boolean, valueEcioThresholdThresholds: number[]): boolean
     /**
      * Set the 'Error Rate Indicator' field in the message.
+     * @param valueErrorRateIndicator a #gboolean.
      */
     setErrorRateIndicator(valueErrorRateIndicator: boolean): boolean
     /**
      * Set the 'IO Indicator' field in the message.
+     * @param valueIoIndicatorReport a #gboolean.
+     * @param valueIoIndicatorIoDelta a #guint8.
      */
     setIoIndicator(valueIoIndicatorReport: boolean, valueIoIndicatorIoDelta: number): boolean
     /**
      * Set the 'LTE RSRP Delta' field in the message.
+     * @param valueLteRsrpDeltaReport a #gboolean.
+     * @param valueLteRsrpDeltaRsrpDelta a #guint8.
      */
     setLteRsrpDelta(valueLteRsrpDeltaReport: boolean, valueLteRsrpDeltaRsrpDelta: number): boolean
     /**
      * Set the 'LTE SNR Delta' field in the message.
+     * @param valueLteSnrDeltaReport a #gboolean.
+     * @param valueLteSnrDeltaSnrDelta a #guint8.
      */
     setLteSnrDelta(valueLteSnrDeltaReport: boolean, valueLteSnrDeltaSnrDelta: number): boolean
     /**
      * Set the 'Registration Reject Reason' field in the message.
+     * @param valueRegistrationRejectReason a #gboolean.
      */
     setRegistrationRejectReason(valueRegistrationRejectReason: boolean): boolean
     /**
      * Set the 'RF Band Information' field in the message.
+     * @param valueRfBandInformation a #gboolean.
      */
     setRfBandInformation(valueRfBandInformation: boolean): boolean
     /**
      * Set the 'RSSI Indicator' field in the message.
+     * @param valueRssiIndicatorReport a #gboolean.
+     * @param valueRssiIndicatorRssiDelta a #guint8.
      */
     setRssiIndicator(valueRssiIndicatorReport: boolean, valueRssiIndicatorRssiDelta: number): boolean
     /**
      * Set the 'Signal Strength Indicator' field in the message.
+     * @param valueSignalStrengthIndicatorReport a #gboolean.
+     * @param valueSignalStrengthIndicatorThresholds a #GArray of #gint8 elements. A new reference to `value_signal_strength_indicator_thresholds` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSignalStrengthIndicator(valueSignalStrengthIndicatorReport: boolean, valueSignalStrengthIndicatorThresholds: Uint8Array): boolean
     /**
      * Set the 'SINR Indicator' field in the message.
+     * @param valueSinrIndicatorReport a #gboolean.
+     * @param valueSinrIndicatorSinrDelta a #guint8.
      */
     setSinrIndicator(valueSinrIndicatorReport: boolean, valueSinrIndicatorSinrDelta: number): boolean
     /**
      * Set the 'SINR Threshold' field in the message.
+     * @param valueSinrThresholdReport a #gboolean.
+     * @param valueSinrThresholdThresholds a #GArray of #guint8 elements. A new reference to `value_sinr_threshold_thresholds` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSinrThreshold(valueSinrThresholdReport: boolean, valueSinrThresholdThresholds: Uint8Array): boolean
     /**
@@ -32448,28 +34893,37 @@ class MessageNasSetPreferredNetworksInput {
     getClearPreviousPreferredNetworks(): [ /* returnType */ boolean, /* valueClearPreviousPreferredNetworks */ boolean | null ]
     /**
      * Get the 'MNC PCS Digit Include Status' field from `self`.
+     * 
+     * Version of qmi_message_nas_set_preferred_networks_input_get_mnc_pcs_digit_include_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getMncPcsDigitIncludeStatus(): [ /* returnType */ boolean, /* valueMncPcsDigitIncludeStatus */ MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement[] | null ]
+    getMncPcsDigitIncludeStatus(): [ /* returnType */ boolean, /* valueMncPcsDigitIncludeStatusPtr */ MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement[] | null ]
     /**
      * Get the 'Preferred Networks' field from `self`.
+     * 
+     * Version of qmi_message_nas_set_preferred_networks_input_get_preferred_networks() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPreferredNetworks(): [ /* returnType */ boolean, /* valuePreferredNetworks */ MessageNasSetPreferredNetworksInputPreferredNetworksElement[] | null ]
+    getPreferredNetworks(): [ /* returnType */ boolean, /* valuePreferredNetworksPtr */ MessageNasSetPreferredNetworksInputPreferredNetworksElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageNasSetPreferredNetworksInput
     /**
      * Set the 'Clear Previous Preferred Networks' field in the message.
+     * @param valueClearPreviousPreferredNetworks a #gboolean.
      */
     setClearPreviousPreferredNetworks(valueClearPreviousPreferredNetworks: boolean): boolean
     /**
      * Set the 'MNC PCS Digit Include Status' field in the message.
+     * @param valueMncPcsDigitIncludeStatusPtr array of #QmiMessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setMncPcsDigitIncludeStatus(valueMncPcsDigitIncludeStatus: MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement[]): boolean
+    setMncPcsDigitIncludeStatus(valueMncPcsDigitIncludeStatusPtr: MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement[]): boolean
     /**
      * Set the 'Preferred Networks' field in the message.
+     * @param valuePreferredNetworksPtr array of #QmiMessageNasSetPreferredNetworksInputPreferredNetworksElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setPreferredNetworks(valuePreferredNetworks: MessageNasSetPreferredNetworksInputPreferredNetworksElement[]): boolean
+    setPreferredNetworks(valuePreferredNetworksPtr: MessageNasSetPreferredNetworksInputPreferredNetworksElement[]): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -32486,15 +34940,15 @@ class MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #gboolean.
      */
-    readonly includesPcsDigit: boolean
+    includesPcsDigit: boolean
     static name: string
 }
 class MessageNasSetPreferredNetworksInputPreferredNetworksElement {
@@ -32502,15 +34956,15 @@ class MessageNasSetPreferredNetworksInputPreferredNetworksElement {
     /**
      * a #guint16.
      */
-    readonly mcc: number
+    mcc: number
     /**
      * a #guint16.
      */
-    readonly mnc: number
+    mnc: number
     /**
      * a #QmiNasPlmnAccessTechnologyIdentifier.
      */
-    readonly radioAccessTechnology: NasPlmnAccessTechnologyIdentifier
+    radioAccessTechnology: NasPlmnAccessTechnologyIdentifier
     static name: string
 }
 class MessageNasSetPreferredNetworksOutput {
@@ -32614,78 +35068,116 @@ class MessageNasSetSystemSelectionPreferenceInput {
     ref(): MessageNasSetSystemSelectionPreferenceInput
     /**
      * Set the 'Acquisition Order Preference' field in the message.
+     * @param valueAcquisitionOrderPreference a #GArray of #QmiNasRadioInterface elements. A new reference to `value_acquisition_order_preference` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setAcquisitionOrderPreference(valueAcquisitionOrderPreference: NasRadioInterface[]): boolean
     /**
      * Set the 'Band Preference' field in the message.
+     * @param valueBandPreference a #QmiNasBandPreference.
      */
     setBandPreference(valueBandPreference: NasBandPreference): boolean
     /**
      * Set the 'CDMA PRL Preference' field in the message.
+     * @param valueCdmaPrlPreference a #QmiNasCdmaPrlPreference.
      */
     setCdmaPrlPreference(valueCdmaPrlPreference: NasCdmaPrlPreference): boolean
     /**
      * Set the 'Change Duration' field in the message.
+     * @param valueChangeDuration a #QmiNasChangeDuration.
      */
     setChangeDuration(valueChangeDuration: NasChangeDuration): boolean
     /**
      * Set the 'Emergency mode' field in the message.
+     * @param valueEmergencyMode a #gboolean.
      */
     setEmergencyMode(valueEmergencyMode: boolean): boolean
     /**
      * Set the 'Extended LTE Band Preference' field in the message.
+     * @param valueExtendedLteBandPreferenceMaskLow a #guint64.
+     * @param valueExtendedLteBandPreferenceMaskMidLow a #guint64.
+     * @param valueExtendedLteBandPreferenceMaskMidHigh a #guint64.
+     * @param valueExtendedLteBandPreferenceMaskHigh a #guint64.
      */
     setExtendedLteBandPreference(valueExtendedLteBandPreferenceMaskLow: number, valueExtendedLteBandPreferenceMaskMidLow: number, valueExtendedLteBandPreferenceMaskMidHigh: number, valueExtendedLteBandPreferenceMaskHigh: number): boolean
     /**
      * Set the 'GSM WCDMA Acquisition Order Preference' field in the message.
+     * @param valueGsmWcdmaAcquisitionOrderPreference a #QmiNasGsmWcdmaAcquisitionOrderPreference.
      */
     setGsmWcdmaAcquisitionOrderPreference(valueGsmWcdmaAcquisitionOrderPreference: NasGsmWcdmaAcquisitionOrderPreference): boolean
     /**
      * Set the 'LTE Band Preference' field in the message.
+     * @param valueLteBandPreference a #QmiNasLteBandPreference.
      */
     setLteBandPreference(valueLteBandPreference: NasLteBandPreference): boolean
     /**
      * Set the 'MNC PCS Digit Include Status' field in the message.
+     * @param valueMncPcsDigitIncludeStatus a #gboolean.
      */
     setMncPcsDigitIncludeStatus(valueMncPcsDigitIncludeStatus: boolean): boolean
     /**
      * Set the 'Mode Preference' field in the message.
+     * @param valueModePreference a #QmiNasRatModePreference.
      */
     setModePreference(valueModePreference: NasRatModePreference): boolean
     /**
      * Set the 'Network Selection Preference' field in the message.
+     * @param valueNetworkSelectionPreferenceMode a #QmiNasNetworkSelectionPreference.
+     * @param valueNetworkSelectionPreferenceMcc a #guint16.
+     * @param valueNetworkSelectionPreferenceMnc a #guint16.
      */
     setNetworkSelectionPreference(valueNetworkSelectionPreferenceMode: NasNetworkSelectionPreference, valueNetworkSelectionPreferenceMcc: number, valueNetworkSelectionPreferenceMnc: number): boolean
     /**
      * Set the 'Network Selection Registration Restriction' field in the message.
+     * @param valueNetworkSelectionRegistrationRestriction a #QmiNasNetworkSelectionRegistrationRestriction.
      */
     setNetworkSelectionRegistrationRestriction(valueNetworkSelectionRegistrationRestriction: NasNetworkSelectionRegistrationRestriction): boolean
     /**
      * Set the 'NR5G NSA Band Preference' field in the message.
+     * @param valueNr5gNsaBandPreferenceMask0 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask1 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask2 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask3 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask4 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask5 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask6 a #guint64.
+     * @param valueNr5gNsaBandPreferenceMask7 a #guint64.
      */
     setNr5gNsaBandPreference(valueNr5gNsaBandPreferenceMask0: number, valueNr5gNsaBandPreferenceMask1: number, valueNr5gNsaBandPreferenceMask2: number, valueNr5gNsaBandPreferenceMask3: number, valueNr5gNsaBandPreferenceMask4: number, valueNr5gNsaBandPreferenceMask5: number, valueNr5gNsaBandPreferenceMask6: number, valueNr5gNsaBandPreferenceMask7: number): boolean
     /**
      * Set the 'NR5G SA Band Preference' field in the message.
+     * @param valueNr5gSaBandPreferenceMask0 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask1 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask2 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask3 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask4 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask5 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask6 a #guint64.
+     * @param valueNr5gSaBandPreferenceMask7 a #guint64.
      */
     setNr5gSaBandPreference(valueNr5gSaBandPreferenceMask0: number, valueNr5gSaBandPreferenceMask1: number, valueNr5gSaBandPreferenceMask2: number, valueNr5gSaBandPreferenceMask3: number, valueNr5gSaBandPreferenceMask4: number, valueNr5gSaBandPreferenceMask5: number, valueNr5gSaBandPreferenceMask6: number, valueNr5gSaBandPreferenceMask7: number): boolean
     /**
      * Set the 'Roaming Preference' field in the message.
+     * @param valueRoamingPreference a #QmiNasRoamingPreference.
      */
     setRoamingPreference(valueRoamingPreference: NasRoamingPreference): boolean
     /**
      * Set the 'Service Domain Preference' field in the message.
+     * @param valueServiceDomainPreference a #QmiNasServiceDomainPreference.
      */
     setServiceDomainPreference(valueServiceDomainPreference: NasServiceDomainPreference): boolean
     /**
      * Set the 'TD SCDMA Band Preference' field in the message.
+     * @param valueTdScdmaBandPreference a #QmiNasTdScdmaBandPreference.
      */
     setTdScdmaBandPreference(valueTdScdmaBandPreference: NasTdScdmaBandPreference): boolean
     /**
      * Set the 'Usage Preference' field in the message.
+     * @param valueUsagePreference a #QmiNasUsagePreference.
      */
     setUsagePreference(valueUsagePreference: NasUsagePreference): boolean
     /**
      * Set the 'Voice Domain Preference' field in the message.
+     * @param valueVoiceDomainPreference a #QmiNasVoiceDomainPreference.
      */
     setVoiceDomainPreference(valueVoiceDomainPreference: NasVoiceDomainPreference): boolean
     /**
@@ -32728,6 +35220,8 @@ class MessageNasSetTechnologyPreferenceInput {
     ref(): MessageNasSetTechnologyPreferenceInput
     /**
      * Set the 'Current' field in the message.
+     * @param valueCurrentTechnologyPreference a #QmiNasRadioTechnologyPreference.
+     * @param valueCurrentTechnologyPreferenceDuration a #QmiNasPreferenceDuration.
      */
     setCurrent(valueCurrentTechnologyPreference: NasRadioTechnologyPreference, valueCurrentTechnologyPreferenceDuration: NasPreferenceDuration): boolean
     /**
@@ -32895,6 +35389,8 @@ class MessageOmaSendSelectionInput {
     ref(): MessageOmaSendSelectionInput
     /**
      * Set the 'Network Initiated Alert Selection' field in the message.
+     * @param valueNetworkInitiatedAlertSelectionControlPointSelectionAccept a #gboolean.
+     * @param valueNetworkInitiatedAlertSelectionSessionId a #guint16.
      */
     setNetworkInitiatedAlertSelection(valueNetworkInitiatedAlertSelectionControlPointSelectionAccept: boolean, valueNetworkInitiatedAlertSelectionSessionId: number): boolean
     /**
@@ -32941,10 +35437,12 @@ class MessageOmaSetEventReportInput {
     ref(): MessageOmaSetEventReportInput
     /**
      * Set the 'Network Initiated Alert Reporting' field in the message.
+     * @param valueNetworkInitiatedAlertReporting a #gboolean.
      */
     setNetworkInitiatedAlertReporting(valueNetworkInitiatedAlertReporting: boolean): boolean
     /**
      * Set the 'Session State Reporting' field in the message.
+     * @param valueSessionStateReporting a #gboolean.
      */
     setSessionStateReporting(valueSessionStateReporting: boolean): boolean
     /**
@@ -32995,14 +35493,17 @@ class MessageOmaSetFeatureSettingInput {
     ref(): MessageOmaSetFeatureSettingInput
     /**
      * Set the 'Device Provisioning Service Update Config' field in the message.
+     * @param valueDeviceProvisioningServiceUpdateConfig a #gboolean.
      */
     setDeviceProvisioningServiceUpdateConfig(valueDeviceProvisioningServiceUpdateConfig: boolean): boolean
     /**
      * Set the 'HFA Feature Config' field in the message.
+     * @param valueHfaFeatureConfig a #gboolean.
      */
     setHfaFeatureConfig(valueHfaFeatureConfig: boolean): boolean
     /**
      * Set the 'PRL Update Service Config' field in the message.
+     * @param valuePrlUpdateServiceConfig a #gboolean.
      */
     setPrlUpdateServiceConfig(valuePrlUpdateServiceConfig: boolean): boolean
     /**
@@ -33045,6 +35546,7 @@ class MessageOmaStartSessionInput {
     ref(): MessageOmaStartSessionInput
     /**
      * Set the 'Session Type' field in the message.
+     * @param valueSessionType a #QmiOmaSessionType.
      */
     setSessionType(valueSessionType: OmaSessionType): boolean
     /**
@@ -33079,40 +35581,64 @@ class MessagePbmGetAllCapabilitiesOutput {
     /* Methods of Qmi-1.0.Qmi.MessagePbmGetAllCapabilitiesOutput */
     /**
      * Get the 'Additional Number Alpha String Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_additional_number_alpha_string_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getAdditionalNumberAlphaStringCapability(): [ /* returnType */ boolean, /* valueAdditionalNumberAlphaStringCapability */ MessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityElement[] | null ]
+    getAdditionalNumberAlphaStringCapability(): [ /* returnType */ boolean, /* valueAdditionalNumberAlphaStringCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityElement[] | null ]
     /**
      * Get the 'Additional Number Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_additional_number_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getAdditionalNumberCapability(): [ /* returnType */ boolean, /* valueAdditionalNumberCapability */ MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement[] | null ]
+    getAdditionalNumberCapability(): [ /* returnType */ boolean, /* valueAdditionalNumberCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement[] | null ]
     /**
      * Get the 'Capability Basic Information' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_capability_basic_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getCapabilityBasicInformation(): [ /* returnType */ boolean, /* valueCapabilityBasicInformation */ MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElement[] | null ]
+    getCapabilityBasicInformation(): [ /* returnType */ boolean, /* valueCapabilityBasicInformationPtr */ MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementGir[] | null ]
     /**
      * Get the 'Email Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_email_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getEmailCapability(): [ /* returnType */ boolean, /* valueEmailCapability */ MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement[] | null ]
+    getEmailCapability(): [ /* returnType */ boolean, /* valueEmailCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement[] | null ]
     /**
      * Get the 'Group Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_group_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getGroupCapability(): [ /* returnType */ boolean, /* valueGroupCapability */ MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement[] | null ]
+    getGroupCapability(): [ /* returnType */ boolean, /* valueGroupCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement[] | null ]
     /**
      * Get the 'Grouping Information Alpha String Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_grouping_information_alpha_string_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getGroupingInformationAlphaStringCapability(): [ /* returnType */ boolean, /* valueGroupingInformationAlphaStringCapability */ MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement[] | null ]
+    getGroupingInformationAlphaStringCapability(): [ /* returnType */ boolean, /* valueGroupingInformationAlphaStringCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement[] | null ]
     /**
      * Get the 'Hidden Records Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_hidden_records_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getHiddenRecordsCapability(): [ /* returnType */ boolean, /* valueHiddenRecordsCapability */ MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement[] | null ]
+    getHiddenRecordsCapability(): [ /* returnType */ boolean, /* valueHiddenRecordsCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
     getResult(): boolean
     /**
      * Get the 'Second Name Capability' field from `self`.
+     * 
+     * Version of qmi_message_pbm_get_all_capabilities_output_get_second_name_capability() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getSecondNameCapability(): [ /* returnType */ boolean, /* valueSecondNameCapability */ MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement[] | null ]
+    getSecondNameCapability(): [ /* returnType */ boolean, /* valueSecondNameCapabilityPtr */ MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -33129,19 +35655,19 @@ class MessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityEle
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #guint8.
      */
-    readonly maximumRecords: number
+    maximumRecords: number
     /**
      * a #guint8.
      */
-    readonly usedRecords: number
+    usedRecords: number
     /**
      * a #guint8.
      */
-    readonly maximumStringLength: number
+    maximumStringLength: number
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement {
@@ -33149,19 +35675,19 @@ class MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement {
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #guint8.
      */
-    readonly maximumAdditionalNumbers: number
+    maximumAdditionalNumbers: number
     /**
      * a #guint8.
      */
-    readonly maximumAdditionalNumberLength: number
+    maximumAdditionalNumberLength: number
     /**
      * a #guint8.
      */
-    readonly maximumAdditionalNumberTagLength: number
+    maximumAdditionalNumberTagLength: number
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElement {
@@ -33169,11 +35695,23 @@ class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElement {
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #GArray of #QmiMessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement elements.
      */
-    readonly phonebooks: object[]
+    phonebooks: object[]
+    static name: string
+}
+class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementGir {
+    /* Fields of Qmi-1.0.Qmi.MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementGir */
+    /**
+     * a #QmiPbmSessionType.
+     */
+    sessionType: PbmSessionType
+    /**
+     * an array of #QmiMessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement elements.
+     */
+    phonebooks: MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement[]
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement {
@@ -33181,23 +35719,23 @@ class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebo
     /**
      * a #QmiPbmPhonebookType.
      */
-    readonly phonebookType: PbmPhonebookType
+    phonebookType: PbmPhonebookType
     /**
      * a #guint16.
      */
-    readonly usedRecords: number
+    usedRecords: number
     /**
      * a #guint16.
      */
-    readonly maximumRecords: number
+    maximumRecords: number
     /**
      * a #guint8.
      */
-    readonly maximumNumberLength: number
+    maximumNumberLength: number
     /**
      * a #guint8.
      */
-    readonly maximumNameLength: number
+    maximumNameLength: number
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement {
@@ -33205,15 +35743,15 @@ class MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement {
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #guint8.
      */
-    readonly maximumEmails: number
+    maximumEmails: number
     /**
      * a #guint8.
      */
-    readonly maximumEmailAddressLength: number
+    maximumEmailAddressLength: number
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement {
@@ -33221,15 +35759,15 @@ class MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement {
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #guint8.
      */
-    readonly maximumGroups: number
+    maximumGroups: number
     /**
      * a #guint8.
      */
-    readonly maximumGroupTagLength: number
+    maximumGroupTagLength: number
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement {
@@ -33237,19 +35775,19 @@ class MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapability
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #guint8.
      */
-    readonly maximumRecords: number
+    maximumRecords: number
     /**
      * a #guint8.
      */
-    readonly usedRecords: number
+    usedRecords: number
     /**
      * a #guint8.
      */
-    readonly maximumStringLength: number
+    maximumStringLength: number
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement {
@@ -33257,11 +35795,11 @@ class MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement {
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #gboolean.
      */
-    readonly supported: boolean
+    supported: boolean
     static name: string
 }
 class MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement {
@@ -33269,11 +35807,11 @@ class MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement {
     /**
      * a #QmiPbmSessionType.
      */
-    readonly sessionType: PbmSessionType
+    sessionType: PbmSessionType
     /**
      * a #guint8.
      */
-    readonly maximumSecondNameLength: number
+    maximumSecondNameLength: number
     static name: string
 }
 class MessagePbmGetCapabilitiesInput {
@@ -33288,6 +35826,8 @@ class MessagePbmGetCapabilitiesInput {
     ref(): MessagePbmGetCapabilitiesInput
     /**
      * Set the 'Phonebook Information' field in the message.
+     * @param valuePhonebookInformationSessionType a #QmiPbmSessionType.
+     * @param valuePhonebookInformationPhonebookType a #QmiPbmPhonebookType.
      */
     setPhonebookInformation(valuePhonebookInformationSessionType: PbmSessionType, valuePhonebookInformationPhonebookType: PbmPhonebookType): boolean
     /**
@@ -33362,6 +35902,7 @@ class MessagePbmIndicationRegisterInput {
     ref(): MessagePbmIndicationRegisterInput
     /**
      * Set the 'Event Registration Mask' field in the message.
+     * @param valueEventRegistrationMask a #QmiPbmEventRegistrationFlag.
      */
     setEventRegistrationMask(valueEventRegistrationMask: PbmEventRegistrationFlag): boolean
     /**
@@ -33412,10 +35953,12 @@ class MessagePdcActivateConfigInput {
     ref(): MessagePdcActivateConfigInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33462,6 +36005,8 @@ class MessagePdcConfigChangeInput {
     ref(): MessagePdcConfigChangeInput
     /**
      * Set the 'Type With Id v2' field in the message.
+     * @param valueTypeWithIdV2ConfigType a #QmiPdcConfigurationType.
+     * @param valueTypeWithIdV2Id a #GArray of #guint8 elements. A new reference to `value_type_with_id_v2`_id will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setTypeWithIdV2(valueTypeWithIdV2ConfigType: PdcConfigurationType, valueTypeWithIdV2Id: Uint8Array): boolean
     /**
@@ -33512,10 +36057,12 @@ class MessagePdcDeactivateConfigInput {
     ref(): MessagePdcDeactivateConfigInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33570,14 +36117,17 @@ class MessagePdcDeleteConfigInput {
     ref(): MessagePdcDeleteConfigInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Id' field in the message.
+     * @param valueId a #GArray of #guint8 elements. A new reference to `value_id` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setId(valueId: Uint8Array): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33628,10 +36178,13 @@ class MessagePdcGetConfigInfoInput {
     ref(): MessagePdcGetConfigInfoInput
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
      * Set the 'Type With Id v2' field in the message.
+     * @param valueTypeWithIdV2ConfigType a #QmiPdcConfigurationType.
+     * @param valueTypeWithIdV2Id a #GArray of #guint8 elements. A new reference to `value_type_with_id_v2`_id will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setTypeWithIdV2(valueTypeWithIdV2ConfigType: PdcConfigurationType, valueTypeWithIdV2Id: Uint8Array): boolean
     /**
@@ -33678,10 +36231,12 @@ class MessagePdcGetConfigLimitsInput {
     ref(): MessagePdcGetConfigLimitsInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33740,10 +36295,12 @@ class MessagePdcGetDefaultConfigInfoInput {
     ref(): MessagePdcGetDefaultConfigInfoInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33806,10 +36363,12 @@ class MessagePdcGetSelectedConfigInput {
     ref(): MessagePdcGetSelectedConfigInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33860,10 +36419,12 @@ class MessagePdcListConfigsInput {
     ref(): MessagePdcListConfigsInput
     /**
      * Set the 'Config Type' field in the message.
+     * @param valueConfigType a #QmiPdcConfigurationType.
      */
     setConfigType(valueConfigType: PdcConfigurationType): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33910,10 +36471,15 @@ class MessagePdcLoadConfigInput {
     ref(): MessagePdcLoadConfigInput
     /**
      * Set the 'Config Chunk' field in the message.
+     * @param valueConfigChunkType a #QmiPdcConfigurationType.
+     * @param valueConfigChunkId a #GArray of #guint8 elements. A new reference to `value_config_chunk_id` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
+     * @param valueConfigChunkTotalSize a #guint32.
+     * @param valueConfigChunkChunk a #GArray of #guint8 elements. A new reference to `value_config_chunk_chunk` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setConfigChunk(valueConfigChunkType: PdcConfigurationType, valueConfigChunkId: Uint8Array, valueConfigChunkTotalSize: number, valueConfigChunkChunk: Uint8Array): boolean
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
@@ -33964,10 +36530,12 @@ class MessagePdcRegisterInput {
     ref(): MessagePdcRegisterInput
     /**
      * Set the 'Enable Refresh' field in the message.
+     * @param valueEnableRefresh a #gboolean.
      */
     setEnableRefresh(valueEnableRefresh: boolean): boolean
     /**
      * Set the 'Enable Reporting' field in the message.
+     * @param valueEnableReporting a #gboolean.
      */
     setEnableReporting(valueEnableReporting: boolean): boolean
     /**
@@ -34031,10 +36599,13 @@ class MessagePdcSetSelectedConfigInput {
     ref(): MessagePdcSetSelectedConfigInput
     /**
      * Set the 'Token' field in the message.
+     * @param valueToken a #guint32.
      */
     setToken(valueToken: number): boolean
     /**
      * Set the 'Type With Id v2' field in the message.
+     * @param valueTypeWithIdV2ConfigType a #QmiPdcConfigurationType.
+     * @param valueTypeWithIdV2Id a #GArray of #guint8 elements. A new reference to `value_type_with_id_v2`_id will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setTypeWithIdV2(valueTypeWithIdV2ConfigType: PdcConfigurationType, valueTypeWithIdV2Id: Uint8Array): boolean
     /**
@@ -34081,6 +36652,7 @@ class MessagePdsGetAgpsConfigInput {
     ref(): MessagePdsGetAgpsConfigInput
     /**
      * Set the 'Network Mode' field in the message.
+     * @param valueNetworkMode a #QmiPdsNetworkMode.
      */
     setNetworkMode(valueNetworkMode: PdsNetworkMode): boolean
     /**
@@ -34219,14 +36791,18 @@ class MessagePdsSetAgpsConfigInput {
     ref(): MessagePdsSetAgpsConfigInput
     /**
      * Set the 'Location Server Address' field in the message.
+     * @param valueLocationServerAddressIp a #guint32.
+     * @param valueLocationServerAddressPort a #guint32.
      */
     setLocationServerAddress(valueLocationServerAddressIp: number, valueLocationServerAddressPort: number): boolean
     /**
      * Set the 'Location Server URL' field in the message.
+     * @param valueLocationServerUrl a #GArray of #guint8 elements. A new reference to `value_location_server_url` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setLocationServerUrl(valueLocationServerUrl: Uint8Array): boolean
     /**
      * Set the 'Network Mode' field in the message.
+     * @param valueNetworkMode a #QmiPdsNetworkMode.
      */
     setNetworkMode(valueNetworkMode: PdsNetworkMode): boolean
     /**
@@ -34269,6 +36845,7 @@ class MessagePdsSetAutoTrackingStateInput {
     ref(): MessagePdsSetAutoTrackingStateInput
     /**
      * Set the 'State' field in the message.
+     * @param valueStateAutoTrackingState a #gboolean.
      */
     setState(valueStateAutoTrackingState: boolean): boolean
     /**
@@ -34311,6 +36888,10 @@ class MessagePdsSetDefaultTrackingSessionInput {
     ref(): MessagePdsSetDefaultTrackingSessionInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoSessionOperation a #QmiPdsOperatingMode.
+     * @param valueInfoPositionDataTimeout a #guint8.
+     * @param valueInfoInterval a #guint32.
+     * @param valueInfoAccuracyThreshold a #guint32.
      */
     setInfo(valueInfoSessionOperation: PdsOperatingMode, valueInfoPositionDataTimeout: number, valueInfoInterval: number, valueInfoAccuracyThreshold: number): boolean
     /**
@@ -34429,82 +37010,102 @@ class MessagePdsSetEventReportInput {
     ref(): MessagePdsSetEventReportInput
     /**
      * Set the 'Accelerometer Data Streaming Ready Reporting' field in the message.
+     * @param valueAccelerometerDataStreamingReadyReporting a #gboolean.
      */
     setAccelerometerDataStreamingReadyReporting(valueAccelerometerDataStreamingReadyReporting: boolean): boolean
     /**
      * Set the 'Extended External XTRA Data Request Reporting' field in the message.
+     * @param valueExtendedExternalXtraDataRequestReporting a #gboolean.
      */
     setExtendedExternalXtraDataRequestReporting(valueExtendedExternalXtraDataRequestReporting: boolean): boolean
     /**
      * Set the 'Extended NMEA Position Reporting' field in the message.
+     * @param valueExtendedNmeaPositionReporting a #gboolean.
      */
     setExtendedNmeaPositionReporting(valueExtendedNmeaPositionReporting: boolean): boolean
     /**
      * Set the 'External Time Injection Request Reporting' field in the message.
+     * @param valueExternalTimeInjectionRequestReporting a #gboolean.
      */
     setExternalTimeInjectionRequestReporting(valueExternalTimeInjectionRequestReporting: boolean): boolean
     /**
      * Set the 'External WIFI Position Request Reporting' field in the message.
+     * @param valueExternalWifiPositionRequestReporting a #gboolean.
      */
     setExternalWifiPositionRequestReporting(valueExternalWifiPositionRequestReporting: boolean): boolean
     /**
      * Set the 'External XTRA Data Request Reporting' field in the message.
+     * @param valueExternalXtraDataRequestReporting a #gboolean.
      */
     setExternalXtraDataRequestReporting(valueExternalXtraDataRequestReporting: boolean): boolean
     /**
      * Set the 'Gyro Data Streaming Ready Reporting' field in the message.
+     * @param valueGyroDataStreamingReadyReporting a #gboolean.
      */
     setGyroDataStreamingReadyReporting(valueGyroDataStreamingReadyReporting: boolean): boolean
     /**
      * Set the 'Heading Uncertainty Reporting' field in the message.
+     * @param valueHeadingUncertaintyReporting a #gboolean.
      */
     setHeadingUncertaintyReporting(valueHeadingUncertaintyReporting: boolean): boolean
     /**
      * Set the 'NMEA Debug Strings Reporting' field in the message.
+     * @param valueNmeaDebugStringsReporting a #gboolean.
      */
     setNmeaDebugStringsReporting(valueNmeaDebugStringsReporting: boolean): boolean
     /**
      * Set the 'NMEA Position Reporting' field in the message.
+     * @param valueNmeaPositionReporting a #gboolean.
      */
     setNmeaPositionReporting(valueNmeaPositionReporting: boolean): boolean
     /**
      * Set the 'Parsed Position Reporting' field in the message.
+     * @param valueParsedPositionReporting a #gboolean.
      */
     setParsedPositionReporting(valueParsedPositionReporting: boolean): boolean
     /**
      * Set the 'PDS Comm Event Reporting' field in the message.
+     * @param valuePdsCommEventReporting a #gboolean.
      */
     setPdsCommEventReporting(valuePdsCommEventReporting: boolean): boolean
     /**
      * Set the 'Position Reliability Indicator Reporting' field in the message.
+     * @param valuePositionReliabilityIndicatorReporting a #gboolean.
      */
     setPositionReliabilityIndicatorReporting(valuePositionReliabilityIndicatorReporting: boolean): boolean
     /**
      * Set the 'Satellite Information Reporting' field in the message.
+     * @param valueSatelliteInformationReporting a #gboolean.
      */
     setSatelliteInformationReporting(valueSatelliteInformationReporting: boolean): boolean
     /**
      * Set the 'Sensor Data Usage Indicator Reporting' field in the message.
+     * @param valueSensorDataUsageIndicatorReporting a #gboolean.
      */
     setSensorDataUsageIndicatorReporting(valueSensorDataUsageIndicatorReporting: boolean): boolean
     /**
      * Set the 'SUPL Network Initiated Prompt Reporting' field in the message.
+     * @param valueSuplNetworkInitiatedPromptReporting a #gboolean.
      */
     setSuplNetworkInitiatedPromptReporting(valueSuplNetworkInitiatedPromptReporting: boolean): boolean
     /**
      * Set the 'Time Source Information Reporting' field in the message.
+     * @param valueTimeSourceInformationReporting a #gboolean.
      */
     setTimeSourceInformationReporting(valueTimeSourceInformationReporting: boolean): boolean
     /**
      * Set the 'Time Sync Request Reporting' field in the message.
+     * @param valueTimeSyncRequestReporting a #gboolean.
      */
     setTimeSyncRequestReporting(valueTimeSyncRequestReporting: boolean): boolean
     /**
      * Set the 'UMTS CP Network Initiated Prompt Reporting' field in the message.
+     * @param valueUmtsCpNetworkInitiatedPromptReporting a #gboolean.
      */
     setUmtsCpNetworkInitiatedPromptReporting(valueUmtsCpNetworkInitiatedPromptReporting: boolean): boolean
     /**
      * Set the 'VX Network Initiated Request Reporting' field in the message.
+     * @param valueVxNetworkInitiatedRequestReporting a #gboolean.
      */
     setVxNetworkInitiatedRequestReporting(valueVxNetworkInitiatedRequestReporting: boolean): boolean
     /**
@@ -34547,6 +37148,7 @@ class MessagePdsSetGpsServiceStateInput {
     ref(): MessagePdsSetGpsServiceStateInput
     /**
      * Set the 'State' field in the message.
+     * @param valueStateGpsServiceState a #gboolean.
      */
     setState(valueStateGpsServiceState: boolean): boolean
     /**
@@ -34589,6 +37191,7 @@ class MessageQosGetFlowStatusInput {
     ref(): MessageQosGetFlowStatusInput
     /**
      * Set the 'Qos Id' field in the message.
+     * @param valueQosId a #guint32.
      */
     setQosId(valueQosId: number): boolean
     /**
@@ -34673,6 +37276,7 @@ class MessageQosSwiReadDataStatsInput {
     ref(): MessageQosSwiReadDataStatsInput
     /**
      * Set the 'Apn Id' field in the message.
+     * @param valueApnId a #guint32.
      */
     setApnId(valueApnId: number): boolean
     /**
@@ -34694,8 +37298,11 @@ class MessageQosSwiReadDataStatsOutput {
     getApn(): [ /* returnType */ boolean, /* valueApnApnId */ number | null, /* valueApnTxPackets */ number | null, /* valueApnTxPacketsDropped */ number | null, /* valueApnRxPackets */ number | null, /* valueApnTxBytes */ number | null, /* valueApnTxBytesDropped */ number | null, /* valueApnRxBytes */ number | null ]
     /**
      * Get the 'Flow' field from `self`.
+     * 
+     * Version of qmi_message_qos_swi_read_data_stats_output_get_flow() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getFlow(): [ /* returnType */ boolean, /* valueFlow */ MessageQosSwiReadDataStatsOutputFlowElement[] | null ]
+    getFlow(): [ /* returnType */ boolean, /* valueFlowPtr */ MessageQosSwiReadDataStatsOutputFlowElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -34716,23 +37323,23 @@ class MessageQosSwiReadDataStatsOutputFlowElement {
     /**
      * a #guint32.
      */
-    readonly bearerId: number
+    bearerId: number
     /**
      * a #guint32.
      */
-    readonly txPackets: number
+    txPackets: number
     /**
      * a #guint32.
      */
-    readonly txPacketsDropped: number
+    txPacketsDropped: number
     /**
      * a #guint64.
      */
-    readonly txBytes: number
+    txBytes: number
     /**
      * a #guint64.
      */
-    readonly txBytesDropped: number
+    txBytesDropped: number
     static name: string
 }
 class MessageSarRfGetStateOutput {
@@ -34768,6 +37375,7 @@ class MessageSarRfSetStateInput {
     ref(): MessageSarRfSetStateInput
     /**
      * Set the 'State' field in the message.
+     * @param valueState a #QmiSarRfState.
      */
     setState(valueState: SarRfState): boolean
     /**
@@ -34818,14 +37426,20 @@ class MessageUimChangePinInput {
     ref(): MessageUimChangePinInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiUimPinId.
+     * @param valueInfoOldPin a constant string.
+     * @param valueInfoNewPin a constant string.
      */
     setInfo(valueInfoPinId: UimPinId, valueInfoOldPin: string, valueInfoNewPin: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -34884,10 +37498,14 @@ class MessageUimChangeProvisioningSessionInput {
     ref(): MessageUimChangeProvisioningSessionInput
     /**
      * Set the 'Application Information' field in the message.
+     * @param valueApplicationInformationSlot a #guint8.
+     * @param valueApplicationInformationApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_application_information_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setApplicationInformation(valueApplicationInformationSlot: number, valueApplicationInformationApplicationIdentifier: Uint8Array): boolean
     /**
      * Set the 'Session Change' field in the message.
+     * @param valueSessionChangeSessionType a #QmiUimSessionType.
+     * @param valueSessionChangeActivate a #gboolean.
      */
     setSessionChange(valueSessionChangeSessionType: UimSessionType, valueSessionChangeActivate: boolean): boolean
     /**
@@ -34934,10 +37552,14 @@ class MessageUimDepersonalizationInput {
     ref(): MessageUimDepersonalizationInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoFeature a #QmiUimCardApplicationPersonalizationFeature.
+     * @param valueInfoOperation a #QmiUimDepersonalizationOperation.
+     * @param valueInfoControlKey a constant string.
      */
     setInfo(valueInfoFeature: UimCardApplicationPersonalizationFeature, valueInfoOperation: UimDepersonalizationOperation, valueInfoControlKey: string): boolean
     /**
      * Set the 'Slot' field in the message.
+     * @param valueSlot a #guint8.
      */
     setSlot(valueSlot: number): boolean
     /**
@@ -34976,8 +37598,11 @@ class MessageUimGetCardStatusOutput {
     /* Methods of Qmi-1.0.Qmi.MessageUimGetCardStatusOutput */
     /**
      * Get the 'Card Status' field from `self`.
+     * 
+     * Version of qmi_message_uim_get_card_status_output_get_card_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getCardStatus(): [ /* returnType */ boolean, /* valueCardStatusIndexGwPrimary */ number | null, /* valueCardStatusIndex1xPrimary */ number | null, /* valueCardStatusIndexGwSecondary */ number | null, /* valueCardStatusIndex1xSecondary */ number | null, /* valueCardStatusCards */ MessageUimGetCardStatusOutputCardStatusCardsElement[] | null ]
+    getCardStatus(): [ /* returnType */ boolean, /* valueCardStatusIndexGwPrimary */ number | null, /* valueCardStatusIndex1xPrimary */ number | null, /* valueCardStatusIndexGwSecondary */ number | null, /* valueCardStatusIndex1xSecondary */ number | null, /* valueCardStatusCardsPtr */ MessageUimGetCardStatusOutputCardStatusCardsElementGir[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -34998,27 +37623,27 @@ class MessageUimGetCardStatusOutputCardStatusCardsElement {
     /**
      * a #QmiUimCardState.
      */
-    readonly cardState: UimCardState
+    cardState: UimCardState
     /**
      * a #QmiUimPinState.
      */
-    readonly upinState: UimPinState
+    upinState: UimPinState
     /**
      * a #guint8.
      */
-    readonly upinRetries: number
+    upinRetries: number
     /**
      * a #guint8.
      */
-    readonly upukRetries: number
+    upukRetries: number
     /**
      * a #QmiUimCardError.
      */
-    readonly errorCode: UimCardError
+    errorCode: UimCardError
     /**
      * a #GArray of #QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement elements.
      */
-    readonly applications: object[]
+    applications: object[]
     static name: string
 }
 class MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement {
@@ -35026,59 +37651,87 @@ class MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement {
     /**
      * a #QmiUimCardApplicationType.
      */
-    readonly type: UimCardApplicationType
+    type: UimCardApplicationType
     /**
      * a #QmiUimCardApplicationState.
      */
-    readonly state: UimCardApplicationState
+    state: UimCardApplicationState
     /**
      * a #QmiUimCardApplicationPersonalizationState.
      */
-    readonly personalizationState: UimCardApplicationPersonalizationState
+    personalizationState: UimCardApplicationPersonalizationState
     /**
      * a #QmiUimCardApplicationPersonalizationFeature.
      */
-    readonly personalizationFeature: UimCardApplicationPersonalizationFeature
+    personalizationFeature: UimCardApplicationPersonalizationFeature
     /**
      * a #guint8.
      */
-    readonly personalizationRetries: number
+    personalizationRetries: number
     /**
      * a #guint8.
      */
-    readonly personalizationUnblockRetries: number
+    personalizationUnblockRetries: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly applicationIdentifierValue: object[]
+    applicationIdentifierValue: object[]
     /**
      * a #gboolean.
      */
-    readonly upinReplacesPin1: boolean
+    upinReplacesPin1: boolean
     /**
      * a #QmiUimPinState.
      */
-    readonly pin1State: UimPinState
+    pin1State: UimPinState
     /**
      * a #guint8.
      */
-    readonly pin1Retries: number
+    pin1Retries: number
     /**
      * a #guint8.
      */
-    readonly puk1Retries: number
+    puk1Retries: number
     /**
      * a #QmiUimPinState.
      */
-    readonly pin2State: UimPinState
+    pin2State: UimPinState
     /**
      * a #guint8.
      */
-    readonly pin2Retries: number
+    pin2Retries: number
     /**
      * a #guint8.
      */
-    readonly puk2Retries: number
+    puk2Retries: number
+    static name: string
+}
+class MessageUimGetCardStatusOutputCardStatusCardsElementGir {
+    /* Fields of Qmi-1.0.Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementGir */
+    /**
+     * a #QmiUimCardState.
+     */
+    cardState: UimCardState
+    /**
+     * a #QmiUimPinState.
+     */
+    upinState: UimPinState
+    /**
+     * a #guint8.
+     */
+    upinRetries: number
+    /**
+     * a #guint8.
+     */
+    upukRetries: number
+    /**
+     * a #QmiUimCardError.
+     */
+    errorCode: UimCardError
+    /**
+     * an array of #QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement elements.
+     */
+    applications: MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElement[]
     static name: string
 }
 class MessageUimGetConfigurationInput {
@@ -35093,6 +37746,7 @@ class MessageUimGetConfigurationInput {
     ref(): MessageUimGetConfigurationInput
     /**
      * Set the 'Configuration Mask' field in the message.
+     * @param valueConfigurationMask a #QmiUimConfiguration.
      */
     setConfigurationMask(valueConfigurationMask: UimConfiguration): boolean
     /**
@@ -35119,12 +37773,18 @@ class MessageUimGetConfigurationOutput {
     getHaltSubscription(): [ /* returnType */ boolean, /* valueHaltSubscription */ boolean | null ]
     /**
      * Get the 'Personalization Status' field from `self`.
+     * 
+     * Version of qmi_message_uim_get_configuration_output_get_personalization_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPersonalizationStatus(): [ /* returnType */ boolean, /* valuePersonalizationStatus */ MessageUimGetConfigurationOutputPersonalizationStatusElement[] | null ]
+    getPersonalizationStatus(): [ /* returnType */ boolean, /* valuePersonalizationStatusPtr */ MessageUimGetConfigurationOutputPersonalizationStatusElement[] | null ]
     /**
      * Get the 'Personalization Status Other' field from `self`.
+     * 
+     * Version of qmi_message_uim_get_configuration_output_get_personalization_status_other() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPersonalizationStatusOther(): [ /* returnType */ boolean, /* valuePersonalizationStatusOther */ MessageUimGetConfigurationOutputPersonalizationStatusOtherElement[] | null ]
+    getPersonalizationStatusOther(): [ /* returnType */ boolean, /* valuePersonalizationStatusOtherPtr */ MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -35146,15 +37806,15 @@ class MessageUimGetConfigurationOutputPersonalizationStatusElement {
     /**
      * a #QmiUimCardApplicationPersonalizationFeature.
      */
-    readonly feature: UimCardApplicationPersonalizationFeature
+    feature: UimCardApplicationPersonalizationFeature
     /**
      * a #guint8.
      */
-    readonly verifyLeft: number
+    verifyLeft: number
     /**
      * a #guint8.
      */
-    readonly unblockLeft: number
+    unblockLeft: number
     static name: string
 }
 class MessageUimGetConfigurationOutputPersonalizationStatusOtherElement {
@@ -35162,7 +37822,15 @@ class MessageUimGetConfigurationOutputPersonalizationStatusOtherElement {
     /**
      * a #GArray of #QmiMessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement elements.
      */
-    readonly slot: object[]
+    slot: object[]
+    static name: string
+}
+class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir {
+    /* Fields of Qmi-1.0.Qmi.MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir */
+    /**
+     * an array of #QmiMessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement elements.
+     */
+    slot: MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement[]
     static name: string
 }
 class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement {
@@ -35170,15 +37838,15 @@ class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotEleme
     /**
      * a #QmiUimCardApplicationPersonalizationFeature.
      */
-    readonly feature: UimCardApplicationPersonalizationFeature
+    feature: UimCardApplicationPersonalizationFeature
     /**
      * a #guint8.
      */
-    readonly verifyLeft: number
+    verifyLeft: number
     /**
      * a #guint8.
      */
-    readonly unblockLeft: number
+    unblockLeft: number
     static name: string
 }
 class MessageUimGetFileAttributesInput {
@@ -35201,14 +37869,19 @@ class MessageUimGetFileAttributesInput {
     ref(): MessageUimGetFileAttributesInput
     /**
      * Set the 'File' field in the message.
+     * @param valueFileFileId a #guint16.
+     * @param valueFileFilePath a #GArray of #guint8 elements. A new reference to `value_file_file_path` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setFile(valueFileFileId: number, valueFileFilePath: Uint8Array): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35256,20 +37929,29 @@ class MessageUimGetSlotStatusOutput {
     getCompatContext(): object | null
     /**
      * Get the 'Physical Slot Information' field from `self`.
+     * 
+     * Version of qmi_message_uim_get_slot_status_output_get_physical_slot_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPhysicalSlotInformation(): [ /* returnType */ boolean, /* valuePhysicalSlotInformation */ PhysicalSlotInformationSlot[] | null ]
+    getPhysicalSlotInformation(): [ /* returnType */ boolean, /* valuePhysicalSlotInformationPtr */ PhysicalSlotInformationSlot[] | null ]
     /**
      * Get the 'Physical Slot Status' field from `self`.
+     * 
+     * Version of qmi_message_uim_get_slot_status_output_get_physical_slot_status() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getPhysicalSlotStatus(): [ /* returnType */ boolean, /* valuePhysicalSlotStatus */ PhysicalSlotStatusSlot[] | null ]
+    getPhysicalSlotStatus(): [ /* returnType */ boolean, /* valuePhysicalSlotStatusPtr */ PhysicalSlotStatusSlot[] | null ]
     /**
      * Get the result of the QMI operation.
      */
     getResult(): boolean
     /**
      * Get the 'Slot EID' field from `self`.
+     * 
+     * Version of qmi_message_uim_get_slot_status_output_get_slot_eid() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getSlotEid(): [ /* returnType */ boolean, /* valueSlotEid */ SlotEidElement[] | null ]
+    getSlotEid(): [ /* returnType */ boolean, /* valueSlotEidPtr */ SlotEidElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -35315,6 +37997,7 @@ class MessageUimPowerOffSimInput {
     ref(): MessageUimPowerOffSimInput
     /**
      * Set the 'Slot' field in the message.
+     * @param valueSlot a #guint8.
      */
     setSlot(valueSlot: number): boolean
     /**
@@ -35357,6 +38040,7 @@ class MessageUimPowerOnSimInput {
     ref(): MessageUimPowerOnSimInput
     /**
      * Set the 'Slot' field in the message.
+     * @param valueSlot a #guint8.
      */
     setSlot(valueSlot: number): boolean
     /**
@@ -35415,22 +38099,30 @@ class MessageUimReadRecordInput {
     ref(): MessageUimReadRecordInput
     /**
      * Set the 'File' field in the message.
+     * @param valueFileFileId a #guint16.
+     * @param valueFileFilePath a #GArray of #guint8 elements. A new reference to `value_file_file_path` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setFile(valueFileFileId: number, valueFileFilePath: Uint8Array): boolean
     /**
      * Set the 'Last Record' field in the message.
+     * @param valueLastRecord a #guint16.
      */
     setLastRecord(valueLastRecord: number): boolean
     /**
      * Set the 'Record' field in the message.
+     * @param valueRecordRecordNumber a #guint16.
+     * @param valueRecordRecordLength a #guint16.
      */
     setRecord(valueRecordRecordNumber: number, valueRecordRecordLength: number): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35505,22 +38197,30 @@ class MessageUimReadTransparentInput {
     ref(): MessageUimReadTransparentInput
     /**
      * Set the 'Encrypt Data' field in the message.
+     * @param valueEncryptData a #gboolean.
      */
     setEncryptData(valueEncryptData: boolean): boolean
     /**
      * Set the 'File' field in the message.
+     * @param valueFileFileId a #guint16.
+     * @param valueFileFilePath a #GArray of #guint8 elements. A new reference to `value_file_file_path` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setFile(valueFileFileId: number, valueFileFilePath: Uint8Array): boolean
     /**
      * Set the 'Read Information' field in the message.
+     * @param valueReadInformationOffset a #guint16.
+     * @param valueReadInformationLength a #guint16.
      */
     setReadInformation(valueReadInformationOffset: number, valueReadInformationLength: number): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35583,10 +38283,13 @@ class MessageUimRefreshCompleteInput {
     ref(): MessageUimRefreshCompleteInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoRefreshSuccess a #gboolean.
      */
     setInfo(valueInfoRefreshSuccess: boolean): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35633,10 +38336,13 @@ class MessageUimRefreshRegisterAllInput {
     ref(): MessageUimRefreshRegisterAllInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoRegisterFlag a #gboolean.
      */
     setInfo(valueInfoRegisterFlag: boolean): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35671,8 +38377,11 @@ class MessageUimRefreshRegisterInput {
     /* Methods of Qmi-1.0.Qmi.MessageUimRefreshRegisterInput */
     /**
      * Get the 'Info' field from `self`.
+     * 
+     * Version of qmi_message_uim_refresh_register_input_get_info() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoRegisterFlag */ boolean | null, /* valueInfoVoteForInit */ boolean | null, /* valueInfoFiles */ MessageUimRefreshRegisterInputInfoFilesElement[] | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoRegisterFlag */ boolean | null, /* valueInfoVoteForInit */ boolean | null, /* valueInfoFilesPtr */ MessageUimRefreshRegisterInputInfoFilesElement[] | null ]
     /**
      * Get the 'Session' field from `self`.
      */
@@ -35683,10 +38392,15 @@ class MessageUimRefreshRegisterInput {
     ref(): MessageUimRefreshRegisterInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoRegisterFlag a #gboolean.
+     * @param valueInfoVoteForInit a #gboolean.
+     * @param valueInfoFilesPtr array of #QmiMessageUimRefreshRegisterInputInfoFilesElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setInfo(valueInfoRegisterFlag: boolean, valueInfoVoteForInit: boolean, valueInfoFiles: MessageUimRefreshRegisterInputInfoFilesElement[]): boolean
+    setInfo(valueInfoRegisterFlag: boolean, valueInfoVoteForInit: boolean, valueInfoFilesPtr: MessageUimRefreshRegisterInputInfoFilesElement[]): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35705,11 +38419,11 @@ class MessageUimRefreshRegisterInputInfoFilesElement {
     /**
      * a #guint16.
      */
-    readonly fileId: number
+    fileId: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly path: object[]
+    path: object[]
     static name: string
 }
 class MessageUimRefreshRegisterOutput {
@@ -35741,6 +38455,7 @@ class MessageUimRegisterEventsInput {
     ref(): MessageUimRegisterEventsInput
     /**
      * Set the 'Event Registration Mask' field in the message.
+     * @param valueEventRegistrationMask a #QmiUimEventRegistrationFlag.
      */
     setEventRegistrationMask(valueEventRegistrationMask: UimEventRegistrationFlag): boolean
     /**
@@ -35812,14 +38527,20 @@ class MessageUimSetPinProtectionInput {
     ref(): MessageUimSetPinProtectionInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiUimPinId.
+     * @param valueInfoPinEnabled a #gboolean.
+     * @param valueInfoPinValue a constant string.
      */
     setInfo(valueInfoPinId: UimPinId, valueInfoPinEnabled: boolean, valueInfoPinValue: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35874,10 +38595,12 @@ class MessageUimSwitchSlotInput {
     ref(): MessageUimSwitchSlotInput
     /**
      * Set the 'Logical Slot' field in the message.
+     * @param valueLogicalSlot a #guint8.
      */
     setLogicalSlot(valueLogicalSlot: number): boolean
     /**
      * Set the 'Physical Slot' field in the message.
+     * @param valuePhysicalSlot a #guint32.
      */
     setPhysicalSlot(valuePhysicalSlot: number): boolean
     /**
@@ -35928,14 +38651,20 @@ class MessageUimUnblockPinInput {
     ref(): MessageUimUnblockPinInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiUimPinId.
+     * @param valueInfoPuk a constant string.
+     * @param valueInfoNewPin a constant string.
      */
     setInfo(valueInfoPinId: UimPinId, valueInfoPuk: string, valueInfoNewPin: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -35998,14 +38727,19 @@ class MessageUimVerifyPinInput {
     ref(): MessageUimVerifyPinInput
     /**
      * Set the 'Info' field in the message.
+     * @param valueInfoPinId a #QmiUimPinId.
+     * @param valueInfoPinValue a constant string.
      */
     setInfo(valueInfoPinId: UimPinId, valueInfoPinValue: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
+     * @param valueResponseInIndicationToken a #guint32.
      */
     setResponseInIndicationToken(valueResponseInIndicationToken: number): boolean
     /**
      * Set the 'Session' field in the message.
+     * @param valueSessionSessionType a #QmiUimSessionType.
+     * @param valueSessionApplicationIdentifier a #GArray of #guint8 elements. A new reference to `value_session_application_identifier` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setSession(valueSessionSessionType: UimSessionType, valueSessionApplicationIdentifier: Uint8Array): boolean
     /**
@@ -36060,6 +38794,7 @@ class MessageVoiceAnswerCallInput {
     ref(): MessageVoiceAnswerCallInput
     /**
      * Set the 'Call ID' field in the message.
+     * @param valueCallId a #guint8.
      */
     setCallId(valueCallId: number): boolean
     /**
@@ -36106,6 +38841,8 @@ class MessageVoiceAnswerUssdInput {
     ref(): MessageVoiceAnswerUssdInput
     /**
      * Set the 'USS Data' field in the message.
+     * @param valueUssDataDataCodingScheme a #QmiVoiceUssDataCodingScheme.
+     * @param valueUssDataData a #GArray of #guint8 elements. A new reference to `value_uss_data_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setUssData(valueUssDataDataCodingScheme: VoiceUssDataCodingScheme, valueUssDataData: Uint8Array): boolean
     /**
@@ -36165,6 +38902,7 @@ class MessageVoiceDialCallInput {
     ref(): MessageVoiceDialCallInput
     /**
      * Set the 'Calling Number' field in the message.
+     * @param valueCallingNumber a constant string.
      */
     setCallingNumber(valueCallingNumber: string): boolean
     /**
@@ -36211,6 +38949,7 @@ class MessageVoiceEndCallInput {
     ref(): MessageVoiceEndCallInput
     /**
      * Set the 'Call ID' field in the message.
+     * @param valueCallId a #guint8.
      */
     setCallId(valueCallId: number): boolean
     /**
@@ -36249,12 +38988,18 @@ class MessageVoiceGetAllCallInfoOutput {
     /* Methods of Qmi-1.0.Qmi.MessageVoiceGetAllCallInfoOutput */
     /**
      * Get the 'Call Information' field from `self`.
+     * 
+     * Version of qmi_message_voice_get_all_call_info_output_get_call_information() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getCallInformation(): [ /* returnType */ boolean, /* valueCallInformation */ MessageVoiceGetAllCallInfoOutputCallInformationCall[] | null ]
+    getCallInformation(): [ /* returnType */ boolean, /* valueCallInformationPtr */ MessageVoiceGetAllCallInfoOutputCallInformationCall[] | null ]
     /**
      * Get the 'Remote Party Number' field from `self`.
+     * 
+     * Version of qmi_message_voice_get_all_call_info_output_get_remote_party_number() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRemotePartyNumber(): [ /* returnType */ boolean, /* valueRemotePartyNumber */ MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall[] | null ]
+    getRemotePartyNumber(): [ /* returnType */ boolean, /* valueRemotePartyNumberPtr */ MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -36275,31 +39020,31 @@ class MessageVoiceGetAllCallInfoOutputCallInformationCall {
     /**
      * a #guint8.
      */
-    readonly id: number
+    id: number
     /**
      * a #QmiVoiceCallState.
      */
-    readonly state: VoiceCallState
+    state: VoiceCallState
     /**
      * a #QmiVoiceCallType.
      */
-    readonly type: VoiceCallType
+    type: VoiceCallType
     /**
      * a #QmiVoiceCallDirection.
      */
-    readonly direction: VoiceCallDirection
+    direction: VoiceCallDirection
     /**
      * a #QmiVoiceCallMode.
      */
-    readonly mode: VoiceCallMode
+    mode: VoiceCallMode
     /**
      * a #gboolean.
      */
-    readonly multipartIndicator: boolean
+    multipartIndicator: boolean
     /**
      * a #QmiVoiceAls.
      */
-    readonly als: VoiceAls
+    als: VoiceAls
     static name: string
 }
 class MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall {
@@ -36307,15 +39052,15 @@ class MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall {
     /**
      * a #guint8.
      */
-    readonly id: number
+    id: number
     /**
      * a #QmiVoicePresentation.
      */
-    readonly presentationIndicator: VoicePresentation
+    presentationIndicator: VoicePresentation
     /**
      * a string.
      */
-    readonly type: string
+    type: string
     static name: string
 }
 class MessageVoiceGetCallWaitingInput {
@@ -36330,6 +39075,7 @@ class MessageVoiceGetCallWaitingInput {
     ref(): MessageVoiceGetCallWaitingInput
     /**
      * Set the 'Service Class' field in the message.
+     * @param valueServiceClass a #guint8.
      */
     setServiceClass(valueServiceClass: number): boolean
     /**
@@ -36408,38 +39154,47 @@ class MessageVoiceGetConfigInput {
     ref(): MessageVoiceGetConfigInput
     /**
      * Set the 'Air Timer' field in the message.
+     * @param valueAirTimer a #gboolean.
      */
     setAirTimer(valueAirTimer: boolean): boolean
     /**
      * Set the 'AMR Status' field in the message.
+     * @param valueAmrStatus a #gboolean.
      */
     setAmrStatus(valueAmrStatus: boolean): boolean
     /**
      * Set the 'Auto Answer' field in the message.
+     * @param valueAutoAnswer a #gboolean.
      */
     setAutoAnswer(valueAutoAnswer: boolean): boolean
     /**
      * Set the 'NAM Index' field in the message.
+     * @param valueNamIndex a #gboolean.
      */
     setNamIndex(valueNamIndex: boolean): boolean
     /**
      * Set the 'Preferred Voice Privacy' field in the message.
+     * @param valuePreferredVoicePrivacy a #gboolean.
      */
     setPreferredVoicePrivacy(valuePreferredVoicePrivacy: boolean): boolean
     /**
      * Set the 'Preferred Voice Service Option' field in the message.
+     * @param valuePreferredVoiceServiceOption a #gboolean.
      */
     setPreferredVoiceServiceOption(valuePreferredVoiceServiceOption: boolean): boolean
     /**
      * Set the 'Roam Timer' field in the message.
+     * @param valueRoamTimer a #gboolean.
      */
     setRoamTimer(valueRoamTimer: boolean): boolean
     /**
      * Set the 'TTY Mode' field in the message.
+     * @param valueTtyMode a #gboolean.
      */
     setTtyMode(valueTtyMode: boolean): boolean
     /**
      * Set the 'Voice Domain Preference' field in the message.
+     * @param valueVoiceDomainPreference a #gboolean.
      */
     setVoiceDomainPreference(valueVoiceDomainPreference: boolean): boolean
     /**
@@ -36583,54 +39338,67 @@ class MessageVoiceIndicationRegisterInput {
     ref(): MessageVoiceIndicationRegisterInput
     /**
      * Set the 'AOC Events' field in the message.
+     * @param valueAocEvents a #gboolean.
      */
     setAocEvents(valueAocEvents: boolean): boolean
     /**
      * Set the 'Call Notification Events' field in the message.
+     * @param valueCallNotificationEvents a #gboolean.
      */
     setCallNotificationEvents(valueCallNotificationEvents: boolean): boolean
     /**
      * Set the 'Conference Events' field in the message.
+     * @param valueConferenceEvents a #gboolean.
      */
     setConferenceEvents(valueConferenceEvents: boolean): boolean
     /**
      * Set the 'DTMF Events' field in the message.
+     * @param valueDtmfEvents a #gboolean.
      */
     setDtmfEvents(valueDtmfEvents: boolean): boolean
     /**
      * Set the 'Extended Burst Type International Information Events' field in the message.
+     * @param valueExtendedBurstTypeInternationalInformationEvents a #gboolean.
      */
     setExtendedBurstTypeInternationalInformationEvents(valueExtendedBurstTypeInternationalInformationEvents: boolean): boolean
     /**
      * Set the 'Handover Events' field in the message.
+     * @param valueHandoverEvents a #gboolean.
      */
     setHandoverEvents(valueHandoverEvents: boolean): boolean
     /**
      * Set the 'Modification Events' field in the message.
+     * @param valueModificationEvents a #gboolean.
      */
     setModificationEvents(valueModificationEvents: boolean): boolean
     /**
      * Set the 'MT Page Miss Information Events' field in the message.
+     * @param valueMtPageMissInformationEvents a #gboolean.
      */
     setMtPageMissInformationEvents(valueMtPageMissInformationEvents: boolean): boolean
     /**
      * Set the 'Speech Codec Events' field in the message.
+     * @param valueSpeechCodecEvents a #gboolean.
      */
     setSpeechCodecEvents(valueSpeechCodecEvents: boolean): boolean
     /**
      * Set the 'Supplementary Service Notification Events' field in the message.
+     * @param valueSupplementaryServiceNotificationEvents a #gboolean.
      */
     setSupplementaryServiceNotificationEvents(valueSupplementaryServiceNotificationEvents: boolean): boolean
     /**
      * Set the 'USSD Notification Events' field in the message.
+     * @param valueUssdNotificationEvents a #gboolean.
      */
     setUssdNotificationEvents(valueUssdNotificationEvents: boolean): boolean
     /**
      * Set the 'UUS Events' field in the message.
+     * @param valueUusEvents a #gboolean.
      */
     setUusEvents(valueUusEvents: boolean): boolean
     /**
      * Set the 'Voice Privacy Events' field in the message.
+     * @param valueVoicePrivacyEvents a #gboolean.
      */
     setVoicePrivacyEvents(valueVoicePrivacyEvents: boolean): boolean
     /**
@@ -36677,10 +39445,12 @@ class MessageVoiceManageCallsInput {
     ref(): MessageVoiceManageCallsInput
     /**
      * Set the 'Call ID' field in the message.
+     * @param valueCallId a #guint8.
      */
     setCallId(valueCallId: number): boolean
     /**
      * Set the 'Service Type' field in the message.
+     * @param valueServiceType a #QmiVoiceSupplementaryServiceType.
      */
     setServiceType(valueServiceType: VoiceSupplementaryServiceType): boolean
     /**
@@ -36723,6 +39493,8 @@ class MessageVoiceOriginateUssdInput {
     ref(): MessageVoiceOriginateUssdInput
     /**
      * Set the 'USS Data' field in the message.
+     * @param valueUssDataDataCodingScheme a #QmiVoiceUssDataCodingScheme.
+     * @param valueUssDataData a #GArray of #guint8 elements. A new reference to `value_uss_data_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setUssData(valueUssDataDataCodingScheme: VoiceUssDataCodingScheme, valueUssDataData: Uint8Array): boolean
     /**
@@ -36748,6 +39520,8 @@ class MessageVoiceOriginateUssdNoWaitInput {
     ref(): MessageVoiceOriginateUssdNoWaitInput
     /**
      * Set the 'USS Data' field in the message.
+     * @param valueUssDataDataCodingScheme a #QmiVoiceUssDataCodingScheme.
+     * @param valueUssDataData a #GArray of #guint8 elements. A new reference to `value_uss_data_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setUssData(valueUssDataDataCodingScheme: VoiceUssDataCodingScheme, valueUssDataData: Uint8Array): boolean
     /**
@@ -36835,6 +39609,8 @@ class MessageVoiceSetSupplementaryServiceInput {
     ref(): MessageVoiceSetSupplementaryServiceInput
     /**
      * Set the 'Supplementary Service Information' field in the message.
+     * @param valueSupplementaryServiceInformationSupplementaryServiceAction a #QmiVoiceSupplementaryServiceAction.
+     * @param valueSupplementaryServiceInformationSupplementaryServiceReason a #QmiVoiceSupplementaryServiceReason.
      */
     setSupplementaryServiceInformation(valueSupplementaryServiceInformationSupplementaryServiceAction: VoiceSupplementaryServiceAction, valueSupplementaryServiceInformationSupplementaryServiceReason: VoiceSupplementaryServiceReason): boolean
     /**
@@ -36881,6 +39657,8 @@ class MessageWdaGetDataFormatInput {
     ref(): MessageWdaGetDataFormatInput
     /**
      * Set the 'Endpoint Info' field in the message.
+     * @param valueEndpointInfoEndpointType a #QmiDataEndpointType.
+     * @param valueEndpointInfoInterfaceNumber a #guint32.
      */
     setEndpointInfo(valueEndpointInfoEndpointType: DataEndpointType, valueEndpointInfoInterfaceNumber: number): boolean
     /**
@@ -37016,34 +39794,43 @@ class MessageWdaSetDataFormatInput {
     ref(): MessageWdaSetDataFormatInput
     /**
      * Set the 'Downlink Data Aggregation Max Datagrams' field in the message.
+     * @param valueDownlinkDataAggregationMaxDatagrams a #guint32.
      */
     setDownlinkDataAggregationMaxDatagrams(valueDownlinkDataAggregationMaxDatagrams: number): boolean
     /**
      * Set the 'Downlink Data Aggregation Max Size' field in the message.
+     * @param valueDownlinkDataAggregationMaxSize a #guint32.
      */
     setDownlinkDataAggregationMaxSize(valueDownlinkDataAggregationMaxSize: number): boolean
     /**
      * Set the 'Downlink Data Aggregation Protocol' field in the message.
+     * @param valueDownlinkDataAggregationProtocol a #QmiWdaDataAggregationProtocol.
      */
     setDownlinkDataAggregationProtocol(valueDownlinkDataAggregationProtocol: WdaDataAggregationProtocol): boolean
     /**
      * Set the 'Endpoint Info' field in the message.
+     * @param valueEndpointInfoEndpointType a #QmiDataEndpointType.
+     * @param valueEndpointInfoInterfaceNumber a #guint32.
      */
     setEndpointInfo(valueEndpointInfoEndpointType: DataEndpointType, valueEndpointInfoInterfaceNumber: number): boolean
     /**
      * Set the 'Link Layer Protocol' field in the message.
+     * @param valueLinkLayerProtocol a #QmiWdaLinkLayerProtocol.
      */
     setLinkLayerProtocol(valueLinkLayerProtocol: WdaLinkLayerProtocol): boolean
     /**
      * Set the 'NDP Signature' field in the message.
+     * @param valueNdpSignature a #guint32.
      */
     setNdpSignature(valueNdpSignature: number): boolean
     /**
      * Set the 'QoS Format' field in the message.
+     * @param valueQosFormat a #gboolean.
      */
     setQosFormat(valueQosFormat: boolean): boolean
     /**
      * Set the 'Uplink Data Aggregation Protocol' field in the message.
+     * @param valueUplinkDataAggregationProtocol a #QmiWdaDataAggregationProtocol.
      */
     setUplinkDataAggregationProtocol(valueUplinkDataAggregationProtocol: WdaDataAggregationProtocol): boolean
     /**
@@ -37130,6 +39917,7 @@ class MessageWdsBindDataPortInput {
     ref(): MessageWdsBindDataPortInput
     /**
      * Set the 'Data Port' field in the message.
+     * @param valueDataPort a #QmiSioPort.
      */
     setDataPort(valueDataPort: SioPort): boolean
     /**
@@ -37180,14 +39968,18 @@ class MessageWdsBindMuxDataPortInput {
     ref(): MessageWdsBindMuxDataPortInput
     /**
      * Set the 'Client Type' field in the message.
+     * @param valueClientType a #QmiWdsClientType.
      */
     setClientType(valueClientType: WdsClientType): boolean
     /**
      * Set the 'Endpoint Info' field in the message.
+     * @param valueEndpointInfoEndpointType a #QmiDataEndpointType.
+     * @param valueEndpointInfoInterfaceNumber a #guint32.
      */
     setEndpointInfo(valueEndpointInfoEndpointType: DataEndpointType, valueEndpointInfoInterfaceNumber: number): boolean
     /**
      * Set the 'Mux ID' field in the message.
+     * @param valueMuxId a #guint8.
      */
     setMuxId(valueMuxId: number): boolean
     /**
@@ -37350,126 +40142,215 @@ class MessageWdsCreateProfileInput {
     ref(): MessageWdsCreateProfileInput
     /**
      * Set the 'APN Disabled Flag' field in the message.
+     * @param valueApnDisabledFlag a #gboolean.
      */
     setApnDisabledFlag(valueApnDisabledFlag: boolean): boolean
     /**
      * Set the 'APN Name' field in the message.
+     * @param valueApnName a constant string.
      */
     setApnName(valueApnName: string): boolean
     /**
      * Set the 'APN Type Mask' field in the message.
+     * @param valueApnTypeMask a #QmiWdsApnTypeMask.
      */
     setApnTypeMask(valueApnTypeMask: WdsApnTypeMask): boolean
     /**
      * Set the 'Authentication' field in the message.
+     * @param valueAuthentication a #QmiWdsAuthentication.
      */
     setAuthentication(valueAuthentication: WdsAuthentication): boolean
     /**
      * Set the 'GPRS Minimum QoS' field in the message.
+     * @param valueGprsMinimumQosPrecedenceClass a #guint32.
+     * @param valueGprsMinimumQosDelayClass a #guint32.
+     * @param valueGprsMinimumQosReliabilityClass a #guint32.
+     * @param valueGprsMinimumQosPeakThroughputClass a #guint32.
+     * @param valueGprsMinimumQosMeanThroughputClass a #guint32.
      */
     setGprsMinimumQos(valueGprsMinimumQosPrecedenceClass: number, valueGprsMinimumQosDelayClass: number, valueGprsMinimumQosReliabilityClass: number, valueGprsMinimumQosPeakThroughputClass: number, valueGprsMinimumQosMeanThroughputClass: number): boolean
     /**
      * Set the 'GPRS Requested QoS' field in the message.
+     * @param valueGprsRequestedQosPrecedenceClass a #guint32.
+     * @param valueGprsRequestedQosDelayClass a #guint32.
+     * @param valueGprsRequestedQosReliabilityClass a #guint32.
+     * @param valueGprsRequestedQosPeakThroughputClass a #guint32.
+     * @param valueGprsRequestedQosMeanThroughputClass a #guint32.
      */
     setGprsRequestedQos(valueGprsRequestedQosPrecedenceClass: number, valueGprsRequestedQosDelayClass: number, valueGprsRequestedQosReliabilityClass: number, valueGprsRequestedQosPeakThroughputClass: number, valueGprsRequestedQosMeanThroughputClass: number): boolean
     /**
      * Set the 'IMCN Flag' field in the message.
+     * @param valueImcnFlag a #gboolean.
      */
     setImcnFlag(valueImcnFlag: boolean): boolean
     /**
      * Set the 'IPv4 Address Preference' field in the message.
+     * @param valueIpv4AddressPreference a #guint32.
      */
     setIpv4AddressPreference(valueIpv4AddressPreference: number): boolean
     /**
      * Set the 'IPv6 Address Preference' field in the message.
+     * @param valueIpv6AddressPreferenceAddress a #GArray of #guint16 elements. A new reference to `value_ipv6`_address_preference_address will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIpv6AddressPreference(valueIpv6AddressPreferenceAddress: number[]): boolean
     /**
      * Set the 'IPv6 Primary DNS Address Preference' field in the message.
+     * @param valueIpv6PrimaryDnsAddressPreference a #GArray of #guint16 elements. A new reference to `value_ipv6`_primary_dns_address_preference will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIpv6PrimaryDnsAddressPreference(valueIpv6PrimaryDnsAddressPreference: number[]): boolean
     /**
      * Set the 'IPv6 Secondary DNS Address Preference' field in the message.
+     * @param valueIpv6SecondaryDnsAddressPreference a #GArray of #guint16 elements. A new reference to `value_ipv6`_secondary_dns_address_preference will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIpv6SecondaryDnsAddressPreference(valueIpv6SecondaryDnsAddressPreference: number[]): boolean
     /**
      * Set the 'LTE QoS Parameters' field in the message.
+     * @param valueLteQosParametersQosClassIdentifier a #QmiWdsQosClassIdentifier.
+     * @param valueLteQosParametersGuaranteedDownlinkBitrate a #guint32.
+     * @param valueLteQosParametersMaxDownlinkBitrate a #guint32.
+     * @param valueLteQosParametersGuaranteedUplinkBitrate a #guint32.
+     * @param valueLteQosParametersMaxUplinkBitrate a #guint32.
      */
     setLteQosParameters(valueLteQosParametersQosClassIdentifier: WdsQosClassIdentifier, valueLteQosParametersGuaranteedDownlinkBitrate: number, valueLteQosParametersMaxDownlinkBitrate: number, valueLteQosParametersGuaranteedUplinkBitrate: number, valueLteQosParametersMaxUplinkBitrate: number): boolean
     /**
      * Set the 'Password' field in the message.
+     * @param valuePassword a constant string.
      */
     setPassword(valuePassword: string): boolean
     /**
      * Set the 'PCSCF Address Using DHCP' field in the message.
+     * @param valuePcscfAddressUsingDhcp a #gboolean.
      */
     setPcscfAddressUsingDhcp(valuePcscfAddressUsingDhcp: boolean): boolean
     /**
      * Set the 'PCSCF Address Using PCO' field in the message.
+     * @param valuePcscfAddressUsingPco a #gboolean.
      */
     setPcscfAddressUsingPco(valuePcscfAddressUsingPco: boolean): boolean
     /**
      * Set the 'PDP Context Number' field in the message.
+     * @param valuePdpContextNumber a #guint8.
      */
     setPdpContextNumber(valuePdpContextNumber: number): boolean
     /**
      * Set the 'PDP Context Primary ID' field in the message.
+     * @param valuePdpContextPrimaryId a #guint8.
      */
     setPdpContextPrimaryId(valuePdpContextPrimaryId: number): boolean
     /**
      * Set the 'PDP Context Secondary Flag' field in the message.
+     * @param valuePdpContextSecondaryFlag a #gboolean.
      */
     setPdpContextSecondaryFlag(valuePdpContextSecondaryFlag: boolean): boolean
     /**
      * Set the 'PDP Data Compression Type' field in the message.
+     * @param valuePdpDataCompressionType a #QmiWdsPdpDataCompressionType.
      */
     setPdpDataCompressionType(valuePdpDataCompressionType: WdsPdpDataCompressionType): boolean
     /**
      * Set the 'PDP Header Compression Type' field in the message.
+     * @param valuePdpHeaderCompressionType a #QmiWdsPdpHeaderCompressionType.
      */
     setPdpHeaderCompressionType(valuePdpHeaderCompressionType: WdsPdpHeaderCompressionType): boolean
     /**
      * Set the 'PDP Type' field in the message.
+     * @param valuePdpType a #QmiWdsPdpType.
      */
     setPdpType(valuePdpType: WdsPdpType): boolean
     /**
      * Set the 'Primary IPv4 DNS Address' field in the message.
+     * @param valuePrimaryIpv4DnsAddress a #guint32.
      */
     setPrimaryIpv4DnsAddress(valuePrimaryIpv4DnsAddress: number): boolean
     /**
      * Set the 'Profile Name' field in the message.
+     * @param valueProfileName a constant string.
      */
     setProfileName(valueProfileName: string): boolean
     /**
      * Set the 'Profile Type' field in the message.
+     * @param valueProfileType a #QmiWdsProfileType.
      */
     setProfileType(valueProfileType: WdsProfileType): boolean
     /**
      * Set the 'Roaming Disallowed Flag' field in the message.
+     * @param valueRoamingDisallowedFlag a #gboolean.
      */
     setRoamingDisallowedFlag(valueRoamingDisallowedFlag: boolean): boolean
     /**
      * Set the 'Secondary IPv4 DNS Address' field in the message.
+     * @param valueSecondaryIpv4DnsAddress a #guint32.
      */
     setSecondaryIpv4DnsAddress(valueSecondaryIpv4DnsAddress: number): boolean
     /**
      * Set the 'UMTS Minimum QoS' field in the message.
+     * @param valueUmtsMinimumQosTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsMinimumQosMaxUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsMinimumQosMaximumSduSize a #guint32.
+     * @param valueUmtsMinimumQosSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsMinimumQosResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsMinimumQosDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsMinimumQosTransferDelay a #guint32.
+     * @param valueUmtsMinimumQosTrafficHandlingPriority a #guint32.
      */
     setUmtsMinimumQos(valueUmtsMinimumQosTrafficClass: WdsTrafficClass, valueUmtsMinimumQosMaxUplinkBitrate: number, valueUmtsMinimumQosMaxDownlinkBitrate: number, valueUmtsMinimumQosGuaranteedUplinkBitrate: number, valueUmtsMinimumQosGuaranteedDownlinkBitrate: number, valueUmtsMinimumQosQosDeliveryOrder: WdsDeliveryOrder, valueUmtsMinimumQosMaximumSduSize: number, valueUmtsMinimumQosSduErrorRatio: WdsSduErrorRatio, valueUmtsMinimumQosResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsMinimumQosDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsMinimumQosTransferDelay: number, valueUmtsMinimumQosTrafficHandlingPriority: number): boolean
     /**
      * Set the 'UMTS Minimum QoS With Signaling Indication Flag' field in the message.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagMaxUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagMaximumSduSize a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagTransferDelay a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagTrafficHandlingPriority a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagSignalingIndication a #gint8.
      */
     setUmtsMinimumQosWithSignalingIndicationFlag(valueUmtsMinimumQosWithSignalingIndicationFlagTrafficClass: WdsTrafficClass, valueUmtsMinimumQosWithSignalingIndicationFlagMaxUplinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagMaxDownlinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedUplinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagQosDeliveryOrder: WdsDeliveryOrder, valueUmtsMinimumQosWithSignalingIndicationFlagMaximumSduSize: number, valueUmtsMinimumQosWithSignalingIndicationFlagSduErrorRatio: WdsSduErrorRatio, valueUmtsMinimumQosWithSignalingIndicationFlagResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsMinimumQosWithSignalingIndicationFlagDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsMinimumQosWithSignalingIndicationFlagTransferDelay: number, valueUmtsMinimumQosWithSignalingIndicationFlagTrafficHandlingPriority: number, valueUmtsMinimumQosWithSignalingIndicationFlagSignalingIndication: number): boolean
     /**
      * Set the 'UMTS Requested QoS' field in the message.
+     * @param valueUmtsRequestedQosTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsRequestedQosMaxUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsRequestedQosMaximumSduSize a #guint32.
+     * @param valueUmtsRequestedQosSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsRequestedQosResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsRequestedQosDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsRequestedQosTransferDelay a #guint32.
+     * @param valueUmtsRequestedQosTrafficHandlingPriority a #guint32.
      */
     setUmtsRequestedQos(valueUmtsRequestedQosTrafficClass: WdsTrafficClass, valueUmtsRequestedQosMaxUplinkBitrate: number, valueUmtsRequestedQosMaxDownlinkBitrate: number, valueUmtsRequestedQosGuaranteedUplinkBitrate: number, valueUmtsRequestedQosGuaranteedDownlinkBitrate: number, valueUmtsRequestedQosQosDeliveryOrder: WdsDeliveryOrder, valueUmtsRequestedQosMaximumSduSize: number, valueUmtsRequestedQosSduErrorRatio: WdsSduErrorRatio, valueUmtsRequestedQosResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsRequestedQosDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsRequestedQosTransferDelay: number, valueUmtsRequestedQosTrafficHandlingPriority: number): boolean
     /**
      * Set the 'UMTS Requested QoS With Signaling Indication Flag' field in the message.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagMaxUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagMaximumSduSize a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagTransferDelay a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagTrafficHandlingPriority a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagSignalingIndication a #gint8.
      */
     setUmtsRequestedQosWithSignalingIndicationFlag(valueUmtsRequestedQosWithSignalingIndicationFlagTrafficClass: WdsTrafficClass, valueUmtsRequestedQosWithSignalingIndicationFlagMaxUplinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagMaxDownlinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedUplinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagQosDeliveryOrder: WdsDeliveryOrder, valueUmtsRequestedQosWithSignalingIndicationFlagMaximumSduSize: number, valueUmtsRequestedQosWithSignalingIndicationFlagSduErrorRatio: WdsSduErrorRatio, valueUmtsRequestedQosWithSignalingIndicationFlagResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsRequestedQosWithSignalingIndicationFlagDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsRequestedQosWithSignalingIndicationFlagTransferDelay: number, valueUmtsRequestedQosWithSignalingIndicationFlagTrafficHandlingPriority: number, valueUmtsRequestedQosWithSignalingIndicationFlagSignalingIndication: number): boolean
     /**
      * Set the 'Username' field in the message.
+     * @param valueUsername a constant string.
      */
     setUsername(valueUsername: string): boolean
     /**
@@ -37520,6 +40401,8 @@ class MessageWdsDeleteProfileInput {
     ref(): MessageWdsDeleteProfileInput
     /**
      * Set the 'Profile Identifier' field in the message.
+     * @param valueProfileIdentifierProfileType a #QmiWdsProfileType.
+     * @param valueProfileIdentifierProfileIndex a #guint8.
      */
     setProfileIdentifier(valueProfileIdentifierProfileType: WdsProfileType, valueProfileIdentifierProfileIndex: number): boolean
     /**
@@ -37637,6 +40520,7 @@ class MessageWdsGetCurrentSettingsInput {
     ref(): MessageWdsGetCurrentSettingsInput
     /**
      * Set the 'Requested Settings' field in the message.
+     * @param valueRequestedSettings a #QmiWdsGetCurrentSettingsRequestedSettings.
      */
     setRequestedSettings(valueRequestedSettings: WdsGetCurrentSettingsRequestedSettings): boolean
     /**
@@ -37804,6 +40688,8 @@ class MessageWdsGetDefaultProfileNumberInput {
     ref(): MessageWdsGetDefaultProfileNumberInput
     /**
      * Set the 'Profile Type' field in the message.
+     * @param valueProfileTypeType a #QmiWdsProfileType.
+     * @param valueProfileTypeFamily a #QmiWdsProfileFamily.
      */
     setProfileType(valueProfileTypeType: WdsProfileType, valueProfileTypeFamily: WdsProfileFamily): boolean
     /**
@@ -37854,6 +40740,7 @@ class MessageWdsGetDefaultSettingsInput {
     ref(): MessageWdsGetDefaultSettingsInput
     /**
      * Set the 'Profile Type' field in the message.
+     * @param valueProfileType a #QmiWdsProfileType.
      */
     setProfileType(valueProfileType: WdsProfileType): boolean
     /**
@@ -38125,6 +41012,7 @@ class MessageWdsGetPacketStatisticsInput {
     ref(): MessageWdsGetPacketStatisticsInput
     /**
      * Set the 'Mask' field in the message.
+     * @param valueMask a #QmiWdsPacketStatisticsMaskFlag.
      */
     setMask(valueMask: WdsPacketStatisticsMaskFlag): boolean
     /**
@@ -38215,6 +41103,7 @@ class MessageWdsGetPdnThrottleInfoInput {
     ref(): MessageWdsGetPdnThrottleInfoInput
     /**
      * Set the 'Network Type' field in the message.
+     * @param valueNetworkType a #QmiWdsDataSystemNetworkType.
      */
     setNetworkType(valueNetworkType: WdsDataSystemNetworkType): boolean
     /**
@@ -38232,8 +41121,11 @@ class MessageWdsGetPdnThrottleInfoOutput {
     /* Methods of Qmi-1.0.Qmi.MessageWdsGetPdnThrottleInfoOutput */
     /**
      * Get the 'Info' field from `self`.
+     * 
+     * Version of qmi_message_wds_get_pdn_throttle_info_output_get_info() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfo */ MessageWdsGetPdnThrottleInfoOutputInfoElement[] | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPtr */ MessageWdsGetPdnThrottleInfoOutputInfoElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -38254,23 +41146,23 @@ class MessageWdsGetPdnThrottleInfoOutputInfoElement {
     /**
      * a #gboolean.
      */
-    readonly ipv4Throttled: boolean
+    ipv4Throttled: boolean
     /**
      * a #gboolean.
      */
-    readonly ipv6Throttled: boolean
+    ipv6Throttled: boolean
     /**
      * a #guint32.
      */
-    readonly ipv4ThrottleTimeLeftMs: number
+    ipv4ThrottleTimeLeftMs: number
     /**
      * a #guint32.
      */
-    readonly ipv6ThrottleTimeLeftMs: number
+    ipv6ThrottleTimeLeftMs: number
     /**
      * a string.
      */
-    readonly apn: string
+    apn: string
     static name: string
 }
 class MessageWdsGetProfileListInput {
@@ -38285,6 +41177,7 @@ class MessageWdsGetProfileListInput {
     ref(): MessageWdsGetProfileListInput
     /**
      * Set the 'Profile Type' field in the message.
+     * @param valueProfileType a #QmiWdsProfileType.
      */
     setProfileType(valueProfileType: WdsProfileType): boolean
     /**
@@ -38306,8 +41199,11 @@ class MessageWdsGetProfileListOutput {
     getExtendedErrorCode(): [ /* returnType */ boolean, /* valueExtendedErrorCode */ WdsDsProfileError | null ]
     /**
      * Get the 'Profile List' field from `self`.
+     * 
+     * Version of qmi_message_wds_get_profile_list_output_get_profile_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getProfileList(): [ /* returnType */ boolean, /* valueProfileList */ MessageWdsGetProfileListOutputProfileListProfile[] | null ]
+    getProfileList(): [ /* returnType */ boolean, /* valueProfileListPtr */ MessageWdsGetProfileListOutputProfileListProfile[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -38328,15 +41224,15 @@ class MessageWdsGetProfileListOutputProfileListProfile {
     /**
      * a #QmiWdsProfileType.
      */
-    readonly profileType: WdsProfileType
+    profileType: WdsProfileType
     /**
      * a #guint8.
      */
-    readonly profileIndex: number
+    profileIndex: number
     /**
      * a string.
      */
-    readonly profileName: string
+    profileName: string
     static name: string
 }
 class MessageWdsGetProfileSettingsInput {
@@ -38351,6 +41247,8 @@ class MessageWdsGetProfileSettingsInput {
     ref(): MessageWdsGetProfileSettingsInput
     /**
      * Set the 'Profile ID' field in the message.
+     * @param valueProfileIdProfileType a #QmiWdsProfileType.
+     * @param valueProfileIdProfileIndex a #guint8.
      */
     setProfileId(valueProfileIdProfileType: WdsProfileType, valueProfileIdProfileIndex: number): boolean
     /**
@@ -38692,126 +41590,216 @@ class MessageWdsModifyProfileInput {
     ref(): MessageWdsModifyProfileInput
     /**
      * Set the 'APN Disabled Flag' field in the message.
+     * @param valueApnDisabledFlag a #gboolean.
      */
     setApnDisabledFlag(valueApnDisabledFlag: boolean): boolean
     /**
      * Set the 'APN Name' field in the message.
+     * @param valueApnName a constant string.
      */
     setApnName(valueApnName: string): boolean
     /**
      * Set the 'APN Type Mask' field in the message.
+     * @param valueApnTypeMask a #QmiWdsApnTypeMask.
      */
     setApnTypeMask(valueApnTypeMask: WdsApnTypeMask): boolean
     /**
      * Set the 'Authentication' field in the message.
+     * @param valueAuthentication a #QmiWdsAuthentication.
      */
     setAuthentication(valueAuthentication: WdsAuthentication): boolean
     /**
      * Set the 'GPRS Minimum QoS' field in the message.
+     * @param valueGprsMinimumQosPrecedenceClass a #guint32.
+     * @param valueGprsMinimumQosDelayClass a #guint32.
+     * @param valueGprsMinimumQosReliabilityClass a #guint32.
+     * @param valueGprsMinimumQosPeakThroughputClass a #guint32.
+     * @param valueGprsMinimumQosMeanThroughputClass a #guint32.
      */
     setGprsMinimumQos(valueGprsMinimumQosPrecedenceClass: number, valueGprsMinimumQosDelayClass: number, valueGprsMinimumQosReliabilityClass: number, valueGprsMinimumQosPeakThroughputClass: number, valueGprsMinimumQosMeanThroughputClass: number): boolean
     /**
      * Set the 'GPRS Requested QoS' field in the message.
+     * @param valueGprsRequestedQosPrecedenceClass a #guint32.
+     * @param valueGprsRequestedQosDelayClass a #guint32.
+     * @param valueGprsRequestedQosReliabilityClass a #guint32.
+     * @param valueGprsRequestedQosPeakThroughputClass a #guint32.
+     * @param valueGprsRequestedQosMeanThroughputClass a #guint32.
      */
     setGprsRequestedQos(valueGprsRequestedQosPrecedenceClass: number, valueGprsRequestedQosDelayClass: number, valueGprsRequestedQosReliabilityClass: number, valueGprsRequestedQosPeakThroughputClass: number, valueGprsRequestedQosMeanThroughputClass: number): boolean
     /**
      * Set the 'IMCN Flag' field in the message.
+     * @param valueImcnFlag a #gboolean.
      */
     setImcnFlag(valueImcnFlag: boolean): boolean
     /**
      * Set the 'IPv4 Address Preference' field in the message.
+     * @param valueIpv4AddressPreference a #guint32.
      */
     setIpv4AddressPreference(valueIpv4AddressPreference: number): boolean
     /**
      * Set the 'IPv6 Address Preference' field in the message.
+     * @param valueIpv6AddressPreferenceAddress a #GArray of #guint16 elements. A new reference to `value_ipv6`_address_preference_address will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIpv6AddressPreference(valueIpv6AddressPreferenceAddress: number[]): boolean
     /**
      * Set the 'IPv6 Primary DNS Address Preference' field in the message.
+     * @param valueIpv6PrimaryDnsAddressPreference a #GArray of #guint16 elements. A new reference to `value_ipv6`_primary_dns_address_preference will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIpv6PrimaryDnsAddressPreference(valueIpv6PrimaryDnsAddressPreference: number[]): boolean
     /**
      * Set the 'IPv6 Secondary DNS Address Preference' field in the message.
+     * @param valueIpv6SecondaryDnsAddressPreference a #GArray of #guint16 elements. A new reference to `value_ipv6`_secondary_dns_address_preference will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setIpv6SecondaryDnsAddressPreference(valueIpv6SecondaryDnsAddressPreference: number[]): boolean
     /**
      * Set the 'LTE QoS Parameters' field in the message.
+     * @param valueLteQosParametersQosClassIdentifier a #QmiWdsQosClassIdentifier.
+     * @param valueLteQosParametersGuaranteedDownlinkBitrate a #guint32.
+     * @param valueLteQosParametersMaxDownlinkBitrate a #guint32.
+     * @param valueLteQosParametersGuaranteedUplinkBitrate a #guint32.
+     * @param valueLteQosParametersMaxUplinkBitrate a #guint32.
      */
     setLteQosParameters(valueLteQosParametersQosClassIdentifier: WdsQosClassIdentifier, valueLteQosParametersGuaranteedDownlinkBitrate: number, valueLteQosParametersMaxDownlinkBitrate: number, valueLteQosParametersGuaranteedUplinkBitrate: number, valueLteQosParametersMaxUplinkBitrate: number): boolean
     /**
      * Set the 'Password' field in the message.
+     * @param valuePassword a constant string.
      */
     setPassword(valuePassword: string): boolean
     /**
      * Set the 'PCSCF Address Using DHCP' field in the message.
+     * @param valuePcscfAddressUsingDhcp a #gboolean.
      */
     setPcscfAddressUsingDhcp(valuePcscfAddressUsingDhcp: boolean): boolean
     /**
      * Set the 'PCSCF Address Using PCO' field in the message.
+     * @param valuePcscfAddressUsingPco a #gboolean.
      */
     setPcscfAddressUsingPco(valuePcscfAddressUsingPco: boolean): boolean
     /**
      * Set the 'PDP Context Number' field in the message.
+     * @param valuePdpContextNumber a #guint8.
      */
     setPdpContextNumber(valuePdpContextNumber: number): boolean
     /**
      * Set the 'PDP Context Primary ID' field in the message.
+     * @param valuePdpContextPrimaryId a #guint8.
      */
     setPdpContextPrimaryId(valuePdpContextPrimaryId: number): boolean
     /**
      * Set the 'PDP Context Secondary Flag' field in the message.
+     * @param valuePdpContextSecondaryFlag a #gboolean.
      */
     setPdpContextSecondaryFlag(valuePdpContextSecondaryFlag: boolean): boolean
     /**
      * Set the 'PDP Data Compression Type' field in the message.
+     * @param valuePdpDataCompressionType a #QmiWdsPdpDataCompressionType.
      */
     setPdpDataCompressionType(valuePdpDataCompressionType: WdsPdpDataCompressionType): boolean
     /**
      * Set the 'PDP Header Compression Type' field in the message.
+     * @param valuePdpHeaderCompressionType a #QmiWdsPdpHeaderCompressionType.
      */
     setPdpHeaderCompressionType(valuePdpHeaderCompressionType: WdsPdpHeaderCompressionType): boolean
     /**
      * Set the 'PDP Type' field in the message.
+     * @param valuePdpType a #QmiWdsPdpType.
      */
     setPdpType(valuePdpType: WdsPdpType): boolean
     /**
      * Set the 'Primary IPv4 DNS Address' field in the message.
+     * @param valuePrimaryIpv4DnsAddress a #guint32.
      */
     setPrimaryIpv4DnsAddress(valuePrimaryIpv4DnsAddress: number): boolean
     /**
      * Set the 'Profile Identifier' field in the message.
+     * @param valueProfileIdentifierProfileType a #QmiWdsProfileType.
+     * @param valueProfileIdentifierProfileIndex a #guint8.
      */
     setProfileIdentifier(valueProfileIdentifierProfileType: WdsProfileType, valueProfileIdentifierProfileIndex: number): boolean
     /**
      * Set the 'Profile Name' field in the message.
+     * @param valueProfileName a constant string.
      */
     setProfileName(valueProfileName: string): boolean
     /**
      * Set the 'Roaming Disallowed Flag' field in the message.
+     * @param valueRoamingDisallowedFlag a #gboolean.
      */
     setRoamingDisallowedFlag(valueRoamingDisallowedFlag: boolean): boolean
     /**
      * Set the 'Secondary IPv4 DNS Address' field in the message.
+     * @param valueSecondaryIpv4DnsAddress a #guint32.
      */
     setSecondaryIpv4DnsAddress(valueSecondaryIpv4DnsAddress: number): boolean
     /**
      * Set the 'UMTS Minimum QoS' field in the message.
+     * @param valueUmtsMinimumQosTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsMinimumQosMaxUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsMinimumQosMaximumSduSize a #guint32.
+     * @param valueUmtsMinimumQosSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsMinimumQosResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsMinimumQosDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsMinimumQosTransferDelay a #guint32.
+     * @param valueUmtsMinimumQosTrafficHandlingPriority a #guint32.
      */
     setUmtsMinimumQos(valueUmtsMinimumQosTrafficClass: WdsTrafficClass, valueUmtsMinimumQosMaxUplinkBitrate: number, valueUmtsMinimumQosMaxDownlinkBitrate: number, valueUmtsMinimumQosGuaranteedUplinkBitrate: number, valueUmtsMinimumQosGuaranteedDownlinkBitrate: number, valueUmtsMinimumQosQosDeliveryOrder: WdsDeliveryOrder, valueUmtsMinimumQosMaximumSduSize: number, valueUmtsMinimumQosSduErrorRatio: WdsSduErrorRatio, valueUmtsMinimumQosResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsMinimumQosDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsMinimumQosTransferDelay: number, valueUmtsMinimumQosTrafficHandlingPriority: number): boolean
     /**
      * Set the 'UMTS Minimum QoS With Signaling Indication Flag' field in the message.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagMaxUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagMaximumSduSize a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagTransferDelay a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagTrafficHandlingPriority a #guint32.
+     * @param valueUmtsMinimumQosWithSignalingIndicationFlagSignalingIndication a #gint8.
      */
     setUmtsMinimumQosWithSignalingIndicationFlag(valueUmtsMinimumQosWithSignalingIndicationFlagTrafficClass: WdsTrafficClass, valueUmtsMinimumQosWithSignalingIndicationFlagMaxUplinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagMaxDownlinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedUplinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate: number, valueUmtsMinimumQosWithSignalingIndicationFlagQosDeliveryOrder: WdsDeliveryOrder, valueUmtsMinimumQosWithSignalingIndicationFlagMaximumSduSize: number, valueUmtsMinimumQosWithSignalingIndicationFlagSduErrorRatio: WdsSduErrorRatio, valueUmtsMinimumQosWithSignalingIndicationFlagResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsMinimumQosWithSignalingIndicationFlagDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsMinimumQosWithSignalingIndicationFlagTransferDelay: number, valueUmtsMinimumQosWithSignalingIndicationFlagTrafficHandlingPriority: number, valueUmtsMinimumQosWithSignalingIndicationFlagSignalingIndication: number): boolean
     /**
      * Set the 'UMTS Requested QoS' field in the message.
+     * @param valueUmtsRequestedQosTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsRequestedQosMaxUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsRequestedQosMaximumSduSize a #guint32.
+     * @param valueUmtsRequestedQosSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsRequestedQosResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsRequestedQosDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsRequestedQosTransferDelay a #guint32.
+     * @param valueUmtsRequestedQosTrafficHandlingPriority a #guint32.
      */
     setUmtsRequestedQos(valueUmtsRequestedQosTrafficClass: WdsTrafficClass, valueUmtsRequestedQosMaxUplinkBitrate: number, valueUmtsRequestedQosMaxDownlinkBitrate: number, valueUmtsRequestedQosGuaranteedUplinkBitrate: number, valueUmtsRequestedQosGuaranteedDownlinkBitrate: number, valueUmtsRequestedQosQosDeliveryOrder: WdsDeliveryOrder, valueUmtsRequestedQosMaximumSduSize: number, valueUmtsRequestedQosSduErrorRatio: WdsSduErrorRatio, valueUmtsRequestedQosResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsRequestedQosDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsRequestedQosTransferDelay: number, valueUmtsRequestedQosTrafficHandlingPriority: number): boolean
     /**
      * Set the 'UMTS Requested QoS With Signaling Indication Flag' field in the message.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagTrafficClass a #QmiWdsTrafficClass.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagMaxUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagMaxDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedUplinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagQosDeliveryOrder a #QmiWdsDeliveryOrder.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagMaximumSduSize a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagSduErrorRatio a #QmiWdsSduErrorRatio.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagResidualBitErrorRatio a #QmiWdsSduResidualBitErrorRatio.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagDeliveryErroneousSdu a #QmiWdsSduErroneousDelivery.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagTransferDelay a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagTrafficHandlingPriority a #guint32.
+     * @param valueUmtsRequestedQosWithSignalingIndicationFlagSignalingIndication a #gint8.
      */
     setUmtsRequestedQosWithSignalingIndicationFlag(valueUmtsRequestedQosWithSignalingIndicationFlagTrafficClass: WdsTrafficClass, valueUmtsRequestedQosWithSignalingIndicationFlagMaxUplinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagMaxDownlinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedUplinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagGuaranteedDownlinkBitrate: number, valueUmtsRequestedQosWithSignalingIndicationFlagQosDeliveryOrder: WdsDeliveryOrder, valueUmtsRequestedQosWithSignalingIndicationFlagMaximumSduSize: number, valueUmtsRequestedQosWithSignalingIndicationFlagSduErrorRatio: WdsSduErrorRatio, valueUmtsRequestedQosWithSignalingIndicationFlagResidualBitErrorRatio: WdsSduResidualBitErrorRatio, valueUmtsRequestedQosWithSignalingIndicationFlagDeliveryErroneousSdu: WdsSduErroneousDelivery, valueUmtsRequestedQosWithSignalingIndicationFlagTransferDelay: number, valueUmtsRequestedQosWithSignalingIndicationFlagTrafficHandlingPriority: number, valueUmtsRequestedQosWithSignalingIndicationFlagSignalingIndication: number): boolean
     /**
      * Set the 'Username' field in the message.
+     * @param valueUsername a constant string.
      */
     setUsername(valueUsername: string): boolean
     /**
@@ -38879,10 +41867,12 @@ class MessageWdsSetAutoconnectSettingsInput {
     ref(): MessageWdsSetAutoconnectSettingsInput
     /**
      * Set the 'Roaming' field in the message.
+     * @param valueRoaming a #QmiWdsAutoconnectSettingRoaming.
      */
     setRoaming(valueRoaming: WdsAutoconnectSettingRoaming): boolean
     /**
      * Set the 'Status' field in the message.
+     * @param valueStatus a #QmiWdsAutoconnectSetting.
      */
     setStatus(valueStatus: WdsAutoconnectSetting): boolean
     /**
@@ -38925,6 +41915,9 @@ class MessageWdsSetDefaultProfileNumberInput {
     ref(): MessageWdsSetDefaultProfileNumberInput
     /**
      * Set the 'Profile Identifier' field in the message.
+     * @param valueProfileIdentifierType a #QmiWdsProfileType.
+     * @param valueProfileIdentifierFamily a #QmiWdsProfileFamily.
+     * @param valueProfileIdentifierIndex a #guint8.
      */
     setProfileIdentifier(valueProfileIdentifierType: WdsProfileType, valueProfileIdentifierFamily: WdsProfileFamily, valueProfileIdentifierIndex: number): boolean
     /**
@@ -39023,58 +42016,73 @@ class MessageWdsSetEventReportInput {
     ref(): MessageWdsSetEventReportInput
     /**
      * Set the 'Channel Rate' field in the message.
+     * @param valueChannelRate a #gboolean.
      */
     setChannelRate(valueChannelRate: boolean): boolean
     /**
      * Set the 'Current Data Bearer Technology' field in the message.
+     * @param valueCurrentDataBearerTechnology a #gboolean.
      */
     setCurrentDataBearerTechnology(valueCurrentDataBearerTechnology: boolean): boolean
     /**
      * Set the 'Data Bearer Technology' field in the message.
+     * @param valueDataBearerTechnology a #gboolean.
      */
     setDataBearerTechnology(valueDataBearerTechnology: boolean): boolean
     /**
      * Set the 'Data Call Status' field in the message.
+     * @param valueDataCallStatus a #gboolean.
      */
     setDataCallStatus(valueDataCallStatus: boolean): boolean
     /**
      * Set the 'Data Systems' field in the message.
+     * @param valueDataSystems a #gboolean.
      */
     setDataSystems(valueDataSystems: boolean): boolean
     /**
      * Set the 'Dormancy Status' field in the message.
+     * @param valueDormancyStatus a #gboolean.
      */
     setDormancyStatus(valueDormancyStatus: boolean): boolean
     /**
      * Set the 'EVDO PM Change' field in the message.
+     * @param valueEvdoPmChange a #gboolean.
      */
     setEvdoPmChange(valueEvdoPmChange: boolean): boolean
     /**
      * Set the 'Extended Data Bearer Technology' field in the message.
+     * @param valueExtendedDataBearerTechnology a #gboolean.
      */
     setExtendedDataBearerTechnology(valueExtendedDataBearerTechnology: boolean): boolean
     /**
      * Set the 'Limited Data System Status' field in the message.
+     * @param valueLimitedDataSystemStatus a #gboolean.
      */
     setLimitedDataSystemStatus(valueLimitedDataSystemStatus: boolean): boolean
     /**
      * Set the 'MIP Status' field in the message.
+     * @param valueMipStatus a #guint8.
      */
     setMipStatus(valueMipStatus: number): boolean
     /**
      * Set the 'PDN Filter Removals' field in the message.
+     * @param valuePdnFilterRemovals a #gboolean.
      */
     setPdnFilterRemovals(valuePdnFilterRemovals: boolean): boolean
     /**
      * Set the 'Preferred Data System' field in the message.
+     * @param valuePreferredDataSystem a #gboolean.
      */
     setPreferredDataSystem(valuePreferredDataSystem: boolean): boolean
     /**
      * Set the 'Transfer Statistics' field in the message.
+     * @param valueTransferStatisticsIntervalSeconds a #guint8.
+     * @param valueTransferStatisticsIndicators a #QmiWdsSetEventReportTransferStatistics.
      */
     setTransferStatistics(valueTransferStatisticsIntervalSeconds: number, valueTransferStatisticsIndicators: WdsSetEventReportTransferStatistics): boolean
     /**
      * Set the 'Uplink Flow Control' field in the message.
+     * @param valueUplinkFlowControl a #gboolean.
      */
     setUplinkFlowControl(valueUplinkFlowControl: boolean): boolean
     /**
@@ -39117,6 +42125,7 @@ class MessageWdsSetIpFamilyInput {
     ref(): MessageWdsSetIpFamilyInput
     /**
      * Set the 'Preference' field in the message.
+     * @param valuePreference a #QmiWdsIpFamily.
      */
     setPreference(valuePreference: WdsIpFamily): boolean
     /**
@@ -39163,10 +42172,12 @@ class MessageWdsSetLteAttachPdnListInput {
     ref(): MessageWdsSetLteAttachPdnListInput
     /**
      * Set the 'Action' field in the message.
+     * @param valueAction a #QmiWdsAttachPdnListAction.
      */
     setAction(valueAction: WdsAttachPdnListAction): boolean
     /**
      * Set the 'List' field in the message.
+     * @param valueList a #GArray of #guint16 elements. A new reference to `value_list` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setList(valueList: number[]): boolean
     /**
@@ -39269,66 +42280,82 @@ class MessageWdsStartNetworkInput {
     ref(): MessageWdsStartNetworkInput
     /**
      * Set the 'APN' field in the message.
+     * @param valueApn a constant string.
      */
     setApn(valueApn: string): boolean
     /**
      * Set the 'Authentication Preference' field in the message.
+     * @param valueAuthenticationPreference a #QmiWdsAuthentication.
      */
     setAuthenticationPreference(valueAuthenticationPreference: WdsAuthentication): boolean
     /**
      * Set the 'Call Type' field in the message.
+     * @param valueCallType a #QmiWdsCallType.
      */
     setCallType(valueCallType: WdsCallType): boolean
     /**
      * Set the 'Enable Autoconnect' field in the message.
+     * @param valueEnableAutoconnect a #gboolean.
      */
     setEnableAutoconnect(valueEnableAutoconnect: boolean): boolean
     /**
      * Set the 'Extended Technology Preference' field in the message.
+     * @param valueExtendedTechnologyPreference a #QmiWdsExtendedTechnologyPreference.
      */
     setExtendedTechnologyPreference(valueExtendedTechnologyPreference: WdsExtendedTechnologyPreference): boolean
     /**
      * Set the 'IP Family Preference' field in the message.
+     * @param valueIpFamilyPreference a #QmiWdsIpFamily.
      */
     setIpFamilyPreference(valueIpFamilyPreference: WdsIpFamily): boolean
     /**
      * Set the 'IPv4 Address Preference' field in the message.
+     * @param valueIpv4AddressPreference a #guint32.
      */
     setIpv4AddressPreference(valueIpv4AddressPreference: number): boolean
     /**
      * Set the 'Password' field in the message.
+     * @param valuePassword a constant string.
      */
     setPassword(valuePassword: string): boolean
     /**
      * Set the 'Primary DNS Address Preference' field in the message.
+     * @param valuePrimaryDnsAddressPreference a #guint32.
      */
     setPrimaryDnsAddressPreference(valuePrimaryDnsAddressPreference: number): boolean
     /**
      * Set the 'Primary NBNS Address Preference' field in the message.
+     * @param valuePrimaryNbnsAddressPreference a #guint32.
      */
     setPrimaryNbnsAddressPreference(valuePrimaryNbnsAddressPreference: number): boolean
     /**
      * Set the 'Profile Index 3GPP' field in the message.
+     * @param valueProfileIndex3gpp a #guint8.
      */
     setProfileIndex3gpp(valueProfileIndex3gpp: number): boolean
     /**
      * Set the 'Profile Index 3GPP2' field in the message.
+     * @param valueProfileIndex3gpp2 a #guint8.
      */
     setProfileIndex3gpp2(valueProfileIndex3gpp2: number): boolean
     /**
      * Set the 'Secondary DNS Address Preference' field in the message.
+     * @param valueSecondaryDnsAddressPreference a #guint32.
      */
     setSecondaryDnsAddressPreference(valueSecondaryDnsAddressPreference: number): boolean
     /**
      * Set the 'Secondary NBNS Address Preference' field in the message.
+     * @param valueSecondaryNbnsAddressPreference a #guint32.
      */
     setSecondaryNbnsAddressPreference(valueSecondaryNbnsAddressPreference: number): boolean
     /**
      * Set the 'Technology Preference' field in the message.
+     * @param valueTechnologyPreference a #QmiWdsTechnologyPreference.
      */
     setTechnologyPreference(valueTechnologyPreference: WdsTechnologyPreference): boolean
     /**
      * Set the 'Username' field in the message.
+     * @param valueUsername a constant string.
      */
     setUsername(valueUsername: string): boolean
     /**
@@ -39387,10 +42414,12 @@ class MessageWdsStopNetworkInput {
     ref(): MessageWdsStopNetworkInput
     /**
      * Set the 'Disable Autoconnect' field in the message.
+     * @param valueDisableAutoconnect a #gboolean.
      */
     setDisableAutoconnect(valueDisableAutoconnect: boolean): boolean
     /**
      * Set the 'Packet Data Handle' field in the message.
+     * @param valuePacketDataHandle a #guint32.
      */
     setPacketDataHandle(valuePacketDataHandle: number): boolean
     /**
@@ -39481,54 +42510,68 @@ class MessageWdsSwiCreateProfileIndexedInput {
     ref(): MessageWdsSwiCreateProfileIndexedInput
     /**
      * Set the 'APN Disabled Flag' field in the message.
+     * @param valueApnDisabledFlag a #gboolean.
      */
     setApnDisabledFlag(valueApnDisabledFlag: boolean): boolean
     /**
      * Set the 'APN Name' field in the message.
+     * @param valueApnName a constant string.
      */
     setApnName(valueApnName: string): boolean
     /**
      * Set the 'Authentication' field in the message.
+     * @param valueAuthentication a #QmiWdsAuthentication.
      */
     setAuthentication(valueAuthentication: WdsAuthentication): boolean
     /**
      * Set the 'IPv4 Address Preference' field in the message.
+     * @param valueIpv4AddressPreference a #guint32.
      */
     setIpv4AddressPreference(valueIpv4AddressPreference: number): boolean
     /**
      * Set the 'Password' field in the message.
+     * @param valuePassword a constant string.
      */
     setPassword(valuePassword: string): boolean
     /**
      * Set the 'PDP Context Number' field in the message.
+     * @param valuePdpContextNumber a #guint8.
      */
     setPdpContextNumber(valuePdpContextNumber: number): boolean
     /**
      * Set the 'PDP Type' field in the message.
+     * @param valuePdpType a #QmiWdsPdpType.
      */
     setPdpType(valuePdpType: WdsPdpType): boolean
     /**
      * Set the 'Primary IPv4 DNS Address' field in the message.
+     * @param valuePrimaryIpv4DnsAddress a #guint32.
      */
     setPrimaryIpv4DnsAddress(valuePrimaryIpv4DnsAddress: number): boolean
     /**
      * Set the 'Profile Identifier' field in the message.
+     * @param valueProfileIdentifierProfileType a #QmiWdsProfileType.
+     * @param valueProfileIdentifierProfileIndex a #guint8.
      */
     setProfileIdentifier(valueProfileIdentifierProfileType: WdsProfileType, valueProfileIdentifierProfileIndex: number): boolean
     /**
      * Set the 'Profile Name' field in the message.
+     * @param valueProfileName a constant string.
      */
     setProfileName(valueProfileName: string): boolean
     /**
      * Set the 'Roaming Disallowed Flag' field in the message.
+     * @param valueRoamingDisallowedFlag a #gboolean.
      */
     setRoamingDisallowedFlag(valueRoamingDisallowedFlag: boolean): boolean
     /**
      * Set the 'Secondary IPv4 DNS Address' field in the message.
+     * @param valueSecondaryIpv4DnsAddress a #guint32.
      */
     setSecondaryIpv4DnsAddress(valueSecondaryIpv4DnsAddress: number): boolean
     /**
      * Set the 'Username' field in the message.
+     * @param valueUsername a constant string.
      */
     setUsername(valueUsername: string): boolean
     /**
@@ -39587,18 +42630,22 @@ class MessageWmsDeleteInput {
     ref(): MessageWmsDeleteInput
     /**
      * Set the 'Memory Index' field in the message.
+     * @param valueMemoryIndex a #guint32.
      */
     setMemoryIndex(valueMemoryIndex: number): boolean
     /**
      * Set the 'Memory Storage' field in the message.
+     * @param valueMemoryStorage a #QmiWmsStorageType.
      */
     setMemoryStorage(valueMemoryStorage: WmsStorageType): boolean
     /**
      * Set the 'Message Mode' field in the message.
+     * @param valueMessageMode a #QmiWmsMessageMode.
      */
     setMessageMode(valueMessageMode: WmsMessageMode): boolean
     /**
      * Set the 'Message Tag' field in the message.
+     * @param valueMessageTag a #QmiWmsMessageTagType.
      */
     setMessageTag(valueMessageTag: WmsMessageTagType): boolean
     /**
@@ -39658,8 +42705,11 @@ class MessageWmsGetRoutesOutput {
     getResult(): boolean
     /**
      * Get the 'Route List' field from `self`.
+     * 
+     * Version of qmi_message_wms_get_routes_output_get_route_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRouteList(): [ /* returnType */ boolean, /* valueRouteList */ MessageWmsGetRoutesOutputRouteListElement[] | null ]
+    getRouteList(): [ /* returnType */ boolean, /* valueRouteListPtr */ MessageWmsGetRoutesOutputRouteListElement[] | null ]
     /**
      * Get the 'Transfer Status Report' field from `self`.
      */
@@ -39680,19 +42730,19 @@ class MessageWmsGetRoutesOutputRouteListElement {
     /**
      * a #QmiWmsMessageType.
      */
-    readonly messageType: WmsMessageType
+    messageType: WmsMessageType
     /**
      * a #QmiWmsMessageClass.
      */
-    readonly messageClass: WmsMessageClass
+    messageClass: WmsMessageClass
     /**
      * a #QmiWmsStorageType.
      */
-    readonly storage: WmsStorageType
+    storage: WmsStorageType
     /**
      * a #QmiWmsReceiptAction.
      */
-    readonly receiptAction: WmsReceiptAction
+    receiptAction: WmsReceiptAction
     static name: string
 }
 class MessageWmsGetSupportedMessagesOutput {
@@ -39736,14 +42786,17 @@ class MessageWmsListMessagesInput {
     ref(): MessageWmsListMessagesInput
     /**
      * Set the 'Message Mode' field in the message.
+     * @param valueMessageMode a #QmiWmsMessageMode.
      */
     setMessageMode(valueMessageMode: WmsMessageMode): boolean
     /**
      * Set the 'Message Tag' field in the message.
+     * @param valueMessageTag a #QmiWmsMessageTagType.
      */
     setMessageTag(valueMessageTag: WmsMessageTagType): boolean
     /**
      * Set the 'Storage Type' field in the message.
+     * @param valueStorageType a #QmiWmsStorageType.
      */
     setStorageType(valueStorageType: WmsStorageType): boolean
     /**
@@ -39761,8 +42814,11 @@ class MessageWmsListMessagesOutput {
     /* Methods of Qmi-1.0.Qmi.MessageWmsListMessagesOutput */
     /**
      * Get the 'Message List' field from `self`.
+     * 
+     * Version of qmi_message_wms_list_messages_output_get_message_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getMessageList(): [ /* returnType */ boolean, /* valueMessageList */ MessageWmsListMessagesOutputMessageListElement[] | null ]
+    getMessageList(): [ /* returnType */ boolean, /* valueMessageListPtr */ MessageWmsListMessagesOutputMessageListElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -39783,11 +42839,11 @@ class MessageWmsListMessagesOutputMessageListElement {
     /**
      * a #guint32.
      */
-    readonly memoryIndex: number
+    memoryIndex: number
     /**
      * a #QmiWmsMessageTagType.
      */
-    readonly messageTag: WmsMessageTagType
+    messageTag: WmsMessageTagType
     static name: string
 }
 class MessageWmsModifyTagInput {
@@ -39806,10 +42862,14 @@ class MessageWmsModifyTagInput {
     ref(): MessageWmsModifyTagInput
     /**
      * Set the 'Message Mode' field in the message.
+     * @param valueMessageMode a #QmiWmsMessageMode.
      */
     setMessageMode(valueMessageMode: WmsMessageMode): boolean
     /**
      * Set the 'Message Tag' field in the message.
+     * @param valueMessageTagStorageType a #QmiWmsStorageType.
+     * @param valueMessageTagMemoryIndex a #guint32.
+     * @param valueMessageTagMessageTag a #QmiWmsMessageTagType.
      */
     setMessageTag(valueMessageTagStorageType: WmsStorageType, valueMessageTagMemoryIndex: number, valueMessageTagMessageTag: WmsMessageTagType): boolean
     /**
@@ -39860,14 +42920,18 @@ class MessageWmsRawReadInput {
     ref(): MessageWmsRawReadInput
     /**
      * Set the 'Message Memory Storage ID' field in the message.
+     * @param valueMessageMemoryStorageIdStorageType a #QmiWmsStorageType.
+     * @param valueMessageMemoryStorageIdMemoryIndex a #guint32.
      */
     setMessageMemoryStorageId(valueMessageMemoryStorageIdStorageType: WmsStorageType, valueMessageMemoryStorageIdMemoryIndex: number): boolean
     /**
      * Set the 'Message Mode' field in the message.
+     * @param valueMessageMode a #QmiWmsMessageMode.
      */
     setMessageMode(valueMessageMode: WmsMessageMode): boolean
     /**
      * Set the 'SMS on IMS' field in the message.
+     * @param valueSmsOnIms a #gboolean.
      */
     setSmsOnIms(valueSmsOnIms: boolean): boolean
     /**
@@ -39930,22 +42994,29 @@ class MessageWmsRawSendInput {
     ref(): MessageWmsRawSendInput
     /**
      * Set the 'CDMA Follow On DC' field in the message.
+     * @param valueCdmaFollowOnDcFollow a #gboolean.
      */
     setCdmaFollowOnDc(valueCdmaFollowOnDcFollow: boolean): boolean
     /**
      * Set the 'CDMA Force On DC' field in the message.
+     * @param valueCdmaForceOnDcForce a #gboolean.
+     * @param valueCdmaForceOnDcServiceOption a #QmiWmsCdmaServiceOption.
      */
     setCdmaForceOnDc(valueCdmaForceOnDcForce: boolean, valueCdmaForceOnDcServiceOption: WmsCdmaServiceOption): boolean
     /**
      * Set the 'GSM WCDMA Link Timer' field in the message.
+     * @param valueGsmWcdmaLinkTimer a #guint8.
      */
     setGsmWcdmaLinkTimer(valueGsmWcdmaLinkTimer: number): boolean
     /**
      * Set the 'Raw Message Data' field in the message.
+     * @param valueRawMessageDataFormat a #QmiWmsMessageFormat.
+     * @param valueRawMessageDataRawData a #GArray of #guint8 elements. A new reference to `value_raw_message_data_raw_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setRawMessageData(valueRawMessageDataFormat: WmsMessageFormat, valueRawMessageDataRawData: Uint8Array): boolean
     /**
      * Set the 'SMS on IMS' field in the message.
+     * @param valueSmsOnIms a #gboolean.
      */
     setSmsOnIms(valueSmsOnIms: boolean): boolean
     /**
@@ -40008,6 +43079,9 @@ class MessageWmsRawWriteInput {
     ref(): MessageWmsRawWriteInput
     /**
      * Set the 'Raw Message Data' field in the message.
+     * @param valueRawMessageDataStorageType a #QmiWmsStorageType.
+     * @param valueRawMessageDataFormat a #QmiWmsMessageFormat.
+     * @param valueRawMessageDataRawData a #GArray of #guint8 elements. A new reference to `value_raw_message_data_raw_data` will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
      */
     setRawMessageData(valueRawMessageDataStorageType: WmsStorageType, valueRawMessageDataFormat: WmsMessageFormat, valueRawMessageDataRawData: Uint8Array): boolean
     /**
@@ -40083,18 +43157,26 @@ class MessageWmsSendAckInput {
     ref(): MessageWmsSendAckInput
     /**
      * Set the '3GPP2 Failure Information' field in the message.
+     * @param value3gpp2FailureInformationErrorClass a #QmiWmsCdmaErrorClass.
+     * @param value3gpp2FailureInformationCauseCode a #QmiWmsCdmaCauseCode.
      */
     set3gpp2FailureInformation(value3gpp2FailureInformationErrorClass: WmsCdmaErrorClass, value3gpp2FailureInformationCauseCode: WmsCdmaCauseCode): boolean
     /**
      * Set the '3GPP Failure Information' field in the message.
+     * @param value3gppFailureInformationRpCause a #QmiWmsGsmUmtsRpCause.
+     * @param value3gppFailureInformationTpCause a #QmiWmsGsmUmtsTpCause.
      */
     set3gppFailureInformation(value3gppFailureInformationRpCause: WmsGsmUmtsRpCause, value3gppFailureInformationTpCause: WmsGsmUmtsTpCause): boolean
     /**
      * Set the 'Information' field in the message.
+     * @param valueInformationTransactionId a #guint32.
+     * @param valueInformationMessageProtocol a #QmiWmsMessageProtocol.
+     * @param valueInformationSuccess a #gboolean.
      */
     setInformation(valueInformationTransactionId: number, valueInformationMessageProtocol: WmsMessageProtocol, valueInformationSuccess: boolean): boolean
     /**
      * Set the 'SMS on IMS' field in the message.
+     * @param valueSmsOnIms a #gboolean.
      */
     setSmsOnIms(valueSmsOnIms: boolean): boolean
     /**
@@ -40145,10 +43227,14 @@ class MessageWmsSendFromMemoryStorageInput {
     ref(): MessageWmsSendFromMemoryStorageInput
     /**
      * Set the 'Information' field in the message.
+     * @param valueInformationStorageType a #QmiWmsStorageType.
+     * @param valueInformationMemoryIndex a #guint32.
+     * @param valueInformationMessageMode a #QmiWmsMessageMode.
      */
     setInformation(valueInformationStorageType: WmsStorageType, valueInformationMemoryIndex: number, valueInformationMessageMode: WmsMessageMode): boolean
     /**
      * Set the 'SMS on IMS' field in the message.
+     * @param valueSmsOnIms a #gboolean.
      */
     setSmsOnIms(valueSmsOnIms: boolean): boolean
     /**
@@ -40211,6 +43297,7 @@ class MessageWmsSetEventReportInput {
     ref(): MessageWmsSetEventReportInput
     /**
      * Set the 'New MT Message Indicator' field in the message.
+     * @param valueNewMtMessageIndicatorReport a #gboolean.
      */
     setNewMtMessageIndicator(valueNewMtMessageIndicatorReport: boolean): boolean
     /**
@@ -40245,8 +43332,11 @@ class MessageWmsSetRoutesInput {
     /* Methods of Qmi-1.0.Qmi.MessageWmsSetRoutesInput */
     /**
      * Get the 'Route List' field from `self`.
+     * 
+     * Version of qmi_message_wms_set_routes_input_get_route_list() using arrays of pointers to
+     * structs instead of arrays of structs, for easier binding in other languages.
      */
-    getRouteList(): [ /* returnType */ boolean, /* valueRouteList */ MessageWmsSetRoutesInputRouteListElement[] | null ]
+    getRouteList(): [ /* returnType */ boolean, /* valueRouteListPtr */ MessageWmsSetRoutesInputRouteListElement[] | null ]
     /**
      * Get the 'Transfer Status Report' field from `self`.
      */
@@ -40257,10 +43347,12 @@ class MessageWmsSetRoutesInput {
     ref(): MessageWmsSetRoutesInput
     /**
      * Set the 'Route List' field in the message.
+     * @param valueRouteListPtr array of #QmiMessageWmsSetRoutesInputRouteListElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
      */
-    setRouteList(valueRouteList: MessageWmsSetRoutesInputRouteListElement[]): boolean
+    setRouteList(valueRouteListPtr: MessageWmsSetRoutesInputRouteListElement[]): boolean
     /**
      * Set the 'Transfer Status Report' field in the message.
+     * @param valueTransferStatusReport a #QmiWmsTransferIndication.
      */
     setTransferStatusReport(valueTransferStatusReport: WmsTransferIndication): boolean
     /**
@@ -40279,19 +43371,19 @@ class MessageWmsSetRoutesInputRouteListElement {
     /**
      * a #QmiWmsMessageType.
      */
-    readonly messageType: WmsMessageType
+    messageType: WmsMessageType
     /**
      * a #QmiWmsMessageClass.
      */
-    readonly messageClass: WmsMessageClass
+    messageClass: WmsMessageClass
     /**
      * a #QmiWmsStorageType.
      */
-    readonly storage: WmsStorageType
+    storage: WmsStorageType
     /**
      * a #QmiWmsReceiptAction.
      */
-    readonly receiptAction: WmsReceiptAction
+    receiptAction: WmsReceiptAction
     static name: string
 }
 class MessageWmsSetRoutesOutput {
@@ -40316,19 +43408,19 @@ class PhysicalSlotInformationSlot {
     /**
      * a #QmiUimCardProtocol.
      */
-    readonly cardProtocol: UimCardProtocol
+    cardProtocol: UimCardProtocol
     /**
      * a #guint8.
      */
-    readonly validApplications: number
+    validApplications: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly atrValue: object[]
+    atrValue: object[]
     /**
      * a #gboolean.
      */
-    readonly isEuicc: boolean
+    isEuicc: boolean
     static name: string
 }
 class PhysicalSlotStatusSlot {
@@ -40336,24 +43428,24 @@ class PhysicalSlotStatusSlot {
     /**
      * a #QmiUimPhysicalCardState.
      */
-    readonly physicalCardStatus: UimPhysicalCardState
+    physicalCardStatus: UimPhysicalCardState
     /**
      * a #QmiUimSlotState.
      */
-    readonly physicalSlotStatus: UimSlotState
+    physicalSlotStatus: UimSlotState
     /**
      * a #guint8.
      */
-    readonly logicalSlot: number
+    logicalSlot: number
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly iccid: object[]
+    iccid: object[]
     static name: string
 }
 abstract class ProxyClass {
     /* Fields of Qmi-1.0.Qmi.ProxyClass */
-    readonly parent: GObject.ObjectClass
+    parent: GObject.ObjectClass
     static name: string
 }
 class ProxyPrivate {
@@ -40364,7 +43456,7 @@ class SlotEidElement {
     /**
      * a #GArray of #guint8 elements.
      */
-    readonly eid: object[]
+    eid: object[]
     static name: string
 }
     type Message = any

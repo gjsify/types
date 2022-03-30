@@ -126,7 +126,8 @@ enum NavigationCommand {
 }
 /**
  * Enum values for the various events that an element implementing the
- * GstNavigation interface might send up the pipeline.
+ * GstNavigation interface might send up the pipeline. Touch events have been
+ * inspired by the libinput API, and have the same meaning here.
  */
 enum NavigationEventType {
     /**
@@ -172,6 +173,34 @@ enum NavigationEventType {
      * to extract the details from the event.
      */
     MOUSE_SCROLL,
+    /**
+     * An event describing a new touch point, which will be assigned an identifier
+     * that is unique to it for the duration of its movement on the screen.
+     * Use gst_navigation_event_parse_touch_event() to extract the details
+     * from the event.
+     */
+    TOUCH_DOWN,
+    /**
+     * An event describing the movement of an active touch point across
+     * the screen. Use gst_navigation_event_parse_touch_event() to extract
+     * the details from the event.
+     */
+    TOUCH_MOTION,
+    /**
+     * An event describing a removed touch point. After this event,
+     * its identifier may be reused for any new touch points.
+     * Use gst_navigation_event_parse_touch_up_event() to extract the details
+     * from the event.
+     */
+    TOUCH_UP,
+    /**
+     * An event signaling the end of a sequence of simultaneous touch events.
+     */
+    TOUCH_FRAME,
+    /**
+     * An event cancelling all currently active touch points.
+     */
+    TOUCH_CANCEL,
 }
 /**
  * A set of notifications that may be received on the bus when navigation
@@ -1101,6 +1130,18 @@ enum VideoFormat {
      * per channel.
      */
     ABGR64_BE,
+    /**
+     * NV12 with 16x32 Y tiles and 16x16 UV tiles.
+     */
+    NV12_16L32S,
+    /**
+     * NV12 with 8x128 tiles in linear order.
+     */
+    NV12_8L128,
+    /**
+     * NV12 10bit big endian with 8x128 tiles in linear order.
+     */
+    NV12_10BE_8L128,
 }
 /**
  * The orientation of the GL texture.
@@ -1598,6 +1639,69 @@ enum VideoVBIParserResult {
     ERROR,
 }
 /**
+ * Flags to indicate the state of modifier keys and mouse buttons
+ * in events.
+ * 
+ * Typical modifier keys are Shift, Control, Meta, Super, Hyper, Alt, Compose,
+ * Apple, CapsLock or ShiftLock.
+ */
+enum NavigationModifierType {
+    NONE,
+    /**
+     * the Shift key.
+     */
+    SHIFT_MASK,
+    LOCK_MASK,
+    /**
+     * the Control key.
+     */
+    CONTROL_MASK,
+    /**
+     * the fourth modifier key
+     */
+    ALT_MASK,
+    /**
+     * the first mouse button (usually the left button).
+     */
+    BUTTON1_MASK,
+    /**
+     * the second mouse button (usually the right button).
+     */
+    BUTTON2_MASK,
+    /**
+     * the third mouse button (usually the mouse wheel button or middle button).
+     */
+    BUTTON3_MASK,
+    /**
+     * the fourth mouse button (typically the "Back" button).
+     */
+    BUTTON4_MASK,
+    /**
+     * the fifth mouse button (typically the "forward" button).
+     */
+    BUTTON5_MASK,
+    /**
+     * the Super modifier
+     */
+    SUPER_MASK,
+    /**
+     * the Hyper modifier
+     */
+    HYPER_MASK,
+    /**
+     * the Meta modifier
+     */
+    META_MASK,
+    /**
+     * A mask covering all entries in #GdkModifierType.
+     */
+    MASK,
+    /**
+     * the Meta modifier
+     */
+    _META_MASK,
+}
+/**
  * Additional video buffer flags. These flags can potentially be used on any
  * buffers carrying closed caption data, or video data - even encoded data.
  * 
@@ -1651,6 +1755,12 @@ enum VideoBufferFlags {
      *                                     Use GST_VIDEO_BUFFER_IS_TOP_FIELD() to check for this flag.
      */
     TOP_FIELD,
+    /**
+     * If the #GstBuffer is interlaced, then only the
+     *                                     first field (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF
+     *                                     flag setting) is to be displayed (Since: 1.16).
+     */
+    _ONEFIELD,
     /**
      * The video frame has the bottom field only. This is
      *                                     the same as GST_VIDEO_BUFFER_FLAG_ONEFIELD
@@ -1848,6 +1958,10 @@ enum VideoFormatFlags {
      *   in the last plane.
      */
     TILED,
+    /**
+     * The tile size varies per plane according to the subsampling.
+     */
+    SUBTILES,
 }
 /**
  * Extra video frame flags
@@ -1891,6 +2005,10 @@ enum VideoFrameFlags {
      *     (Since: 1.16).
      */
     TOP_FIELD,
+    /**
+     * The video frame has one field
+     */
+    _ONEFIELD,
     /**
      * The video frame has the bottom field
      *     only. This is the same as GST_VIDEO_FRAME_FLAG_ONEFIELD
@@ -2366,19 +2484,29 @@ function bufferGetVideoRegionOfInterestMetaId(buffer: Gst.Buffer, id: number): V
 function bufferPoolConfigGetVideoAlignment(config: Gst.Structure, align: VideoAlignment): boolean
 function bufferPoolConfigSetVideoAlignment(config: Gst.Structure, align: VideoAlignment): void
 function isVideoOverlayPrepareWindowHandleMessage(msg: Gst.Message): boolean
+function navigationEventGetCoordinates(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
 function navigationEventGetType(event: Gst.Event): NavigationEventType
 function navigationEventNewCommand(command: NavigationCommand): Gst.Event
-function navigationEventNewKeyPress(key: string): Gst.Event
-function navigationEventNewKeyRelease(key: string): Gst.Event
-function navigationEventNewMouseButtonPress(button: number, x: number, y: number): Gst.Event
-function navigationEventNewMouseButtonRelease(button: number, x: number, y: number): Gst.Event
-function navigationEventNewMouseMove(x: number, y: number): Gst.Event
-function navigationEventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number): Gst.Event
+function navigationEventNewKeyPress(key: string, state: NavigationModifierType): Gst.Event
+function navigationEventNewKeyRelease(key: string, state: NavigationModifierType): Gst.Event
+function navigationEventNewMouseButtonPress(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event
+function navigationEventNewMouseButtonRelease(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event
+function navigationEventNewMouseMove(x: number, y: number, state: NavigationModifierType): Gst.Event
+function navigationEventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number, state: NavigationModifierType): Gst.Event
+function navigationEventNewTouchCancel(state: NavigationModifierType): Gst.Event
+function navigationEventNewTouchDown(identifier: number, x: number, y: number, pressure: number, state: NavigationModifierType): Gst.Event
+function navigationEventNewTouchFrame(state: NavigationModifierType): Gst.Event
+function navigationEventNewTouchMotion(identifier: number, x: number, y: number, pressure: number, state: NavigationModifierType): Gst.Event
+function navigationEventNewTouchUp(identifier: number, x: number, y: number, state: NavigationModifierType): Gst.Event
 function navigationEventParseCommand(event: Gst.Event): [ /* returnType */ boolean, /* command */ NavigationCommand | null ]
 function navigationEventParseKeyEvent(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
 function navigationEventParseMouseButtonEvent(event: Gst.Event): [ /* returnType */ boolean, /* button */ number | null, /* x */ number | null, /* y */ number | null ]
 function navigationEventParseMouseMoveEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
 function navigationEventParseMouseScrollEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* deltaX */ number | null, /* deltaY */ number | null ]
+function navigationEventParseState(event: Gst.Event, state: NavigationModifierType): boolean
+function navigationEventParseTouchEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null, /* pressure */ number | null ]
+function navigationEventParseTouchUpEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null ]
+function navigationEventSetCoordinates(event: Gst.Event, x: number, y: number): boolean
 function navigationMessageGetType(message: Gst.Message): NavigationMessageType
 function navigationMessageNewAnglesChanged(src: Gst.Object, curAngle: number, nAngles: number): Gst.Message
 function navigationMessageNewCommandsChanged(src: Gst.Object): Gst.Message
@@ -2546,6 +2674,7 @@ class ColorBalance {
      * See Also: The #GstColorBalanceChannel.min_value and
      *         #GstColorBalanceChannel.max_value members of the
      *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
      */
     getValue(channel: ColorBalanceChannel): number
     /**
@@ -2559,6 +2688,8 @@ class ColorBalance {
      * See Also: The #GstColorBalanceChannel.min_value and
      *         #GstColorBalanceChannel.max_value members of the
      *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     * @param value The new value for the channel.
      */
     setValue(channel: ColorBalanceChannel, value: number): void
     /**
@@ -2566,11 +2697,15 @@ class ColorBalance {
      * interface. It fires the #GstColorBalance::value-changed signal on the
      * instance, and the #GstColorBalanceChannel::value-changed signal on the
      * channel object.
+     * @param channel A #GstColorBalanceChannel whose value has changed
+     * @param value The new value of the channel
      */
     valueChanged(channel: ColorBalanceChannel, value: number): void
     /* Signals of GstVideo-1.0.GstVideo.ColorBalance */
     /**
      * Fired when the value of the indicated channel has changed.
+     * @param channel The #GstColorBalanceChannel
+     * @param value The new value
      */
     connect(sigName: "value-changed", callback: ((channel: ColorBalanceChannel, value: number) => void)): number
     on(sigName: "value-changed", callback: (channel: ColorBalanceChannel, value: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -2583,15 +2718,25 @@ class Navigation {
     /* Methods of GstVideo-1.0.GstVideo.Navigation */
     /**
      * Sends the indicated command to the navigation interface.
+     * @param command The command to issue
      */
     sendCommand(command: NavigationCommand): void
     sendEvent(structure: Gst.Structure): void
+    /**
+     * Sends an event to the navigation interface.
+     * @param event The event to send
+     */
+    sendEventSimple(event: Gst.Event): void
     sendKeyEvent(event: string, key: string): void
     /**
      * Sends a mouse event to the navigation interface. Mouse event coordinates
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
      */
     sendMouseEvent(event: string, button: number, x: number, y: number): void
     /**
@@ -2599,68 +2744,173 @@ class Navigation {
      * are sent relative to the display space of the related output area. This is
      * usually the size in pixels of the window associated with the element
      * implementing the #GstNavigation interface.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
+     * @param deltaX The delta_x coordinate of the mouse event.
+     * @param deltaY The delta_y coordinate of the mouse event.
      */
     sendMouseScrollEvent(x: number, y: number, deltaX: number, deltaY: number): void
     static name: string
     /* Static methods and pseudo-constructors */
     /**
+     * Try to retrieve x and y coordinates of a #GstNavigation event.
+     * @param event The #GstEvent to inspect.
+     */
+    static eventGetCoordinates(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
+    /**
      * Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
      * #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
+     * @param event A #GstEvent to inspect.
      */
     static eventGetType(event: Gst.Event): NavigationEventType
     /**
      * Create a new navigation event given navigation command..
+     * @param command The navigation command to use.
      */
     static eventNewCommand(command: NavigationCommand): Gst.Event
     /**
      * Create a new navigation event for the given key press.
+     * @param key A string identifying the key press.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewKeyPress(key: string): Gst.Event
+    static eventNewKeyPress(key: string, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key release.
+     * @param key A string identifying the released key.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewKeyRelease(key: string): Gst.Event
+    static eventNewKeyRelease(key: string, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button press.
+     * @param button The number of the pressed mouse button.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseButtonPress(button: number, x: number, y: number): Gst.Event
+    static eventNewMouseButtonPress(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button release.
+     * @param button The number of the released mouse button.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseButtonRelease(button: number, x: number, y: number): Gst.Event
+    static eventNewMouseButtonRelease(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the new mouse location.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseMove(x: number, y: number): Gst.Event
+    static eventNewMouseMove(x: number, y: number, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the mouse scroll.
+     * @param x The x coordinate of the mouse cursor.
+     * @param y The y coordinate of the mouse cursor.
+     * @param deltaX The x component of the scroll movement.
+     * @param deltaY The y component of the scroll movement.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      */
-    static eventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number): Gst.Event
+    static eventNewMouseScroll(x: number, y: number, deltaX: number, deltaY: number, state: NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event signalling that all currently active touch
+     * points are cancelled and should be discarded. For example, under Wayland
+     * this event might be sent when a swipe passes the threshold to be recognized
+     * as a gesture by the compositor.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchCancel(state: NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for an added touch point.
+     * @param identifier A number uniquely identifying this touch point. It must stay    unique to this touch point at least until an up event is sent for    the same identifier, or all touch points are cancelled.
+     * @param x The x coordinate of the new touch point.
+     * @param y The y coordinate of the new touch point.
+     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchDown(identifier: number, x: number, y: number, pressure: number, state: NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event signalling the end of a touch frame. Touch
+     * frames signal that all previous down, motion and up events not followed by
+     * another touch frame event already should be considered simultaneous.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchFrame(state: NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for a moved touch point.
+     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous touch_start event.
+     * @param x The x coordinate of the touch point.
+     * @param y The y coordinate of the touch point.
+     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchMotion(identifier: number, x: number, y: number, pressure: number, state: NavigationModifierType): Gst.Event
+    /**
+     * Create a new navigation event for a removed touch point.
+     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous down event, but can be reused    after sending this event.
+     * @param x The x coordinate of the touch point.
+     * @param y The y coordinate of the touch point.
+     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
+     */
+    static eventNewTouchUp(identifier: number, x: number, y: number, state: NavigationModifierType): Gst.Event
     /**
      * Inspect a #GstNavigation command event and retrieve the enum value of the
      * associated command.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseCommand(event: Gst.Event): [ /* returnType */ boolean, /* command */ NavigationCommand | null ]
+    /**
+     * Note: Modifier keys (as defined in #GstNavigationModifierType)
+     * [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
+     * [release](GST_NAVIGATION_KEY_PRESS) events are generated even if those states are
+     * present on all other related events
+     * @param event A #GstEvent to inspect.
+     */
     static eventParseKeyEvent(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
     /**
      * Retrieve the details of either a #GstNavigation mouse button press event or
      * a mouse button release event. Determine which type the event is using
      * gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseButtonEvent(event: Gst.Event): [ /* returnType */ boolean, /* button */ number | null, /* x */ number | null, /* y */ number | null ]
     /**
      * Inspect a #GstNavigation mouse movement event and extract the coordinates
      * of the event.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseMoveEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null ]
     /**
      * Inspect a #GstNavigation mouse scroll event and extract the coordinates
      * of the event.
+     * @param event A #GstEvent to inspect.
      */
     static eventParseMouseScrollEvent(event: Gst.Event): [ /* returnType */ boolean, /* x */ number | null, /* y */ number | null, /* deltaX */ number | null, /* deltaY */ number | null ]
+    static eventParseState(event: Gst.Event, state: NavigationModifierType): boolean
+    /**
+     * Retrieve the details of a #GstNavigation touch-down or touch-motion event.
+     * Determine which type the event is using gst_navigation_event_get_type()
+     * to retrieve the #GstNavigationEventType.
+     * @param event A #GstEvent to inspect.
+     */
+    static eventParseTouchEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null, /* pressure */ number | null ]
+    /**
+     * Retrieve the details of a #GstNavigation touch-up event.
+     * @param event A #GstEvent to inspect.
+     */
+    static eventParseTouchUpEvent(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number | null, /* x */ number | null, /* y */ number | null ]
+    /**
+     * Try to set x and y coordinates on a #GstNavigation event. The event must
+     * be writable.
+     * @param event The #GstEvent to modify.
+     * @param x The x coordinate to set.
+     * @param y The y coordinate to set.
+     */
+    static eventSetCoordinates(event: Gst.Event, x: number, y: number): boolean
     /**
      * Check a bus message to see if it is a #GstNavigation event, and return
      * the #GstNavigationMessageType identifying the type of the message if so.
+     * @param message A #GstMessage to inspect.
      */
     static messageGetType(message: Gst.Message): NavigationMessageType
     /**
@@ -2668,43 +2918,55 @@ class Navigation {
      * #GST_NAVIGATION_MESSAGE_ANGLES_CHANGED for notifying an application
      * that the current angle, or current number of angles available in a
      * multiangle video has changed.
+     * @param src A #GstObject to set as source of the new message.
+     * @param curAngle The currently selected angle.
+     * @param nAngles The number of viewing angles now available.
      */
     static messageNewAnglesChanged(src: Gst.Object, curAngle: number, nAngles: number): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
+     * @param src A #GstObject to set as source of the new message.
      */
     static messageNewCommandsChanged(src: Gst.Object): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_EVENT.
+     * @param src A #GstObject to set as source of the new message.
+     * @param event A navigation #GstEvent
      */
     static messageNewEvent(src: Gst.Object, event: Gst.Event): Gst.Message
     /**
      * Creates a new #GstNavigation message with type
      * #GST_NAVIGATION_MESSAGE_MOUSE_OVER.
+     * @param src A #GstObject to set as source of the new message.
+     * @param active %TRUE if the mouse has entered a clickable area of the display. %FALSE if it over a non-clickable area.
      */
     static messageNewMouseOver(src: Gst.Object, active: boolean): Gst.Message
     /**
      * Parse a #GstNavigation message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
      * and extract the `cur_angle` and `n_angles` parameters.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseAnglesChanged(message: Gst.Message): [ /* returnType */ boolean, /* curAngle */ number | null, /* nAngles */ number | null ]
     /**
      * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
      * and extract contained #GstEvent. The caller must unref the `event` when done
      * with it.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseEvent(message: Gst.Message): [ /* returnType */ boolean, /* event */ Gst.Event | null ]
     /**
      * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
      * and extract the active/inactive flag. If the mouse over event is marked
      * active, it indicates that the mouse is over a clickable area.
+     * @param message A #GstMessage to inspect.
      */
     static messageParseMouseOver(message: Gst.Message): [ /* returnType */ boolean, /* active */ boolean | null ]
     /**
      * Inspect a #GstQuery and return the #GstNavigationQueryType associated with
      * it if it is a #GstNavigation query.
+     * @param query The query to inspect
      */
     static queryGetType(query: Gst.Query): NavigationQueryType
     /**
@@ -2722,25 +2984,34 @@ class Navigation {
      * Parse the current angle number in the #GstNavigation angles `query` into the
      * #guint pointed to by the `cur_angle` variable, and the number of available
      * angles into the #guint pointed to by the `n_angles` variable.
+     * @param query a #GstQuery
      */
     static queryParseAngles(query: Gst.Query): [ /* returnType */ boolean, /* curAngle */ number | null, /* nAngles */ number | null ]
     /**
      * Parse the number of commands in the #GstNavigation commands `query`.
+     * @param query a #GstQuery
      */
     static queryParseCommandsLength(query: Gst.Query): [ /* returnType */ boolean, /* nCmds */ number | null ]
     /**
      * Parse the #GstNavigation command query and retrieve the `nth` command from
      * it into `cmd`. If the list contains less elements than `nth,` `cmd` will be
      * set to #GST_NAVIGATION_COMMAND_INVALID.
+     * @param query a #GstQuery
+     * @param nth the nth command to retrieve.
      */
     static queryParseCommandsNth(query: Gst.Query, nth: number): [ /* returnType */ boolean, /* cmd */ NavigationCommand | null ]
     /**
      * Set the #GstNavigation angles query result field in `query`.
+     * @param query a #GstQuery
+     * @param curAngle the current viewing angle to set.
+     * @param nAngles the number of viewing angles to set.
      */
     static querySetAngles(query: Gst.Query, curAngle: number, nAngles: number): void
     /**
      * Set the #GstNavigation command query result fields in `query`. The number
      * of commands passed must be equal to `n_commands`.
+     * @param query a #GstQuery
+     * @param cmds An array containing `n_cmds`     `GstNavigationCommand` values.
      */
     static querySetCommandsv(query: Gst.Query, cmds: NavigationCommand[]): void
 }
@@ -2769,18 +3040,22 @@ class VideoOrientation {
     getVflip(): [ /* returnType */ boolean, /* flip */ boolean ]
     /**
      * Set the horizontal centering offset for the given object.
+     * @param center centering offset
      */
     setHcenter(center: number): boolean
     /**
      * Set the horizontal flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
      */
     setHflip(flip: boolean): boolean
     /**
      * Set the vertical centering offset for the given object.
+     * @param center centering offset
      */
     setVcenter(center: number): boolean
     /**
      * Set the vertical flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
      */
     setVflip(flip: boolean): boolean
     static name: string
@@ -2788,6 +3063,7 @@ class VideoOrientation {
     /**
      * Parses the "image-orientation" tag and transforms it into the
      * #GstVideoOrientationMethod enum.
+     * @param taglist A #GstTagList
      */
     static fromTag(taglist: Gst.TagList): [ /* returnType */ boolean, /* method */ VideoOrientationMethod ]
 }
@@ -2802,6 +3078,7 @@ class VideoOverlay {
      * This will post a "have-window-handle" element message on the bus.
      * 
      * This function should only be used by video overlay plugin developers.
+     * @param handle a platform-specific handle referencing the window
      */
     gotWindowHandle(handle: number): void
     /**
@@ -2810,6 +3087,7 @@ class VideoOverlay {
      * events are not propagated in the window hierarchy if a client is listening
      * for them. This method allows you to disable events handling completely
      * from the #GstVideoOverlay.
+     * @param handleEvents a #gboolean indicating if events should be handled or not.
      */
     handleEvents(handleEvents: boolean): void
     /**
@@ -2832,6 +3110,10 @@ class VideoOverlay {
      * 
      * This method is needed for non fullscreen video overlay in UI toolkits that
      * do not support subwindows.
+     * @param x the horizontal offset of the render area inside the window
+     * @param y the vertical offset of the render area inside the window
+     * @param width the width of the render area inside the window
+     * @param height the height of the render area inside the window
      */
     setRenderRectangle(x: number, y: number, width: number, height: number): boolean
     /**
@@ -2839,6 +3121,7 @@ class VideoOverlay {
      * should use this method to tell to an overlay to display video output to a
      * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
      * tell the overlay to stop using that window and create an internal one.
+     * @param handle a handle referencing the window.
      */
     setWindowHandle(handle: number): void
     static name: string
@@ -2848,6 +3131,8 @@ class VideoOverlay {
      * interface that want the render rectangle to be controllable using
      * properties. This helper will install "render-rectangle" property into the
      * class.
+     * @param oclass The class on which the properties will be installed
+     * @param lastPropId The first free property ID to use
      */
     static installProperties(oclass: GObject.ObjectClass, lastPropId: number): void
     /**
@@ -2855,6 +3140,10 @@ class VideoOverlay {
      * interface that want the render rectangle to be controllable using
      * properties. This helper will parse and set the render rectangle calling
      * gst_video_overlay_set_render_rectangle().
+     * @param object The instance on which the property is set
+     * @param lastPropId The highest property ID.
+     * @param propertyId The property ID
+     * @param value The #GValue to be set
      */
     static setProperty(object: GObject.Object, lastPropId: number, propertyId: number, value: any): boolean
 }
@@ -2862,7 +3151,7 @@ interface ColorBalanceChannel_ConstructProps extends GObject.Object_ConstructPro
 }
 class ColorBalanceChannel {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2898,6 +3187,10 @@ class ColorBalanceChannel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2908,6 +3201,12 @@ class ColorBalanceChannel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2931,6 +3230,7 @@ class ColorBalanceChannel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2950,11 +3250,14 @@ class ColorBalanceChannel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2962,6 +3265,8 @@ class ColorBalanceChannel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2979,6 +3284,7 @@ class ColorBalanceChannel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3024,6 +3330,7 @@ class ColorBalanceChannel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3067,15 +3374,20 @@ class ColorBalanceChannel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3116,6 +3428,7 @@ class ColorBalanceChannel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3150,11 +3463,13 @@ class ColorBalanceChannel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstVideo-1.0.GstVideo.ColorBalanceChannel */
     /**
      * Fired when the value of the indicated channel has changed.
+     * @param value The new value
      */
     connect(sigName: "value-changed", callback: ((value: number) => void)): number
     on(sigName: "value-changed", callback: (value: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -3190,6 +3505,7 @@ class ColorBalanceChannel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3228,111 +3544,111 @@ class VideoAggregator {
     startTime: number
     startTimeSelection: GstBase.AggregatorStartTimeSelection
     /* Fields of GstBase-1.0.GstBase.Aggregator */
-    readonly parent: Gst.Element
+    parent: Gst.Element
     /**
      * the aggregator's source pad
      */
-    readonly srcpad: Gst.Pad
+    srcpad: Gst.Pad
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoAggregator */
     /**
      * The returned #GstTaskPool is used internally for performing parallel
@@ -3347,12 +3663,14 @@ class VideoAggregator {
      * This method will push the provided output buffer downstream. If needed,
      * mandatory events such as stream-start, caps, and segment events will be
      * sent before pushing the buffer.
+     * @param buffer the #GstBuffer to push.
      */
     finishBuffer(buffer: Gst.Buffer): Gst.FlowReturn
     /**
      * This method will push the provided output buffer list downstream. If needed,
      * mandatory events such as stream-start, caps, and segment events will be
      * sent before pushing the buffer.
+     * @param bufferlist the #GstBufferList to push.
      */
     finishBufferList(bufferlist: Gst.BufferList): Gst.FlowReturn
     /**
@@ -3383,6 +3701,7 @@ class VideoAggregator {
      * to produce the next output buffer. This should only be called from
      * a #GstAggregator::samples-selected handler, and can be used to precisely
      * control aggregating parameters for a given set of input samples.
+     * @param pad 
      */
     peekNextSample(pad: GstBase.AggregatorPad): Gst.Sample | null
     /**
@@ -3397,6 +3716,10 @@ class VideoAggregator {
      * 
      * This function MUST only be called from the #GstAggregatorClass::aggregate()
      * function.
+     * @param pts The presentation timestamp of the next output buffer
+     * @param dts The decoding timestamp of the next output buffer
+     * @param duration The duration of the next output buffer
+     * @param info a #GstStructure containing additional information
      */
     selectedSamples(pts: Gst.ClockTime, dts: Gst.ClockTime, duration: Gst.ClockTime, info?: Gst.Structure | null): void
     /**
@@ -3406,16 +3729,20 @@ class VideoAggregator {
      * 
      * #GstAggregator will still wait once on each newly-added pad, making
      * sure upstream has had a fair chance to start up.
+     * @param ignore whether inactive pads should not be waited on
      */
     setIgnoreInactivePads(ignore: boolean): void
     /**
      * Lets #GstAggregator sub-classes tell the baseclass what their internal
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
      * Sets the caps to be used on the src pad.
+     * @param caps The #GstCaps to set on the src pad.
      */
     setSrcCaps(caps: Gst.Caps): void
     /**
@@ -3434,6 +3761,7 @@ class VideoAggregator {
      * 
      * Subclasses MUST call this before gst_aggregator_selected_samples(),
      * if it is used at all.
+     * @param segment 
      */
     updateSegment(segment: Gst.Segment): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -3457,6 +3785,7 @@ class VideoAggregator {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -3472,6 +3801,7 @@ class VideoAggregator {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -3479,6 +3809,7 @@ class VideoAggregator {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -3495,6 +3826,7 @@ class VideoAggregator {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -3510,6 +3842,7 @@ class VideoAggregator {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -3519,6 +3852,7 @@ class VideoAggregator {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -3528,6 +3862,7 @@ class VideoAggregator {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -3558,21 +3893,26 @@ class VideoAggregator {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -3598,10 +3938,12 @@ class VideoAggregator {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -3613,6 +3955,7 @@ class VideoAggregator {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -3646,11 +3989,13 @@ class VideoAggregator {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -3695,6 +4040,7 @@ class VideoAggregator {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -3706,6 +4052,8 @@ class VideoAggregator {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -3713,6 +4061,9 @@ class VideoAggregator {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -3720,6 +4071,10 @@ class VideoAggregator {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -3733,6 +4088,10 @@ class VideoAggregator {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -3761,6 +4120,14 @@ class VideoAggregator {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -3768,6 +4135,15 @@ class VideoAggregator {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -3786,6 +4162,7 @@ class VideoAggregator {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -3802,10 +4179,14 @@ class VideoAggregator {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -3817,6 +4198,7 @@ class VideoAggregator {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -3829,6 +4211,7 @@ class VideoAggregator {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -3840,6 +4223,7 @@ class VideoAggregator {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -3859,6 +4243,7 @@ class VideoAggregator {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -3868,6 +4253,9 @@ class VideoAggregator {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -3883,6 +4271,7 @@ class VideoAggregator {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -3891,6 +4280,13 @@ class VideoAggregator {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -3908,6 +4304,9 @@ class VideoAggregator {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -3919,12 +4318,14 @@ class VideoAggregator {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -3932,18 +4333,21 @@ class VideoAggregator {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -3955,6 +4359,7 @@ class VideoAggregator {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -3970,6 +4375,7 @@ class VideoAggregator {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -3986,6 +4392,7 @@ class VideoAggregator {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -3999,12 +4406,16 @@ class VideoAggregator {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -4014,6 +4425,7 @@ class VideoAggregator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -4021,11 +4433,14 @@ class VideoAggregator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -4048,6 +4463,10 @@ class VideoAggregator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4073,6 +4492,8 @@ class VideoAggregator {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4082,16 +4503,19 @@ class VideoAggregator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -4107,17 +4531,21 @@ class VideoAggregator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -4128,6 +4556,7 @@ class VideoAggregator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -4135,11 +4564,13 @@ class VideoAggregator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -4153,6 +4584,7 @@ class VideoAggregator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -4206,6 +4638,10 @@ class VideoAggregator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4216,6 +4652,12 @@ class VideoAggregator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4239,6 +4681,7 @@ class VideoAggregator {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4258,11 +4701,14 @@ class VideoAggregator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4270,6 +4716,8 @@ class VideoAggregator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4287,6 +4735,7 @@ class VideoAggregator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4332,6 +4781,7 @@ class VideoAggregator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4375,15 +4825,20 @@ class VideoAggregator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4424,6 +4879,7 @@ class VideoAggregator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4448,6 +4904,7 @@ class VideoAggregator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstBase-1.0.GstBase.Aggregator */
@@ -4455,6 +4912,11 @@ class VideoAggregator {
      * Signals that the #GstAggregator subclass has selected the next set
      * of input samples it will aggregate. Handlers may call
      * gst_aggregator_peek_next_sample() at that point.
+     * @param segment The #GstSegment the next output buffer is part of
+     * @param pts The presentation timestamp of the next output buffer
+     * @param dts The decoding timestamp of the next output buffer
+     * @param duration The duration of the next output buffer
+     * @param info a #GstStructure containing additional information
      */
     connect(sigName: "samples-selected", callback: ((segment: Gst.Segment, pts: number, dts: number, duration: number, info?: Gst.Structure | null) => void)): number
     on(sigName: "samples-selected", callback: (segment: Gst.Segment, pts: number, dts: number, duration: number, info?: Gst.Structure | null) => void, after?: boolean): NodeJS.EventEmitter
@@ -4478,6 +4940,7 @@ class VideoAggregator {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -4486,6 +4949,7 @@ class VideoAggregator {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -4497,6 +4961,8 @@ class VideoAggregator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4532,6 +4998,7 @@ class VideoAggregator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4599,46 +5066,46 @@ class VideoAggregatorConvertPad {
     offset: number
     template: Gst.PadTemplate
     /* Fields of GstVideo-1.0.GstVideo.VideoAggregatorPad */
-    readonly parent: GstBase.AggregatorPad
+    parent: GstBase.AggregatorPad
     /**
      * The #GstVideoInfo currently set on the pad
      */
-    readonly info: VideoInfo
+    info: VideoInfo
     /* Fields of GstBase-1.0.GstBase.AggregatorPad */
     /**
      * last segment received.
      */
-    readonly segment: Gst.Segment
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Pad */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * private data owned by the parent element
      */
-    readonly elementPrivate: object
+    elementPrivate: object
     /**
      * padtemplate for this pad
      */
-    readonly padtemplate: Gst.PadTemplate
+    padtemplate: Gst.PadTemplate
     /**
      * the direction of the pad, cannot change after creating
      *             the pad.
      */
-    readonly direction: Gst.PadDirection
+    direction: Gst.PadDirection
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad */
     /**
      * Requests the pad to check and update the converter before the next usage to
@@ -4678,6 +5145,7 @@ class VideoAggregatorConvertPad {
     hasCurrentBuffer(): boolean
     /**
      * Allows selecting that this pad requires an output format with alpha
+     * @param needsAlpha %TRUE if this pad requires alpha output
      */
     setNeedsAlpha(needsAlpha: boolean): void
     /* Methods of GstBase-1.0.GstBase.AggregatorPad */
@@ -4707,6 +5175,8 @@ class VideoAggregatorConvertPad {
      * pad's activatemodefunc. For use from within pad activation functions only.
      * 
      * If you don't know what this is, you probably don't want to call it.
+     * @param mode the requested activation mode
+     * @param active whether or not the pad should be active.
      */
     activateMode(mode: Gst.PadMode, active: boolean): boolean
     /**
@@ -4719,11 +5189,14 @@ class VideoAggregatorConvertPad {
      * immediately if the pad is already idle while calling gst_pad_add_probe().
      * In each of the groups, probes are called in the order in which they were
      * added.
+     * @param mask the probe mask
+     * @param callback #GstPadProbeCallback that will be called with notifications of           the pad state
      */
     addProbe(mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): number
     /**
      * Checks if the source pad and the sink pad are compatible so they can be
      * linked.
+     * @param sinkpad the sink #GstPad.
      */
     canLink(sinkpad: Gst.Pad): boolean
     /**
@@ -4742,6 +5215,7 @@ class VideoAggregatorConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to send, return GST_FLOW_ERROR     if not.
      */
     chain(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -4761,6 +5235,7 @@ class VideoAggregatorConvertPad {
      * after calling this function.
      * 
      * MT safe.
+     * @param list the #GstBufferList to send, return GST_FLOW_ERROR     if not.
      */
     chainList(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -4786,6 +5261,8 @@ class VideoAggregatorConvertPad {
      * Since stream IDs are sorted alphabetically, any numbers in the
      * stream ID should be printed with a fixed number of characters,
      * preceded by 0's, such as by using the format \%03u instead of \%u.
+     * @param parent Parent #GstElement of `pad`
+     * @param streamId The stream-id
      */
     createStreamId(parent: Gst.Element, streamId?: string | null): string
     /**
@@ -4796,6 +5273,8 @@ class VideoAggregatorConvertPad {
      * 
      * The event is sent to all pads internally linked to `pad`. This function
      * takes ownership of `event`.
+     * @param parent the parent of `pad` or %NULL
+     * @param event the #GstEvent to handle.
      */
     eventDefault(parent: Gst.Object | null, event: Gst.Event): boolean
     /**
@@ -4804,6 +5283,7 @@ class VideoAggregatorConvertPad {
      * function is only called once for each pad.
      * 
      * When `forward` returns %TRUE, no further pads will be processed.
+     * @param forward a #GstPadForwardFunction
      */
     forward(forward: Gst.PadForwardFunction): boolean
     /**
@@ -4885,6 +5365,8 @@ class VideoAggregatorConvertPad {
      * will be unchanged.
      * 
      * This is a lowlevel function. Usually gst_pad_pull_range() is used.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     getRange(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -4895,6 +5377,8 @@ class VideoAggregatorConvertPad {
     /**
      * Returns a new reference of the sticky event of type `event_type`
      * from the event.
+     * @param eventType the #GstEventType that should be retrieved.
+     * @param idx the index of the event
      */
     getStickyEvent(eventType: Gst.EventType, idx: number): Gst.Event | null
     /**
@@ -4961,10 +5445,12 @@ class VideoAggregatorConvertPad {
      * pads inside the parent element with opposite direction.
      * 
      * The caller must free this iterator after use with gst_iterator_free().
+     * @param parent the parent of `pad` or %NULL
      */
     iterateInternalLinksDefault(parent?: Gst.Object | null): Gst.Iterator | null
     /**
      * Links the source pad and the sink pad.
+     * @param sinkpad the sink #GstPad to link.
      */
     link(sinkpad: Gst.Pad): Gst.PadLinkReturn
     /**
@@ -4977,6 +5463,8 @@ class VideoAggregatorConvertPad {
      * for more information.
      * 
      * MT Safe.
+     * @param sinkpad the sink #GstPad to link.
+     * @param flags the checks to validate when linking
      */
     linkFull(sinkpad: Gst.Pad, flags: Gst.PadLinkCheck): Gst.PadLinkReturn
     /**
@@ -4987,6 +5475,7 @@ class VideoAggregatorConvertPad {
      * 
      * If `src` or `sink` pads don't have parent elements or do not share a common
      * ancestor, the link will fail.
+     * @param sink a #GstPad
      */
     linkMaybeGhosting(sink: Gst.Pad): boolean
     /**
@@ -5001,6 +5490,8 @@ class VideoAggregatorConvertPad {
      * Calling gst_pad_link_maybe_ghosting_full() with
      * `flags` == %GST_PAD_LINK_CHECK_DEFAULT is the recommended way of linking
      * pads with safety checks applied.
+     * @param sink a #GstPad
+     * @param flags some #GstPadLinkCheck flags
      */
     linkMaybeGhostingFull(sink: Gst.Pad, flags: Gst.PadLinkCheck): boolean
     /**
@@ -5024,11 +5515,13 @@ class VideoAggregatorConvertPad {
      * 
      * The caller is responsible for both the allocation and deallocation of
      * the query structure.
+     * @param query the #GstQuery to perform.
      */
     peerQuery(query: Gst.Query): boolean
     /**
      * Check if the peer of `pad` accepts `caps`. If `pad` has no peer, this function
      * returns %TRUE.
+     * @param caps a #GstCaps to check on the pad
      */
     peerQueryAcceptCaps(caps: Gst.Caps): boolean
     /**
@@ -5040,19 +5533,25 @@ class VideoAggregatorConvertPad {
      * called on sinkpads `filter` contains the caps accepted by
      * downstream in the preferred order. `filter` might be %NULL but
      * if it is not %NULL the returned caps will be a subset of `filter`.
+     * @param filter a #GstCaps filter, or %NULL.
      */
     peerQueryCaps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries the peer pad of a given sink pad to convert `src_val` in `src_format`
      * to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     peerQueryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
      * Queries the peer pad of a given sink pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     peerQueryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries the peer of a given sink pad for the stream position.
+     * @param format the #GstFormat requested
      */
     peerQueryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -5062,6 +5561,7 @@ class VideoAggregatorConvertPad {
      * This function is useful as a default accept caps query function for an element
      * that can handle any stream format, but requires caps that are acceptable for
      * all opposite pads.
+     * @param query an ACCEPT_CAPS #GstQuery.
      */
     proxyQueryAcceptCaps(query: Gst.Query): boolean
     /**
@@ -5071,6 +5571,7 @@ class VideoAggregatorConvertPad {
      * This function is useful as a default caps query function for an element
      * that can handle any stream format, but requires all its pads to have
      * the same caps.  Two such elements are tee and adder.
+     * @param query a CAPS #GstQuery.
      */
     proxyQueryCaps(query: Gst.Query): boolean
     /**
@@ -5099,6 +5600,8 @@ class VideoAggregatorConvertPad {
      * Note that less than `size` bytes can be returned in `buffer` when, for example,
      * an EOS condition is near or when `buffer` is not large enough to hold `size`
      * bytes. The caller should check the result buffer size to get the result size.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     pullRange(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -5113,6 +5616,7 @@ class VideoAggregatorConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to push returns GST_FLOW_ERROR     if not.
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -5122,6 +5626,7 @@ class VideoAggregatorConvertPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     pushEvent(event: Gst.Event): boolean
     /**
@@ -5138,6 +5643,7 @@ class VideoAggregatorConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `list`
      * after calling this function.
+     * @param list the #GstBufferList to push returns GST_FLOW_ERROR     if not.
      */
     pushList(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -5151,10 +5657,12 @@ class VideoAggregatorConvertPad {
      * the query structure.
      * 
      * Please also note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery to perform.
      */
     query(query: Gst.Query): boolean
     /**
      * Check if the given pad accepts the caps.
+     * @param caps a #GstCaps to check on the pad
      */
     queryAcceptCaps(caps: Gst.Caps): boolean
     /**
@@ -5173,10 +5681,14 @@ class VideoAggregatorConvertPad {
      * 
      * Note that this function does not return writable #GstCaps, use
      * gst_caps_make_writable() before modifying the caps.
+     * @param filter suggested #GstCaps, or %NULL
      */
     queryCaps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries a pad to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -5185,20 +5697,25 @@ class VideoAggregatorConvertPad {
      * if there are many possible sink pads that are internally linked to
      * `pad,` only one will be sent the query.
      * Multi-sinkpad elements should implement custom query handlers.
+     * @param parent the parent of `pad` or %NULL
+     * @param query the #GstQuery to handle.
      */
     queryDefault(parent: Gst.Object | null, query: Gst.Query): boolean
     /**
      * Queries a pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries a pad for the stream position.
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
      * Remove the probe with `id` from `pad`.
      * 
      * MT safe.
+     * @param id the probe id to remove
      */
     removeProbe(id: number): void
     /**
@@ -5222,6 +5739,7 @@ class VideoAggregatorConvertPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     sendEvent(event: Gst.Event): boolean
     /**
@@ -5230,11 +5748,13 @@ class VideoAggregatorConvertPad {
      * Only makes sense to set on sink pads.
      * 
      * Call this function if your sink pad can start a pull-based task.
+     * @param activate the #GstPadActivateFunction to set.
      */
     setActivateFunctionFull(activate: Gst.PadActivateFunction): void
     /**
      * Sets the given activate_mode function for the pad. An activate_mode function
      * prepares the element for data passing.
+     * @param activatemode the #GstPadActivateModeFunction to set.
      */
     setActivatemodeFunctionFull(activatemode: Gst.PadActivateModeFunction): void
     /**
@@ -5247,41 +5767,49 @@ class VideoAggregatorConvertPad {
      * 
      * If not `active,` calls gst_pad_activate_mode() with the pad's current mode
      * and a %FALSE argument.
+     * @param active whether or not the pad should be active.
      */
     setActive(active: boolean): boolean
     /**
      * Sets the given chain function for the pad. The chain function is called to
      * process a #GstBuffer input buffer. see #GstPadChainFunction for more details.
+     * @param chain the #GstPadChainFunction to set.
      */
     setChainFunctionFull(chain: Gst.PadChainFunction): void
     /**
      * Sets the given chain list function for the pad. The chainlist function is
      * called to process a #GstBufferList input buffer list. See
      * #GstPadChainListFunction for more details.
+     * @param chainlist the #GstPadChainListFunction to set.
      */
     setChainListFunctionFull(chainlist: Gst.PadChainListFunction): void
     /**
      * Set the given private data gpointer on the pad.
      * This function can only be used by the element that owns the pad.
      * No locking is performed in this function.
+     * @param priv The private data to attach to the pad.
      */
     setElementPrivate(priv?: object | null): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFullFunction to set.
      */
     setEventFullFunctionFull(event: Gst.PadEventFullFunction): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFunction to set.
      */
     setEventFunctionFull(event: Gst.PadEventFunction): void
     /**
      * Sets the given getrange function for the pad. The getrange function is
      * called to produce a new #GstBuffer to start the processing pipeline. see
      * #GstPadGetRangeFunction for a description of the getrange function.
+     * @param get the #GstPadGetRangeFunction to set.
      */
     setGetrangeFunctionFull(get: Gst.PadGetRangeFunction): void
     /**
      * Sets the given internal link iterator function for the pad.
+     * @param iterintlink the #GstPadIterIntLinkFunction to set.
      */
     setIterateInternalLinksFunctionFull(iterintlink: Gst.PadIterIntLinkFunction): void
     /**
@@ -5296,14 +5824,17 @@ class VideoAggregatorConvertPad {
      * 
      * If `link` is installed on a source pad, it should call the #GstPadLinkFunction
      * of the peer sink pad, if present.
+     * @param link the #GstPadLinkFunction to set.
      */
     setLinkFunctionFull(link: Gst.PadLinkFunction): void
     /**
      * Set the offset that will be applied to the running time of `pad`.
+     * @param offset the offset
      */
     setOffset(offset: number): void
     /**
      * Set the given query function for the pad.
+     * @param query the #GstPadQueryFunction to set.
      */
     setQueryFunctionFull(query: Gst.PadQueryFunction): void
     /**
@@ -5313,6 +5844,7 @@ class VideoAggregatorConvertPad {
      * Note that the pad's lock is already held when the unlink
      * function is called, so most pad functions cannot be called
      * from within the callback.
+     * @param unlink the #GstPadUnlinkFunction to set.
      */
     setUnlinkFunctionFull(unlink: Gst.PadUnlinkFunction): void
     /**
@@ -5320,11 +5852,13 @@ class VideoAggregatorConvertPad {
      * is mostly used in pad activation functions to start the dataflow.
      * The #GST_PAD_STREAM_LOCK of `pad` will automatically be acquired
      * before `func` is called.
+     * @param func the task function to call
      */
     startTask(func: Gst.TaskFunction): boolean
     /**
      * Iterates all sticky events on `pad` and calls `foreach_func` for every
      * event. If `foreach_func` returns %FALSE the iteration is immediately stopped.
+     * @param foreachFunc the #GstPadStickyEventsForeachFunction that                should be called for every event.
      */
     stickyEventsForeach(foreachFunc: Gst.PadStickyEventsForeachFunction): void
     /**
@@ -5341,11 +5875,13 @@ class VideoAggregatorConvertPad {
     stopTask(): boolean
     /**
      * Store the sticky `event` on `pad`
+     * @param event a #GstEvent
      */
     storeStickyEvent(event: Gst.Event): Gst.FlowReturn
     /**
      * Unlinks the source pad from the sink pad. Will emit the #GstPad::unlinked
      * signal on both pads.
+     * @param sinkpad the sink #GstPad to unlink.
      */
     unlink(sinkpad: Gst.Pad): boolean
     /**
@@ -5365,6 +5901,7 @@ class VideoAggregatorConvertPad {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -5372,11 +5909,14 @@ class VideoAggregatorConvertPad {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -5399,6 +5939,10 @@ class VideoAggregatorConvertPad {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -5424,6 +5968,8 @@ class VideoAggregatorConvertPad {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -5433,16 +5979,19 @@ class VideoAggregatorConvertPad {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -5458,17 +6007,21 @@ class VideoAggregatorConvertPad {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -5479,6 +6032,7 @@ class VideoAggregatorConvertPad {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -5486,11 +6040,13 @@ class VideoAggregatorConvertPad {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -5504,6 +6060,7 @@ class VideoAggregatorConvertPad {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -5557,6 +6114,10 @@ class VideoAggregatorConvertPad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5567,6 +6128,12 @@ class VideoAggregatorConvertPad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5590,6 +6157,7 @@ class VideoAggregatorConvertPad {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5609,11 +6177,14 @@ class VideoAggregatorConvertPad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5621,6 +6192,8 @@ class VideoAggregatorConvertPad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5638,6 +6211,7 @@ class VideoAggregatorConvertPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5683,6 +6257,7 @@ class VideoAggregatorConvertPad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5726,15 +6301,20 @@ class VideoAggregatorConvertPad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5775,6 +6355,7 @@ class VideoAggregatorConvertPad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5799,6 +6380,7 @@ class VideoAggregatorConvertPad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstBase-1.0.GstBase.AggregatorPad */
@@ -5810,6 +6392,7 @@ class VideoAggregatorConvertPad {
     /* Signals of Gst-1.0.Gst.Pad */
     /**
      * Signals that a pad has been linked to the peer pad.
+     * @param peer the peer pad that has been connected
      */
     connect(sigName: "linked", callback: ((peer: Gst.Pad) => void)): number
     on(sigName: "linked", callback: (peer: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -5818,6 +6401,7 @@ class VideoAggregatorConvertPad {
     emit(sigName: "linked", peer: Gst.Pad): void
     /**
      * Signals that a pad has been unlinked from the peer pad.
+     * @param peer the peer pad that has been disconnected
      */
     connect(sigName: "unlinked", callback: ((peer: Gst.Pad) => void)): number
     on(sigName: "unlinked", callback: (peer: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -5829,6 +6413,8 @@ class VideoAggregatorConvertPad {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5864,6 +6450,7 @@ class VideoAggregatorConvertPad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5946,41 +6533,41 @@ class VideoAggregatorPad {
     offset: number
     template: Gst.PadTemplate
     /* Fields of GstBase-1.0.GstBase.AggregatorPad */
-    readonly parent: Gst.Pad
+    parent: Gst.Pad
     /**
      * last segment received.
      */
-    readonly segment: Gst.Segment
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Pad */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * private data owned by the parent element
      */
-    readonly elementPrivate: object
+    elementPrivate: object
     /**
      * padtemplate for this pad
      */
-    readonly padtemplate: Gst.PadTemplate
+    padtemplate: Gst.PadTemplate
     /**
      * the direction of the pad, cannot change after creating
      *             the pad.
      */
-    readonly direction: Gst.PadDirection
+    direction: Gst.PadDirection
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoAggregatorPad */
     /**
      * Returns the currently queued buffer that is going to be used
@@ -6014,6 +6601,7 @@ class VideoAggregatorPad {
     hasCurrentBuffer(): boolean
     /**
      * Allows selecting that this pad requires an output format with alpha
+     * @param needsAlpha %TRUE if this pad requires alpha output
      */
     setNeedsAlpha(needsAlpha: boolean): void
     /* Methods of GstBase-1.0.GstBase.AggregatorPad */
@@ -6043,6 +6631,8 @@ class VideoAggregatorPad {
      * pad's activatemodefunc. For use from within pad activation functions only.
      * 
      * If you don't know what this is, you probably don't want to call it.
+     * @param mode the requested activation mode
+     * @param active whether or not the pad should be active.
      */
     activateMode(mode: Gst.PadMode, active: boolean): boolean
     /**
@@ -6055,11 +6645,14 @@ class VideoAggregatorPad {
      * immediately if the pad is already idle while calling gst_pad_add_probe().
      * In each of the groups, probes are called in the order in which they were
      * added.
+     * @param mask the probe mask
+     * @param callback #GstPadProbeCallback that will be called with notifications of           the pad state
      */
     addProbe(mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): number
     /**
      * Checks if the source pad and the sink pad are compatible so they can be
      * linked.
+     * @param sinkpad the sink #GstPad.
      */
     canLink(sinkpad: Gst.Pad): boolean
     /**
@@ -6078,6 +6671,7 @@ class VideoAggregatorPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to send, return GST_FLOW_ERROR     if not.
      */
     chain(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -6097,6 +6691,7 @@ class VideoAggregatorPad {
      * after calling this function.
      * 
      * MT safe.
+     * @param list the #GstBufferList to send, return GST_FLOW_ERROR     if not.
      */
     chainList(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -6122,6 +6717,8 @@ class VideoAggregatorPad {
      * Since stream IDs are sorted alphabetically, any numbers in the
      * stream ID should be printed with a fixed number of characters,
      * preceded by 0's, such as by using the format \%03u instead of \%u.
+     * @param parent Parent #GstElement of `pad`
+     * @param streamId The stream-id
      */
     createStreamId(parent: Gst.Element, streamId?: string | null): string
     /**
@@ -6132,6 +6729,8 @@ class VideoAggregatorPad {
      * 
      * The event is sent to all pads internally linked to `pad`. This function
      * takes ownership of `event`.
+     * @param parent the parent of `pad` or %NULL
+     * @param event the #GstEvent to handle.
      */
     eventDefault(parent: Gst.Object | null, event: Gst.Event): boolean
     /**
@@ -6140,6 +6739,7 @@ class VideoAggregatorPad {
      * function is only called once for each pad.
      * 
      * When `forward` returns %TRUE, no further pads will be processed.
+     * @param forward a #GstPadForwardFunction
      */
     forward(forward: Gst.PadForwardFunction): boolean
     /**
@@ -6221,6 +6821,8 @@ class VideoAggregatorPad {
      * will be unchanged.
      * 
      * This is a lowlevel function. Usually gst_pad_pull_range() is used.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     getRange(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -6231,6 +6833,8 @@ class VideoAggregatorPad {
     /**
      * Returns a new reference of the sticky event of type `event_type`
      * from the event.
+     * @param eventType the #GstEventType that should be retrieved.
+     * @param idx the index of the event
      */
     getStickyEvent(eventType: Gst.EventType, idx: number): Gst.Event | null
     /**
@@ -6297,10 +6901,12 @@ class VideoAggregatorPad {
      * pads inside the parent element with opposite direction.
      * 
      * The caller must free this iterator after use with gst_iterator_free().
+     * @param parent the parent of `pad` or %NULL
      */
     iterateInternalLinksDefault(parent?: Gst.Object | null): Gst.Iterator | null
     /**
      * Links the source pad and the sink pad.
+     * @param sinkpad the sink #GstPad to link.
      */
     link(sinkpad: Gst.Pad): Gst.PadLinkReturn
     /**
@@ -6313,6 +6919,8 @@ class VideoAggregatorPad {
      * for more information.
      * 
      * MT Safe.
+     * @param sinkpad the sink #GstPad to link.
+     * @param flags the checks to validate when linking
      */
     linkFull(sinkpad: Gst.Pad, flags: Gst.PadLinkCheck): Gst.PadLinkReturn
     /**
@@ -6323,6 +6931,7 @@ class VideoAggregatorPad {
      * 
      * If `src` or `sink` pads don't have parent elements or do not share a common
      * ancestor, the link will fail.
+     * @param sink a #GstPad
      */
     linkMaybeGhosting(sink: Gst.Pad): boolean
     /**
@@ -6337,6 +6946,8 @@ class VideoAggregatorPad {
      * Calling gst_pad_link_maybe_ghosting_full() with
      * `flags` == %GST_PAD_LINK_CHECK_DEFAULT is the recommended way of linking
      * pads with safety checks applied.
+     * @param sink a #GstPad
+     * @param flags some #GstPadLinkCheck flags
      */
     linkMaybeGhostingFull(sink: Gst.Pad, flags: Gst.PadLinkCheck): boolean
     /**
@@ -6360,11 +6971,13 @@ class VideoAggregatorPad {
      * 
      * The caller is responsible for both the allocation and deallocation of
      * the query structure.
+     * @param query the #GstQuery to perform.
      */
     peerQuery(query: Gst.Query): boolean
     /**
      * Check if the peer of `pad` accepts `caps`. If `pad` has no peer, this function
      * returns %TRUE.
+     * @param caps a #GstCaps to check on the pad
      */
     peerQueryAcceptCaps(caps: Gst.Caps): boolean
     /**
@@ -6376,19 +6989,25 @@ class VideoAggregatorPad {
      * called on sinkpads `filter` contains the caps accepted by
      * downstream in the preferred order. `filter` might be %NULL but
      * if it is not %NULL the returned caps will be a subset of `filter`.
+     * @param filter a #GstCaps filter, or %NULL.
      */
     peerQueryCaps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries the peer pad of a given sink pad to convert `src_val` in `src_format`
      * to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     peerQueryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
      * Queries the peer pad of a given sink pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     peerQueryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries the peer of a given sink pad for the stream position.
+     * @param format the #GstFormat requested
      */
     peerQueryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -6398,6 +7017,7 @@ class VideoAggregatorPad {
      * This function is useful as a default accept caps query function for an element
      * that can handle any stream format, but requires caps that are acceptable for
      * all opposite pads.
+     * @param query an ACCEPT_CAPS #GstQuery.
      */
     proxyQueryAcceptCaps(query: Gst.Query): boolean
     /**
@@ -6407,6 +7027,7 @@ class VideoAggregatorPad {
      * This function is useful as a default caps query function for an element
      * that can handle any stream format, but requires all its pads to have
      * the same caps.  Two such elements are tee and adder.
+     * @param query a CAPS #GstQuery.
      */
     proxyQueryCaps(query: Gst.Query): boolean
     /**
@@ -6435,6 +7056,8 @@ class VideoAggregatorPad {
      * Note that less than `size` bytes can be returned in `buffer` when, for example,
      * an EOS condition is near or when `buffer` is not large enough to hold `size`
      * bytes. The caller should check the result buffer size to get the result size.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     pullRange(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -6449,6 +7072,7 @@ class VideoAggregatorPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to push returns GST_FLOW_ERROR     if not.
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -6458,6 +7082,7 @@ class VideoAggregatorPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     pushEvent(event: Gst.Event): boolean
     /**
@@ -6474,6 +7099,7 @@ class VideoAggregatorPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `list`
      * after calling this function.
+     * @param list the #GstBufferList to push returns GST_FLOW_ERROR     if not.
      */
     pushList(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -6487,10 +7113,12 @@ class VideoAggregatorPad {
      * the query structure.
      * 
      * Please also note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery to perform.
      */
     query(query: Gst.Query): boolean
     /**
      * Check if the given pad accepts the caps.
+     * @param caps a #GstCaps to check on the pad
      */
     queryAcceptCaps(caps: Gst.Caps): boolean
     /**
@@ -6509,10 +7137,14 @@ class VideoAggregatorPad {
      * 
      * Note that this function does not return writable #GstCaps, use
      * gst_caps_make_writable() before modifying the caps.
+     * @param filter suggested #GstCaps, or %NULL
      */
     queryCaps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries a pad to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -6521,20 +7153,25 @@ class VideoAggregatorPad {
      * if there are many possible sink pads that are internally linked to
      * `pad,` only one will be sent the query.
      * Multi-sinkpad elements should implement custom query handlers.
+     * @param parent the parent of `pad` or %NULL
+     * @param query the #GstQuery to handle.
      */
     queryDefault(parent: Gst.Object | null, query: Gst.Query): boolean
     /**
      * Queries a pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries a pad for the stream position.
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
      * Remove the probe with `id` from `pad`.
      * 
      * MT safe.
+     * @param id the probe id to remove
      */
     removeProbe(id: number): void
     /**
@@ -6558,6 +7195,7 @@ class VideoAggregatorPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     sendEvent(event: Gst.Event): boolean
     /**
@@ -6566,11 +7204,13 @@ class VideoAggregatorPad {
      * Only makes sense to set on sink pads.
      * 
      * Call this function if your sink pad can start a pull-based task.
+     * @param activate the #GstPadActivateFunction to set.
      */
     setActivateFunctionFull(activate: Gst.PadActivateFunction): void
     /**
      * Sets the given activate_mode function for the pad. An activate_mode function
      * prepares the element for data passing.
+     * @param activatemode the #GstPadActivateModeFunction to set.
      */
     setActivatemodeFunctionFull(activatemode: Gst.PadActivateModeFunction): void
     /**
@@ -6583,41 +7223,49 @@ class VideoAggregatorPad {
      * 
      * If not `active,` calls gst_pad_activate_mode() with the pad's current mode
      * and a %FALSE argument.
+     * @param active whether or not the pad should be active.
      */
     setActive(active: boolean): boolean
     /**
      * Sets the given chain function for the pad. The chain function is called to
      * process a #GstBuffer input buffer. see #GstPadChainFunction for more details.
+     * @param chain the #GstPadChainFunction to set.
      */
     setChainFunctionFull(chain: Gst.PadChainFunction): void
     /**
      * Sets the given chain list function for the pad. The chainlist function is
      * called to process a #GstBufferList input buffer list. See
      * #GstPadChainListFunction for more details.
+     * @param chainlist the #GstPadChainListFunction to set.
      */
     setChainListFunctionFull(chainlist: Gst.PadChainListFunction): void
     /**
      * Set the given private data gpointer on the pad.
      * This function can only be used by the element that owns the pad.
      * No locking is performed in this function.
+     * @param priv The private data to attach to the pad.
      */
     setElementPrivate(priv?: object | null): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFullFunction to set.
      */
     setEventFullFunctionFull(event: Gst.PadEventFullFunction): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFunction to set.
      */
     setEventFunctionFull(event: Gst.PadEventFunction): void
     /**
      * Sets the given getrange function for the pad. The getrange function is
      * called to produce a new #GstBuffer to start the processing pipeline. see
      * #GstPadGetRangeFunction for a description of the getrange function.
+     * @param get the #GstPadGetRangeFunction to set.
      */
     setGetrangeFunctionFull(get: Gst.PadGetRangeFunction): void
     /**
      * Sets the given internal link iterator function for the pad.
+     * @param iterintlink the #GstPadIterIntLinkFunction to set.
      */
     setIterateInternalLinksFunctionFull(iterintlink: Gst.PadIterIntLinkFunction): void
     /**
@@ -6632,14 +7280,17 @@ class VideoAggregatorPad {
      * 
      * If `link` is installed on a source pad, it should call the #GstPadLinkFunction
      * of the peer sink pad, if present.
+     * @param link the #GstPadLinkFunction to set.
      */
     setLinkFunctionFull(link: Gst.PadLinkFunction): void
     /**
      * Set the offset that will be applied to the running time of `pad`.
+     * @param offset the offset
      */
     setOffset(offset: number): void
     /**
      * Set the given query function for the pad.
+     * @param query the #GstPadQueryFunction to set.
      */
     setQueryFunctionFull(query: Gst.PadQueryFunction): void
     /**
@@ -6649,6 +7300,7 @@ class VideoAggregatorPad {
      * Note that the pad's lock is already held when the unlink
      * function is called, so most pad functions cannot be called
      * from within the callback.
+     * @param unlink the #GstPadUnlinkFunction to set.
      */
     setUnlinkFunctionFull(unlink: Gst.PadUnlinkFunction): void
     /**
@@ -6656,11 +7308,13 @@ class VideoAggregatorPad {
      * is mostly used in pad activation functions to start the dataflow.
      * The #GST_PAD_STREAM_LOCK of `pad` will automatically be acquired
      * before `func` is called.
+     * @param func the task function to call
      */
     startTask(func: Gst.TaskFunction): boolean
     /**
      * Iterates all sticky events on `pad` and calls `foreach_func` for every
      * event. If `foreach_func` returns %FALSE the iteration is immediately stopped.
+     * @param foreachFunc the #GstPadStickyEventsForeachFunction that                should be called for every event.
      */
     stickyEventsForeach(foreachFunc: Gst.PadStickyEventsForeachFunction): void
     /**
@@ -6677,11 +7331,13 @@ class VideoAggregatorPad {
     stopTask(): boolean
     /**
      * Store the sticky `event` on `pad`
+     * @param event a #GstEvent
      */
     storeStickyEvent(event: Gst.Event): Gst.FlowReturn
     /**
      * Unlinks the source pad from the sink pad. Will emit the #GstPad::unlinked
      * signal on both pads.
+     * @param sinkpad the sink #GstPad to unlink.
      */
     unlink(sinkpad: Gst.Pad): boolean
     /**
@@ -6701,6 +7357,7 @@ class VideoAggregatorPad {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -6708,11 +7365,14 @@ class VideoAggregatorPad {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -6735,6 +7395,10 @@ class VideoAggregatorPad {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -6760,6 +7424,8 @@ class VideoAggregatorPad {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -6769,16 +7435,19 @@ class VideoAggregatorPad {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -6794,17 +7463,21 @@ class VideoAggregatorPad {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -6815,6 +7488,7 @@ class VideoAggregatorPad {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -6822,11 +7496,13 @@ class VideoAggregatorPad {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -6840,6 +7516,7 @@ class VideoAggregatorPad {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -6893,6 +7570,10 @@ class VideoAggregatorPad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6903,6 +7584,12 @@ class VideoAggregatorPad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6926,6 +7613,7 @@ class VideoAggregatorPad {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6945,11 +7633,14 @@ class VideoAggregatorPad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6957,6 +7648,8 @@ class VideoAggregatorPad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6974,6 +7667,7 @@ class VideoAggregatorPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7019,6 +7713,7 @@ class VideoAggregatorPad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7062,15 +7757,20 @@ class VideoAggregatorPad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7111,6 +7811,7 @@ class VideoAggregatorPad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7135,6 +7836,7 @@ class VideoAggregatorPad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstBase-1.0.GstBase.AggregatorPad */
@@ -7146,6 +7848,7 @@ class VideoAggregatorPad {
     /* Signals of Gst-1.0.Gst.Pad */
     /**
      * Signals that a pad has been linked to the peer pad.
+     * @param peer the peer pad that has been connected
      */
     connect(sigName: "linked", callback: ((peer: Gst.Pad) => void)): number
     on(sigName: "linked", callback: (peer: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -7154,6 +7857,7 @@ class VideoAggregatorPad {
     emit(sigName: "linked", peer: Gst.Pad): void
     /**
      * Signals that a pad has been unlinked from the peer pad.
+     * @param peer the peer pad that has been disconnected
      */
     connect(sigName: "unlinked", callback: ((peer: Gst.Pad) => void)): number
     on(sigName: "unlinked", callback: (peer: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -7165,6 +7869,8 @@ class VideoAggregatorPad {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7200,6 +7906,7 @@ class VideoAggregatorPad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7275,46 +7982,46 @@ class VideoAggregatorParallelConvertPad {
     offset: number
     template: Gst.PadTemplate
     /* Fields of GstVideo-1.0.GstVideo.VideoAggregatorPad */
-    readonly parent: GstBase.AggregatorPad
+    parent: GstBase.AggregatorPad
     /**
      * The #GstVideoInfo currently set on the pad
      */
-    readonly info: VideoInfo
+    info: VideoInfo
     /* Fields of GstBase-1.0.GstBase.AggregatorPad */
     /**
      * last segment received.
      */
-    readonly segment: Gst.Segment
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Pad */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * private data owned by the parent element
      */
-    readonly elementPrivate: object
+    elementPrivate: object
     /**
      * padtemplate for this pad
      */
-    readonly padtemplate: Gst.PadTemplate
+    padtemplate: Gst.PadTemplate
     /**
      * the direction of the pad, cannot change after creating
      *             the pad.
      */
-    readonly direction: Gst.PadDirection
+    direction: Gst.PadDirection
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad */
     /**
      * Requests the pad to check and update the converter before the next usage to
@@ -7354,6 +8061,7 @@ class VideoAggregatorParallelConvertPad {
     hasCurrentBuffer(): boolean
     /**
      * Allows selecting that this pad requires an output format with alpha
+     * @param needsAlpha %TRUE if this pad requires alpha output
      */
     setNeedsAlpha(needsAlpha: boolean): void
     /* Methods of GstBase-1.0.GstBase.AggregatorPad */
@@ -7383,6 +8091,8 @@ class VideoAggregatorParallelConvertPad {
      * pad's activatemodefunc. For use from within pad activation functions only.
      * 
      * If you don't know what this is, you probably don't want to call it.
+     * @param mode the requested activation mode
+     * @param active whether or not the pad should be active.
      */
     activateMode(mode: Gst.PadMode, active: boolean): boolean
     /**
@@ -7395,11 +8105,14 @@ class VideoAggregatorParallelConvertPad {
      * immediately if the pad is already idle while calling gst_pad_add_probe().
      * In each of the groups, probes are called in the order in which they were
      * added.
+     * @param mask the probe mask
+     * @param callback #GstPadProbeCallback that will be called with notifications of           the pad state
      */
     addProbe(mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): number
     /**
      * Checks if the source pad and the sink pad are compatible so they can be
      * linked.
+     * @param sinkpad the sink #GstPad.
      */
     canLink(sinkpad: Gst.Pad): boolean
     /**
@@ -7418,6 +8131,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to send, return GST_FLOW_ERROR     if not.
      */
     chain(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -7437,6 +8151,7 @@ class VideoAggregatorParallelConvertPad {
      * after calling this function.
      * 
      * MT safe.
+     * @param list the #GstBufferList to send, return GST_FLOW_ERROR     if not.
      */
     chainList(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -7462,6 +8177,8 @@ class VideoAggregatorParallelConvertPad {
      * Since stream IDs are sorted alphabetically, any numbers in the
      * stream ID should be printed with a fixed number of characters,
      * preceded by 0's, such as by using the format \%03u instead of \%u.
+     * @param parent Parent #GstElement of `pad`
+     * @param streamId The stream-id
      */
     createStreamId(parent: Gst.Element, streamId?: string | null): string
     /**
@@ -7472,6 +8189,8 @@ class VideoAggregatorParallelConvertPad {
      * 
      * The event is sent to all pads internally linked to `pad`. This function
      * takes ownership of `event`.
+     * @param parent the parent of `pad` or %NULL
+     * @param event the #GstEvent to handle.
      */
     eventDefault(parent: Gst.Object | null, event: Gst.Event): boolean
     /**
@@ -7480,6 +8199,7 @@ class VideoAggregatorParallelConvertPad {
      * function is only called once for each pad.
      * 
      * When `forward` returns %TRUE, no further pads will be processed.
+     * @param forward a #GstPadForwardFunction
      */
     forward(forward: Gst.PadForwardFunction): boolean
     /**
@@ -7561,6 +8281,8 @@ class VideoAggregatorParallelConvertPad {
      * will be unchanged.
      * 
      * This is a lowlevel function. Usually gst_pad_pull_range() is used.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     getRange(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -7571,6 +8293,8 @@ class VideoAggregatorParallelConvertPad {
     /**
      * Returns a new reference of the sticky event of type `event_type`
      * from the event.
+     * @param eventType the #GstEventType that should be retrieved.
+     * @param idx the index of the event
      */
     getStickyEvent(eventType: Gst.EventType, idx: number): Gst.Event | null
     /**
@@ -7637,10 +8361,12 @@ class VideoAggregatorParallelConvertPad {
      * pads inside the parent element with opposite direction.
      * 
      * The caller must free this iterator after use with gst_iterator_free().
+     * @param parent the parent of `pad` or %NULL
      */
     iterateInternalLinksDefault(parent?: Gst.Object | null): Gst.Iterator | null
     /**
      * Links the source pad and the sink pad.
+     * @param sinkpad the sink #GstPad to link.
      */
     link(sinkpad: Gst.Pad): Gst.PadLinkReturn
     /**
@@ -7653,6 +8379,8 @@ class VideoAggregatorParallelConvertPad {
      * for more information.
      * 
      * MT Safe.
+     * @param sinkpad the sink #GstPad to link.
+     * @param flags the checks to validate when linking
      */
     linkFull(sinkpad: Gst.Pad, flags: Gst.PadLinkCheck): Gst.PadLinkReturn
     /**
@@ -7663,6 +8391,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * If `src` or `sink` pads don't have parent elements or do not share a common
      * ancestor, the link will fail.
+     * @param sink a #GstPad
      */
     linkMaybeGhosting(sink: Gst.Pad): boolean
     /**
@@ -7677,6 +8406,8 @@ class VideoAggregatorParallelConvertPad {
      * Calling gst_pad_link_maybe_ghosting_full() with
      * `flags` == %GST_PAD_LINK_CHECK_DEFAULT is the recommended way of linking
      * pads with safety checks applied.
+     * @param sink a #GstPad
+     * @param flags some #GstPadLinkCheck flags
      */
     linkMaybeGhostingFull(sink: Gst.Pad, flags: Gst.PadLinkCheck): boolean
     /**
@@ -7700,11 +8431,13 @@ class VideoAggregatorParallelConvertPad {
      * 
      * The caller is responsible for both the allocation and deallocation of
      * the query structure.
+     * @param query the #GstQuery to perform.
      */
     peerQuery(query: Gst.Query): boolean
     /**
      * Check if the peer of `pad` accepts `caps`. If `pad` has no peer, this function
      * returns %TRUE.
+     * @param caps a #GstCaps to check on the pad
      */
     peerQueryAcceptCaps(caps: Gst.Caps): boolean
     /**
@@ -7716,19 +8449,25 @@ class VideoAggregatorParallelConvertPad {
      * called on sinkpads `filter` contains the caps accepted by
      * downstream in the preferred order. `filter` might be %NULL but
      * if it is not %NULL the returned caps will be a subset of `filter`.
+     * @param filter a #GstCaps filter, or %NULL.
      */
     peerQueryCaps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries the peer pad of a given sink pad to convert `src_val` in `src_format`
      * to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     peerQueryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
      * Queries the peer pad of a given sink pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     peerQueryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries the peer of a given sink pad for the stream position.
+     * @param format the #GstFormat requested
      */
     peerQueryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -7738,6 +8477,7 @@ class VideoAggregatorParallelConvertPad {
      * This function is useful as a default accept caps query function for an element
      * that can handle any stream format, but requires caps that are acceptable for
      * all opposite pads.
+     * @param query an ACCEPT_CAPS #GstQuery.
      */
     proxyQueryAcceptCaps(query: Gst.Query): boolean
     /**
@@ -7747,6 +8487,7 @@ class VideoAggregatorParallelConvertPad {
      * This function is useful as a default caps query function for an element
      * that can handle any stream format, but requires all its pads to have
      * the same caps.  Two such elements are tee and adder.
+     * @param query a CAPS #GstQuery.
      */
     proxyQueryCaps(query: Gst.Query): boolean
     /**
@@ -7775,6 +8516,8 @@ class VideoAggregatorParallelConvertPad {
      * Note that less than `size` bytes can be returned in `buffer` when, for example,
      * an EOS condition is near or when `buffer` is not large enough to hold `size`
      * bytes. The caller should check the result buffer size to get the result size.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     pullRange(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -7789,6 +8532,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to push returns GST_FLOW_ERROR     if not.
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -7798,6 +8542,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     pushEvent(event: Gst.Event): boolean
     /**
@@ -7814,6 +8559,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `list`
      * after calling this function.
+     * @param list the #GstBufferList to push returns GST_FLOW_ERROR     if not.
      */
     pushList(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -7827,10 +8573,12 @@ class VideoAggregatorParallelConvertPad {
      * the query structure.
      * 
      * Please also note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery to perform.
      */
     query(query: Gst.Query): boolean
     /**
      * Check if the given pad accepts the caps.
+     * @param caps a #GstCaps to check on the pad
      */
     queryAcceptCaps(caps: Gst.Caps): boolean
     /**
@@ -7849,10 +8597,14 @@ class VideoAggregatorParallelConvertPad {
      * 
      * Note that this function does not return writable #GstCaps, use
      * gst_caps_make_writable() before modifying the caps.
+     * @param filter suggested #GstCaps, or %NULL
      */
     queryCaps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries a pad to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -7861,20 +8613,25 @@ class VideoAggregatorParallelConvertPad {
      * if there are many possible sink pads that are internally linked to
      * `pad,` only one will be sent the query.
      * Multi-sinkpad elements should implement custom query handlers.
+     * @param parent the parent of `pad` or %NULL
+     * @param query the #GstQuery to handle.
      */
     queryDefault(parent: Gst.Object | null, query: Gst.Query): boolean
     /**
      * Queries a pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries a pad for the stream position.
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
      * Remove the probe with `id` from `pad`.
      * 
      * MT safe.
+     * @param id the probe id to remove
      */
     removeProbe(id: number): void
     /**
@@ -7898,6 +8655,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     sendEvent(event: Gst.Event): boolean
     /**
@@ -7906,11 +8664,13 @@ class VideoAggregatorParallelConvertPad {
      * Only makes sense to set on sink pads.
      * 
      * Call this function if your sink pad can start a pull-based task.
+     * @param activate the #GstPadActivateFunction to set.
      */
     setActivateFunctionFull(activate: Gst.PadActivateFunction): void
     /**
      * Sets the given activate_mode function for the pad. An activate_mode function
      * prepares the element for data passing.
+     * @param activatemode the #GstPadActivateModeFunction to set.
      */
     setActivatemodeFunctionFull(activatemode: Gst.PadActivateModeFunction): void
     /**
@@ -7923,41 +8683,49 @@ class VideoAggregatorParallelConvertPad {
      * 
      * If not `active,` calls gst_pad_activate_mode() with the pad's current mode
      * and a %FALSE argument.
+     * @param active whether or not the pad should be active.
      */
     setActive(active: boolean): boolean
     /**
      * Sets the given chain function for the pad. The chain function is called to
      * process a #GstBuffer input buffer. see #GstPadChainFunction for more details.
+     * @param chain the #GstPadChainFunction to set.
      */
     setChainFunctionFull(chain: Gst.PadChainFunction): void
     /**
      * Sets the given chain list function for the pad. The chainlist function is
      * called to process a #GstBufferList input buffer list. See
      * #GstPadChainListFunction for more details.
+     * @param chainlist the #GstPadChainListFunction to set.
      */
     setChainListFunctionFull(chainlist: Gst.PadChainListFunction): void
     /**
      * Set the given private data gpointer on the pad.
      * This function can only be used by the element that owns the pad.
      * No locking is performed in this function.
+     * @param priv The private data to attach to the pad.
      */
     setElementPrivate(priv?: object | null): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFullFunction to set.
      */
     setEventFullFunctionFull(event: Gst.PadEventFullFunction): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFunction to set.
      */
     setEventFunctionFull(event: Gst.PadEventFunction): void
     /**
      * Sets the given getrange function for the pad. The getrange function is
      * called to produce a new #GstBuffer to start the processing pipeline. see
      * #GstPadGetRangeFunction for a description of the getrange function.
+     * @param get the #GstPadGetRangeFunction to set.
      */
     setGetrangeFunctionFull(get: Gst.PadGetRangeFunction): void
     /**
      * Sets the given internal link iterator function for the pad.
+     * @param iterintlink the #GstPadIterIntLinkFunction to set.
      */
     setIterateInternalLinksFunctionFull(iterintlink: Gst.PadIterIntLinkFunction): void
     /**
@@ -7972,14 +8740,17 @@ class VideoAggregatorParallelConvertPad {
      * 
      * If `link` is installed on a source pad, it should call the #GstPadLinkFunction
      * of the peer sink pad, if present.
+     * @param link the #GstPadLinkFunction to set.
      */
     setLinkFunctionFull(link: Gst.PadLinkFunction): void
     /**
      * Set the offset that will be applied to the running time of `pad`.
+     * @param offset the offset
      */
     setOffset(offset: number): void
     /**
      * Set the given query function for the pad.
+     * @param query the #GstPadQueryFunction to set.
      */
     setQueryFunctionFull(query: Gst.PadQueryFunction): void
     /**
@@ -7989,6 +8760,7 @@ class VideoAggregatorParallelConvertPad {
      * Note that the pad's lock is already held when the unlink
      * function is called, so most pad functions cannot be called
      * from within the callback.
+     * @param unlink the #GstPadUnlinkFunction to set.
      */
     setUnlinkFunctionFull(unlink: Gst.PadUnlinkFunction): void
     /**
@@ -7996,11 +8768,13 @@ class VideoAggregatorParallelConvertPad {
      * is mostly used in pad activation functions to start the dataflow.
      * The #GST_PAD_STREAM_LOCK of `pad` will automatically be acquired
      * before `func` is called.
+     * @param func the task function to call
      */
     startTask(func: Gst.TaskFunction): boolean
     /**
      * Iterates all sticky events on `pad` and calls `foreach_func` for every
      * event. If `foreach_func` returns %FALSE the iteration is immediately stopped.
+     * @param foreachFunc the #GstPadStickyEventsForeachFunction that                should be called for every event.
      */
     stickyEventsForeach(foreachFunc: Gst.PadStickyEventsForeachFunction): void
     /**
@@ -8017,11 +8791,13 @@ class VideoAggregatorParallelConvertPad {
     stopTask(): boolean
     /**
      * Store the sticky `event` on `pad`
+     * @param event a #GstEvent
      */
     storeStickyEvent(event: Gst.Event): Gst.FlowReturn
     /**
      * Unlinks the source pad from the sink pad. Will emit the #GstPad::unlinked
      * signal on both pads.
+     * @param sinkpad the sink #GstPad to unlink.
      */
     unlink(sinkpad: Gst.Pad): boolean
     /**
@@ -8041,6 +8817,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -8048,11 +8825,14 @@ class VideoAggregatorParallelConvertPad {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -8075,6 +8855,10 @@ class VideoAggregatorParallelConvertPad {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -8100,6 +8884,8 @@ class VideoAggregatorParallelConvertPad {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -8109,16 +8895,19 @@ class VideoAggregatorParallelConvertPad {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -8134,17 +8923,21 @@ class VideoAggregatorParallelConvertPad {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -8155,6 +8948,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -8162,11 +8956,13 @@ class VideoAggregatorParallelConvertPad {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -8180,6 +8976,7 @@ class VideoAggregatorParallelConvertPad {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -8233,6 +9030,10 @@ class VideoAggregatorParallelConvertPad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8243,6 +9044,12 @@ class VideoAggregatorParallelConvertPad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8266,6 +9073,7 @@ class VideoAggregatorParallelConvertPad {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8285,11 +9093,14 @@ class VideoAggregatorParallelConvertPad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8297,6 +9108,8 @@ class VideoAggregatorParallelConvertPad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8314,6 +9127,7 @@ class VideoAggregatorParallelConvertPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8359,6 +9173,7 @@ class VideoAggregatorParallelConvertPad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8402,15 +9217,20 @@ class VideoAggregatorParallelConvertPad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8451,6 +9271,7 @@ class VideoAggregatorParallelConvertPad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8475,6 +9296,7 @@ class VideoAggregatorParallelConvertPad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstBase-1.0.GstBase.AggregatorPad */
@@ -8486,6 +9308,7 @@ class VideoAggregatorParallelConvertPad {
     /* Signals of Gst-1.0.Gst.Pad */
     /**
      * Signals that a pad has been linked to the peer pad.
+     * @param peer the peer pad that has been connected
      */
     connect(sigName: "linked", callback: ((peer: Gst.Pad) => void)): number
     on(sigName: "linked", callback: (peer: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -8494,6 +9317,7 @@ class VideoAggregatorParallelConvertPad {
     emit(sigName: "linked", peer: Gst.Pad): void
     /**
      * Signals that a pad has been unlinked from the peer pad.
+     * @param peer the peer pad that has been disconnected
      */
     connect(sigName: "unlinked", callback: ((peer: Gst.Pad) => void)): number
     on(sigName: "unlinked", callback: (peer: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -8505,6 +9329,8 @@ class VideoAggregatorParallelConvertPad {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8540,6 +9366,7 @@ class VideoAggregatorParallelConvertPad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8605,36 +9432,37 @@ class VideoBufferPool {
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * whether the pool is currently gathering back outstanding buffers
      */
-    readonly flushing: number
+    flushing: number
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Gst-1.0.Gst.BufferPool */
     /**
      * Acquires a buffer from `pool`. `buffer` should point to a memory location that
      * can hold a pointer to the new buffer.
      * 
      * `params` can contain optional parameters to influence the allocation.
+     * @param params parameters.
      */
     acquireBuffer(params?: Gst.BufferPoolAcquireParams | null): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -8650,6 +9478,7 @@ class VideoBufferPool {
     getOptions(): string[]
     /**
      * Checks if the bufferpool supports `option`.
+     * @param option an option
      */
     hasOption(option: string): boolean
     /**
@@ -8663,6 +9492,7 @@ class VideoBufferPool {
      * 
      * This function is usually called automatically when the last ref on `buffer`
      * disappears.
+     * @param buffer a #GstBuffer
      */
     releaseBuffer(buffer: Gst.Buffer): void
     /**
@@ -8675,6 +9505,7 @@ class VideoBufferPool {
      * Deactivating will free the resources again when there are no outstanding
      * buffers. When there are outstanding buffers, they will be freed as soon as
      * they are all returned to the pool.
+     * @param active the new active state
      */
     setActive(active: boolean): boolean
     /**
@@ -8694,11 +9525,13 @@ class VideoBufferPool {
      * then be retrieved and refined with gst_buffer_pool_get_config().
      * 
      * This function takes ownership of `config`.
+     * @param config a #GstStructure
      */
     setConfig(config: Gst.Structure): boolean
     /**
      * Enables or disables the flushing state of a `pool` without freeing or
      * allocating buffers.
+     * @param flushing whether to start or stop flushing
      */
     setFlushing(flushing: boolean): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -8708,6 +9541,7 @@ class VideoBufferPool {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -8715,11 +9549,14 @@ class VideoBufferPool {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -8742,6 +9579,10 @@ class VideoBufferPool {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -8767,6 +9608,8 @@ class VideoBufferPool {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -8776,16 +9619,19 @@ class VideoBufferPool {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -8801,17 +9647,21 @@ class VideoBufferPool {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -8822,6 +9672,7 @@ class VideoBufferPool {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -8829,11 +9680,13 @@ class VideoBufferPool {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -8847,6 +9700,7 @@ class VideoBufferPool {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -8900,6 +9754,10 @@ class VideoBufferPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8910,6 +9768,12 @@ class VideoBufferPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8933,6 +9797,7 @@ class VideoBufferPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8952,11 +9817,14 @@ class VideoBufferPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8964,6 +9832,8 @@ class VideoBufferPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8981,6 +9851,7 @@ class VideoBufferPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9026,6 +9897,7 @@ class VideoBufferPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9069,15 +9941,20 @@ class VideoBufferPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9118,6 +9995,7 @@ class VideoBufferPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9142,6 +10020,7 @@ class VideoBufferPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Object */
@@ -9149,6 +10028,8 @@ class VideoBufferPool {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9184,6 +10065,7 @@ class VideoBufferPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9284,116 +10166,117 @@ class VideoDecoder {
      */
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoDecoder */
     /**
      * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param nBytes the number of bytes to add
      */
     addToFrame(nBytes: number): void
     /**
@@ -9411,23 +10294,28 @@ class VideoDecoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
      */
     allocateOutputFrame(frame: VideoCodecFrame): Gst.FlowReturn
     /**
      * Same as #gst_video_decoder_allocate_output_frame except it allows passing
      * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
      */
     allocateOutputFrameWithParams(frame: VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
     /**
      * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
      * case and posts a QoS message with the frame's details on the bus.
      * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
      */
     dropFrame(frame: VideoCodecFrame): Gst.FlowReturn
     /**
      * Drops input data.
      * The frame is not considered finished until the whole frame
      * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
      */
     dropSubframe(frame: VideoCodecFrame): Gst.FlowReturn
     /**
@@ -9439,6 +10327,7 @@ class VideoDecoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame a decoded #GstVideoCodecFrame
      */
     finishFrame(frame: VideoCodecFrame): Gst.FlowReturn
     /**
@@ -9446,6 +10335,7 @@ class VideoDecoder {
      * by the subclass. This method should be called for all subframes
      * except the last subframe where `gst_video_decoder_finish_frame`
      * should be called instead.
+     * @param frame the #GstVideoCodecFrame
      */
     finishSubframe(frame: VideoCodecFrame): Gst.FlowReturn
     /**
@@ -9459,6 +10349,7 @@ class VideoDecoder {
     getEstimateRate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): VideoCodecFrame
     /**
@@ -9468,6 +10359,7 @@ class VideoDecoder {
     /**
      * Queries the number of the last subframe received by
      * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getInputSubframeIndex(frame: VideoCodecFrame): number
     /**
@@ -9480,6 +10372,7 @@ class VideoDecoder {
      * allow it to decode and arrive in time (as determined by QoS events).
      * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxDecodeTime(frame: VideoCodecFrame): Gst.ClockTimeDiff
     getMaxErrors(): number
@@ -9513,6 +10406,7 @@ class VideoDecoder {
     /**
      * Queries the number of subframes in the frame processed by
      * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
      */
     getProcessedSubframeIndex(frame: VideoCodecFrame): number
     getQosProportion(): number
@@ -9532,6 +10426,7 @@ class VideoDecoder {
      * in `frame`. This will release the current frame in video decoder
      * allowing to receive new frames from upstream elements. This method
      * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
      */
     haveLastSubframe(frame: VideoCodecFrame): Gst.FlowReturn
     /**
@@ -9543,6 +10438,8 @@ class VideoDecoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -9555,12 +10452,15 @@ class VideoDecoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
      * without any processing other than removing it from list of pending frames,
      * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
     releaseFrame(frame: VideoCodecFrame): void
     /**
@@ -9587,21 +10487,31 @@ class VideoDecoder {
      *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
      *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
      *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
      */
     requestSyncPoint(frame: VideoCodecFrame, flags: VideoDecoderRequestSyncPointFlags): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     setEstimateRate(enabled: boolean): void
     /**
      * Same as #gst_video_decoder_set_output_state() but also allows you to also set
      * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlaceMode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setInterlacedOutputState(fmt: VideoFormat, interlaceMode: VideoInterlaceMode, width: number, height: number, reference?: VideoCodecState | null): VideoCodecState
     /**
      * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
@@ -9611,6 +10521,7 @@ class VideoDecoder {
      * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
      * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
     setMaxErrors(num: number): void
     /**
@@ -9620,6 +10531,7 @@ class VideoDecoder {
      * Otherwise, it might be handed data without having been configured and
      * is then expected being able to do so either by default
      * or based on the input data.
+     * @param enabled new state
      */
     setNeedsFormat(enabled: boolean): void
     /**
@@ -9630,6 +10542,7 @@ class VideoDecoder {
      * 
      * If the first frame is not a sync point, the base class will request a sync
      * point via the force-key-unit event.
+     * @param enabled new state
      */
     setNeedsSyncPoint(enabled: boolean): void
     /**
@@ -9647,11 +10560,16 @@ class VideoDecoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      */
     setOutputState(fmt: VideoFormat, width: number, height: number, reference?: VideoCodecState | null): VideoCodecState
     /**
      * Allows baseclass to consider input data as packetized or not. If the
      * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
     setPacketized(packetized: boolean): void
     /**
@@ -9670,6 +10588,7 @@ class VideoDecoder {
      * different GstVideoCodecFrame:input_buffer every time until the end of the
      * frame has been signaled using either method.
      * This method must be called during the decoder subclass `set_format` call.
+     * @param subframeMode whether the input data should be considered as subframes.
      */
     setSubframeMode(subframeMode: boolean): void
     /**
@@ -9679,6 +10598,7 @@ class VideoDecoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     setUseDefaultPadAcceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -9702,6 +10622,7 @@ class VideoDecoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -9717,6 +10638,7 @@ class VideoDecoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -9724,6 +10646,7 @@ class VideoDecoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -9740,6 +10663,7 @@ class VideoDecoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -9755,6 +10679,7 @@ class VideoDecoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -9764,6 +10689,7 @@ class VideoDecoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -9773,6 +10699,7 @@ class VideoDecoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -9803,21 +10730,26 @@ class VideoDecoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -9843,10 +10775,12 @@ class VideoDecoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -9858,6 +10792,7 @@ class VideoDecoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -9891,11 +10826,13 @@ class VideoDecoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -9940,6 +10877,7 @@ class VideoDecoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -9951,6 +10889,8 @@ class VideoDecoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -9958,6 +10898,9 @@ class VideoDecoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -9965,6 +10908,10 @@ class VideoDecoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -9978,6 +10925,10 @@ class VideoDecoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -10006,6 +10957,14 @@ class VideoDecoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -10013,6 +10972,15 @@ class VideoDecoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -10031,6 +10999,7 @@ class VideoDecoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -10047,10 +11016,14 @@ class VideoDecoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -10062,6 +11035,7 @@ class VideoDecoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -10074,6 +11048,7 @@ class VideoDecoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -10085,6 +11060,7 @@ class VideoDecoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -10104,6 +11080,7 @@ class VideoDecoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -10113,6 +11090,9 @@ class VideoDecoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -10128,6 +11108,7 @@ class VideoDecoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -10136,6 +11117,13 @@ class VideoDecoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -10153,6 +11141,9 @@ class VideoDecoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -10164,12 +11155,14 @@ class VideoDecoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -10177,18 +11170,21 @@ class VideoDecoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -10200,6 +11196,7 @@ class VideoDecoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -10215,6 +11212,7 @@ class VideoDecoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -10231,6 +11229,7 @@ class VideoDecoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -10244,12 +11243,16 @@ class VideoDecoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -10259,6 +11262,7 @@ class VideoDecoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -10266,11 +11270,14 @@ class VideoDecoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -10293,6 +11300,10 @@ class VideoDecoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -10318,6 +11329,8 @@ class VideoDecoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -10327,16 +11340,19 @@ class VideoDecoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -10352,17 +11368,21 @@ class VideoDecoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -10373,6 +11393,7 @@ class VideoDecoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -10380,11 +11401,13 @@ class VideoDecoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -10398,6 +11421,7 @@ class VideoDecoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -10451,6 +11475,10 @@ class VideoDecoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10461,6 +11489,12 @@ class VideoDecoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10484,6 +11518,7 @@ class VideoDecoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10503,11 +11538,14 @@ class VideoDecoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10515,6 +11553,8 @@ class VideoDecoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10532,6 +11572,7 @@ class VideoDecoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10577,6 +11618,7 @@ class VideoDecoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10620,15 +11662,20 @@ class VideoDecoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10669,6 +11716,7 @@ class VideoDecoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10693,6 +11741,7 @@ class VideoDecoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -10712,6 +11761,7 @@ class VideoDecoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -10720,6 +11770,7 @@ class VideoDecoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -10731,6 +11782,8 @@ class VideoDecoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10766,6 +11819,7 @@ class VideoDecoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10832,117 +11886,118 @@ class VideoEncoder {
     minForceKeyUnitInterval: number
     qos: boolean
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstVideo-1.0.GstVideo.VideoEncoder */
     /**
      * Helper function that allocates a buffer to hold an encoded video frame
      * for `encoder'`s current #GstVideoCodecState.
+     * @param size size of the buffer
      */
     allocateOutputBuffer(size: number): Gst.Buffer
     /**
@@ -10952,6 +12007,8 @@ class VideoEncoder {
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param size size of the buffer
      */
     allocateOutputFrame(frame: VideoCodecFrame, size: number): Gst.FlowReturn
     /**
@@ -10964,6 +12021,7 @@ class VideoEncoder {
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
+     * @param frame an encoded #GstVideoCodecFrame
      */
     finishFrame(frame: VideoCodecFrame): Gst.FlowReturn
     /**
@@ -10976,6 +12034,7 @@ class VideoEncoder {
      * 
      * This function will change the metadata of `frame` and frame->output_buffer
      * will be pushed downstream.
+     * @param frame a #GstVideoCodecFrame being encoded
      */
     finishSubframe(frame: VideoCodecFrame): Gst.FlowReturn
     /**
@@ -10987,6 +12046,7 @@ class VideoEncoder {
     getAllocator(): [ /* allocator */ Gst.Allocator | null, /* params */ Gst.AllocationParams | null ]
     /**
      * Get a pending unfinished #GstVideoCodecFrame
+     * @param frameNumber system_frame_number of a frame
      */
     getFrame(frameNumber: number): VideoCodecFrame
     /**
@@ -11006,6 +12066,7 @@ class VideoEncoder {
      * 
      * If no QoS events have been received from downstream, or if
      * #GstVideoEncoder:qos is disabled this function returns #G_MAXINT64.
+     * @param frame a #GstVideoCodecFrame
      */
     getMaxEncodeTime(frame: VideoCodecFrame): Gst.ClockTimeDiff
     /**
@@ -11035,6 +12096,8 @@ class VideoEncoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     mergeTags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -11047,20 +12110,26 @@ class VideoEncoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
      * elements (e.g. muxers).
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxyGetcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
      * Set the codec headers to be sent downstream whenever requested.
+     * @param headers a list of #GstBuffer containing the codec header
      */
     setHeaders(headers: Gst.Buffer[]): void
     /**
      * Informs baseclass of encoding latency.
+     * @param minLatency minimum latency
+     * @param maxLatency maximum latency
      */
     setLatency(minLatency: Gst.ClockTime, maxLatency: Gst.ClockTime): void
     /**
      * Sets the minimum interval for requesting keyframes based on force-keyunit
      * events. Setting this to 0 will allow to handle every event, setting this to
      * %GST_CLOCK_TIME_NONE causes force-keyunit events to be ignored.
+     * @param interval minimum interval
      */
     setMinForceKeyUnitInterval(interval: Gst.ClockTime): void
     /**
@@ -11068,6 +12137,7 @@ class VideoEncoder {
      * 
      * For streams with reordered frames this can be used to ensure that there
      * is enough time to accommodate first DTS, which may be less than first PTS
+     * @param minPts minimal PTS that will be passed to handle_frame
      */
     setMinPts(minPts: Gst.ClockTime): void
     /**
@@ -11089,10 +12159,13 @@ class VideoEncoder {
      * 
      * The new output state will only take effect (set on pads and buffers) starting
      * from the next call to #gst_video_encoder_finish_frame().
+     * @param caps the #GstCaps to use for the output
+     * @param reference An optional reference `GstVideoCodecState`
      */
     setOutputState(caps: Gst.Caps, reference?: VideoCodecState | null): VideoCodecState
     /**
      * Configures `encoder` to handle Quality-of-Service events from downstream.
+     * @param enabled the new qos value.
      */
     setQosEnabled(enabled: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -11116,6 +12189,7 @@ class VideoEncoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -11131,6 +12205,7 @@ class VideoEncoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -11138,6 +12213,7 @@ class VideoEncoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -11154,6 +12230,7 @@ class VideoEncoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -11169,6 +12246,7 @@ class VideoEncoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11178,6 +12256,7 @@ class VideoEncoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11187,6 +12266,7 @@ class VideoEncoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11217,21 +12297,26 @@ class VideoEncoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -11257,10 +12342,12 @@ class VideoEncoder {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -11272,6 +12359,7 @@ class VideoEncoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -11305,11 +12393,13 @@ class VideoEncoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -11354,6 +12444,7 @@ class VideoEncoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -11365,6 +12456,8 @@ class VideoEncoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -11372,6 +12465,9 @@ class VideoEncoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -11379,6 +12475,10 @@ class VideoEncoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -11392,6 +12492,10 @@ class VideoEncoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -11420,6 +12524,14 @@ class VideoEncoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -11427,6 +12539,15 @@ class VideoEncoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -11445,6 +12566,7 @@ class VideoEncoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -11461,10 +12583,14 @@ class VideoEncoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -11476,6 +12602,7 @@ class VideoEncoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -11488,6 +12615,7 @@ class VideoEncoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -11499,6 +12627,7 @@ class VideoEncoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -11518,6 +12647,7 @@ class VideoEncoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -11527,6 +12657,9 @@ class VideoEncoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -11542,6 +12675,7 @@ class VideoEncoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -11550,6 +12684,13 @@ class VideoEncoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -11567,6 +12708,9 @@ class VideoEncoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -11578,12 +12722,14 @@ class VideoEncoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -11591,18 +12737,21 @@ class VideoEncoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -11614,6 +12763,7 @@ class VideoEncoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -11629,6 +12779,7 @@ class VideoEncoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -11645,6 +12796,7 @@ class VideoEncoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -11658,12 +12810,16 @@ class VideoEncoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -11673,6 +12829,7 @@ class VideoEncoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -11680,11 +12837,14 @@ class VideoEncoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -11707,6 +12867,10 @@ class VideoEncoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -11732,6 +12896,8 @@ class VideoEncoder {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -11741,16 +12907,19 @@ class VideoEncoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -11766,17 +12935,21 @@ class VideoEncoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -11787,6 +12960,7 @@ class VideoEncoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -11794,11 +12968,13 @@ class VideoEncoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -11812,6 +12988,7 @@ class VideoEncoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -11865,6 +13042,10 @@ class VideoEncoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11875,6 +13056,12 @@ class VideoEncoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -11898,6 +13085,7 @@ class VideoEncoder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -11917,11 +13105,14 @@ class VideoEncoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -11929,6 +13120,8 @@ class VideoEncoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11946,6 +13139,7 @@ class VideoEncoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -11991,6 +13185,7 @@ class VideoEncoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -12034,15 +13229,20 @@ class VideoEncoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -12083,6 +13283,7 @@ class VideoEncoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -12107,16 +13308,20 @@ class VideoEncoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gst-1.0.Gst.Preset */
     /**
      * Delete the given preset.
+     * @param name preset name to remove
      */
     deletePreset(name: string): boolean
     /**
      * Gets the `value` for an existing meta data `tag`. Meta data `tag` names can be
      * something like e.g. "comment". Returned values need to be released when done.
+     * @param name preset name
+     * @param tag meta data item name
      */
     getMeta(name: string, tag: string): [ /* returnType */ boolean, /* value */ string ]
     /**
@@ -12133,22 +13338,29 @@ class VideoEncoder {
     isEditable(): boolean
     /**
      * Load the given preset.
+     * @param name preset name to load
      */
     loadPreset(name: string): boolean
     /**
      * Renames a preset. If there is already a preset by the `new_name` it will be
      * overwritten.
+     * @param oldName current preset name
+     * @param newName new preset name
      */
     renamePreset(oldName: string, newName: string): boolean
     /**
      * Save the current object settings as a preset under the given name. If there
      * is already a preset by this `name` it will be overwritten.
+     * @param name preset name to save
      */
     savePreset(name: string): boolean
     /**
      * Sets a new `value` for an existing meta data item or adds a new item. Meta
      * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
      * `value` will unset an existing value.
+     * @param name preset name
+     * @param tag meta data item name
+     * @param value new value
      */
     setMeta(name: string, tag: string, value?: string | null): boolean
     /* Signals of Gst-1.0.Gst.Element */
@@ -12168,6 +13380,7 @@ class VideoEncoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -12176,6 +13389,7 @@ class VideoEncoder {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -12187,6 +13401,8 @@ class VideoEncoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12222,6 +13438,7 @@ class VideoEncoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -12258,6 +13475,7 @@ class VideoEncoder {
      * Sets an extra directory as an absolute path that should be considered when
      * looking for presets. Any presets in the application dir will shadow the
      * system presets.
+     * @param appDir the application specific preset dir
      */
     static setAppDir(appDir: string): boolean
     static $gtype: GObject.Type
@@ -12268,120 +13486,120 @@ class VideoFilter {
     /* Properties of GstBase-1.0.GstBase.BaseTransform */
     qos: boolean
     /* Fields of GstBase-1.0.GstBase.BaseTransform */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly srcpad: Gst.Pad
-    readonly haveSegment: boolean
-    readonly segment: Gst.Segment
-    readonly queuedBuf: Gst.Buffer
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    srcpad: Gst.Pad
+    haveSegment: boolean
+    segment: Gst.Segment
+    queuedBuf: Gst.Buffer
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.BaseTransform */
     /**
      * Lets #GstBaseTransform sub-classes know the memory `allocator`
@@ -12441,6 +13659,7 @@ class VideoFilter {
      * unset the flag if the output is no neutral data.
      * 
      * MT safe.
+     * @param gapAware New state
      */
     setGapAware(gapAware: boolean): void
     /**
@@ -12451,6 +13670,7 @@ class VideoFilter {
      *   * Always %FALSE if ONLY transform function is implemented.
      * 
      * MT safe.
+     * @param inPlace Boolean value indicating that we would like to operate on in_place buffers.
      */
     setInPlace(inPlace: boolean): void
     /**
@@ -12461,6 +13681,7 @@ class VideoFilter {
      * or transform_ip or generate_output method.
      * 
      * MT safe.
+     * @param passthrough boolean indicating passthrough mode.
      */
     setPassthrough(passthrough: boolean): void
     /**
@@ -12475,12 +13696,14 @@ class VideoFilter {
      * capsfilter.
      * 
      * MT safe.
+     * @param preferPassthrough New state
      */
     setPreferPassthrough(preferPassthrough: boolean): void
     /**
      * Enable or disable QoS handling in the transform.
      * 
      * MT safe.
+     * @param enabled new state
      */
     setQosEnabled(enabled: boolean): void
     /**
@@ -12489,6 +13712,9 @@ class VideoFilter {
      * when needed.
      * 
      * MT safe.
+     * @param proportion the proportion
+     * @param diff the diff against the clock
+     * @param timestamp the timestamp of the buffer generating the QoS expressed in running_time.
      */
     updateQos(proportion: number, diff: Gst.ClockTimeDiff, timestamp: Gst.ClockTime): void
     /**
@@ -12497,6 +13723,7 @@ class VideoFilter {
      * but found a change in them (or computed new information). This way,
      * they can notify downstream about that change without losing any
      * buffer.
+     * @param updatedCaps An updated version of the srcpad caps to be pushed downstream
      */
     updateSrcCaps(updatedCaps: Gst.Caps): boolean
     /* Methods of Gst-1.0.Gst.Element */
@@ -12520,6 +13747,7 @@ class VideoFilter {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -12535,6 +13763,7 @@ class VideoFilter {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -12542,6 +13771,7 @@ class VideoFilter {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -12558,6 +13788,7 @@ class VideoFilter {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -12573,6 +13804,7 @@ class VideoFilter {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -12582,6 +13814,7 @@ class VideoFilter {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -12591,6 +13824,7 @@ class VideoFilter {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -12621,21 +13855,26 @@ class VideoFilter {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -12661,10 +13900,12 @@ class VideoFilter {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -12676,6 +13917,7 @@ class VideoFilter {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -12709,11 +13951,13 @@ class VideoFilter {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -12758,6 +14002,7 @@ class VideoFilter {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -12769,6 +14014,8 @@ class VideoFilter {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -12776,6 +14023,9 @@ class VideoFilter {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -12783,6 +14033,10 @@ class VideoFilter {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -12796,6 +14050,10 @@ class VideoFilter {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -12824,6 +14082,14 @@ class VideoFilter {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -12831,6 +14097,15 @@ class VideoFilter {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -12849,6 +14124,7 @@ class VideoFilter {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -12865,10 +14141,14 @@ class VideoFilter {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -12880,6 +14160,7 @@ class VideoFilter {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -12892,6 +14173,7 @@ class VideoFilter {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -12903,6 +14185,7 @@ class VideoFilter {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -12922,6 +14205,7 @@ class VideoFilter {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -12931,6 +14215,9 @@ class VideoFilter {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -12946,6 +14233,7 @@ class VideoFilter {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -12954,6 +14242,13 @@ class VideoFilter {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -12971,6 +14266,9 @@ class VideoFilter {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -12982,12 +14280,14 @@ class VideoFilter {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -12995,18 +14295,21 @@ class VideoFilter {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -13018,6 +14321,7 @@ class VideoFilter {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -13033,6 +14337,7 @@ class VideoFilter {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -13049,6 +14354,7 @@ class VideoFilter {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -13062,12 +14368,16 @@ class VideoFilter {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -13077,6 +14387,7 @@ class VideoFilter {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -13084,11 +14395,14 @@ class VideoFilter {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -13111,6 +14425,10 @@ class VideoFilter {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -13136,6 +14454,8 @@ class VideoFilter {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -13145,16 +14465,19 @@ class VideoFilter {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -13170,17 +14493,21 @@ class VideoFilter {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -13191,6 +14518,7 @@ class VideoFilter {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -13198,11 +14526,13 @@ class VideoFilter {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -13216,6 +14546,7 @@ class VideoFilter {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -13269,6 +14600,10 @@ class VideoFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13279,6 +14614,12 @@ class VideoFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -13302,6 +14643,7 @@ class VideoFilter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -13321,11 +14663,14 @@ class VideoFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -13333,6 +14678,8 @@ class VideoFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13350,6 +14697,7 @@ class VideoFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -13395,6 +14743,7 @@ class VideoFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -13438,15 +14787,20 @@ class VideoFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -13487,6 +14841,7 @@ class VideoFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -13511,6 +14866,7 @@ class VideoFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -13530,6 +14886,7 @@ class VideoFilter {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -13538,6 +14895,7 @@ class VideoFilter {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -13549,6 +14907,8 @@ class VideoFilter {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13584,6 +14944,7 @@ class VideoFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -13693,128 +15054,128 @@ class VideoSink {
      */
     tsOffset: number
     /* Fields of GstBase-1.0.GstBase.BaseSink */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly padMode: Gst.PadMode
-    readonly offset: number
-    readonly canActivatePull: boolean
-    readonly canActivatePush: boolean
-    readonly prerollLock: GLib.Mutex
-    readonly prerollCond: GLib.Cond
-    readonly eos: boolean
-    readonly needPreroll: boolean
-    readonly havePreroll: boolean
-    readonly playingAsync: boolean
-    readonly haveNewsegment: boolean
-    readonly segment: Gst.Segment
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    padMode: Gst.PadMode
+    offset: number
+    canActivatePull: boolean
+    canActivatePush: boolean
+    prerollLock: GLib.Mutex
+    prerollCond: GLib.Cond
+    eos: boolean
+    needPreroll: boolean
+    havePreroll: boolean
+    playingAsync: boolean
+    haveNewsegment: boolean
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly stateLock: GLib.RecMutex
+    stateLock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly stateCond: GLib.Cond
+    stateCond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly stateCookie: number
+    stateCookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly targetState: Gst.State
+    targetState: Gst.State
     /**
      * the current state of an element
      */
-    readonly currentState: Gst.State
+    currentState: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly nextState: Gst.State
+    nextState: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pendingState: Gst.State
+    pendingState: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly lastReturn: Gst.StateChangeReturn
+    lastReturn: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly baseTime: Gst.ClockTimeDiff
+    baseTime: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly startTime: Gst.ClockTime
+    startTime: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly padsCookie: number
+    padsCookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.BaseSink */
     /**
      * If the `sink` spawns its own thread for pulling buffers from upstream it
@@ -13823,6 +15184,7 @@ class VideoSink {
      * until the element state is changed.
      * 
      * This function should be called with the PREROLL_LOCK held.
+     * @param obj the mini object that caused the preroll
      */
     doPreroll(obj: Gst.MiniObject): Gst.FlowReturn
     /**
@@ -13924,24 +15286,29 @@ class VideoSink {
      * disabled, the sink will immediately go to PAUSED instead of waiting for a
      * preroll buffer. This feature is useful if the sink does not synchronize
      * against the clock or when it is dealing with sparse streams.
+     * @param enabled the new async value.
      */
     setAsyncEnabled(enabled: boolean): void
     /**
      * Set the number of bytes that the sink will pull when it is operating in pull
      * mode.
+     * @param blocksize the blocksize in bytes
      */
     setBlocksize(blocksize: number): void
     /**
      * Configure `sink` to drop buffers which are outside the current segment
+     * @param dropOutOfSegment drop buffers outside the segment
      */
     setDropOutOfSegment(dropOutOfSegment: boolean): void
     /**
      * Configures `sink` to store the last received sample in the last-sample
      * property.
+     * @param enabled the new enable-last-sample value.
      */
     setLastSampleEnabled(enabled: boolean): void
     /**
      * Set the maximum amount of bits per second that the sink will render.
+     * @param maxBitrate the max_bitrate in bits per second
      */
     setMaxBitrate(maxBitrate: number): void
     /**
@@ -13949,6 +15316,7 @@ class VideoSink {
      * used to decide if a buffer should be dropped or not based on the
      * buffer timestamp and the current clock time. A value of -1 means
      * an unlimited time.
+     * @param maxLateness the new max lateness value.
      */
     setMaxLateness(maxLateness: number): void
     /**
@@ -13957,10 +15325,12 @@ class VideoSink {
      * pipelines.
      * 
      * This function is usually called by subclasses.
+     * @param processingDeadline the new processing deadline in nanoseconds.
      */
     setProcessingDeadline(processingDeadline: Gst.ClockTime): void
     /**
      * Configures `sink` to send Quality-of-Service events upstream.
+     * @param enabled the new qos value.
      */
     setQosEnabled(enabled: boolean): void
     /**
@@ -13973,6 +15343,7 @@ class VideoSink {
      * other sinks will adjust their latency to delay the rendering of their media.
      * 
      * This function is usually called by subclasses.
+     * @param delay the new delay
      */
     setRenderDelay(delay: Gst.ClockTime): void
     /**
@@ -13981,12 +15352,14 @@ class VideoSink {
      * possible. If `sync` is %TRUE, the timestamps of the incoming
      * buffers will be used to schedule the exact render time of its
      * contents.
+     * @param sync the new sync value.
      */
     setSync(sync: boolean): void
     /**
      * Set the time that will be inserted between rendered buffers. This
      * can be used to control the maximum buffers per second that the sink
      * will render.
+     * @param throttle the throttle time in nanoseconds
      */
     setThrottleTime(throttle: number): void
     /**
@@ -13994,6 +15367,7 @@ class VideoSink {
      * render buffers earlier than their timestamp. A positive value will delay
      * rendering. This function can be used to fix playback of badly timestamped
      * buffers.
+     * @param offset the new offset
      */
     setTsOffset(offset: Gst.ClockTimeDiff): void
     /**
@@ -14008,6 +15382,7 @@ class VideoSink {
      * 
      * The `time` argument should be the running_time of when the timeout should happen
      * and will be adjusted with any latency and offset configured in the sink.
+     * @param time the running_time to be reached
      */
     wait(time: Gst.ClockTime): [ /* returnType */ Gst.FlowReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -14026,6 +15401,7 @@ class VideoSink {
      * The `time` argument should be the running_time of when this method should
      * return and is not adjusted with any latency or offset configured in the
      * sink.
+     * @param time the running_time to be reached
      */
     waitClock(time: Gst.ClockTime): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -14070,6 +15446,7 @@ class VideoSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     addPad(pad: Gst.Pad): boolean
     addPropertyDeepNotifyWatch(propertyName: string | null, includeValue: boolean): number
@@ -14085,6 +15462,7 @@ class VideoSink {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     callAsync(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -14092,6 +15470,7 @@ class VideoSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     changeState(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -14108,6 +15487,7 @@ class VideoSink {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continueState(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -14123,6 +15503,7 @@ class VideoSink {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreachPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -14132,6 +15513,7 @@ class VideoSink {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreachSinkPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -14141,6 +15523,7 @@ class VideoSink {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreachSrcPad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -14171,21 +15554,26 @@ class VideoSink {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     getCompatiblePad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     getCompatiblePadTemplate(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param contextType a name of a context to retrieve
      */
     getContext(contextType: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param contextType a name of a context to retrieve
      */
     getContextUnlocked(contextType: string): Gst.Context | null
     /**
@@ -14211,10 +15599,12 @@ class VideoSink {
     getFactory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     getPadTemplate(name: string): Gst.PadTemplate | null
     /**
@@ -14226,6 +15616,7 @@ class VideoSink {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     getRequestPad(name: string): Gst.Pad | null
     /**
@@ -14259,11 +15650,13 @@ class VideoSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     getState(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     getStaticPad(name: string): Gst.Pad | null
     /**
@@ -14308,6 +15701,7 @@ class VideoSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -14319,6 +15713,8 @@ class VideoSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkFiltered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -14326,6 +15722,9 @@ class VideoSink {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     linkPads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -14333,6 +15732,10 @@ class VideoSink {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     linkPadsFiltered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -14346,6 +15749,10 @@ class VideoSink {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     linkPadsFull(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -14374,6 +15781,14 @@ class VideoSink {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     messageFull(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -14381,6 +15796,15 @@ class VideoSink {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     messageFullWithDetails(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -14399,6 +15823,7 @@ class VideoSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     postMessage(message: Gst.Message): boolean
     /**
@@ -14415,10 +15840,14 @@ class VideoSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param srcFormat a #GstFormat to convert from.
+     * @param srcVal a value to convert.
+     * @param destFormat the #GstFormat to convert to.
      */
     queryConvert(srcFormat: Gst.Format, srcVal: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destVal */ number ]
     /**
@@ -14430,6 +15859,7 @@ class VideoSink {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     queryDuration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -14442,6 +15872,7 @@ class VideoSink {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     queryPosition(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -14453,6 +15884,7 @@ class VideoSink {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     releaseRequestPad(pad: Gst.Pad): void
     /**
@@ -14472,6 +15904,7 @@ class VideoSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     removePad(pad: Gst.Pad): boolean
     removePropertyNotifyWatch(watchId: number): void
@@ -14481,6 +15914,9 @@ class VideoSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     requestPad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -14496,6 +15932,7 @@ class VideoSink {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     requestPadSimple(name: string): Gst.Pad | null
     /**
@@ -14504,6 +15941,13 @@ class VideoSink {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param startType The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stopType The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, startType: Gst.SeekType, start: number, stopType: Gst.SeekType, stop: number): boolean
     /**
@@ -14521,6 +15965,9 @@ class VideoSink {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seekFlags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seekPos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seekSimple(format: Gst.Format, seekFlags: Gst.SeekFlags, seekPos: number): boolean
     /**
@@ -14532,12 +15979,14 @@ class VideoSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     sendEvent(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setBaseTime(time: Gst.ClockTime): void
     /**
@@ -14545,18 +15994,21 @@ class VideoSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     setBus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     setClock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     setContext(context: Gst.Context): void
     /**
@@ -14568,6 +16020,7 @@ class VideoSink {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param lockedState %TRUE to lock the element's state
      */
     setLockedState(lockedState: boolean): boolean
     /**
@@ -14583,6 +16036,7 @@ class VideoSink {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     setStartTime(time: Gst.ClockTime): void
     /**
@@ -14599,6 +16053,7 @@ class VideoSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     setState(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -14612,12 +16067,16 @@ class VideoSink {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlinkPads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -14627,6 +16086,7 @@ class VideoSink {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     addControlBinding(binding: Gst.ControlBinding): boolean
     /**
@@ -14634,11 +16094,14 @@ class VideoSink {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     defaultError(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param propertyName name of the property
      */
     getControlBinding(propertyName: string): Gst.ControlBinding | null
     /**
@@ -14661,6 +16124,10 @@ class VideoSink {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     getGValueArray(propertyName: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -14686,6 +16153,8 @@ class VideoSink {
     getPathString(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param propertyName the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     getValue(propertyName: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -14695,16 +16164,19 @@ class VideoSink {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     hasAsAncestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     hasAsParent(parent: Gst.Object): boolean
     /**
@@ -14720,17 +16192,21 @@ class VideoSink {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     removeControlBinding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param propertyName property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     setControlBindingsDisabled(disabled: boolean): void
     /**
@@ -14741,6 +16217,7 @@ class VideoSink {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param controlRate the new control-rate in nanoseconds.
      */
     setControlRate(controlRate: Gst.ClockTime): void
     /**
@@ -14748,11 +16225,13 @@ class VideoSink {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     setName(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     setParent(parent: Gst.Object): boolean
     /**
@@ -14766,6 +16245,7 @@ class VideoSink {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     syncValues(timestamp: Gst.ClockTime): boolean
     /**
@@ -14819,6 +16299,10 @@ class VideoSink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14829,6 +16313,12 @@ class VideoSink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -14852,6 +16342,7 @@ class VideoSink {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -14871,11 +16362,14 @@ class VideoSink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -14883,6 +16377,8 @@ class VideoSink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14900,6 +16396,7 @@ class VideoSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -14945,6 +16442,7 @@ class VideoSink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -14988,15 +16486,20 @@ class VideoSink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -15037,6 +16540,7 @@ class VideoSink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -15061,6 +16565,7 @@ class VideoSink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-1.0.Gst.Element */
@@ -15080,6 +16585,7 @@ class VideoSink {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param newPad the pad that has been added
      */
     connect(sigName: "pad-added", callback: ((newPad: Gst.Pad) => void)): number
     on(sigName: "pad-added", callback: (newPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -15088,6 +16594,7 @@ class VideoSink {
     emit(sigName: "pad-added", newPad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param oldPad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: ((oldPad: Gst.Pad) => void)): number
     on(sigName: "pad-removed", callback: (oldPad: Gst.Pad) => void, after?: boolean): NodeJS.EventEmitter
@@ -15099,6 +16606,8 @@ class VideoSink {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param propObject the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: ((propObject: Gst.Object, prop: GObject.ParamSpec) => void)): number
     on(sigName: "deep-notify", callback: (propObject: Gst.Object, prop: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15134,6 +16643,7 @@ class VideoSink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -15229,8 +16739,8 @@ abstract class ColorBalanceChannelClass {
     /**
      * the parent class
      */
-    readonly parent: GObject.ObjectClass
-    readonly valueChanged: (channel: ColorBalanceChannel, value: number) => void
+    parent: GObject.ObjectClass
+    valueChanged: (channel: ColorBalanceChannel, value: number) => void
     static name: string
 }
 abstract class ColorBalanceInterface {
@@ -15238,12 +16748,12 @@ abstract class ColorBalanceInterface {
     /**
      * the parent interface
      */
-    readonly iface: GObject.TypeInterface
-    readonly listChannels: (balance: ColorBalance) => ColorBalanceChannel[]
-    readonly setValue: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
-    readonly getValue: (balance: ColorBalance, channel: ColorBalanceChannel) => number
-    readonly getBalanceType: (balance: ColorBalance) => ColorBalanceType
-    readonly valueChanged: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
+    iface: GObject.TypeInterface
+    listChannels: (balance: ColorBalance) => ColorBalanceChannel[]
+    setValue: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
+    getValue: (balance: ColorBalance, channel: ColorBalanceChannel) => number
+    getBalanceType: (balance: ColorBalance) => ColorBalanceType
+    valueChanged: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
     static name: string
 }
 abstract class NavigationInterface {
@@ -15251,8 +16761,9 @@ abstract class NavigationInterface {
     /**
      * the parent interface
      */
-    readonly iface: GObject.TypeInterface
-    readonly sendEvent: (navigation: Navigation, structure: Gst.Structure) => void
+    iface: GObject.TypeInterface
+    sendEvent: (navigation: Navigation, structure: Gst.Structure) => void
+    sendEventSimple: (navigation: Navigation, event: Gst.Event) => void
     static name: string
 }
 class VideoAFDMeta {
@@ -15260,19 +16771,19 @@ class VideoAFDMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * 0 for progressive or field 1 and 1 for field 2
      */
-    readonly field: number
+    field: number
     /**
      * #GstVideoAFDSpec that applies to `afd`
      */
-    readonly spec: VideoAFDSpec
+    spec: VideoAFDSpec
     /**
      * #GstVideoAFDValue AFD value
      */
-    readonly afd: VideoAFDValue
+    afd: VideoAFDValue
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
@@ -15282,15 +16793,16 @@ class VideoAffineTransformationMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the column-major 4x4 transformation matrix
      */
-    readonly matrix: number[]
+    matrix: number[]
     /* Methods of GstVideo-1.0.GstVideo.VideoAffineTransformationMeta */
     /**
      * Apply a transformation using the given 4x4 transformation matrix.
      * Performs the multiplication, meta->matrix X matrix.
+     * @param matrix a 4x4 transformation matrix to be applied
      */
     applyMatrix(matrix: number[]): void
     static name: string
@@ -15299,16 +16811,16 @@ class VideoAffineTransformationMeta {
 }
 abstract class VideoAggregatorClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoAggregatorClass */
-    readonly updateCaps: (videoaggregator: VideoAggregator, caps: Gst.Caps) => Gst.Caps
-    readonly aggregateFrames: (videoaggregator: VideoAggregator, outbuffer: Gst.Buffer) => Gst.FlowReturn
-    readonly createOutputBuffer: (videoaggregator: VideoAggregator, outbuffer: Gst.Buffer) => Gst.FlowReturn
-    readonly findBestFormat: (vagg: VideoAggregator, downstreamCaps: Gst.Caps, bestInfo: VideoInfo, atLeastOneAlpha: boolean) => void
+    updateCaps: (videoaggregator: VideoAggregator, caps: Gst.Caps) => Gst.Caps
+    aggregateFrames: (videoaggregator: VideoAggregator, outbuffer: Gst.Buffer) => Gst.FlowReturn
+    createOutputBuffer: (videoaggregator: VideoAggregator, outbuffer: Gst.Buffer) => Gst.FlowReturn
+    findBestFormat: (vagg: VideoAggregator, downstreamCaps: Gst.Caps, bestInfo: VideoInfo) => /* atLeastOneAlpha */ boolean
     static name: string
 }
 abstract class VideoAggregatorConvertPadClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoAggregatorConvertPadClass */
-    readonly parentClass: VideoAggregatorPadClass
-    readonly createConversionInfo: (pad: VideoAggregatorConvertPad, agg: VideoAggregator, conversionInfo: VideoInfo) => void
+    parentClass: VideoAggregatorPadClass
+    createConversionInfo: (pad: VideoAggregatorConvertPad, agg: VideoAggregator, conversionInfo: VideoInfo) => void
     static name: string
 }
 class VideoAggregatorConvertPadPrivate {
@@ -15316,13 +16828,13 @@ class VideoAggregatorConvertPadPrivate {
 }
 abstract class VideoAggregatorPadClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoAggregatorPadClass */
-    readonly parentClass: GstBase.AggregatorPadClass
-    readonly updateConversionInfo: (pad: VideoAggregatorPad) => void
-    readonly prepareFrame: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, buffer: Gst.Buffer, preparedFrame: VideoFrame) => boolean
-    readonly cleanFrame: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, preparedFrame: VideoFrame) => void
-    readonly prepareFrameStart: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, buffer: Gst.Buffer, preparedFrame: VideoFrame) => void
-    readonly prepareFrameFinish: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, preparedFrame: VideoFrame) => void
-    readonly gstReserved: object[]
+    parentClass: GstBase.AggregatorPadClass
+    updateConversionInfo: (pad: VideoAggregatorPad) => void
+    prepareFrame: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, buffer: Gst.Buffer, preparedFrame: VideoFrame) => boolean
+    cleanFrame: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, preparedFrame: VideoFrame) => void
+    prepareFrameStart: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, buffer: Gst.Buffer, preparedFrame: VideoFrame) => void
+    prepareFrameFinish: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, preparedFrame: VideoFrame) => void
+    gstReserved: object[]
     static name: string
 }
 class VideoAggregatorPadPrivate {
@@ -15330,7 +16842,7 @@ class VideoAggregatorPadPrivate {
 }
 abstract class VideoAggregatorParallelConvertPadClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPadClass */
-    readonly parentClass: VideoAggregatorConvertPadClass
+    parentClass: VideoAggregatorConvertPadClass
     static name: string
 }
 class VideoAggregatorPrivate {
@@ -15341,23 +16853,23 @@ class VideoAlignment {
     /**
      * extra pixels on the top
      */
-    readonly paddingTop: number
+    paddingTop: number
     /**
      * extra pixels on the bottom
      */
-    readonly paddingBottom: number
+    paddingBottom: number
     /**
      * extra pixels on the left side
      */
-    readonly paddingLeft: number
+    paddingLeft: number
     /**
      * extra pixels on the right side
      */
-    readonly paddingRight: number
+    paddingRight: number
     /**
      * array with extra alignment requirements for the strides
      */
-    readonly strideAlign: number[]
+    strideAlign: number[]
     /* Methods of GstVideo-1.0.GstVideo.VideoAlignment */
     /**
      * Set `align` to its default values with no padding and no alignment.
@@ -15370,21 +16882,21 @@ class VideoAncillary {
     /**
      * The Data Identifier
      */
-    readonly dID: number
+    dID: number
     /**
      * The Secondary Data Identifier (if type 2) or the Data
      *                     Block Number (if type 1)
      */
-    readonly sDIDBlockNumber: number
+    sDIDBlockNumber: number
     /**
      * The amount of data (in bytes) in `data` (max 255 bytes)
      */
-    readonly dataCount: number
+    dataCount: number
     /**
      * The user data content of the Ancillary packet.
      *    Does not contain the ADF, DID, SDID nor CS.
      */
-    readonly data: Uint8Array
+    data: Uint8Array
     static name: string
 }
 class VideoBarMeta {
@@ -15392,36 +16904,36 @@ class VideoBarMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * 0 for progressive or field 1 and 1 for field 2
      */
-    readonly field: number
+    field: number
     /**
      * if true then bar data specifies letterbox, otherwise pillarbox
      */
-    readonly isLetterbox: boolean
+    isLetterbox: boolean
     /**
      * If `is_letterbox` is true, then the value specifies the
      *      last line of a horizontal letterbox bar area at top of reconstructed frame.
      *      Otherwise, it specifies the last horizontal luminance sample of a vertical pillarbox
      *      bar area at the left side of the reconstructed frame
      */
-    readonly barData1: number
+    barData1: number
     /**
      * If `is_letterbox` is true, then the value specifies the
      *      first line of a horizontal letterbox bar area at bottom of reconstructed frame.
      *      Otherwise, it specifies the first horizontal
      *      luminance sample of a vertical pillarbox bar area at the right side of the reconstructed frame.
      */
-    readonly barData2: number
+    barData2: number
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
 }
 abstract class VideoBufferPoolClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoBufferPoolClass */
-    readonly parentClass: Gst.BufferPoolClass
+    parentClass: Gst.BufferPoolClass
     static name: string
 }
 class VideoBufferPoolPrivate {
@@ -15432,19 +16944,19 @@ class VideoCaptionMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * The type of Closed Caption contained in the meta.
      */
-    readonly captionType: VideoCaptionType
+    captionType: VideoCaptionType
     /**
      * The Closed Caption data.
      */
-    readonly data: Uint8Array
+    data: Uint8Array
     /**
      * The size in bytes of `data`
      */
-    readonly size: number
+    size: number
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
@@ -15459,7 +16971,7 @@ class VideoChromaResample {
      * The resampler must be fed `n_lines` at a time. The first line should be
      * at `offset`.
      */
-    getInfo(nLines: number, offset: number): void
+    getInfo(): [ /* nLines */ number | null, /* offset */ number | null ]
     static name: string
 }
 class VideoCodecAlphaMeta {
@@ -15467,11 +16979,11 @@ class VideoCodecAlphaMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the encoded alpha frame
      */
-    readonly buffer: Gst.Buffer
+    buffer: Gst.Buffer
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
@@ -15484,29 +16996,29 @@ class VideoCodecFrame {
      *       Typical usage in decoders is to set this on the opaque value provided
      *       to the library and get back the frame using gst_video_decoder_get_frame()
      */
-    readonly systemFrameNumber: number
+    systemFrameNumber: number
     /**
      * Decoding timestamp
      */
-    readonly dts: Gst.ClockTime
+    dts: Gst.ClockTime
     /**
      * Presentation timestamp
      */
-    readonly pts: Gst.ClockTime
+    pts: Gst.ClockTime
     /**
      * Duration of the frame
      */
-    readonly duration: Gst.ClockTime
+    duration: Gst.ClockTime
     /**
      * Distance in frames from the last synchronization point.
      */
-    readonly distanceFromSync: number
+    distanceFromSync: number
     /**
      * the input #GstBuffer that created this frame. The buffer is owned
      *           by the frame and references to the frame instead of the buffer should
      *           be kept.
      */
-    readonly inputBuffer: Gst.Buffer
+    inputBuffer: Gst.Buffer
     /**
      * the output #GstBuffer. Implementations should set this either
      *           directly, or by using the
@@ -15515,11 +17027,11 @@ class VideoCodecFrame {
      *           owned by the frame and references to the frame instead of the
      *           buffer should be kept.
      */
-    readonly outputBuffer: Gst.Buffer
+    outputBuffer: Gst.Buffer
     /**
      * Running time when the frame will be used.
      */
-    readonly deadline: Gst.ClockTime
+    deadline: Gst.ClockTime
     /* Methods of GstVideo-1.0.GstVideo.VideoCodecFrame */
     /**
      * Gets private data set on the frame by the subclass via
@@ -15536,6 +17048,7 @@ class VideoCodecFrame {
      * 
      * If a `user_data` was previously set, then the previous set `notify` will be called
      * before the `user_data` is replaced.
+     * @param notify a #GDestroyNotify
      */
     setUserData(notify: GLib.DestroyNotify): void
     /**
@@ -15550,29 +17063,29 @@ class VideoCodecState {
     /**
      * The #GstVideoInfo describing the stream
      */
-    readonly info: VideoInfo
+    info: VideoInfo
     /**
      * The #GstCaps used in the caps negotiation of the pad.
      */
-    readonly caps: Gst.Caps
+    caps: Gst.Caps
     /**
      * a #GstBuffer corresponding to the
      *     'codec_data' field of a stream, or NULL.
      */
-    readonly codecData: Gst.Buffer
+    codecData: Gst.Buffer
     /**
      * The #GstCaps for allocation query and pool
      *     negotiation. Since: 1.10
      */
-    readonly allocationCaps: Gst.Caps
+    allocationCaps: Gst.Caps
     /**
      * Mastering display color volume information (HDR metadata) for the stream.
      */
-    readonly masteringDisplayInfo: VideoMasteringDisplayInfo
+    masteringDisplayInfo: VideoMasteringDisplayInfo
     /**
      * Content light level information for the stream.
      */
-    readonly contentLightLevel: VideoContentLightLevel
+    contentLightLevel: VideoContentLightLevel
     /* Methods of GstVideo-1.0.GstVideo.VideoCodecState */
     /**
      * Increases the refcount of the given state by one.
@@ -15590,39 +17103,39 @@ class VideoColorPrimariesInfo {
     /**
      * a #GstVideoColorPrimaries
      */
-    readonly primaries: VideoColorPrimaries
+    primaries: VideoColorPrimaries
     /**
      * reference white x coordinate
      */
-    readonly wx: number
+    wx: number
     /**
      * reference white y coordinate
      */
-    readonly wy: number
+    wy: number
     /**
      * red x coordinate
      */
-    readonly rx: number
+    rx: number
     /**
      * red y coordinate
      */
-    readonly ry: number
+    ry: number
     /**
      * green x coordinate
      */
-    readonly gx: number
+    gx: number
     /**
      * green y coordinate
      */
-    readonly gy: number
+    gy: number
     /**
      * blue x coordinate
      */
-    readonly bx: number
+    bx: number
     /**
      * blue y coordinate
      */
-    readonly by: number
+    by: number
     static name: string
 }
 class VideoColorimetry {
@@ -15631,33 +17144,36 @@ class VideoColorimetry {
      * the color range. This is the valid range for the samples.
      *         It is used to convert the samples to Y'PbPr values.
      */
-    readonly range: VideoColorRange
+    range: VideoColorRange
     /**
      * the color matrix. Used to convert between Y'PbPr and
      *          non-linear RGB (R'G'B')
      */
-    readonly matrix: VideoColorMatrix
+    matrix: VideoColorMatrix
     /**
      * the transfer function. used to convert between R'G'B' and RGB
      */
-    readonly transfer: VideoTransferFunction
+    transfer: VideoTransferFunction
     /**
      * color primaries. used to convert between R'G'B' and CIE XYZ
      */
-    readonly primaries: VideoColorPrimaries
+    primaries: VideoColorPrimaries
     /* Methods of GstVideo-1.0.GstVideo.VideoColorimetry */
     /**
      * Parse the colorimetry string and update `cinfo` with the parsed
      * values.
+     * @param color a colorimetry string
      */
     fromString(color: string): boolean
     /**
      * Compare the 2 colorimetry sets for equality
+     * @param other another #GstVideoColorimetry
      */
     isEqual(other: VideoColorimetry): boolean
     /**
      * Check if the colorimetry information in `info` matches that of the
      * string `color`.
+     * @param color a colorimetry string
      */
     matches(color: string): boolean
     /**
@@ -15672,24 +17188,27 @@ class VideoContentLightLevel {
      * the maximum content light level
      *   (abbreviated to MaxCLL) in candelas per square meter (cd/m^2 and nit)
      */
-    readonly maxContentLightLevel: number
+    maxContentLightLevel: number
     /**
      * the maximum frame average light level
      *   (abbreviated to MaxFLL) in candelas per square meter (cd/m^2 and nit)
      */
-    readonly maxFrameAverageLightLevel: number
+    maxFrameAverageLightLevel: number
     /* Methods of GstVideo-1.0.GstVideo.VideoContentLightLevel */
     /**
      * Parse `caps` and update `linfo`
+     * @param caps a #GstCaps
      */
     addToCaps(caps: Gst.Caps): boolean
     /**
      * Parse `caps` and update `linfo`
+     * @param caps a #GstCaps
      */
     fromCaps(caps: Gst.Caps): boolean
     /**
      * Parse the value of content-light-level caps field and update `minfo`
      * with the parsed values.
+     * @param level a content-light-level string from caps
      */
     fromString(level: string): boolean
     /**
@@ -15698,6 +17217,7 @@ class VideoContentLightLevel {
     init(): void
     /**
      * Checks equality between `linfo` and `other`.
+     * @param other a #GstVideoContentLightLevel
      */
     isEqual(other: VideoContentLightLevel): boolean
     /**
@@ -15714,6 +17234,8 @@ class VideoConverter {
      * If #GST_VIDEO_CONVERTER_OPT_ASYNC_TASKS is %TRUE then this function will
      * return immediately and needs to be followed by a call to
      * gst_video_converter_frame_finish().
+     * @param src a #GstVideoFrame
+     * @param dest a #GstVideoFrame
      */
     frame(src: VideoFrame, dest: VideoFrame): void
     /**
@@ -15738,6 +17260,7 @@ class VideoConverter {
      * 
      * Look at the `GST_VIDEO_CONVERTER_OPT_*` fields to check valid configuration
      * option and values.
+     * @param config a #GstStructure
      */
     setConfig(config: Gst.Structure): boolean
     static name: string
@@ -15747,50 +17270,50 @@ class VideoCropMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the horizontal offset
      */
-    readonly x: number
+    x: number
     /**
      * the vertical offset
      */
-    readonly y: number
+    y: number
     /**
      * the cropped width
      */
-    readonly width: number
+    width: number
     /**
      * the cropped height
      */
-    readonly height: number
+    height: number
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
 }
 abstract class VideoDecoderClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoDecoderClass */
-    readonly open: (decoder: VideoDecoder) => boolean
-    readonly close: (decoder: VideoDecoder) => boolean
-    readonly start: (decoder: VideoDecoder) => boolean
-    readonly stop: (decoder: VideoDecoder) => boolean
-    readonly parse: (decoder: VideoDecoder, frame: VideoCodecFrame, adapter: GstBase.Adapter, atEos: boolean) => Gst.FlowReturn
-    readonly setFormat: (decoder: VideoDecoder, state: VideoCodecState) => boolean
-    readonly reset: (decoder: VideoDecoder, hard: boolean) => boolean
-    readonly finish: (decoder: VideoDecoder) => Gst.FlowReturn
-    readonly handleFrame: (decoder: VideoDecoder, frame: VideoCodecFrame) => Gst.FlowReturn
-    readonly sinkEvent: (decoder: VideoDecoder, event: Gst.Event) => boolean
-    readonly srcEvent: (decoder: VideoDecoder, event: Gst.Event) => boolean
-    readonly negotiate: (decoder: VideoDecoder) => boolean
-    readonly decideAllocation: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    readonly proposeAllocation: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    readonly flush: (decoder: VideoDecoder) => boolean
-    readonly sinkQuery: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    readonly srcQuery: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    readonly getcaps: (decoder: VideoDecoder, filter: Gst.Caps) => Gst.Caps
-    readonly drain: (decoder: VideoDecoder) => Gst.FlowReturn
-    readonly transformMeta: (decoder: VideoDecoder, frame: VideoCodecFrame, meta: Gst.Meta) => boolean
-    readonly handleMissingData: (decoder: VideoDecoder, timestamp: Gst.ClockTime, duration: Gst.ClockTime) => boolean
+    open: (decoder: VideoDecoder) => boolean
+    close: (decoder: VideoDecoder) => boolean
+    start: (decoder: VideoDecoder) => boolean
+    stop: (decoder: VideoDecoder) => boolean
+    parse: (decoder: VideoDecoder, frame: VideoCodecFrame, adapter: GstBase.Adapter, atEos: boolean) => Gst.FlowReturn
+    setFormat: (decoder: VideoDecoder, state: VideoCodecState) => boolean
+    reset: (decoder: VideoDecoder, hard: boolean) => boolean
+    finish: (decoder: VideoDecoder) => Gst.FlowReturn
+    handleFrame: (decoder: VideoDecoder, frame: VideoCodecFrame) => Gst.FlowReturn
+    sinkEvent: (decoder: VideoDecoder, event: Gst.Event) => boolean
+    srcEvent: (decoder: VideoDecoder, event: Gst.Event) => boolean
+    negotiate: (decoder: VideoDecoder) => boolean
+    decideAllocation: (decoder: VideoDecoder, query: Gst.Query) => boolean
+    proposeAllocation: (decoder: VideoDecoder, query: Gst.Query) => boolean
+    flush: (decoder: VideoDecoder) => boolean
+    sinkQuery: (decoder: VideoDecoder, query: Gst.Query) => boolean
+    srcQuery: (decoder: VideoDecoder, query: Gst.Query) => boolean
+    getcaps: (decoder: VideoDecoder, filter: Gst.Caps) => Gst.Caps
+    drain: (decoder: VideoDecoder) => Gst.FlowReturn
+    transformMeta: (decoder: VideoDecoder, frame: VideoCodecFrame, meta: Gst.Meta) => boolean
+    handleMissingData: (decoder: VideoDecoder, timestamp: Gst.ClockTime, duration: Gst.ClockTime) => boolean
     static name: string
 }
 class VideoDecoderPrivate {
@@ -15801,7 +17324,7 @@ abstract class VideoDirectionInterface {
     /**
      * parent interface type.
      */
-    readonly iface: GObject.TypeInterface
+    iface: GObject.TypeInterface
     static name: string
 }
 class VideoDither {
@@ -15814,31 +17337,35 @@ class VideoDither {
      * Dither `width` pixels starting from offset `x` in `line` using `dither`.
      * 
      * `y` is the line number of `line` in the output image.
+     * @param line pointer to the pixels of the line
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param width the width
      */
     line(line: object | null, x: number, y: number, width: number): void
     static name: string
 }
 abstract class VideoEncoderClass {
     /* Fields of GstVideo-1.0.GstVideo.VideoEncoderClass */
-    readonly open: (encoder: VideoEncoder) => boolean
-    readonly close: (encoder: VideoEncoder) => boolean
-    readonly start: (encoder: VideoEncoder) => boolean
-    readonly stop: (encoder: VideoEncoder) => boolean
-    readonly setFormat: (encoder: VideoEncoder, state: VideoCodecState) => boolean
-    readonly handleFrame: (encoder: VideoEncoder, frame: VideoCodecFrame) => Gst.FlowReturn
-    readonly reset: (encoder: VideoEncoder, hard: boolean) => boolean
-    readonly finish: (encoder: VideoEncoder) => Gst.FlowReturn
-    readonly prePush: (encoder: VideoEncoder, frame: VideoCodecFrame) => Gst.FlowReturn
-    readonly getcaps: (enc: VideoEncoder, filter: Gst.Caps) => Gst.Caps
-    readonly sinkEvent: (encoder: VideoEncoder, event: Gst.Event) => boolean
-    readonly srcEvent: (encoder: VideoEncoder, event: Gst.Event) => boolean
-    readonly negotiate: (encoder: VideoEncoder) => boolean
-    readonly decideAllocation: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    readonly proposeAllocation: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    readonly flush: (encoder: VideoEncoder) => boolean
-    readonly sinkQuery: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    readonly srcQuery: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    readonly transformMeta: (encoder: VideoEncoder, frame: VideoCodecFrame, meta: Gst.Meta) => boolean
+    open: (encoder: VideoEncoder) => boolean
+    close: (encoder: VideoEncoder) => boolean
+    start: (encoder: VideoEncoder) => boolean
+    stop: (encoder: VideoEncoder) => boolean
+    setFormat: (encoder: VideoEncoder, state: VideoCodecState) => boolean
+    handleFrame: (encoder: VideoEncoder, frame: VideoCodecFrame) => Gst.FlowReturn
+    reset: (encoder: VideoEncoder, hard: boolean) => boolean
+    finish: (encoder: VideoEncoder) => Gst.FlowReturn
+    prePush: (encoder: VideoEncoder, frame: VideoCodecFrame) => Gst.FlowReturn
+    getcaps: (enc: VideoEncoder, filter: Gst.Caps) => Gst.Caps
+    sinkEvent: (encoder: VideoEncoder, event: Gst.Event) => boolean
+    srcEvent: (encoder: VideoEncoder, event: Gst.Event) => boolean
+    negotiate: (encoder: VideoEncoder) => boolean
+    decideAllocation: (encoder: VideoEncoder, query: Gst.Query) => boolean
+    proposeAllocation: (encoder: VideoEncoder, query: Gst.Query) => boolean
+    flush: (encoder: VideoEncoder) => boolean
+    sinkQuery: (encoder: VideoEncoder, query: Gst.Query) => boolean
+    srcQuery: (encoder: VideoEncoder, query: Gst.Query) => boolean
+    transformMeta: (encoder: VideoEncoder, frame: VideoCodecFrame, meta: Gst.Meta) => boolean
     static name: string
 }
 class VideoEncoderPrivate {
@@ -15849,10 +17376,10 @@ abstract class VideoFilterClass {
     /**
      * the parent class structure
      */
-    readonly parentClass: GstBase.BaseTransformClass
-    readonly setInfo: (filter: VideoFilter, incaps: Gst.Caps, inInfo: VideoInfo, outcaps: Gst.Caps, outInfo: VideoInfo) => boolean
-    readonly transformFrame: (filter: VideoFilter, inframe: VideoFrame, outframe: VideoFrame) => Gst.FlowReturn
-    readonly transformFrameIp: (trans: VideoFilter, frame: VideoFrame) => Gst.FlowReturn
+    parentClass: GstBase.BaseTransformClass
+    setInfo: (filter: VideoFilter, incaps: Gst.Caps, inInfo: VideoInfo, outcaps: Gst.Caps, outInfo: VideoInfo) => boolean
+    transformFrame: (filter: VideoFilter, inframe: VideoFrame, outframe: VideoFrame) => Gst.FlowReturn
+    transformFrameIp: (trans: VideoFilter, frame: VideoFrame) => Gst.FlowReturn
     static name: string
 }
 class VideoFormatInfo {
@@ -15860,109 +17387,112 @@ class VideoFormatInfo {
     /**
      * #GstVideoFormat
      */
-    readonly format: VideoFormat
+    format: VideoFormat
     /**
      * string representation of the format
      */
-    readonly name: string
+    name: string
     /**
      * use readable description of the format
      */
-    readonly description: string
+    description: string
     /**
      * #GstVideoFormatFlags
      */
-    readonly flags: VideoFormatFlags
+    flags: VideoFormatFlags
     /**
      * The number of bits used to pack data items. This can be less than 8
      *    when multiple pixels are stored in a byte. for values > 8 multiple bytes
      *    should be read according to the endianness flag before applying the shift
      *    and mask.
      */
-    readonly bits: number
+    bits: number
     /**
      * the number of components in the video format.
      */
-    readonly nComponents: number
+    nComponents: number
     /**
      * the number of bits to shift away to get the component data
      */
-    readonly shift: number[]
+    shift: number[]
     /**
      * the depth in bits for each component
      */
-    readonly depth: number[]
+    depth: number[]
     /**
      * the pixel stride of each component. This is the amount of
      *    bytes to the pixel immediately to the right. When bits < 8, the stride is
      *    expressed in bits. For 24-bit RGB, this would be 3 bytes, for example,
      *    while it would be 4 bytes for RGBx or ARGB.
      */
-    readonly pixelStride: number[]
+    pixelStride: number[]
     /**
      * the number of planes for this format. The number of planes can be
      *    less than the amount of components when multiple components are packed into
      *    one plane.
      */
-    readonly nPlanes: number
+    nPlanes: number
     /**
      * the plane number where a component can be found
      */
-    readonly plane: number[]
+    plane: number[]
     /**
      * the offset in the plane where the first pixel of the components
      *    can be found.
      */
-    readonly poffset: number[]
+    poffset: number[]
     /**
      * subsampling factor of the width for the component. Use
      *     GST_VIDEO_SUB_SCALE to scale a width.
      */
-    readonly wSub: number[]
+    wSub: number[]
     /**
      * subsampling factor of the height for the component. Use
      *     GST_VIDEO_SUB_SCALE to scale a height.
      */
-    readonly hSub: number[]
+    hSub: number[]
     /**
      * the format of the unpacked pixels. This format must have the
      *     #GST_VIDEO_FORMAT_FLAG_UNPACK flag set.
      */
-    readonly unpackFormat: VideoFormat
+    unpackFormat: VideoFormat
     /**
      * an unpack function for this format
      */
-    readonly unpackFunc: VideoFormatUnpack
+    unpackFunc: VideoFormatUnpack
     /**
      * the amount of lines that will be packed
      */
-    readonly packLines: number
+    packLines: number
     /**
      * an pack function for this format
      */
-    readonly packFunc: VideoFormatPack
+    packFunc: VideoFormatPack
     /**
      * The tiling mode
      */
-    readonly tileMode: VideoTileMode
+    tileMode: VideoTileMode
     /**
      * The width of a tile, in bytes, represented as a shift
      */
-    readonly tileWs: number
+    tileWs: number
     /**
      * The height of a tile, in bytes, represented as a shift
      */
-    readonly tileHs: number
+    tileHs: number
     /* Methods of GstVideo-1.0.GstVideo.VideoFormatInfo */
     /**
      * Fill `components` with the number of all the components packed in plane `p`
      * for the format `info`. A value of -1 in `components` indicates that no more
      * components are packed in the plane.
+     * @param plane a plane number
      */
     component(plane: number): /* components */ number
     /**
      * Extrapolate `plane` stride from the first stride of an image. This helper is
      * useful to support legacy API were only one stride is supported.
+     * @param plane a plane number
+     * @param stride The fist plane stride
      */
     extrapolateStride(plane: number, stride: number): number
     static name: string
@@ -15972,38 +17502,39 @@ class VideoFrame {
     /**
      * the #GstVideoInfo
      */
-    readonly info: VideoInfo
+    info: VideoInfo
     /**
      * #GstVideoFrameFlags for the frame
      */
-    readonly flags: VideoFrameFlags
+    flags: VideoFrameFlags
     /**
      * the mapped buffer
      */
-    readonly buffer: Gst.Buffer
+    buffer: Gst.Buffer
     /**
      * pointer to metadata if any
      */
-    readonly meta: object
+    meta: object
     /**
      * id of the mapped frame. the id can for example be used to
      *   identify the frame in case of multiview video.
      */
-    readonly id: number
+    id: number
     /**
      * pointers to the plane data
      */
-    readonly data: object[]
+    data: object[]
     /**
      * mappings of the planes
      */
-    readonly map: Gst.MapInfo[]
+    map: Gst.MapInfo[]
     /* Methods of GstVideo-1.0.GstVideo.VideoFrame */
     /**
      * Copy the contents from `src` to `dest`.
      * 
      * Note: Since: 1.18, `dest` dimensions are allowed to be
      * smaller than `src` dimensions.
+     * @param src a #GstVideoFrame
      */
     copy(src: VideoFrame): boolean
     /**
@@ -16011,6 +17542,8 @@ class VideoFrame {
      * 
      * Note: Since: 1.18, `dest` dimensions are allowed to be
      * smaller than `src` dimensions.
+     * @param src a #GstVideoFrame
+     * @param plane a plane
      */
     copyPlane(src: VideoFrame, plane: number): boolean
     /**
@@ -16065,6 +17598,9 @@ class VideoFrame {
      * with the right values and if you use the accessor macros everything will
      * just work and you can access the data easily. It also maps the underlying
      * memory chunks for you.
+     * @param info a #GstVideoInfo
+     * @param buffer the buffer to map
+     * @param flags #GstMapFlags
      */
     static map(info: VideoInfo, buffer: Gst.Buffer, flags: Gst.MapFlags): [ /* returnType */ boolean, /* frame */ VideoFrame ]
     /**
@@ -16076,6 +17612,10 @@ class VideoFrame {
      * 
      * All video planes of `buffer` will be mapped and the pointers will be set in
      * `frame->`data.
+     * @param info a #GstVideoInfo
+     * @param buffer the buffer to map
+     * @param id the frame id to map
+     * @param flags #GstMapFlags
      */
     static mapId(info: VideoInfo, buffer: Gst.Buffer, id: number, flags: Gst.MapFlags): [ /* returnType */ boolean, /* frame */ VideoFrame ]
 }
@@ -16084,22 +17624,23 @@ class VideoGLTextureUploadMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * Orientation of the textures
      */
-    readonly textureOrientation: VideoGLTextureOrientation
+    textureOrientation: VideoGLTextureOrientation
     /**
      * Number of textures that are generated
      */
-    readonly nTextures: number
+    nTextures: number
     /**
      * Type of each texture
      */
-    readonly textureType: VideoGLTextureType[]
+    textureType: VideoGLTextureType[]
     /* Methods of GstVideo-1.0.GstVideo.VideoGLTextureUploadMeta */
     /**
      * Uploads the buffer which owns the meta to a specific texture ID.
+     * @param textureId the texture IDs to upload to
      */
     upload(textureId: number): boolean
     static name: string
@@ -16111,63 +17652,63 @@ class VideoInfo {
     /**
      * the format info of the video
      */
-    readonly finfo: VideoFormatInfo
+    finfo: VideoFormatInfo
     /**
      * the interlace mode
      */
-    readonly interlaceMode: VideoInterlaceMode
+    interlaceMode: VideoInterlaceMode
     /**
      * additional video flags
      */
-    readonly flags: VideoFlags
+    flags: VideoFlags
     /**
      * the width of the video
      */
-    readonly width: number
+    width: number
     /**
      * the height of the video
      */
-    readonly height: number
+    height: number
     /**
      * the default size of one frame
      */
-    readonly size: number
+    size: number
     /**
      * the number of views for multiview video
      */
-    readonly views: number
+    views: number
     /**
      * a #GstVideoChromaSite.
      */
-    readonly chromaSite: VideoChromaSite
+    chromaSite: VideoChromaSite
     /**
      * the colorimetry info
      */
-    readonly colorimetry: VideoColorimetry
+    colorimetry: VideoColorimetry
     /**
      * the pixel-aspect-ratio numerator
      */
-    readonly parN: number
+    parN: number
     /**
      * the pixel-aspect-ratio denominator
      */
-    readonly parD: number
+    parD: number
     /**
      * the framerate numerator
      */
-    readonly fpsN: number
+    fpsN: number
     /**
      * the framerate denominator
      */
-    readonly fpsD: number
+    fpsD: number
     /**
      * offsets of the planes
      */
-    readonly offset: number[]
+    offset: number[]
     /**
      * strides of the planes
      */
-    readonly stride: number[]
+    stride: number[]
     /* Methods of GstVideo-1.0.GstVideo.VideoInfo */
     /**
      * Adjust the offset and stride fields in `info` so that the padding and
@@ -16175,6 +17716,7 @@ class VideoInfo {
      * 
      * Extra padding will be added to the right side when stride alignment padding
      * is required and `align` will be updated with the new padding values.
+     * @param align alignment parameters
      */
     align(align: VideoAlignment): boolean
     /**
@@ -16187,6 +17729,7 @@ class VideoInfo {
      * 
      * In case of GST_VIDEO_INTERLACE_MODE_ALTERNATE info, the returned sizes are the
      * ones used to hold a single field, not the full frame.
+     * @param align alignment parameters
      */
     alignFull(align: VideoAlignment): [ /* returnType */ boolean, /* planeSize */ number | null ]
     /**
@@ -16194,6 +17737,9 @@ class VideoInfo {
      * GST_FORMAT_BYTES, GST_FORMAT_TIME, and GST_FORMAT_DEFAULT.  For
      * raw video, GST_FORMAT_DEFAULT corresponds to video frames.  This
      * function can be used to handle pad queries of the type GST_QUERY_CONVERT.
+     * @param srcFormat #GstFormat of the `src_value`
+     * @param srcValue value to convert
+     * @param destFormat #GstFormat of the `dest_value`
      */
     convert(srcFormat: Gst.Format, srcValue: number, destFormat: Gst.Format): [ /* returnType */ boolean, /* destValue */ number ]
     /**
@@ -16207,6 +17753,7 @@ class VideoInfo {
     free(): void
     /**
      * Compares two #GstVideoInfo and returns whether they are equal or not
+     * @param other a #GstVideoInfo
      */
     isEqual(other: VideoInfo): boolean
     /**
@@ -16215,11 +17762,18 @@ class VideoInfo {
      * Note: This initializes `info` first, no values are preserved. This function
      * does not set the offsets correctly for interlaced vertically
      * subsampled formats.
+     * @param format the format
+     * @param width a width
+     * @param height a height
      */
     setFormat(format: VideoFormat, width: number, height: number): boolean
     /**
      * Same as #gst_video_info_set_format but also allowing to set the interlaced
      * mode.
+     * @param format the format
+     * @param mode a #GstVideoInterlaceMode
+     * @param width a width
+     * @param height a height
      */
     setInterlacedFormat(format: VideoFormat, mode: VideoInterlaceMode, width: number, height: number): boolean
     /**
@@ -16234,6 +17788,7 @@ class VideoInfo {
     static newFromCaps(caps: Gst.Caps): VideoInfo
     /**
      * Parse `caps` and update `info`.
+     * @param caps a #GstCaps
      */
     static fromCaps(caps: Gst.Caps): [ /* returnType */ boolean, /* info */ VideoInfo ]
     /**
@@ -16248,29 +17803,31 @@ class VideoMasteringDisplayInfo {
      *   the index 0 contains red, 1 is for green and 2 is for blue.
      *   each value is normalized to 50000 (meaning that in unit of 0.00002)
      */
-    readonly displayPrimaries: VideoMasteringDisplayInfoCoordinates[]
+    displayPrimaries: VideoMasteringDisplayInfoCoordinates[]
     /**
      * the xy coordinates of white point in the CIE 1931 color space.
      *   each value is normalized to 50000 (meaning that in unit of 0.00002)
      */
-    readonly whitePoint: VideoMasteringDisplayInfoCoordinates
+    whitePoint: VideoMasteringDisplayInfoCoordinates
     /**
      * the maximum value of display luminance
      *   in unit of 0.0001 candelas per square metre (cd/m^2 and nit)
      */
-    readonly maxDisplayMasteringLuminance: number
+    maxDisplayMasteringLuminance: number
     /**
      * the minimum value of display luminance
      *   in unit of 0.0001 candelas per square metre (cd/m^2 and nit)
      */
-    readonly minDisplayMasteringLuminance: number
+    minDisplayMasteringLuminance: number
     /* Methods of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfo */
     /**
      * Set string representation of `minfo` to `caps`
+     * @param caps a #GstCaps
      */
     addToCaps(caps: Gst.Caps): boolean
     /**
      * Parse `caps` and update `minfo`
+     * @param caps a #GstCaps
      */
     fromCaps(caps: Gst.Caps): boolean
     /**
@@ -16279,6 +17836,7 @@ class VideoMasteringDisplayInfo {
     init(): void
     /**
      * Checks equality between `minfo` and `other`.
+     * @param other a #GstVideoMasteringDisplayInfo
      */
     isEqual(other: VideoMasteringDisplayInfo): boolean
     /**
@@ -16289,6 +17847,7 @@ class VideoMasteringDisplayInfo {
     /* Static methods and pseudo-constructors */
     /**
      * Extract #GstVideoMasteringDisplayInfo from `mastering`
+     * @param mastering a #GstStructure representing #GstVideoMasteringDisplayInfo
      */
     static fromString(mastering: string): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
 }
@@ -16297,11 +17856,11 @@ class VideoMasteringDisplayInfoCoordinates {
     /**
      * the x coordinate of CIE 1931 color space in unit of 0.00002.
      */
-    readonly x: number
+    x: number
     /**
      * the y coordinate of CIE 1931 color space in unit of 0.00002.
      */
-    readonly y: number
+    y: number
     static name: string
 }
 class VideoMeta {
@@ -16309,54 +17868,54 @@ class VideoMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the buffer this metadata belongs to
      */
-    readonly buffer: Gst.Buffer
+    buffer: Gst.Buffer
     /**
      * additional video flags
      */
-    readonly flags: VideoFrameFlags
+    flags: VideoFrameFlags
     /**
      * the video format
      */
-    readonly format: VideoFormat
+    format: VideoFormat
     /**
      * identifier of the frame
      */
-    readonly id: number
+    id: number
     /**
      * the video width
      */
-    readonly width: number
+    width: number
     /**
      * the video height
      */
-    readonly height: number
+    height: number
     /**
      * the number of planes in the image
      */
-    readonly nPlanes: number
+    nPlanes: number
     /**
      * array of offsets for the planes. This field might not always be
      *          valid, it is used by the default implementation of `map`.
      */
-    readonly offset: number[]
+    offset: number[]
     /**
      * array of strides for the planes. This field might not always be
      *          valid, it is used by the default implementation of `map`.
      */
-    readonly stride: number[]
-    readonly map: (meta: VideoMeta, plane: number, info: Gst.MapInfo, data: object, stride: number, flags: Gst.MapFlags) => boolean
-    readonly unmap: (meta: VideoMeta, plane: number, info: Gst.MapInfo) => boolean
+    stride: number[]
+    map: (meta: VideoMeta, plane: number, info: Gst.MapInfo, data: object, stride: number, flags: Gst.MapFlags) => boolean
+    unmap: (meta: VideoMeta, plane: number, info: Gst.MapInfo) => boolean
     /**
      * the paddings and alignment constraints of the video buffer.
      * It is up to the caller of `gst_buffer_add_video_meta_full()` to set it
      * using gst_video_meta_set_alignment(), if they did not it defaults
      * to no padding and no alignment. Since: 1.18
      */
-    readonly alignment: VideoAlignment
+    alignment: VideoAlignment
     /* Methods of GstVideo-1.0.GstVideo.VideoMeta */
     /**
      * Compute the padded height of each plane from `meta` (padded size
@@ -16375,6 +17934,7 @@ class VideoMeta {
      * Set the alignment of `meta` to `alignment`. This function checks that
      * the paddings defined in `alignment` are compatible with the strides
      * defined in `meta` and will fail to update if they are not.
+     * @param alignment a #GstVideoAlignment
      */
     setAlignment(alignment: VideoAlignment): boolean
     static name: string
@@ -16386,11 +17946,11 @@ class VideoMetaTransform {
     /**
      * the input #GstVideoInfo
      */
-    readonly inInfo: VideoInfo
+    inInfo: VideoInfo
     /**
      * the output #GstVideoInfo
      */
-    readonly outInfo: VideoInfo
+    outInfo: VideoInfo
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -16403,15 +17963,15 @@ abstract class VideoOrientationInterface {
     /**
      * parent interface type.
      */
-    readonly iface: GObject.TypeInterface
-    readonly getHflip: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* flip */ boolean ]
-    readonly getVflip: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* flip */ boolean ]
-    readonly getHcenter: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* center */ number ]
-    readonly getVcenter: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* center */ number ]
-    readonly setHflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
-    readonly setVflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
-    readonly setHcenter: (videoOrientation: VideoOrientation, center: number) => boolean
-    readonly setVcenter: (videoOrientation: VideoOrientation, center: number) => boolean
+    iface: GObject.TypeInterface
+    getHflip: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* flip */ boolean ]
+    getVflip: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* flip */ boolean ]
+    getHcenter: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* center */ number ]
+    getVcenter: (videoOrientation: VideoOrientation) => [ /* returnType */ boolean, /* center */ number ]
+    setHflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
+    setVflip: (videoOrientation: VideoOrientation, flip: boolean) => boolean
+    setHcenter: (videoOrientation: VideoOrientation, center: number) => boolean
+    setVcenter: (videoOrientation: VideoOrientation, center: number) => boolean
     static name: string
 }
 class VideoOverlayComposition {
@@ -16419,6 +17979,7 @@ class VideoOverlayComposition {
     /**
      * Adds an overlay rectangle to an existing overlay composition object. This
      * must be done right after creating the overlay composition.
+     * @param rectangle a #GstVideoOverlayRectangle to add to the     composition
      */
     addRectangle(rectangle: VideoOverlayRectangle): void
     /**
@@ -16428,6 +17989,7 @@ class VideoOverlayComposition {
      * 
      * Since `video_buf` data is read and will be modified, it ought be
      * mapped with flag GST_MAP_READWRITE.
+     * @param videoBuf a #GstVideoFrame containing raw video data in a             supported format. It should be mapped using GST_MAP_READWRITE
      */
     blend(videoBuf: VideoFrame): boolean
     /**
@@ -16440,6 +18002,7 @@ class VideoOverlayComposition {
     copy(): VideoOverlayComposition
     /**
      * Returns the `n-th` #GstVideoOverlayRectangle contained in `comp`.
+     * @param n number of the rectangle to get
      */
     getRectangle(n: number): VideoOverlayRectangle
     /**
@@ -16472,11 +18035,11 @@ class VideoOverlayCompositionMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the attached #GstVideoOverlayComposition
      */
-    readonly overlay: VideoOverlayComposition
+    overlay: VideoOverlayComposition
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
@@ -16486,11 +18049,11 @@ abstract class VideoOverlayInterface {
     /**
      * parent interface type.
      */
-    readonly iface: GObject.TypeInterface
-    readonly expose: (overlay: VideoOverlay) => void
-    readonly handleEvents: (overlay: VideoOverlay, handleEvents: boolean) => void
-    readonly setRenderRectangle: (overlay: VideoOverlay, x: number, y: number, width: number, height: number) => void
-    readonly setWindowHandle: (overlay: VideoOverlay, handle: number) => void
+    iface: GObject.TypeInterface
+    expose: (overlay: VideoOverlay) => void
+    handleEvents: (overlay: VideoOverlay, handleEvents: boolean) => void
+    setRenderRectangle: (overlay: VideoOverlay, x: number, y: number, width: number, height: number) => void
+    setWindowHandle: (overlay: VideoOverlay, handle: number) => void
     static name: string
 }
 class VideoOverlayRectangle {
@@ -16522,6 +18085,7 @@ class VideoOverlayRectangle {
      * do the scaling itself when handling the overlaying. The rectangle will
      * need to be scaled to the render dimensions, which can be retrieved using
      * gst_video_overlay_rectangle_get_render_rectangle().
+     * @param flags flags.    If a global_alpha value != 1 is set for the rectangle, the caller    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag    if he wants to apply global-alpha himself. If the flag is not set    global_alpha is applied internally before returning the pixel-data.
      */
     getPixelsUnscaledArgb(flags: VideoOverlayFormatFlags): Gst.Buffer
     /**
@@ -16529,6 +18093,7 @@ class VideoOverlayRectangle {
      * do the scaling itself when handling the overlaying. The rectangle will
      * need to be scaled to the render dimensions, which can be retrieved using
      * gst_video_overlay_rectangle_get_render_rectangle().
+     * @param flags flags.    If a global_alpha value != 1 is set for the rectangle, the caller    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag    if he wants to apply global-alpha himself. If the flag is not set    global_alpha is applied internally before returning the pixel-data.
      */
     getPixelsUnscaledAyuv(flags: VideoOverlayFormatFlags): Gst.Buffer
     /**
@@ -16536,6 +18101,7 @@ class VideoOverlayRectangle {
      * do the scaling itself when handling the overlaying. The rectangle will
      * need to be scaled to the render dimensions, which can be retrieved using
      * gst_video_overlay_rectangle_get_render_rectangle().
+     * @param flags flags.    If a global_alpha value != 1 is set for the rectangle, the caller    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag    if he wants to apply global-alpha himself. If the flag is not set    global_alpha is applied internally before returning the pixel-data.
      */
     getPixelsUnscaledRaw(flags: VideoOverlayFormatFlags): Gst.Buffer
     /**
@@ -16569,6 +18135,7 @@ class VideoOverlayRectangle {
      * make the rectangles inside a #GstVideoOverlayComposition writable using
      * gst_video_overlay_composition_make_writable() or
      * gst_video_overlay_composition_copy().
+     * @param globalAlpha Global alpha value (0 to 1.0)
      */
     setGlobalAlpha(globalAlpha: number): void
     /**
@@ -16581,6 +18148,10 @@ class VideoOverlayRectangle {
      * make the rectangles inside a #GstVideoOverlayComposition writable using
      * gst_video_overlay_composition_make_writable() or
      * gst_video_overlay_composition_copy().
+     * @param renderX render X position of rectangle on video
+     * @param renderY render Y position of rectangle on video
+     * @param renderWidth render width of rectangle
+     * @param renderHeight render height of rectangle
      */
     setRenderRectangle(renderX: number, renderY: number, renderWidth: number, renderHeight: number): void
     static name: string
@@ -16592,19 +18163,19 @@ class VideoRectangle {
     /**
      * X coordinate of rectangle's top-left point
      */
-    readonly x: number
+    x: number
     /**
      * Y coordinate of rectangle's top-left point
      */
-    readonly y: number
+    y: number
     /**
      * width of the rectangle
      */
-    readonly w: number
+    w: number
     /**
      * height of the rectangle
      */
-    readonly h: number
+    h: number
     static name: string
 }
 class VideoRegionOfInterestMeta {
@@ -16612,40 +18183,40 @@ class VideoRegionOfInterestMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * GQuark describing the semantic of the Roi (f.i. a face, a pedestrian)
      */
-    readonly roiType: GLib.Quark
+    roiType: GLib.Quark
     /**
      * identifier of this particular ROI
      */
-    readonly id: number
+    id: number
     /**
      * identifier of its parent ROI, used f.i. for ROI hierarchisation.
      */
-    readonly parentId: number
+    parentId: number
     /**
      * x component of upper-left corner
      */
-    readonly x: number
+    x: number
     /**
      * y component of upper-left corner
      */
-    readonly y: number
+    y: number
     /**
      * bounding box width
      */
-    readonly w: number
+    w: number
     /**
      * bounding box height
      */
-    readonly h: number
+    h: number
     /**
      * list of #GstStructure containing element-specific params for downstream,
      *          see gst_video_region_of_interest_meta_add_param(). (Since: 1.14)
      */
-    readonly params: object[]
+    params: object[]
     /* Methods of GstVideo-1.0.GstVideo.VideoRegionOfInterestMeta */
     /**
      * Attach element-specific parameters to `meta` meant to be used by downstream
@@ -16657,11 +18228,13 @@ class VideoRegionOfInterestMeta {
      * QP offsets this encoder should use when encoding the region described in `meta`.
      * Multiple parameters can be defined for the same meta so different encoders
      * can be supported by cross platform applications).
+     * @param s a #GstStructure
      */
     addParam(s: Gst.Structure): void
     /**
      * Retrieve the parameter for `meta` having `name` as structure name,
      * or %NULL if there is none.
+     * @param name a name.
      */
     getParam(name: string): Gst.Structure | null
     static name: string
@@ -16673,35 +18246,35 @@ class VideoResampler {
     /**
      * the input size
      */
-    readonly inSize: number
+    inSize: number
     /**
      * the output size
      */
-    readonly outSize: number
+    outSize: number
     /**
      * the maximum number of taps
      */
-    readonly maxTaps: number
+    maxTaps: number
     /**
      * the number of phases
      */
-    readonly nPhases: number
+    nPhases: number
     /**
      * array with the source offset for each output element
      */
-    readonly offset: number
+    offset: number
     /**
      * array with the phase to use for each output element
      */
-    readonly phase: number
+    phase: number
     /**
      * array with new number of taps for each phase
      */
-    readonly nTaps: number
+    nTaps: number
     /**
      * the taps for all phases
      */
-    readonly taps: number
+    taps: number
     /* Methods of GstVideo-1.0.GstVideo.VideoResampler */
     /**
      * Clear a previously initialized #GstVideoResampler `resampler`.
@@ -16721,6 +18294,16 @@ class VideoScaler {
      * one dimension or do a copy without scaling.
      * 
      * `x` and `y` are the coordinates in the destination image to process.
+     * @param vscale a vertical #GstVideoScaler
+     * @param format a #GstVideoFormat for `srcs` and `dest`
+     * @param src source pixels
+     * @param srcStride source pixels stride
+     * @param dest destination pixels
+     * @param destStride destination pixels stride
+     * @param x the horizontal destination offset
+     * @param y the vertical destination offset
+     * @param width the number of output pixels to scale
+     * @param height the number of output lines to scale
      */
     TODO_2d(vscale: VideoScaler, format: VideoFormat, src: object | null, srcStride: number, dest: object | null, destStride: number, x: number, y: number, width: number, height: number): void
     /**
@@ -16733,8 +18316,9 @@ class VideoScaler {
      * 
      * Note that for interlaced content, `in_offset` needs to be incremented with
      * 2 to get the next input line.
+     * @param outOffset an output offset
      */
-    getCoeff(outOffset: number, inOffset: number, nTaps: number): number
+    getCoeff(outOffset: number): [ /* returnType */ number, /* inOffset */ number | null, /* nTaps */ number | null ]
     /**
      * Get the maximum number of taps for `scale`.
      */
@@ -16742,12 +18326,22 @@ class VideoScaler {
     /**
      * Horizontally scale the pixels in `src` to `dest,` starting from `dest_offset`
      * for `width` samples.
+     * @param format a #GstVideoFormat for `src` and `dest`
+     * @param src source pixels
+     * @param dest destination pixels
+     * @param destOffset the horizontal destination offset
+     * @param width the number of pixels to scale
      */
     horizontal(format: VideoFormat, src: object | null, dest: object | null, destOffset: number, width: number): void
     /**
      * Vertically combine `width` pixels in the lines in `src_lines` to `dest`.
      * `dest` is the location of the target line at `dest_offset` and
      * `srcs` are the input lines for `dest_offset`.
+     * @param format a #GstVideoFormat for `srcs` and `dest`
+     * @param srcLines source pixels lines
+     * @param dest destination pixels
+     * @param destOffset the vertical destination offset
+     * @param width the number of pixels to scale
      */
     vertical(format: VideoFormat, srcLines: object | null, dest: object | null, destOffset: number, width: number): void
     static name: string
@@ -16757,9 +18351,9 @@ abstract class VideoSinkClass {
     /**
      * the parent class structure
      */
-    readonly parentClass: GstBase.BaseSinkClass
-    readonly showFrame: (videoSink: VideoSink, buf: Gst.Buffer) => Gst.FlowReturn
-    readonly setInfo: (videoSink: VideoSink, caps: Gst.Caps, info: VideoInfo) => boolean
+    parentClass: GstBase.BaseSinkClass
+    showFrame: (videoSink: VideoSink, buf: Gst.Buffer) => Gst.FlowReturn
+    setInfo: (videoSink: VideoSink, caps: Gst.Caps, info: VideoInfo) => boolean
     static name: string
 }
 class VideoSinkPrivate {
@@ -16770,31 +18364,32 @@ class VideoTimeCode {
     /**
      * the corresponding #GstVideoTimeCodeConfig
      */
-    readonly config: VideoTimeCodeConfig
+    config: VideoTimeCodeConfig
     /**
      * the hours field of #GstVideoTimeCode
      */
-    readonly hours: number
+    hours: number
     /**
      * the minutes field of #GstVideoTimeCode
      */
-    readonly minutes: number
+    minutes: number
     /**
      * the seconds field of #GstVideoTimeCode
      */
-    readonly seconds: number
+    seconds: number
     /**
      * the frames field of #GstVideoTimeCode
      */
-    readonly frames: number
+    frames: number
     /**
      * Interlaced video field count
      */
-    readonly fieldCount: number
+    fieldCount: number
     /* Methods of GstVideo-1.0.GstVideo.VideoTimeCode */
     /**
      * Adds or subtracts `frames` amount of frames to `tc`. tc needs to
      * contain valid data, as verified by gst_video_time_code_is_valid().
+     * @param frames How many frames to add or subtract
      */
     addFrames(frames: number): void
     /**
@@ -16805,6 +18400,7 @@ class VideoTimeCode {
      * because of drop-frame oddities. However,
      * adding ("00:09:00;02", "00:01:00:00") will return "00:10:00;00"
      * because this time we can have an exact minute.
+     * @param tcInter The #GstVideoTimeCodeInterval to add to `tc`. The interval must contain valid values, except that for drop-frame timecode, it may also contain timecodes which would normally be dropped. These are then corrected to the next reasonable timecode.
      */
     addInterval(tcInter: VideoTimeCodeInterval): VideoTimeCode | null
     /**
@@ -16816,6 +18412,7 @@ class VideoTimeCode {
      * Compares `tc1` and `tc2`. If both have latest daily jam information, it is
      * taken into account. Otherwise, it is assumed that the daily jam of both
      * `tc1` and `tc2` was at the same time. Both time codes must be valid.
+     * @param tc2 another valid #GstVideoTimeCode
      */
     compare(tc2: VideoTimeCode): number
     copy(): VideoTimeCode
@@ -16835,6 +18432,15 @@ class VideoTimeCode {
      * Initializes `tc` with the given values.
      * The values are not checked for being in a valid range. To see if your
      * timecode actually has valid content, use gst_video_time_code_is_valid().
+     * @param fpsN Numerator of the frame rate
+     * @param fpsD Denominator of the frame rate
+     * @param latestDailyJam The latest daily jam of the #GstVideoTimeCode
+     * @param flags #GstVideoTimeCodeFlags
+     * @param hours the hours field of #GstVideoTimeCode
+     * @param minutes the minutes field of #GstVideoTimeCode
+     * @param seconds the seconds field of #GstVideoTimeCode
+     * @param frames the frames field of #GstVideoTimeCode
+     * @param fieldCount Interlaced video field count
      */
     init(fpsN: number, fpsD: number, latestDailyJam: GLib.DateTime | null, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, fieldCount: number): void
     /**
@@ -16843,11 +18449,21 @@ class VideoTimeCode {
      * 
      * Will assert on invalid parameters, use gst_video_time_code_init_from_date_time_full()
      * for being able to handle invalid parameters.
+     * @param fpsN Numerator of the frame rate
+     * @param fpsD Denominator of the frame rate
+     * @param dt #GDateTime to convert
+     * @param flags #GstVideoTimeCodeFlags
+     * @param fieldCount Interlaced video field count
      */
     initFromDateTime(fpsN: number, fpsD: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, fieldCount: number): void
     /**
      * The resulting config->latest_daily_jam is set to
      * midnight, and timecode is set to the given time.
+     * @param fpsN Numerator of the frame rate
+     * @param fpsD Denominator of the frame rate
+     * @param dt #GDateTime to convert
+     * @param flags #GstVideoTimeCodeFlags
+     * @param fieldCount Interlaced video field count
      */
     initFromDateTimeFull(fpsN: number, fpsD: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, fieldCount: number): boolean
     isValid(): boolean
@@ -16872,19 +18488,19 @@ class VideoTimeCodeConfig {
     /**
      * Numerator of the frame rate
      */
-    readonly fpsN: number
+    fpsN: number
     /**
      * Denominator of the frame rate
      */
-    readonly fpsD: number
+    fpsD: number
     /**
      * the corresponding #GstVideoTimeCodeFlags
      */
-    readonly flags: VideoTimeCodeFlags
+    flags: VideoTimeCodeFlags
     /**
      * The latest daily jam information, if present, or NULL
      */
-    readonly latestDailyJam: GLib.DateTime
+    latestDailyJam: GLib.DateTime
     static name: string
 }
 class VideoTimeCodeInterval {
@@ -16892,19 +18508,19 @@ class VideoTimeCodeInterval {
     /**
      * the hours field of #GstVideoTimeCodeInterval
      */
-    readonly hours: number
+    hours: number
     /**
      * the minutes field of #GstVideoTimeCodeInterval
      */
-    readonly minutes: number
+    minutes: number
     /**
      * the seconds field of #GstVideoTimeCodeInterval
      */
-    readonly seconds: number
+    seconds: number
     /**
      * the frames field of #GstVideoTimeCodeInterval
      */
-    readonly frames: number
+    frames: number
     /* Methods of GstVideo-1.0.GstVideo.VideoTimeCodeInterval */
     /**
      * Initializes `tc` with empty/zero/NULL values.
@@ -16917,6 +18533,10 @@ class VideoTimeCodeInterval {
     free(): void
     /**
      * Initializes `tc` with the given values.
+     * @param hours the hours field of #GstVideoTimeCodeInterval
+     * @param minutes the minutes field of #GstVideoTimeCodeInterval
+     * @param seconds the seconds field of #GstVideoTimeCodeInterval
+     * @param frames the frames field of #GstVideoTimeCodeInterval
      */
     init(hours: number, minutes: number, seconds: number, frames: number): void
     static name: string
@@ -16931,11 +18551,11 @@ class VideoTimeCodeMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the GstVideoTimeCode to attach
      */
-    readonly tc: VideoTimeCode
+    tc: VideoTimeCode
     static name: string
     /* Static methods and pseudo-constructors */
     static getInfo(): Gst.MetaInfo
@@ -16947,6 +18567,10 @@ class VideoVBIEncoder {
      * 
      * Note that the contents of the data are always read as 8bit data (i.e. do not contain
      * the parity check bits).
+     * @param composite %TRUE if composite ADF should be created, component otherwise
+     * @param dID The Data Identifier
+     * @param sDIDBlockNumber The Secondary Data Identifier (if type 2) or the Data                     Block Number (if type 1)
+     * @param data The user data content of the Ancillary packet.    Does not contain the ADF, DID, SDID nor CS.
      */
     addAncillary(composite: boolean, dID: number, sDIDBlockNumber: number, data: Uint8Array): boolean
     copy(): VideoVBIEncoder
@@ -16966,6 +18590,7 @@ class VideoVBIParser {
     /**
      * Provide a new line of data to the `parser`. Call gst_video_vbi_parser_get_ancillary()
      * to get the Ancillary data that might be present on that line.
+     * @param data The line of data to parse
      */
     addLine(data: Uint8Array): void
     copy(): VideoVBIParser

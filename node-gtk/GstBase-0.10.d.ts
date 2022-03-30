@@ -83,7 +83,7 @@ interface GstAdapter_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GstAdapter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.GstAdapter */
     clear(): void
     push(buf: Gst.Buffer): void
@@ -132,6 +132,10 @@ class GstAdapter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -142,6 +146,12 @@ class GstAdapter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -165,6 +175,7 @@ class GstAdapter {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -184,11 +195,14 @@ class GstAdapter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -196,6 +210,8 @@ class GstAdapter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -213,6 +229,7 @@ class GstAdapter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -258,6 +275,7 @@ class GstAdapter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -301,15 +319,20 @@ class GstAdapter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -350,6 +373,7 @@ class GstAdapter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -384,6 +408,7 @@ class GstAdapter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -415,6 +440,7 @@ class GstAdapter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -439,16 +465,16 @@ interface GstCollectPads_ConstructProps extends Gst.Object_ConstructProps {
 }
 class GstCollectPads {
     /* Fields of Gst-0.10.Gst.Object */
-    readonly object: GObject.Object
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    object: GObject.Object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.GstCollectPads */
     setFunction(func: Gst.CollectPadsFunction, userData: object): void
     setClipFunction(clipfunc: Gst.CollectPadsClipFunction, userData: object): void
@@ -517,6 +543,10 @@ class GstCollectPads {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -527,6 +557,12 @@ class GstCollectPads {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -550,6 +586,7 @@ class GstCollectPads {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -569,11 +606,14 @@ class GstCollectPads {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -581,6 +621,8 @@ class GstCollectPads {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -598,6 +640,7 @@ class GstCollectPads {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -643,6 +686,7 @@ class GstCollectPads {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -686,15 +730,20 @@ class GstCollectPads {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -735,6 +784,7 @@ class GstCollectPads {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -769,6 +819,7 @@ class GstCollectPads {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Object */
@@ -821,6 +872,7 @@ class GstCollectPads {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -849,7 +901,7 @@ class GstDataQueue {
     readonly currentLevelTime: number
     readonly currentLevelVisible: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.GstDataQueue */
     push(item: Gst.DataQueueItem): boolean
     pop(item: Gst.DataQueueItem): boolean
@@ -895,6 +947,10 @@ class GstDataQueue {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -905,6 +961,12 @@ class GstDataQueue {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -928,6 +990,7 @@ class GstDataQueue {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -947,11 +1010,14 @@ class GstDataQueue {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -959,6 +1025,8 @@ class GstDataQueue {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -976,6 +1044,7 @@ class GstDataQueue {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1021,6 +1090,7 @@ class GstDataQueue {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1064,15 +1134,20 @@ class GstDataQueue {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1113,6 +1188,7 @@ class GstDataQueue {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1147,6 +1223,7 @@ class GstDataQueue {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstBase-0.10.GstBase.GstDataQueue */
@@ -1189,6 +1266,7 @@ class GstDataQueue {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1232,55 +1310,55 @@ class GstPushSrc {
     doTimestamp: boolean
     typefind: boolean
     /* Fields of GstBase-0.10.GstBase.Src */
-    readonly element: Gst.Element
-    readonly srcpad: Gst.Pad
-    readonly liveLock: GLib.Mutex
-    readonly liveCond: GLib.Cond
-    readonly isLive: boolean
-    readonly liveRunning: boolean
-    readonly blocksize: number
-    readonly canActivatePush: boolean
-    readonly padMode: Gst.ActivateMode
-    readonly seekable: boolean
-    readonly randomAccess: boolean
-    readonly clockId: Gst.ClockID
-    readonly endTime: Gst.ClockTime
-    readonly segment: Gst.Segment
-    readonly needNewsegment: boolean
-    readonly offset: number
-    readonly size: number
-    readonly numBuffers: number
-    readonly numBuffersLeft: number
-    readonly priv: Gst.BaseSrcPrivate
+    element: Gst.Element
+    srcpad: Gst.Pad
+    liveLock: GLib.Mutex
+    liveCond: GLib.Cond
+    isLive: boolean
+    liveRunning: boolean
+    blocksize: number
+    canActivatePush: boolean
+    padMode: Gst.ActivateMode
+    seekable: boolean
+    randomAccess: boolean
+    clockId: Gst.ClockID
+    endTime: Gst.ClockTime
+    segment: Gst.Segment
+    needNewsegment: boolean
+    offset: number
+    size: number
+    numBuffers: number
+    numBuffersLeft: number
+    priv: Gst.BaseSrcPrivate
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.Src */
     waitPlaying(): Gst.FlowReturn
     setLive(live: boolean): void
@@ -1399,6 +1477,10 @@ class GstPushSrc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1409,6 +1491,12 @@ class GstPushSrc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1432,6 +1520,7 @@ class GstPushSrc {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1451,11 +1540,14 @@ class GstPushSrc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1463,6 +1555,8 @@ class GstPushSrc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1480,6 +1574,7 @@ class GstPushSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1525,6 +1620,7 @@ class GstPushSrc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1568,15 +1664,20 @@ class GstPushSrc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1617,6 +1718,7 @@ class GstPushSrc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1651,6 +1753,7 @@ class GstPushSrc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Element */
@@ -1719,6 +1822,7 @@ class GstPushSrc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1772,34 +1876,34 @@ class Sink {
     sync: boolean
     tsOffset: number
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.Sink */
     doPreroll(obj: Gst.MiniObject): Gst.FlowReturn
     waitPreroll(): Gst.FlowReturn
@@ -1932,6 +2036,10 @@ class Sink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1942,6 +2050,12 @@ class Sink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1965,6 +2079,7 @@ class Sink {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1984,11 +2099,14 @@ class Sink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1996,6 +2114,8 @@ class Sink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2013,6 +2133,7 @@ class Sink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2058,6 +2179,7 @@ class Sink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2101,15 +2223,20 @@ class Sink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2150,6 +2277,7 @@ class Sink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2184,6 +2312,7 @@ class Sink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Element */
@@ -2252,6 +2381,7 @@ class Sink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2334,34 +2464,34 @@ class Src {
     numBuffers: number
     typefind: boolean
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.Src */
     waitPlaying(): Gst.FlowReturn
     setLive(live: boolean): void
@@ -2481,6 +2611,10 @@ class Src {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2491,6 +2625,12 @@ class Src {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2514,6 +2654,7 @@ class Src {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2533,11 +2674,14 @@ class Src {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2545,6 +2689,8 @@ class Src {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2562,6 +2708,7 @@ class Src {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2607,6 +2754,7 @@ class Src {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2650,15 +2798,20 @@ class Src {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2699,6 +2852,7 @@ class Src {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2733,6 +2887,7 @@ class Src {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Element */
@@ -2801,6 +2956,7 @@ class Src {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2847,34 +3003,34 @@ class Transform {
     /* Properties of GstBase-0.10.GstBase.Transform */
     qos: boolean
     /* Fields of Gst-0.10.Gst.Element */
-    readonly object: Gst.Object
-    readonly stateLock: any
-    readonly stateCond: GLib.Cond
-    readonly stateCookie: number
-    readonly currentState: Gst.State
-    readonly nextState: Gst.State
-    readonly pendingState: Gst.State
-    readonly lastReturn: Gst.StateChangeReturn
-    readonly bus: Gst.Bus
-    readonly clock: Gst.Clock
-    readonly baseTime: Gst.ClockTimeDiff
-    readonly numpads: number
-    readonly pads: object[]
-    readonly numsrcpads: number
-    readonly srcpads: object[]
-    readonly numsinkpads: number
-    readonly sinkpads: object[]
-    readonly padsCookie: number
+    object: Gst.Object
+    stateLock: any
+    stateCond: GLib.Cond
+    stateCookie: number
+    currentState: Gst.State
+    nextState: Gst.State
+    pendingState: Gst.State
+    lastReturn: Gst.StateChangeReturn
+    bus: Gst.Bus
+    clock: Gst.Clock
+    baseTime: Gst.ClockTimeDiff
+    numpads: number
+    pads: object[]
+    numsrcpads: number
+    srcpads: object[]
+    numsinkpads: number
+    sinkpads: object[]
+    padsCookie: number
     /* Fields of Gst-0.10.Gst.Object */
-    readonly refcount: number
-    readonly lock: GLib.Mutex
-    readonly name: string
-    readonly namePrefix: string
-    readonly parent: Gst.Object
-    readonly flags: number
-    readonly gstReserved: object
+    refcount: number
+    lock: GLib.Mutex
+    name: string
+    namePrefix: string
+    parent: Gst.Object
+    flags: number
+    gstReserved: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstBase-0.10.GstBase.Transform */
     setPassthrough(passthrough: boolean): void
     isPassthrough(): boolean
@@ -2994,6 +3150,10 @@ class Transform {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3004,6 +3164,12 @@ class Transform {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3027,6 +3193,7 @@ class Transform {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3046,11 +3213,14 @@ class Transform {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3058,6 +3228,8 @@ class Transform {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3075,6 +3247,7 @@ class Transform {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3120,6 +3293,7 @@ class Transform {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3163,15 +3337,20 @@ class Transform {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3212,6 +3391,7 @@ class Transform {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3246,6 +3426,7 @@ class Transform {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Gst-0.10.Gst.Element */
@@ -3314,6 +3495,7 @@ class Transform {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3339,8 +3521,8 @@ class Transform {
 }
 abstract class GstAdapterClass {
     /* Fields of GstBase-0.10.GstBase.GstAdapterClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly gstReserved: any[]
+    parentClass: GObject.ObjectClass
+    gstReserved: any[]
     static name: string
 }
 class GstAdapterPrivate {
@@ -3348,10 +3530,10 @@ class GstAdapterPrivate {
 }
 class GstBitReader {
     /* Fields of GstBase-0.10.GstBase.GstBitReader */
-    readonly data: number
-    readonly size: number
-    readonly byte: number
-    readonly bit: number
+    data: number
+    size: number
+    byte: number
+    bit: number
     /* Methods of GstBase-0.10.GstBase.GstBitReader */
     free(): void
     init(data: any[], size: number): void
@@ -3379,9 +3561,9 @@ class GstBitReader {
 }
 class GstByteReader {
     /* Fields of GstBase-0.10.GstBase.GstByteReader */
-    readonly data: number
-    readonly size: number
-    readonly byte: number
+    data: number
+    size: number
+    byte: number
     /* Methods of GstBase-0.10.GstBase.GstByteReader */
     free(): void
     init(data: any[], size: number): void
@@ -3456,10 +3638,10 @@ class GstByteReader {
 }
 class GstByteWriter {
     /* Fields of GstBase-0.10.GstBase.GstByteWriter */
-    readonly parent: Gst.ByteReader
-    readonly allocSize: number
-    readonly fixed: boolean
-    readonly owned: boolean
+    parent: Gst.ByteReader
+    allocSize: number
+    fixed: boolean
+    owned: boolean
     /* Methods of GstBase-0.10.GstBase.GstByteWriter */
     init(): void
     initWithSize(size: number, fixed: boolean): void
@@ -3511,17 +3693,17 @@ class GstByteWriter {
 }
 class GstCollectData {
     /* Fields of GstBase-0.10.GstBase.GstCollectData */
-    readonly collect: Gst.CollectPads
-    readonly pad: Gst.Pad
-    readonly buffer: Gst.Buffer
-    readonly pos: number
-    readonly segment: Gst.Segment
+    collect: Gst.CollectPads
+    pad: Gst.Pad
+    buffer: Gst.Buffer
+    pos: number
+    segment: Gst.Segment
     static name: string
 }
 abstract class GstCollectPadsClass {
     /* Fields of GstBase-0.10.GstBase.GstCollectPadsClass */
-    readonly parentClass: Gst.ObjectClass
-    readonly gstReserved: any[]
+    parentClass: Gst.ObjectClass
+    gstReserved: any[]
     static name: string
 }
 class GstCollectPadsPrivate {
@@ -3529,54 +3711,54 @@ class GstCollectPadsPrivate {
 }
 abstract class GstDataQueueClass {
     /* Fields of GstBase-0.10.GstBase.GstDataQueueClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly empty: (queue: Gst.DataQueue) => void
-    readonly full: (queue: Gst.DataQueue) => void
-    readonly gstReserved: any[]
+    parentClass: GObject.ObjectClass
+    empty: (queue: Gst.DataQueue) => void
+    full: (queue: Gst.DataQueue) => void
+    gstReserved: any[]
     static name: string
 }
 class GstDataQueueItem {
     /* Fields of GstBase-0.10.GstBase.GstDataQueueItem */
-    readonly object: Gst.MiniObject
-    readonly size: number
-    readonly duration: number
-    readonly visible: boolean
-    readonly destroy: GLib.DestroyNotify
+    object: Gst.MiniObject
+    size: number
+    duration: number
+    visible: boolean
+    destroy: GLib.DestroyNotify
     static name: string
 }
 class GstDataQueueSize {
     /* Fields of GstBase-0.10.GstBase.GstDataQueueSize */
-    readonly visible: number
-    readonly bytes: number
-    readonly time: number
+    visible: number
+    bytes: number
+    time: number
     static name: string
 }
 abstract class GstPushSrcClass {
     /* Fields of GstBase-0.10.GstBase.GstPushSrcClass */
-    readonly parentClass: Gst.BaseSrcClass
-    readonly create: (src: Gst.PushSrc, buf: Gst.Buffer) => Gst.FlowReturn
-    readonly gstReserved: any[]
+    parentClass: Gst.BaseSrcClass
+    create: (src: Gst.PushSrc, buf: Gst.Buffer) => Gst.FlowReturn
+    gstReserved: any[]
     static name: string
 }
 abstract class SinkClass {
     /* Fields of GstBase-0.10.GstBase.SinkClass */
-    readonly parentClass: Gst.ElementClass
-    readonly getCaps: (sink: Gst.BaseSink) => Gst.Caps
-    readonly setCaps: (sink: Gst.BaseSink, caps: Gst.Caps) => boolean
-    readonly bufferAlloc: (sink: Gst.BaseSink, offset: number, size: number, caps: Gst.Caps, buf: Gst.Buffer) => Gst.FlowReturn
-    readonly getTimes: (sink: Gst.BaseSink, buffer: Gst.Buffer, start: Gst.ClockTime, end: Gst.ClockTime) => void
-    readonly start: (sink: Gst.BaseSink) => boolean
-    readonly stop: (sink: Gst.BaseSink) => boolean
-    readonly unlock: (sink: Gst.BaseSink) => boolean
-    readonly event: (sink: Gst.BaseSink, event: Gst.Event) => boolean
-    readonly preroll: (sink: Gst.BaseSink, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly render: (sink: Gst.BaseSink, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly asyncPlay: (sink: Gst.BaseSink) => Gst.StateChangeReturn
-    readonly activatePull: (sink: Gst.BaseSink, active: boolean) => boolean
-    readonly fixate: (sink: Gst.BaseSink, caps: Gst.Caps) => void
-    readonly unlockStop: (sink: Gst.BaseSink) => boolean
-    readonly renderList: (sink: Gst.BaseSink, bufferList: Gst.BufferList) => Gst.FlowReturn
-    readonly gstReserved: any[]
+    parentClass: Gst.ElementClass
+    getCaps: (sink: Gst.BaseSink) => Gst.Caps
+    setCaps: (sink: Gst.BaseSink, caps: Gst.Caps) => boolean
+    bufferAlloc: (sink: Gst.BaseSink, offset: number, size: number, caps: Gst.Caps, buf: Gst.Buffer) => Gst.FlowReturn
+    getTimes: (sink: Gst.BaseSink, buffer: Gst.Buffer, start: Gst.ClockTime, end: Gst.ClockTime) => void
+    start: (sink: Gst.BaseSink) => boolean
+    stop: (sink: Gst.BaseSink) => boolean
+    unlock: (sink: Gst.BaseSink) => boolean
+    event: (sink: Gst.BaseSink, event: Gst.Event) => boolean
+    preroll: (sink: Gst.BaseSink, buffer: Gst.Buffer) => Gst.FlowReturn
+    render: (sink: Gst.BaseSink, buffer: Gst.Buffer) => Gst.FlowReturn
+    asyncPlay: (sink: Gst.BaseSink) => Gst.StateChangeReturn
+    activatePull: (sink: Gst.BaseSink, active: boolean) => boolean
+    fixate: (sink: Gst.BaseSink, caps: Gst.Caps) => void
+    unlockStop: (sink: Gst.BaseSink) => boolean
+    renderList: (sink: Gst.BaseSink, bufferList: Gst.BufferList) => Gst.FlowReturn
+    gstReserved: any[]
     static name: string
 }
 class SinkPrivate {
@@ -3584,26 +3766,26 @@ class SinkPrivate {
 }
 abstract class SrcClass {
     /* Fields of GstBase-0.10.GstBase.SrcClass */
-    readonly parentClass: Gst.ElementClass
-    readonly getCaps: (src: Gst.BaseSrc) => Gst.Caps
-    readonly setCaps: (src: Gst.BaseSrc, caps: Gst.Caps) => boolean
-    readonly negotiate: (src: Gst.BaseSrc) => boolean
-    readonly newsegment: (src: Gst.BaseSrc) => boolean
-    readonly start: (src: Gst.BaseSrc) => boolean
-    readonly stop: (src: Gst.BaseSrc) => boolean
-    readonly getTimes: (src: Gst.BaseSrc, buffer: Gst.Buffer, start: Gst.ClockTime, end: Gst.ClockTime) => void
-    readonly getSize: (src: Gst.BaseSrc) => [ /* returnType */ boolean, /* size */ number ]
-    readonly isSeekable: (src: Gst.BaseSrc) => boolean
-    readonly unlock: (src: Gst.BaseSrc) => boolean
-    readonly event: (src: Gst.BaseSrc, event: Gst.Event) => boolean
-    readonly create: (src: Gst.BaseSrc, offset: number, size: number, buf: Gst.Buffer) => Gst.FlowReturn
-    readonly doSeek: (src: Gst.BaseSrc, segment: Gst.Segment) => boolean
-    readonly query: (src: Gst.BaseSrc, query: Gst.Query) => boolean
-    readonly checkGetRange: (src: Gst.BaseSrc) => boolean
-    readonly fixate: (src: Gst.BaseSrc, caps: Gst.Caps) => void
-    readonly unlockStop: (src: Gst.BaseSrc) => boolean
-    readonly prepareSeekSegment: (src: Gst.BaseSrc, seek: Gst.Event, segment: Gst.Segment) => boolean
-    readonly gstReserved: any[]
+    parentClass: Gst.ElementClass
+    getCaps: (src: Gst.BaseSrc) => Gst.Caps
+    setCaps: (src: Gst.BaseSrc, caps: Gst.Caps) => boolean
+    negotiate: (src: Gst.BaseSrc) => boolean
+    newsegment: (src: Gst.BaseSrc) => boolean
+    start: (src: Gst.BaseSrc) => boolean
+    stop: (src: Gst.BaseSrc) => boolean
+    getTimes: (src: Gst.BaseSrc, buffer: Gst.Buffer, start: Gst.ClockTime, end: Gst.ClockTime) => void
+    getSize: (src: Gst.BaseSrc) => [ /* returnType */ boolean, /* size */ number ]
+    isSeekable: (src: Gst.BaseSrc) => boolean
+    unlock: (src: Gst.BaseSrc) => boolean
+    event: (src: Gst.BaseSrc, event: Gst.Event) => boolean
+    create: (src: Gst.BaseSrc, offset: number, size: number, buf: Gst.Buffer) => Gst.FlowReturn
+    doSeek: (src: Gst.BaseSrc, segment: Gst.Segment) => boolean
+    query: (src: Gst.BaseSrc, query: Gst.Query) => boolean
+    checkGetRange: (src: Gst.BaseSrc) => boolean
+    fixate: (src: Gst.BaseSrc, caps: Gst.Caps) => void
+    unlockStop: (src: Gst.BaseSrc) => boolean
+    prepareSeekSegment: (src: Gst.BaseSrc, seek: Gst.Event, segment: Gst.Segment) => boolean
+    gstReserved: any[]
     static name: string
 }
 class SrcPrivate {
@@ -3611,23 +3793,23 @@ class SrcPrivate {
 }
 abstract class TransformClass {
     /* Fields of GstBase-0.10.GstBase.TransformClass */
-    readonly parentClass: Gst.ElementClass
-    readonly transformCaps: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps) => Gst.Caps
-    readonly fixateCaps: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps) => void
-    readonly transformSize: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps, size: number, othercaps: Gst.Caps) => [ /* returnType */ boolean, /* othersize */ number ]
-    readonly getUnitSize: (trans: Gst.BaseTransform, caps: Gst.Caps) => [ /* returnType */ boolean, /* size */ number ]
-    readonly setCaps: (trans: Gst.BaseTransform, incaps: Gst.Caps, outcaps: Gst.Caps) => boolean
-    readonly start: (trans: Gst.BaseTransform) => boolean
-    readonly stop: (trans: Gst.BaseTransform) => boolean
-    readonly event: (trans: Gst.BaseTransform, event: Gst.Event) => boolean
-    readonly transform: (trans: Gst.BaseTransform, inbuf: Gst.Buffer, outbuf: Gst.Buffer) => Gst.FlowReturn
-    readonly transformIp: (trans: Gst.BaseTransform, buf: Gst.Buffer) => Gst.FlowReturn
-    readonly passthroughOnSameCaps: boolean
-    readonly prepareOutputBuffer: (trans: Gst.BaseTransform, input: Gst.Buffer, size: number, caps: Gst.Caps, buf: Gst.Buffer) => Gst.FlowReturn
-    readonly srcEvent: (trans: Gst.BaseTransform, event: Gst.Event) => boolean
-    readonly beforeTransform: (trans: Gst.BaseTransform, buffer: Gst.Buffer) => void
-    readonly acceptCaps: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps) => boolean
-    readonly gstReserved: any[]
+    parentClass: Gst.ElementClass
+    transformCaps: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps) => Gst.Caps
+    fixateCaps: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps) => void
+    transformSize: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps, size: number, othercaps: Gst.Caps) => [ /* returnType */ boolean, /* othersize */ number ]
+    getUnitSize: (trans: Gst.BaseTransform, caps: Gst.Caps) => [ /* returnType */ boolean, /* size */ number ]
+    setCaps: (trans: Gst.BaseTransform, incaps: Gst.Caps, outcaps: Gst.Caps) => boolean
+    start: (trans: Gst.BaseTransform) => boolean
+    stop: (trans: Gst.BaseTransform) => boolean
+    event: (trans: Gst.BaseTransform, event: Gst.Event) => boolean
+    transform: (trans: Gst.BaseTransform, inbuf: Gst.Buffer, outbuf: Gst.Buffer) => Gst.FlowReturn
+    transformIp: (trans: Gst.BaseTransform, buf: Gst.Buffer) => Gst.FlowReturn
+    passthroughOnSameCaps: boolean
+    prepareOutputBuffer: (trans: Gst.BaseTransform, input: Gst.Buffer, size: number, caps: Gst.Caps, buf: Gst.Buffer) => Gst.FlowReturn
+    srcEvent: (trans: Gst.BaseTransform, event: Gst.Event) => boolean
+    beforeTransform: (trans: Gst.BaseTransform, buffer: Gst.Buffer) => void
+    acceptCaps: (trans: Gst.BaseTransform, direction: Gst.PadDirection, caps: Gst.Caps) => boolean
+    gstReserved: any[]
     static name: string
 }
 class TransformPrivate {

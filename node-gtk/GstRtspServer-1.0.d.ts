@@ -389,12 +389,14 @@ interface RTSPAddressPool_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RTSPAddressPool {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPAddressPool */
     /**
      * Take an address and ports from `pool`. `flags` can be used to control the
      * allocation. `n_ports` consecutive ports will be allocated of which the first
      * one can be found in `port`.
+     * @param flags flags
+     * @param nPorts the amount of ports
      */
     acquireAddress(flags: RTSPAddressFlags, nPorts: number): RTSPAddress | null
     /**
@@ -408,6 +410,11 @@ class RTSPAddressPool {
      * to all available IPv4 or IPv6 addresses.
      * 
      * When `ttl` > 0, `min_address` and `max_address` should be multicast addresses.
+     * @param minAddress a minimum address to add
+     * @param maxAddress a maximum address to add
+     * @param minPort the minimum port
+     * @param maxPort the maximum port
+     * @param ttl a TTL or 0 for unicast addresses
      */
     addRange(minAddress: string, maxAddress: string, minPort: number, maxPort: number, ttl: number): boolean
     /**
@@ -430,6 +437,10 @@ class RTSPAddressPool {
      * 
      * If `ttl` is 0, `address` should be a unicast address. If `ttl` > 0, `address`
      * should be a valid multicast address.
+     * @param ipAddress The IP address to reserve
+     * @param port The first port to reserve
+     * @param nPorts The number of ports
+     * @param ttl The requested ttl
      */
     reserveAddress(ipAddress: string, port: number, nPorts: number, ttl: number): [ /* returnType */ RTSPAddressPoolResult, /* address */ RTSPAddress ]
     /* Methods of GObject-2.0.GObject.Object */
@@ -467,6 +478,10 @@ class RTSPAddressPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -477,6 +492,12 @@ class RTSPAddressPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -500,6 +521,7 @@ class RTSPAddressPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -519,11 +541,14 @@ class RTSPAddressPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -531,6 +556,8 @@ class RTSPAddressPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -548,6 +575,7 @@ class RTSPAddressPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -593,6 +621,7 @@ class RTSPAddressPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -636,15 +665,20 @@ class RTSPAddressPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -685,6 +719,7 @@ class RTSPAddressPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -719,6 +754,7 @@ class RTSPAddressPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -750,6 +786,7 @@ class RTSPAddressPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -774,16 +811,21 @@ interface RTSPAuth_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RTSPAuth {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPAuth */
     /**
      * Add a basic token for the default authentication algorithm that
      * enables the client with privileges listed in `token`.
+     * @param basic the basic token
+     * @param token authorisation token
      */
     addBasic(basic: string, token: RTSPToken): void
     /**
      * Add a digest `user` and `pass` for the default authentication algorithm that
      * enables the client with privileges listed in `token`.
+     * @param user the digest user name
+     * @param pass the digest password
+     * @param token authorisation token
      */
     addDigest(user: string, pass: string, token: RTSPToken): void
     /**
@@ -815,44 +857,54 @@ class RTSPAuth {
      * The format of the file is expected to match the format described by
      * <https://en.wikipedia.org/wiki/Digest_access_authentication#The_.htdigest_file>,
      * as output by the `htdigest` command.
+     * @param path Path to the htdigest file
+     * @param token authorisation token
      */
     parseHtdigest(path: string, token: RTSPToken): boolean
     /**
      * Removes `basic` authentication token.
+     * @param basic the basic token
      */
     removeBasic(basic: string): void
     /**
      * Removes a digest user.
+     * @param user the digest user name
      */
     removeDigest(user: string): void
     /**
      * Set the default #GstRTSPToken to `token` in `auth`. The default token will
      * be used for unauthenticated users.
+     * @param token a #GstRTSPToken
      */
     setDefaultToken(token?: RTSPToken | null): void
     /**
      * Set the `realm` of `auth`
+     * @param realm 
      */
     setRealm(realm: string): void
     /**
      * Sets the supported authentication `methods` for `auth`.
+     * @param methods supported methods
      */
     setSupportedMethods(methods: GstRtsp.RTSPAuthMethod): void
     /**
      * The #GTlsAuthenticationMode to set on the underlying GTlsServerConnection.
      * When set to another value than %G_TLS_AUTHENTICATION_NONE,
      * #GstRTSPAuth::accept-certificate signal will be emitted and must be handled.
+     * @param mode a #GTlsAuthenticationMode
      */
     setTlsAuthenticationMode(mode: Gio.TlsAuthenticationMode): void
     /**
      * Set the TLS certificate for the auth. Client connections will only
      * be accepted when TLS is negotiated.
+     * @param cert a #GTlsCertificate
      */
     setTlsCertificate(cert?: Gio.TlsCertificate | null): void
     /**
      * Sets the certificate database that is used to verify peer certificates.
      * If set to %NULL (the default), then peer certificate validation will always
      * set the %G_TLS_CERTIFICATE_UNKNOWN_CA error.
+     * @param database a #GTlsDatabase
      */
     setTlsDatabase(database?: Gio.TlsDatabase | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -890,6 +942,10 @@ class RTSPAuth {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -900,6 +956,12 @@ class RTSPAuth {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -923,6 +985,7 @@ class RTSPAuth {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -942,11 +1005,14 @@ class RTSPAuth {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -954,6 +1020,8 @@ class RTSPAuth {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -971,6 +1039,7 @@ class RTSPAuth {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1016,6 +1085,7 @@ class RTSPAuth {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1059,15 +1129,20 @@ class RTSPAuth {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1108,6 +1183,7 @@ class RTSPAuth {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1142,12 +1218,16 @@ class RTSPAuth {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPAuth */
     /**
      * Emitted during the TLS handshake after the client certificate has
      * been received. See also gst_rtsp_auth_set_tls_authentication_mode().
+     * @param connection a #GTlsConnection
+     * @param peerCert the peer's #GTlsCertificate
+     * @param errors the problems with `peer_cert`.
      */
     connect(sigName: "accept-certificate", callback: ((connection: Gio.TlsConnection, peerCert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean)): number
     on(sigName: "accept-certificate", callback: (connection: Gio.TlsConnection, peerCert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void, after?: boolean): NodeJS.EventEmitter
@@ -1183,6 +1263,7 @@ class RTSPAuth {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1203,10 +1284,13 @@ class RTSPAuth {
     static new(): RTSPAuth
     /**
      * Check if `check` is allowed in the current context.
+     * @param check the item to check
      */
     static check(check: string): boolean
     /**
      * Construct a Basic authorisation token from `user` and `pass`.
+     * @param user a userid
+     * @param pass a password
      */
     static makeBasic(user: string, pass: string): string
     static $gtype: GObject.Type
@@ -1225,7 +1309,7 @@ class RTSPClient {
     postSessionTimeout: number
     sessionPool: RTSPSessionPool
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPClient */
     /**
      * Attaches `client` to `context`. When the mainloop for `context` is run, the
@@ -1234,6 +1318,7 @@ class RTSPClient {
      * 
      * This function should be called when the client properties and urls are fully
      * configured and the client is ready to start.
+     * @param context a #GMainContext
      */
     attach(context?: GLib.MainContext | null): number
     /**
@@ -1266,6 +1351,7 @@ class RTSPClient {
      * the send function must call gst_rtsp_stream_transport_message_sent ()
      * on the appropriate transport when data has been received for streaming
      * to continue.
+     * @param channel 
      */
     getStreamTransport(channel: number): RTSPStreamTransport | null
     /**
@@ -1274,11 +1360,14 @@ class RTSPClient {
     getThreadPool(): RTSPThreadPool | null
     /**
      * Let the client handle `message`.
+     * @param message an #GstRTSPMessage
      */
     handleMessage(message: GstRtsp.RTSPMessage): GstRtsp.RTSPResult
     /**
      * Send a message message to the remote end. `message` must be a
      * #GST_RTSP_MESSAGE_REQUEST or a #GST_RTSP_MESSAGE_RESPONSE.
+     * @param session a #GstRTSPSession to send   the message to or %NULL
+     * @param message The #GstRTSPMessage to send
      */
     sendMessage(session: RTSPSession | null, message: GstRtsp.RTSPMessage): GstRtsp.RTSPResult
     /**
@@ -1296,15 +1385,18 @@ class RTSPClient {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for each session.
+     * @param func a callback
      */
     sessionFilter(func?: RTSPClientSessionFilterFunc | null): RTSPSession[]
     /**
      * configure `auth` to be used as the authentication manager of `client`.
+     * @param auth a #GstRTSPAuth
      */
     setAuth(auth?: RTSPAuth | null): void
     /**
      * Set the #GstRTSPConnection of `client`. This function takes ownership of
      * `conn`.
+     * @param conn a #GstRTSPConnection
      */
     setConnection(conn: GstRtsp.RTSPConnection): boolean
     /**
@@ -1312,12 +1404,14 @@ class RTSPClient {
      * 
      * Define an appropriate request size limit and reject requests exceeding the
      * limit with response status 413 Request Entity Too Large
+     * @param limit Content-Length limit
      */
     setContentLengthLimit(limit: number): void
     /**
      * Set `mounts` as the mount points for `client` which it will use to map urls
      * to media streams. These mount points are usually inherited from the server that
      * created the client but can be overriden later.
+     * @param mounts a #GstRTSPMountPoints
      */
     setMountPoints(mounts?: RTSPMountPoints | null): void
     /**
@@ -1330,6 +1424,7 @@ class RTSPClient {
      * 
      * It is only allowed to set either a `send_func` or a `send_messages_func`
      * but not both at the same time.
+     * @param func a #GstRTSPClientSendFunc
      */
     setSendFunc(func: RTSPClientSendFunc): void
     /**
@@ -1342,16 +1437,19 @@ class RTSPClient {
      * 
      * It is only allowed to set either a `send_func` or a `send_messages_func`
      * but not both at the same time.
+     * @param func a #GstRTSPClientSendMessagesFunc
      */
     setSendMessagesFunc(func: RTSPClientSendMessagesFunc): void
     /**
      * Set `pool` as the sessionpool for `client` which it will use to find
      * or allocate sessions. the sessionpool is usually inherited from the server
      * that created the client but can be overridden later.
+     * @param pool a #GstRTSPSessionPool
      */
     setSessionPool(pool?: RTSPSessionPool | null): void
     /**
      * configure `pool` to be used as the thread pool of `client`.
+     * @param pool a #GstRTSPThreadPool
      */
     setThreadPool(pool?: RTSPThreadPool | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1389,6 +1487,10 @@ class RTSPClient {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1399,6 +1501,12 @@ class RTSPClient {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1422,6 +1530,7 @@ class RTSPClient {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1441,11 +1550,14 @@ class RTSPClient {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1453,6 +1565,8 @@ class RTSPClient {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1470,6 +1584,7 @@ class RTSPClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1515,6 +1630,7 @@ class RTSPClient {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1558,15 +1674,20 @@ class RTSPClient {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1607,6 +1728,7 @@ class RTSPClient {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1641,6 +1763,7 @@ class RTSPClient {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPClient */
@@ -1798,6 +1921,7 @@ class RTSPClient {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1863,6 +1987,7 @@ class RTSPMedia {
     bufferSize: number
     clock: Gst.Clock
     dscpQos: number
+    readonly element: Gst.Element
     eosShutdown: boolean
     latency: number
     maxMcastTtl: number
@@ -1875,7 +2000,7 @@ class RTSPMedia {
     timeProvider: boolean
     transportMode: RTSPTransportMode
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMedia */
     /**
      * Find all payloader elements, they should be named pay\%d in the
@@ -1891,15 +2016,19 @@ class RTSPMedia {
     /**
      * Add a receiver and sender parts to the pipeline based on the transport from
      * SETUP.
+     * @param transports a list of #GstRTSPTransport
      */
     completePipeline(transports: GstRtsp.RTSPTransport[]): boolean
     /**
      * Create a new stream in `media` that provides RTP data on `pad`.
      * `pad` should be a pad of an element inside `media->`element.
+     * @param payloader a #GstElement
+     * @param pad a #GstPad
      */
     createStream(payloader: Gst.Element, pad: Gst.Pad): RTSPStream
     /**
      * Find a stream in `media` with `control` as the control uri.
+     * @param control the control of the stream
      */
     findStream(control: string): RTSPStream | null
     /**
@@ -1962,6 +2091,8 @@ class RTSPMedia {
     /**
      * Get the current range as a string. `media` must be prepared with
      * gst_rtsp_media_prepare ().
+     * @param play for the PLAY request
+     * @param unit the unit to use for the string
      */
     getRangeString(play: boolean, unit: GstRtsp.RTSPRangeUnit): string | null
     getRateControl(): boolean
@@ -1980,6 +2111,7 @@ class RTSPMedia {
     getStatus(): RTSPMediaStatus
     /**
      * Retrieve the stream with index `idx` from `media`.
+     * @param idx the stream index
      */
     getStream(idx: number): RTSPStream | null
     /**
@@ -1989,6 +2121,8 @@ class RTSPMedia {
     /**
      * Get the #GstNetTimeProvider for the clock used by `media`. The time provider
      * will listen on `address` and `port` for client time requests.
+     * @param address an address or %NULL
+     * @param port a port or 0
      */
     getTimeProvider(address: string | null, port: number): GstNet.NetTimeProvider
     /**
@@ -1997,6 +2131,7 @@ class RTSPMedia {
     getTransportMode(): RTSPTransportMode
     /**
      * Configure an SDP on `media` for receiving streams
+     * @param sdp a #GstSDPMessage
      */
     handleSdp(sdp: GstSdp.SDPMessage): boolean
     /**
@@ -2055,16 +2190,20 @@ class RTSPMedia {
      * 
      * It will preroll the pipeline and collect vital information about the streams
      * such as the duration.
+     * @param thread a #GstRTSPThread to run the   bus handler or %NULL
      */
     prepare(thread?: RTSPThread | null): boolean
     /**
      * Seek the pipeline of `media` to `range`. `media` must be prepared with
      * gst_rtsp_media_prepare().
+     * @param range a #GstRTSPTimeRange
      */
     seek(range: GstRtsp.RTSPTimeRange): boolean
     /**
      * Seek the pipeline of `media` to `range` with the given `flags`.
      * `media` must be prepared with gst_rtsp_media_prepare().
+     * @param range a #GstRTSPTimeRange
+     * @param flags The minimal set of #GstSeekFlags to use
      */
     seekFull(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags): boolean
     /**
@@ -2073,6 +2212,10 @@ class RTSPMedia {
      * `media` must be prepared with gst_rtsp_media_prepare().
      * In order to perform the seek operation, the pipeline must contain all
      * needed transport parts (transport sinks).
+     * @param range a #GstRTSPTimeRange
+     * @param flags The minimal set of #GstSeekFlags to use
+     * @param rate the rate to use in the seek
+     * @param trickmodeInterval The trickmode interval to use for KEY_UNITS trick mode
      */
     seekTrickmode(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags, rate: number, trickmodeInterval: Gst.ClockTime): boolean
     /**
@@ -2082,95 +2225,117 @@ class RTSPMedia {
     seekable(): Gst.ClockTimeDiff
     /**
      * configure `pool` to be used as the address pool of `media`.
+     * @param pool a #GstRTSPAddressPool
      */
     setAddressPool(pool?: RTSPAddressPool | null): void
     /**
      * Decide whether the multicast socket should be bound to a multicast address or
      * INADDR_ANY.
+     * @param bindMcastAddr the new value
      */
     setBindMcastAddress(bindMcastAddr: boolean): void
     /**
      * Set the kernel UDP buffer size.
+     * @param size the new value
      */
     setBufferSize(size: number): void
     /**
      * Configure the clock used for the media.
+     * @param clock #GstClock to be used
      */
     setClock(clock?: Gst.Clock | null): void
     /**
      * Set whether retransmission requests will be sent
+     * @param doRetransmission 
      */
     setDoRetransmission(doRetransmission: boolean): void
     /**
      * Configure the dscp qos of attached streams to `dscp_qos`.
+     * @param dscpQos a new dscp qos value (0-63, or -1 to disable)
      */
     setDscpQos(dscpQos: number): void
     /**
      * Set or unset if an EOS event will be sent to the pipeline for `media` before
      * it is unprepared.
+     * @param eosShutdown the new value
      */
     setEosShutdown(eosShutdown: boolean): void
     /**
      * Configure the latency used for receiving media.
+     * @param latency latency in milliseconds
      */
     setLatency(latency: number): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
+     * @param ttl the new multicast ttl value
      */
     setMaxMcastTtl(ttl: number): boolean
     /**
      * configure `multicast_iface` to be used for `media`.
+     * @param multicastIface a multicast interface name
      */
     setMulticastIface(multicastIface?: string | null): void
     /**
      * Set `permissions` on `media`.
+     * @param permissions a #GstRTSPPermissions
      */
     setPermissions(permissions?: RTSPPermissions | null): void
     /**
      * Set the state of the pipeline managed by `media` to `state`
+     * @param state the target state of the pipeline
      */
     setPipelineState(state: Gst.State): void
     /**
      * Configure the allowed lower transport for `media`.
+     * @param profiles the new flags
      */
     setProfiles(profiles: GstRtsp.RTSPProfile): void
     /**
      * Configure the allowed lower transport for `media`.
+     * @param protocols the new flags
      */
     setProtocols(protocols: GstRtsp.RTSPLowerTrans): void
     /**
      * Sets if and how the media clock should be published according to RFC7273.
+     * @param mode the clock publish mode
      */
     setPublishClockMode(mode: RTSPPublishClockMode): void
     /**
      * Define whether `media` will follow the Rate-Control=no behaviour as specified
      * in the ONVIF replay spec.
+     * @param enabled 
      */
     setRateControl(enabled: boolean): void
     /**
      * Set the amount of time to store retransmission packets.
+     * @param time the new value
      */
     setRetransmissionTime(time: Gst.ClockTime): void
     /**
      * Set or unset if the pipeline for `media` can be reused after the pipeline has
      * been unprepared.
+     * @param reusable the new value
      */
     setReusable(reusable: boolean): void
     /**
      * Set or unset if the pipeline for `media` can be shared will multiple clients.
      * When `shared` is %TRUE, client requests for this media will share the media
      * pipeline.
+     * @param shared the new value
      */
     setShared(shared: boolean): void
     /**
      * Set the state of `media` to `state` and for the transports in `transports`.
      * 
      * `media` must be prepared with gst_rtsp_media_prepare();
+     * @param state the target state of the media
+     * @param transports  a #GPtrArray of #GstRTSPStreamTransport pointers
      */
     setState(state: Gst.State, transports: RTSPStreamTransport[]): boolean
     /**
      * Set or unset if the pipeline for `media` should be stopped when a
      * client disconnects without sending TEARDOWN.
+     * @param stopOnDisconnect the new value
      */
     setStopOnDisconnect(stopOnDisconnect: boolean): void
     /**
@@ -2178,15 +2343,19 @@ class RTSPMedia {
      * after a PAUSE request has been performed.
      * 
      * Media must be unprepared when setting the suspend mode.
+     * @param mode the new #GstRTSPSuspendMode
      */
     setSuspendMode(mode: RTSPSuspendMode): void
     /**
      * Sets if the media pipeline can work in PLAY or RECORD mode
+     * @param mode the new value
      */
     setTransportMode(mode: RTSPTransportMode): void
     /**
      * Add `media` specific info to `sdp`. `info` is used to configure the connection
      * information in the SDP.
+     * @param sdp a #GstSDPMessage
+     * @param info a #GstSDPInfo
      */
     setupSdp(sdp: GstSdp.SDPMessage, info: SDPInfo): boolean
     /**
@@ -2200,6 +2369,7 @@ class RTSPMedia {
     /**
      * Set `pipeline` as the #GstPipeline for `media`. Ownership is
      * taken of `pipeline`.
+     * @param pipeline a #GstPipeline
      */
     takePipeline(pipeline: Gst.Pipeline): void
     /**
@@ -2219,6 +2389,7 @@ class RTSPMedia {
     unsuspend(): boolean
     /**
      * Set `media` to provide a #GstNetTimeProvider.
+     * @param timeProvider if a #GstNetTimeProvider should be used
      */
     useTimeProvider(timeProvider: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2256,6 +2427,10 @@ class RTSPMedia {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2266,6 +2441,12 @@ class RTSPMedia {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2289,6 +2470,7 @@ class RTSPMedia {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2308,11 +2490,14 @@ class RTSPMedia {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2320,6 +2505,8 @@ class RTSPMedia {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2337,6 +2524,7 @@ class RTSPMedia {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2382,6 +2570,7 @@ class RTSPMedia {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2425,15 +2614,20 @@ class RTSPMedia {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2474,6 +2668,7 @@ class RTSPMedia {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2508,6 +2703,7 @@ class RTSPMedia {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPMedia */
@@ -2570,6 +2766,7 @@ class RTSPMedia {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2596,6 +2793,11 @@ class RTSPMedia {
     on(sigName: "notify::dscp-qos", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::dscp-qos", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::dscp-qos", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::element", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::eos-shutdown", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::eos-shutdown", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::eos-shutdown", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2707,12 +2909,13 @@ class RTSPMediaFactory {
     suspendMode: RTSPSuspendMode
     transportMode: RTSPTransportMode
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
     /**
      * A convenience wrapper around gst_rtsp_permissions_add_role_from_structure().
      * If `factory` had no permissions, new permissions will be created and the
      * role will be added to it.
+     * @param structure 
      */
     addRoleFromStructure(structure: Gst.Structure): void
     /**
@@ -2725,6 +2928,7 @@ class RTSPMediaFactory {
      * 
      * After the media is constructed, it can be configured and then prepared
      * with gst_rtsp_media_prepare ().
+     * @param url the url used
      */
     construct(url: GstRtsp.RTSPUrl): RTSPMedia
     /**
@@ -2734,6 +2938,7 @@ class RTSPMediaFactory {
      * The bin should contain payloaders pay\%d for each stream. The default
      * implementation of this function returns the bin created from the
      * launch parameter.
+     * @param url the url used
      */
     createElement(url: GstRtsp.RTSPUrl): Gst.Element
     /**
@@ -2825,42 +3030,51 @@ class RTSPMediaFactory {
     isStopOnDisonnect(): boolean
     /**
      * configure `pool` to be used as the address pool of `factory`.
+     * @param pool a #GstRTSPAddressPool
      */
     setAddressPool(pool?: RTSPAddressPool | null): void
     /**
      * Decide whether the multicast socket should be bound to a multicast address or
      * INADDR_ANY.
+     * @param bindMcastAddr the new value
      */
     setBindMcastAddress(bindMcastAddr: boolean): void
     /**
      * Set the kernel UDP buffer size.
+     * @param size the new value
      */
     setBufferSize(size: number): void
     /**
      * Configures a specific clock to be used by the pipelines
      * of all medias created from this factory.
+     * @param clock the clock to be used by the media factory
      */
     setClock(clock?: Gst.Clock | null): void
     /**
      * Set whether retransmission requests will be sent for
      * receiving media
+     * @param doRetransmission 
      */
     setDoRetransmission(doRetransmission: boolean): void
     /**
      * Configure the media dscp qos to `dscp_qos`.
+     * @param dscpQos a new dscp qos value (0-63, or -1 to disable)
      */
     setDscpQos(dscpQos: number): void
     /**
      * Decide whether the created media should send and receive RTCP
+     * @param enable the new value
      */
     setEnableRtcp(enable: boolean): void
     /**
      * Configure if media created from this factory will have an EOS sent to the
      * pipeline before shutdown.
+     * @param eosShutdown the new value
      */
     setEosShutdown(eosShutdown: boolean): void
     /**
      * Configure the latency used for receiving media
+     * @param latency latency in milliseconds
      */
     setLatency(latency: number): void
     /**
@@ -2873,57 +3087,70 @@ class RTSPMediaFactory {
      * 
      * The description should return a pipeline with payloaders named pay0, pay1,
      * etc.. Each of the payloaders will result in a stream.
+     * @param launch the launch description
      */
     setLaunch(launch: string): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
+     * @param ttl the new multicast ttl value
      */
     setMaxMcastTtl(ttl: number): boolean
     /**
      * Configure the GType of the GstRTSPMedia subclass to
      * create (by default, overridden construct vmethods
      * may of course do something different)
+     * @param mediaGtype the GType of the class to create
      */
     setMediaGtype(mediaGtype: GObject.Type): void
     /**
      * configure `multicast_iface` to be used for `factory`.
+     * @param multicastIface a multicast interface name
      */
     setMulticastIface(multicastIface?: string | null): void
     /**
      * Set `permissions` on `factory`.
+     * @param permissions a #GstRTSPPermissions
      */
     setPermissions(permissions?: RTSPPermissions | null): void
     /**
      * Configure the allowed profiles for `factory`.
+     * @param profiles the new flags
      */
     setProfiles(profiles: GstRtsp.RTSPProfile): void
     /**
      * Configure the allowed lower transport for `factory`.
+     * @param protocols the new flags
      */
     setProtocols(protocols: GstRtsp.RTSPLowerTrans): void
     /**
      * Sets if and how the media clock should be published according to RFC7273.
+     * @param mode the clock publish mode
      */
     setPublishClockMode(mode: RTSPPublishClockMode): void
     /**
      * Configure the time to store for possible retransmission
+     * @param time a #GstClockTime
      */
     setRetransmissionTime(time: Gst.ClockTime): void
     /**
      * Configure if media created from this factory can be shared between clients.
+     * @param shared the new value
      */
     setShared(shared: boolean): void
     /**
      * Configure if media created from this factory should be stopped
      * when a client disconnects without sending TEARDOWN.
+     * @param stopOnDisconnect the new value
      */
     setStopOnDisconnect(stopOnDisconnect: boolean): void
     /**
      * Configure how media created from this factory will be suspended.
+     * @param mode the new #GstRTSPSuspendMode
      */
     setSuspendMode(mode: RTSPSuspendMode): void
     /**
      * Configure if this factory creates media for PLAY or RECORD modes.
+     * @param mode the new value
      */
     setTransportMode(mode: RTSPTransportMode): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2961,6 +3188,10 @@ class RTSPMediaFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2971,6 +3202,12 @@ class RTSPMediaFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2994,6 +3231,7 @@ class RTSPMediaFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3013,11 +3251,14 @@ class RTSPMediaFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3025,6 +3266,8 @@ class RTSPMediaFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3042,6 +3285,7 @@ class RTSPMediaFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3087,6 +3331,7 @@ class RTSPMediaFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3130,15 +3375,20 @@ class RTSPMediaFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3179,6 +3429,7 @@ class RTSPMediaFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3213,6 +3464,7 @@ class RTSPMediaFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
@@ -3255,6 +3507,7 @@ class RTSPMediaFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3379,9 +3632,9 @@ class RTSPMediaFactoryURI {
     suspendMode: RTSPSuspendMode
     transportMode: RTSPTransportMode
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactoryURI */
     /**
      * Get the URI that will provide media for this factory.
@@ -3389,6 +3642,7 @@ class RTSPMediaFactoryURI {
     getUri(): string
     /**
      * Set the URI of the resource that will be streamed by this factory.
+     * @param uri the uri the stream
      */
     setUri(uri: string): void
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
@@ -3396,6 +3650,7 @@ class RTSPMediaFactoryURI {
      * A convenience wrapper around gst_rtsp_permissions_add_role_from_structure().
      * If `factory` had no permissions, new permissions will be created and the
      * role will be added to it.
+     * @param structure 
      */
     addRoleFromStructure(structure: Gst.Structure): void
     /**
@@ -3408,6 +3663,7 @@ class RTSPMediaFactoryURI {
      * 
      * After the media is constructed, it can be configured and then prepared
      * with gst_rtsp_media_prepare ().
+     * @param url the url used
      */
     construct(url: GstRtsp.RTSPUrl): RTSPMedia
     /**
@@ -3417,6 +3673,7 @@ class RTSPMediaFactoryURI {
      * The bin should contain payloaders pay\%d for each stream. The default
      * implementation of this function returns the bin created from the
      * launch parameter.
+     * @param url the url used
      */
     createElement(url: GstRtsp.RTSPUrl): Gst.Element
     /**
@@ -3508,42 +3765,51 @@ class RTSPMediaFactoryURI {
     isStopOnDisonnect(): boolean
     /**
      * configure `pool` to be used as the address pool of `factory`.
+     * @param pool a #GstRTSPAddressPool
      */
     setAddressPool(pool?: RTSPAddressPool | null): void
     /**
      * Decide whether the multicast socket should be bound to a multicast address or
      * INADDR_ANY.
+     * @param bindMcastAddr the new value
      */
     setBindMcastAddress(bindMcastAddr: boolean): void
     /**
      * Set the kernel UDP buffer size.
+     * @param size the new value
      */
     setBufferSize(size: number): void
     /**
      * Configures a specific clock to be used by the pipelines
      * of all medias created from this factory.
+     * @param clock the clock to be used by the media factory
      */
     setClock(clock?: Gst.Clock | null): void
     /**
      * Set whether retransmission requests will be sent for
      * receiving media
+     * @param doRetransmission 
      */
     setDoRetransmission(doRetransmission: boolean): void
     /**
      * Configure the media dscp qos to `dscp_qos`.
+     * @param dscpQos a new dscp qos value (0-63, or -1 to disable)
      */
     setDscpQos(dscpQos: number): void
     /**
      * Decide whether the created media should send and receive RTCP
+     * @param enable the new value
      */
     setEnableRtcp(enable: boolean): void
     /**
      * Configure if media created from this factory will have an EOS sent to the
      * pipeline before shutdown.
+     * @param eosShutdown the new value
      */
     setEosShutdown(eosShutdown: boolean): void
     /**
      * Configure the latency used for receiving media
+     * @param latency latency in milliseconds
      */
     setLatency(latency: number): void
     /**
@@ -3556,57 +3822,70 @@ class RTSPMediaFactoryURI {
      * 
      * The description should return a pipeline with payloaders named pay0, pay1,
      * etc.. Each of the payloaders will result in a stream.
+     * @param launch the launch description
      */
     setLaunch(launch: string): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
+     * @param ttl the new multicast ttl value
      */
     setMaxMcastTtl(ttl: number): boolean
     /**
      * Configure the GType of the GstRTSPMedia subclass to
      * create (by default, overridden construct vmethods
      * may of course do something different)
+     * @param mediaGtype the GType of the class to create
      */
     setMediaGtype(mediaGtype: GObject.Type): void
     /**
      * configure `multicast_iface` to be used for `factory`.
+     * @param multicastIface a multicast interface name
      */
     setMulticastIface(multicastIface?: string | null): void
     /**
      * Set `permissions` on `factory`.
+     * @param permissions a #GstRTSPPermissions
      */
     setPermissions(permissions?: RTSPPermissions | null): void
     /**
      * Configure the allowed profiles for `factory`.
+     * @param profiles the new flags
      */
     setProfiles(profiles: GstRtsp.RTSPProfile): void
     /**
      * Configure the allowed lower transport for `factory`.
+     * @param protocols the new flags
      */
     setProtocols(protocols: GstRtsp.RTSPLowerTrans): void
     /**
      * Sets if and how the media clock should be published according to RFC7273.
+     * @param mode the clock publish mode
      */
     setPublishClockMode(mode: RTSPPublishClockMode): void
     /**
      * Configure the time to store for possible retransmission
+     * @param time a #GstClockTime
      */
     setRetransmissionTime(time: Gst.ClockTime): void
     /**
      * Configure if media created from this factory can be shared between clients.
+     * @param shared the new value
      */
     setShared(shared: boolean): void
     /**
      * Configure if media created from this factory should be stopped
      * when a client disconnects without sending TEARDOWN.
+     * @param stopOnDisconnect the new value
      */
     setStopOnDisconnect(stopOnDisconnect: boolean): void
     /**
      * Configure how media created from this factory will be suspended.
+     * @param mode the new #GstRTSPSuspendMode
      */
     setSuspendMode(mode: RTSPSuspendMode): void
     /**
      * Configure if this factory creates media for PLAY or RECORD modes.
+     * @param mode the new value
      */
     setTransportMode(mode: RTSPTransportMode): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3644,6 +3923,10 @@ class RTSPMediaFactoryURI {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3654,6 +3937,12 @@ class RTSPMediaFactoryURI {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3677,6 +3966,7 @@ class RTSPMediaFactoryURI {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3696,11 +3986,14 @@ class RTSPMediaFactoryURI {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3708,6 +4001,8 @@ class RTSPMediaFactoryURI {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3725,6 +4020,7 @@ class RTSPMediaFactoryURI {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3770,6 +4066,7 @@ class RTSPMediaFactoryURI {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3813,15 +4110,20 @@ class RTSPMediaFactoryURI {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3862,6 +4164,7 @@ class RTSPMediaFactoryURI {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3896,6 +4199,7 @@ class RTSPMediaFactoryURI {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
@@ -3938,6 +4242,7 @@ class RTSPMediaFactoryURI {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4049,7 +4354,7 @@ interface RTSPMountPoints_ConstructProps extends GObject.Object_ConstructProps {
 }
 class RTSPMountPoints {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMountPoints */
     /**
      * Attach `factory` to the mount point `path` in `mounts`.
@@ -4059,10 +4364,13 @@ class RTSPMountPoints {
      * 
      * Ownership is taken of the reference on `factory` so that `factory` should not be
      * used after calling this function.
+     * @param path a mount point
+     * @param factory a #GstRTSPMediaFactory
      */
     addFactory(path: string, factory: RTSPMediaFactory): void
     /**
      * Make a path string from `url`.
+     * @param url a #GstRTSPUrl
      */
     makePath(url: GstRtsp.RTSPUrl): string | null
     /**
@@ -4070,10 +4378,12 @@ class RTSPMountPoints {
      * 
      * If `matched` is %NULL, `path` will match the factory exactly otherwise
      * the amount of characters that matched is returned in `matched`.
+     * @param path a mount point
      */
     match(path: string): [ /* returnType */ RTSPMediaFactory, /* matched */ number | null ]
     /**
      * Remove the #GstRTSPMediaFactory associated with `path` in `mounts`.
+     * @param path a mount point
      */
     removeFactory(path: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4111,6 +4421,10 @@ class RTSPMountPoints {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4121,6 +4435,12 @@ class RTSPMountPoints {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4144,6 +4464,7 @@ class RTSPMountPoints {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4163,11 +4484,14 @@ class RTSPMountPoints {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4175,6 +4499,8 @@ class RTSPMountPoints {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4192,6 +4518,7 @@ class RTSPMountPoints {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4237,6 +4564,7 @@ class RTSPMountPoints {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4280,15 +4608,20 @@ class RTSPMountPoints {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4329,6 +4662,7 @@ class RTSPMountPoints {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4363,6 +4697,7 @@ class RTSPMountPoints {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4394,6 +4729,7 @@ class RTSPMountPoints {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4423,9 +4759,9 @@ class RTSPOnvifClient {
     postSessionTimeout: number
     sessionPool: RTSPSessionPool
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPClient */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPClient */
     /**
      * Attaches `client` to `context`. When the mainloop for `context` is run, the
@@ -4434,6 +4770,7 @@ class RTSPOnvifClient {
      * 
      * This function should be called when the client properties and urls are fully
      * configured and the client is ready to start.
+     * @param context a #GMainContext
      */
     attach(context?: GLib.MainContext | null): number
     /**
@@ -4466,6 +4803,7 @@ class RTSPOnvifClient {
      * the send function must call gst_rtsp_stream_transport_message_sent ()
      * on the appropriate transport when data has been received for streaming
      * to continue.
+     * @param channel 
      */
     getStreamTransport(channel: number): RTSPStreamTransport | null
     /**
@@ -4474,11 +4812,14 @@ class RTSPOnvifClient {
     getThreadPool(): RTSPThreadPool | null
     /**
      * Let the client handle `message`.
+     * @param message an #GstRTSPMessage
      */
     handleMessage(message: GstRtsp.RTSPMessage): GstRtsp.RTSPResult
     /**
      * Send a message message to the remote end. `message` must be a
      * #GST_RTSP_MESSAGE_REQUEST or a #GST_RTSP_MESSAGE_RESPONSE.
+     * @param session a #GstRTSPSession to send   the message to or %NULL
+     * @param message The #GstRTSPMessage to send
      */
     sendMessage(session: RTSPSession | null, message: GstRtsp.RTSPMessage): GstRtsp.RTSPResult
     /**
@@ -4496,15 +4837,18 @@ class RTSPOnvifClient {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for each session.
+     * @param func a callback
      */
     sessionFilter(func?: RTSPClientSessionFilterFunc | null): RTSPSession[]
     /**
      * configure `auth` to be used as the authentication manager of `client`.
+     * @param auth a #GstRTSPAuth
      */
     setAuth(auth?: RTSPAuth | null): void
     /**
      * Set the #GstRTSPConnection of `client`. This function takes ownership of
      * `conn`.
+     * @param conn a #GstRTSPConnection
      */
     setConnection(conn: GstRtsp.RTSPConnection): boolean
     /**
@@ -4512,12 +4856,14 @@ class RTSPOnvifClient {
      * 
      * Define an appropriate request size limit and reject requests exceeding the
      * limit with response status 413 Request Entity Too Large
+     * @param limit Content-Length limit
      */
     setContentLengthLimit(limit: number): void
     /**
      * Set `mounts` as the mount points for `client` which it will use to map urls
      * to media streams. These mount points are usually inherited from the server that
      * created the client but can be overriden later.
+     * @param mounts a #GstRTSPMountPoints
      */
     setMountPoints(mounts?: RTSPMountPoints | null): void
     /**
@@ -4530,6 +4876,7 @@ class RTSPOnvifClient {
      * 
      * It is only allowed to set either a `send_func` or a `send_messages_func`
      * but not both at the same time.
+     * @param func a #GstRTSPClientSendFunc
      */
     setSendFunc(func: RTSPClientSendFunc): void
     /**
@@ -4542,16 +4889,19 @@ class RTSPOnvifClient {
      * 
      * It is only allowed to set either a `send_func` or a `send_messages_func`
      * but not both at the same time.
+     * @param func a #GstRTSPClientSendMessagesFunc
      */
     setSendMessagesFunc(func: RTSPClientSendMessagesFunc): void
     /**
      * Set `pool` as the sessionpool for `client` which it will use to find
      * or allocate sessions. the sessionpool is usually inherited from the server
      * that created the client but can be overridden later.
+     * @param pool a #GstRTSPSessionPool
      */
     setSessionPool(pool?: RTSPSessionPool | null): void
     /**
      * configure `pool` to be used as the thread pool of `client`.
+     * @param pool a #GstRTSPThreadPool
      */
     setThreadPool(pool?: RTSPThreadPool | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4589,6 +4939,10 @@ class RTSPOnvifClient {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4599,6 +4953,12 @@ class RTSPOnvifClient {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4622,6 +4982,7 @@ class RTSPOnvifClient {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4641,11 +5002,14 @@ class RTSPOnvifClient {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4653,6 +5017,8 @@ class RTSPOnvifClient {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4670,6 +5036,7 @@ class RTSPOnvifClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4715,6 +5082,7 @@ class RTSPOnvifClient {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4758,15 +5126,20 @@ class RTSPOnvifClient {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4807,6 +5180,7 @@ class RTSPOnvifClient {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4841,6 +5215,7 @@ class RTSPOnvifClient {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPClient */
@@ -4998,6 +5373,7 @@ class RTSPOnvifClient {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5046,6 +5422,7 @@ class RTSPOnvifMedia {
     bufferSize: number
     clock: Gst.Clock
     dscpQos: number
+    readonly element: Gst.Element
     eosShutdown: boolean
     latency: number
     maxMcastTtl: number
@@ -5058,9 +5435,9 @@ class RTSPOnvifMedia {
     timeProvider: boolean
     transportMode: RTSPTransportMode
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMedia */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPOnvifMedia */
     /**
      * Find the ONVIF backchannel depayloader element. It should be named
@@ -5079,6 +5456,7 @@ class RTSPOnvifMedia {
     /**
      * Set the configured/supported bandwidth of the ONVIF backchannel pipeline in
      * bits per second.
+     * @param bandwidth the bandwidth in bits per second
      */
     setBackchannelBandwidth(bandwidth: number): void
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMedia */
@@ -5096,15 +5474,19 @@ class RTSPOnvifMedia {
     /**
      * Add a receiver and sender parts to the pipeline based on the transport from
      * SETUP.
+     * @param transports a list of #GstRTSPTransport
      */
     completePipeline(transports: GstRtsp.RTSPTransport[]): boolean
     /**
      * Create a new stream in `media` that provides RTP data on `pad`.
      * `pad` should be a pad of an element inside `media->`element.
+     * @param payloader a #GstElement
+     * @param pad a #GstPad
      */
     createStream(payloader: Gst.Element, pad: Gst.Pad): RTSPStream
     /**
      * Find a stream in `media` with `control` as the control uri.
+     * @param control the control of the stream
      */
     findStream(control: string): RTSPStream | null
     /**
@@ -5167,6 +5549,8 @@ class RTSPOnvifMedia {
     /**
      * Get the current range as a string. `media` must be prepared with
      * gst_rtsp_media_prepare ().
+     * @param play for the PLAY request
+     * @param unit the unit to use for the string
      */
     getRangeString(play: boolean, unit: GstRtsp.RTSPRangeUnit): string | null
     getRateControl(): boolean
@@ -5185,6 +5569,7 @@ class RTSPOnvifMedia {
     getStatus(): RTSPMediaStatus
     /**
      * Retrieve the stream with index `idx` from `media`.
+     * @param idx the stream index
      */
     getStream(idx: number): RTSPStream | null
     /**
@@ -5194,6 +5579,8 @@ class RTSPOnvifMedia {
     /**
      * Get the #GstNetTimeProvider for the clock used by `media`. The time provider
      * will listen on `address` and `port` for client time requests.
+     * @param address an address or %NULL
+     * @param port a port or 0
      */
     getTimeProvider(address: string | null, port: number): GstNet.NetTimeProvider
     /**
@@ -5202,6 +5589,7 @@ class RTSPOnvifMedia {
     getTransportMode(): RTSPTransportMode
     /**
      * Configure an SDP on `media` for receiving streams
+     * @param sdp a #GstSDPMessage
      */
     handleSdp(sdp: GstSdp.SDPMessage): boolean
     /**
@@ -5260,16 +5648,20 @@ class RTSPOnvifMedia {
      * 
      * It will preroll the pipeline and collect vital information about the streams
      * such as the duration.
+     * @param thread a #GstRTSPThread to run the   bus handler or %NULL
      */
     prepare(thread?: RTSPThread | null): boolean
     /**
      * Seek the pipeline of `media` to `range`. `media` must be prepared with
      * gst_rtsp_media_prepare().
+     * @param range a #GstRTSPTimeRange
      */
     seek(range: GstRtsp.RTSPTimeRange): boolean
     /**
      * Seek the pipeline of `media` to `range` with the given `flags`.
      * `media` must be prepared with gst_rtsp_media_prepare().
+     * @param range a #GstRTSPTimeRange
+     * @param flags The minimal set of #GstSeekFlags to use
      */
     seekFull(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags): boolean
     /**
@@ -5278,6 +5670,10 @@ class RTSPOnvifMedia {
      * `media` must be prepared with gst_rtsp_media_prepare().
      * In order to perform the seek operation, the pipeline must contain all
      * needed transport parts (transport sinks).
+     * @param range a #GstRTSPTimeRange
+     * @param flags The minimal set of #GstSeekFlags to use
+     * @param rate the rate to use in the seek
+     * @param trickmodeInterval The trickmode interval to use for KEY_UNITS trick mode
      */
     seekTrickmode(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags, rate: number, trickmodeInterval: Gst.ClockTime): boolean
     /**
@@ -5287,95 +5683,117 @@ class RTSPOnvifMedia {
     seekable(): Gst.ClockTimeDiff
     /**
      * configure `pool` to be used as the address pool of `media`.
+     * @param pool a #GstRTSPAddressPool
      */
     setAddressPool(pool?: RTSPAddressPool | null): void
     /**
      * Decide whether the multicast socket should be bound to a multicast address or
      * INADDR_ANY.
+     * @param bindMcastAddr the new value
      */
     setBindMcastAddress(bindMcastAddr: boolean): void
     /**
      * Set the kernel UDP buffer size.
+     * @param size the new value
      */
     setBufferSize(size: number): void
     /**
      * Configure the clock used for the media.
+     * @param clock #GstClock to be used
      */
     setClock(clock?: Gst.Clock | null): void
     /**
      * Set whether retransmission requests will be sent
+     * @param doRetransmission 
      */
     setDoRetransmission(doRetransmission: boolean): void
     /**
      * Configure the dscp qos of attached streams to `dscp_qos`.
+     * @param dscpQos a new dscp qos value (0-63, or -1 to disable)
      */
     setDscpQos(dscpQos: number): void
     /**
      * Set or unset if an EOS event will be sent to the pipeline for `media` before
      * it is unprepared.
+     * @param eosShutdown the new value
      */
     setEosShutdown(eosShutdown: boolean): void
     /**
      * Configure the latency used for receiving media.
+     * @param latency latency in milliseconds
      */
     setLatency(latency: number): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
+     * @param ttl the new multicast ttl value
      */
     setMaxMcastTtl(ttl: number): boolean
     /**
      * configure `multicast_iface` to be used for `media`.
+     * @param multicastIface a multicast interface name
      */
     setMulticastIface(multicastIface?: string | null): void
     /**
      * Set `permissions` on `media`.
+     * @param permissions a #GstRTSPPermissions
      */
     setPermissions(permissions?: RTSPPermissions | null): void
     /**
      * Set the state of the pipeline managed by `media` to `state`
+     * @param state the target state of the pipeline
      */
     setPipelineState(state: Gst.State): void
     /**
      * Configure the allowed lower transport for `media`.
+     * @param profiles the new flags
      */
     setProfiles(profiles: GstRtsp.RTSPProfile): void
     /**
      * Configure the allowed lower transport for `media`.
+     * @param protocols the new flags
      */
     setProtocols(protocols: GstRtsp.RTSPLowerTrans): void
     /**
      * Sets if and how the media clock should be published according to RFC7273.
+     * @param mode the clock publish mode
      */
     setPublishClockMode(mode: RTSPPublishClockMode): void
     /**
      * Define whether `media` will follow the Rate-Control=no behaviour as specified
      * in the ONVIF replay spec.
+     * @param enabled 
      */
     setRateControl(enabled: boolean): void
     /**
      * Set the amount of time to store retransmission packets.
+     * @param time the new value
      */
     setRetransmissionTime(time: Gst.ClockTime): void
     /**
      * Set or unset if the pipeline for `media` can be reused after the pipeline has
      * been unprepared.
+     * @param reusable the new value
      */
     setReusable(reusable: boolean): void
     /**
      * Set or unset if the pipeline for `media` can be shared will multiple clients.
      * When `shared` is %TRUE, client requests for this media will share the media
      * pipeline.
+     * @param shared the new value
      */
     setShared(shared: boolean): void
     /**
      * Set the state of `media` to `state` and for the transports in `transports`.
      * 
      * `media` must be prepared with gst_rtsp_media_prepare();
+     * @param state the target state of the media
+     * @param transports  a #GPtrArray of #GstRTSPStreamTransport pointers
      */
     setState(state: Gst.State, transports: RTSPStreamTransport[]): boolean
     /**
      * Set or unset if the pipeline for `media` should be stopped when a
      * client disconnects without sending TEARDOWN.
+     * @param stopOnDisconnect the new value
      */
     setStopOnDisconnect(stopOnDisconnect: boolean): void
     /**
@@ -5383,15 +5801,19 @@ class RTSPOnvifMedia {
      * after a PAUSE request has been performed.
      * 
      * Media must be unprepared when setting the suspend mode.
+     * @param mode the new #GstRTSPSuspendMode
      */
     setSuspendMode(mode: RTSPSuspendMode): void
     /**
      * Sets if the media pipeline can work in PLAY or RECORD mode
+     * @param mode the new value
      */
     setTransportMode(mode: RTSPTransportMode): void
     /**
      * Add `media` specific info to `sdp`. `info` is used to configure the connection
      * information in the SDP.
+     * @param sdp a #GstSDPMessage
+     * @param info a #GstSDPInfo
      */
     setupSdp(sdp: GstSdp.SDPMessage, info: SDPInfo): boolean
     /**
@@ -5405,6 +5827,7 @@ class RTSPOnvifMedia {
     /**
      * Set `pipeline` as the #GstPipeline for `media`. Ownership is
      * taken of `pipeline`.
+     * @param pipeline a #GstPipeline
      */
     takePipeline(pipeline: Gst.Pipeline): void
     /**
@@ -5424,6 +5847,7 @@ class RTSPOnvifMedia {
     unsuspend(): boolean
     /**
      * Set `media` to provide a #GstNetTimeProvider.
+     * @param timeProvider if a #GstNetTimeProvider should be used
      */
     useTimeProvider(timeProvider: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5461,6 +5885,10 @@ class RTSPOnvifMedia {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5471,6 +5899,12 @@ class RTSPOnvifMedia {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5494,6 +5928,7 @@ class RTSPOnvifMedia {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5513,11 +5948,14 @@ class RTSPOnvifMedia {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5525,6 +5963,8 @@ class RTSPOnvifMedia {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5542,6 +5982,7 @@ class RTSPOnvifMedia {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5587,6 +6028,7 @@ class RTSPOnvifMedia {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5630,15 +6072,20 @@ class RTSPOnvifMedia {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5679,6 +6126,7 @@ class RTSPOnvifMedia {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5713,6 +6161,7 @@ class RTSPOnvifMedia {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPMedia */
@@ -5775,6 +6224,7 @@ class RTSPOnvifMedia {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5801,6 +6251,11 @@ class RTSPOnvifMedia {
     on(sigName: "notify::dscp-qos", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::dscp-qos", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::dscp-qos", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::element", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::element", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::element", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::element", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::element", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::eos-shutdown", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::eos-shutdown", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::eos-shutdown", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -5891,9 +6346,9 @@ class RTSPOnvifMediaFactory {
     suspendMode: RTSPSuspendMode
     transportMode: RTSPTransportMode
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPOnvifMediaFactory */
     /**
      * Get the configured/supported bandwidth of the ONVIF backchannel pipeline in
@@ -5913,6 +6368,7 @@ class RTSPOnvifMediaFactory {
     /**
      * Set the configured/supported bandwidth of the ONVIF backchannel pipeline in
      * bits per second.
+     * @param bandwidth the bandwidth in bits per second
      */
     setBackchannelBandwidth(bandwidth: number): void
     /**
@@ -5932,10 +6388,12 @@ class RTSPOnvifMediaFactory {
      * until pre-rolling before reaching the PAUSED state, i.e. setting
      * async=false on #GstBaseSink. Otherwise the whole media will not be able to
      * prepare.
+     * @param launch the launch description
      */
     setBackchannelLaunch(launch: string): void
     /**
      * Set to %TRUE if ONVIF replay is supported by the media factory.
+     * @param hasReplaySupport 
      */
     setReplaySupport(hasReplaySupport: boolean): void
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
@@ -5943,6 +6401,7 @@ class RTSPOnvifMediaFactory {
      * A convenience wrapper around gst_rtsp_permissions_add_role_from_structure().
      * If `factory` had no permissions, new permissions will be created and the
      * role will be added to it.
+     * @param structure 
      */
     addRoleFromStructure(structure: Gst.Structure): void
     /**
@@ -5955,6 +6414,7 @@ class RTSPOnvifMediaFactory {
      * 
      * After the media is constructed, it can be configured and then prepared
      * with gst_rtsp_media_prepare ().
+     * @param url the url used
      */
     construct(url: GstRtsp.RTSPUrl): RTSPMedia
     /**
@@ -5964,6 +6424,7 @@ class RTSPOnvifMediaFactory {
      * The bin should contain payloaders pay\%d for each stream. The default
      * implementation of this function returns the bin created from the
      * launch parameter.
+     * @param url the url used
      */
     createElement(url: GstRtsp.RTSPUrl): Gst.Element
     /**
@@ -6055,42 +6516,51 @@ class RTSPOnvifMediaFactory {
     isStopOnDisonnect(): boolean
     /**
      * configure `pool` to be used as the address pool of `factory`.
+     * @param pool a #GstRTSPAddressPool
      */
     setAddressPool(pool?: RTSPAddressPool | null): void
     /**
      * Decide whether the multicast socket should be bound to a multicast address or
      * INADDR_ANY.
+     * @param bindMcastAddr the new value
      */
     setBindMcastAddress(bindMcastAddr: boolean): void
     /**
      * Set the kernel UDP buffer size.
+     * @param size the new value
      */
     setBufferSize(size: number): void
     /**
      * Configures a specific clock to be used by the pipelines
      * of all medias created from this factory.
+     * @param clock the clock to be used by the media factory
      */
     setClock(clock?: Gst.Clock | null): void
     /**
      * Set whether retransmission requests will be sent for
      * receiving media
+     * @param doRetransmission 
      */
     setDoRetransmission(doRetransmission: boolean): void
     /**
      * Configure the media dscp qos to `dscp_qos`.
+     * @param dscpQos a new dscp qos value (0-63, or -1 to disable)
      */
     setDscpQos(dscpQos: number): void
     /**
      * Decide whether the created media should send and receive RTCP
+     * @param enable the new value
      */
     setEnableRtcp(enable: boolean): void
     /**
      * Configure if media created from this factory will have an EOS sent to the
      * pipeline before shutdown.
+     * @param eosShutdown the new value
      */
     setEosShutdown(eosShutdown: boolean): void
     /**
      * Configure the latency used for receiving media
+     * @param latency latency in milliseconds
      */
     setLatency(latency: number): void
     /**
@@ -6103,57 +6573,70 @@ class RTSPOnvifMediaFactory {
      * 
      * The description should return a pipeline with payloaders named pay0, pay1,
      * etc.. Each of the payloaders will result in a stream.
+     * @param launch the launch description
      */
     setLaunch(launch: string): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
+     * @param ttl the new multicast ttl value
      */
     setMaxMcastTtl(ttl: number): boolean
     /**
      * Configure the GType of the GstRTSPMedia subclass to
      * create (by default, overridden construct vmethods
      * may of course do something different)
+     * @param mediaGtype the GType of the class to create
      */
     setMediaGtype(mediaGtype: GObject.Type): void
     /**
      * configure `multicast_iface` to be used for `factory`.
+     * @param multicastIface a multicast interface name
      */
     setMulticastIface(multicastIface?: string | null): void
     /**
      * Set `permissions` on `factory`.
+     * @param permissions a #GstRTSPPermissions
      */
     setPermissions(permissions?: RTSPPermissions | null): void
     /**
      * Configure the allowed profiles for `factory`.
+     * @param profiles the new flags
      */
     setProfiles(profiles: GstRtsp.RTSPProfile): void
     /**
      * Configure the allowed lower transport for `factory`.
+     * @param protocols the new flags
      */
     setProtocols(protocols: GstRtsp.RTSPLowerTrans): void
     /**
      * Sets if and how the media clock should be published according to RFC7273.
+     * @param mode the clock publish mode
      */
     setPublishClockMode(mode: RTSPPublishClockMode): void
     /**
      * Configure the time to store for possible retransmission
+     * @param time a #GstClockTime
      */
     setRetransmissionTime(time: Gst.ClockTime): void
     /**
      * Configure if media created from this factory can be shared between clients.
+     * @param shared the new value
      */
     setShared(shared: boolean): void
     /**
      * Configure if media created from this factory should be stopped
      * when a client disconnects without sending TEARDOWN.
+     * @param stopOnDisconnect the new value
      */
     setStopOnDisconnect(stopOnDisconnect: boolean): void
     /**
      * Configure how media created from this factory will be suspended.
+     * @param mode the new #GstRTSPSuspendMode
      */
     setSuspendMode(mode: RTSPSuspendMode): void
     /**
      * Configure if this factory creates media for PLAY or RECORD modes.
+     * @param mode the new value
      */
     setTransportMode(mode: RTSPTransportMode): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6191,6 +6674,10 @@ class RTSPOnvifMediaFactory {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6201,6 +6688,12 @@ class RTSPOnvifMediaFactory {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6224,6 +6717,7 @@ class RTSPOnvifMediaFactory {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6243,11 +6737,14 @@ class RTSPOnvifMediaFactory {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6255,6 +6752,8 @@ class RTSPOnvifMediaFactory {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6272,6 +6771,7 @@ class RTSPOnvifMediaFactory {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6317,6 +6817,7 @@ class RTSPOnvifMediaFactory {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6360,15 +6861,20 @@ class RTSPOnvifMediaFactory {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6409,6 +6915,7 @@ class RTSPOnvifMediaFactory {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -6443,6 +6950,7 @@ class RTSPOnvifMediaFactory {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory */
@@ -6485,6 +6993,7 @@ class RTSPOnvifMediaFactory {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -6580,6 +7089,8 @@ class RTSPOnvifMediaFactory {
     static new(): RTSPOnvifMediaFactory
     /**
      * Checks whether the client request requires backchannel.
+     * @param factory a #GstRTSPMediaFactory
+     * @param ctx 
      */
     static requiresBackchannel(factory: RTSPMediaFactory, ctx: RTSPContext): boolean
     static $gtype: GObject.Type
@@ -6596,9 +7107,9 @@ class RTSPOnvifServer {
     service: string
     sessionPool: RTSPSessionPool
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPServer */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPServer */
     /**
      * Attaches `server` to `context`. When the mainloop for `context` is run, the
@@ -6613,6 +7124,7 @@ class RTSPOnvifServer {
      * g_main_context_default() (or %NULL), g_source_remove() cannot be used to
      * destroy the source. In that case it is recommended to use
      * gst_rtsp_server_create_source() and attach it to `context` manually.
+     * @param context a #GMainContext
      */
     attach(context?: GLib.MainContext | null): number
     /**
@@ -6630,11 +7142,13 @@ class RTSPOnvifServer {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for each client.
+     * @param func a callback
      */
     clientFilter(func?: RTSPServerClientFilterFunc | null): RTSPClient[]
     /**
      * Create a #GSocket for `server`. The socket will listen on the
      * configured service.
+     * @param cancellable a #GCancellable
      */
     createSocket(cancellable?: Gio.Cancellable | null): Gio.Socket
     /**
@@ -6647,6 +7161,7 @@ class RTSPOnvifServer {
      * check for this in the callback using g_cancellable_is_cancelled().
      * 
      * This takes a reference on `server` until `source` is destroyed.
+     * @param cancellable a #GCancellable or %NULL.
      */
     createSource(cancellable?: Gio.Cancellable | null): GLib.Source
     /**
@@ -6689,10 +7204,12 @@ class RTSPOnvifServer {
      * Configure `server` to accept connections on the given address.
      * 
      * This function must be called before the server is bound.
+     * @param address the address
      */
     setAddress(address: string): void
     /**
      * configure `auth` to be used as the authentication manager of `server`.
+     * @param auth a #GstRTSPAuth
      */
     setAuth(auth?: RTSPAuth | null): void
     /**
@@ -6700,15 +7217,18 @@ class RTSPOnvifServer {
      * server.
      * 
      * This function must be called before the server is bound.
+     * @param backlog the backlog
      */
     setBacklog(backlog: number): void
     /**
      * Define an appropriate request size limit and reject requests exceeding the
      * limit.
+     * @param limit 
      */
     setContentLengthLimit(limit: number): void
     /**
      * configure `mounts` to be used as the mount points of `server`.
+     * @param mounts a #GstRTSPMountPoints
      */
     setMountPoints(mounts?: RTSPMountPoints | null): void
     /**
@@ -6721,14 +7241,17 @@ class RTSPOnvifServer {
      * gst_rtsp_server_get_bound_port().
      * 
      * This function must be called before the server is bound.
+     * @param service the service
      */
     setService(service: string): void
     /**
      * configure `pool` to be used as the session pool of `server`.
+     * @param pool a #GstRTSPSessionPool
      */
     setSessionPool(pool?: RTSPSessionPool | null): void
     /**
      * configure `pool` to be used as the thread pool of `server`.
+     * @param pool a #GstRTSPThreadPool
      */
     setThreadPool(pool?: RTSPThreadPool | null): void
     /**
@@ -6736,6 +7259,10 @@ class RTSPOnvifServer {
      * is used when transferring a socket from an HTTP server which should be used
      * as an RTSP over HTTP tunnel. The `initial_buffer` contains any remaining data
      * that the HTTP server read from the socket while parsing the HTTP header.
+     * @param socket a network socket
+     * @param ip the IP address of the remote client
+     * @param port the port used by the other end
+     * @param initialBuffer any initial data that was already read from the socket
      */
     transferConnection(socket: Gio.Socket, ip: string, port: number, initialBuffer?: string | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -6773,6 +7300,10 @@ class RTSPOnvifServer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6783,6 +7314,12 @@ class RTSPOnvifServer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -6806,6 +7343,7 @@ class RTSPOnvifServer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -6825,11 +7363,14 @@ class RTSPOnvifServer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -6837,6 +7378,8 @@ class RTSPOnvifServer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6854,6 +7397,7 @@ class RTSPOnvifServer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -6899,6 +7443,7 @@ class RTSPOnvifServer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -6942,15 +7487,20 @@ class RTSPOnvifServer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -6991,6 +7541,7 @@ class RTSPOnvifServer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7025,6 +7576,7 @@ class RTSPOnvifServer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPServer */
@@ -7062,6 +7614,7 @@ class RTSPOnvifServer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7136,7 +7689,7 @@ class RTSPServer {
     service: string
     sessionPool: RTSPSessionPool
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPServer */
     /**
      * Attaches `server` to `context`. When the mainloop for `context` is run, the
@@ -7151,6 +7704,7 @@ class RTSPServer {
      * g_main_context_default() (or %NULL), g_source_remove() cannot be used to
      * destroy the source. In that case it is recommended to use
      * gst_rtsp_server_create_source() and attach it to `context` manually.
+     * @param context a #GMainContext
      */
     attach(context?: GLib.MainContext | null): number
     /**
@@ -7168,11 +7722,13 @@ class RTSPServer {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for each client.
+     * @param func a callback
      */
     clientFilter(func?: RTSPServerClientFilterFunc | null): RTSPClient[]
     /**
      * Create a #GSocket for `server`. The socket will listen on the
      * configured service.
+     * @param cancellable a #GCancellable
      */
     createSocket(cancellable?: Gio.Cancellable | null): Gio.Socket
     /**
@@ -7185,6 +7741,7 @@ class RTSPServer {
      * check for this in the callback using g_cancellable_is_cancelled().
      * 
      * This takes a reference on `server` until `source` is destroyed.
+     * @param cancellable a #GCancellable or %NULL.
      */
     createSource(cancellable?: Gio.Cancellable | null): GLib.Source
     /**
@@ -7227,10 +7784,12 @@ class RTSPServer {
      * Configure `server` to accept connections on the given address.
      * 
      * This function must be called before the server is bound.
+     * @param address the address
      */
     setAddress(address: string): void
     /**
      * configure `auth` to be used as the authentication manager of `server`.
+     * @param auth a #GstRTSPAuth
      */
     setAuth(auth?: RTSPAuth | null): void
     /**
@@ -7238,15 +7797,18 @@ class RTSPServer {
      * server.
      * 
      * This function must be called before the server is bound.
+     * @param backlog the backlog
      */
     setBacklog(backlog: number): void
     /**
      * Define an appropriate request size limit and reject requests exceeding the
      * limit.
+     * @param limit 
      */
     setContentLengthLimit(limit: number): void
     /**
      * configure `mounts` to be used as the mount points of `server`.
+     * @param mounts a #GstRTSPMountPoints
      */
     setMountPoints(mounts?: RTSPMountPoints | null): void
     /**
@@ -7259,14 +7821,17 @@ class RTSPServer {
      * gst_rtsp_server_get_bound_port().
      * 
      * This function must be called before the server is bound.
+     * @param service the service
      */
     setService(service: string): void
     /**
      * configure `pool` to be used as the session pool of `server`.
+     * @param pool a #GstRTSPSessionPool
      */
     setSessionPool(pool?: RTSPSessionPool | null): void
     /**
      * configure `pool` to be used as the thread pool of `server`.
+     * @param pool a #GstRTSPThreadPool
      */
     setThreadPool(pool?: RTSPThreadPool | null): void
     /**
@@ -7274,6 +7839,10 @@ class RTSPServer {
      * is used when transferring a socket from an HTTP server which should be used
      * as an RTSP over HTTP tunnel. The `initial_buffer` contains any remaining data
      * that the HTTP server read from the socket while parsing the HTTP header.
+     * @param socket a network socket
+     * @param ip the IP address of the remote client
+     * @param port the port used by the other end
+     * @param initialBuffer any initial data that was already read from the socket
      */
     transferConnection(socket: Gio.Socket, ip: string, port: number, initialBuffer?: string | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -7311,6 +7880,10 @@ class RTSPServer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7321,6 +7894,12 @@ class RTSPServer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7344,6 +7923,7 @@ class RTSPServer {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7363,11 +7943,14 @@ class RTSPServer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7375,6 +7958,8 @@ class RTSPServer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7392,6 +7977,7 @@ class RTSPServer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7437,6 +8023,7 @@ class RTSPServer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7480,15 +8067,20 @@ class RTSPServer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -7529,6 +8121,7 @@ class RTSPServer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -7563,6 +8156,7 @@ class RTSPServer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPServer */
@@ -7600,6 +8194,7 @@ class RTSPServer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -7656,6 +8251,9 @@ class RTSPServer {
     /**
      * A default #GSocketSourceFunc that creates a new #GstRTSPClient to accept and handle a
      * new connection on `socket` or `server`.
+     * @param socket a #GSocket
+     * @param condition the condition on `source`
+     * @param server a #GstRTSPServer
      */
     static ioFunc(socket: Gio.Socket, condition: GLib.IOCondition, server: RTSPServer): boolean
     static $gtype: GObject.Type
@@ -7670,10 +8268,11 @@ interface RTSPSession_ConstructProps extends GObject.Object_ConstructProps {
 class RTSPSession {
     /* Properties of GstRtspServer-1.0.GstRtspServer.RTSPSession */
     extraTimeout: number
+    readonly sessionid: string
     timeout: number
     timeoutAlwaysVisible: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPSession */
     /**
      * Allow `session` to expire. This method must be called an equal
@@ -7683,6 +8282,7 @@ class RTSPSession {
     /**
      * Gets the session media for `path,` increasing its reference count. `matched`
      * will contain the number of matched characters of `path`.
+     * @param path the path for the media
      */
     dupMedia(path: string): [ /* returnType */ RTSPSessionMedia | null, /* matched */ number ]
     /**
@@ -7700,6 +8300,7 @@ class RTSPSession {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for all media.
+     * @param func a callback
      */
     filter(func?: RTSPSessionFilterFunc | null): RTSPSessionMedia[]
     /**
@@ -7709,6 +8310,7 @@ class RTSPSession {
     /**
      * Gets the session media for `path`. `matched` will contain the number of matched
      * characters of `path`.
+     * @param path the path for the media
      */
     getMedia(path: string): [ /* returnType */ RTSPSessionMedia | null, /* matched */ number ]
     /**
@@ -7721,10 +8323,12 @@ class RTSPSession {
     getTimeout(): number
     /**
      * Check if `session` timeout out.
+     * @param now the current system time
      */
     isExpired(now: GLib.TimeVal): boolean
     /**
      * Check if `session` timeout out.
+     * @param now the current monotonic time
      */
     isExpiredUsec(now: number): boolean
     /**
@@ -7732,14 +8336,18 @@ class RTSPSession {
      * media from the session with gst_rtsp_session_get_media().
      * 
      * Ownership is taken from `media`.
+     * @param path the path for the media
+     * @param media a #GstRTSPMedia
      */
     manageMedia(path: string, media: RTSPMedia): RTSPSessionMedia
     /**
      * Get the amount of milliseconds till the session will expire.
+     * @param now the current system time
      */
     nextTimeout(now: GLib.TimeVal): number
     /**
      * Get the amount of milliseconds till the session will expire.
+     * @param now the current monotonic time
      */
     nextTimeoutUsec(now: number): number
     /**
@@ -7748,11 +8356,13 @@ class RTSPSession {
     preventExpire(): void
     /**
      * Release the managed `media` in `sess,` freeing the memory allocated by it.
+     * @param media a #GstRTSPMedia
      */
     releaseMedia(media: RTSPSessionMedia): boolean
     /**
      * Configure `session` for a timeout of `timeout` seconds. The session will be
      * cleaned up when there is no activity for `timeout` seconds.
+     * @param timeout the new timeout
      */
     setTimeout(timeout: number): void
     /**
@@ -7794,6 +8404,10 @@ class RTSPSession {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7804,6 +8418,12 @@ class RTSPSession {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -7827,6 +8447,7 @@ class RTSPSession {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -7846,11 +8467,14 @@ class RTSPSession {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -7858,6 +8482,8 @@ class RTSPSession {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7875,6 +8501,7 @@ class RTSPSession {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -7920,6 +8547,7 @@ class RTSPSession {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -7963,15 +8591,20 @@ class RTSPSession {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8012,6 +8645,7 @@ class RTSPSession {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8046,6 +8680,7 @@ class RTSPSession {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8077,6 +8712,7 @@ class RTSPSession {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8088,6 +8724,11 @@ class RTSPSession {
     on(sigName: "notify::extra-timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::extra-timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::extra-timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::sessionid", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::sessionid", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::sessionid", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::sessionid", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::sessionid", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::timeout", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::timeout", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::timeout", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -8116,7 +8757,7 @@ interface RTSPSessionMedia_ConstructProps extends GObject.Object_ConstructProps 
 }
 class RTSPSessionMedia {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPSessionMedia */
     /**
      * Fill `range` with the next available min and max channels for
@@ -8142,6 +8783,7 @@ class RTSPSessionMedia {
     getRtspState(): GstRtsp.RTSPState
     /**
      * Get a previously created #GstRTSPStreamTransport for the stream at `idx`.
+     * @param idx the stream index
      */
     getTransport(idx: number): RTSPStreamTransport | null
     /**
@@ -8151,18 +8793,23 @@ class RTSPSessionMedia {
     /**
      * Check if the path of `media` matches `path`. It `path` matches, the amount of
      * matched characters is returned in `matched`.
+     * @param path a path
      */
     matches(path: string): [ /* returnType */ boolean, /* matched */ number ]
     /**
      * Set the RTSP state of `media` to `state`.
+     * @param state a #GstRTSPState
      */
     setRtspState(state: GstRtsp.RTSPState): void
     /**
      * Tell the media object `media` to change to `state`.
+     * @param state the new state
      */
     setState(state: Gst.State): boolean
     /**
      * Configure the transport for `stream` to `tr` in `media`.
+     * @param stream a #GstRTSPStream
+     * @param tr a #GstRTSPTransport
      */
     setTransport(stream: RTSPStream, tr: GstRtsp.RTSPTransport): RTSPStreamTransport
     /* Methods of GObject-2.0.GObject.Object */
@@ -8200,6 +8847,10 @@ class RTSPSessionMedia {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8210,6 +8861,12 @@ class RTSPSessionMedia {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8233,6 +8890,7 @@ class RTSPSessionMedia {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8252,11 +8910,14 @@ class RTSPSessionMedia {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8264,6 +8925,8 @@ class RTSPSessionMedia {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8281,6 +8944,7 @@ class RTSPSessionMedia {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8326,6 +8990,7 @@ class RTSPSessionMedia {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8369,15 +9034,20 @@ class RTSPSessionMedia {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8418,6 +9088,7 @@ class RTSPSessionMedia {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8452,6 +9123,7 @@ class RTSPSessionMedia {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -8483,6 +9155,7 @@ class RTSPSessionMedia {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8511,7 +9184,7 @@ class RTSPSessionPool {
     /* Properties of GstRtspServer-1.0.GstRtspServer.RTSPSessionPool */
     maxSessions: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPSessionPool */
     /**
      * Inspect all the sessions in `pool` and remove the sessions that are inactive
@@ -8542,11 +9215,13 @@ class RTSPSessionPool {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for all sessions.
+     * @param func a callback
      */
     filter(func?: RTSPSessionPoolFilterFunc | null): RTSPSession[]
     /**
      * Find the session with `sessionid` in `pool`. The access time of the session
      * will be updated with gst_rtsp_session_touch().
+     * @param sessionid the session id
      */
     find(sessionid: string): RTSPSession | null
     /**
@@ -8560,11 +9235,13 @@ class RTSPSessionPool {
     getNSessions(): number
     /**
      * Remove `sess` from `pool,` releasing the ref that the pool has on `sess`.
+     * @param sess a #GstRTSPSession
      */
     remove(sess: RTSPSession): boolean
     /**
      * Configure the maximum allowed number of sessions in `pool` to `max`.
      * A value of 0 means an unlimited amount of sessions.
+     * @param max the maximum number of sessions
      */
     setMaxSessions(max: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8602,6 +9279,10 @@ class RTSPSessionPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8612,6 +9293,12 @@ class RTSPSessionPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -8635,6 +9322,7 @@ class RTSPSessionPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -8654,11 +9342,14 @@ class RTSPSessionPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -8666,6 +9357,8 @@ class RTSPSessionPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8683,6 +9376,7 @@ class RTSPSessionPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -8728,6 +9422,7 @@ class RTSPSessionPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -8771,15 +9466,20 @@ class RTSPSessionPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -8820,6 +9520,7 @@ class RTSPSessionPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -8854,6 +9555,7 @@ class RTSPSessionPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPSessionPool */
@@ -8891,6 +9593,7 @@ class RTSPSessionPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -8928,12 +9631,16 @@ class RTSPStream {
     profiles: GstRtsp.RTSPProfile
     protocols: GstRtsp.RTSPLowerTrans
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPStream */
     /**
      * Add multicast client address to stream. At this point, the sockets that
      * will stream RTP and RTCP data to `destination` are supposed to be
      * allocated.
+     * @param destination a multicast address to add
+     * @param rtpPort RTP port
+     * @param rtcpPort RTCP port
+     * @param family socket family
      */
     addMulticastClientAddress(destination: string, rtpPort: number, rtcpPort: number, family: Gio.SocketFamily): boolean
     /**
@@ -8944,15 +9651,20 @@ class RTSPStream {
      * `stream` must be joined to a bin.
      * 
      * `trans` must contain a valid #GstRTSPTransport.
+     * @param trans a #GstRTSPStreamTransport
      */
     addTransport(trans: RTSPStreamTransport): boolean
     /**
      * Allocates RTP and RTCP ports.
+     * @param family protocol family
+     * @param transport transport method
+     * @param useClientSettings Whether to use client settings or not
      */
     allocateUdpSockets(family: Gio.SocketFamily, transport: GstRtsp.RTSPTransport, useClientSettings: boolean): boolean
     /**
      * Add a receiver and sender part to the pipeline based on the transport from
      * SETUP.
+     * @param transport a #GstRTSPTransport
      */
     completeStream(transport: GstRtsp.RTSPTransport): boolean
     /**
@@ -8996,6 +9708,7 @@ class RTSPStream {
      * Get the multicast address of `stream` for `family`. The original
      * #GstRTSPAddress is cached and copy is returned, so freeing the return value
      * won't release the address from the pool.
+     * @param family the #GSocketFamily
      */
     getMulticastAddress(family: Gio.SocketFamily): RTSPAddress | null
     /**
@@ -9037,22 +9750,26 @@ class RTSPStream {
     getRetransmissionTime(): Gst.ClockTime
     /**
      * Get the multicast RTCP socket from `stream` for a `family`.
+     * @param family the socket family
      */
     getRtcpMulticastSocket(family: Gio.SocketFamily): Gio.Socket | null
     /**
      * Get the RTCP socket from `stream` for a `family`.
      * 
      * `stream` must be joined to a bin.
+     * @param family the socket family
      */
     getRtcpSocket(family: Gio.SocketFamily): Gio.Socket | null
     /**
      * Get the multicast RTP socket from `stream` for a `family`.
+     * @param family the socket family
      */
     getRtpMulticastSocket(family: Gio.SocketFamily): Gio.Socket | null
     /**
      * Get the RTP socket from `stream` for a `family`.
      * 
      * `stream` must be joined to a bin.
+     * @param family the socket family
      */
     getRtpSocket(family: Gio.SocketFamily): Gio.Socket | null
     /**
@@ -9067,6 +9784,7 @@ class RTSPStream {
     /**
      * Fill `server_port` with the port pair used by the server. This function can
      * only be called when `stream` has been joined.
+     * @param family the port family to get
      */
     getServerPort(family: Gio.SocketFamily): /* serverPort */ GstRtsp.RTSPRange
     /**
@@ -9091,10 +9809,12 @@ class RTSPStream {
     getUlpfecPt(): number
     /**
      * Parse and handle a KeyMgmt header.
+     * @param keymgmt a keymgmt header
      */
     handleKeymgmt(keymgmt: string): boolean
     /**
      * Check if `stream` has the control string `control`.
+     * @param control a control string
      */
     hasControl(control?: string | null): boolean
     /**
@@ -9125,6 +9845,7 @@ class RTSPStream {
     isSender(): boolean
     /**
      * Check if `transport` can be handled by stream
+     * @param transport a #GstRTSPTransport
      */
     isTransportSupported(transport: GstRtsp.RTSPTransport): boolean
     /**
@@ -9132,10 +9853,15 @@ class RTSPStream {
      * 
      * `stream` will link to `rtpbin,` which must be inside `bin`. The elements
      * added to `bin` will be set to the state given in `state`.
+     * @param bin a #GstBin to join
+     * @param rtpbin a rtpbin element in `bin`
+     * @param state the target state of the new elements
      */
     joinBin(bin: Gst.Bin, rtpbin: Gst.Element, state: Gst.State): boolean
     /**
      * Remove the elements of `stream` from `bin`.
+     * @param bin a #GstBin
+     * @param rtpbin a rtpbin #GstElement
      */
     leaveBin(bin: Gst.Bin, rtpbin: Gst.Element): boolean
     /**
@@ -9153,6 +9879,7 @@ class RTSPStream {
      * message has been received from a client using the TCP transport.
      * 
      * This function takes ownership of `buffer`.
+     * @param buffer a #GstBuffer
      */
     recvRtcp(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -9160,6 +9887,7 @@ class RTSPStream {
      * message has been received from a client using the TCP transport.
      * 
      * This function takes ownership of `buffer`.
+     * @param buffer a #GstBuffer
      */
     recvRtp(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -9169,28 +9897,38 @@ class RTSPStream {
      * `stream` must be joined to a bin.
      * 
      * `trans` must contain a valid #GstRTSPTransport.
+     * @param trans a #GstRTSPStreamTransport
      */
     removeTransport(trans: RTSPStreamTransport): boolean
     /**
      * Creating a rtxreceive bin
+     * @param sessid the session id
      */
     requestAuxReceiver(sessid: number): Gst.Element | null
     /**
      * Creating a rtxsend bin
+     * @param sessid the session id
      */
     requestAuxSender(sessid: number): Gst.Element | null
     /**
      * Creating a rtpulpfecdec element
+     * @param rtpbin 
+     * @param sessid 
      */
     requestUlpfecDecoder(rtpbin: Gst.Element, sessid: number): Gst.Element | null
     /**
      * Creating a rtpulpfecenc element
+     * @param sessid 
      */
     requestUlpfecEncoder(sessid: number): Gst.Element | null
     /**
      * Reserve `address` and `port` as the address and port of `stream`. The original
      * #GstRTSPAddress is cached and copy is returned, so freeing the return value
      * won't release the address from the pool.
+     * @param address an address
+     * @param port a port
+     * @param nPorts n_ports
+     * @param ttl a TTL
      */
     reserveAddress(address: string, port: number, nPorts: number, ttl: number): RTSPAddress | null
     /**
@@ -9199,20 +9937,24 @@ class RTSPStream {
     seekable(): boolean
     /**
      * configure `pool` to be used as the address pool of `stream`.
+     * @param pool a #GstRTSPAddressPool
      */
     setAddressPool(pool?: RTSPAddressPool | null): void
     /**
      * Decide whether the multicast socket should be bound to a multicast address or
      * INADDR_ANY.
+     * @param bindMcastAddr the new value
      */
     setBindMcastAddress(bindMcastAddr: boolean): void
     /**
      * Blocks or unblocks the dataflow on `stream`.
+     * @param blocked boolean indicating we should block or unblock
      */
     setBlocked(blocked: boolean): boolean
     /**
      * Set the size of the UDP transmission buffer (in bytes)
      * Needs to be set before the stream is joined to a bin.
+     * @param size the buffer size
      */
     setBufferSize(size: number): void
     /**
@@ -9221,65 +9963,81 @@ class RTSPStream {
      * of changing which UDP port numbers are used when setting up the local
      * side of the stream sending to be either the 'server' or 'client' pair
      * of a configured UDP transport.
+     * @param clientSide TRUE if this #GstRTSPStream is running on the 'client' side of an RTSP connection.
      */
     setClientSide(clientSide: boolean): void
     /**
      * Set the control string in `stream`.
+     * @param control a control string
      */
     setControl(control?: string | null): void
     /**
      * Configure the dscp qos of the outgoing sockets to `dscp_qos`.
+     * @param dscpQos a new dscp qos value (0-63, or -1 to disable)
      */
     setDscpQos(dscpQos: number): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
+     * @param ttl the new multicast ttl value
      */
     setMaxMcastTtl(ttl: number): boolean
     /**
      * Configure the mtu in the payloader of `stream` to `mtu`.
+     * @param mtu a new MTU
      */
     setMtu(mtu: number): void
     /**
      * configure `multicast_iface` to be used for `stream`.
+     * @param multicastIface a multicast interface name
      */
     setMulticastIface(multicastIface?: string | null): void
     /**
      * Configure the allowed profiles for `stream`.
+     * @param profiles the new profiles
      */
     setProfiles(profiles: GstRtsp.RTSPProfile): void
     /**
      * Configure the allowed lower transport for `stream`.
+     * @param protocols the new flags
      */
     setProtocols(protocols: GstRtsp.RTSPLowerTrans): void
     /**
      * Configure a pt map between `pt` and `caps`.
+     * @param pt the pt
+     * @param caps a #GstCaps
      */
     setPtMap(pt: number, caps: Gst.Caps): void
     /**
      * Sets if and how the stream clock should be published according to RFC7273.
+     * @param mode the clock publish mode
      */
     setPublishClockMode(mode: RTSPPublishClockMode): void
     /**
      * Define whether `stream` will follow the Rate-Control=no behaviour as specified
      * in the ONVIF replay spec.
+     * @param enabled 
      */
     setRateControl(enabled: boolean): void
     /**
      * Set the payload type (pt) for retransmission of this stream.
+     * @param rtxPt a #guint
      */
     setRetransmissionPt(rtxPt: number): void
     /**
      * Set the amount of time to store retransmission packets.
+     * @param time a #GstClockTime
      */
     setRetransmissionTime(time: Gst.ClockTime): void
     setSeqnumOffset(seqnum: number): void
     /**
      * Sets the amount of redundancy to apply when creating ULPFEC
      * protection packets.
+     * @param percentage 
      */
     setUlpfecPercentage(percentage: number): void
     /**
      * Set the payload type to be used for ULPFEC protection packets
+     * @param pt 
      */
     setUlpfecPt(pt: number): void
     /**
@@ -9297,6 +10055,7 @@ class RTSPStream {
      * function..
      * 
      * When `func` is %NULL, #GST_RTSP_FILTER_REF will be assumed for each transport.
+     * @param func a callback
      */
     transportFilter(func?: RTSPStreamTransportFilterFunc | null): RTSPStreamTransport[]
     unblockLinked(): boolean
@@ -9312,10 +10071,13 @@ class RTSPStream {
      * for `ssrc` did not exist, it will be added. If information
      * for `ssrc` existed, it will be replaced. If `crypto` is %NULL, it will
      * be removed from `stream`.
+     * @param ssrc the SSRC
+     * @param crypto a #GstCaps with crypto info
      */
     updateCrypto(ssrc: number, crypto?: Gst.Caps | null): boolean
     /**
      * Check if the requested multicast ttl value is allowed.
+     * @param ttl a requested multicast ttl
      */
     verifyMcastTtl(ttl: number): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -9353,6 +10115,10 @@ class RTSPStream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9363,6 +10129,12 @@ class RTSPStream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9386,6 +10158,7 @@ class RTSPStream {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9405,11 +10178,14 @@ class RTSPStream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9417,6 +10193,8 @@ class RTSPStream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9434,6 +10212,7 @@ class RTSPStream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9479,6 +10258,7 @@ class RTSPStream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9522,15 +10302,20 @@ class RTSPStream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -9571,6 +10356,7 @@ class RTSPStream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -9605,6 +10391,7 @@ class RTSPStream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GstRtspServer-1.0.GstRtspServer.RTSPStream */
@@ -9652,6 +10439,7 @@ class RTSPStream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -9691,10 +10479,11 @@ interface RTSPStreamTransport_ConstructProps extends GObject.Object_ConstructPro
 }
 class RTSPStreamTransport {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPStreamTransport */
     /**
      * Get the RTP-Info string for `trans` and `start_time`.
+     * @param startTime a star time
      */
     getRtpinfo(startTime: Gst.ClockTime): string | null
     /**
@@ -9723,62 +10512,79 @@ class RTSPStreamTransport {
     messageSent(): void
     /**
      * Receive `buffer` on `channel` `trans`.
+     * @param channel a channel
+     * @param buffer a #GstBuffer
      */
     recvData(channel: number, buffer: Gst.Buffer): Gst.FlowReturn
     /**
      * Send `buffer` to the installed RTCP callback for `trans`.
+     * @param buffer a #GstBuffer
      */
     sendRtcp(buffer: Gst.Buffer): boolean
     /**
      * Send `buffer_list` to the installed RTCP callback for `trans`.
+     * @param bufferList a #GstBuffer
      */
     sendRtcpList(bufferList: Gst.BufferList): boolean
     /**
      * Send `buffer` to the installed RTP callback for `trans`.
+     * @param buffer a #GstBuffer
      */
     sendRtp(buffer: Gst.Buffer): boolean
     /**
      * Send `buffer_list` to the installed RTP callback for `trans`.
+     * @param bufferList a #GstBufferList
      */
     sendRtpList(bufferList: Gst.BufferList): boolean
     /**
      * Activate or deactivate datatransfer configured in `trans`.
+     * @param active new state of `trans`
      */
     setActive(active: boolean): boolean
     /**
      * Install callbacks that will be called when data for a stream should be sent
      * to a client. This is usually used when sending RTP/RTCP over TCP.
+     * @param sendRtp a callback called when RTP should be sent
+     * @param sendRtcp a callback called when RTCP should be sent
      */
     setCallbacks(sendRtp: RTSPSendFunc, sendRtcp: RTSPSendFunc): void
     /**
      * Install callbacks that will be called when RTCP packets are received from the
      * receiver of `trans`.
+     * @param keepAlive a callback called when the receiver is active
      */
     setKeepalive(keepAlive: RTSPKeepAliveFunc): void
     /**
      * Install callbacks that will be called when data for a stream should be sent
      * to a client. This is usually used when sending RTP/RTCP over TCP.
+     * @param sendRtpList a callback called when RTP should be sent
+     * @param sendRtcpList a callback called when RTCP should be sent
      */
     setListCallbacks(sendRtpList: RTSPSendListFunc, sendRtcpList: RTSPSendListFunc): void
     /**
      * Install a callback that will be called when a message has been sent on `trans`.
+     * @param messageSent a callback called when a message has been sent
      */
     setMessageSent(messageSent: RTSPMessageSentFunc): void
     /**
      * Install a callback that will be called when a message has been sent on `trans`.
+     * @param messageSent a callback called when a message has been sent
      */
     setMessageSentFull(messageSent: RTSPMessageSentFuncFull): void
     /**
      * Set the timed out state of `trans` to `timedout`
+     * @param timedout timed out value
      */
     setTimedOut(timedout: boolean): void
     /**
      * Set `tr` as the client transport. This function takes ownership of the
      * passed `tr`.
+     * @param tr a client #GstRTSPTransport
      */
     setTransport(tr: GstRtsp.RTSPTransport): void
     /**
      * Set `url` as the client url.
+     * @param url a client #GstRTSPUrl
      */
     setUrl(url?: GstRtsp.RTSPUrl | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9816,6 +10622,10 @@ class RTSPStreamTransport {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9826,6 +10636,12 @@ class RTSPStreamTransport {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -9849,6 +10665,7 @@ class RTSPStreamTransport {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -9868,11 +10685,14 @@ class RTSPStreamTransport {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -9880,6 +10700,8 @@ class RTSPStreamTransport {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9897,6 +10719,7 @@ class RTSPStreamTransport {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -9942,6 +10765,7 @@ class RTSPStreamTransport {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -9985,15 +10809,20 @@ class RTSPStreamTransport {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10034,6 +10863,7 @@ class RTSPStreamTransport {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10068,6 +10898,7 @@ class RTSPStreamTransport {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10099,6 +10930,7 @@ class RTSPStreamTransport {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10127,7 +10959,7 @@ class RTSPThreadPool {
     /* Properties of GstRtspServer-1.0.GstRtspServer.RTSPThreadPool */
     maxThreads: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPThreadPool */
     /**
      * Get the maximum number of threads used for client connections.
@@ -10136,12 +10968,15 @@ class RTSPThreadPool {
     getMaxThreads(): number
     /**
      * Get a new #GstRTSPThread for `type` and `ctx`.
+     * @param type the #GstRTSPThreadType
+     * @param ctx a #GstRTSPContext
      */
     getThread(type: RTSPThreadType, ctx: RTSPContext): RTSPThread | null
     /**
      * Set the maximum threads used by the pool to handle client requests.
      * A value of 0 will use the pool mainloop, a value of -1 will use an
      * unlimited number of threads.
+     * @param maxThreads maximum threads
      */
     setMaxThreads(maxThreads: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10179,6 +11014,10 @@ class RTSPThreadPool {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10189,6 +11028,12 @@ class RTSPThreadPool {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -10212,6 +11057,7 @@ class RTSPThreadPool {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -10231,11 +11077,14 @@ class RTSPThreadPool {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -10243,6 +11092,8 @@ class RTSPThreadPool {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10260,6 +11111,7 @@ class RTSPThreadPool {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -10305,6 +11157,7 @@ class RTSPThreadPool {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -10348,15 +11201,20 @@ class RTSPThreadPool {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -10397,6 +11255,7 @@ class RTSPThreadPool {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -10431,6 +11290,7 @@ class RTSPThreadPool {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -10462,6 +11322,7 @@ class RTSPThreadPool {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -10498,23 +11359,23 @@ class RTSPAddress {
     /**
      * the #GstRTSPAddressPool owner of this address
      */
-    readonly pool: RTSPAddressPool
+    pool: RTSPAddressPool
     /**
      * the address
      */
-    readonly address: string
+    address: string
     /**
      * the port number
      */
-    readonly port: number
+    port: number
     /**
      * number of ports
      */
-    readonly nPorts: number
+    nPorts: number
     /**
      * TTL or 0 for unicast addresses
      */
-    readonly ttl: number
+    ttl: number
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPAddress */
     /**
      * Make a copy of `addr`.
@@ -10529,7 +11390,7 @@ class RTSPAddress {
 }
 abstract class RTSPAddressPoolClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPAddressPoolClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RTSPAddressPoolPrivate {
@@ -10537,11 +11398,11 @@ class RTSPAddressPoolPrivate {
 }
 abstract class RTSPAuthClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPAuthClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly authenticate: (auth: RTSPAuth, ctx: RTSPContext) => boolean
-    readonly check: (auth: RTSPAuth, ctx: RTSPContext, check: string) => boolean
-    readonly generateAuthenticateHeader: (auth: RTSPAuth, ctx: RTSPContext) => void
-    readonly acceptCertificate: (auth: RTSPAuth, connection: Gio.TlsConnection, peerCert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
+    parentClass: GObject.ObjectClass
+    authenticate: (auth: RTSPAuth, ctx: RTSPContext) => boolean
+    check: (auth: RTSPAuth, ctx: RTSPContext, check: string) => boolean
+    generateAuthenticateHeader: (auth: RTSPAuth, ctx: RTSPContext) => void
+    acceptCertificate: (auth: RTSPAuth, connection: Gio.TlsConnection, peerCert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
     static name: string
 }
 class RTSPAuthPrivate {
@@ -10549,42 +11410,42 @@ class RTSPAuthPrivate {
 }
 abstract class RTSPClientClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPClientClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly createSdp: (client: RTSPClient, media: RTSPMedia) => GstSdp.SDPMessage
-    readonly configureClientMedia: (client: RTSPClient, media: RTSPMedia, stream: RTSPStream, ctx: RTSPContext) => boolean
-    readonly configureClientTransport: (client: RTSPClient, ctx: RTSPContext, ct: GstRtsp.RTSPTransport) => boolean
-    readonly paramsSet: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPResult
-    readonly paramsGet: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPResult
-    readonly makePathFromUri: (client: RTSPClient, uri: GstRtsp.RTSPUrl) => string
-    readonly adjustPlayMode: (client: RTSPClient, context: RTSPContext, range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags, rate: number, trickmodeInterval: Gst.ClockTime, enableRateControl: boolean) => GstRtsp.RTSPStatusCode
-    readonly adjustPlayResponse: (client: RTSPClient, context: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly closed: (client: RTSPClient) => void
-    readonly newSession: (client: RTSPClient, session: RTSPSession) => void
-    readonly optionsRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly describeRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly setupRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly playRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly pauseRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly teardownRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly setParameterRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly getParameterRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly handleResponse: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly tunnelHttpResponse: (client: RTSPClient, request: GstRtsp.RTSPMessage, response: GstRtsp.RTSPMessage) => void
-    readonly sendMessage: (client: RTSPClient, ctx: RTSPContext, response: GstRtsp.RTSPMessage) => void
-    readonly handleSdp: (client: RTSPClient, ctx: RTSPContext, media: RTSPMedia, sdp: GstSdp.SDPMessage) => boolean
-    readonly announceRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly recordRequest: (client: RTSPClient, ctx: RTSPContext) => void
-    readonly checkRequirements: (client: RTSPClient, ctx: RTSPContext, arr: string) => string
-    readonly preOptionsRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preDescribeRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preSetupRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly prePlayRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly prePauseRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preTeardownRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preSetParameterRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preGetParameterRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preAnnounceRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
-    readonly preRecordRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    parentClass: GObject.ObjectClass
+    createSdp: (client: RTSPClient, media: RTSPMedia) => GstSdp.SDPMessage
+    configureClientMedia: (client: RTSPClient, media: RTSPMedia, stream: RTSPStream, ctx: RTSPContext) => boolean
+    configureClientTransport: (client: RTSPClient, ctx: RTSPContext, ct: GstRtsp.RTSPTransport) => boolean
+    paramsSet: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPResult
+    paramsGet: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPResult
+    makePathFromUri: (client: RTSPClient, uri: GstRtsp.RTSPUrl) => string
+    adjustPlayMode: (client: RTSPClient, context: RTSPContext, range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags, rate: number, trickmodeInterval: Gst.ClockTime, enableRateControl: boolean) => GstRtsp.RTSPStatusCode
+    adjustPlayResponse: (client: RTSPClient, context: RTSPContext) => GstRtsp.RTSPStatusCode
+    closed: (client: RTSPClient) => void
+    newSession: (client: RTSPClient, session: RTSPSession) => void
+    optionsRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    describeRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    setupRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    playRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    pauseRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    teardownRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    setParameterRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    getParameterRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    handleResponse: (client: RTSPClient, ctx: RTSPContext) => void
+    tunnelHttpResponse: (client: RTSPClient, request: GstRtsp.RTSPMessage, response: GstRtsp.RTSPMessage) => void
+    sendMessage: (client: RTSPClient, ctx: RTSPContext, response: GstRtsp.RTSPMessage) => void
+    handleSdp: (client: RTSPClient, ctx: RTSPContext, media: RTSPMedia, sdp: GstSdp.SDPMessage) => boolean
+    announceRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    recordRequest: (client: RTSPClient, ctx: RTSPContext) => void
+    checkRequirements: (client: RTSPClient, ctx: RTSPContext, arr: string) => string
+    preOptionsRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preDescribeRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preSetupRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    prePlayRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    prePauseRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preTeardownRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preSetParameterRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preGetParameterRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preAnnounceRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
+    preRecordRequest: (client: RTSPClient, ctx: RTSPContext) => GstRtsp.RTSPStatusCode
     static name: string
 }
 class RTSPClientPrivate {
@@ -10595,63 +11456,63 @@ class RTSPContext {
     /**
      * the server
      */
-    readonly server: RTSPServer
+    server: RTSPServer
     /**
      * the connection
      */
-    readonly conn: GstRtsp.RTSPConnection
+    conn: GstRtsp.RTSPConnection
     /**
      * the client
      */
-    readonly client: RTSPClient
+    client: RTSPClient
     /**
      * the complete request
      */
-    readonly request: GstRtsp.RTSPMessage
+    request: GstRtsp.RTSPMessage
     /**
      * the complete url parsed from `request`
      */
-    readonly uri: GstRtsp.RTSPUrl
+    uri: GstRtsp.RTSPUrl
     /**
      * the parsed method of `uri`
      */
-    readonly method: GstRtsp.RTSPMethod
+    method: GstRtsp.RTSPMethod
     /**
      * the current auth object or %NULL
      */
-    readonly auth: RTSPAuth
+    auth: RTSPAuth
     /**
      * authorisation token
      */
-    readonly token: RTSPToken
+    token: RTSPToken
     /**
      * the session, can be %NULL
      */
-    readonly session: RTSPSession
+    session: RTSPSession
     /**
      * the session media for the url can be %NULL
      */
-    readonly sessmedia: RTSPSessionMedia
+    sessmedia: RTSPSessionMedia
     /**
      * the media factory for the url, can be %NULL
      */
-    readonly factory: RTSPMediaFactory
+    factory: RTSPMediaFactory
     /**
      * the media for the url can be %NULL
      */
-    readonly media: RTSPMedia
+    media: RTSPMedia
     /**
      * the stream for the url can be %NULL
      */
-    readonly stream: RTSPStream
+    stream: RTSPStream
     /**
      * the response
      */
-    readonly response: GstRtsp.RTSPMessage
+    response: GstRtsp.RTSPMessage
     /**
      * the stream transport, can be %NULL
      */
-    readonly trans: RTSPStreamTransport
+    trans: RTSPStreamTransport
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPContext */
     /**
      * Pops `ctx` off the context stack (verifying that `ctx`
@@ -10667,35 +11528,35 @@ class RTSPContext {
 }
 abstract class RTSPMediaClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMediaClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly handleMessage: (media: RTSPMedia, message: Gst.Message) => boolean
-    readonly prepare: (media: RTSPMedia, thread?: RTSPThread | null) => boolean
-    readonly unprepare: (media: RTSPMedia) => boolean
-    readonly suspend: (media: RTSPMedia) => boolean
-    readonly unsuspend: (media: RTSPMedia) => boolean
-    readonly convertRange: (media: RTSPMedia, range: GstRtsp.RTSPTimeRange, unit: GstRtsp.RTSPRangeUnit) => boolean
-    readonly queryPosition: (media: RTSPMedia, position: number) => boolean
-    readonly queryStop: (media: RTSPMedia, stop: number) => boolean
-    readonly setupRtpbin: (media: RTSPMedia, rtpbin: Gst.Element) => boolean
-    readonly setupSdp: (media: RTSPMedia, sdp: GstSdp.SDPMessage, info: SDPInfo) => boolean
-    readonly newStream: (media: RTSPMedia, stream: RTSPStream) => void
-    readonly removedStream: (media: RTSPMedia, stream: RTSPStream) => void
-    readonly prepared: (media: RTSPMedia) => void
-    readonly unprepared: (media: RTSPMedia) => void
-    readonly targetState: (media: RTSPMedia, state: Gst.State) => void
-    readonly newState: (media: RTSPMedia, state: Gst.State) => void
-    readonly handleSdp: (media: RTSPMedia, sdp: GstSdp.SDPMessage) => boolean
+    parentClass: GObject.ObjectClass
+    handleMessage: (media: RTSPMedia, message: Gst.Message) => boolean
+    prepare: (media: RTSPMedia, thread?: RTSPThread | null) => boolean
+    unprepare: (media: RTSPMedia) => boolean
+    suspend: (media: RTSPMedia) => boolean
+    unsuspend: (media: RTSPMedia) => boolean
+    convertRange: (media: RTSPMedia, range: GstRtsp.RTSPTimeRange, unit: GstRtsp.RTSPRangeUnit) => boolean
+    queryPosition: (media: RTSPMedia, position: number) => boolean
+    queryStop: (media: RTSPMedia, stop: number) => boolean
+    setupRtpbin: (media: RTSPMedia, rtpbin: Gst.Element) => boolean
+    setupSdp: (media: RTSPMedia, sdp: GstSdp.SDPMessage, info: SDPInfo) => boolean
+    newStream: (media: RTSPMedia, stream: RTSPStream) => void
+    removedStream: (media: RTSPMedia, stream: RTSPStream) => void
+    prepared: (media: RTSPMedia) => void
+    unprepared: (media: RTSPMedia) => void
+    targetState: (media: RTSPMedia, state: Gst.State) => void
+    newState: (media: RTSPMedia, state: Gst.State) => void
+    handleSdp: (media: RTSPMedia, sdp: GstSdp.SDPMessage) => boolean
     static name: string
 }
 abstract class RTSPMediaFactoryClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactoryClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly genKey: (factory: RTSPMediaFactory, url: GstRtsp.RTSPUrl) => string
-    readonly createElement: (factory: RTSPMediaFactory, url: GstRtsp.RTSPUrl) => Gst.Element
-    readonly construct: (factory: RTSPMediaFactory, url: GstRtsp.RTSPUrl) => RTSPMedia
-    readonly configure: (factory: RTSPMediaFactory, media: RTSPMedia) => void
-    readonly mediaConstructed: (factory: RTSPMediaFactory, media: RTSPMedia) => void
-    readonly mediaConfigure: (factory: RTSPMediaFactory, media: RTSPMedia) => void
+    parentClass: GObject.ObjectClass
+    genKey: (factory: RTSPMediaFactory, url: GstRtsp.RTSPUrl) => string
+    createElement: (factory: RTSPMediaFactory, url: GstRtsp.RTSPUrl) => Gst.Element
+    construct: (factory: RTSPMediaFactory, url: GstRtsp.RTSPUrl) => RTSPMedia
+    configure: (factory: RTSPMediaFactory, media: RTSPMedia) => void
+    mediaConstructed: (factory: RTSPMediaFactory, media: RTSPMedia) => void
+    mediaConfigure: (factory: RTSPMediaFactory, media: RTSPMedia) => void
     static name: string
 }
 class RTSPMediaFactoryPrivate {
@@ -10703,7 +11564,7 @@ class RTSPMediaFactoryPrivate {
 }
 abstract class RTSPMediaFactoryURIClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactoryURIClass */
-    readonly parentClass: RTSPMediaFactoryClass
+    parentClass: RTSPMediaFactoryClass
     static name: string
 }
 class RTSPMediaFactoryURIPrivate {
@@ -10714,8 +11575,8 @@ class RTSPMediaPrivate {
 }
 abstract class RTSPMountPointsClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPMountPointsClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly makePath: (mounts: RTSPMountPoints, url: GstRtsp.RTSPUrl) => string | null
+    parentClass: GObject.ObjectClass
+    makePath: (mounts: RTSPMountPoints, url: GstRtsp.RTSPUrl) => string | null
     static name: string
 }
 class RTSPMountPointsPrivate {
@@ -10723,18 +11584,18 @@ class RTSPMountPointsPrivate {
 }
 abstract class RTSPOnvifClientClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPOnvifClientClass */
-    readonly parent: RTSPClientClass
+    parent: RTSPClientClass
     static name: string
 }
 abstract class RTSPOnvifMediaClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPOnvifMediaClass */
-    readonly parent: RTSPMediaClass
+    parent: RTSPMediaClass
     static name: string
 }
 abstract class RTSPOnvifMediaFactoryClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPOnvifMediaFactoryClass */
-    readonly parent: RTSPMediaFactoryClass
-    readonly hasBackchannelSupport: (factory: RTSPOnvifMediaFactory) => boolean
+    parent: RTSPMediaFactoryClass
+    hasBackchannelSupport: (factory: RTSPOnvifMediaFactory) => boolean
     static name: string
 }
 class RTSPOnvifMediaFactoryPrivate {
@@ -10745,20 +11606,24 @@ class RTSPOnvifMediaPrivate {
 }
 abstract class RTSPOnvifServerClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPOnvifServerClass */
-    readonly parent: RTSPServerClass
+    parent: RTSPServerClass
     static name: string
 }
 class RTSPPermissions {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPPermissions */
-    readonly miniObject: Gst.MiniObject
+    miniObject: Gst.MiniObject
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPPermissions */
     /**
      * Add a new `permission` for `role` to `permissions` with the access in `allowed`.
+     * @param role a role
+     * @param permission the permission
+     * @param allowed whether the role has this permission or not
      */
     addPermissionForRole(role: string, permission: string, allowed: boolean): void
     /**
      * Add a new `role` to `permissions` without any permissions. You can add
      * permissions for the role with gst_rtsp_permissions_add_permission_for_role().
+     * @param role a role
      */
     addRole(role: string): void
     /**
@@ -10769,18 +11634,23 @@ class RTSPPermissions {
      * ```
      * gst_structure_new ("tester", "permission1", G_TYPE_BOOLEAN, TRUE, NULL);
      * ```
+     * @param structure 
      */
     addRoleFromStructure(structure: Gst.Structure): void
     /**
      * Get all permissions for `role` in `permissions`.
+     * @param role a role
      */
     getRole(role: string): Gst.Structure
     /**
      * Check if `role` in `permissions` is given permission for `permission`.
+     * @param role a role
+     * @param permission a permission
      */
     isAllowed(role: string, permission: string): boolean
     /**
      * Remove all permissions for `role` in `permissions`.
+     * @param role a role
      */
     removeRole(role: string): void
     static name: string
@@ -10791,8 +11661,8 @@ class RTSPPermissions {
 }
 abstract class RTSPServerClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPServerClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly clientConnected: (server: RTSPServer, client: RTSPClient) => void
+    parentClass: GObject.ObjectClass
+    clientConnected: (server: RTSPServer, client: RTSPClient) => void
     static name: string
 }
 class RTSPServerPrivate {
@@ -10800,12 +11670,12 @@ class RTSPServerPrivate {
 }
 abstract class RTSPSessionClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPSessionClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class RTSPSessionMediaClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPSessionMediaClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RTSPSessionMediaPrivate {
@@ -10813,9 +11683,9 @@ class RTSPSessionMediaPrivate {
 }
 abstract class RTSPSessionPoolClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPSessionPoolClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly createSessionId: (pool: RTSPSessionPool) => string
-    readonly sessionRemoved: (pool: RTSPSessionPool, session: RTSPSession) => void
+    parentClass: GObject.ObjectClass
+    createSessionId: (pool: RTSPSessionPool) => string
+    sessionRemoved: (pool: RTSPSessionPool, session: RTSPSession) => void
     static name: string
 }
 class RTSPSessionPoolPrivate {
@@ -10826,7 +11696,7 @@ class RTSPSessionPrivate {
 }
 abstract class RTSPStreamClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPStreamClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RTSPStreamPrivate {
@@ -10834,7 +11704,7 @@ class RTSPStreamPrivate {
 }
 abstract class RTSPStreamTransportClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPStreamTransportClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class RTSPStreamTransportPrivate {
@@ -10845,19 +11715,19 @@ class RTSPThread {
     /**
      * parent #GstMiniObject
      */
-    readonly miniObject: Gst.MiniObject
+    miniObject: Gst.MiniObject
     /**
      * the thread type
      */
-    readonly type: RTSPThreadType
+    type: RTSPThreadType
     /**
      * a #GMainContext
      */
-    readonly context: GLib.MainContext
+    context: GLib.MainContext
     /**
      * a #GMainLoop
      */
-    readonly loop: GLib.MainLoop
+    loop: GLib.MainLoop
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPThread */
     /**
      * Reuse the mainloop of `thread`
@@ -10876,15 +11746,15 @@ class RTSPThread {
 }
 abstract class RTSPThreadPoolClass {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPThreadPoolClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     /**
      * a #GThreadPool used internally
      */
-    readonly pool: GLib.ThreadPool
-    readonly getThread: (pool: RTSPThreadPool, type: RTSPThreadType, ctx: RTSPContext) => RTSPThread | null
-    readonly configureThread: (pool: RTSPThreadPool, thread: RTSPThread, ctx: RTSPContext) => void
-    readonly threadEnter: (pool: RTSPThreadPool, thread: RTSPThread) => void
-    readonly threadLeave: (pool: RTSPThreadPool, thread: RTSPThread) => void
+    pool: GLib.ThreadPool
+    getThread: (pool: RTSPThreadPool, type: RTSPThreadType, ctx: RTSPContext) => RTSPThread | null
+    configureThread: (pool: RTSPThreadPool, thread: RTSPThread, ctx: RTSPContext) => void
+    threadEnter: (pool: RTSPThreadPool, thread: RTSPThread) => void
+    threadLeave: (pool: RTSPThreadPool, thread: RTSPThread) => void
     static name: string
 }
 class RTSPThreadPoolPrivate {
@@ -10892,10 +11762,11 @@ class RTSPThreadPoolPrivate {
 }
 class RTSPToken {
     /* Fields of GstRtspServer-1.0.GstRtspServer.RTSPToken */
-    readonly miniObject: Gst.MiniObject
+    miniObject: Gst.MiniObject
     /* Methods of GstRtspServer-1.0.GstRtspServer.RTSPToken */
     /**
      * Get the string value of `field` in `token`.
+     * @param field a field name
      */
     getString(field: string): string | null
     /**
@@ -10904,14 +11775,19 @@ class RTSPToken {
     getStructure(): Gst.Structure
     /**
      * Check if `token` has a boolean `field` and if it is set to %TRUE.
+     * @param field a field name
      */
     isAllowed(field: string): boolean
     /**
      * Sets a boolean value on `token`.
+     * @param field field to set
+     * @param boolValue boolean value to set
      */
     setBool(field: string, boolValue: boolean): void
     /**
      * Sets a string value on `token`.
+     * @param field field to set
+     * @param stringValue string value to set
      */
     setString(field: string, stringValue: string): void
     /**
@@ -10926,8 +11802,8 @@ class RTSPToken {
 }
 class SDPInfo {
     /* Fields of GstRtspServer-1.0.GstRtspServer.SDPInfo */
-    readonly isIpv6: boolean
-    readonly serverIp: string
+    isIpv6: boolean
+    serverIp: string
     static name: string
 }
 }

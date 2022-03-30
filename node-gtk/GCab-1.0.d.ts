@@ -107,10 +107,11 @@ class Cabinet {
     reserved: Uint8Array
     signature: Uint8Array
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GCab-1.0.GCab.Cabinet */
     /**
      * Add `folder` to `cabinet`.
+     * @param folder a #GCabFolder
      */
     addFolder(folder: Folder): boolean
     /**
@@ -118,10 +119,17 @@ class Cabinet {
      * 
      * If `path` is NULL then the files are decompressed to memory blobs stored on
      * each #GCabFile.
+     * @param path the path to extract files
+     * @param fileCallback an optional #GCabFile callback,     return %FALSE to filter out or skip files.
+     * @param progressCallback a progress callback
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     extract(path?: Gio.File | null, fileCallback?: FileCallback | null, progressCallback?: Gio.FileProgressCallback | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Extract files to given path.
+     * @param path the path to extract files
+     * @param fileCallback an optional #GCabFile callback,     return %FALSE to filter out or skip files.
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     extractSimple(path: Gio.File, fileCallback?: FileCallback | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -132,6 +140,7 @@ class Cabinet {
     getFolders(): Folder[]
     /**
      * Lookup the cabinet authenticode signature if any.
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     getSignature(cancellable?: Gio.Cancellable | null): Uint8Array
     /**
@@ -140,14 +149,23 @@ class Cabinet {
     getSize(): number
     /**
      * Load a cabinet archive.
+     * @param stream a #GInputStream
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     load(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Save `cabinet` to the output stream `out`. `out` must be a #GSeekable.
+     * @param stream a #GOutputStream also #GSeekable
+     * @param fileCallback report current file being saved
+     * @param progressCallback report saving progress
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     write(stream: Gio.OutputStream, fileCallback?: FileCallback | null, progressCallback?: Gio.FileProgressCallback | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Save `cabinet` to the output stream `out`. `out` must be a #GSeekable.
+     * @param stream a #GOutputStream also #GSeekable
+     * @param fileCallback report current file being saved
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     writeSimple(stream: Gio.OutputStream, fileCallback?: FileCallback | null, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -185,6 +203,10 @@ class Cabinet {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -195,6 +217,12 @@ class Cabinet {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -218,6 +246,7 @@ class Cabinet {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -237,11 +266,14 @@ class Cabinet {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -249,6 +281,8 @@ class Cabinet {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -266,6 +300,7 @@ class Cabinet {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -311,6 +346,7 @@ class Cabinet {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -354,15 +390,20 @@ class Cabinet {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -403,6 +444,7 @@ class Cabinet {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -437,6 +479,7 @@ class Cabinet {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -468,6 +511,7 @@ class Cabinet {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -510,7 +554,7 @@ class File {
     file: Gio.File
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GCab-1.0.GCab.File */
     /**
      * Get the file attributes.
@@ -523,6 +567,7 @@ class File {
     getBytes(): any
     /**
      * Get the file date, in `result`.
+     * @param result a #GTimeVal to return date
      */
     getDate(result: GLib.TimeVal): boolean
     /**
@@ -552,25 +597,30 @@ class File {
     getSize(): number
     /**
      * Set the file attributes.
+     * @param attr the attributes, e.g. %GCAB_FILE_ATTRIBUTE_RDONLY
      */
     setAttributes(attr: number): void
     /**
      * Replace the #GBytes associated with `self`.
      * This is most usefule when the #GCabFile has been created using
      * gcab_file_new_with_bytes() and the data needs to be modified.
+     * @param bytes a #GBytes
      */
     setBytes(bytes: any): void
     /**
      * Sets the file modification date, instead of the value provided by the GFile.
+     * @param tv a #GTimeVal
      */
     setDate(tv: GLib.TimeVal): void
     /**
      * Sets the file modification date (instead of the date provided by the GFile)
+     * @param dt a #GDateTime
      */
     setDateTime(dt: GLib.DateTime): void
     /**
      * Sets the file name to use for extraction, instead of the name
      * provided by the Cabinet.
+     * @param name a file name or %NULL
      */
     setExtractName(name?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -608,6 +658,10 @@ class File {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -618,6 +672,12 @@ class File {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -641,6 +701,7 @@ class File {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -660,11 +721,14 @@ class File {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -672,6 +736,8 @@ class File {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -689,6 +755,7 @@ class File {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -734,6 +801,7 @@ class File {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -777,15 +845,20 @@ class File {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -826,6 +899,7 @@ class File {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -860,6 +934,7 @@ class File {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -891,6 +966,7 @@ class File {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -935,12 +1011,16 @@ interface Folder_ConstructProps extends GObject.Object_ConstructProps {
 class Folder {
     /* Properties of GCab-1.0.GCab.Folder */
     readonly compression: Compression
+    readonly comptype: number
     reserved: Uint8Array
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of GCab-1.0.GCab.Folder */
     /**
      * Add `file` to the #GCabFolder.
+     * @param cabfile file to be added
+     * @param recurse whether to recurse through subdirectories
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
      */
     addFile(cabfile: File, recurse: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -949,6 +1029,7 @@ class Folder {
     getComptype(): number
     /**
      * Gets a specific #GCabFile files contained in the `cabfolder`.
+     * @param name a file name
      */
     getFileByName(name: string): File
     /**
@@ -994,6 +1075,10 @@ class Folder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1004,6 +1089,12 @@ class Folder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1027,6 +1118,7 @@ class Folder {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1046,11 +1138,14 @@ class Folder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1058,6 +1153,8 @@ class Folder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1075,6 +1172,7 @@ class Folder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1120,6 +1218,7 @@ class Folder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1163,15 +1262,20 @@ class Folder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1212,6 +1316,7 @@ class Folder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1246,6 +1351,7 @@ class Folder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1277,6 +1383,7 @@ class Folder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1288,6 +1395,11 @@ class Folder {
     on(sigName: "notify::compression", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::compression", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::compression", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::comptype", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::comptype", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::comptype", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::comptype", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::comptype", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::reserved", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reserved", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::reserved", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1309,17 +1421,17 @@ class Folder {
 }
 abstract class CabinetClass {
     /* Fields of GCab-1.0.GCab.CabinetClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class FileClass {
     /* Fields of GCab-1.0.GCab.FileClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class FolderClass {
     /* Fields of GCab-1.0.GCab.FolderClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 }

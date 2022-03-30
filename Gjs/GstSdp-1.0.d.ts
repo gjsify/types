@@ -367,15 +367,15 @@ class MIKEYMapSRTP {
     /**
      * The security policy applied for the stream with `ssrc`
      */
-    readonly policy: number
+    policy: number
     /**
      * the SSRC that must be used for the stream
      */
-    readonly ssrc: number
+    ssrc: number
     /**
      * current rollover counter
      */
-    readonly roc: number
+    roc: number
     static name: string
 }
 class MIKEYMessage {
@@ -383,58 +383,68 @@ class MIKEYMessage {
     /**
      * the version
      */
-    readonly version: number
+    version: number
     /**
      * the #GstMIKEYType message type
      */
-    readonly type: MIKEYType
+    type: MIKEYType
     /**
      * verify flag
      */
-    readonly V: boolean
+    V: boolean
     /**
      * a #GstMIKEYPRFFunc
      */
-    readonly prf_func: MIKEYPRFFunc
+    prf_func: MIKEYPRFFunc
     /**
      * Identifies the Crypto Session Bundle
      */
-    readonly CSB_id: number
+    CSB_id: number
     /**
      * a #GstMIKEYMapType
      */
-    readonly map_type: MIKEYMapType
+    map_type: MIKEYMapType
     /**
      * map info array of type depending on `map_type`
      */
-    readonly map_info: object[]
+    map_info: object[]
     /**
      * the payload array of #GstMIKEYPayload
      */
-    readonly payloads: object[]
+    payloads: object[]
     /* Methods of GstSdp-1.0.GstSdp.MIKEYMessage */
     /**
      * Add a Crypto policy for SRTP to `msg`.
+     * @param policy The security policy applied for the stream with `ssrc`
+     * @param ssrc the SSRC that must be used for the stream
+     * @param roc current rollover counter
      */
     add_cs_srtp(policy: number, ssrc: number, roc: number): boolean
     /**
      * Add a new payload to `msg`.
+     * @param payload a #GstMIKEYPayload
      */
     add_payload(payload: MIKEYPayload): boolean
     /**
      * Add a new PKE payload to `msg` with the given parameters.
+     * @param C envelope key cache indicator
+     * @param data the encrypted envelope key
      */
     add_pke(C: MIKEYCacheType, data: Uint8Array): boolean
     /**
      * Add a new RAND payload to `msg` with the given parameters.
+     * @param rand random data
      */
     add_rand(rand: Uint8Array): boolean
     /**
      * Add a new RAND payload to `msg` with `len` random bytes.
+     * @param len length
      */
     add_rand_len(len: number): boolean
     /**
      * Add a new T payload to `msg` with the given parameters.
+     * @param type specifies the timestamp type used
+     * @param ts_value The timestamp value of the specified `type`
      */
     add_t(type: MIKEYTSType, ts_value: Uint8Array): boolean
     /**
@@ -445,10 +455,13 @@ class MIKEYMessage {
     base64_encode(): string
     /**
      * Find the `nth` occurrence of the payload with `type` in `msg`.
+     * @param type a #GstMIKEYPayloadType
+     * @param nth payload to find
      */
     find_payload(type: MIKEYPayloadType, nth: number): MIKEYPayload
     /**
      * Get the policy information of `msg` at `idx`.
+     * @param idx an index
      */
     get_cs_srtp(idx: number): MIKEYMapSRTP
     /**
@@ -461,41 +474,59 @@ class MIKEYMessage {
     get_n_payloads(): number
     /**
      * Get the #GstMIKEYPayload at `idx` in `msg`
+     * @param idx an index
      */
     get_payload(idx: number): MIKEYPayload
     /**
      * Insert a Crypto Session map for SRTP in `msg` at `idx`
      * 
      * When `idx` is -1, the policy will be appended.
+     * @param idx the index to insert at
+     * @param map the map info
      */
     insert_cs_srtp(idx: number, map: MIKEYMapSRTP): boolean
     /**
      * Insert the `payload` at index `idx` in `msg`. If `idx` is -1, the payload
      * will be appended to `msg`.
+     * @param idx an index
+     * @param payload a #GstMIKEYPayload
      */
     insert_payload(idx: number, payload: MIKEYPayload): boolean
     /**
      * Remove the SRTP policy at `idx`.
+     * @param idx the index to remove
      */
     remove_cs_srtp(idx: number): boolean
     /**
      * Remove the payload in `msg` at `idx`
+     * @param idx an index
      */
     remove_payload(idx: number): boolean
     /**
      * Replace a Crypto Session map for SRTP in `msg` at `idx` with `map`.
+     * @param idx the index to insert at
+     * @param map the map info
      */
     replace_cs_srtp(idx: number, map: MIKEYMapSRTP): boolean
     /**
      * Replace the payload at `idx` in `msg` with `payload`.
+     * @param idx an index
+     * @param payload a #GstMIKEYPayload
      */
     replace_payload(idx: number, payload: MIKEYPayload): boolean
     /**
      * Set the information in `msg`.
+     * @param version a version
+     * @param type a #GstMIKEYType
+     * @param V verify flag
+     * @param prf_func the #GstMIKEYPRFFunc function to use
+     * @param CSB_id the Crypto Session Bundle id
+     * @param map_type the #GstMIKEYMapType
      */
     set_info(version: number, type: MIKEYType, V: boolean, prf_func: MIKEYPRFFunc, CSB_id: number, map_type: MIKEYMapType): boolean
     /**
      * Convert `msg` to a #GBytes.
+     * @param info a #GstMIKEYEncryptInfo
      */
     to_bytes(info: MIKEYEncryptInfo): GLib.Bytes
     to_caps(caps: Gst.Caps): boolean
@@ -513,14 +544,15 @@ class MIKEYPayload {
     /**
      * the payload type
      */
-    readonly type: MIKEYPayloadType
+    type: MIKEYPayloadType
     /**
      * length of the payload
      */
-    readonly len: number
+    len: number
     /* Methods of GstSdp-1.0.GstSdp.MIKEYPayload */
     /**
      * Add a new sub payload to `payload`.
+     * @param newpay a #GstMIKEYPayload to add
      */
     kemac_add_sub(newpay: MIKEYPayload): boolean
     /**
@@ -531,47 +563,62 @@ class MIKEYPayload {
     /**
      * Get the sub payload of `payload` at `idx`. `payload` should be of type
      * %GST_MIKEY_PT_KEMAC.
+     * @param idx an index
      */
     kemac_get_sub(idx: number): MIKEYPayload
     /**
      * Remove the sub payload at `idx` in `payload`.
+     * @param idx the index to remove
      */
     kemac_remove_sub(idx: number): boolean
     /**
      * Set the KEMAC parameters. `payload` should point to a %GST_MIKEY_PT_KEMAC
      * payload.
+     * @param enc_alg the #GstMIKEYEncAlg
+     * @param mac_alg a #GstMIKEYMacAlg
      */
     kemac_set(enc_alg: MIKEYEncAlg, mac_alg: MIKEYMacAlg): boolean
     /**
      * Set the key validity period in the %GST_MIKEY_PT_KEY_DATA `payload`.
+     * @param vf_len the length of `vf_data`
+     * @param vt_data the Valid To data
      */
     key_data_set_interval(vf_len: number, vt_data: Uint8Array): boolean
     /**
      * Set `key_len` bytes of `key_data` of type `key_type` as the key for the
      * %GST_MIKEY_PT_KEY_DATA `payload`.
+     * @param key_type a #GstMIKEYKeyDataType
+     * @param key_data the key of type `key_type`
      */
     key_data_set_key(key_type: MIKEYKeyDataType, key_data: Uint8Array): boolean
     /**
      * Set the salt key data. If `salt_len` is 0 and `salt_data` is %NULL, the
      * salt data will be removed.
+     * @param salt_data the salt
      */
     key_data_set_salt(salt_data?: Uint8Array | null): boolean
     /**
      * Set the SPI/MKI validity in the %GST_MIKEY_PT_KEY_DATA `payload`.
+     * @param spi_data the SPI/MKI data
      */
     key_data_set_spi(spi_data: Uint8Array): boolean
     /**
      * Set the PKE values in `payload`. `payload` must be of type
      * %GST_MIKEY_PT_PKE.
+     * @param C envelope key cache indicator
+     * @param data the encrypted envelope key
      */
     pke_set(C: MIKEYCacheType, data: Uint8Array): boolean
     /**
      * Set the random values in a %GST_MIKEY_PT_RAND `payload`.
+     * @param rand random values
      */
     rand_set(rand: Uint8Array): boolean
     /**
      * Add a new parameter to the %GST_MIKEY_PT_SP `payload` with `type,` `len`
      * and `val`.
+     * @param type a type
+     * @param val `len` bytes of data
      */
     sp_add_param(type: number, val: Uint8Array): boolean
     /**
@@ -582,19 +629,25 @@ class MIKEYPayload {
     /**
      * Get the Security Policy parameter in a %GST_MIKEY_PT_SP `payload`
      * at `idx`.
+     * @param idx an index
      */
     sp_get_param(idx: number): MIKEYPayloadSPParam
     /**
      * Remove the Security Policy parameters from a %GST_MIKEY_PT_SP
      * `payload` at `idx`.
+     * @param idx an index
      */
     sp_remove_param(idx: number): boolean
     /**
      * Set the Security Policy parameters for `payload`.
+     * @param policy the policy number
+     * @param proto a #GstMIKEYSecProto
      */
     sp_set(policy: number, proto: MIKEYSecProto): boolean
     /**
      * Set the timestamp in a %GST_MIKEY_PT_T `payload`.
+     * @param type the #GstMIKEYTSType
+     * @param ts_value the timestamp value
      */
     t_set(type: MIKEYTSType, ts_value: Uint8Array): boolean
     static name: string
@@ -608,19 +661,19 @@ class MIKEYPayloadKEMAC {
     /**
      * the common #GstMIKEYPayload
      */
-    readonly pt: MIKEYPayload
+    pt: MIKEYPayload
     /**
      * the #GstMIKEYEncAlg
      */
-    readonly enc_alg: MIKEYEncAlg
+    enc_alg: MIKEYEncAlg
     /**
      * the #GstMIKEYMacAlg
      */
-    readonly mac_alg: MIKEYMacAlg
+    mac_alg: MIKEYMacAlg
     /**
      * the subpayloads
      */
-    readonly subpayloads: object[]
+    subpayloads: object[]
     static name: string
 }
 class MIKEYPayloadKeyData {
@@ -628,39 +681,39 @@ class MIKEYPayloadKeyData {
     /**
      * the payload header
      */
-    readonly pt: MIKEYPayload
+    pt: MIKEYPayload
     /**
      * the #GstMIKEYKeyDataType of `key_data`
      */
-    readonly key_type: MIKEYKeyDataType
+    key_type: MIKEYKeyDataType
     /**
      * length of `key_data`
      */
-    readonly key_len: number
+    key_len: number
     /**
      * the key data
      */
-    readonly key_data: number
+    key_data: number
     /**
      * the length of `salt_data,` can be 0
      */
-    readonly salt_len: number
+    salt_len: number
     /**
      * salt data
      */
-    readonly salt_data: number
+    salt_data: number
     /**
      * the Key Validity type
      */
-    readonly kv_type: MIKEYKVType
+    kv_type: MIKEYKVType
     /**
      * length of `kv_data`
      */
-    readonly kv_len: Uint8Array
+    kv_len: Uint8Array
     /**
      * key validity data
      */
-    readonly kv_data: Uint8Array
+    kv_data: Uint8Array
     static name: string
 }
 class MIKEYPayloadPKE {
@@ -668,19 +721,19 @@ class MIKEYPayloadPKE {
     /**
      * the common #GstMIKEYPayload
      */
-    readonly pt: MIKEYPayload
+    pt: MIKEYPayload
     /**
      * envelope key cache indicator
      */
-    readonly C: MIKEYCacheType
+    C: MIKEYCacheType
     /**
      * length of `data`
      */
-    readonly data_len: number
+    data_len: number
     /**
      * the encrypted envelope key
      */
-    readonly data: number
+    data: number
     static name: string
 }
 class MIKEYPayloadRAND {
@@ -688,15 +741,15 @@ class MIKEYPayloadRAND {
     /**
      * the payload header
      */
-    readonly pt: MIKEYPayload
+    pt: MIKEYPayload
     /**
      * the length of `rand`
      */
-    readonly len: number
+    len: number
     /**
      * random values
      */
-    readonly rand: number
+    rand: number
     static name: string
 }
 class MIKEYPayloadSP {
@@ -704,19 +757,19 @@ class MIKEYPayloadSP {
     /**
      * the payload header
      */
-    readonly pt: MIKEYPayload
+    pt: MIKEYPayload
     /**
      * the policy number
      */
-    readonly policy: number
+    policy: number
     /**
      * the security protocol
      */
-    readonly proto: MIKEYSecProto
+    proto: MIKEYSecProto
     /**
      * array of #GstMIKEYPayloadSPParam
      */
-    readonly params: object[]
+    params: object[]
     static name: string
 }
 class MIKEYPayloadSPParam {
@@ -724,15 +777,15 @@ class MIKEYPayloadSPParam {
     /**
      * specifies the type of the parameter
      */
-    readonly type: number
+    type: number
     /**
      * specifies the length of `val`
      */
-    readonly len: number
+    len: number
     /**
      * specifies the value of the parameter
      */
-    readonly val: number
+    val: number
     static name: string
 }
 class MIKEYPayloadT {
@@ -740,15 +793,15 @@ class MIKEYPayloadT {
     /**
      * the payload header
      */
-    readonly pt: MIKEYPayload
+    pt: MIKEYPayload
     /**
      * a #GstMIKEYTSType
      */
-    readonly type: MIKEYTSType
+    type: MIKEYTSType
     /**
      * the timestamp value
      */
-    readonly ts_value: number
+    ts_value: number
     static name: string
 }
 class SDPAttribute {
@@ -756,11 +809,11 @@ class SDPAttribute {
     /**
      * the attribute key
      */
-    readonly key: string
+    key: string
     /**
      * the attribute value or NULL when it was a property attribute
      */
-    readonly value: string
+    value: string
     /* Methods of GstSdp-1.0.GstSdp.SDPAttribute */
     /**
      * Clear the attribute.
@@ -768,6 +821,8 @@ class SDPAttribute {
     clear(): SDPResult
     /**
      * Set the attribute with `key` and `value`.
+     * @param key the key
+     * @param value the value
      */
     set(key: string, value?: string | null): SDPResult
     static name: string
@@ -777,11 +832,11 @@ class SDPBandwidth {
     /**
      * the bandwidth modifier type
      */
-    readonly bwtype: string
+    bwtype: string
     /**
      * the bandwidth in kilobits per second
      */
-    readonly bandwidth: number
+    bandwidth: number
     /* Methods of GstSdp-1.0.GstSdp.SDPBandwidth */
     /**
      * Reset the bandwidth information in `bw`.
@@ -789,6 +844,8 @@ class SDPBandwidth {
     clear(): SDPResult
     /**
      * Set bandwidth information in `bw`.
+     * @param bwtype the bandwidth modifier type
+     * @param bandwidth the bandwidth in kilobits per second
      */
     set(bwtype: string, bandwidth: number): SDPResult
     static name: string
@@ -799,23 +856,23 @@ class SDPConnection {
      * the type of network. "IN" is defined to have the meaning
      *    "Internet".
      */
-    readonly nettype: string
+    nettype: string
     /**
      * the type of `address`.
      */
-    readonly addrtype: string
+    addrtype: string
     /**
      * the address
      */
-    readonly address: string
+    address: string
     /**
      * the time to live of the address
      */
-    readonly ttl: number
+    ttl: number
     /**
      * the number of layers
      */
-    readonly addr_number: number
+    addr_number: number
     /* Methods of GstSdp-1.0.GstSdp.SDPConnection */
     /**
      * Clear the connection.
@@ -823,6 +880,11 @@ class SDPConnection {
     clear(): SDPResult
     /**
      * Set the connection with the given parameters.
+     * @param nettype the type of network. "IN" is defined to have the meaning "Internet".
+     * @param addrtype the type of address.
+     * @param address the address
+     * @param ttl the time to live of the address
+     * @param addr_number the number of layers
      */
     set(nettype: string, addrtype: string, address: string, ttl: number, addr_number: number): SDPResult
     static name: string
@@ -832,11 +894,11 @@ class SDPKey {
     /**
      * the encryption type
      */
-    readonly type: string
+    type: string
     /**
      * the encryption data
      */
-    readonly data: string
+    data: string
     static name: string
 }
 class SDPMedia {
@@ -844,58 +906,68 @@ class SDPMedia {
     /**
      * the media type
      */
-    readonly media: string
+    media: string
     /**
      * the transport port to which the media stream will be sent
      */
-    readonly port: number
+    port: number
     /**
      * the number of ports or -1 if only one port was specified
      */
-    readonly num_ports: number
+    num_ports: number
     /**
      * the transport protocol
      */
-    readonly proto: string
+    proto: string
     /**
      * an array of #gchar formats
      */
-    readonly fmts: object[]
+    fmts: object[]
     /**
      * the media title
      */
-    readonly information: string
+    information: string
     /**
      * array of #GstSDPConnection with media connection information
      */
-    readonly connections: object[]
+    connections: object[]
     /**
      * array of #GstSDPBandwidth with media bandwidth information
      */
-    readonly bandwidths: object[]
+    bandwidths: object[]
     /**
      * the encryption key
      */
-    readonly key: SDPKey
+    key: SDPKey
     /**
      * array of #GstSDPAttribute with the additional media attributes
      */
-    readonly attributes: object[]
+    attributes: object[]
     /* Methods of GstSdp-1.0.GstSdp.SDPMedia */
     /**
      * Add the attribute with `key` and `value` to `media`.
+     * @param key a key
+     * @param value a value
      */
     add_attribute(key: string, value?: string | null): SDPResult
     /**
      * Add the bandwidth information with `bwtype` and `bandwidth` to `media`.
+     * @param bwtype the bandwidth modifier type
+     * @param bandwidth the bandwidth in kilobits per second
      */
     add_bandwidth(bwtype: string, bandwidth: number): SDPResult
     /**
      * Add the given connection parameters to `media`.
+     * @param nettype the type of network. "IN" is defined to have the meaning "Internet".
+     * @param addrtype the type of address.
+     * @param address the address
+     * @param ttl the time to live of the address
+     * @param addr_number the number of layers
      */
     add_connection(nettype: string, addrtype: string, address: string, ttl: number, addr_number: number): SDPResult
     /**
      * Add the format information to `media`.
+     * @param format the format
      */
     add_format(format: string): SDPResult
     /**
@@ -908,6 +980,7 @@ class SDPMedia {
     attributes_len(): number
     /**
      * Mapping of attributes of #GstSDPMedia to #GstCaps
+     * @param caps a #GstCaps
      */
     attributes_to_caps(caps: Gst.Caps): SDPResult
     /**
@@ -935,18 +1008,23 @@ class SDPMedia {
     free(): SDPResult
     /**
      * Get the attribute at position `idx` in `media`.
+     * @param idx an index
      */
     get_attribute(idx: number): SDPAttribute
     /**
      * Get the first attribute value for `key` in `media`.
+     * @param key a key
      */
     get_attribute_val(key: string): string
     /**
      * Get the `nth` attribute value for `key` in `media`.
+     * @param key a key
+     * @param nth an index
      */
     get_attribute_val_n(key: string, nth: number): string
     /**
      * Get the bandwidth at position `idx` in `media`.
+     * @param idx an index
      */
     get_bandwidth(idx: number): SDPBandwidth
     /**
@@ -959,14 +1037,17 @@ class SDPMedia {
      * a=fmtp:(payload) (param)[=(value)];...
      * 
      * Note that the extmap attribute is set only by gst_sdp_media_attributes_to_caps().
+     * @param pt a payload type
      */
     get_caps_from_media(pt: number): Gst.Caps
     /**
      * Get the connection at position `idx` in `media`.
+     * @param idx an index
      */
     get_connection(idx: number): SDPConnection
     /**
      * Get the format information at position `idx` in `media`.
+     * @param idx an index
      */
     get_format(idx: number): string
     /**
@@ -1005,21 +1086,29 @@ class SDPMedia {
     /**
      * Insert the attribute to `media` at `idx`. When `idx` is -1,
      * the attribute is appended.
+     * @param idx an index
+     * @param attr a #GstSDPAttribute
      */
     insert_attribute(idx: number, attr: SDPAttribute): SDPResult
     /**
      * Insert the bandwidth information to `media` at `idx`. When `idx` is -1,
      * the bandwidth is appended.
+     * @param idx an index
+     * @param bw a #GstSDPBandwidth
      */
     insert_bandwidth(idx: number, bw: SDPBandwidth): SDPResult
     /**
      * Insert the connection information to `media` at `idx`. When `idx` is -1,
      * the connection is appended.
+     * @param idx an index
+     * @param conn a #GstSDPConnection
      */
     insert_connection(idx: number, conn: SDPConnection): SDPResult
     /**
      * Insert the format information to `media` at `idx`. When `idx` is -1,
      * the format is appended.
+     * @param idx an index
+     * @param format the format
      */
     insert_format(idx: number, format: string): SDPResult
     /**
@@ -1029,54 +1118,73 @@ class SDPMedia {
     parse_keymgmt(): [ /* returnType */ SDPResult, /* mikey */ MIKEYMessage ]
     /**
      * Remove the attribute in `media` at `idx`.
+     * @param idx an index
      */
     remove_attribute(idx: number): SDPResult
     /**
      * Remove the bandwidth information in `media` at `idx`.
+     * @param idx an index
      */
     remove_bandwidth(idx: number): SDPResult
     /**
      * Remove the connection information in `media` at `idx`.
+     * @param idx an index
      */
     remove_connection(idx: number): SDPResult
     /**
      * Remove the format information in `media` at `idx`.
+     * @param idx an index
      */
     remove_format(idx: number): SDPResult
     /**
      * Replace the attribute in `media` at `idx` with `attr`.
+     * @param idx an index
+     * @param attr a #GstSDPAttribute
      */
     replace_attribute(idx: number, attr: SDPAttribute): SDPResult
     /**
      * Replace the bandwidth information in `media` at `idx` with `bw`.
+     * @param idx an index
+     * @param bw a #GstSDPBandwidth
      */
     replace_bandwidth(idx: number, bw: SDPBandwidth): SDPResult
     /**
      * Replace the connection information in `media` at `idx` with `conn`.
+     * @param idx an index
+     * @param conn a #GstSDPConnection
      */
     replace_connection(idx: number, conn: SDPConnection): SDPResult
     /**
      * Replace the format information in `media` at `idx` with `format`.
+     * @param idx an index
+     * @param format the format
      */
     replace_format(idx: number, format: string): SDPResult
     /**
      * Set the media information of `media` to `information`.
+     * @param information the media information
      */
     set_information(information: string): SDPResult
     /**
      * Adds the encryption information to `media`.
+     * @param type the encryption type
+     * @param data the encryption data
      */
     set_key(type: string, data: string): SDPResult
     /**
      * Set the media description of `media` to `med`.
+     * @param med the media description
      */
     set_media(med: string): SDPResult
     /**
      * Set the port information in `media`.
+     * @param port the port number
+     * @param num_ports the number of ports
      */
     set_port_info(port: number, num_ports: number): SDPResult
     /**
      * Set the media transport protocol of `media` to `proto`.
+     * @param proto the media transport protocol
      */
     set_proto(proto: string): SDPResult
     /**
@@ -1099,6 +1207,8 @@ class SDPMedia {
      * a=rtcp-fb:(payload) (param1) [param2]...
      * 
      * a=extmap:(id)[/direction] (extensionname) (extensionattributes)
+     * @param caps a #GstCaps
+     * @param media a #GstSDPMedia
      */
     static set_media_from_caps(caps: Gst.Caps, media: SDPMedia): SDPResult
 }
@@ -1107,88 +1217,100 @@ class SDPMessage {
     /**
      * the protocol version
      */
-    readonly version: string
+    version: string
     /**
      * owner/creator and session identifier
      */
-    readonly origin: SDPOrigin
+    origin: SDPOrigin
     /**
      * session name
      */
-    readonly session_name: string
+    session_name: string
     /**
      * session information
      */
-    readonly information: string
+    information: string
     /**
      * URI of description
      */
-    readonly uri: string
+    uri: string
     /**
      * array of #gchar with email addresses
      */
-    readonly emails: object[]
+    emails: object[]
     /**
      * array of #gchar with phone numbers
      */
-    readonly phones: object[]
+    phones: object[]
     /**
      * connection information for the session
      */
-    readonly connection: SDPConnection
+    connection: SDPConnection
     /**
      * array of #GstSDPBandwidth with bandwidth information
      */
-    readonly bandwidths: object[]
+    bandwidths: object[]
     /**
      * array of #GstSDPTime with time descriptions
      */
-    readonly times: object[]
+    times: object[]
     /**
      * array of #GstSDPZone with time zone adjustments
      */
-    readonly zones: object[]
+    zones: object[]
     /**
      * encryption key
      */
-    readonly key: SDPKey
+    key: SDPKey
     /**
      * array of #GstSDPAttribute with session attributes
      */
-    readonly attributes: object[]
+    attributes: object[]
     /**
      * array of #GstSDPMedia with media descriptions
      */
-    readonly medias: object[]
+    medias: object[]
     /* Methods of GstSdp-1.0.GstSdp.SDPMessage */
     /**
      * Add the attribute with `key` and `value` to `msg`.
+     * @param key the key
+     * @param value the value
      */
     add_attribute(key: string, value?: string | null): SDPResult
     /**
      * Add the specified bandwidth information to `msg`.
+     * @param bwtype the bandwidth modifier type
+     * @param bandwidth the bandwidth in kilobits per second
      */
     add_bandwidth(bwtype: string, bandwidth: number): SDPResult
     /**
      * Add `email` to the list of emails in `msg`.
+     * @param email an email
      */
     add_email(email: string): SDPResult
     /**
      * Adds `media` to the array of medias in `msg`. This function takes ownership of
      * the contents of `media` so that `media` will have to be reinitialized with
      * gst_sdp_media_init() before it can be used again.
+     * @param media a #GstSDPMedia to add
      */
     add_media(media: SDPMedia): SDPResult
     /**
      * Add `phone` to the list of phones in `msg`.
+     * @param phone a phone
      */
     add_phone(phone: string): SDPResult
     /**
      * Add time information `start` and `stop` to `msg`.
+     * @param start the start time
+     * @param stop the stop time
+     * @param repeat the repeat times
      */
     add_time(start: string, stop: string, repeat: string[]): SDPResult
     /**
      * Add time zone information to `msg`.
+     * @param adj_time the NTP time that a time zone adjustment happens
+     * @param typed_time the offset from the time when the session was first scheduled
      */
     add_zone(adj_time: string, typed_time: string): SDPResult
     /**
@@ -1201,6 +1323,7 @@ class SDPMessage {
     attributes_len(): number
     /**
      * Mapping of attributes of #GstSDPMessage to #GstCaps
+     * @param caps a #GstCaps
      */
     attributes_to_caps(caps: Gst.Caps): SDPResult
     /**
@@ -1228,18 +1351,23 @@ class SDPMessage {
     free(): SDPResult
     /**
      * Get the attribute at position `idx` in `msg`.
+     * @param idx the index
      */
     get_attribute(idx: number): SDPAttribute
     /**
      * Get the first attribute with key `key` in `msg`.
+     * @param key the key
      */
     get_attribute_val(key: string): string
     /**
      * Get the `nth` attribute with key `key` in `msg`.
+     * @param key the key
+     * @param nth the index
      */
     get_attribute_val_n(key: string, nth: number): string
     /**
      * Get the bandwidth at index `idx` from `msg`.
+     * @param idx the bandwidth index
      */
     get_bandwidth(idx: number): SDPBandwidth
     /**
@@ -1248,6 +1376,7 @@ class SDPMessage {
     get_connection(): SDPConnection
     /**
      * Get the email with number `idx` from `msg`.
+     * @param idx an email index
      */
     get_email(idx: number): string
     /**
@@ -1260,6 +1389,7 @@ class SDPMessage {
     get_key(): SDPKey
     /**
      * Get the media description at index `idx` in `msg`.
+     * @param idx the index
      */
     get_media(idx: number): SDPMedia
     /**
@@ -1268,6 +1398,7 @@ class SDPMessage {
     get_origin(): SDPOrigin
     /**
      * Get the phone with number `idx` from `msg`.
+     * @param idx a phone index
      */
     get_phone(idx: number): string
     /**
@@ -1276,6 +1407,7 @@ class SDPMessage {
     get_session_name(): string
     /**
      * Get time information with index `idx` from `msg`.
+     * @param idx the time index
      */
     get_time(idx: number): SDPTime
     /**
@@ -1288,6 +1420,7 @@ class SDPMessage {
     get_version(): string
     /**
      * Get time zone information with index `idx` from `msg`.
+     * @param idx the zone index
      */
     get_zone(idx: number): SDPZone
     /**
@@ -1303,34 +1436,46 @@ class SDPMessage {
      * Insert attribute into the array of attributes in `msg`
      * at index `idx`.
      * When -1 is given as `idx,` the attribute is inserted at the end.
+     * @param idx an index
+     * @param attr a #GstSDPAttribute
      */
     insert_attribute(idx: number, attr: SDPAttribute): SDPResult
     /**
      * Insert bandwidth parameters into the array of bandwidths in `msg`
      * at index `idx`.
      * When -1 is given as `idx,` the bandwidth is inserted at the end.
+     * @param idx an index
+     * @param bw the bandwidth
      */
     insert_bandwidth(idx: number, bw: SDPBandwidth): SDPResult
     /**
      * Insert `email` into the array of emails in `msg` at index `idx`.
      * When -1 is given as `idx,` the email is inserted at the end.
+     * @param idx an index
+     * @param email an email
      */
     insert_email(idx: number, email: string): SDPResult
     /**
      * Insert `phone` into the array of phone numbers in `msg` at index `idx`.
      * When -1 is given as `idx,` the phone is inserted at the end.
+     * @param idx a phone index
+     * @param phone a phone
      */
     insert_phone(idx: number, phone: string): SDPResult
     /**
      * Insert time parameters into the array of times in `msg`
      * at index `idx`.
      * When -1 is given as `idx,` the times are inserted at the end.
+     * @param idx an index
+     * @param t a #GstSDPTime
      */
     insert_time(idx: number, t: SDPTime): SDPResult
     /**
      * Insert zone parameters into the array of zones in `msg`
      * at index `idx`.
      * When -1 is given as `idx,` the zone is inserted at the end.
+     * @param idx an index
+     * @param zone a #GstSDPZone
      */
     insert_zone(idx: number, zone: SDPZone): SDPResult
     /**
@@ -1348,78 +1493,113 @@ class SDPMessage {
     phones_len(): number
     /**
      * Remove the attribute in `msg` at index `idx`.
+     * @param idx the index
      */
     remove_attribute(idx: number): SDPResult
     /**
      * Remove the bandwidth information in `msg` at index `idx`.
+     * @param idx the bandwidth index
      */
     remove_bandwidth(idx: number): SDPResult
     /**
      * Remove the email in `msg` at index `idx`.
+     * @param idx an email index
      */
     remove_email(idx: number): SDPResult
     /**
      * Remove the phone number in `msg` at index `idx`.
+     * @param idx a phone index
      */
     remove_phone(idx: number): SDPResult
     /**
      * Remove the time information in `msg` at index `idx`.
+     * @param idx the index
      */
     remove_time(idx: number): SDPResult
     /**
      * Remove the zone information in `msg` at index `idx`.
+     * @param idx the index
      */
     remove_zone(idx: number): SDPResult
     /**
      * Replace the attribute in `msg` at index `idx` with `attr`.
+     * @param idx the index
+     * @param attr a #GstSDPAttribute
      */
     replace_attribute(idx: number, attr: SDPAttribute): SDPResult
     /**
      * Replace the bandwidth information in `msg` at index `idx` with `bw`.
+     * @param idx the bandwidth index
+     * @param bw the bandwidth
      */
     replace_bandwidth(idx: number, bw: SDPBandwidth): SDPResult
     /**
      * Replace the email in `msg` at index `idx` with `email`.
+     * @param idx an email index
+     * @param email an email
      */
     replace_email(idx: number, email: string): SDPResult
     /**
      * Replace the phone number in `msg` at index `idx` with `phone`.
+     * @param idx a phone index
+     * @param phone a phone
      */
     replace_phone(idx: number, phone: string): SDPResult
     /**
      * Replace the time information in `msg` at index `idx` with `t`.
+     * @param idx the index
+     * @param t a #GstSDPTime
      */
     replace_time(idx: number, t: SDPTime): SDPResult
     /**
      * Replace the zone information in `msg` at index `idx` with `zone`.
+     * @param idx the index
+     * @param zone a #GstSDPZone
      */
     replace_zone(idx: number, zone: SDPZone): SDPResult
     /**
      * Configure the SDP connection in `msg` with the given parameters.
+     * @param nettype the type of network. "IN" is defined to have the meaning "Internet".
+     * @param addrtype the type of address.
+     * @param address the address
+     * @param ttl the time to live of the address
+     * @param addr_number the number of layers
      */
     set_connection(nettype: string, addrtype: string, address: string, ttl: number, addr_number: number): SDPResult
     /**
      * Set the information in `msg`.
+     * @param information the information
      */
     set_information(information: string): SDPResult
     /**
      * Adds the encryption information to `msg`.
+     * @param type the encryption type
+     * @param data the encryption data
      */
     set_key(type: string, data: string): SDPResult
     /**
      * Configure the SDP origin in `msg` with the given parameters.
+     * @param username the user name
+     * @param sess_id a session id
+     * @param sess_version a session version
+     * @param nettype a network type
+     * @param addrtype an address type
+     * @param addr an address
      */
     set_origin(username: string, sess_id: string, sess_version: string, nettype: string, addrtype: string, addr: string): SDPResult
     /**
      * Set the session name in `msg`.
+     * @param session_name the session name
      */
     set_session_name(session_name: string): SDPResult
     /**
      * Set the URI in `msg`.
+     * @param uri the URI
      */
     set_uri(uri: string): SDPResult
     /**
      * Set the version in `msg`.
+     * @param version the version
      */
     set_version(version: string): SDPResult
     /**
@@ -1444,15 +1624,20 @@ class SDPMessage {
      *  \`scheme:`///[#type=value *[&type=value]]
      * 
      *  Where each value is url encoded.
+     * @param scheme the uri scheme
+     * @param msg the #GstSDPMessage
      */
     static as_uri(scheme: string, msg: SDPMessage): string
     /**
      * Parse `text` and create a new SDPMessage from these.
+     * @param text A dynamically allocated string representing the SDP description
      */
     static new_from_text(text: string): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
     /**
      * Parse the contents of `size` bytes pointed to by `data` and store the result in
      * `msg`.
+     * @param data the start of the buffer
+     * @param msg the result #GstSDPMessage
      */
     static parse_buffer(data: Uint8Array, msg: SDPMessage): SDPResult
     /**
@@ -1465,6 +1650,8 @@ class SDPMessage {
      * 
      *  where value is url encoded. This looslely resembles
      *  http://tools.ietf.org/html/draft-fujikawa-sdp-url-01
+     * @param uri the start of the uri
+     * @param msg the result #GstSDPMessage
      */
     static parse_uri(uri: string, msg: SDPMessage): SDPResult
 }
@@ -1474,31 +1661,31 @@ class SDPOrigin {
      * the user's login on the originating host, or it is "-"
      *    if the originating host does not support the concept of user ids.
      */
-    readonly username: string
+    username: string
     /**
      * is a numeric string such that the tuple of `username,` `sess_id,`
      *    `nettype,` `addrtype` and `addr` form a globally unique identifier for the
      *    session.
      */
-    readonly sess_id: string
+    sess_id: string
     /**
      * a version number for this announcement
      */
-    readonly sess_version: string
+    sess_version: string
     /**
      * the type of network. "IN" is defined to have the meaning
      *    "Internet".
      */
-    readonly nettype: string
+    nettype: string
     /**
      * the type of `addr`.
      */
-    readonly addrtype: string
+    addrtype: string
     /**
      * the globally unique address of the machine from which the session was
      *     created.
      */
-    readonly addr: string
+    addr: string
     static name: string
 }
 class SDPTime {
@@ -1507,16 +1694,16 @@ class SDPTime {
      * start time for the conference. The value is the decimal
      *     representation of Network Time Protocol (NTP) time values in seconds
      */
-    readonly start: string
+    start: string
     /**
      * stop time for the conference. The value is the decimal
      *     representation of Network Time Protocol (NTP) time values in seconds
      */
-    readonly stop: string
+    stop: string
     /**
      * repeat times for a session
      */
-    readonly repeat: object[]
+    repeat: object[]
     /* Methods of GstSdp-1.0.GstSdp.SDPTime */
     /**
      * Reset the time information in `t`.
@@ -1524,6 +1711,9 @@ class SDPTime {
     clear(): SDPResult
     /**
      * Set time information `start,` `stop` and `repeat` in `t`.
+     * @param start the start time
+     * @param stop the stop time
+     * @param repeat the repeat times
      */
     set(start: string, stop: string, repeat: string[]): SDPResult
     static name: string
@@ -1533,11 +1723,11 @@ class SDPZone {
     /**
      * the NTP time that a time zone adjustment happens
      */
-    readonly time: string
+    time: string
     /**
      * the offset from the time when the session was first scheduled
      */
-    readonly typed_time: string
+    typed_time: string
     /* Methods of GstSdp-1.0.GstSdp.SDPZone */
     /**
      * Reset the zone information in `zone`.
@@ -1545,6 +1735,8 @@ class SDPZone {
     clear(): SDPResult
     /**
      * Set zone information in `zone`.
+     * @param adj_time the NTP time that a time zone adjustment happens
+     * @param typed_time the offset from the time when the session was first scheduled
      */
     set(adj_time: string, typed_time: string): SDPResult
     static name: string

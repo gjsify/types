@@ -351,55 +351,69 @@ class Plugin {
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::error
      * signal. This method should not be used otherwise.
+     * @param error the error
      */
     error(error: GLib.Error): void
     /**
      * This method asks the plugin to refresh the UI. The plugin responds with
      * #GSignondPlugin::refreshed signal.
+     * @param ui_data UI refresh parameters
      */
     refresh(ui_data: SignonuiData): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::refreshed
      * signal. This method should not be used otherwise.
+     * @param ui_data UI data
      */
     refreshed(ui_data: SignonuiData): void
     /**
      * This method provides the plugin with additional parameters for the session
      * after the plugin has asked for it via #GSignondPlugin::response signal.
+     * @param session_data additional parameters for the session
      */
     request(session_data: SessionData): void
     /**
      * This method starts a new authentication session.
+     * @param session_data parameters for the session
+     * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
+     * @param mechanism mechanism to use for the authentication
      */
     request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::response
      * signal. This method should not be used otherwise.
+     * @param session_data session data
      */
     response(session_data: SessionData): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::response-final
      * signal. This method should not be used otherwise.
+     * @param session_data session data
      */
     response_final(session_data: SessionData): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::status-changed
      * signal. This method should not be used otherwise.
+     * @param state the new state
+     * @param message the message
      */
     status_changed(state: PluginState, message: string): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::store
      * signal. This method should not be used otherwise.
+     * @param identity_method_cache data to store
      */
     store(identity_method_cache: Dictionary): void
     /**
      * This method provides the plugin with the results of UI interaction
      * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
+     * @param ui_data results of UI interaction
      */
     user_action_finished(ui_data: SignonuiData): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::user-action-required
      * signal. This method should not be used otherwise.
+     * @param ui_data UI data
      */
     user_action_required(ui_data: SignonuiData): void
     /* Virtual methods of GSignond-1.0.GSignond.Plugin */
@@ -412,20 +426,26 @@ class Plugin {
     /**
      * This method asks the plugin to refresh the UI. The plugin responds with
      * #GSignondPlugin::refreshed signal.
+     * @param ui_data UI refresh parameters
      */
     vfunc_refresh(ui_data: SignonuiData): void
     /**
      * This method provides the plugin with additional parameters for the session
      * after the plugin has asked for it via #GSignondPlugin::response signal.
+     * @param session_data additional parameters for the session
      */
     vfunc_request(session_data: SessionData): void
     /**
      * This method starts a new authentication session.
+     * @param session_data parameters for the session
+     * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
+     * @param mechanism mechanism to use for the authentication
      */
     vfunc_request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string): void
     /**
      * This method provides the plugin with the results of UI interaction
      * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
+     * @param ui_data results of UI interaction
      */
     vfunc_user_action_finished(ui_data: SignonuiData): void
     /* Signals of GSignond-1.0.GSignond.Plugin */
@@ -434,6 +454,7 @@ class Plugin {
      * plugin otherwise has a reason to cancel the authentication session. The
      * `error` should be specified according to
      * <link linkend="gsignond-Errors">GSignond errors.</link>
+     * @param error the details of the error
      */
     connect(sigName: "error", callback: (($obj: Plugin, error: GLib.Error) => void)): number
     connect_after(sigName: "error", callback: (($obj: Plugin, error: GLib.Error) => void)): number
@@ -442,6 +463,7 @@ class Plugin {
      * This signal is issued by the plugin when the UI interaction is ongoing
      * and the UI needs to be refreshed. This can be used for example to update
      * captcha image in the UI.
+     * @param ui_data parameters for UI refresh
      */
     connect(sigName: "refreshed", callback: (($obj: Plugin, ui_data: SignonuiData) => void)): number
     connect_after(sigName: "refreshed", callback: (($obj: Plugin, ui_data: SignonuiData) => void)): number
@@ -451,6 +473,7 @@ class Plugin {
      * response to the application or needs additional information from the application.
      * 
      * After issuing this signal the plugin expects a gsignond_plugin_response() call.
+     * @param session_data a #GSignondSessionData containing signal parameters
      */
     connect(sigName: "response", callback: (($obj: Plugin, session_data: SessionData) => void)): number
     connect_after(sigName: "response", callback: (($obj: Plugin, session_data: SessionData) => void)): number
@@ -461,6 +484,7 @@ class Plugin {
      * 
      * After issuing this signal the plugin is idle and is ready for a new
      * authentication session.
+     * @param session_data a #GSignondSessionData containing signal parameters
      */
     connect(sigName: "response-final", callback: (($obj: Plugin, session_data: SessionData) => void)): number
     connect_after(sigName: "response-final", callback: (($obj: Plugin, session_data: SessionData) => void)): number
@@ -468,6 +492,8 @@ class Plugin {
     /**
      * This signal is issued by the plugin when plugin state has changed. This
      * can be used by applications to report authentication progress.
+     * @param state the plugin state
+     * @param message the message that accompanies the state change
      */
     connect(sigName: "status-changed", callback: (($obj: Plugin, state: PluginState, message: string) => void)): number
     connect_after(sigName: "status-changed", callback: (($obj: Plugin, state: PluginState, message: string) => void)): number
@@ -476,6 +502,7 @@ class Plugin {
      * This signal is issued by the plugin when it has data to store in persistent
      * storage. The same data would later be provided to plugin via
      * gsignond_plugin_request_initial `identity_method_cache` parameter.
+     * @param data a #GSignondDictionary containing data to place in persistent storage
      */
     connect(sigName: "store", callback: (($obj: Plugin, data: Dictionary) => void)): number
     connect_after(sigName: "store", callback: (($obj: Plugin, data: Dictionary) => void)): number
@@ -484,6 +511,7 @@ class Plugin {
      * This signal is issued by the plugin when it needs a UI interaction with
      * the user to happen. When the interaction is complete, gsignond_plugin_user_action_finished()
      * should be issued.
+     * @param ui_data parameters for UI interaction
      */
     connect(sigName: "user-action-required", callback: (($obj: Plugin, ui_data: SignonuiData) => void)): number
     connect_after(sigName: "user-action-required", callback: (($obj: Plugin, ui_data: SignonuiData) => void)): number
@@ -495,8 +523,10 @@ interface AccessControlManager_ConstructProps extends GObject.Object_ConstructPr
     config?: Config
 }
 class AccessControlManager {
+    /* Properties of GSignond-1.0.GSignond.AccessControlManager */
+    readonly config: Config
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.AccessControlManager */
     /**
      * Checks if the specified peer is allowed to set the specified access
@@ -504,6 +534,8 @@ class AccessControlManager {
      * is used before calling this method to verify identity ownership.
      * 
      * The default implementation always returns %TRUE.
+     * @param peer_ctx security context of the peer connection.
+     * @param identity_acl access control list for the identity.
      */
     acl_is_valid(peer_ctx: SecurityContext, identity_acl: SecurityContext[]): boolean
     /**
@@ -511,6 +543,9 @@ class AccessControlManager {
      * 
      * The default implementation goes over items in `identity_acl,` using
      * gsignond_security_context_check() to check them against `peer_ctx`.
+     * @param peer_ctx security context of the peer connection.
+     * @param owner_ctx security context of the identity owner.
+     * @param identity_acl access control list for the identity in question. Includes the `owner_ctx` as well.
      */
     peer_is_allowed_to_use_identity(peer_ctx: SecurityContext, owner_ctx: SecurityContext, identity_acl: SecurityContext[]): boolean
     /**
@@ -518,6 +553,8 @@ class AccessControlManager {
      * 
      * The default implementation is using gsignond_security_context_check()
      * to check `peer_ctx` against `owner_ctx` directly.
+     * @param peer_ctx security context of the peer connection.
+     * @param owner_ctx security context of the identity owner.
      */
     peer_is_owner_of_identity(peer_ctx: SecurityContext, owner_ctx: SecurityContext): boolean
     /**
@@ -542,6 +579,10 @@ class AccessControlManager {
      * The default implementation sets the app context as it was passed, and sets
      * the system context to the binary path of the process that is determined from
      * `peer_fd` and `peer_service` parameters.
+     * @param peer_ctx instance of security context to be set.
+     * @param peer_fd file descriptor of the peer connection if using peer-to-peer dbus, -1 otherwise.
+     * @param peer_service g_dbus_method_invocation_get_sender() of the peer connection, if not using peer-to-peer dbus, NULL otherwise
+     * @param peer_app_ctx application context of the peer connection.
      */
     security_context_of_peer(peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -579,6 +620,10 @@ class AccessControlManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -589,6 +634,12 @@ class AccessControlManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -612,6 +663,7 @@ class AccessControlManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -631,11 +683,14 @@ class AccessControlManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -643,6 +698,8 @@ class AccessControlManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -660,6 +717,7 @@ class AccessControlManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -705,6 +763,7 @@ class AccessControlManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -748,15 +807,20 @@ class AccessControlManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -797,6 +861,7 @@ class AccessControlManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -831,6 +896,7 @@ class AccessControlManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GSignond-1.0.GSignond.AccessControlManager */
@@ -840,6 +906,8 @@ class AccessControlManager {
      * is used before calling this method to verify identity ownership.
      * 
      * The default implementation always returns %TRUE.
+     * @param peer_ctx security context of the peer connection.
+     * @param identity_acl access control list for the identity.
      */
     vfunc_acl_is_valid(peer_ctx: SecurityContext, identity_acl: SecurityContext[]): boolean
     /**
@@ -847,6 +915,9 @@ class AccessControlManager {
      * 
      * The default implementation goes over items in `identity_acl,` using
      * gsignond_security_context_check() to check them against `peer_ctx`.
+     * @param peer_ctx security context of the peer connection.
+     * @param owner_ctx security context of the identity owner.
+     * @param identity_acl access control list for the identity in question. Includes the `owner_ctx` as well.
      */
     vfunc_peer_is_allowed_to_use_identity(peer_ctx: SecurityContext, owner_ctx: SecurityContext, identity_acl: SecurityContext[]): boolean
     /**
@@ -854,6 +925,8 @@ class AccessControlManager {
      * 
      * The default implementation is using gsignond_security_context_check()
      * to check `peer_ctx` against `owner_ctx` directly.
+     * @param peer_ctx security context of the peer connection.
+     * @param owner_ctx security context of the identity owner.
      */
     vfunc_peer_is_owner_of_identity(peer_ctx: SecurityContext, owner_ctx: SecurityContext): boolean
     /**
@@ -878,6 +951,10 @@ class AccessControlManager {
      * The default implementation sets the app context as it was passed, and sets
      * the system context to the binary path of the process that is determined from
      * `peer_fd` and `peer_service` parameters.
+     * @param peer_ctx instance of security context to be set.
+     * @param peer_fd file descriptor of the peer connection if using peer-to-peer dbus, -1 otherwise.
+     * @param peer_service g_dbus_method_invocation_get_sender() of the peer connection, if not using peer-to-peer dbus, NULL otherwise
+     * @param peer_app_ctx application context of the peer connection.
      */
     vfunc_security_context_of_peer(peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -897,6 +974,7 @@ class AccessControlManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -929,10 +1007,13 @@ class AccessControlManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AccessControlManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AccessControlManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::config", callback: (($obj: AccessControlManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::config", callback: (($obj: AccessControlManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -946,22 +1027,28 @@ interface Config_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Config {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.Config */
     /**
      * Get an integer configuration value.
+     * @param key the key name
      */
     get_integer(key: string): number
     /**
      * Get a string configuration value.
+     * @param key the key name
      */
     get_string(key: string): string | null
     /**
      * Sets the configuration value to the provided integer.
+     * @param key the key name
+     * @param value the value
      */
     set_integer(key: string, value: number): void
     /**
      * Sets the configuration value to the provided string.
+     * @param key the key name
+     * @param value the value
      */
     set_string(key: string, value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -999,6 +1086,10 @@ class Config {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1009,6 +1100,12 @@ class Config {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1032,6 +1129,7 @@ class Config {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1051,11 +1149,14 @@ class Config {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1063,6 +1164,8 @@ class Config {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1080,6 +1183,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1125,6 +1229,7 @@ class Config {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1168,15 +1273,20 @@ class Config {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1217,6 +1327,7 @@ class Config {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1251,6 +1362,7 @@ class Config {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1270,6 +1382,7 @@ class Config {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1302,6 +1415,7 @@ class Config {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
@@ -1321,10 +1435,11 @@ interface Credentials_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Credentials {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.Credentials */
     /**
      * Compares elements of two GSignondCredentials object for equality.
+     * @param two the second credential to be compared.
      */
     equal(two: Credentials): boolean
     /**
@@ -1341,18 +1456,24 @@ class Credentials {
     get_username(): string | null
     /**
      * Sets the data of the #GSignondCredentials.
+     * @param id the identity id associated with the credentials.
+     * @param username the username.
+     * @param password the password.
      */
     set_data(id: number, username: string, password: string): boolean
     /**
      * Sets the identity id of the #GSignondCredentials object
+     * @param id the id.
      */
     set_id(id: number): boolean
     /**
      * Sets the password of the GSignondCredentials object
+     * @param password the password.
      */
     set_password(password?: string | null): boolean
     /**
      * Sets the username of the GSignondCredentials object
+     * @param username the username.
      */
     set_username(username?: string | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1390,6 +1511,10 @@ class Credentials {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1400,6 +1525,12 @@ class Credentials {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1423,6 +1554,7 @@ class Credentials {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1442,11 +1574,14 @@ class Credentials {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1454,6 +1589,8 @@ class Credentials {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1471,6 +1608,7 @@ class Credentials {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1516,6 +1654,7 @@ class Credentials {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1559,15 +1698,20 @@ class Credentials {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1608,6 +1752,7 @@ class Credentials {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1642,6 +1787,7 @@ class Credentials {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1661,6 +1807,7 @@ class Credentials {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1693,6 +1840,7 @@ class Credentials {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Credentials, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Credentials, pspec: GObject.ParamSpec) => void)): number
@@ -1712,10 +1860,11 @@ interface Dictionary_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Dictionary {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.Dictionary */
     /**
      * Checks if the `dict` contains `key`.
+     * @param key key to check
      */
     contains(key: string): boolean
     /**
@@ -1728,22 +1877,27 @@ class Dictionary {
      * using #GVariant methods. For most commonly used types, also getters that
      * return the specific type directly are provided (gsignond_dictionary_get_string()
      * and similar).
+     * @param key the key to look up in the dictionary
      */
     get(key: string): GLib.Variant | null
     /**
      * Retrieves a gboolean value.
+     * @param key key to look up
      */
     get_boolean(key: string): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Retrieves a int32 value.
+     * @param key key to look up
      */
     get_int32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a int64 value.
+     * @param key key to look up
      */
     get_int64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a string value.
+     * @param key key to look up
      */
     get_string(key: string): string | null
     /**
@@ -1754,44 +1908,61 @@ class Dictionary {
     get_table(): GLib.HashTable
     /**
      * Retrieves a uint32 value.
+     * @param key key to look up
      */
     get_uint32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a uint64 value.
+     * @param key key to look up
      */
     get_uint64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Removes key-value pair in the dictionary as per key.
+     * @param key key which needs to be removed from the dictionary
      */
     remove(key: string): boolean
     /**
      * Adds or replaces key-value pair in the dictionary. This allows to set a value
      * of an arbitrary type: it first needs to be converted to a #GVariant. For most
      * commonly used types also type-specific setters are provided.
+     * @param key key to be set
+     * @param value value to be set
      */
     set(key: string, value: GLib.Variant): boolean
     /**
      * Sets or replaces a gboolean value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_boolean(key: string, value: boolean): boolean
     /**
      * Sets or replaces a int32 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_int32(key: string, value: number): boolean
     /**
      * Sets or replaces a int64 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_int64(key: string, value: number): boolean
     /**
      * Sets or replaces a string value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_string(key: string, value: string): boolean
     /**
      * Sets or replaces a uint32 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_uint32(key: string, value: number): boolean
     /**
      * Sets or replaces a uint64 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_uint64(key: string, value: number): boolean
     /**
@@ -1842,6 +2013,10 @@ class Dictionary {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1852,6 +2027,12 @@ class Dictionary {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1875,6 +2056,7 @@ class Dictionary {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1894,11 +2076,14 @@ class Dictionary {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1906,6 +2091,8 @@ class Dictionary {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1923,6 +2110,7 @@ class Dictionary {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1968,6 +2156,7 @@ class Dictionary {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2011,15 +2200,20 @@ class Dictionary {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2060,6 +2254,7 @@ class Dictionary {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2094,6 +2289,7 @@ class Dictionary {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2113,6 +2309,7 @@ class Dictionary {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2145,6 +2342,7 @@ class Dictionary {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Dictionary, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Dictionary, pspec: GObject.ParamSpec) => void)): number
@@ -2165,11 +2363,12 @@ interface Extension_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Extension {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.Extension */
     /**
      * Factory method to get a singleton access control manager object. See
      * #GSignondAccessControlManager for the description of the default implementation.
+     * @param config configuration object instance.
      */
     get_access_control_manager(config: Config): AccessControlManager
     /**
@@ -2180,11 +2379,13 @@ class Extension {
     /**
      * Factory method to get a singleton secret storage object. See
      * #GSignondSecretStorage for the description of the default implementation.
+     * @param config configuration object instance.
      */
     get_secret_storage(config: Config): SecretStorage
     /**
      * Factory method to get a singleton storage manager object. See
      * #GSignondStorageManager for the description of the default implementation.
+     * @param config configuration object instance.
      */
     get_storage_manager(config: Config): StorageManager
     /**
@@ -2227,6 +2428,10 @@ class Extension {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2237,6 +2442,12 @@ class Extension {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2260,6 +2471,7 @@ class Extension {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2279,11 +2491,14 @@ class Extension {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2291,6 +2506,8 @@ class Extension {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2308,6 +2525,7 @@ class Extension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2353,6 +2571,7 @@ class Extension {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2396,15 +2615,20 @@ class Extension {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2445,6 +2669,7 @@ class Extension {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2479,12 +2704,14 @@ class Extension {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GSignond-1.0.GSignond.Extension */
     /**
      * Factory method to get a singleton access control manager object. See
      * #GSignondAccessControlManager for the description of the default implementation.
+     * @param config configuration object instance.
      */
     vfunc_get_access_control_manager(config: Config): AccessControlManager
     vfunc_get_extension_name(): string
@@ -2492,11 +2719,13 @@ class Extension {
     /**
      * Factory method to get a singleton secret storage object. See
      * #GSignondSecretStorage for the description of the default implementation.
+     * @param config configuration object instance.
      */
     vfunc_get_secret_storage(config: Config): SecretStorage
     /**
      * Factory method to get a singleton storage manager object. See
      * #GSignondStorageManager for the description of the default implementation.
+     * @param config configuration object instance.
      */
     vfunc_get_storage_manager(config: Config): StorageManager
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2516,6 +2745,7 @@ class Extension {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2548,6 +2778,7 @@ class Extension {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Extension, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Extension, pspec: GObject.ParamSpec) => void)): number
@@ -2566,11 +2797,14 @@ interface SecretStorage_ConstructProps extends GObject.Object_ConstructProps {
     config?: Config
 }
 class SecretStorage {
+    /* Properties of GSignond-1.0.GSignond.SecretStorage */
+    readonly config: Config
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.SecretStorage */
     /**
      * Checks whether the given credentials match what is stored in the database.
+     * @param creds the credentials that are being checked.
      */
     check_credentials(creds: Credentials): boolean
     /**
@@ -2591,10 +2825,13 @@ class SecretStorage {
     is_open_db(): boolean
     /**
      * Loads the credentials from the database.
+     * @param id the identity id whose credentials are being loaded.
      */
     load_credentials(id: number): Credentials | null
     /**
      * Loads the secret data associated with a given identity and method.
+     * @param id the identity id whose data are fetched
+     * @param method the authentication method the data is used for.
      */
     load_data(id: number, method: number): Dictionary
     /**
@@ -2608,19 +2845,26 @@ class SecretStorage {
     open_db(): boolean
     /**
      * Remove the credentials for the given identity.
+     * @param id the identity whose credentials are being updated.
      */
     remove_credentials(id: number): boolean
     /**
      * Removes secret data associated with a given id/method.
+     * @param id the identity whose data are fetched.
+     * @param method the authentication method the data is used for.
      */
     remove_data(id: number, method: number): boolean
     /**
      * Stores/updates the credentials for the given identity.
+     * @param creds the credentials that are being updated.
      */
     update_credentials(creds: Credentials): boolean
     /**
      * Calling this method updates the secret data
      * associated with the given id/method.
+     * @param id the identity whose data are fetched.
+     * @param method the authentication method the data is used for.
+     * @param data the data to update
      */
     update_data(id: number, method: number, data: Dictionary): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -2658,6 +2902,10 @@ class SecretStorage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2668,6 +2916,12 @@ class SecretStorage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2691,6 +2945,7 @@ class SecretStorage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2710,11 +2965,14 @@ class SecretStorage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2722,6 +2980,8 @@ class SecretStorage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2739,6 +2999,7 @@ class SecretStorage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2784,6 +3045,7 @@ class SecretStorage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2827,15 +3089,20 @@ class SecretStorage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2876,6 +3143,7 @@ class SecretStorage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2910,11 +3178,13 @@ class SecretStorage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GSignond-1.0.GSignond.SecretStorage */
     /**
      * Checks whether the given credentials match what is stored in the database.
+     * @param creds the credentials that are being checked.
      */
     vfunc_check_credentials(creds: Credentials): boolean
     /**
@@ -2935,10 +3205,13 @@ class SecretStorage {
     vfunc_is_open_db(): boolean
     /**
      * Loads the credentials from the database.
+     * @param id the identity id whose credentials are being loaded.
      */
     vfunc_load_credentials(id: number): Credentials | null
     /**
      * Loads the secret data associated with a given identity and method.
+     * @param id the identity id whose data are fetched
+     * @param method the authentication method the data is used for.
      */
     vfunc_load_data(id: number, method: number): Dictionary
     /**
@@ -2952,19 +3225,26 @@ class SecretStorage {
     vfunc_open_db(): boolean
     /**
      * Remove the credentials for the given identity.
+     * @param id the identity whose credentials are being updated.
      */
     vfunc_remove_credentials(id: number): boolean
     /**
      * Removes secret data associated with a given id/method.
+     * @param id the identity whose data are fetched.
+     * @param method the authentication method the data is used for.
      */
     vfunc_remove_data(id: number, method: number): boolean
     /**
      * Stores/updates the credentials for the given identity.
+     * @param creds the credentials that are being updated.
      */
     vfunc_update_credentials(creds: Credentials): boolean
     /**
      * Calling this method updates the secret data
      * associated with the given id/method.
+     * @param id the identity whose data are fetched.
+     * @param method the authentication method the data is used for.
+     * @param data the data to update
      */
     vfunc_update_data(id: number, method: number, data: Dictionary): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2984,6 +3264,7 @@ class SecretStorage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3016,10 +3297,13 @@ class SecretStorage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SecretStorage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SecretStorage, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::config", callback: (($obj: SecretStorage, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::config", callback: (($obj: SecretStorage, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3033,9 +3317,9 @@ interface SessionData_ConstructProps extends Dictionary_ConstructProps {
 }
 class SessionData {
     /* Fields of GSignond-1.0.GSignond.Dictionary */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.SessionData */
     /**
      * Creates a copy of the dictionary session data.
@@ -3088,56 +3372,67 @@ class SessionData {
     get_window_id(): [ /* returnType */ boolean, /* window_id */ number ]
     /**
      * A setter for a list of realms allowed for the identity use.
+     * @param realms a #GSequence if allowed realms
      */
     set_allowed_realms(realms: GLib.Sequence): void
     /**
      * A setter for a caption associated with the authentication session.
      * Caption tells the user which application/credentials/provider is requestion
      * authentication.
+     * @param caption a caption to set
      */
     set_caption(caption: string): void
     /**
      * A setter for a network proxy setting associated with the authentication session.
      * If this property is not set, the default system proxy settings should be used.
+     * @param network_proxy network proxy to use
      */
     set_network_proxy(network_proxy: string): void
     /**
      * A setter for a network timeout setting associated with the authentication session.
      * This can be used to change the default timeout in case of unresponsive servers.
+     * @param network_timeout network timeout to use
      */
     set_network_timeout(network_timeout: number): void
     /**
      * A setter for a realm associated with the authentication session.
+     * @param realm a realm to set
      */
     set_realm(realm: string): void
     /**
      * A setter for a renew token property associated with the authentication session.
      * This property tells the plugin to discard any cached tokens and start
      * the authentication process anew.
+     * @param renew_token whether to renew the token set
      */
     set_renew_token(renew_token: boolean): void
     /**
      * A setter for a secret (e.g. a password) associated with the authentication session.
+     * @param secret a secret to set
      */
     set_secret(secret: string): void
     /**
      * A getter for UI policy setting associated with the authentication session.
      * The UI policy indicates how the authentication plugin should interact with the user.
+     * @param ui_policy ui policy to set
      */
     set_ui_policy(ui_policy: UiPolicy): void
     /**
      * A setter for a username associated with the authentication session.
+     * @param username username to set
      */
     set_username(username: string): void
     /**
      * A setter for a window id setting associated with the authentication session.
      * This can be used to embed the user interaction window produced by the authentication
      * session into an application window.
+     * @param window_id window id to use
      */
     set_window_id(window_id: number): void
     /* Methods of GSignond-1.0.GSignond.Dictionary */
     /**
      * Checks if the `dict` contains `key`.
+     * @param key key to check
      */
     contains(key: string): boolean
     /**
@@ -3150,22 +3445,27 @@ class SessionData {
      * using #GVariant methods. For most commonly used types, also getters that
      * return the specific type directly are provided (gsignond_dictionary_get_string()
      * and similar).
+     * @param key the key to look up in the dictionary
      */
     get(key: string): GLib.Variant | null
     /**
      * Retrieves a gboolean value.
+     * @param key key to look up
      */
     get_boolean(key: string): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Retrieves a int32 value.
+     * @param key key to look up
      */
     get_int32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a int64 value.
+     * @param key key to look up
      */
     get_int64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a string value.
+     * @param key key to look up
      */
     get_string(key: string): string | null
     /**
@@ -3176,44 +3476,61 @@ class SessionData {
     get_table(): GLib.HashTable
     /**
      * Retrieves a uint32 value.
+     * @param key key to look up
      */
     get_uint32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a uint64 value.
+     * @param key key to look up
      */
     get_uint64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Removes key-value pair in the dictionary as per key.
+     * @param key key which needs to be removed from the dictionary
      */
     remove(key: string): boolean
     /**
      * Adds or replaces key-value pair in the dictionary. This allows to set a value
      * of an arbitrary type: it first needs to be converted to a #GVariant. For most
      * commonly used types also type-specific setters are provided.
+     * @param key key to be set
+     * @param value value to be set
      */
     set(key: string, value: GLib.Variant): boolean
     /**
      * Sets or replaces a gboolean value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_boolean(key: string, value: boolean): boolean
     /**
      * Sets or replaces a int32 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_int32(key: string, value: number): boolean
     /**
      * Sets or replaces a int64 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_int64(key: string, value: number): boolean
     /**
      * Sets or replaces a string value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_string(key: string, value: string): boolean
     /**
      * Sets or replaces a uint32 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_uint32(key: string, value: number): boolean
     /**
      * Sets or replaces a uint64 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_uint64(key: string, value: number): boolean
     /**
@@ -3264,6 +3581,10 @@ class SessionData {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3274,6 +3595,12 @@ class SessionData {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3297,6 +3624,7 @@ class SessionData {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3316,11 +3644,14 @@ class SessionData {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3328,6 +3659,8 @@ class SessionData {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3345,6 +3678,7 @@ class SessionData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3390,6 +3724,7 @@ class SessionData {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3433,15 +3768,20 @@ class SessionData {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3482,6 +3822,7 @@ class SessionData {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3516,6 +3857,7 @@ class SessionData {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3535,6 +3877,7 @@ class SessionData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3567,6 +3910,7 @@ class SessionData {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SessionData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SessionData, pspec: GObject.ParamSpec) => void)): number
@@ -3591,9 +3935,9 @@ interface SignonuiData_ConstructProps extends Dictionary_ConstructProps {
 }
 class SignonuiData {
     /* Fields of GSignond-1.0.GSignond.Dictionary */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.SignonuiData */
     /**
      * Creates a copy of the dictionary session data.
@@ -3692,21 +4036,25 @@ class SignonuiData {
     get_username(): string | null
     /**
      * A setter for the user's response to a captcha query.
+     * @param response the string entered by the user in response to a captcha query.
      */
     set_captcha_response(response: string): void
     /**
      * A setter for the captcha URL.
+     * @param url the URL to the captcha image to be verified by user
      */
     set_captcha_url(url: string): void
     /**
      * A setter for the caption string. Caption tells the user which
      * application/credentials/provider is requestion authentication.
+     * @param caption the caption string
      */
     set_caption(caption: string): void
     /**
      * A setter for the confirm mode. In confirm mode the user is asked to enter
      * an old password (which is compared to the supplied password), and a new password twice
      * (which is returned).
+     * @param confirm the value for the property
      */
     set_confirm(confirm: boolean): void
     /**
@@ -3714,61 +4062,74 @@ class SignonuiData {
      * the final URL (possibly with additional query or fragment parameters), it
      * will close the window and return the full URL via url response property.
      * This is used by redirection-based authentication, such as OAuth.
+     * @param url the final url
      */
     set_final_url(url: string): void
     /**
      * A setter for the forgot password string, which is shown to the user as a link to
      * reset the password or remind him of the password.
+     * @param forgot the forgot password string
      */
     set_forgot_password(forgot: string): void
     /**
      * A setter for the forgot password URL, where the user can reset or request a
      * reminder of the password.
+     * @param url the forgot password URL
      */
     set_forgot_password_url(url: string): void
     /**
      * A setter for the message which is show to the user in the signon UI dialog.
+     * @param message the message
      */
     set_message(message: string): void
     /**
      * A setter for the URL that should be opened by signon UI.
+     * @param url the url to open
      */
     set_open_url(url: string): void
     /**
      * A setter for the password string.
+     * @param password the password string
      */
     set_password(password: string): void
     /**
      * A setter for the UI interaction error. Signon UI sets this to `SIGNONUI_ERROR_NONE` if
      * there were no errors.
+     * @param error the error
      */
     set_query_error(error: SignonuiError): void
     /**
      * A setter for the query password property. It indicates whether the signon UI
      * should ask the user for a password (and return it in the password property).
+     * @param query the property value
      */
     set_query_password(query: boolean): void
     /**
      * A setter for the query username property. It indicates whether the signon UI
      * should ask the user for a username (and return it in the username property).
+     * @param query the property value
      */
     set_query_username(query: boolean): void
     /**
      * A setter for whether the password should be remembered.
+     * @param remember the property value
      */
     set_remember_password(remember: boolean): void
     /**
      * A setter for the dialog request id. The id identifies the dialog so that it
      * can be refreshed or updated.
+     * @param id request id
      */
     set_request_id(id: string): void
     /**
      * A setter for the test reply values. It's used only by the signon ui
      * implementations to test themselves.
+     * @param reply test reply values
      */
     set_test_reply(reply: string): void
     /**
      * A setter for the UI dialog title.
+     * @param title the title
      */
     set_title(title: string): void
     /**
@@ -3776,15 +4137,18 @@ class SignonuiData {
      * signon UI, and the signon UI
      * detects that it has been reached, then the full final URL is returned using
      * this property. This is used by redirection-based authentication such as OAauth.
+     * @param response the response URL
      */
     set_url_response(response: string): void
     /**
      * A setter for the username string.
+     * @param username the username string
      */
     set_username(username: string): void
     /* Methods of GSignond-1.0.GSignond.Dictionary */
     /**
      * Checks if the `dict` contains `key`.
+     * @param key key to check
      */
     contains(key: string): boolean
     /**
@@ -3797,22 +4161,27 @@ class SignonuiData {
      * using #GVariant methods. For most commonly used types, also getters that
      * return the specific type directly are provided (gsignond_dictionary_get_string()
      * and similar).
+     * @param key the key to look up in the dictionary
      */
     get(key: string): GLib.Variant | null
     /**
      * Retrieves a gboolean value.
+     * @param key key to look up
      */
     get_boolean(key: string): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Retrieves a int32 value.
+     * @param key key to look up
      */
     get_int32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a int64 value.
+     * @param key key to look up
      */
     get_int64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a string value.
+     * @param key key to look up
      */
     get_string(key: string): string | null
     /**
@@ -3823,44 +4192,61 @@ class SignonuiData {
     get_table(): GLib.HashTable
     /**
      * Retrieves a uint32 value.
+     * @param key key to look up
      */
     get_uint32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a uint64 value.
+     * @param key key to look up
      */
     get_uint64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Removes key-value pair in the dictionary as per key.
+     * @param key key which needs to be removed from the dictionary
      */
     remove(key: string): boolean
     /**
      * Adds or replaces key-value pair in the dictionary. This allows to set a value
      * of an arbitrary type: it first needs to be converted to a #GVariant. For most
      * commonly used types also type-specific setters are provided.
+     * @param key key to be set
+     * @param value value to be set
      */
     set(key: string, value: GLib.Variant): boolean
     /**
      * Sets or replaces a gboolean value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_boolean(key: string, value: boolean): boolean
     /**
      * Sets or replaces a int32 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_int32(key: string, value: number): boolean
     /**
      * Sets or replaces a int64 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_int64(key: string, value: number): boolean
     /**
      * Sets or replaces a string value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_string(key: string, value: string): boolean
     /**
      * Sets or replaces a uint32 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_uint32(key: string, value: number): boolean
     /**
      * Sets or replaces a uint64 value in the dictionary.
+     * @param key key to set
+     * @param value value to set
      */
     set_uint64(key: string, value: number): boolean
     /**
@@ -3911,6 +4297,10 @@ class SignonuiData {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3921,6 +4311,12 @@ class SignonuiData {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3944,6 +4340,7 @@ class SignonuiData {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3963,11 +4360,14 @@ class SignonuiData {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3975,6 +4375,8 @@ class SignonuiData {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3992,6 +4394,7 @@ class SignonuiData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4037,6 +4440,7 @@ class SignonuiData {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4080,15 +4484,20 @@ class SignonuiData {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4129,6 +4538,7 @@ class SignonuiData {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4163,6 +4573,7 @@ class SignonuiData {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4182,6 +4593,7 @@ class SignonuiData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4214,6 +4626,7 @@ class SignonuiData {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SignonuiData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SignonuiData, pspec: GObject.ParamSpec) => void)): number
@@ -4239,8 +4652,10 @@ interface StorageManager_ConstructProps extends GObject.Object_ConstructProps {
     config?: Config
 }
 class StorageManager {
+    /* Properties of GSignond-1.0.GSignond.StorageManager */
+    readonly config: Config
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSignond-1.0.GSignond.StorageManager */
     /**
      * Destroys all the encryption keys and wipes the storage. gsignond_wipe_directory()
@@ -4309,6 +4724,10 @@ class StorageManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4319,6 +4738,12 @@ class StorageManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4342,6 +4767,7 @@ class StorageManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4361,11 +4787,14 @@ class StorageManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4373,6 +4802,8 @@ class StorageManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4390,6 +4821,7 @@ class StorageManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4435,6 +4867,7 @@ class StorageManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4478,15 +4911,20 @@ class StorageManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4527,6 +4965,7 @@ class StorageManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4561,6 +5000,7 @@ class StorageManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GSignond-1.0.GSignond.StorageManager */
@@ -4613,6 +5053,7 @@ class StorageManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4645,10 +5086,13 @@ class StorageManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StorageManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StorageManager, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::config", callback: (($obj: StorageManager, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::config", callback: (($obj: StorageManager, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4663,12 +5107,12 @@ abstract class AccessControlManagerClass {
     /**
      * parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly security_context_of_peer: (self: AccessControlManager, peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string) => void
-    readonly peer_is_allowed_to_use_identity: (self: AccessControlManager, peer_ctx: SecurityContext, owner_ctx: SecurityContext, identity_acl: SecurityContext[]) => boolean
-    readonly peer_is_owner_of_identity: (self: AccessControlManager, peer_ctx: SecurityContext, owner_ctx: SecurityContext) => boolean
-    readonly acl_is_valid: (self: AccessControlManager, peer_ctx: SecurityContext, identity_acl: SecurityContext[]) => boolean
-    readonly security_context_of_keychain: (self: AccessControlManager) => SecurityContext
+    parent_class: GObject.ObjectClass
+    security_context_of_peer: (self: AccessControlManager, peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string) => void
+    peer_is_allowed_to_use_identity: (self: AccessControlManager, peer_ctx: SecurityContext, owner_ctx: SecurityContext, identity_acl: SecurityContext[]) => boolean
+    peer_is_owner_of_identity: (self: AccessControlManager, peer_ctx: SecurityContext, owner_ctx: SecurityContext) => boolean
+    acl_is_valid: (self: AccessControlManager, peer_ctx: SecurityContext, identity_acl: SecurityContext[]) => boolean
+    security_context_of_keychain: (self: AccessControlManager) => SecurityContext
     static name: string
 }
 class AccessControlManagerPrivate {
@@ -4676,7 +5120,7 @@ class AccessControlManagerPrivate {
 }
 abstract class ConfigClass {
     /* Fields of GSignond-1.0.GSignond.ConfigClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CredentialsClass {
@@ -4690,12 +5134,12 @@ abstract class ExtensionClass {
     /**
      * the parent class
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly get_extension_name: (self: Extension) => string
-    readonly get_extension_version: (self: Extension) => number
-    readonly get_storage_manager: (self: Extension, config: Config) => StorageManager
-    readonly get_secret_storage: (self: Extension, config: Config) => SecretStorage
-    readonly get_access_control_manager: (self: Extension, config: Config) => AccessControlManager
+    parent_class: GObject.ObjectClass
+    get_extension_name: (self: Extension) => string
+    get_extension_version: (self: Extension) => number
+    get_storage_manager: (self: Extension, config: Config) => StorageManager
+    get_secret_storage: (self: Extension, config: Config) => SecretStorage
+    get_access_control_manager: (self: Extension, config: Config) => AccessControlManager
     static name: string
 }
 abstract class PluginInterface {
@@ -4703,12 +5147,12 @@ abstract class PluginInterface {
     /**
      * parent interface type.
      */
-    readonly parent: GObject.TypeInterface
-    readonly cancel: (self: Plugin) => void
-    readonly request_initial: (self: Plugin, session_data: SessionData, identity_method_cache: Dictionary, mechanism: string) => void
-    readonly request: (self: Plugin, session_data: SessionData) => void
-    readonly user_action_finished: (self: Plugin, ui_data: SignonuiData) => void
-    readonly refresh: (self: Plugin, ui_data: SignonuiData) => void
+    parent: GObject.TypeInterface
+    cancel: (self: Plugin) => void
+    request_initial: (self: Plugin, session_data: SessionData, identity_method_cache: Dictionary, mechanism: string) => void
+    request: (self: Plugin, session_data: SessionData) => void
+    user_action_finished: (self: Plugin, ui_data: SignonuiData) => void
+    refresh: (self: Plugin, ui_data: SignonuiData) => void
     static name: string
 }
 abstract class SecretStorageClass {
@@ -4716,19 +5160,19 @@ abstract class SecretStorageClass {
     /**
      * parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly open_db: (self: SecretStorage) => boolean
-    readonly close_db: (self: SecretStorage) => boolean
-    readonly clear_db: (self: SecretStorage) => boolean
-    readonly is_open_db: (self: SecretStorage) => boolean
-    readonly load_credentials: (self: SecretStorage, id: number) => Credentials | null
-    readonly update_credentials: (self: SecretStorage, creds: Credentials) => boolean
-    readonly remove_credentials: (self: SecretStorage, id: number) => boolean
-    readonly check_credentials: (self: SecretStorage, creds: Credentials) => boolean
-    readonly load_data: (self: SecretStorage, id: number, method: number) => Dictionary
-    readonly update_data: (self: SecretStorage, id: number, method: number, data: Dictionary) => boolean
-    readonly remove_data: (self: SecretStorage, id: number, method: number) => boolean
-    readonly get_last_error: (self: SecretStorage) => GLib.Error
+    parent_class: GObject.ObjectClass
+    open_db: (self: SecretStorage) => boolean
+    close_db: (self: SecretStorage) => boolean
+    clear_db: (self: SecretStorage) => boolean
+    is_open_db: (self: SecretStorage) => boolean
+    load_credentials: (self: SecretStorage, id: number) => Credentials | null
+    update_credentials: (self: SecretStorage, creds: Credentials) => boolean
+    remove_credentials: (self: SecretStorage, id: number) => boolean
+    check_credentials: (self: SecretStorage, creds: Credentials) => boolean
+    load_data: (self: SecretStorage, id: number, method: number) => Dictionary
+    update_data: (self: SecretStorage, id: number, method: number, data: Dictionary) => boolean
+    remove_data: (self: SecretStorage, id: number, method: number) => boolean
+    get_last_error: (self: SecretStorage) => GLib.Error
     static name: string
 }
 class SecretStoragePrivate {
@@ -4736,15 +5180,17 @@ class SecretStoragePrivate {
 }
 class SecurityContext {
     /* Fields of GSignond-1.0.GSignond.SecurityContext */
-    readonly sys_ctx: string
-    readonly app_ctx: string
+    sys_ctx: string
+    app_ctx: string
     /* Methods of GSignond-1.0.GSignond.SecurityContext */
     /**
      * Check if `test` is covered by `reference`.
+     * @param test security context item to be checked.
      */
     check(test: SecurityContext): boolean
     /**
      * Compare two #GSignondSecurityContext items in a similar way to strcmp().
+     * @param ctx2 second item to compare.
      */
     compare(ctx2: SecurityContext): number
     /**
@@ -4767,16 +5213,19 @@ class SecurityContext {
     get_system_context(): string
     /**
      * Compare two #GSignondSecurityContext items match.
+     * @param ctx2 second item to compare.
      */
     match(ctx2: SecurityContext): boolean
     /**
      * Sets the application context part of
      * the #GSignondSecurityContext.
+     * @param application_context application security context.
      */
     set_application_context(application_context: string): void
     /**
      * Sets the system context part of the
      * #GSignondSecurityContext.
+     * @param system_context system security context.
      */
     set_system_context(system_context: string): void
     /**
@@ -4791,6 +5240,7 @@ class SecurityContext {
     static new_from_values(system_context: string, application_context: string): SecurityContext
     /**
      * Builds a #GSignondSecurityContext item from a GVariant of type "(ss)".
+     * @param variant GVariant item with a #GSignondSecurityContext construct.
      */
     static from_variant(variant: GLib.Variant): SecurityContext
 }
@@ -4805,13 +5255,13 @@ abstract class StorageManagerClass {
     /**
      * parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly initialize_storage: (self: StorageManager) => boolean
-    readonly delete_storage: (self: StorageManager) => boolean
-    readonly storage_is_initialized: (self: StorageManager) => boolean
-    readonly mount_filesystem: (self: StorageManager) => string
-    readonly unmount_filesystem: (self: StorageManager) => boolean
-    readonly filesystem_is_mounted: (self: StorageManager) => boolean
+    parent_class: GObject.ObjectClass
+    initialize_storage: (self: StorageManager) => boolean
+    delete_storage: (self: StorageManager) => boolean
+    storage_is_initialized: (self: StorageManager) => boolean
+    mount_filesystem: (self: StorageManager) => string
+    unmount_filesystem: (self: StorageManager) => boolean
+    filesystem_is_mounted: (self: StorageManager) => boolean
     static name: string
 }
 class StorageManagerPrivate {

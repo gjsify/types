@@ -114,12 +114,15 @@ class Authorizer {
      * `domain`.
      * 
      * This method is thread safe.
+     * @param domain A #ZpjAuthorizationDomain.
      */
     is_authorized_for_domain(domain: AuthorizationDomain): boolean
     /**
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param call A #RestProxyCall.
      */
     process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void
     /**
@@ -127,6 +130,8 @@ class Authorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param message A #SoupMessage.
      */
     process_message(domain: AuthorizationDomain | null, message: Soup.Message): void
     /**
@@ -135,6 +140,7 @@ class Authorizer {
      * asynchronous version of this call.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     refresh_authorization(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -147,11 +153,14 @@ class Authorizer {
      * result of the operation.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
     refresh_authorization_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_authorizer_refresh_authorization_async().
+     * @param res A #GAsyncResult.
      */
     refresh_authorization_finish(res: Gio.AsyncResult): boolean
     /* Virtual methods of Zpj-0.0.Zpj.Authorizer */
@@ -160,12 +169,15 @@ class Authorizer {
      * `domain`.
      * 
      * This method is thread safe.
+     * @param domain A #ZpjAuthorizationDomain.
      */
     vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean
     /**
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param call A #RestProxyCall.
      */
     vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void
     /**
@@ -173,6 +185,8 @@ class Authorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param message A #SoupMessage.
      */
     vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void
     /**
@@ -181,6 +195,7 @@ class Authorizer {
      * asynchronous version of this call.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean
     static name: string
@@ -191,8 +206,11 @@ interface AuthorizationDomain_ConstructProps extends GObject.Object_ConstructPro
     service_name?: string
 }
 class AuthorizationDomain {
+    /* Properties of Zpj-0.0.Zpj.AuthorizationDomain */
+    readonly scope: string
+    readonly service_name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.AuthorizationDomain */
     get_scope(): string
     get_service_name(): string
@@ -231,6 +249,10 @@ class AuthorizationDomain {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -241,6 +263,12 @@ class AuthorizationDomain {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -264,6 +292,7 @@ class AuthorizationDomain {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -283,11 +312,14 @@ class AuthorizationDomain {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -295,6 +327,8 @@ class AuthorizationDomain {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -312,6 +346,7 @@ class AuthorizationDomain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -357,6 +392,7 @@ class AuthorizationDomain {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -400,15 +436,20 @@ class AuthorizationDomain {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -449,6 +490,7 @@ class AuthorizationDomain {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -483,6 +525,7 @@ class AuthorizationDomain {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -502,6 +545,7 @@ class AuthorizationDomain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -534,10 +578,15 @@ class AuthorizationDomain {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AuthorizationDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AuthorizationDomain, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::scope", callback: (($obj: AuthorizationDomain, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scope", callback: (($obj: AuthorizationDomain, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::service-name", callback: (($obj: AuthorizationDomain, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::service-name", callback: (($obj: AuthorizationDomain, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -551,7 +600,7 @@ interface GoaAuthorizer_ConstructProps extends GObject.Object_ConstructProps {
 }
 class GoaAuthorizer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -587,6 +636,10 @@ class GoaAuthorizer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -597,6 +650,12 @@ class GoaAuthorizer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -620,6 +679,7 @@ class GoaAuthorizer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -639,11 +699,14 @@ class GoaAuthorizer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -651,6 +714,8 @@ class GoaAuthorizer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -668,6 +733,7 @@ class GoaAuthorizer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -713,6 +779,7 @@ class GoaAuthorizer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -756,15 +823,20 @@ class GoaAuthorizer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -805,6 +877,7 @@ class GoaAuthorizer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -839,6 +912,7 @@ class GoaAuthorizer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Zpj-0.0.Zpj.Authorizer */
@@ -847,12 +921,15 @@ class GoaAuthorizer {
      * `domain`.
      * 
      * This method is thread safe.
+     * @param domain A #ZpjAuthorizationDomain.
      */
     is_authorized_for_domain(domain: AuthorizationDomain): boolean
     /**
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param call A #RestProxyCall.
      */
     process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void
     /**
@@ -860,6 +937,8 @@ class GoaAuthorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param message A #SoupMessage.
      */
     process_message(domain: AuthorizationDomain | null, message: Soup.Message): void
     /**
@@ -868,6 +947,7 @@ class GoaAuthorizer {
      * asynchronous version of this call.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     refresh_authorization(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -880,11 +960,14 @@ class GoaAuthorizer {
      * result of the operation.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
     refresh_authorization_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_authorizer_refresh_authorization_async().
+     * @param res A #GAsyncResult.
      */
     refresh_authorization_finish(res: Gio.AsyncResult): boolean
     /* Virtual methods of Zpj-0.0.Zpj.GoaAuthorizer */
@@ -893,12 +976,15 @@ class GoaAuthorizer {
      * `domain`.
      * 
      * This method is thread safe.
+     * @param domain A #ZpjAuthorizationDomain.
      */
     vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean
     /**
      * Adds the necessary authorization to `call`.
      * 
      * This method modifies `call` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param call A #RestProxyCall.
      */
     vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void
     /**
@@ -906,6 +992,8 @@ class GoaAuthorizer {
      * can be DELETE, GET and POST.
      * 
      * This method modifies `message` in place and is thread safe.
+     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+     * @param message A #SoupMessage.
      */
     vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void
     /**
@@ -914,6 +1002,7 @@ class GoaAuthorizer {
      * asynchronous version of this call.
      * 
      * This method is thread safe.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -933,6 +1022,7 @@ class GoaAuthorizer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -965,6 +1055,7 @@ class GoaAuthorizer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GoaAuthorizer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GoaAuthorizer, pspec: GObject.ParamSpec) => void)): number
@@ -986,7 +1077,7 @@ class Skydrive {
     /* Properties of Zpj-0.0.Zpj.Skydrive */
     authorizer: Authorizer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.Skydrive */
     create_folder(folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): boolean
     create_folder_from_name(name: string, parent_id: string, cancellable?: Gio.Cancellable | null): boolean
@@ -994,6 +1085,8 @@ class Skydrive {
      * Synchronously deletes the entry corresponding to `entry_id` from
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink>.
+     * @param entry_id The ID of the #ZpjSkydriveEntry to be deleted.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     delete_entry_id(entry_id: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1003,6 +1096,9 @@ class Skydrive {
      * saved in the preferred directory for temporary files (as returned
      * by g_get_tmp_dir()) while the download is going on, and then moved
      * to `path`.
+     * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+     * @param path The destination.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     download_file_id_to_path(file_id: string, path: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1012,6 +1108,8 @@ class Skydrive {
      * Skydrive</ulink>. See
      * zpj_skydrive_download_file_id_to_stream_async() for the asynchronous
      * version of this call.
+     * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     download_file_id_to_stream(file_id: string, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -1024,11 +1122,15 @@ class Skydrive {
      * When the operation is finished, `callback` will be called. You can
      * then call zpj_skydrive_download_file_id_to_stream_finish() to get
      * the result of the operation.
+     * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
     download_file_id_to_stream_async(file_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_download_file_id_to_stream_async().
+     * @param res A #GAsyncResult.
      */
     download_file_id_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream
     /**
@@ -1038,6 +1140,9 @@ class Skydrive {
      * saved in the preferred directory for temporary files (as returned
      * by g_get_tmp_dir()) while the download is going on, and then moved
      * to `path`.
+     * @param file The #ZpjSkydriveFile to be downloaded.
+     * @param path The destination.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     download_file_to_path(file: SkydriveFile, path: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1045,6 +1150,8 @@ class Skydrive {
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream_async()
      * for the asynchronous version of this call.
+     * @param file The #ZpjSkydriveFile to be downloaded.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     download_file_to_stream(file: SkydriveFile, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
@@ -1056,11 +1163,15 @@ class Skydrive {
      * When the operation is finished, `callback` will be called. You can
      * then call zpj_skydrive_download_file_to_stream_finish() to get the
      * result of the operation.
+     * @param file The #ZpjSkydriveFile to be downloaded.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
     download_file_to_stream_async(file: SkydriveFile, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_download_file_to_stream_async().
+     * @param res A #GAsyncResult.
      */
     download_file_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream
     /**
@@ -1071,6 +1182,8 @@ class Skydrive {
      * Synchronously lists the contents of `folder_id` from
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink>.
+     * @param folder The #ZpjSkydriveFolder to be listed.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     list_folder(folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): SkydriveEntry[]
     /**
@@ -1078,6 +1191,8 @@ class Skydrive {
      * `folder_id` from
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink>.
+     * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     list_folder_id(folder_id: string, cancellable?: Gio.Cancellable | null): SkydriveEntry[]
     /**
@@ -1090,11 +1205,15 @@ class Skydrive {
      * When the operation is finished, `callback` will be called. You can
      * then call zpj_skydrive_list_folder_id_finish() to get the result
      * of the operation.
+     * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
     list_folder_id_async(folder_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_list_folder_id_async().
+     * @param res A #GAsyncResult.
      */
     list_folder_id_finish(res: Gio.AsyncResult): SkydriveEntry[]
     /**
@@ -1103,6 +1222,8 @@ class Skydrive {
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink>. See zpj_skydrive_query_info_from_id_async() for
      * the asynchronous version of this call.
+     * @param id An ID to be queried.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     query_info_from_id(id: string, cancellable?: Gio.Cancellable | null): SkydriveEntry
     /**
@@ -1115,16 +1236,21 @@ class Skydrive {
      * When the operation is finished, `callback` will be called. You can
      * then call zpj_skydrive_query_info_from_id_finish() to get the result
      * of the operation.
+     * @param id The ID to be queried.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
     query_info_from_id_async(id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_query_info_from_id_async().
+     * @param res A #GAsyncResult.
      */
     query_info_from_id_finish(res: Gio.AsyncResult): SkydriveEntry
     /**
      * Uses the new `authorizer` to replace the old one that was used to
      * authorize requests to `self`.
+     * @param authorizer A new #ZpjAuthorizer.
      */
     set_authorizer(authorizer: Authorizer): void
     /**
@@ -1139,12 +1265,18 @@ class Skydrive {
      * #ZpjSkydriveVideo objects. If `file_id` refers to some other kind of
      * #ZpjSkydriveFile, the error %ZPJ_ERROR_REQUEST_URL_INVALID will be
      * returned.
+     * @param file_id The ID of the #ZpjSkydriveFile to be thumbnailed.
+     * @param size The thumbnail size.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     thumbnail_file_id_to_stream(file_id: string, size: ThumbnailSize, cancellable?: Gio.Cancellable | null): Gio.InputStream
     /**
      * Synchronously uploads the file at `path` to
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink> and places it under `folder`.
+     * @param path The source.
+     * @param folder The destination #ZpjSkydriveFolder.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1152,6 +1284,9 @@ class Skydrive {
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
      * Skydrive</ulink> and places it under the folder corresponding to
      * `folder_id`.
+     * @param path The source.
+     * @param folder_id The ID of the destination #ZpjSkydriveFolder.
+     * @param cancellable An optional #GCancellable object, or   %NULL.
      */
     upload_path_to_folder_id(path: string, folder_id: string, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1189,6 +1324,10 @@ class Skydrive {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1199,6 +1338,12 @@ class Skydrive {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1222,6 +1367,7 @@ class Skydrive {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1241,11 +1387,14 @@ class Skydrive {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1253,6 +1402,8 @@ class Skydrive {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1270,6 +1421,7 @@ class Skydrive {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1315,6 +1467,7 @@ class Skydrive {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1358,15 +1511,20 @@ class Skydrive {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1407,6 +1565,7 @@ class Skydrive {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1441,6 +1600,7 @@ class Skydrive {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1460,6 +1620,7 @@ class Skydrive {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1492,6 +1653,7 @@ class Skydrive {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Skydrive, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Skydrive, pspec: GObject.ParamSpec) => void)): number
@@ -1520,12 +1682,13 @@ class SkydriveEntry {
     readonly from_id: string
     readonly from_name: string
     readonly id: string
+    readonly json: Json.Node
     readonly name: string
     readonly parent_id: string
     readonly type: SkydriveEntryType
     readonly updated_time: GLib.DateTime
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.SkydriveEntry */
     /**
      * Gets the time at which `self` was created. This is the value of the
@@ -1618,6 +1781,10 @@ class SkydriveEntry {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1628,6 +1795,12 @@ class SkydriveEntry {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1651,6 +1824,7 @@ class SkydriveEntry {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1670,11 +1844,14 @@ class SkydriveEntry {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1682,6 +1859,8 @@ class SkydriveEntry {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1699,6 +1878,7 @@ class SkydriveEntry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1744,6 +1924,7 @@ class SkydriveEntry {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1787,15 +1968,20 @@ class SkydriveEntry {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1836,6 +2022,7 @@ class SkydriveEntry {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1870,6 +2057,7 @@ class SkydriveEntry {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Zpj-0.0.Zpj.SkydriveEntry */
@@ -1891,6 +2079,7 @@ class SkydriveEntry {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1923,6 +2112,7 @@ class SkydriveEntry {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
@@ -1937,6 +2127,8 @@ class SkydriveEntry {
     connect_after(sigName: "notify::from-name", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::id", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::json", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::json", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::parent-id", callback: (($obj: SkydriveEntry, pspec: GObject.ParamSpec) => void)): number
@@ -1965,15 +2157,16 @@ class SkydriveFile {
     readonly from_id: string
     readonly from_name: string
     readonly id: string
+    readonly json: Json.Node
     readonly name: string
     readonly parent_id: string
     readonly type: SkydriveEntryType
     readonly updated_time: GLib.DateTime
     /* Fields of Zpj-0.0.Zpj.SkydriveEntry */
-    readonly parent_instance: GObject.Object
-    readonly priv: SkydriveEntryPrivate
+    parent_instance: GObject.Object
+    priv: SkydriveEntryPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.SkydriveFile */
     /**
      * Gets the size of `self` in bytes. This is the value of the <ulink
@@ -2073,6 +2266,10 @@ class SkydriveFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2083,6 +2280,12 @@ class SkydriveFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2106,6 +2309,7 @@ class SkydriveFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2125,11 +2329,14 @@ class SkydriveFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2137,6 +2344,8 @@ class SkydriveFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2154,6 +2363,7 @@ class SkydriveFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2199,6 +2409,7 @@ class SkydriveFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2242,15 +2453,20 @@ class SkydriveFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2291,6 +2507,7 @@ class SkydriveFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2325,6 +2542,7 @@ class SkydriveFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Zpj-0.0.Zpj.SkydriveEntry */
@@ -2346,6 +2564,7 @@ class SkydriveFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2378,6 +2597,7 @@ class SkydriveFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
@@ -2394,6 +2614,8 @@ class SkydriveFile {
     connect_after(sigName: "notify::from-name", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::id", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::json", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::json", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::parent-id", callback: (($obj: SkydriveFile, pspec: GObject.ParamSpec) => void)): number
@@ -2422,15 +2644,16 @@ class SkydriveFolder {
     readonly from_id: string
     readonly from_name: string
     readonly id: string
+    readonly json: Json.Node
     readonly name: string
     readonly parent_id: string
     readonly type: SkydriveEntryType
     readonly updated_time: GLib.DateTime
     /* Fields of Zpj-0.0.Zpj.SkydriveEntry */
-    readonly parent_instance: GObject.Object
-    readonly priv: SkydriveEntryPrivate
+    parent_instance: GObject.Object
+    priv: SkydriveEntryPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.SkydriveEntry */
     /**
      * Gets the time at which `self` was created. This is the value of the
@@ -2523,6 +2746,10 @@ class SkydriveFolder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2533,6 +2760,12 @@ class SkydriveFolder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2556,6 +2789,7 @@ class SkydriveFolder {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2575,11 +2809,14 @@ class SkydriveFolder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2587,6 +2824,8 @@ class SkydriveFolder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2604,6 +2843,7 @@ class SkydriveFolder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2649,6 +2889,7 @@ class SkydriveFolder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2692,15 +2933,20 @@ class SkydriveFolder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2741,6 +2987,7 @@ class SkydriveFolder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2775,6 +3022,7 @@ class SkydriveFolder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Zpj-0.0.Zpj.SkydriveEntry */
@@ -2796,6 +3044,7 @@ class SkydriveFolder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2828,6 +3077,7 @@ class SkydriveFolder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
@@ -2842,6 +3092,8 @@ class SkydriveFolder {
     connect_after(sigName: "notify::from-name", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::id", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::json", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::json", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::parent-id", callback: (($obj: SkydriveFolder, pspec: GObject.ParamSpec) => void)): number
@@ -2872,15 +3124,16 @@ class SkydrivePhoto {
     readonly from_id: string
     readonly from_name: string
     readonly id: string
+    readonly json: Json.Node
     readonly name: string
     readonly parent_id: string
     readonly type: SkydriveEntryType
     readonly updated_time: GLib.DateTime
     /* Fields of Zpj-0.0.Zpj.SkydriveFile */
-    readonly parent_instance: SkydriveEntry
-    readonly priv: SkydriveFilePrivate
+    parent_instance: SkydriveEntry
+    priv: SkydriveFilePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.SkydriveFile */
     /**
      * Gets the size of `self` in bytes. This is the value of the <ulink
@@ -2980,6 +3233,10 @@ class SkydrivePhoto {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2990,6 +3247,12 @@ class SkydrivePhoto {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3013,6 +3276,7 @@ class SkydrivePhoto {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3032,11 +3296,14 @@ class SkydrivePhoto {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3044,6 +3311,8 @@ class SkydrivePhoto {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3061,6 +3330,7 @@ class SkydrivePhoto {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3106,6 +3376,7 @@ class SkydrivePhoto {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3149,15 +3420,20 @@ class SkydrivePhoto {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3198,6 +3474,7 @@ class SkydrivePhoto {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3232,6 +3509,7 @@ class SkydrivePhoto {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Zpj-0.0.Zpj.SkydriveEntry */
@@ -3253,6 +3531,7 @@ class SkydrivePhoto {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3285,6 +3564,7 @@ class SkydrivePhoto {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
@@ -3301,6 +3581,8 @@ class SkydrivePhoto {
     connect_after(sigName: "notify::from-name", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::id", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::json", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::json", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::parent-id", callback: (($obj: SkydrivePhoto, pspec: GObject.ParamSpec) => void)): number
@@ -3338,15 +3620,16 @@ class SkydriveVideo {
     readonly from_id: string
     readonly from_name: string
     readonly id: string
+    readonly json: Json.Node
     readonly name: string
     readonly parent_id: string
     readonly type: SkydriveEntryType
     readonly updated_time: GLib.DateTime
     /* Fields of Zpj-0.0.Zpj.SkydriveFile */
-    readonly parent_instance: SkydriveEntry
-    readonly priv: SkydriveFilePrivate
+    parent_instance: SkydriveEntry
+    priv: SkydriveFilePrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Zpj-0.0.Zpj.SkydriveVideo */
     /**
      * Gets the bit rate of `self` in bits per second. This is the value of
@@ -3473,6 +3756,10 @@ class SkydriveVideo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3483,6 +3770,12 @@ class SkydriveVideo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3506,6 +3799,7 @@ class SkydriveVideo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3525,11 +3819,14 @@ class SkydriveVideo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3537,6 +3834,8 @@ class SkydriveVideo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3554,6 +3853,7 @@ class SkydriveVideo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3599,6 +3899,7 @@ class SkydriveVideo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3642,15 +3943,20 @@ class SkydriveVideo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3691,6 +3997,7 @@ class SkydriveVideo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3725,6 +4032,7 @@ class SkydriveVideo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Zpj-0.0.Zpj.SkydriveEntry */
@@ -3746,6 +4054,7 @@ class SkydriveVideo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3778,6 +4087,7 @@ class SkydriveVideo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
@@ -3802,6 +4112,8 @@ class SkydriveVideo {
     connect_after(sigName: "notify::from-name", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::id", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::json", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::json", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::parent-id", callback: (($obj: SkydriveVideo, pspec: GObject.ParamSpec) => void)): number
@@ -3825,7 +4137,7 @@ class SkydriveVideo {
 }
 abstract class AuthorizationDomainClass {
     /* Fields of Zpj-0.0.Zpj.AuthorizationDomainClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AuthorizationDomainPrivate {
@@ -3836,11 +4148,11 @@ abstract class AuthorizerInterface {
     /**
      * The parent interface.
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly is_authorized_for_domain: (iface: Authorizer, domain: AuthorizationDomain) => boolean
-    readonly process_call: (iface: Authorizer, domain: AuthorizationDomain | null, call: Rest.ProxyCall) => void
-    readonly process_message: (iface: Authorizer, domain: AuthorizationDomain | null, message: Soup.Message) => void
-    readonly refresh_authorization: (iface: Authorizer, cancellable?: Gio.Cancellable | null) => boolean
+    parent_iface: GObject.TypeInterface
+    is_authorized_for_domain: (iface: Authorizer, domain: AuthorizationDomain) => boolean
+    process_call: (iface: Authorizer, domain: AuthorizationDomain | null, call: Rest.ProxyCall) => void
+    process_message: (iface: Authorizer, domain: AuthorizationDomain | null, message: Soup.Message) => void
+    refresh_authorization: (iface: Authorizer, cancellable?: Gio.Cancellable | null) => boolean
     static name: string
 }
 abstract class GoaAuthorizerClass {
@@ -3848,7 +4160,7 @@ abstract class GoaAuthorizerClass {
     /**
      * The parent class.
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class GoaAuthorizerPrivate {
@@ -3859,7 +4171,7 @@ abstract class SkydriveClass {
     /**
      * The parent class.
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class SkydriveEntryClass {
@@ -3867,8 +4179,8 @@ abstract class SkydriveEntryClass {
     /**
      * The parent class.
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly parse_json_node: (self: SkydriveEntry, node: Json.Node) => void
+    parent_class: GObject.ObjectClass
+    parse_json_node: (self: SkydriveEntry, node: Json.Node) => void
     static name: string
 }
 class SkydriveEntryPrivate {
@@ -3879,7 +4191,7 @@ abstract class SkydriveFileClass {
     /**
      * The parent class.
      */
-    readonly parent_class: SkydriveEntryClass
+    parent_class: SkydriveEntryClass
     static name: string
 }
 class SkydriveFilePrivate {
@@ -3890,7 +4202,7 @@ abstract class SkydriveFolderClass {
     /**
      * The parent class.
      */
-    readonly parent_class: SkydriveEntryClass
+    parent_class: SkydriveEntryClass
     static name: string
 }
 abstract class SkydrivePhotoClass {
@@ -3898,7 +4210,7 @@ abstract class SkydrivePhotoClass {
     /**
      * The parent class.
      */
-    readonly parent_class: SkydriveFileClass
+    parent_class: SkydriveFileClass
     static name: string
 }
 class SkydrivePrivate {
@@ -3909,7 +4221,7 @@ abstract class SkydriveVideoClass {
     /**
      * The parent class.
      */
-    readonly parent_class: SkydriveFileClass
+    parent_class: SkydriveFileClass
     static name: string
 }
 class SkydriveVideoPrivate {

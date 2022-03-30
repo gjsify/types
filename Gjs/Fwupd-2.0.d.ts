@@ -811,38 +811,51 @@ class Client {
      */
     readonly tainted: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Fwupd-2.0.Fwupd.Client */
     /**
      * Activates up a device, which normally means the device switches to a new
      * firmware version. This should only be called when data loss cannot occur.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param device_id a device
      */
     activate(cancellable: Gio.Cancellable | null, device_id: string): boolean
     /**
      * Activates up a device, which normally means the device switches to a new
      * firmware version. This should only be called when data loss cannot occur.
+     * @param device_id a device
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     activate_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_activate_async().
+     * @param res the #GAsyncResult
      */
     activate_finish(res: Gio.AsyncResult): boolean
     /**
      * Clears the results for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     clear_results(device_id: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Clears the results for a specific device.
+     * @param device_id a device
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     clear_results_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_clear_results_async().
+     * @param res the #GAsyncResult
      */
     clear_results_finish(res: Gio.AsyncResult): boolean
     /**
      * Sets up the client ready for use. Most other methods call this
      * for you, and do you only need to call this if you are just watching
      * the client.
+     * @param cancellable the #GCancellable, or %NULL
      */
     connect(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -851,15 +864,21 @@ class Client {
      * 
      * Other methods such as fwupd_client_get_devices_async() should only be called
      * after fwupd_client_connect_finish() has been called without an error.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     connect_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_connect_async().
+     * @param res the #GAsyncResult
      */
     connect_finish(res: Gio.AsyncResult): boolean
     /**
      * Downloads data from a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
+     * @param url the remote URL
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
      */
     download_bytes(url: string, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): GLib.Bytes
     /**
@@ -872,15 +891,24 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param url the remote URL
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     download_bytes_async(url: string, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_download_bytes_async().
+     * @param res the #GAsyncResult
      */
     download_bytes_finish(res: Gio.AsyncResult): GLib.Bytes
     /**
      * Downloads data from a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
+     * @param url the remote URL
+     * @param file a #GFile
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
      */
     download_file(url: string, file: Gio.File, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -891,6 +919,7 @@ class Client {
     ensure_networking(): boolean
     /**
      * Gets the list of approved firmware.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_approved_firmware(cancellable?: Gio.Cancellable | null): string[]
     /**
@@ -898,14 +927,18 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_approved_firmware_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_approved_firmware_async().
+     * @param res the #GAsyncResult
      */
     get_approved_firmware_finish(res: Gio.AsyncResult): string[]
     /**
      * Gets the list of blocked firmware.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_blocked_firmware(cancellable?: Gio.Cancellable | null): string[]
     /**
@@ -913,10 +946,13 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_blocked_firmware_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_blocked_firmware_async().
+     * @param res the #GAsyncResult
      */
     get_blocked_firmware_finish(res: Gio.AsyncResult): string[]
     /**
@@ -929,22 +965,32 @@ class Client {
     get_daemon_version(): string
     /**
      * Gets details about a specific firmware file.
+     * @param filename the firmware filename, e.g. `firmware.cab`
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_details(filename: string, cancellable?: Gio.Cancellable | null): Device[]
     /**
      * Gets details about a specific firmware file.
+     * @param bytes the firmware blob, e.g. the contents of `firmware.cab`
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_details_bytes(bytes: GLib.Bytes, cancellable?: Gio.Cancellable | null): Device[]
     /**
      * Gets details about a specific firmware file.
+     * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_details_bytes_async(bytes: GLib.Bytes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_details_bytes_async().
+     * @param res the #GAsyncResult
      */
     get_details_bytes_finish(res: Gio.AsyncResult): Device[]
     /**
      * Gets a device by it's device ID.
+     * @param device_id the device ID, e.g. `usb:00:01:03:03`
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_device_by_id(device_id: string, cancellable?: Gio.Cancellable | null): Device
     /**
@@ -952,14 +998,19 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_device_by_id_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_device_by_id_async().
+     * @param res the #GAsyncResult
      */
     get_device_by_id_finish(res: Gio.AsyncResult): Device
     /**
      * Gets all the devices registered with the daemon.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_devices(cancellable?: Gio.Cancellable | null): Device[]
     /**
@@ -967,11 +1018,15 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_devices_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets any devices that provide a specific GUID. An error is returned if no
      * devices contains this GUID.
+     * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_devices_by_guid(guid: string, cancellable?: Gio.Cancellable | null): Device[]
     /**
@@ -980,18 +1035,25 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_devices_by_guid_async(guid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_devices_by_guid_async().
+     * @param res the #GAsyncResult
      */
     get_devices_by_guid_finish(res: Gio.AsyncResult): Release[]
     /**
      * Gets the result of fwupd_client_get_devices_async().
+     * @param res the #GAsyncResult
      */
     get_devices_finish(res: Gio.AsyncResult): Device[]
     /**
      * Gets all the downgrades for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_downgrades(device_id: string, cancellable?: Gio.Cancellable | null): Release[]
     /**
@@ -999,14 +1061,19 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_downgrades_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_downgrades_async().
+     * @param res the #GAsyncResult
      */
     get_downgrades_finish(res: Gio.AsyncResult): Release[]
     /**
      * Gets all the history.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_history(cancellable?: Gio.Cancellable | null): Device[]
     /**
@@ -1014,10 +1081,13 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_history_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_history_async().
+     * @param res the #GAsyncResult
      */
     get_history_finish(res: Gio.AsyncResult): Device[]
     /**
@@ -1030,6 +1100,7 @@ class Client {
     get_host_product(): string
     /**
      * Gets all the host security attributes from the daemon.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_host_security_attrs(cancellable?: Gio.Cancellable | null): SecurityAttr[]
     /**
@@ -1037,10 +1108,13 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_host_security_attrs_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_host_security_attrs_async().
+     * @param res the #GAsyncResult
      */
     get_host_security_attrs_finish(res: Gio.AsyncResult): SecurityAttr[]
     /**
@@ -1058,6 +1132,7 @@ class Client {
     get_percentage(): number
     /**
      * Gets all the plugins being used the daemon.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_plugins(cancellable?: Gio.Cancellable | null): Plugin[]
     /**
@@ -1065,14 +1140,19 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_plugins_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_plugins_async().
+     * @param res the #GAsyncResult
      */
     get_plugins_finish(res: Gio.AsyncResult): Device[]
     /**
      * Gets all the releases for a specific device
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_releases(device_id: string, cancellable?: Gio.Cancellable | null): Release[]
     /**
@@ -1080,26 +1160,37 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_releases_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_releases_async().
+     * @param res the #GAsyncResult
      */
     get_releases_finish(res: Gio.AsyncResult): Release[]
     /**
      * Gets a specific remote that has been configured for the system.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_remote_by_id(remote_id: string, cancellable?: Gio.Cancellable | null): Remote
     /**
      * Gets a specific remote that has been configured for the system.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_remote_by_id_async(remote_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_remote_by_id_async().
+     * @param res the #GAsyncResult
      */
     get_remote_by_id_finish(res: Gio.AsyncResult): Remote
     /**
      * Gets the list of remotes that have been configured for the system.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_remotes(cancellable?: Gio.Cancellable | null): Remote[]
     /**
@@ -1107,14 +1198,18 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_remotes_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_remotes_async().
+     * @param res the #GAsyncResult
      */
     get_remotes_finish(res: Gio.AsyncResult): Remote[]
     /**
      * Gets all the report metadata from the daemon.
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_report_metadata(cancellable?: Gio.Cancellable | null): GLib.HashTable
     /**
@@ -1122,14 +1217,19 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_report_metadata_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_report_metadata_async().
+     * @param res the #GAsyncResult
      */
     get_report_metadata_finish(res: Gio.AsyncResult): GLib.HashTable
     /**
      * Gets the results of a previous firmware update for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_results(device_id: string, cancellable?: Gio.Cancellable | null): Device
     /**
@@ -1137,10 +1237,14 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_results_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_results_async().
+     * @param res the #GAsyncResult
      */
     get_results_finish(res: Gio.AsyncResult): Device
     /**
@@ -1153,6 +1257,8 @@ class Client {
     get_tainted(): boolean
     /**
      * Gets all the upgrades for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     get_upgrades(device_id: string, cancellable?: Gio.Cancellable | null): Release[]
     /**
@@ -1160,10 +1266,14 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     get_upgrades_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_get_upgrades_async().
+     * @param res the #GAsyncResult
      */
     get_upgrades_finish(res: Gio.AsyncResult): Release[]
     /**
@@ -1174,6 +1284,10 @@ class Client {
     get_user_agent(): string
     /**
      * Install a file onto a specific device.
+     * @param device_id the device ID
+     * @param filename the filename to install
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
      */
     install(device_id: string, filename: string, install_flags: InstallFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1182,10 +1296,19 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param device_id the device ID
+     * @param filename the filename to install
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     install_async(device_id: string, filename: string, install_flags: InstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Install firmware onto a specific device.
+     * @param device_id the device ID
+     * @param bytes #GBytes
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
      */
     install_bytes(device_id: string, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1194,22 +1317,38 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param device_id the device ID
+     * @param bytes #GBytes
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     install_bytes_async(device_id: string, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_install_bytes_async().
+     * @param res the #GAsyncResult
      */
     install_bytes_finish(res: Gio.AsyncResult): boolean
     /**
      * Gets the result of fwupd_client_install_async().
+     * @param res the #GAsyncResult
      */
     install_finish(res: Gio.AsyncResult): boolean
     /**
      * Installs a new release on a device, downloading the firmware if required.
+     * @param device A #FwupdDevice
+     * @param release A #FwupdRelease
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
      */
     install_release(device: Device, release: Release, install_flags: InstallFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Installs a new release on a device, downloading the firmware if required.
+     * @param device A #FwupdDevice
+     * @param release A #FwupdRelease
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param download_flags the #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
      */
     install_release2(device: Device, release: Release, install_flags: InstallFlags, download_flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1218,6 +1357,12 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param device A #FwupdDevice
+     * @param release A #FwupdRelease
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param download_flags the #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_DISABLE_IPFS
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     install_release2_async(device: Device, release: Release, install_flags: InstallFlags, download_flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1226,24 +1371,38 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param device A #FwupdDevice
+     * @param release A #FwupdRelease
+     * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     install_release_async(device: Device, release: Release, install_flags: InstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_install_release_async().
+     * @param res the #GAsyncResult
      */
     install_release_finish(res: Gio.AsyncResult): boolean
     /**
      * Modifies a daemon config option.
      * The daemon will only respond to this request with proper permissions
+     * @param key key, e.g. `DisabledPlugins`
+     * @param value value, e.g. `*`
+     * @param cancellable the #GCancellable, or %NULL
      */
     modify_config(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Modifies a daemon config option.
      * The daemon will only respond to this request with proper permissions
+     * @param key key, e.g. `DisabledPlugins`
+     * @param value value, e.g. `*`
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     modify_config_async(key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_modify_config_async().
+     * @param res the #GAsyncResult
      */
     modify_config_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1251,33 +1410,55 @@ class Client {
      * are settable by the client, and some may have other restrictions on `value`.
      * 
      * NOTE: User authentication may be required to complete this action.
+     * @param device_id the device ID
+     * @param key the key, e.g. `Flags`
+     * @param value the key, e.g. `reported`
+     * @param cancellable the #GCancellable, or %NULL
      */
     modify_device(device_id: string, key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Modifies a device in a specific way. Not all properties on the #FwupdDevice
      * are settable by the client, and some may have other restrictions on `value`.
+     * @param device_id the device ID
+     * @param key the key, e.g. `Flags`
+     * @param value the key, e.g. `reported`
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     modify_device_async(device_id: string, key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_modify_device_async().
+     * @param res the #GAsyncResult
      */
     modify_device_finish(res: Gio.AsyncResult): boolean
     /**
      * Modifies a system remote in a specific way.
      * 
      * NOTE: User authentication may be required to complete this action.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param key the key, e.g. `Enabled`
+     * @param value the key, e.g. `true`
+     * @param cancellable the #GCancellable, or %NULL
      */
     modify_remote(remote_id: string, key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Modifies a system remote in a specific way.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param key the key, e.g. `Enabled`
+     * @param value the key, e.g. `true`
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     modify_remote_async(remote_id: string, key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_modify_remote_async().
+     * @param res the #GAsyncResult
      */
     modify_remote_finish(res: Gio.AsyncResult): boolean
     /**
      * Refreshes a remote by downloading new metadata.
+     * @param remote A #FwupdRemote
+     * @param cancellable A #GCancellable, or %NULL
      */
     refresh_remote(remote: Remote, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1286,14 +1467,21 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param remote A #FwupdRemote
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     refresh_remote_async(remote: Remote, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_refresh_remote_async().
+     * @param res the #GAsyncResult
      */
     refresh_remote_finish(res: Gio.AsyncResult): boolean
     /**
      * Signs the data using the client self-signed certificate.
+     * @param value A string to sign, typically a JSON blob
+     * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
+     * @param cancellable the #GCancellable, or %NULL
      */
     self_sign(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null): string
     /**
@@ -1301,34 +1489,51 @@ class Client {
      * 
      * You must have called fwupd_client_connect_async() on `self` before using
      * this method.
+     * @param value A string to sign, typically a JSON blob
+     * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     self_sign_async(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_self_sign_async().
+     * @param res the #GAsyncResult
      */
     self_sign_finish(res: Gio.AsyncResult): string
     /**
      * Sets the list of approved firmware.
+     * @param checksums Array of checksums
+     * @param cancellable the #GCancellable, or %NULL
      */
     set_approved_firmware(checksums: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the list of approved firmware.
+     * @param checksums firmware checksums
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     set_approved_firmware_async(checksums: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_set_approved_firmware_async().
+     * @param res the #GAsyncResult
      */
     set_approved_firmware_finish(res: Gio.AsyncResult): boolean
     /**
      * Sets the list of approved firmware.
+     * @param checksums Array of checksums
+     * @param cancellable the #GCancellable, or %NULL
      */
     set_blocked_firmware(checksums: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the list of blocked firmware.
+     * @param checksums firmware checksums
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     set_blocked_firmware_async(checksums: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_set_blocked_firmware_async().
+     * @param res the #GAsyncResult
      */
     set_blocked_firmware_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1337,25 +1542,33 @@ class Client {
      * how to detach the hardware.
      * 
      * Clients can call this none or multiple times.
+     * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
+     * @param cancellable the #GCancellable, or %NULL
      */
     set_feature_flags(feature_flags: FeatureFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the features the client supports. This allows firmware to depend on
      * specific front-end features, for instance showing the user an image on
      * how to detach the hardware.
+     * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     set_feature_flags_async(feature_flags: FeatureFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_set_feature_flags_async().
+     * @param res the #GAsyncResult
      */
     set_feature_flags_finish(res: Gio.AsyncResult): boolean
     /**
      * Sets the internal #GMainContext to use for returning progress signals.
+     * @param main_ctx #GMainContext or %NULL to use the global default main context
      */
     set_main_context(main_ctx?: GLib.MainContext | null): void
     /**
      * Manually sets the user agent that is used for downloading. The user agent
      * should contain the runtime version of fwupd somewhere in the provided string.
+     * @param user_agent the user agent ID, e.g. `gnome-software/3.34.1`
      */
     set_user_agent(user_agent: string): void
     /**
@@ -1368,18 +1581,26 @@ class Client {
      * 
      * Before freaking out about theoretical privacy implications, much more data
      * than this is sent to each and every website you visit.
+     * @param package_name client program name, e.g. "gnome-software"
+     * @param package_version client program version, e.g. "3.28.1"
      */
     set_user_agent_for_package(package_name: string, package_version: string): void
     /**
      * Unlocks a specific device so firmware can be read or wrote.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     unlock(device_id: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unlocks a specific device so firmware can be read or wrote.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     unlock_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_unlock_async().
+     * @param res the #GAsyncResult
      */
     unlock_finish(res: Gio.AsyncResult): boolean
     /**
@@ -1389,6 +1610,10 @@ class Client {
      * 
      * The `remote_id` allows the firmware to be tagged so that the remote can be
      * matched when the firmware is downloaded.
+     * @param remote_id the remote ID, e.g. `lvfs-testing`
+     * @param metadata_fn the XML metadata filename
+     * @param signature_fn the GPG signature file
+     * @param cancellable the #GCancellable, or %NULL
      */
     update_metadata(remote_id: string, metadata_fn: string, signature_fn: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1398,6 +1623,10 @@ class Client {
      * 
      * The `remote_id` allows the firmware to be tagged so that the remote can be
      * matched when the firmware is downloaded.
+     * @param remote_id remote ID, e.g. `lvfs-testing`
+     * @param metadata XML metadata data
+     * @param signature signature data
+     * @param cancellable #GCancellable, or %NULL
      */
     update_metadata_bytes(remote_id: string, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1411,15 +1640,26 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param remote_id remote ID, e.g. `lvfs-testing`
+     * @param metadata XML metadata data
+     * @param signature signature data
+     * @param cancellable #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     update_metadata_bytes_async(remote_id: string, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_update_metadata_bytes_async().
+     * @param res the #GAsyncResult
      */
     update_metadata_bytes_finish(res: Gio.AsyncResult): boolean
     /**
      * Uploads data to a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
+     * @param url the remote URL
+     * @param payload payload string
+     * @param signature signature string
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
      */
     upload_bytes(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable?: Gio.Cancellable | null): GLib.Bytes
     /**
@@ -1432,34 +1672,53 @@ class Client {
      * NOTE: This method is thread-safe, but progress signals will be
      * emitted in the global default main context, if not explicitly set with
      * fwupd_client_set_main_context().
+     * @param url the remote URL
+     * @param payload payload string
+     * @param signature signature string
+     * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     upload_bytes_async(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_upload_bytes_async().
+     * @param res the #GAsyncResult
      */
     upload_bytes_finish(res: Gio.AsyncResult): GLib.Bytes
     /**
      * Verify a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     verify(device_id: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Verify a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     verify_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_verify_async().
+     * @param res the #GAsyncResult
      */
     verify_finish(res: Gio.AsyncResult): boolean
     /**
      * Update the verification record for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
      */
     verify_update(device_id: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Update the verification record for a specific device.
+     * @param device_id the device ID
+     * @param cancellable the #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     verify_update_async(device_id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result of fwupd_client_verify_update_async().
+     * @param res the #GAsyncResult
      */
     verify_update_finish(res: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1497,6 +1756,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1507,6 +1770,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1530,6 +1799,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1549,11 +1819,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1561,6 +1834,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1578,6 +1853,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1623,6 +1899,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1666,15 +1943,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1715,6 +1997,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1749,6 +2032,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Fwupd-2.0.Fwupd.Client */
@@ -1774,6 +2058,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1788,6 +2073,7 @@ class Client {
     /**
      * The ::device-added signal is emitted when a device has been
      * added.
+     * @param result the #FwupdDevice
      */
     connect(sigName: "device-added", callback: (($obj: Client, result: Device) => void)): number
     connect_after(sigName: "device-added", callback: (($obj: Client, result: Device) => void)): number
@@ -1795,6 +2081,7 @@ class Client {
     /**
      * The ::device-changed signal is emitted when a device has been
      * changed in some way, e.g. the version number is updated.
+     * @param result the #FwupdDevice
      */
     connect(sigName: "device-changed", callback: (($obj: Client, result: Device) => void)): number
     connect_after(sigName: "device-changed", callback: (($obj: Client, result: Device) => void)): number
@@ -1802,6 +2089,7 @@ class Client {
     /**
      * The ::device-removed signal is emitted when a device has been
      * removed.
+     * @param result the #FwupdDevice
      */
     connect(sigName: "device-removed", callback: (($obj: Client, result: Device) => void)): number
     connect_after(sigName: "device-removed", callback: (($obj: Client, result: Device) => void)): number
@@ -1838,6 +2126,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
@@ -1889,10 +2178,11 @@ class Device {
     update_state: number
     version_format: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Fwupd-2.0.Fwupd.Device */
     /**
      * Sets the device checksum.
+     * @param checksum the device checksum
      */
     add_checksum(checksum: string): void
     /**
@@ -1901,34 +2191,42 @@ class Device {
      * 
      * NOTE: You should never call this function from user code, it is for daemon
      * use only. Only use fwupd_device_set_parent() to set up a logical tree.
+     * @param child Another #FwupdDevice
      */
     add_child(child: Device): void
     /**
      * Adds a specific device flag to the device.
+     * @param flag the #FwupdDeviceFlags
      */
     add_flag(flag: DeviceFlags): void
     /**
      * Adds the GUID if it does not already exist.
+     * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
      */
     add_guid(guid: string): void
     /**
      * Adds the icon name if it does not already exist.
+     * @param icon the name, e.g. `input-mouse` or `/usr/share/icons/foo.png`
      */
     add_icon(icon: string): void
     /**
      * Adds the InstanceID if it does not already exist.
+     * @param instance_id the GUID, e.g. `PCI\VEN_10EC&DEV_525A`
      */
     add_instance_id(instance_id: string): void
     /**
      * Adds a release for this device.
+     * @param release a #FwupdRelease
      */
     add_release(release: Release): void
     /**
      * Adds a device vendor ID.
+     * @param vendor_id the ID, e.g. 'USB:0x1234'
      */
     add_vendor_id(vendor_id: string): void
     /**
      * Comparison function for comparing two FwupdDevice objects.
+     * @param device2 a #FwupdDevice
      */
     compare(device2: Device): number
     /**
@@ -2088,142 +2386,177 @@ class Device {
     get_version_raw(): number
     /**
      * Finds if the device has a specific device flag.
+     * @param flag the #FwupdDeviceFlags
      */
     has_flag(flag: DeviceFlags): boolean
     /**
      * Finds out if the device has this specific GUID.
+     * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
      */
     has_guid(guid: string): boolean
     /**
      * Finds out if the device has this specific InstanceID.
+     * @param instance_id the InstanceID, e.g. `PCI\VEN_10EC&DEV_525A`
      */
     has_instance_id(instance_id: string): boolean
     /**
      * Finds out if the device has this specific vendor ID.
+     * @param vendor_id the ID, e.g. 'USB:0x1234'
      */
     has_vendor_id(vendor_id: string): boolean
     /**
      * Copy all properties from the donor object if they have not already been set.
+     * @param donor Another #FwupdDevice
      */
     incorporate(donor: Device): void
     /**
      * Removes a specific device flag from the device.
+     * @param flag the #FwupdDeviceFlags
      */
     remove_flag(flag: DeviceFlags): void
     /**
      * Sets the current device branch.
+     * @param branch the device one line branch
      */
     set_branch(branch: string): void
     /**
      * Sets when the device was created.
+     * @param created the UNIX time
      */
     set_created(created: number): void
     /**
      * Sets the device description.
+     * @param description the description in AppStream markup format
      */
     set_description(description: string): void
     /**
      * Sets the device flags.
+     * @param flags the device flags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
      */
     set_flags(flags: number): void
     /**
      * Sets the number of flash cycles left on the device
+     * @param flashes_left the description
      */
     set_flashes_left(flashes_left: number): void
     /**
      * Sets the ID.
+     * @param id the device ID, e.g. `USB:foo`
      */
     set_id(id: string): void
     /**
      * Sets the time estimate for firmware installation (in seconds)
+     * @param duration The amount of time
      */
     set_install_duration(duration: number): void
     /**
      * Sets when the device was modified.
+     * @param modified the UNIX time
      */
     set_modified(modified: number): void
     /**
      * Sets the device name.
+     * @param name the device name, e.g. `ColorHug2`
      */
     set_name(name: string): void
     /**
      * Sets the parent. Only used internally.
+     * @param parent another #FwupdDevice, or %NULL
      */
     set_parent(parent: Device): void
     /**
      * Sets the parent ID.
+     * @param parent_id the device ID, e.g. `USB:foo`
      */
     set_parent_id(parent_id: string): void
     /**
      * Sets the plugin that created the device.
+     * @param plugin the plugin name, e.g. `colorhug`
      */
     set_plugin(plugin: string): void
     /**
      * Sets the protocol that is used to update the device.
+     * @param protocol the protocol name, e.g. `com.hughski.colorhug`
      */
     set_protocol(protocol: string): void
     /**
      * Sets the serial number for the device.
+     * @param serial the device serial number
      */
     set_serial(serial: string): void
     /**
      * Sets what the device is currently doing.
+     * @param status the status value, e.g. %FWUPD_STATUS_DEVICE_WRITE
      */
     set_status(status: Status): void
     /**
      * Sets the device summary.
+     * @param summary the device one line summary
      */
     set_summary(summary: string): void
     /**
      * Sets the update error.
+     * @param update_error the update error string
      */
     set_update_error(update_error: string): void
     /**
      * Sets the update image.
+     * @param update_image the update image URL
      */
     set_update_image(update_image: string): void
     /**
      * Sets the update message.
+     * @param update_message the update message string
      */
     set_update_message(update_message: string): void
     /**
      * Sets the update state.
+     * @param update_state the state, e.g. %FWUPD_UPDATE_STATE_PENDING
      */
     set_update_state(update_state: UpdateState): void
     /**
      * Sets the device vendor.
+     * @param vendor the description
      */
     set_vendor(vendor: string): void
     /**
      * Sets the device vendor ID.
+     * @param vendor_id the ID, e.g. 'USB:0x1234' or 'USB:0x1234|PCI:0x5678'
      */
     set_vendor_id(vendor_id: string): void
     /**
      * Sets the device version.
+     * @param version the device version, e.g. `1.2.3`
      */
     set_version(version: string): void
     /**
      * Sets the bootloader version.
+     * @param version_bootloader the description
      */
     set_version_bootloader(version_bootloader: string): void
     /**
      * Sets the raw bootloader version number from the hardware before converted to a string.
+     * @param version_bootloader_raw the raw hardware version
      */
     set_version_bootloader_raw(version_bootloader_raw: number): void
     /**
      * Sets the update state.
+     * @param version_format the state, e.g. %FWUPD_VERSION_FORMAT_PENDING
      */
     set_version_format(version_format: VersionFormat): void
     /**
      * Sets the lowest version of firmware the device will accept.
+     * @param version_lowest the description
      */
     set_version_lowest(version_lowest: string): void
     /**
      * Sets the raw lowest version number from the hardware before converted to a string.
+     * @param version_lowest_raw the raw hardware version
      */
     set_version_lowest_raw(version_lowest_raw: number): void
     /**
      * Sets the raw version number from the hardware before converted to a string.
+     * @param version_raw the raw hardware version
      */
     set_version_raw(version_raw: number): void
     /**
@@ -2237,6 +2570,7 @@ class Device {
     /**
      * Creates a GVariant from the device data.
      * Optionally provides additional data based upon flags
+     * @param flags #FwupdDeviceFlags for the call
      */
     to_variant_full(flags: DeviceFlags): GLib.Variant
     /* Methods of GObject-2.0.GObject.Object */
@@ -2274,6 +2608,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2284,6 +2622,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2307,6 +2651,7 @@ class Device {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2326,11 +2671,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2338,6 +2686,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2355,6 +2705,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2400,6 +2751,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2443,15 +2795,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2492,6 +2849,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2526,6 +2884,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2545,6 +2904,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2577,6 +2937,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
@@ -2604,28 +2965,34 @@ class Device {
     static new(): Device
     /**
      * Sets the parent object on all devices in the array using the parent-id.
+     * @param devices devices
      */
     static array_ensure_parents(devices: Device[]): void
     /**
      * Creates an array of new devices using packed data.
+     * @param value a #GVariant
      */
     static array_from_variant(value: GLib.Variant): Device[]
     /**
      * Converts a string to a #FwupdDeviceFlags.
+     * @param device_flag A string, e.g. `require-ac`
      */
     static flag_from_string(device_flag: string): DeviceFlags
     /**
      * Converts a #FwupdDeviceFlags to a string.
+     * @param device_flag A #FwupdDeviceFlags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
      */
     static flag_to_string(device_flag: DeviceFlags): string
     /**
      * Creates a new device using packed data.
+     * @param value a #GVariant
      */
     static from_variant(value: GLib.Variant): Device
     /**
      * Checks the string is a valid non-partial device ID. It is important to note
      * that the wildcard ID of `*` is not considered a valid ID in this function and
      * the client must check for this manually if this should be allowed.
+     * @param device_id string to check, e.g. `d3fae86d95e5d56626129d00e332c4b8dac95442`
      */
     static id_is_valid(device_id: string): boolean
     static $gtype: GObject.Type
@@ -2640,10 +3007,11 @@ class Plugin {
     flags: number
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Fwupd-2.0.Fwupd.Plugin */
     /**
      * Adds a specific plugin flag to the plugin.
+     * @param flag the #FwupdPluginFlags
      */
     add_flag(flag: PluginFlags): void
     /**
@@ -2656,18 +3024,22 @@ class Plugin {
     get_name(): string
     /**
      * Finds if the plugin has a specific plugin flag.
+     * @param flag the #FwupdPluginFlags
      */
     has_flag(flag: PluginFlags): boolean
     /**
      * Removes a specific plugin flag from the plugin.
+     * @param flag the #FwupdPluginFlags
      */
     remove_flag(flag: PluginFlags): void
     /**
      * Sets the plugin flags.
+     * @param flags the plugin flags, e.g. %FWUPD_PLUGIN_FLAG_CAPSULES_UNSUPPORTED
      */
     set_flags(flags: number): void
     /**
      * Sets the plugin name.
+     * @param name the plugin name, e.g. `bios`
      */
     set_name(name: string): void
     /**
@@ -2713,6 +3085,10 @@ class Plugin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2723,6 +3099,12 @@ class Plugin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2746,6 +3128,7 @@ class Plugin {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2765,11 +3148,14 @@ class Plugin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2777,6 +3163,8 @@ class Plugin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2794,6 +3182,7 @@ class Plugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2839,6 +3228,7 @@ class Plugin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2882,15 +3272,20 @@ class Plugin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2931,6 +3326,7 @@ class Plugin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2965,6 +3361,7 @@ class Plugin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2984,6 +3381,7 @@ class Plugin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3016,6 +3414,7 @@ class Plugin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
@@ -3035,18 +3434,22 @@ class Plugin {
     static new(): Plugin
     /**
      * Creates an array of new plugins using packed data.
+     * @param value a #GVariant
      */
     static array_from_variant(value: GLib.Variant): Plugin[]
     /**
      * Converts a string to a #FwupdPluginFlags.
+     * @param plugin_flag A string, e.g. `require-ac`
      */
     static flag_from_string(plugin_flag: string): PluginFlags
     /**
      * Converts a #FwupdDeviceFlags to a string.
+     * @param plugin_flag A #FwupdPluginFlags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
      */
     static flag_to_string(plugin_flag: PluginFlags): string
     /**
      * Creates a new plugin using packed data.
+     * @param value a #GVariant
      */
     static from_variant(value: GLib.Variant): Plugin
     static $gtype: GObject.Type
@@ -3055,34 +3458,42 @@ interface Release_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Release {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Fwupd-2.0.Fwupd.Release */
     /**
      * Adds the update category.
+     * @param category the update category, e.g. `X-EmbeddedController`
      */
     add_category(category: string): void
     /**
      * Sets the update checksum.
+     * @param checksum the update checksum
      */
     add_checksum(checksum: string): void
     /**
      * Adds a specific release flag to the release.
+     * @param flag the #FwupdReleaseFlags
      */
     add_flag(flag: ReleaseFlags): void
     /**
      * Adds an resolved issue to this release.
+     * @param issue the update issue, e.g. `CVE-2019-12345`
      */
     add_issue(issue: string): void
     /**
      * Adds an update URI, i.e. where you can download the firmware from.
+     * @param location the update URI
      */
     add_location(location: string): void
     /**
      * Sets multiple release metadata items.
+     * @param hash the key-values
      */
     add_metadata(hash: GLib.HashTable): void
     /**
      * Sets a release metadata item.
+     * @param key the key
+     * @param value the value
      */
     add_metadata_item(key: string, value: string): void
     /**
@@ -3158,6 +3569,7 @@ class Release {
     get_metadata(): GLib.HashTable
     /**
      * Gets a release metadata item.
+     * @param key the key
      */
     get_metadata_item(key: string): string
     /**
@@ -3218,122 +3630,152 @@ class Release {
     get_version(): string
     /**
      * Finds out if the release has the update category.
+     * @param category the update category, e.g. `X-EmbeddedController`
      */
     has_category(category: string): boolean
     /**
      * Finds out if the release has the update checksum.
+     * @param checksum the update checksum
      */
     has_checksum(checksum: string): boolean
     /**
      * Finds if the release has a specific release flag.
+     * @param flag the #FwupdReleaseFlags
      */
     has_flag(flag: ReleaseFlags): boolean
     /**
      * Removes a specific release flag from the release.
+     * @param flag the #FwupdReleaseFlags
      */
     remove_flag(flag: ReleaseFlags): void
     /**
      * Sets the AppStream ID.
+     * @param appstream_id the AppStream component ID, e.g. `org.hughski.ColorHug2.firmware`
      */
     set_appstream_id(appstream_id: string): void
     /**
      * Sets the alternate branch.
+     * @param branch the update one line branch
      */
     set_branch(branch: string): void
     /**
      * Sets when the update was created.
+     * @param created UTC timestamp in UNIX format
      */
     set_created(created: number): void
     /**
      * Sets the update description.
+     * @param description the update description in AppStream markup format
      */
     set_description(description: string): void
     /**
      * Sets the optional text caption used to manually detach the device.
+     * @param detach_caption string caption
      */
     set_detach_caption(detach_caption: string): void
     /**
      * Sets the optional image used to manually detach the device.
+     * @param detach_image a fully qualified URI
      */
     set_detach_image(detach_image: string): void
     /**
      * Sets the URL for the online update notes.
+     * @param details_url the URL
      */
     set_details_url(details_url: string): void
     /**
      * Sets the update filename.
+     * @param filename the update filename on disk
      */
     set_filename(filename: string): void
     /**
      * Sets the release flags.
+     * @param flags the release flags, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
      */
     set_flags(flags: ReleaseFlags): void
     /**
      * Sets the update homepage.
+     * @param homepage the description
      */
     set_homepage(homepage: string): void
     /**
      * Sets the time estimate for firmware installation (in seconds)
+     * @param duration The amount of time
      */
     set_install_duration(duration: number): void
     /**
      * Sets the update license.
+     * @param license the description
      */
     set_license(license: string): void
     /**
      * Sets the update name.
+     * @param name the description
      */
     set_name(name: string): void
     /**
      * Sets the update variant suffix.
+     * @param name_variant_suffix the description
      */
     set_name_variant_suffix(name_variant_suffix: string): void
     /**
      * Sets the update protocol.
+     * @param protocol the update protocol, e.g. `org.usb.dfu`
      */
     set_protocol(protocol: string): void
     /**
      * Sets the remote ID that can be used for downloading.
+     * @param remote_id the release ID, e.g. `USB:foo`
      */
     set_remote_id(remote_id: string): void
     /**
      * Sets the update size.
+     * @param size the update size in bytes
      */
     set_size(size: number): void
     /**
      * Sets the URL of the source code used to build this release.
+     * @param source_url the URL
      */
     set_source_url(source_url: string): void
     /**
      * Sets the update summary.
+     * @param summary the update one line summary
      */
     set_summary(summary: string): void
     /**
      * Sets the trust level of the release.
+     * @param trust_flags the bitfield, e.g. #FWUPD_TRUST_FLAG_PAYLOAD
      */
     set_trust_flags(trust_flags: TrustFlags): void
     /**
      * Sets the update image.
+     * @param update_image the update image URL
      */
     set_update_image(update_image: string): void
     /**
      * Sets the update message.
+     * @param update_message the update message string
      */
     set_update_message(update_message: string): void
     /**
      * Sets the release urgency.
+     * @param urgency the release urgency, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
      */
     set_urgency(urgency: ReleaseUrgency): void
     /**
      * Sets the update URI, i.e. where you can download the firmware from.
+     * @param uri the update URI
      */
     set_uri(uri: string): void
     /**
      * Sets the update vendor.
+     * @param vendor the vendor name, e.g. `Hughski Limited`
      */
     set_vendor(vendor: string): void
     /**
      * Sets the update version.
+     * @param version the update version, e.g. `1.2.4`
      */
     set_version(version: string): void
     /**
@@ -3379,6 +3821,10 @@ class Release {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3389,6 +3835,12 @@ class Release {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3412,6 +3864,7 @@ class Release {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3431,11 +3884,14 @@ class Release {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3443,6 +3899,8 @@ class Release {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3460,6 +3918,7 @@ class Release {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3505,6 +3964,7 @@ class Release {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3548,15 +4008,20 @@ class Release {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3597,6 +4062,7 @@ class Release {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3631,6 +4097,7 @@ class Release {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3650,6 +4117,7 @@ class Release {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3682,6 +4150,7 @@ class Release {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Release, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Release, pspec: GObject.ParamSpec) => void)): number
@@ -3697,26 +4166,32 @@ class Release {
     static new(): Release
     /**
      * Creates an array of new releases using packed data.
+     * @param value a #GVariant
      */
     static array_from_variant(value: GLib.Variant): Release[]
     /**
      * Converts a string to a #FwupdReleaseFlags.
+     * @param release_flag A string, e.g. `trusted-payload`
      */
     static flag_from_string(release_flag: string): ReleaseFlags
     /**
      * Converts a #FwupdReleaseFlags to a string.
+     * @param release_flag A #FwupdReleaseFlags, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
      */
     static flag_to_string(release_flag: ReleaseFlags): string
     /**
      * Creates a new release using packed data.
+     * @param value a #GVariant
      */
     static from_variant(value: GLib.Variant): Release
     /**
      * Converts a string to an enumerated value.
+     * @param release_urgency A string, e.g. `low`
      */
     static urgency_from_string(release_urgency: string): ReleaseUrgency
     /**
      * Converts an enumerated value to a string.
+     * @param release_urgency A #FwupdReleaseUrgency, e.g. %FWUPD_RELEASE_URGENCY_HIGH
      */
     static urgency_to_string(release_urgency: ReleaseUrgency): string
     static $gtype: GObject.Type
@@ -3769,11 +4244,12 @@ class Remote {
      */
     id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Fwupd-2.0.Fwupd.Remote */
     /**
      * Builds a URI for the URL using the username and password set for the remote,
      * including any basename URI substitution.
+     * @param url the URL to use
      */
     build_firmware_uri(url: string): string
     /**
@@ -3881,10 +4357,13 @@ class Remote {
      * Sets up the remote ready for use. Most other methods call this
      * for you, and do you only need to call this if you are just watching
      * the self.
+     * @param filename A filename
+     * @param cancellable the #GCancellable, or %NULL
      */
     load_from_filename(filename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Parses the signature, updating the metadata URI as appropriate.
+     * @param filename A filename
      */
     load_signature(filename: string): boolean
     /**
@@ -3892,26 +4371,32 @@ class Remote {
      * 
      * This can only be called for remotes with `Keyring=jcat` which is
      * the default for most remotes.
+     * @param bytes A #GBytes
      */
     load_signature_bytes(bytes: GLib.Bytes): boolean
     /**
      * Sets the remote agreement in AppStream markup format
+     * @param agreement Agreement markup
      */
     set_agreement(agreement: string): void
     /**
      * Sets the keyring kind
+     * @param keyring_kind #FwupdKeyringKind e.g. #FWUPD_KEYRING_KIND_PKCS7
      */
     set_keyring_kind(keyring_kind: KeyringKind): void
     /**
      * Sets the plugin modification time.
+     * @param mtime a UNIX itmestamp
      */
     set_mtime(mtime: number): void
     /**
      * Sets the plugin priority.
+     * @param priority an integer, where 1 is better
      */
     set_priority(priority: number): void
     /**
      * Sets the directory to store remote data
+     * @param directory Remotes directory
      */
     set_remotes_dir(directory: string): void
     /**
@@ -3953,6 +4438,10 @@ class Remote {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3963,6 +4452,12 @@ class Remote {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3986,6 +4481,7 @@ class Remote {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4005,11 +4501,14 @@ class Remote {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4017,6 +4516,8 @@ class Remote {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4034,6 +4535,7 @@ class Remote {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4079,6 +4581,7 @@ class Remote {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4122,15 +4625,20 @@ class Remote {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4171,6 +4679,7 @@ class Remote {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4205,6 +4714,7 @@ class Remote {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4224,6 +4734,7 @@ class Remote {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4256,6 +4767,7 @@ class Remote {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Remote, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Remote, pspec: GObject.ParamSpec) => void)): number
@@ -4281,18 +4793,22 @@ class Remote {
     static new(): Remote
     /**
      * Creates an array of new devices using packed data.
+     * @param value a #GVariant
      */
     static array_from_variant(value: GLib.Variant): Remote[]
     /**
      * Creates a new remote using packed data.
+     * @param value a #GVariant
      */
     static from_variant(value: GLib.Variant): Remote
     /**
      * Converts an printable string to an enumerated type.
+     * @param kind a string, e.g. `download`
      */
     static kind_from_string(kind: string): RemoteKind
     /**
      * Converts an enumerated type to a printable string.
+     * @param kind a #FwupdRemoteKind, e.g. %FWUPD_REMOTE_KIND_DOWNLOAD
      */
     static kind_to_string(kind: RemoteKind): string
     static $gtype: GObject.Type
@@ -4301,19 +4817,23 @@ interface SecurityAttr_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SecurityAttr {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Fwupd-2.0.Fwupd.SecurityAttr */
     /**
      * Adds a specific self flag to the self.
+     * @param flag the #FwupdSecurityAttrFlags
      */
     add_flag(flag: SecurityAttrFlags): void
     /**
      * Adds metadata to the attribute which may be used in the name.
+     * @param key metadata key
+     * @param value metadata value
      */
     add_metadata(key: string, value?: string | null): void
     /**
      * Adds an attribute appstream_id to obsolete. The obsoleted attribute will not
      * contribute to the calculated HSI value or be visible in command line tools.
+     * @param appstream_id the appstream_id or plugin name
      */
     add_obsolete(appstream_id: string): void
     /**
@@ -4330,6 +4850,7 @@ class SecurityAttr {
     get_level(): SecurityAttrLevel
     /**
      * Gets private metadata from the attribute which may be used in the name.
+     * @param key metadata key
      */
     get_metadata(key: string): string | null
     /**
@@ -4355,40 +4876,49 @@ class SecurityAttr {
     get_url(): string
     /**
      * Finds if the self has a specific self flag.
+     * @param flag the #FwupdSecurityAttrFlags
      */
     has_flag(flag: SecurityAttrFlags): boolean
     /**
      * Finds out if the attribute obsoletes a specific appstream_id.
+     * @param appstream_id the attribute appstream_id
      */
     has_obsolete(appstream_id: string): boolean
     /**
      * Sets the AppStream ID.
+     * @param appstream_id the AppStream component ID, e.g. `com.intel.BiosGuard`
      */
     set_appstream_id(appstream_id: string): void
     /**
      * Sets the self flags.
+     * @param flags the self flags, e.g. %FWUPD_SECURITY_ATTR_FLAG_OBSOLETED
      */
     set_flags(flags: SecurityAttrFlags): void
     /**
      * Sets the HSI level. A `level` of %FWUPD_SECURITY_ATTR_LEVEL_NONE is not used
      * for the HSI calculation.
+     * @param level A #FwupdSecurityAttrLevel, e.g. %FWUPD_SECURITY_ATTR_LEVEL_IMPORTANT
      */
     set_level(level: SecurityAttrLevel): void
     /**
      * Sets the attribute name.
+     * @param name the attribute name
      */
     set_name(name: string): void
     /**
      * Sets the plugin that created the attribute.
+     * @param plugin the plugin name
      */
     set_plugin(plugin: string): void
     /**
      * Sets the optional HSI result. This is required because some attributes may
      * be a "success" when something is `locked` or may be "failed" if `found`.
+     * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_LEVEL_LOCKED
      */
     set_result(result: SecurityAttrResult): void
     /**
      * Sets the attribute result.
+     * @param url the attribute URL
      */
     set_url(url: string): void
     /**
@@ -4434,6 +4964,10 @@ class SecurityAttr {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4444,6 +4978,12 @@ class SecurityAttr {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4467,6 +5007,7 @@ class SecurityAttr {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4486,11 +5027,14 @@ class SecurityAttr {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4498,6 +5042,8 @@ class SecurityAttr {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4515,6 +5061,7 @@ class SecurityAttr {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4560,6 +5107,7 @@ class SecurityAttr {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4603,15 +5151,20 @@ class SecurityAttr {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4652,6 +5205,7 @@ class SecurityAttr {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4686,6 +5240,7 @@ class SecurityAttr {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4705,6 +5260,7 @@ class SecurityAttr {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4737,6 +5293,7 @@ class SecurityAttr {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SecurityAttr, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SecurityAttr, pspec: GObject.ParamSpec) => void)): number
@@ -4752,59 +5309,64 @@ class SecurityAttr {
     static new(appstream_id?: string | null): SecurityAttr
     /**
      * Creates an array of new security_attrs using packed data.
+     * @param value a #GVariant
      */
     static array_from_variant(value: GLib.Variant): SecurityAttr[]
     /**
      * Returns the printable string for the flag.
+     * @param flag A #FwupdSecurityAttrFlags, e.g. %FWUPD_SECURITY_ATTR_FLAG_SUCCESS
      */
     static flag_to_string(flag: SecurityAttrFlags): string
     /**
      * Returns the string suffix for the flag.
+     * @param flag A #FwupdSecurityAttrFlags, e.g. %FWUPD_SECURITY_ATTR_FLAG_RUNTIME_UPDATES
      */
     static flag_to_suffix(flag: SecurityAttrFlags): string
     /**
      * Creates a new self using packed data.
+     * @param value a #GVariant
      */
     static from_variant(value: GLib.Variant): SecurityAttr
     /**
      * Returns the printable string for the result enum.
+     * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_RESULT_ENABLED
      */
     static result_to_string(result: SecurityAttrResult): string
     static $gtype: GObject.Type
 }
 abstract class ClientClass {
     /* Fields of Fwupd-2.0.Fwupd.ClientClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly changed: (client: Client) => void
-    readonly status_changed: (client: Client, status: Status) => void
-    readonly device_added: (client: Client, result: Device) => void
-    readonly device_removed: (client: Client, result: Device) => void
-    readonly device_changed: (client: Client, result: Device) => void
+    parent_class: GObject.ObjectClass
+    changed: (client: Client) => void
+    status_changed: (client: Client, status: Status) => void
+    device_added: (client: Client, result: Device) => void
+    device_removed: (client: Client, result: Device) => void
+    device_changed: (client: Client, result: Device) => void
     static name: string
 }
 abstract class DeviceClass {
     /* Fields of Fwupd-2.0.Fwupd.DeviceClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class PluginClass {
     /* Fields of Fwupd-2.0.Fwupd.PluginClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ReleaseClass {
     /* Fields of Fwupd-2.0.Fwupd.ReleaseClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class RemoteClass {
     /* Fields of Fwupd-2.0.Fwupd.RemoteClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class SecurityAttrClass {
     /* Fields of Fwupd-2.0.Fwupd.SecurityAttrClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
     type DeviceFlags = number

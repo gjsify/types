@@ -244,7 +244,7 @@ interface Cal_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Cal {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ECalendar-1.2.ECalendar.Cal */
     /**
      * Tells the calendar backend to get rid of the alarm identified by the
@@ -253,23 +253,32 @@ class Cal {
      * the file backend does, ignore the operation.
      * 
      * CALOBJ_MOD_ONLY_THIS is not supported in this call.
+     * @param comp The component to discard the alarm from.
+     * @param auid Unique identifier of the alarm to be discarded.
      */
     discard_alarm(comp: CalComponent, auid: string): boolean
     /**
      * Queries the address to be used for alarms in a calendar client.
+     * @param alarm_address Return value for alarm address.
      */
     get_alarm_email_address(alarm_address: string): boolean
     /**
      * Queries a calendar for the alarms of a particular object that trigger in the
      * specified range of time.
+     * @param id Unique identifier for a calendar component.
+     * @param start Start time for query.
+     * @param end End time for query.
+     * @param alarms Return value for the component's alarm instances.  Will return NULL if no instances occur within the specified time range.  This should be freed using the e_cal_component_alarms_free() function.
      */
     get_alarms_for_object(id: CalComponentId, start: number, end: number, alarms: CalComponentAlarms): boolean
     /**
      * Queries the calendar address associated with a calendar client.
+     * @param cal_address Return value for address information.
      */
     get_cal_address(cal_address: string): boolean
     /**
      * Queries the LDAP attribute for a calendar client.
+     * @param ldap_attribute Return value for the LDAP attribute.
      */
     get_ldap_attribute(ldap_attribute: string): boolean
     /**
@@ -289,6 +298,7 @@ class Cal {
      * by the `query` argument. The objects will be returned in the `objects`
      * argument, which is a list of #icalcomponent. When done, this list
      * should be freed by using the #e_cal_free_object_list function.
+     * @param query Query string.
      */
     get_object_list(query: string): [ /* returnType */ boolean, /* objects */ number[] ]
     /**
@@ -306,6 +316,7 @@ class Cal {
     get_organizer_must_attend(): boolean
     /**
      * Creates a live query object from a loaded calendar.
+     * @param sexp S-expression representing the query.
      */
     get_query(sexp: string): [ /* returnType */ boolean, /* query */ CalView ]
     /**
@@ -326,12 +337,14 @@ class Cal {
     get_source_type(): CalSourceType
     /**
      * Queries the calendar for static capabilities.
+     * @param cap Name of the static capability to check.
      */
     get_static_capability(cap: string): boolean
     /**
      * Queries whether the calendar client can perform modifications
      * on the calendar or not. Whether the backend is read only or not
      * is specified, on exit, in the `read_only` argument.
+     * @param read_only Return value for read only status.
      */
     is_read_only(read_only: boolean): boolean
     /**
@@ -340,6 +353,7 @@ class Cal {
      * received. Since 3.0 is emitted also "cal_opened_ex" signal, which contains
      * a GError pointer from the open operation (NULL when no error occurred).
      * New signal deprecates the old "cal_opened" signal.
+     * @param only_if_exists FALSE if the calendar should be opened even if there was no storage for it, i.e. to create a new calendar or load an existing one if it already exists.  TRUE if it should only try to load calendars that already exist.
      */
     open(only_if_exists: boolean): boolean
     /**
@@ -348,6 +362,7 @@ class Cal {
      * Since 3.0 is emitted also "cal_opened_ex" signal, which contains
      * a GError pointer from the open operation (NULL when no error occurred).
      * New signal deprecates the old "cal_opened" signal.
+     * @param only_if_exists If TRUE, then only open the calendar if it already exists.  If FALSE, then create a new calendar if it doesn't already exist.
      */
     open_async(only_if_exists: boolean): void
     /**
@@ -363,6 +378,7 @@ class Cal {
      * If more control of the removal is desired, then use e_cal_remove_object_with_mod().
      * If the server is able to remove the component(s), all clients will
      * be notified and they will emit the "obj_removed" signal.
+     * @param uid Unique identifier of the calendar component to remove.
      */
     remove_object(uid: string): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -400,6 +416,10 @@ class Cal {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -410,6 +430,12 @@ class Cal {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -433,6 +459,7 @@ class Cal {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -452,11 +479,14 @@ class Cal {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -464,6 +494,8 @@ class Cal {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -481,6 +513,7 @@ class Cal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -526,6 +559,7 @@ class Cal {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -569,15 +603,20 @@ class Cal {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -618,6 +657,7 @@ class Cal {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -652,6 +692,7 @@ class Cal {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of ECalendar-1.2.ECalendar.Cal */
@@ -676,6 +717,7 @@ class Cal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -724,6 +766,7 @@ class Cal {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Cal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Cal, pspec: GObject.ParamSpec) => void)): number
@@ -739,6 +782,7 @@ class Cal {
     static new(source: EDataServer.Source, type: CalSourceType): Cal
     /**
      * Gets an error message for the given status code.
+     * @param status A status code.
      */
     static get_error_message(status: CalendarStatus): string
     static marshal_VOID__ENUM_ENUM(closure: Function, return_value: any, n_param_values: number, param_values: any, invocation_hint: object, marshal_data: object): void
@@ -747,6 +791,7 @@ class Cal {
     /**
      * Matches `tzid` against the system timezone definitions
      * and returns the matching TZID, or %NULL if none found
+     * @param tzid a timezone ID
      */
     static match_tzid(tzid: string): string
     /**
@@ -764,11 +809,13 @@ class Cal {
     static util_get_system_timezone_location(): string
     /**
      * Converts a translated priority string to an iCalendar priority value.
+     * @param string A string representing the PRIORITY value.
      */
     static util_priority_from_string(string: string): number
     /**
      * Converts an iCalendar PRIORITY value to a translated string. Any unknown
      * priority value (i.e. not 0-9) will be returned as "" (undefined).
+     * @param priority Priority value.
      */
     static util_priority_to_string(priority: number): string
     static $gtype: GObject.Type
@@ -798,11 +845,16 @@ class CalClient {
      * Whether this client's backing data is readonly.
      */
     readonly readonly: boolean
+    /**
+     * The #ESource for which this client was created.
+     */
+    readonly source: EDataServer.Source
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ECalendar-1.2.ECalendar.CalClient */
     /**
      * Finishes previous call of e_cal_client_add_timezone().
+     * @param result a #GAsyncResult
      */
     add_timezone_finish(result: Gio.AsyncResult): boolean
     /**
@@ -830,26 +882,38 @@ class CalClient {
      * Finishes previous call of e_cal_client_create_object() and
      * sets `uid` to newly assigned UID for the created object.
      * This `uid` should be freed with g_free().
+     * @param result a #GAsyncResult
      */
     create_object_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* uid */ string ]
     /**
      * Finishes previous call of e_cal_client_create_objects() and
      * sets `uids` to newly assigned UIDs for the created objects.
      * This `uids` should be freed with e_client_util_free_string_slist().
+     * @param result a #GAsyncResult
      */
     create_objects_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* uids */ string[] ]
     /**
      * Removes alarm `auid` from a given component identified by `uid` and `rid`.
      * The call is finished by e_cal_client_discard_alarm_finish() from
      * the `callback`.
+     * @param uid Unique identifier for a calendar component
+     * @param rid Recurrence identifier
+     * @param auid Alarm identifier to remove
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_discard_alarm().
+     * @param result a #GAsyncResult
      */
     discard_alarm_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes alarm `auid` from a given component identified by `uid` and `rid`.
+     * @param uid Unique identifier for a calendar component
+     * @param rid Recurrence identifier
+     * @param auid Alarm identifier to remove
+     * @param cancellable a #GCancellable; can be %NULL
      */
     discard_alarm_sync(uid: string, rid: string, auid: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -860,6 +924,10 @@ class CalClient {
      * The callback function should do a g_object_ref() of the calendar component
      * it gets passed if it intends to keep it around, since it will be unref'ed
      * as soon as the callback returns.
+     * @param start Start time for query.
+     * @param end End time for query.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param cb Callback for each generated instance.
      */
     generate_instances(start: number, end: number, cancellable: Gio.Cancellable | null, cb: CalRecurInstanceFn): void
     /**
@@ -869,29 +937,42 @@ class CalClient {
      * The callback function should do a g_object_ref() of the calendar component
      * it gets passed if it intends to keep it around, since it will be unreffed
      * as soon as the callback returns.
+     * @param start Start time for query
+     * @param end End time for query
+     * @param cb Callback for each generated instance
      */
     generate_instances_sync(start: number, end: number, cb: CalRecurInstanceFn): void
     /**
      * Queries a calendar for a specified component's object attachment uris.
      * The call is finished by e_cal_client_get_attachment_uris_finish() from
      * the `callback`.
+     * @param uid Unique identifier for a calendar component
+     * @param rid Recurrence identifier
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_attachment_uris() and
      * sets `attachment_uris` to uris for component's attachments.
      * The list should be freed with e_client_util_free_string_slist().
+     * @param result a #GAsyncResult
      */
     get_attachment_uris_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* attachment_uris */ string[] ]
     /**
      * Queries a calendar for a specified component's object attachment URIs.
      * The list should be freed with e_client_util_free_string_slist().
+     * @param uid Unique identifier for a calendar component
+     * @param rid Recurrence identifier
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_attachment_uris_sync(uid: string, rid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* attachment_uris */ string[] ]
     /**
      * Retrives an #icalcomponent from the backend that contains the default
      * values for properties needed. The call is finished
      * by e_cal_client_get_default_object_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_default_object(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -900,16 +981,26 @@ class CalClient {
      * to receive chunks of free/busy components.
      * The call is finished by e_cal_client_get_free_busy_finish() from
      * the `callback`.
+     * @param start Start time for query
+     * @param end End time for query
+     * @param users List of users to retrieve free/busy information for
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_free_busy(start: number, end: number, users: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_free_busy().
      * All VFREEBUSY #ECalComponent-s were received by "free-busy-data" signal.
+     * @param result a #GAsyncResult
      */
     get_free_busy_finish(result: Gio.AsyncResult): boolean
     /**
      * Gets free/busy information from the calendar server.
      * All VFREEBUSY #ECalComponent-s were received by "free-busy-data" signal.
+     * @param start Start time for query
+     * @param end End time for query
+     * @param users List of users to retrieve free/busy information for
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_free_busy_sync(start: number, end: number, users: string[], cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -928,6 +1019,10 @@ class CalClient {
      * Use e_cal_client_get_objects_for_uid() to get list of all
      * objects for the given uid, which includes master object and
      * all detached instances.
+     * @param uid Unique identifier for a calendar component.
+     * @param rid Recurrence identifier.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_object(uid: string, rid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -935,6 +1030,9 @@ class CalClient {
      * by the `sexp` argument, returning matching objects as a list of #icalcomponent-s.
      * The call is finished by e_cal_client_get_object_list_finish() from
      * the `callback`.
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_object_list(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -942,12 +1040,16 @@ class CalClient {
      * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
      * The call is finished by e_cal_client_get_object_list_as_comps_finish() from
      * the `callback`.
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_object_list_as_comps() and
      * sets `ecalcomps` to a matching list of #ECalComponent-s.
      * This list should be freed with #e_cal_client_free_ecalcomp_slist().
+     * @param result a #GAsyncResult
      */
     get_object_list_as_comps_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
     /**
@@ -955,6 +1057,8 @@ class CalClient {
      * by the `sexp` argument. The objects will be returned in the `ecalcomps`
      * argument, which is a list of #ECalComponent.
      * This list should be freed with #e_cal_client_free_ecalcomp_slist().
+     * @param sexp an S-expression representing the query
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_object_list_as_comps_sync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
     /**
@@ -963,6 +1067,9 @@ class CalClient {
      * For non-recurring events, it will just return the object with that ID.
      * The call is finished by e_cal_client_get_objects_for_uid_finish() from
      * the `callback`.
+     * @param uid Unique identifier for a calendar component
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_objects_for_uid(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -970,6 +1077,7 @@ class CalClient {
      * sets `ecalcomps` to a list of #ECalComponent<!-- -->s corresponding to
      * found components for a given uid of the same type as this client.
      * This list should be freed with e_cal_client_free_ecalcomp_slist().
+     * @param result a #GAsyncResult
      */
     get_objects_for_uid_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
     /**
@@ -977,6 +1085,8 @@ class CalClient {
      * ID. This will return any recurring event and all its detached recurrences.
      * For non-recurring events, it will just return the object with that ID.
      * This list should be freed with e_cal_client_free_ecalcomp_slist().
+     * @param uid Unique identifier for a calendar component
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_objects_for_uid_sync(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
     /**
@@ -987,44 +1097,58 @@ class CalClient {
      * Retrieves a timezone object from the calendar backend.
      * The call is finished by e_cal_client_get_timezone_finish() from
      * the `callback`.
+     * @param tzid ID of the timezone to retrieve
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_timezone(tzid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Query `client` with `sexp,` creating an #ECalClientView.
      * The call is finished by e_cal_client_get_view_finish()
      * from the `callback`.
+     * @param sexp an S-expression representing the query.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_view(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_view().
      * If successful, then the `view` is set to newly allocated #ECalClientView,
      * which should be freed with g_object_unref().
+     * @param result a #GAsyncResult
      */
     get_view_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* view */ CalClientView ]
     /**
      * Query `client` with `sexp,` creating an #ECalClientView.
      * If successful, then the `view` is set to newly allocated #ECalClientView,
      * which should be freed with g_object_unref().
+     * @param sexp an S-expression representing the query.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_view_sync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* view */ CalClientView ]
     /**
      * Finishes previous call of e_cal_client_modify_object().
+     * @param result a #GAsyncResult
      */
     modify_object_finish(result: Gio.AsyncResult): boolean
     /**
      * Finishes previous call of e_cal_client_modify_objects().
+     * @param result a #GAsyncResult
      */
     modify_objects_finish(result: Gio.AsyncResult): boolean
     /**
      * Finishes previous call of e_cal_client_receive_objects().
+     * @param result a #GAsyncResult
      */
     receive_objects_finish(result: Gio.AsyncResult): boolean
     /**
      * Finishes previous call of e_cal_client_remove_object().
+     * @param result a #GAsyncResult
      */
     remove_object_finish(result: Gio.AsyncResult): boolean
     /**
      * Finishes previous call of e_cal_client_remove_objects().
+     * @param result a #GAsyncResult
      */
     remove_objects_finish(result: Gio.AsyncResult): boolean
     /* Methods of EDataServer-1.2.EDataServer.Client */
@@ -1035,6 +1159,7 @@ class CalClient {
     /**
      * Check if backend supports particular capability.
      * To get all capabilities use e_client_get_capabilities().
+     * @param capability a capability
      */
     check_capability(capability: string): boolean
     /**
@@ -1051,14 +1176,20 @@ class CalClient {
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
      * from the `callback`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
+     * @param result a #GAsyncResult
      */
     get_backend_property_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
@@ -1090,14 +1221,20 @@ class CalClient {
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_open().
+     * @param result a #GAsyncResult
      */
     open_finish(result: Gio.AsyncResult): boolean
     /**
      * Opens the `client,` making it ready for queries and other operations.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
      */
     open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1114,10 +1251,13 @@ class CalClient {
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
      * The call is finished by e_client_refresh_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_refresh().
+     * @param result a #GAsyncResult
      */
     refresh_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1125,21 +1265,26 @@ class CalClient {
      * that the refresh is done, backend only notifies whether it started
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
      * The call is finished by e_client_remove_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_remove().
+     * @param result a #GAsyncResult
      */
     remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
+     * @param cancellable a #GCancellable; can be %NULL
      */
     remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1149,12 +1294,15 @@ class CalClient {
      * e_client_check_capability() is using the cached value.
      * The call is finished by e_client_retrieve_capabilities_finish()
      * from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     retrieve_capabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_retrieve_capabilities().
      * Returned value of `capabilities` should be freed with g_free(),
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     retrieve_capabilities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1163,6 +1311,7 @@ class CalClient {
      * is cached and any subsequent call of e_client_get_capabilities() and
      * e_client_check_capability() is using the cached value. Returned value
      * of `capabilities` should be freed with g_free(), when no longer needed.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1171,12 +1320,15 @@ class CalClient {
      * 
      * When the operation is finished, `callback` will be called. You can then
      * call e_client_retrieve_properties_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     retrieve_properties(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_client_retrieve_properties().
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param result a #GAsyncResult
      */
     retrieve_properties_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1184,31 +1336,42 @@ class CalClient {
      * for the D-Bus property change notifications delivery.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`. The call is finished
      * by e_client_set_backend_property_finish() from the `callback`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     set_backend_property(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
+     * @param result a #GAsyncResult
      */
     set_backend_property_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets a D-Bus bus name that will be used to connect the client
      * to the backend subprocess.
+     * @param bus_name a string representing a D-Bus bus name
      */
     set_bus_name(bus_name: string): void
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
+     * @param dbus_error a #GError returned bu D-Bus
      */
     unwrap_dbus_error(dbus_error: GLib.Error): void
     /**
@@ -1217,10 +1380,14 @@ class CalClient {
      * 
      * The call is finished by e_client_wait_for_connected_finish() from
      * the `callback`.
+     * @param timeout_seconds a timeout for the wait, in seconds
+     * @param cancellable a #GCancellable; or %NULL
+     * @param callback callback to call when a result is ready
      */
     wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_wait_for_connected().
+     * @param result a #GAsyncResult
      */
     wait_for_connected_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1230,6 +1397,8 @@ class CalClient {
      * Note: This also calls e_client_retrieve_properties_sync() on success, to have
      *   up-to-date property values on the client side, without a delay due
      *   to property change notifcations delivery through D-Bus.
+     * @param timeout_seconds a timeout for the wait, in seconds
+     * @param cancellable a #GCancellable; or %NULL
      */
     wait_for_connected_sync(timeout_seconds: number, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1267,6 +1436,10 @@ class CalClient {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1277,6 +1450,12 @@ class CalClient {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1300,6 +1479,7 @@ class CalClient {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1319,11 +1499,14 @@ class CalClient {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1331,6 +1514,8 @@ class CalClient {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1348,6 +1533,7 @@ class CalClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1393,6 +1579,7 @@ class CalClient {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1436,15 +1623,20 @@ class CalClient {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1485,6 +1677,7 @@ class CalClient {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1519,6 +1712,7 @@ class CalClient {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of EDataServer-1.2.EDataServer.Client */
@@ -1529,27 +1723,39 @@ class CalClient {
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
      * from the `callback`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
+     * @param result a #GAsyncResult
      */
     vfunc_get_backend_property_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
+     * @param prop_name property name, whose value to retrieve; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_get_backend_property_sync(prop_name: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* prop_value */ string ]
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_open().
+     * @param result a #GAsyncResult
      */
     vfunc_open_finish(result: Gio.AsyncResult): boolean
     /**
      * Opens the `client,` making it ready for queries and other operations.
+     * @param only_if_exists this parameter is not used anymore
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_open_sync(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): boolean
     vfunc_opened(error: GLib.Error): void
@@ -1559,10 +1765,13 @@ class CalClient {
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
      * The call is finished by e_client_refresh_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_refresh().
+     * @param result a #GAsyncResult
      */
     vfunc_refresh_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1570,21 +1779,26 @@ class CalClient {
      * that the refresh is done, backend only notifies whether it started
      * refreshing or not. Use e_client_check_refresh_supported() to check
      * whether the backend supports this method.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_refresh_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
      * The call is finished by e_client_remove_finish() from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_remove().
+     * @param result a #GAsyncResult
      */
     vfunc_remove_finish(result: Gio.AsyncResult): boolean
     /**
      * Removes the backing data for this #EClient. For example, with the file
      * backend this deletes the database file. You cannot get it back!
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_remove_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1594,12 +1808,15 @@ class CalClient {
      * e_client_check_capability() is using the cached value.
      * The call is finished by e_client_retrieve_capabilities_finish()
      * from the `callback`.
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_retrieve_capabilities(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_retrieve_capabilities().
      * Returned value of `capabilities` should be freed with g_free(),
      * when no longer needed.
+     * @param result a #GAsyncResult
      */
     vfunc_retrieve_capabilities_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1608,6 +1825,7 @@ class CalClient {
      * is cached and any subsequent call of e_client_get_capabilities() and
      * e_client_check_capability() is using the cached value. Returned value
      * of `capabilities` should be freed with g_free(), when no longer needed.
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_retrieve_capabilities_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* capabilities */ string ]
     /**
@@ -1615,26 +1833,36 @@ class CalClient {
      * for the D-Bus property change notifications delivery.
      * 
      * If an error occurs, the function sets `error` and returns %FALSE.
+     * @param cancellable optional #GCancellable object, or %NULL
      */
     vfunc_retrieve_properties_sync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`. The call is finished
      * by e_client_set_backend_property_finish() from the `callback`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
+     * @param callback callback to call when a result is ready
      */
     vfunc_set_backend_property(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
+     * @param result a #GAsyncResult
      */
     vfunc_set_backend_property_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets `client'`s backend property of name `prop_name`
      * to value `prop_value`.
+     * @param prop_name property name, whose value to change; cannot be %NULL
+     * @param prop_value property value, to set; cannot be %NULL
+     * @param cancellable a #GCancellable; can be %NULL
      */
     vfunc_set_backend_property_sync(prop_name: string, prop_value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
+     * @param dbus_error a #GError returned bu D-Bus
      */
     vfunc_unwrap_dbus_error(dbus_error: GLib.Error): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1654,6 +1882,7 @@ class CalClient {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1703,6 +1932,7 @@ class CalClient {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
@@ -1717,6 +1947,8 @@ class CalClient {
     connect_after(sigName: "notify::opened", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::readonly", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::readonly", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::source", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::source", callback: (($obj: CalClient, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -1732,16 +1964,19 @@ class CalClient {
     static error_quark(): GLib.Quark
     /**
      * FIXME: Document me.
+     * @param code 
      */
     static error_to_string(code: CalClientError): string
     /* Function overloads */
     /**
      * Get localized human readable description of the given error code.
+     * @param code an #EClientError error code
      */
     static error_to_string(code: EDataServer.ClientError): string
     /**
      * Frees each element of the `ecalcomps` list and the list itself.
      * Each element is an object of type #ECalComponent.
+     * @param ecalcomps list of #ECalComponent objects
      */
     static free_ecalcomp_slist(ecalcomps: CalComponent[]): void
     static $gtype: GObject.Type
@@ -1752,8 +1987,11 @@ interface CalClientView_ConstructProps extends GObject.Object_ConstructProps {
     view?: object
 }
 class CalClientView {
+    /* Properties of ECalendar-1.2.ECalendar.CalClientView */
+    readonly client: CalClient
+    readonly view: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ECalendar-1.2.ECalendar.CalClientView */
     /**
      * Get the #ECalClient associated with this view.
@@ -1775,10 +2013,12 @@ class CalClientView {
      * Some backends can use summary information of its cache to create artifical
      * objects, which will omit stored object parsing. If this cannot be done then
      * it will simply return object as is stored in the cache.
+     * @param fields_of_interest List of field names in which the client is interested, or %NULL to reset the fields of interest
      */
     set_fields_of_interest(fields_of_interest?: string[] | null): void
     /**
      * Sets the `flags` which control the behaviour of `view`.
+     * @param flags the #ECalClientViewFlags for `view`.
      */
     set_flags(flags: CalClientViewFlags): void
     /**
@@ -1824,6 +2064,10 @@ class CalClientView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1834,6 +2078,12 @@ class CalClientView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1857,6 +2107,7 @@ class CalClientView {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1876,11 +2127,14 @@ class CalClientView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1888,6 +2142,8 @@ class CalClientView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1905,6 +2161,7 @@ class CalClientView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1950,6 +2207,7 @@ class CalClientView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1993,15 +2251,20 @@ class CalClientView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2042,6 +2305,7 @@ class CalClientView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2076,6 +2340,7 @@ class CalClientView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of ECalendar-1.2.ECalendar.CalClientView */
@@ -2098,6 +2363,7 @@ class CalClientView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2146,10 +2412,15 @@ class CalClientView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CalClientView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CalClientView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::client", callback: (($obj: CalClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: CalClientView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::view", callback: (($obj: CalClientView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::view", callback: (($obj: CalClientView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2163,7 +2434,7 @@ interface CalComponent_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CalComponent {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ECalendar-1.2.ECalendar.CalComponent */
     /**
      * Aborts the sequence change needed in the given calendar component, which
@@ -2178,6 +2449,7 @@ class CalComponent {
      * adding the alarm, the `alarm` structure is no longer valid because the
      * internal structures may change and you should get rid of it by using
      * e_cal_component_alarm_free().
+     * @param alarm An alarm.
      */
     add_alarm(alarm: CalComponentAlarm): void
     /**
@@ -2198,6 +2470,7 @@ class CalComponent {
      * Checks if the DTSTART and DTEND properties of the 2 components match.
      * Note that the events may have different recurrence properties which are not
      * taken into account here.
+     * @param comp2 A calendar component object.
      */
     event_dates_match(comp2: CalComponent): boolean
     /**
@@ -2224,6 +2497,7 @@ class CalComponent {
      * Queries the categories of the given calendar component. The categories
      * are returned in the `categories` argument, which, on success, will contain
      * a comma-separated list of all categories set in the component.
+     * @param categories Return holder for the categories.
      */
     get_categories(categories: string): void
     /**
@@ -2235,6 +2509,7 @@ class CalComponent {
      * Queries the classification of a calendar component object.  If the
      * classification property is not set on this component, this function returns
      * #E_CAL_COMPONENT_CLASS_NONE.
+     * @param classif Return value for the classification.
      */
     get_classification(classif: CalComponentClassification): void
     /**
@@ -2245,6 +2520,7 @@ class CalComponent {
     get_comment_list(): /* text_list */ CalComponentText[]
     /**
      * Queries the date at which a calendar compoment object was completed.
+     * @param t Return value for the completion date.  This should be freed using the e_cal_component_free_icaltimetype() function.
      */
     get_completed(t: object): void
     /**
@@ -2256,6 +2532,7 @@ class CalComponent {
     /**
      * Queries the date in which a calendar component object was created in the
      * calendar store.
+     * @param t Return value for the creation date.  This should be freed using the e_cal_component_free_icaltimetype() function.
      */
     get_created(t: object): void
     /**
@@ -2267,19 +2544,23 @@ class CalComponent {
     get_description_list(): /* text_list */ CalComponentText[]
     /**
      * Queries the date/time end of a calendar component object.
+     * @param dt Return value for the date/time end.  This should be freed with the e_cal_component_free_datetime() function.
      */
     get_dtend(dt: CalComponentDateTime): void
     /**
      * Queries the date/timestamp property of a calendar component object, which is
      * the last time at which the object was modified by a calendar user agent.
+     * @param t A value for the date/timestamp.
      */
     get_dtstamp(t: object): void
     /**
      * Queries the date/time start of a calendar component object.
+     * @param dt Return value for the date/time start.  This should be freed with the e_cal_component_free_datetime() function.
      */
     get_dtstart(dt: CalComponentDateTime): void
     /**
      * Queries the due date/time of a calendar component object.
+     * @param dt Return value for the due date/time.  This should be freed with the e_cal_component_free_datetime() function.
      */
     get_due(dt: CalComponentDateTime): void
     /**
@@ -2288,15 +2569,18 @@ class CalComponent {
     get_exdate_list(): /* exdate_list */ CalComponentDateTime[]
     /**
      * Gets the geographic position property of a calendar component object.
+     * @param geo Return value for the geographic position property.  This should be freed using the e_cal_component_free_geo() function.
      */
     get_geo(geo: object): void
     /**
      * Queries the time at which a calendar component object was last modified in
      * the calendar store.
+     * @param t Return value for the last modified time value.
      */
     get_last_modified(t: object): void
     /**
      * Queries the location property of a calendar component object.
+     * @param location Return value for the location.
      */
     get_location(location: string): void
     /**
@@ -2305,15 +2589,18 @@ class CalComponent {
     get_num_attachments(): number
     /**
      * Queries the organizer property of a calendar component object
+     * @param organizer A value for the organizer
      */
     get_organizer(organizer: CalComponentOrganizer): void
     /**
      * Queries the percent-complete property of a calendar component object.
+     * @param percent Return value for the percent-complete property.  This should be freed using the e_cal_component_free_percent() function.
      */
     get_percent(percent: number): void
     get_percent_as_int(): number
     /**
      * Queries the priority property of a calendar component object.
+     * @param priority Return value for the priority property.  This should be freed using the e_cal_component_free_priority() function.
      */
     get_priority(priority: number): void
     /**
@@ -2323,6 +2610,7 @@ class CalComponent {
     get_rdate_list(): /* period_list */ CalComponentPeriod[]
     /**
      * Queries the recurrence id property of a calendar component object.
+     * @param recur_id Return value for the recurrence id property
      */
     get_recurid(recur_id: CalComponentRange): void
     /**
@@ -2331,22 +2619,27 @@ class CalComponent {
     get_recurid_as_string(): string
     /**
      * Queries the sequence number of a calendar component object.
+     * @param sequence Return value for the sequence number.  This should be freed using e_cal_component_free_sequence().
      */
     get_sequence(sequence: number): void
     /**
      * Queries the summary of a calendar component object.
+     * @param summary Return value for the summary property and its parameters.
      */
     get_summary(summary: CalComponentText): void
     /**
      * Queries the time transparency of a calendar component object.
+     * @param transp Return value for the time transparency.
      */
     get_transparency(transp: CalComponentTransparency): void
     /**
      * Queries the unique identifier of a calendar component object.
+     * @param uid Return value for the UID string.
      */
     get_uid(uid: string): void
     /**
      * Queries the uniform resource locator property of a calendar component object.
+     * @param url Return value for the URL.
      */
     get_url(url: string): void
     /**
@@ -2415,6 +2708,7 @@ class CalComponent {
      * e_cal_component_get_alarm(), then those alarm structures will be invalid; you
      * should get rid of them with e_cal_component_alarm_free() before using this
      * function.
+     * @param auid UID of the alarm to remove.
      */
     remove_alarm(auid: string): void
     /**
@@ -2431,71 +2725,86 @@ class CalComponent {
      * in the file system - not inline binaries.
      * 
      * Sets the attachments of a calendar component object
+     * @param attachment_list list of URIs to attachment pointers
      */
     set_attachment_list(attachment_list: string[]): void
     /**
      * Sets the attendees of a calendar component object
+     * @param attendee_list Values for attendee properties
      */
     set_attendee_list(attendee_list: CalComponentAttendee[]): void
     /**
      * Sets the list of categories for a calendar component.
+     * @param categories Comma-separated list of categories.
      */
     set_categories(categories: string): void
     /**
      * Sets the list of categories of a calendar component object.
+     * @param categ_list List of strings, one for each category.
      */
     set_categories_list(categ_list: string[]): void
     /**
      * Sets the classification property of a calendar component object.  To unset
      * the property, specify E_CAL_COMPONENT_CLASS_NONE for `classif`.
+     * @param classif Classification to use.
      */
     set_classification(classif: CalComponentClassification): void
     /**
      * Sets the comments of a calendar component object.  The comment property can
      * appear several times inside a calendar component, and so a list of
      * #ECalComponentText structures is used.
+     * @param text_list List of #ECalComponentText structures.
      */
     set_comment_list(text_list: CalComponentText[]): void
     /**
      * Sets the date at which a calendar component object was completed.
+     * @param t Value for the completion date.
      */
     set_completed(t: object): void
     /**
      * Sets the contact of a calendar component object.  The contact property can
      * appear several times inside a calendar component, and so a list of
      * #ECalComponentText structures is used.
+     * @param text_list List of #ECalComponentText structures.
      */
     set_contact_list(text_list: CalComponentText[]): void
     /**
      * Sets the date in which a calendar component object is created in the calendar
      * store.  This should only be used inside a calendar store application, i.e.
      * not by calendar user agents.
+     * @param t Value for the creation date.
      */
     set_created(t: object): void
     /**
      * Sets the date/time end property of a calendar component object.
+     * @param dt End date/time.
      */
     set_dtend(dt: CalComponentDateTime): void
     /**
      * Sets the date/timestamp of a calendar component object.  This should be
      * called whenever a calendar user agent makes a change to a component's
      * properties.
+     * @param t Date/timestamp value.
      */
     set_dtstamp(t: object): void
     /**
      * Sets the date/time start property of a calendar component object.
+     * @param dt Start date/time.
      */
     set_dtstart(dt: CalComponentDateTime): void
     /**
      * Sets the due date/time property of a calendar component object.
+     * @param dt End date/time.
      */
     set_due(dt: CalComponentDateTime): void
     /**
      * Sets the list of exception dates in a calendar component object.
+     * @param exdate_list List of #ECalComponentDateTime structures.
      */
     set_exdate_list(exdate_list: CalComponentDateTime[]): void
     /**
      * Sets the geographic position property on a calendar component object.
+     * @param geo Value for the geographic position property.
      */
     set_geo(geo: object): void
     /**
@@ -2505,64 +2814,78 @@ class CalComponent {
      * component itself.
      * 
      * Supported component types are VEVENT, VTODO, VJOURNAL, VFREEBUSY, and VTIMEZONE.
+     * @param icalcomp An #icalcomponent.
      */
     set_icalcomponent(icalcomp: number): boolean
     /**
      * Sets the time at which a calendar component object was last stored in the
      * calendar store.  This should not be called by plain calendar user agents.
+     * @param t Value for the last time modified.
      */
     set_last_modified(t: object): void
     /**
      * Sets the location property of a calendar component object.
+     * @param location Location value.
      */
     set_location(location: string): void
     /**
      * Clears any existing component data from a calendar component object and
      * creates a new #icalcomponent of the specified type for it.  The only property
      * that will be set in the new component will be its unique identifier.
+     * @param type Type of calendar component to create.
      */
     set_new_vtype(type: CalComponentVType): void
     /**
      * Sets the organizer of a calendar component object
+     * @param organizer Value for the organizer property
      */
     set_organizer(organizer: CalComponentOrganizer): void
     /**
      * Sets the percent-complete property of a calendar component object.
+     * @param percent Value for the percent-complete property.
      */
     set_percent(percent: number): void
     set_percent_as_int(percent: number): void
     /**
      * Sets the priority property of a calendar component object.
+     * @param priority Value for the priority property.
      */
     set_priority(priority: number): void
     /**
      * Sets the list of recurrence dates in a calendar component object.
+     * @param period_list List of #ECalComponentPeriod structures
      */
     set_rdate_list(period_list: CalComponentPeriod[]): void
     /**
      * Sets the recurrence id property of a calendar component object.
+     * @param recur_id Value for the recurrence id property.
      */
     set_recurid(recur_id: CalComponentRange): void
     /**
      * Sets the sequence number of a calendar component object.  Normally this
      * function should not be called, since the sequence number is incremented
      * automatically at the proper times.
+     * @param sequence Sequence number value.
      */
     set_sequence(sequence: number): void
     /**
      * Sets the summary of a calendar component object.
+     * @param summary Summary property and its parameters.
      */
     set_summary(summary: CalComponentText): void
     /**
      * Sets the time transparency of a calendar component object.
+     * @param transp Time transparency value.
      */
     set_transparency(transp: CalComponentTransparency): void
     /**
      * Sets the unique identifier string of a calendar component object.
+     * @param uid Unique identifier.
      */
     set_uid(uid: string): void
     /**
      * Sets the uniform resource locator property of a calendar component object.
+     * @param url URL value.
      */
     set_url(url: string): void
     /**
@@ -2606,6 +2929,10 @@ class CalComponent {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2616,6 +2943,12 @@ class CalComponent {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2639,6 +2972,7 @@ class CalComponent {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2658,11 +2992,14 @@ class CalComponent {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2670,6 +3007,8 @@ class CalComponent {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2687,6 +3026,7 @@ class CalComponent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2732,6 +3072,7 @@ class CalComponent {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2775,15 +3116,20 @@ class CalComponent {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2824,6 +3170,7 @@ class CalComponent {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2858,6 +3205,7 @@ class CalComponent {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2877,6 +3225,7 @@ class CalComponent {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2909,6 +3258,7 @@ class CalComponent {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CalComponent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CalComponent, pspec: GObject.ParamSpec) => void)): number
@@ -2925,61 +3275,74 @@ class CalComponent {
     static new_from_string(calobj: string): CalComponent
     /**
      * Frees a list of #ECalComponentAttendee structures.
+     * @param attendee_list List of attendees
      */
     static free_attendee_list(attendee_list: CalComponentAttendee[]): void
     /**
      * Frees a list of category strings.
+     * @param categ_list List of category strings
      */
     static free_categories_list(categ_list: string[]): void
     /**
      * Frees a date/time structure.
+     * @param dt A date/time structure.
      */
     static free_datetime(dt: CalComponentDateTime): void
     /**
      * Frees a list of #ECalComponentDateTime structures as returned by the
      * e_cal_component_get_exdate_list() function.
+     * @param exdate_list List of #ECalComponentDateTime structures
      */
     static free_exdate_list(exdate_list: CalComponentDateTime[]): void
     /**
      * Frees a struct #icalgeotype structure as returned by the calendar component
      * functions.
+     * @param geo An #icalgeotype structure.
      */
     static free_geo(geo: object): void
     /**
      * Frees a struct #icaltimetype value as returned by the calendar component
      * functions.
+     * @param t An #icaltimetype structure.
      */
     static free_icaltimetype(t: object): void
     /**
      * Frees the id.
+     * @param id Component ID
      */
     static free_id(id: CalComponentId): void
     /**
      * Frees a percent value as returned by the e_cal_component_get_percent()
      * function.
+     * @param percent Percent value.
      */
     static free_percent(percent: number): void
     /**
      * Frees a list of #ECalComponentPeriod structures.
+     * @param period_list List of #ECalComponentPeriod structures
      */
     static free_period_list(period_list: CalComponentPeriod[]): void
     /**
      * Frees a priority value as returned by the e_cal_component_get_priority()
      * function.
+     * @param priority Priority value.
      */
     static free_priority(priority: number): void
     /**
      * Frees an #ECalComponentRange structure.
+     * @param range A #ECalComponentRange.
      */
     static free_range(range: CalComponentRange): void
     /**
      * Frees a sequence number value.
+     * @param sequence Sequence number value.
      */
     static free_sequence(sequence: number): void
     /**
      * Frees a list of #ECalComponentText structures.  This function should only be
      * used to free lists of text values as returned by the other getter functions
      * of #ECalComponent.
+     * @param text_list List of #ECalComponentText structures.
      */
     static free_text_list(text_list: CalComponentText[]): void
     /**
@@ -2994,8 +3357,11 @@ interface CalView_ConstructProps extends GObject.Object_ConstructProps {
     view?: object
 }
 class CalView {
+    /* Properties of ECalendar-1.2.ECalendar.CalView */
+    readonly client: Cal
+    readonly view: object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of ECalendar-1.2.ECalendar.CalView */
     /**
      * Starts a live query to the calendar/tasks backend.
@@ -3040,6 +3406,10 @@ class CalView {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3050,6 +3420,12 @@ class CalView {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3073,6 +3449,7 @@ class CalView {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3092,11 +3469,14 @@ class CalView {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3104,6 +3484,8 @@ class CalView {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3121,6 +3503,7 @@ class CalView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3166,6 +3549,7 @@ class CalView {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3209,15 +3593,20 @@ class CalView {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3258,6 +3647,7 @@ class CalView {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3292,6 +3682,7 @@ class CalView {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of ECalendar-1.2.ECalendar.CalView */
@@ -3315,6 +3706,7 @@ class CalView {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3366,10 +3758,15 @@ class CalView {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CalView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CalView, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::client", callback: (($obj: CalView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: CalView, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::view", callback: (($obj: CalView, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::view", callback: (($obj: CalView, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3381,22 +3778,22 @@ class CalView {
 }
 class CalChange {
     /* Fields of ECalendar-1.2.ECalendar.CalChange */
-    readonly comp: CalComponent
-    readonly type: CalChangeType
+    comp: CalComponent
+    type: CalChangeType
     static name: string
 }
 abstract class CalClass {
     /* Fields of ECalendar-1.2.ECalendar.CalClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly cal_opened: (ecal: Cal, status: CalendarStatus) => void
-    readonly cal_opened_ex: (ecal: Cal, error: GLib.Error) => void
-    readonly backend_error: (ecal: Cal, message: string) => void
-    readonly backend_died: (ecal: Cal) => void
+    parent_class: GObject.ObjectClass
+    cal_opened: (ecal: Cal, status: CalendarStatus) => void
+    cal_opened_ex: (ecal: Cal, error: GLib.Error) => void
+    backend_error: (ecal: Cal, message: string) => void
+    backend_died: (ecal: Cal) => void
     static name: string
 }
 abstract class CalClientClass {
     /* Fields of ECalendar-1.2.ECalendar.CalClientClass */
-    readonly parent: EDataServer.ClientClass
+    parent: EDataServer.ClientClass
     static name: string
 }
 class CalClientPrivate {
@@ -3404,9 +3801,9 @@ class CalClientPrivate {
 }
 abstract class CalClientViewClass {
     /* Fields of ECalendar-1.2.ECalendar.CalClientViewClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly progress: (view: CalClientView, percent: number, message: string) => void
-    readonly complete: (view: CalClientView, error: GLib.Error) => void
+    parent_class: GObject.ObjectClass
+    progress: (view: CalClientView, percent: number, message: string) => void
+    complete: (view: CalClientView, error: GLib.Error) => void
     static name: string
 }
 class CalClientViewPrivate {
@@ -3420,6 +3817,7 @@ class CalComponentAlarm {
     free(): void
     /**
      * Queries the action type of an alarm.
+     * @param action Return value for the alarm's action type.
      */
     get_action(action: CalComponentAlarmAction): void
     /**
@@ -3428,14 +3826,17 @@ class CalComponentAlarm {
     get_attendee_list(): /* attendee_list */ CalComponentAttendee[]
     /**
      * Queries the description property of an alarm.
+     * @param description Return value for the description property and its parameters.
      */
     get_description(description: CalComponentText): void
     /**
      * Queries the repeat/duration properties of an alarm.
+     * @param repeat Return value for the repeat/duration properties.
      */
     get_repeat(repeat: CalComponentAlarmRepeat): void
     /**
      * Queries the trigger time for an alarm.
+     * @param trigger Return value for the trigger time.
      */
     get_trigger(trigger: CalComponentAlarmTrigger): void
     /**
@@ -3448,49 +3849,54 @@ class CalComponentAlarm {
     has_attendees(): boolean
     /**
      * Sets the action type for an alarm.
+     * @param action Action type.
      */
     set_action(action: CalComponentAlarmAction): void
     /**
      * Sets the list of attendees for an alarm.
+     * @param attendee_list List of attendees.
      */
     set_attendee_list(attendee_list: CalComponentAttendee[]): void
     /**
      * Sets the description property of an alarm.
+     * @param description Description property and its parameters, or NULL for no description.
      */
     set_description(description: CalComponentText): void
     /**
      * Sets the repeat/duration values for an alarm.
+     * @param repeat Repeat/duration values.  To remove any repetitions from the alarm, set the `repeat`.repetitions to 0.
      */
     set_repeat(repeat: CalComponentAlarmRepeat): void
     /**
      * Sets the trigger time of an alarm.
+     * @param trigger Trigger time structure.
      */
     set_trigger(trigger: CalComponentAlarmTrigger): void
     static name: string
 }
 class CalComponentAlarmInstance {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentAlarmInstance */
-    readonly auid: string
-    readonly trigger: number
-    readonly occur_start: number
-    readonly occur_end: number
+    auid: string
+    trigger: number
+    occur_start: number
+    occur_end: number
     static name: string
 }
 class CalComponentAlarmRepeat {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentAlarmRepeat */
-    readonly repetitions: number
-    readonly duration: object
+    repetitions: number
+    duration: object
     static name: string
 }
 class CalComponentAlarmTrigger {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentAlarmTrigger */
-    readonly type: CalComponentAlarmTriggerType
+    type: CalComponentAlarmTriggerType
     static name: string
 }
 class CalComponentAlarms {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentAlarms */
-    readonly comp: CalComponent
-    readonly alarms: object[]
+    comp: CalComponent
+    alarms: object[]
     /* Methods of ECalendar-1.2.ECalendar.CalComponentAlarms */
     /**
      * Frees a #ECalComponentAlarms structure.
@@ -3500,45 +3906,45 @@ class CalComponentAlarms {
 }
 class CalComponentAttendee {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentAttendee */
-    readonly value: string
-    readonly member: string
-    readonly rsvp: boolean
-    readonly delto: string
-    readonly delfrom: string
-    readonly sentby: string
-    readonly cn: string
-    readonly language: string
+    value: string
+    member: string
+    rsvp: boolean
+    delto: string
+    delfrom: string
+    sentby: string
+    cn: string
+    language: string
     static name: string
 }
 abstract class CalComponentClass {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CalComponentDateTime {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentDateTime */
-    readonly value: object
-    readonly tzid: string
+    value: object
+    tzid: string
     static name: string
 }
 class CalComponentId {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentId */
-    readonly uid: string
-    readonly rid: string
+    uid: string
+    rid: string
     static name: string
 }
 class CalComponentOrganizer {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentOrganizer */
-    readonly value: string
-    readonly sentby: string
-    readonly cn: string
-    readonly language: string
+    value: string
+    sentby: string
+    cn: string
+    language: string
     static name: string
 }
 class CalComponentPeriod {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentPeriod */
-    readonly type: CalComponentPeriodType
-    readonly start: object
+    type: CalComponentPeriodType
+    start: object
     static name: string
 }
 class CalComponentPrivate {
@@ -3546,14 +3952,14 @@ class CalComponentPrivate {
 }
 class CalComponentRange {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentRange */
-    readonly type: CalComponentRangeType
-    readonly datetime: CalComponentDateTime
+    type: CalComponentRangeType
+    datetime: CalComponentDateTime
     static name: string
 }
 class CalComponentText {
     /* Fields of ECalendar-1.2.ECalendar.CalComponentText */
-    readonly value: string
-    readonly altrep: string
+    value: string
+    altrep: string
     static name: string
 }
 class CalPrivate {
@@ -3561,10 +3967,10 @@ class CalPrivate {
 }
 abstract class CalViewClass {
     /* Fields of ECalendar-1.2.ECalendar.CalViewClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly view_progress: (view: CalView, message: string, percent: number) => void
-    readonly view_done: (view: CalView, status: CalendarStatus) => void
-    readonly view_complete: (view: CalView, status: CalendarStatus, error_msg: string) => void
+    parent_class: GObject.ObjectClass
+    view_progress: (view: CalView, message: string, percent: number) => void
+    view_done: (view: CalView, status: CalendarStatus) => void
+    view_complete: (view: CalView, status: CalendarStatus, error_msg: string) => void
     static name: string
 }
 class CalViewPrivate {

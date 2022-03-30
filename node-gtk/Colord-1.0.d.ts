@@ -682,14 +682,17 @@ class Client {
      */
     readonly systemVendor: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.Client */
     /**
      * Connects to the colord daemon.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     connectFinish(res: Gio.AsyncResult): boolean
     /**
@@ -697,14 +700,21 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     connectSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Creates a color device.
+     * @param id identifier for the device
+     * @param scope the scope of the device
+     * @param properties properties to   set on the device, or %NULL
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     createDevice(id: string, scope: ObjectScope, properties?: GLib.HashTable | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     createDeviceFinish(res: Gio.AsyncResult): Device
     /**
@@ -712,22 +722,37 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param id identifier for the device
+     * @param scope the scope of the device
+     * @param properties properties to   set on the device, or %NULL
+     * @param cancellable a #GCancellable, or %NULL
      */
     createDeviceSync(id: string, scope: ObjectScope, properties?: GLib.HashTable | null, cancellable?: Gio.Cancellable | null): Device
     /**
      * Creates a color profile.
+     * @param id identifier for the profile
+     * @param scope the scope of the profile
+     * @param properties properties to   set on the profile, or %NULL
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     createProfile(id: string, scope: ObjectScope, properties?: GLib.HashTable | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     createProfileFinish(res: Gio.AsyncResult): Profile
     /**
      * Creates a color profile for an #CdIcc Object.
+     * @param icc #CdIcc object
+     * @param scope the scope of the profile
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     createProfileForIcc(icc: Icc, scope: ObjectScope, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     createProfileForIccFinish(res: Gio.AsyncResult): Profile
     /**
@@ -735,6 +760,9 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param icc A #CdIcc
+     * @param scope the scope of the profile
+     * @param cancellable a #GCancellable, or %NULL
      */
     createProfileForIccSync(icc: Icc, scope: ObjectScope, cancellable?: Gio.Cancellable | null): Profile
     /**
@@ -742,14 +770,22 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param id identifier for the device
+     * @param scope the scope of the profile
+     * @param properties properties to   set on the profile, or %NULL
+     * @param cancellable a #GCancellable, or %NULL
      */
     createProfileSync(id: string, scope: ObjectScope, properties?: GLib.HashTable | null, cancellable?: Gio.Cancellable | null): Profile
     /**
      * Deletes a device.
+     * @param device a #CdDevice
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     deleteDevice(device: Device, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     deleteDeviceFinish(res: Gio.AsyncResult): boolean
     /**
@@ -757,14 +793,20 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param device a #CdDevice.
+     * @param cancellable a #GCancellable, or %NULL
      */
     deleteDeviceSync(device: Device, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Deletes a profile.
+     * @param profile a #CdProfile
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     deleteProfile(profile: Profile, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     deleteProfileFinish(res: Gio.AsyncResult): boolean
     /**
@@ -772,18 +814,28 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param profile a #CdProfile.
+     * @param cancellable a #GCancellable, or %NULL
      */
     deleteProfileSync(profile: Profile, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Finds a device by an ID.
+     * @param id a device id
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     findDevice(id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finds a color device that has a property value.
+     * @param key the device property key
+     * @param value the device property value
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     findDeviceByProperty(key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     findDeviceByPropertyFinish(res: Gio.AsyncResult): Device
     /**
@@ -791,10 +843,14 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param key The device property key.
+     * @param value The device property value.
+     * @param cancellable a #GCancellable or %NULL
      */
     findDeviceByPropertySync(key: string, value: string, cancellable?: Gio.Cancellable | null): Device
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     findDeviceFinish(res: Gio.AsyncResult): Device
     /**
@@ -802,18 +858,27 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param id The device ID.
+     * @param cancellable a #GCancellable or %NULL
      */
     findDeviceSync(id: string, cancellable?: Gio.Cancellable | null): Device
     /**
      * Finds a profile by an ID.
+     * @param id a profile id
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     findProfile(id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finds a profile by a filename.
+     * @param filename a profile filename
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     findProfileByFilename(filename: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     findProfileByFilenameFinish(res: Gio.AsyncResult): Profile
     /**
@@ -821,14 +886,21 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param filename filename for the profile
+     * @param cancellable a #GCancellable, or %NULL
      */
     findProfileByFilenameSync(filename: string, cancellable?: Gio.Cancellable | null): Profile
     /**
      * Finds a color profile that has a property value.
+     * @param key the profile property key
+     * @param value the profile property value
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     findProfileByProperty(key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     findProfileByPropertyFinish(res: Gio.AsyncResult): Profile
     /**
@@ -836,10 +908,14 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param key The profile property key.
+     * @param value The profile property value.
+     * @param cancellable a #GCancellable or %NULL
      */
     findProfileByPropertySync(key: string, value: string, cancellable?: Gio.Cancellable | null): Profile
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     findProfileFinish(res: Gio.AsyncResult): Profile
     /**
@@ -847,14 +923,20 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param id id for the profile
+     * @param cancellable a #GCancellable, or %NULL
      */
     findProfileSync(id: string, cancellable?: Gio.Cancellable | null): Profile
     /**
      * Finds a sensor by an ID.
+     * @param id a sensor id
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     findSensor(id: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     findSensorFinish(res: Gio.AsyncResult): Sensor
     /**
@@ -862,6 +944,8 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param id The sensor ID.
+     * @param cancellable a #GCancellable or %NULL
      */
     findSensorSync(id: string, cancellable?: Gio.Cancellable | null): Sensor
     /**
@@ -874,14 +958,20 @@ class Client {
     getDaemonVersion(): string
     /**
      * Gets an array of color devices.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getDevices(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets an array of color devices.
+     * @param kind the type of device.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getDevicesByKind(kind: DeviceKind, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getDevicesByKindFinish(res: Gio.AsyncResult): Device[]
     /**
@@ -889,10 +979,13 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param kind a #CdDeviceKind, e.g. %CD_DEVICE_KIND_DISPLAY
+     * @param cancellable a #GCancellable or %NULL
      */
     getDevicesByKindSync(kind: DeviceKind, cancellable?: Gio.Cancellable | null): Device[]
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getDevicesFinish(res: Gio.AsyncResult): Device[]
     /**
@@ -900,6 +993,7 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable, or %NULL
      */
     getDevicesSync(cancellable?: Gio.Cancellable | null): Device[]
     /**
@@ -910,10 +1004,13 @@ class Client {
     getHasServer(): boolean
     /**
      * Gets an array of color profiles.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getProfiles(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getProfilesFinish(res: Gio.AsyncResult): Profile[]
     /**
@@ -921,14 +1018,18 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable, or %NULL
      */
     getProfilesSync(cancellable?: Gio.Cancellable | null): Profile[]
     /**
      * Gets an array of color sensors.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getSensors(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getSensorsFinish(res: Gio.AsyncResult): Sensor[]
     /**
@@ -936,14 +1037,19 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable, or %NULL
      */
     getSensorsSync(cancellable?: Gio.Cancellable | null): Sensor[]
     /**
      * Finds a standard profile space.
+     * @param standardSpace a profile id
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getStandardSpace(standardSpace: StandardSpace, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getStandardSpaceFinish(res: Gio.AsyncResult): Profile
     /**
@@ -951,6 +1057,8 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param standardSpace standard colorspace value
+     * @param cancellable a #GCancellable, or %NULL
      */
     getStandardSpaceSync(standardSpace: StandardSpace, cancellable?: Gio.Cancellable | null): Profile
     /**
@@ -966,10 +1074,14 @@ class Client {
      * 
      * If the profile should be accessible for all users, then call
      * cd_profile_install_system_wide() on the result.
+     * @param file a #GFile
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     importProfile(file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     importProfileFinish(res: Gio.AsyncResult): Profile
     /**
@@ -977,6 +1089,8 @@ class Client {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param file A #GFile
+     * @param cancellable a #GCancellable, or %NULL
      */
     importProfileSync(file: Gio.File, cancellable?: Gio.Cancellable | null): Profile
     /* Methods of GObject-2.0.GObject.Object */
@@ -1014,6 +1128,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1024,6 +1142,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1047,6 +1171,7 @@ class Client {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1066,11 +1191,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1078,6 +1206,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1095,6 +1225,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1140,6 +1271,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1183,15 +1315,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1232,6 +1369,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1266,6 +1404,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Colord-1.0.Colord.Client */
@@ -1279,6 +1418,7 @@ class Client {
     emit(sigName: "changed"): void
     /**
      * The ::device-added signal is emitted when a device is added.
+     * @param device the #CdDevice that was added.
      */
     connect(sigName: "device-added", callback: ((device: Device) => void)): number
     on(sigName: "device-added", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -1287,6 +1427,7 @@ class Client {
     emit(sigName: "device-added", device: Device): void
     /**
      * The ::device-changed signal is emitted when a device is changed.
+     * @param device the #CdDevice that was changed.
      */
     connect(sigName: "device-changed", callback: ((device: Device) => void)): number
     on(sigName: "device-changed", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -1295,6 +1436,7 @@ class Client {
     emit(sigName: "device-changed", device: Device): void
     /**
      * The ::device-removed signal is emitted when a device is removed.
+     * @param device the #CdDevice that was removed.
      */
     connect(sigName: "device-removed", callback: ((device: Device) => void)): number
     on(sigName: "device-removed", callback: (device: Device) => void, after?: boolean): NodeJS.EventEmitter
@@ -1303,6 +1445,7 @@ class Client {
     emit(sigName: "device-removed", device: Device): void
     /**
      * The ::profile-added signal is emitted when a profile is added.
+     * @param profile the #CdProfile that was added.
      */
     connect(sigName: "profile-added", callback: ((profile: Profile) => void)): number
     on(sigName: "profile-added", callback: (profile: Profile) => void, after?: boolean): NodeJS.EventEmitter
@@ -1311,6 +1454,7 @@ class Client {
     emit(sigName: "profile-added", profile: Profile): void
     /**
      * The ::profile-changed signal is emitted when a profile is changed.
+     * @param profile the #CdProfile that was removed.
      */
     connect(sigName: "profile-changed", callback: ((profile: Profile) => void)): number
     on(sigName: "profile-changed", callback: (profile: Profile) => void, after?: boolean): NodeJS.EventEmitter
@@ -1319,6 +1463,7 @@ class Client {
     emit(sigName: "profile-changed", profile: Profile): void
     /**
      * The ::profile-added signal is emitted when a profile is removed.
+     * @param profile the #CdProfile that was removed.
      */
     connect(sigName: "profile-removed", callback: ((profile: Profile) => void)): number
     on(sigName: "profile-removed", callback: (profile: Profile) => void, after?: boolean): NodeJS.EventEmitter
@@ -1327,6 +1472,7 @@ class Client {
     emit(sigName: "profile-removed", profile: Profile): void
     /**
      * The ::sensor-added signal is emitted when a sensor is added.
+     * @param sensor the #CdSensor that was added.
      */
     connect(sigName: "sensor-added", callback: ((sensor: Sensor) => void)): number
     on(sigName: "sensor-added", callback: (sensor: Sensor) => void, after?: boolean): NodeJS.EventEmitter
@@ -1335,6 +1481,7 @@ class Client {
     emit(sigName: "sensor-added", sensor: Sensor): void
     /**
      * The ::sensor-changed signal is emitted when a sensor is changed.
+     * @param sensor the #CdSensor that was removed.
      */
     connect(sigName: "sensor-changed", callback: ((sensor: Sensor) => void)): number
     on(sigName: "sensor-changed", callback: (sensor: Sensor) => void, after?: boolean): NodeJS.EventEmitter
@@ -1343,6 +1490,7 @@ class Client {
     emit(sigName: "sensor-changed", sensor: Sensor): void
     /**
      * The ::sensor-added signal is emitted when a sensor is removed.
+     * @param sensor the #CdSensor that was removed.
      */
     connect(sigName: "sensor-removed", callback: ((sensor: Sensor) => void)): number
     on(sigName: "sensor-removed", callback: (sensor: Sensor) => void, after?: boolean): NodeJS.EventEmitter
@@ -1378,6 +1526,7 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1418,11 +1567,13 @@ class Client {
     static new(): Client
     /**
      * Converts a string to a #CdClientError.
+     * @param errorDesc 
      */
     static errorFromString(errorDesc: string): ClientError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdClientError to a string.
+     * @param errorEnum 
      */
     static errorToString(errorEnum: ClientError): string
     static $gtype: GObject.Type
@@ -1506,14 +1657,19 @@ class Device {
      */
     readonly vendor: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.Device */
     /**
      * Adds a profile to a device.
+     * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     addProfile(relation: DeviceRelation, profile: Profile, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     addProfileFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1521,14 +1677,20 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable or %NULL
      */
     addProfileSync(relation: DeviceRelation, profile: Profile, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Connects to the object and fills up initial properties.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     connectFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1536,10 +1698,12 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     connectSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Tests two devices for equality.
+     * @param device2 another #CdDevice instance.
      */
     equal(device2: Device): boolean
     /**
@@ -1586,6 +1750,7 @@ class Device {
     getMetadata(): GLib.HashTable
     /**
      * Returns the device metadata for a specific key.
+     * @param key a key for the metadata dictionary
      */
     getMetadataItem(key: string): string
     /**
@@ -1610,10 +1775,14 @@ class Device {
     getOwner(): number
     /**
      * Gets the preferred profile for some qualifiers.
+     * @param qualifiers a set of qualifiers that can included wildcards
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getProfileForQualifiers(qualifiers: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getProfileForQualifiersFinish(res: Gio.AsyncResult): Profile
     /**
@@ -1621,14 +1790,20 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param qualifiers a set of qualifiers that can included wildcards
+     * @param cancellable a #GCancellable or %NULL
      */
     getProfileForQualifiersSync(qualifiers: string, cancellable?: Gio.Cancellable | null): Profile
     /**
      * Gets the property relationship to the device.
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getProfileRelation(profile: Profile, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getProfileRelationFinish(res: Gio.AsyncResult): DeviceRelation
     /**
@@ -1636,6 +1811,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param profile a #CdProfile instance.
+     * @param cancellable a #GCancellable or %NULL
      */
     getProfileRelationSync(profile: Profile, cancellable?: Gio.Cancellable | null): DeviceRelation
     /**
@@ -1664,10 +1841,14 @@ class Device {
     getVendor(): string
     /**
      * Makes an already added profile default for a device.
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     makeProfileDefault(profile: Profile, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     makeProfileDefaultFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1675,15 +1856,20 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable or %NULL
      */
     makeProfileDefaultSync(profile: Profile, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets up the device for profiling and causes no profiles to be
      * returned if cd_device_get_profile_for_qualifiers_sync() is used.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     profilingInhibit(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     profilingInhibitFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1692,15 +1878,19 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     profilingInhibitSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Restores the device after profiling and causes normal profiles to be
      * returned if cd_device_get_profile_for_qualifiers_sync() is used.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     profilingUninhibit(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     profilingUninhibitFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1709,14 +1899,19 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     profilingUninhibitSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes a profile from a device.
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     removeProfile(profile: Profile, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     removeProfileFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1724,6 +1919,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param profile a #CdProfile instance
+     * @param cancellable a #GCancellable or %NULL
      */
     removeProfileSync(profile: Profile, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1731,14 +1928,20 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param colorspace The device colorspace, e.g. #CD_COLORSPACE_RGB
+     * @param cancellable a #GCancellable or %NULL
      */
     setColorspaceSync(colorspace: Colorspace, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Enables or disables a device.
+     * @param enabled the enabled state
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     setEnabled(enabled: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     setEnabledFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1746,6 +1949,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param enabled the enabled state
+     * @param cancellable a #GCancellable or %NULL
      */
     setEnabledSync(enabled: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1753,6 +1958,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param kind The device kind, e.g. #CD_DEVICE_KIND_DISPLAY
+     * @param cancellable a #GCancellable or %NULL
      */
     setKindSync(kind: DeviceKind, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1760,6 +1967,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param mode The device kind, e.g. #CD_DEVICE_MODE_VIRTUAL
+     * @param cancellable a #GCancellable or %NULL
      */
     setModeSync(mode: DeviceMode, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1767,18 +1976,26 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param value The model.
+     * @param cancellable a #GCancellable or %NULL
      */
     setModelSync(value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the object path of the device.
+     * @param objectPath The colord object path.
      */
     setObjectPath(objectPath: string): void
     /**
      * Sets a property on the device.
+     * @param key a property key
+     * @param value a property key
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     setProperty(key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     setPropertyFinish(res: Gio.AsyncResult): boolean
     /**
@@ -1786,6 +2003,9 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param key The property key
+     * @param value The property value
+     * @param cancellable a #GCancellable or %NULL
      */
     setPropertySync(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1793,6 +2013,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param value The string value.
+     * @param cancellable a #GCancellable or %NULL
      */
     setSerialSync(value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1800,6 +2022,8 @@ class Device {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param value The string value.
+     * @param cancellable a #GCancellable or %NULL
      */
     setVendorSync(value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1841,6 +2065,10 @@ class Device {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1851,6 +2079,12 @@ class Device {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1874,6 +2108,7 @@ class Device {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1893,11 +2128,14 @@ class Device {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1905,6 +2143,8 @@ class Device {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1922,6 +2162,7 @@ class Device {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1967,6 +2208,7 @@ class Device {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2010,15 +2252,20 @@ class Device {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2059,6 +2306,7 @@ class Device {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2093,6 +2341,7 @@ class Device {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Colord-1.0.Colord.Device */
@@ -2133,6 +2382,7 @@ class Device {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2244,23 +2494,28 @@ class Device {
     static newWithObjectPath(objectPath: string): Device
     /**
      * Converts a string to a #CdDeviceError.
+     * @param errorDesc 
      */
     static errorFromString(errorDesc: string): DeviceError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdDeviceError to a string.
+     * @param errorEnum 
      */
     static errorToString(errorEnum: DeviceError): string
     /**
      * Converts a string to a #CdDeviceKind.
+     * @param kind 
      */
     static kindFromString(kind: string): DeviceKind
     /**
      * Gets the most suitable profile kind for a device kind.
+     * @param deviceKind A #CdDeviceKind
      */
     static kindToProfileKind(deviceKind: DeviceKind): ProfileKind
     /**
      * Converts a #CdDeviceKind to a string.
+     * @param kindEnum 
      */
     static kindToString(kindEnum: DeviceKind): string
     static modeFromString(deviceMode: string): DeviceMode
@@ -2273,7 +2528,7 @@ interface Edid_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Edid {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.Edid */
     /**
      * Gets the blue primary.
@@ -2329,6 +2584,7 @@ class Edid {
     getWidth(): number
     /**
      * Parses the EDID.
+     * @param edidData data to parse
      */
     parse(edidData: any): boolean
     /**
@@ -2370,6 +2626,10 @@ class Edid {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2380,6 +2640,12 @@ class Edid {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2403,6 +2669,7 @@ class Edid {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2422,11 +2689,14 @@ class Edid {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2434,6 +2704,8 @@ class Edid {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2451,6 +2723,7 @@ class Edid {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2496,6 +2769,7 @@ class Edid {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2539,15 +2813,20 @@ class Edid {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2588,6 +2867,7 @@ class Edid {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2622,6 +2902,7 @@ class Edid {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2653,6 +2934,7 @@ class Edid {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2698,11 +2980,13 @@ class Icc {
     version: number
     readonly white: ColorXYZ
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.Icc */
     /**
      * Sets an item of data to the profile metadata, overwriting it if
      * it already exists.
+     * @param key the metadata key
+     * @param value the UTF-8 metadata value
      */
     addMetadata(key: string, value: string): void
     /**
@@ -2711,14 +2995,21 @@ class Icc {
     createDefault(): boolean
     /**
      * Creates a default sRGB ICC profile.
+     * @param flags a set of #CdIccLoadFlags
      */
     createDefaultFull(flags: IccLoadFlags): boolean
     /**
      * Creates an ICC profile from EDID data.
+     * @param gammaValue approximate device gamma
+     * @param red primary color value
+     * @param green primary color value
+     * @param blue primary color value
+     * @param white whitepoint value
      */
     createFromEdid(gammaValue: number, red: ColorYxy, green: ColorYxy, blue: ColorYxy, white: ColorYxy): boolean
     /**
      * Creates an ICC profile from EDID data.
+     * @param edid EDID data
      */
     createFromEdidData(edid: Edid): boolean
     /**
@@ -2759,6 +3050,7 @@ class Icc {
      * Gets the profile copyright.
      * If the translated text is not available in the selected locale then the
      * default untranslated (en_US) text is returned.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      */
     getCopyright(locale: string): string
     /**
@@ -2769,6 +3061,7 @@ class Icc {
      * Gets the profile description.
      * If the translated text is not available in the selected locale then the
      * default untranslated (en_US) text is returned.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      */
     getDescription(locale: string): string
     /**
@@ -2794,6 +3087,7 @@ class Icc {
      * Gets the profile manufacturer.
      * If the translated text is not available in the selected locale then the
      * default untranslated (en_US) text is returned.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      */
     getManufacturer(locale: string): string
     /**
@@ -2802,12 +3096,14 @@ class Icc {
     getMetadata(): GLib.HashTable
     /**
      * Gets an item of data from the ICC metadata store.
+     * @param key the dictionary key
      */
     getMetadataItem(key: string): string
     /**
      * Gets the profile model.
      * If the translated text is not available in the selected locale then the
      * default untranslated (en_US) text is returned.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      */
     getModel(locale: string): string
     /**
@@ -2824,6 +3120,7 @@ class Icc {
     getRed(): ColorXYZ
     /**
      * Generates a response curve of a specified size.
+     * @param size the size of the curve to generate
      */
     getResponse(size: number): ColorRGB[]
     /**
@@ -2833,6 +3130,7 @@ class Icc {
     /**
      * Returns the raw data for the specific tag.
      * Most users do not need to do this.
+     * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
      */
     getTagData(tag: string): any
     /**
@@ -2847,6 +3145,7 @@ class Icc {
     getTemperature(): number
     /**
      * Gets the video card calibration data from the profile.
+     * @param size the desired size of the table data
      */
     getVcgt(size: number): ColorRGB[]
     /**
@@ -2865,14 +3164,21 @@ class Icc {
     getWhite(): ColorXYZ
     /**
      * Loads an ICC profile from raw byte data.
+     * @param data binary data
+     * @param flags a set of #CdIccLoadFlags
      */
     loadData(data: Uint8Array, flags: IccLoadFlags): boolean
     /**
      * Loads an ICC profile from an open file descriptor.
+     * @param fd a file descriptor
+     * @param flags a set of #CdIccLoadFlags
      */
     loadFd(fd: number, flags: IccLoadFlags): boolean
     /**
      * Loads an ICC profile from a local or remote file.
+     * @param file a #GFile
+     * @param flags a set of #CdIccLoadFlags
+     * @param cancellable A #GCancellable or %NULL
      */
     loadFile(file: Gio.File, flags: IccLoadFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2890,96 +3196,126 @@ class Icc {
      * 
      * Additionally, this function cannot be called more than once, and also can't
      * be called if cd_icc_load_file() has previously been used on the `icc` object.
+     * @param handle a cmsHPROFILE instance
+     * @param flags a set of #CdIccLoadFlags
      */
     loadHandle(handle: object | null, flags: IccLoadFlags): boolean
     /**
      * Removes an item of metadata.
+     * @param key the metadata key
      */
     removeMetadata(key: string): void
     /**
      * Saves an ICC profile to an allocated memory location.
      * 
      * Return vale: A #GBytes structure, or %NULL for error
+     * @param flags a set of #CdIccSaveFlags
      */
     saveData(flags: IccSaveFlags): any
     /**
      * Saves an ICC profile to the default per-user location.
      * 
      * Return vale: %TRUE for success.
+     * @param flags a set of #CdIccSaveFlags
+     * @param cancellable A #GCancellable or %NULL
      */
     saveDefault(flags: IccSaveFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Saves an ICC profile to a local or remote file.
      * 
      * Return vale: %TRUE for success.
+     * @param file a #GFile
+     * @param flags a set of #CdIccSaveFlags
+     * @param cancellable A #GCancellable or %NULL
      */
     saveFile(file: Gio.File, flags: IccSaveFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the characterization data used to build the profile.
+     * @param data TI3 string data, or %NULL
      */
     setCharacterizationData(data: string): void
     /**
      * Sets the colorspace kind.
+     * @param colorspace the profile colorspace, e.g. %CD_COLORSPACE_RGB
      */
     setColorspace(colorspace: Colorspace): void
     /**
      * Sets the profile _copyright for a specific locale.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
+     * @param value New UTF-8 string value
      */
     setCopyright(locale: string, value?: string | null): void
     /**
      * Sets the profile copyrights for specific locales.
+     * @param values New translated values, with the key being the locale.
      */
     setCopyrightItems(values: GLib.HashTable): void
     /**
      * Sets the ICC creation date and time.
+     * @param creationTime 
      */
     setCreated(creationTime: GLib.DateTime): void
     /**
      * Sets the profile description for a specific locale.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
+     * @param value New UTF-8 string value
      */
     setDescription(locale: string, value?: string | null): void
     /**
      * Sets the profile descriptions for specific locales.
+     * @param values New translated values, with the key being the locale.
      */
     setDescriptionItems(values: GLib.HashTable): void
     /**
      * Sets the filename, which may be required if the ICC profile has been loaded
      * using cd_icc_load_fd() from a disk cache.
+     * @param filename a filename, or %NULL
      */
     setFilename(filename: string): void
     /**
      * Sets the profile kind.
+     * @param kind the profile kind, e.g. %CD_PROFILE_KIND_DISPLAY_DEVICE
      */
     setKind(kind: ProfileKind): void
     /**
      * Sets the profile manufacturer for a specific locale.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
+     * @param value New UTF-8 string value
      */
     setManufacturer(locale: string, value?: string | null): void
     /**
      * Sets the profile manufacturers for specific locales.
+     * @param values New translated values, with the key being the locale.
      */
     setManufacturerItems(values: GLib.HashTable): void
     /**
      * Sets the profile model for a specific locale.
+     * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
+     * @param value New UTF-8 string value
      */
     setModel(locale: string, value?: string | null): void
     /**
      * Sets the profile models for specific locales.
+     * @param values New translated values, with the key being the locale.
      */
     setModelItems(values: GLib.HashTable): void
     /**
      * Sets the raw data for the specific tag.
      * Most users do not need to do this.
+     * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
+     * @param data a variable sized data entry
      */
     setTagData(tag: string, data: any): boolean
     /**
      * Sets the Video Card Gamma Table from the profile.
      * 
      * Return vale: %TRUE for success.
+     * @param vcgt video card calibration data
      */
     setVcgt(vcgt: ColorRGB[]): boolean
     /**
      * Sets the profile version.
+     * @param version the profile version, e.g. 2.1 or 4.0
      */
     setVersion(version: number): void
     /**
@@ -3021,6 +3357,10 @@ class Icc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3031,6 +3371,12 @@ class Icc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3054,6 +3400,7 @@ class Icc {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3073,11 +3420,14 @@ class Icc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3085,6 +3435,8 @@ class Icc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3102,6 +3454,7 @@ class Icc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3147,6 +3500,7 @@ class Icc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3190,15 +3544,20 @@ class Icc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3239,6 +3598,7 @@ class Icc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3273,6 +3633,7 @@ class Icc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3304,6 +3665,7 @@ class Icc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3423,24 +3785,31 @@ class It8 {
      */
     readonly title: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.It8 */
     /**
      * Adds a reading to this object. If either of `rgb` or `xyz` is NULL then
      * a black reading (0.0, 0.0, 0.0) is added instead.
+     * @param rgb a #CdColorRGB, or %NULL
+     * @param xyz a #CdColorXYZ, or %NULL
      */
     addData(rgb: ColorRGB, xyz: ColorXYZ): void
     /**
      * Sets any extra options that have to be set in the CCMX file
+     * @param option A IT8 option, e.g. "TYPE_LCD"
      */
     addOption(option: string): void
     /**
      * Adds a spectrum to the spectral array.
+     * @param spectrum the spectral data
      */
     addSpectrum(spectrum: Spectrum): void
     /**
      * Gets a specific bit of data from this object.
      * The returned data are absolute readings and are not normalised.
+     * @param idx the item index
+     * @param rgb the returned RGB value
+     * @param xyz the returned XYZ value
      */
     getDataItem(idx: number, rgb: ColorRGB, xyz: ColorXYZ): boolean
     /**
@@ -3486,6 +3855,7 @@ class It8 {
     getSpectrumArray(): Spectrum[]
     /**
      * Gets a specific spectrum in an IT8 file.
+     * @param id the spectrum ID value
      */
     getSpectrumById(id: string): Spectrum
     /**
@@ -3494,68 +3864,87 @@ class It8 {
     getTitle(): string
     /**
      * Gets the XYZ value for a specific RGB value.
+     * @param r the red value
+     * @param g the green value
+     * @param b the blue value
+     * @param delta the smallest difference between colors, e.g. 0.01f
      */
     getXyzForRgb(r: number, g: number, b: number, delta: number): ColorXYZ
     /**
      * Finds an option in the file.
+     * @param option a option, e.g. "TYPE_CRT"
      */
     hasOption(option: string): boolean
     /**
      * Loads a it8 file from data.
+     * @param data text data
      */
     loadFromData(data: string[]): boolean
     /**
      * Loads a it8 file from disk.
+     * @param file a #GFile
      */
     loadFromFile(file: Gio.File): boolean
     /**
      * Saves a it8 file to an area of memory.
+     * @param data a pointer to returned data
      */
     saveToData(data: string[]): boolean
     /**
      * Saves a it8 file to disk
+     * @param file a #GFile
      */
     saveToFile(file: Gio.File): boolean
     /**
      * Sets if the 'CREATED' attribute should be written. This is mainly useful
      * in the self test programs where we want to string compare the output data
      * with a known reference.
+     * @param enableCreated Is 'CREATED' should be written
      */
     setEnableCreated(enableCreated: boolean): void
     /**
      * Sets the measuring instrument that created the .it8 file
+     * @param instrument the instruemnt name, e.g. "huey"
      */
     setInstrument(instrument: string): void
     /**
      * Set the kind of IT8 file.
+     * @param kind a #CdIt8Kind, e.g %CD_IT8_KIND_TI3.
      */
     setKind(kind: It8Kind): void
     /**
      * Set the calibration matrix in the it8 file.
+     * @param matrix a #CdMat3x3.
      */
     setMatrix(matrix: Mat3x3): void
     /**
      * Sets if normalized data should be written to the .it8 file.
+     * @param normalized If the data is normalized
      */
     setNormalized(normalized: boolean): void
     /**
      * Sets the program name that created the .it8 file
+     * @param originator the program name, e.g. "gcm-calibrate"
      */
     setOriginator(originator: string): void
     /**
      * Sets the reference that as used to create the .it8 reference
+     * @param reference the instruemnt name, e.g. "colormunki"
      */
     setReference(reference: string): void
     /**
      * Sets if spectral data should be written to the .it8 file.
+     * @param spectral If the data is spectral
      */
     setSpectral(spectral: boolean): void
     /**
      * Set the spectral data
+     * @param data the spectral data
      */
     setSpectrumArray(data: Spectrum[]): void
     /**
      * Sets the display name for the file.
+     * @param title the title name, e.g. "Factory calibration"
      */
     setTitle(title: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3593,6 +3982,10 @@ class It8 {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3603,6 +3996,12 @@ class It8 {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3626,6 +4025,7 @@ class It8 {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3645,11 +4045,14 @@ class It8 {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3657,6 +4060,8 @@ class It8 {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3674,6 +4079,7 @@ class It8 {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3719,6 +4125,7 @@ class It8 {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3762,15 +4169,20 @@ class It8 {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3811,6 +4223,7 @@ class It8 {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3845,6 +4258,7 @@ class It8 {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3876,6 +4290,7 @@ class It8 {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4003,14 +4418,17 @@ class Profile {
      */
     readonly warnings: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.Profile */
     /**
      * Connects to the object and fills up initial properties.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     connectFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4018,10 +4436,12 @@ class Profile {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     connectSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Tests two profiles for equality.
+     * @param profile2 another #CdProfile instance.
      */
     equal(profile2: Profile): boolean
     /**
@@ -4071,6 +4491,7 @@ class Profile {
     getMetadata(): GLib.HashTable
     /**
      * Returns the profile metadata for a specific key.
+     * @param key a key for the metadata dictionary
      */
     getMetadataItem(key: string): string
     /**
@@ -4103,10 +4524,13 @@ class Profile {
     hasAccess(): boolean
     /**
      * Sets the profile system wide.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     installSystemWide(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     installSystemWideFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4114,22 +4538,31 @@ class Profile {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     installSystemWideSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Loads a local ICC object from the abstract profile.
+     * @param flags options for loading the profile
+     * @param cancellable A #GCancellable, or %NULL
      */
     loadIcc(flags: IccLoadFlags, cancellable?: Gio.Cancellable | null): Icc
     /**
      * Sets the object path of the profile.
+     * @param objectPath The colord object path.
      */
     setObjectPath(objectPath: string): void
     /**
      * Deletes a color device.
+     * @param key a key name
+     * @param value a key value
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     setProperty(key: string, value: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     setPropertyFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4137,6 +4570,9 @@ class Profile {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param key The key
+     * @param value The value
+     * @param cancellable a #GCancellable or %NULL
      */
     setPropertySync(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -4178,6 +4614,10 @@ class Profile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4188,6 +4628,12 @@ class Profile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4211,6 +4657,7 @@ class Profile {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4230,11 +4677,14 @@ class Profile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4242,6 +4692,8 @@ class Profile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4259,6 +4711,7 @@ class Profile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4304,6 +4757,7 @@ class Profile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4347,15 +4801,20 @@ class Profile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4396,6 +4855,7 @@ class Profile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4430,6 +4890,7 @@ class Profile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Colord-1.0.Colord.Profile */
@@ -4470,6 +4931,7 @@ class Profile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -4566,29 +5028,35 @@ class Profile {
     static newWithObjectPath(objectPath: string): Profile
     /**
      * Converts a string to a #CdProfileError.
+     * @param errorDesc 
      */
     static errorFromString(errorDesc: string): ProfileError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdProfileError to a string.
+     * @param errorEnum 
      */
     static errorToString(errorEnum: ProfileError): string
     static kindFromString(profileKind: string): ProfileKind
     static kindToString(profileKind: ProfileKind): string
     /**
      * Converts a string to a #CdProfileQuality.
+     * @param quality 
      */
     static qualityFromString(quality: string): ProfileQuality
     /**
      * Converts a #CdProfileQuality to a string.
+     * @param qualityEnum 
      */
     static qualityToString(qualityEnum: ProfileQuality): string
     /**
      * Converts a string to a #CdProfileWarning.
+     * @param type 
      */
     static warningFromString(type: string): ProfileWarning
     /**
      * Converts a #CdProfileWarning to a string.
+     * @param kindEnum 
      */
     static warningToString(kindEnum: ProfileWarning): string
     static $gtype: GObject.Type
@@ -4651,14 +5119,17 @@ class Sensor {
      */
     readonly vendor: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Colord-1.0.Colord.Sensor */
     /**
      * Connects to the sensor.
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback the function to run on completion
      */
     connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     connectFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4666,10 +5137,12 @@ class Sensor {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     connectSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Tests two sensors for equality.
+     * @param sensor2 another #CdSensor instance.
      */
     equal(sensor2: Sensor): boolean
     /**
@@ -4702,6 +5175,7 @@ class Sensor {
     getMetadata(): GLib.HashTable
     /**
      * Returns the sensor metadata for a specific key.
+     * @param key a key for the metadata dictionary
      */
     getMetadataItem(key: string): string
     /**
@@ -4722,6 +5196,7 @@ class Sensor {
     getObjectPath(): string
     /**
      * Gets a specific sensor option.
+     * @param key a key to search for.
      */
     getOption(key: string): string
     /**
@@ -4730,10 +5205,14 @@ class Sensor {
     getOptions(): GLib.HashTable
     /**
      * Gets a color sample from a sensor
+     * @param cap a #CdSensorCap
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getSample(cap: SensorCap, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getSampleFinish(res: Gio.AsyncResult): ColorXYZ
     /**
@@ -4741,6 +5220,8 @@ class Sensor {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cap The device capability, e.g. %CD_SENSOR_CAP_AMBIENT.
+     * @param cancellable a #GCancellable or %NULL
      */
     getSampleSync(cap: SensorCap, cancellable?: Gio.Cancellable | null): ColorXYZ
     /**
@@ -4749,10 +5230,14 @@ class Sensor {
     getSerial(): string
     /**
      * Gets a color spectrum from a sensor
+     * @param cap a #CdSensorCap
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     getSpectrum(cap: SensorCap, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     getSpectrumFinish(res: Gio.AsyncResult): Spectrum
     /**
@@ -4760,6 +5245,8 @@ class Sensor {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cap The device capability, e.g. %CD_SENSOR_CAP_AMBIENT.
+     * @param cancellable a #GCancellable or %NULL
      */
     getSpectrumSync(cap: SensorCap, cancellable?: Gio.Cancellable | null): Spectrum
     /**
@@ -4772,14 +5259,18 @@ class Sensor {
     getVendor(): string
     /**
      * Returns the sensor metadata for a specific key.
+     * @param cap a specified capability, e.g. %CD_SENSOR_CAP_LCD
      */
     hasCap(cap: SensorCap): boolean
     /**
      * Locks the device so we can use it.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     lock(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     lockFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4787,18 +5278,24 @@ class Sensor {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     lockSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the object path of the sensor.
+     * @param objectPath The colord object path.
      */
     setObjectPath(objectPath: string): void
     /**
      * Sets options on the sensor device.
+     * @param values the options
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     setOptions(values: GLib.HashTable, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     setOptionsFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4806,15 +5303,20 @@ class Sensor {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param values the options
+     * @param cancellable a #GCancellable or %NULL
      */
     setOptionsSync(values: GLib.HashTable, cancellable?: Gio.Cancellable | null): boolean
     toString(): string
     /**
      * Unlocks the sensor for use by other programs.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback the function to run on completion
      */
     unlock(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
+     * @param res the #GAsyncResult
      */
     unlockFinish(res: Gio.AsyncResult): boolean
     /**
@@ -4822,6 +5324,7 @@ class Sensor {
      * 
      * WARNING: This function is synchronous, and may block.
      * Do not use it in GUI applications.
+     * @param cancellable a #GCancellable or %NULL
      */
     unlockSync(cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -4859,6 +5362,10 @@ class Sensor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4869,6 +5376,12 @@ class Sensor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4892,6 +5405,7 @@ class Sensor {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4911,11 +5425,14 @@ class Sensor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4923,6 +5440,8 @@ class Sensor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4940,6 +5459,7 @@ class Sensor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4985,6 +5505,7 @@ class Sensor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5028,15 +5549,20 @@ class Sensor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5077,6 +5603,7 @@ class Sensor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5111,6 +5638,7 @@ class Sensor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Colord-1.0.Colord.Sensor */
@@ -5151,6 +5679,7 @@ class Sensor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5232,66 +5761,76 @@ class Sensor {
     static newWithObjectPath(objectPath: string): Sensor
     /**
      * Gets the sensor capability as a enumerated value.
+     * @param sensorCap the sensor capability, e.g. 'projector'.
      */
     static capFromString(sensorCap: string): SensorCap
     /**
      * Gets the sensor capability as a string.
+     * @param sensorCap a #CdSensorCap
      */
     static capToString(sensorCap: SensorCap): string
     /**
      * Converts a string to a #CdSensorError.
+     * @param errorDesc 
      */
     static errorFromString(errorDesc: string): SensorError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdSensorError to a string.
+     * @param errorEnum 
      */
     static errorToString(errorEnum: SensorError): string
     /**
      * Gets the sensor kind as a enumerated value.
+     * @param sensorKind the sensor kind, e.g. 'huey'.
      */
     static kindFromString(sensorKind: string): SensorKind
     /**
      * Gets the sensor kind as a string.
+     * @param sensorKind a #CdSensorKind
      */
     static kindToString(sensorKind: SensorKind): string
     /**
      * Gets the sensor stateability as a enumerated value.
+     * @param sensorState the sensor stateability, e.g. 'measuring'.
      */
     static stateFromString(sensorState: string): SensorState
     /**
      * Gets the sensor stateability as a string.
+     * @param sensorState a #CdSensorState
      */
     static stateToString(sensorState: SensorState): string
     static $gtype: GObject.Type
 }
 abstract class ClientClass {
     /* Fields of Colord-1.0.Colord.ClientClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly deviceAdded: (client: Client, device: Device) => void
-    readonly deviceRemoved: (client: Client, device: Device) => void
-    readonly deviceChanged: (client: Client, device: Device) => void
-    readonly profileAdded: (client: Client, profile: Profile) => void
-    readonly profileRemoved: (client: Client, profile: Profile) => void
-    readonly profileChanged: (client: Client, profile: Profile) => void
-    readonly sensorAdded: (client: Client, sensor: Sensor) => void
-    readonly sensorRemoved: (client: Client, sensor: Sensor) => void
-    readonly sensorChanged: (client: Client, sensor: Sensor) => void
-    readonly changed: (client: Client) => void
+    parentClass: GObject.ObjectClass
+    deviceAdded: (client: Client, device: Device) => void
+    deviceRemoved: (client: Client, device: Device) => void
+    deviceChanged: (client: Client, device: Device) => void
+    profileAdded: (client: Client, profile: Profile) => void
+    profileRemoved: (client: Client, profile: Profile) => void
+    profileChanged: (client: Client, profile: Profile) => void
+    sensorAdded: (client: Client, sensor: Sensor) => void
+    sensorRemoved: (client: Client, sensor: Sensor) => void
+    sensorChanged: (client: Client, sensor: Sensor) => void
+    changed: (client: Client) => void
     static name: string
 }
 class ColorLab {
     /* Fields of Colord-1.0.Colord.ColorLab */
-    readonly l: number
-    readonly a: number
-    readonly b: number
+    l: number
+    a: number
+    b: number
     /* Methods of Colord-1.0.Colord.ColorLab */
     /**
      * Deep copies a color value.
+     * @param dest the destination color
      */
     copy(dest: ColorLab): void
     /**
      * Calculates the ΔE of two colors using the 1976 formula.
+     * @param p2 Lab value 2
      */
     deltaE76(p2: ColorLab): number
     dup(): ColorLab
@@ -5301,6 +5840,9 @@ class ColorLab {
     free(): void
     /**
      * Initialises a color value.
+     * @param l component value
+     * @param a component value
+     * @param b component value
      */
     set(l: number, a: number, b: number): void
     static name: string
@@ -5311,12 +5853,13 @@ class ColorLab {
 }
 class ColorRGB {
     /* Fields of Colord-1.0.Colord.ColorRGB */
-    readonly r: number
-    readonly g: number
-    readonly b: number
+    r: number
+    g: number
+    b: number
     /* Methods of Colord-1.0.Colord.ColorRGB */
     /**
      * Deep copies a color value.
+     * @param dest the destination color
      */
     copy(dest: ColorRGB): void
     dup(): ColorRGB
@@ -5326,15 +5869,20 @@ class ColorRGB {
     free(): void
     /**
      * Set an RGB color which is roughly representative to the wavelength.
+     * @param wavelength the wavelength roughly between 380nm and 780nm
      */
     fromWavelength(wavelength: number): void
     interpolate(p2: ColorRGB, index: number, result: ColorRGB): void
     /**
      * Initialises a color value.
+     * @param r component value
+     * @param g component value
+     * @param b component value
      */
     set(r: number, g: number, b: number): void
     /**
      * Convert from one color format to another.
+     * @param dest the destination color
      */
     toRgb8(dest: ColorRGB8): void
     static name: string
@@ -5346,10 +5894,13 @@ class ColorRGB {
      * Interpolate the RGB array to a different size.
      * This uses the Akima interpolation algorithm unless the array would become
      * non-monotonic, in which case it falls back to linear interpolation.
+     * @param array Input array
+     * @param newLength the target length of the return array
      */
     static arrayInterpolate(array: ColorRGB[], newLength: number): ColorRGB[]
     /**
      * Checks the array for monotonicity.
+     * @param array Input array
      */
     static arrayIsMonotonic(array: ColorRGB[]): boolean
     /**
@@ -5359,9 +5910,9 @@ class ColorRGB {
 }
 class ColorRGB8 {
     /* Fields of Colord-1.0.Colord.ColorRGB8 */
-    readonly r: number
-    readonly g: number
-    readonly b: number
+    r: number
+    g: number
+    b: number
     static name: string
 }
 class ColorSwatch {
@@ -5375,10 +5926,12 @@ class ColorSwatch {
     getValue(): ColorLab
     /**
      * Initialises a swatch name.
+     * @param name component name
      */
     setName(name: string): void
     /**
      * Initialises a swatch value.
+     * @param value component value
      */
     setValue(value: ColorLab): void
     static name: string
@@ -5389,12 +5942,13 @@ class ColorSwatch {
 }
 class ColorUVW {
     /* Fields of Colord-1.0.Colord.ColorUVW */
-    readonly u: number
-    readonly v: number
-    readonly w: number
+    u: number
+    v: number
+    w: number
     /* Methods of Colord-1.0.Colord.ColorUVW */
     /**
      * Deep copies a color value.
+     * @param dest the destination color
      */
     copy(dest: ColorUVW): void
     dup(): ColorUVW
@@ -5404,14 +5958,19 @@ class ColorUVW {
     free(): void
     /**
      * Gets the chromaticity distance in the CIE 1960 UCS.
+     * @param p2 color
      */
     getChromaDifference(p2: ColorUVW): number
     /**
      * Initialises a color value.
+     * @param u component value
+     * @param v component value
+     * @param w component value
      */
     set(u: number, v: number, w: number): void
     /**
      * Sets the CIEUVW color from a Planckian locus of specific temperature.
+     * @param temp temperature in Kelvin
      */
     setPlanckianLocus(temp: number): void
     static name: string
@@ -5422,9 +5981,9 @@ class ColorUVW {
 }
 class ColorXYZ {
     /* Fields of Colord-1.0.Colord.ColorXYZ */
-    readonly x: number
-    readonly y: number
-    readonly z: number
+    x: number
+    y: number
+    z: number
     /* Methods of Colord-1.0.Colord.ColorXYZ */
     /**
      * Initialises a color value.
@@ -5432,6 +5991,7 @@ class ColorXYZ {
     clear(): void
     /**
      * Deep copies a color value.
+     * @param dest the destination color
      */
     copy(dest: ColorXYZ): void
     dup(): ColorXYZ
@@ -5441,10 +6001,15 @@ class ColorXYZ {
     free(): void
     /**
      * Normalizes `src` to y=1.0
+     * @param max 
+     * @param dest the destination color
      */
     normalize(max: number, dest: ColorXYZ): void
     /**
      * Initialises a color value.
+     * @param x component value
+     * @param y component value
+     * @param z component value
      */
     set(x: number, y: number, z: number): void
     /**
@@ -5453,10 +6018,13 @@ class ColorXYZ {
     toCct(): number
     /**
      * Convert from one color format to another.
+     * @param whitepoint the whitepoint
+     * @param dest the destination color
      */
     toUvw(whitepoint: ColorXYZ, dest: ColorUVW): void
     /**
      * Convert from one color format to another.
+     * @param dest the destination color
      */
     toYxy(dest: ColorYxy): void
     static name: string
@@ -5467,11 +6035,12 @@ class ColorXYZ {
 }
 class ColorYxy {
     /* Fields of Colord-1.0.Colord.ColorYxy */
-    readonly y: number
-    readonly x: number
+    y: number
+    x: number
     /* Methods of Colord-1.0.Colord.ColorYxy */
     /**
      * Deep copies a color value.
+     * @param dest the destination color
      */
     copy(dest: ColorYxy): void
     dup(): ColorYxy
@@ -5481,14 +6050,19 @@ class ColorYxy {
     free(): void
     /**
      * Initialises a color value.
+     * @param y component value
+     * @param x component value
+     * @param y_ component value
      */
     set(y: number, x: number, y_: number): void
     /**
      * Convert from one color format to another.
+     * @param dest the destination color
      */
     toUvw(dest: ColorUVW): void
     /**
      * Convert from one color format to another.
+     * @param dest the destination color
      */
     toXyz(dest: ColorXYZ): void
     static name: string
@@ -5499,54 +6073,55 @@ class ColorYxy {
 }
 abstract class DeviceClass {
     /* Fields of Colord-1.0.Colord.DeviceClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (device: Device) => void
+    parentClass: GObject.ObjectClass
+    changed: (device: Device) => void
     static name: string
 }
 abstract class EdidClass {
     /* Fields of Colord-1.0.Colord.EdidClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class IccClass {
     /* Fields of Colord-1.0.Colord.IccClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class It8Class {
     /* Fields of Colord-1.0.Colord.It8Class */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 class Mat3x3 {
     /* Fields of Colord-1.0.Colord.Mat3x3 */
-    readonly m00: number
-    readonly m01: number
-    readonly m02: number
-    readonly m10: number
-    readonly m11: number
-    readonly m12: number
-    readonly m20: number
-    readonly m21: number
-    readonly m22: number
+    m00: number
+    m01: number
+    m02: number
+    m10: number
+    m11: number
+    m12: number
+    m20: number
+    m21: number
+    m22: number
     static name: string
 }
 abstract class ProfileClass {
     /* Fields of Colord-1.0.Colord.ProfileClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly changed: (profile: Profile) => void
+    parentClass: GObject.ObjectClass
+    changed: (profile: Profile) => void
     static name: string
 }
 abstract class SensorClass {
     /* Fields of Colord-1.0.Colord.SensorClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly buttonPressed: (sensor: Sensor) => void
+    parentClass: GObject.ObjectClass
+    buttonPressed: (sensor: Sensor) => void
     static name: string
 }
 class Spectrum {
     /* Methods of Colord-1.0.Colord.Spectrum */
     /**
      * Adds a value in nm to the spectrum.
+     * @param data 
      */
     addValue(data: number): void
     dup(): Spectrum
@@ -5586,10 +6161,12 @@ class Spectrum {
     getStart(): number
     /**
      * Gets the spectrum data at a specified index.
+     * @param idx an index into the data
      */
     getValue(idx: number): number
     /**
      * Gets the value from the spectral data for a given wavelength.
+     * @param wavelength the wavelength in nm
      */
     getValueForNm(wavelength: number): number
     /**
@@ -5603,53 +6180,71 @@ class Spectrum {
     /**
      * Gets the spectrum data at a specified index, without any normalization
      * applied. Most people should use cd_spectrum_get_value() instead.
+     * @param idx an index into the data
      */
     getValueRaw(idx: number): number
     /**
      * Gets the wavelenth that corresponds to the specified index.
+     * @param idx an index into the data
      */
     getWavelength(idx: number): number
     /**
      * Gets the calibration coefficients used to map pixel indexes to
      * wavelengths.
+     * @param c1 the 1st coefficient
+     * @param c2 the 2nd coefficient
+     * @param c3 the 3rd coefficient
      */
     getWavelengthCal(c1: number, c2: number, c3: number): void
     /**
      * Ensures no values in the spectrum fall above a set limit. If they
      * are found, set them to `value`.
+     * @param value the threshold value to limit the spectrum
      */
     limitMax(value: number): void
     /**
      * Ensures no values in the spectrum fall below a set limit. If they
      * are found, set them to `value`.
+     * @param value the threshold value to limit the spectrum
      */
     limitMin(value: number): void
     /**
      * Multiplies two spectra together.
+     * @param s2 a #CdSpectrum instance, possibly an absorption spectrum.
+     * @param resolution the step size in nm
      */
     multiply(s2: Spectrum, resolution: number): Spectrum
     /**
      * Multiplies a spectra with a scalar value.
+     * @param value a scalar value
      */
     multiplyScalar(value: number): Spectrum
     /**
      * Normalizes a spectrum to a specific value at a specific wavelength.
+     * @param wavelength the wavelength in nm
+     * @param value the value to normalize to
      */
     normalize(wavelength: number, value: number): void
     /**
      * Normalizes a spectrum to a specific value at its maximum value.
+     * @param value the value to normalize to
      */
     normalizeMax(value: number): void
     /**
      * Resample a new spectrum with linear index to wavelength coefficients.
+     * @param start the new spectrum start
+     * @param end the new spectrum end
+     * @param resolution the resolution to use when resampling
      */
     resample(start: number, end: number, resolution: number): Spectrum
     /**
      * Resample a new spectrum with the desired number of points.
+     * @param size the output spectrum size
      */
     resampleToSize(size: number): Spectrum
     /**
      * Sets the spectrum data.
+     * @param value component value
      */
     setData(value: number[]): void
     /**
@@ -5657,23 +6252,29 @@ class Spectrum {
      * 
      * If there is already spectral data, the wavelength calibration will
      * also be set automatically.
+     * @param end the end value of the spectral data
      */
     setEnd(end: number): void
     /**
      * Sets a spectrum id.
+     * @param id component id
      */
     setId(id: string): void
     /**
      * Set the normalization value of the spectrum.
      * NOTE: This affects every value in the spectrum.
+     * @param norm the end value of the spectral data
      */
     setNorm(norm: number): void
     /**
      * Set the start value of the spectal data in nm.
+     * @param start the start value of the spectral data
      */
     setStart(start: number): void
     /**
      * Overwrites the spectrum data at a specified index.
+     * @param idx an index into the data
+     * @param data a data value
      */
     setValue(idx: number, data: number): void
     /**
@@ -5682,15 +6283,22 @@ class Spectrum {
      * 
      * This function will set the 'end' wavelength automatically,
      * potentially overwriting the value set by cd_spectrum_set_end().
+     * @param c1 the 1st coefficient
+     * @param c2 the 2nd coefficient
+     * @param c3 the 3rd coefficient
      */
     setWavelengthCal(c1: number, c2: number, c3: number): void
     /**
      * Subtracts one spectral plot from another. If the spectra have the same start,
      * end and the same number of data points they are not resampled.
+     * @param s2 a #CdSpectrum instance, e.g. a dark calibration
+     * @param resolution the resolution to use when resampling
      */
     subtract(s2: Spectrum, resolution: number): Spectrum
     /**
      * Returns a graphical representation of the spectrum.
+     * @param maxWidth the terminal width
+     * @param maxHeight the terminal height
      */
     toString(maxWidth: number, maxHeight: number): string
     static name: string
@@ -5704,13 +6312,15 @@ class Spectrum {
 }
 class Vec3 {
     /* Fields of Colord-1.0.Colord.Vec3 */
-    readonly v0: number
-    readonly v1: number
-    readonly v2: number
+    v0: number
+    v1: number
+    v2: number
     /* Methods of Colord-1.0.Colord.Vec3 */
     /**
      * Adds two vector quantaties
      * The arguments `src` and `dest` can be the same value.
+     * @param src2 the other source
+     * @param dest the destination
      */
     add(src2: Vec3, dest: Vec3): void
     /**
@@ -5720,6 +6330,7 @@ class Vec3 {
     /**
      * Copies the vector into another vector.
      * The arguments `src` and `dest` cannot be the same value.
+     * @param dest the destination
      */
     copy(dest: Vec3): void
     /**
@@ -5728,20 +6339,28 @@ class Vec3 {
     getData(): number
     /**
      * Initialises a vector.
+     * @param v0 component value
+     * @param v1 component value
+     * @param v2 component value
      */
     init(v0: number, v1: number, v2: number): void
     /**
      * Multiplies a vector with a scalar.
      * The arguments `src` and `dest` can be the same value.
+     * @param value the scalar multiplier
+     * @param dest the destination
      */
     scalarMultiply(value: number, dest: Vec3): void
     /**
      * Gets the mean squared error for a pair of vectors
+     * @param src2 another vector source
      */
     squaredError(src2: Vec3): number
     /**
      * Subtracts one vector quantity from another
      * The arguments `src` and `dest` can be the same value.
+     * @param src2 the other source
+     * @param dest the destination
      */
     subtract(src2: Vec3, dest: Vec3): void
     /**

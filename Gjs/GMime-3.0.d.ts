@@ -1015,50 +1015,50 @@ class ApplicationPkcs7Mime {
     /**
      * parent #GMimeObject
      */
-    readonly parent_object: Object
+    parent_object: Object
     /**
      * a #GMimeContentEncoding
      */
-    readonly encoding: ContentEncoding
+    encoding: ContentEncoding
     /**
      * a #GMimeOpenPGPData
      */
-    readonly openpgp: OpenPGPData
+    openpgp: OpenPGPData
     /**
      * Content-Description string
      */
-    readonly content_description: string
+    content_description: string
     /**
      * Content-Location string
      */
-    readonly content_location: string
+    content_location: string
     /**
      * Content-MD5 string
      */
-    readonly content_md5: string
+    content_md5: string
     /**
      * a #GMimeDataWrapper representing the MIME part's content
      */
-    readonly content: DataWrapper
+    content: DataWrapper
     /* Fields of GMime-3.0.GMime.Object */
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.ApplicationPkcs7Mime */
     /**
      * Attempts to decrypt the encrypted application/pkcs7-mime part.
@@ -1072,6 +1072,9 @@ class ApplicationPkcs7Mime {
      * updated to point to a newly-allocated #GMimeDecryptResult with signature
      * status information as well as a list of recipients that the part was
      * encrypted to.
+     * @param flags a #GMimeDecryptFlags
+     * @param session_key session key to use or %NULL
+     * @param result the decryption result
      */
     decrypt(flags: DecryptFlags, session_key: string, result: DecryptResult): Object | null
     /**
@@ -1081,12 +1084,14 @@ class ApplicationPkcs7Mime {
     /**
      * Attempts to verify the signed `pkcs7`_mime part and extract the original
      * MIME entity.
+     * @param flags a #GMimeVerifyFlags
      */
     verify(flags: VerifyFlags): [ /* returnType */ SignatureList | null, /* entity */ Object ]
     /* Methods of GMime-3.0.GMime.Part */
     /**
      * Calculates the most efficient content encoding for the `mime_part`
      * given the `constraint`.
+     * @param constraint a #GMimeEncodingConstraint
      */
     get_best_content_encoding(constraint: EncodingConstraint): ContentEncoding
     /**
@@ -1136,45 +1141,59 @@ class ApplicationPkcs7Mime {
     /**
      * Decrypts the content of the `mime_part` and then replaces the content with
      * the new, decrypted, content.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
      */
     openpgp_decrypt(flags: DecryptFlags, session_key?: string | null): DecryptResult | null
     /**
      * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
      * the content with the new, encrypted, content.
+     * @param sign %TRUE if the content should also be signed; otherwise, %FALSE
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
      */
     openpgp_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[]): boolean
     /**
      * Signs the content of the `mime_part` and then replaces the content with
      * the new, signed, content.
+     * @param userid the key id (or email address) to use for signing
      */
     openpgp_sign(userid: string): boolean
     /**
      * Verifies the OpenPGP signature of the `mime_part` and then replaces the content
      * with the original, raw, content.
+     * @param flags a set of #GMimeVerifyFlags
      */
     openpgp_verify(flags: VerifyFlags): SignatureList | null
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     set_content(content: DataWrapper): void
     /**
      * Set the content description for the specified mime part.
+     * @param description content description
      */
     set_content_description(description: string): void
     /**
      * Set the content encoding for the specified mime part.
+     * @param encoding a #GMimeContentEncoding
      */
     set_content_encoding(encoding: ContentEncoding): void
     /**
      * Set the content id for the specified mime part.
+     * @param content_id content id
      */
     set_content_id(content_id: string): void
     /**
      * Set the content location for the specified mime part.
+     * @param content_location content location
      */
     set_content_location(content_location: string): void
     /**
      * Set the content md5 for the specified mime part.
+     * @param content_md5 content md5 or %NULL to generate the md5 digest.
      */
     set_content_md5(content_md5: string): void
     /**
@@ -1182,11 +1201,13 @@ class ApplicationPkcs7Mime {
      * "name" parameter on the Content-Type.
      * 
      * Note: The `filename` string should be in UTF-8.
+     * @param filename the file name
      */
     set_filename(filename: string): void
     /**
      * Sets whether or not (and what type) of OpenPGP data is contained
      * within the #GMimePart.
+     * @param data a #GMimeOpenPGPData
      */
     set_openpgp_data(data: OpenPGPData): void
     /**
@@ -1196,12 +1217,16 @@ class ApplicationPkcs7Mime {
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -1211,6 +1236,7 @@ class ApplicationPkcs7Mime {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -1221,6 +1247,7 @@ class ApplicationPkcs7Mime {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -1229,6 +1256,7 @@ class ApplicationPkcs7Mime {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -1238,19 +1266,25 @@ class ApplicationPkcs7Mime {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -1258,15 +1292,19 @@ class ApplicationPkcs7Mime {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -1274,6 +1312,8 @@ class ApplicationPkcs7Mime {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -1281,22 +1321,31 @@ class ApplicationPkcs7Mime {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -1334,6 +1383,10 @@ class ApplicationPkcs7Mime {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1344,6 +1397,12 @@ class ApplicationPkcs7Mime {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1367,6 +1426,7 @@ class ApplicationPkcs7Mime {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1386,11 +1446,14 @@ class ApplicationPkcs7Mime {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1398,6 +1461,8 @@ class ApplicationPkcs7Mime {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1415,6 +1480,7 @@ class ApplicationPkcs7Mime {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1460,6 +1526,7 @@ class ApplicationPkcs7Mime {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1503,15 +1570,20 @@ class ApplicationPkcs7Mime {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1552,6 +1624,7 @@ class ApplicationPkcs7Mime {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1586,11 +1659,13 @@ class ApplicationPkcs7Mime {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Part */
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     vfunc_set_content(content: DataWrapper): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -1598,11 +1673,13 @@ class ApplicationPkcs7Mime {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -1612,6 +1689,7 @@ class ApplicationPkcs7Mime {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -1632,6 +1710,7 @@ class ApplicationPkcs7Mime {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1664,6 +1743,7 @@ class ApplicationPkcs7Mime {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ApplicationPkcs7Mime, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ApplicationPkcs7Mime, pspec: GObject.ParamSpec) => void)): number
@@ -1683,11 +1763,16 @@ class ApplicationPkcs7Mime {
     /**
      * Attempts to encrypt the `entity` MIME part to the public keys of `recipients`
      * using S/MIME. If successful, a new application/pkcs7-mime object is returned.
+     * @param entity a #GMimeObject to encrypt
+     * @param flags a #GMimeEncryptFlags
+     * @param recipients an array of recipients to encrypt to
      */
     static encrypt(entity: Object, flags: EncryptFlags, recipients: string[]): ApplicationPkcs7Mime | null
     /**
      * Attempts to sign the `entity` MIME part with `userid'`s private key using
      * S/MIME. If successful, a new application/pkcs7-mime object is returned.
+     * @param entity a #GMimeObject
+     * @param userid the user id to sign with
      */
     static sign(entity: Object, userid: string): ApplicationPkcs7Mime | null
     static $gtype: GObject.Type
@@ -1696,11 +1781,12 @@ interface AutocryptHeader_ConstructProps extends GObject.Object_ConstructProps {
 }
 class AutocryptHeader {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.AutocryptHeader */
     /**
      * If address and type already match between `src` and `dst,` copy
      * keydata, prefer_encrypt, effective_date from `src` to `dst`.
+     * @param src a #GMimeAutocryptHeader object
      */
     clone(src: AutocryptHeader): void
     /**
@@ -1711,6 +1797,7 @@ class AutocryptHeader {
      *  - effective_date
      *  - keydata
      *  - prefer_encrypt
+     * @param ah2 a #GMimeAutocryptHeader object
      */
     compare(ah2: AutocryptHeader): number
     /**
@@ -1743,22 +1830,27 @@ class AutocryptHeader {
     is_complete(): boolean
     /**
      * Set the address associated with the autocrypt_header.
+     * @param address a #InternetAddressMailbox value
      */
     set_address(address: InternetAddressMailbox): void
     /**
      * Set the address associated with the autocrypt_header.
+     * @param address a %NULL-terminated string that is a raw e-mail address
      */
     set_address_from_string(address: string): void
     /**
      * Set the effective date associated with the Autocrypt header.
+     * @param effective_date a #GDateTime object
      */
     set_effective_date(effective_date: GLib.DateTime): void
     /**
      * Set the raw key data associated with the Autocrypt header.
+     * @param data 
      */
     set_keydata(data: GLib.Bytes): void
     /**
      * Set the encryption preference associated with the Autocrypt header.
+     * @param pref a #GMimeAutocryptPreferEncrypt value
      */
     set_prefer_encrypt(pref: AutocryptPreferEncrypt): void
     /**
@@ -1770,6 +1862,7 @@ class AutocryptHeader {
      * If you are using this object to populate an Autocrypt-Gossip
      * header, you should set `gossip` to %TRUE (this will suppress
      * inclusion of prefer-encrypt).
+     * @param gossip a #gboolean, indicating whether this header is for use with gossip
      */
     to_string(gossip: boolean): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -1807,6 +1900,10 @@ class AutocryptHeader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1817,6 +1914,12 @@ class AutocryptHeader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1840,6 +1943,7 @@ class AutocryptHeader {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1859,11 +1963,14 @@ class AutocryptHeader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1871,6 +1978,8 @@ class AutocryptHeader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1888,6 +1997,7 @@ class AutocryptHeader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1933,6 +2043,7 @@ class AutocryptHeader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1976,15 +2087,20 @@ class AutocryptHeader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2025,6 +2141,7 @@ class AutocryptHeader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2059,6 +2176,7 @@ class AutocryptHeader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2078,6 +2196,7 @@ class AutocryptHeader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2110,6 +2229,7 @@ class AutocryptHeader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AutocryptHeader, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AutocryptHeader, pspec: GObject.ParamSpec) => void)): number
@@ -2130,15 +2250,17 @@ interface AutocryptHeaderList_ConstructProps extends GObject.Object_ConstructPro
 }
 class AutocryptHeaderList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.AutocryptHeaderList */
     /**
      * Adds a the passed #GMimeAutocryptHeader to the list.
+     * @param header a #GMimeAutocryptHeader object
      */
     add(header: AutocryptHeader): void
     /**
      * Adds a new incomplete #GMimeAutocryptHeader object for each
      * InternetAddressMailbox found in #addresses.
+     * @param addresses an #InternetAddressList object
      */
     add_missing_addresses(addresses: InternetAddressList): number
     /**
@@ -2147,10 +2269,12 @@ class AutocryptHeaderList {
     get_count(): number
     /**
      * Get the Nth header in the list (returns %NULL on error, or if `index` is out of bounds)
+     * @param index an index into the list
      */
     get_header_at(index: number): AutocryptHeader
     /**
      * Gets the Autocrypt header corresponding to the given `mailbox`.
+     * @param mailbox an #InternetAddressMailbox object
      */
     get_header_for_address(mailbox: InternetAddressMailbox): AutocryptHeader
     /**
@@ -2192,6 +2316,10 @@ class AutocryptHeaderList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2202,6 +2330,12 @@ class AutocryptHeaderList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2225,6 +2359,7 @@ class AutocryptHeaderList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2244,11 +2379,14 @@ class AutocryptHeaderList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2256,6 +2394,8 @@ class AutocryptHeaderList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2273,6 +2413,7 @@ class AutocryptHeaderList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2318,6 +2459,7 @@ class AutocryptHeaderList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2361,15 +2503,20 @@ class AutocryptHeaderList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2410,6 +2557,7 @@ class AutocryptHeaderList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2444,6 +2592,7 @@ class AutocryptHeaderList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2463,6 +2612,7 @@ class AutocryptHeaderList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2495,6 +2645,7 @@ class AutocryptHeaderList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AutocryptHeaderList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AutocryptHeaderList, pspec: GObject.ParamSpec) => void)): number
@@ -2514,7 +2665,7 @@ interface Certificate_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Certificate {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Certificate */
     /**
      * Get the creation date of the certificate's key.
@@ -2598,59 +2749,72 @@ class Certificate {
     get_user_id(): string
     /**
      * Set the creation date of the certificate's key.
+     * @param created creation date
      */
     set_created(created: number): void
     /**
      * Set the digest algorithm used by the certificate.
+     * @param algo a #GMimeDigestAlgo
      */
     set_digest_algo(algo: DigestAlgo): void
     /**
      * Set the email address associated with the
      * certificate. (e.g. "jane\`example`.org")
+     * @param email certificate's email
      */
     set_email(email: string): void
     /**
      * Set the expiration date of the certificate's key. A value of %0 means the certificate never expires.
+     * @param expires expiration date
      */
     set_expires(expires: number): void
     /**
      * Set the certificate's key fingerprint.
+     * @param fingerprint fingerprint string
      */
     set_fingerprint(fingerprint: string): void
     /**
      * Set the validity associated with the certificate's name, email, and user_id.
+     * @param validity a #GMimeValidity representing the validity of the certificate's identity information.
      */
     set_id_validity(validity: Validity): void
     /**
      * Set the certificate's issuer name.
+     * @param issuer_name certificate's issuer name
      */
     set_issuer_name(issuer_name: string): void
     /**
      * Set the certificate's issuer serial.
+     * @param issuer_serial certificate's issuer serial
      */
     set_issuer_serial(issuer_serial: string): void
     /**
      * Set the certificate's key id.
+     * @param key_id key id
      */
     set_key_id(key_id: string): void
     /**
      * Set the name associated with the certificate.  For email
      * certificates, this is usually the name of the person who controls
      * the certificate (encoded in UTF-8). (e.g. "Jane Doe")
+     * @param name certificate's name
      */
     set_name(name: string): void
     /**
      * Set the public-key algorithm used by the certificate.
+     * @param algo a #GMimePubKeyAlgo
      */
     set_pubkey_algo(algo: PubKeyAlgo): void
     /**
      * Set the certificate trust.
+     * @param trust a #GMimeTrust value
      */
     set_trust(trust: Trust): void
     /**
      * Set the certificate's full User ID.  By convention, this is usually
      * a mail name-addr as described in RFC 5322.  (e.g. "Jane Doe
      * &lt;jane\`example`.org&gt;")
+     * @param user_id the full User ID for a certificate
      */
     set_user_id(user_id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2688,6 +2852,10 @@ class Certificate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2698,6 +2866,12 @@ class Certificate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2721,6 +2895,7 @@ class Certificate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2740,11 +2915,14 @@ class Certificate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2752,6 +2930,8 @@ class Certificate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2769,6 +2949,7 @@ class Certificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2814,6 +2995,7 @@ class Certificate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2857,15 +3039,20 @@ class Certificate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2906,6 +3093,7 @@ class Certificate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2940,6 +3128,7 @@ class Certificate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2959,6 +3148,7 @@ class Certificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2991,6 +3181,7 @@ class Certificate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Certificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Certificate, pspec: GObject.ParamSpec) => void)): number
@@ -3010,10 +3201,11 @@ interface CertificateList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CertificateList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.CertificateList */
     /**
      * Adds a #GMimeCertificate to the #GMimeCertificateList.
+     * @param cert a #GMimeCertificate
      */
     add(cert: Certificate): number
     /**
@@ -3023,20 +3215,25 @@ class CertificateList {
     /**
      * Checks whether or not the specified #GMimeCertificate is contained within
      * the #GMimeCertificateList.
+     * @param cert a #GMimeCertificate
      */
     contains(cert: Certificate): boolean
     /**
      * Gets the #GMimeCertificate at the specified index.
+     * @param index index of #GMimeCertificate to get
      */
     get_certificate(index: number): Certificate
     /**
      * Gets the index of the specified #GMimeCertificate inside the
      * #GMimeCertificateList.
+     * @param cert a #GMimeCertificate
      */
     index_of(cert: Certificate): number
     /**
      * Inserts a #GMimeCertificate into the #GMimeCertificateList at the specified
      * index.
+     * @param index index to insert at
+     * @param cert a #GMimeCertificate
      */
     insert(index: number, cert: Certificate): void
     /**
@@ -3045,15 +3242,19 @@ class CertificateList {
     length(): number
     /**
      * Removes a #GMimeCertificate from the #GMimeCertificateList.
+     * @param cert a #GMimeCertificate
      */
     remove(cert: Certificate): boolean
     /**
      * Removes a #GMimeCertificate from the #GMimeCertificateList at the specified
      * index.
+     * @param index index of the certificate to remove
      */
     remove_at(index: number): boolean
     /**
      * Sets the #GMimeCertificate at the specified index to `cert`.
+     * @param index index of #GMimeCertificate to set
+     * @param cert a #GMimeCertificate
      */
     set_certificate(index: number, cert: Certificate): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3091,6 +3292,10 @@ class CertificateList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3101,6 +3306,12 @@ class CertificateList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3124,6 +3335,7 @@ class CertificateList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3143,11 +3355,14 @@ class CertificateList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3155,6 +3370,8 @@ class CertificateList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3172,6 +3389,7 @@ class CertificateList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3217,6 +3435,7 @@ class CertificateList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3260,15 +3479,20 @@ class CertificateList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3309,6 +3533,7 @@ class CertificateList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3343,6 +3568,7 @@ class CertificateList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3362,6 +3588,7 @@ class CertificateList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3394,6 +3621,7 @@ class CertificateList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CertificateList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CertificateList, pspec: GObject.ParamSpec) => void)): number
@@ -3413,10 +3641,11 @@ interface ContentDisposition_ConstructProps extends GObject.Object_ConstructProp
 }
 class ContentDisposition {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.ContentDisposition */
     /**
      * Encodes the Content-Disposition header.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     encode(options?: FormatOptions | null): string
     /**
@@ -3425,6 +3654,7 @@ class ContentDisposition {
     get_disposition(): string
     /**
      * Gets the parameter value specified by `name` if it's available.
+     * @param name parameter name
      */
     get_parameter(name: string): string
     /**
@@ -3440,6 +3670,7 @@ class ContentDisposition {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param value disposition value
      */
     set_disposition(value: string): void
     /**
@@ -3447,6 +3678,8 @@ class ContentDisposition {
      * 
      * Note: The `name` should be in US-ASCII while the `value` should be in
      * UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_parameter(name: string, value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3484,6 +3717,10 @@ class ContentDisposition {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3494,6 +3731,12 @@ class ContentDisposition {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3517,6 +3760,7 @@ class ContentDisposition {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3536,11 +3780,14 @@ class ContentDisposition {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3548,6 +3795,8 @@ class ContentDisposition {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3565,6 +3814,7 @@ class ContentDisposition {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3610,6 +3860,7 @@ class ContentDisposition {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3653,15 +3904,20 @@ class ContentDisposition {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3702,6 +3958,7 @@ class ContentDisposition {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3736,6 +3993,7 @@ class ContentDisposition {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3755,6 +4013,7 @@ class ContentDisposition {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3787,6 +4046,7 @@ class ContentDisposition {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContentDisposition, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContentDisposition, pspec: GObject.ParamSpec) => void)): number
@@ -3802,6 +4062,8 @@ class ContentDisposition {
     static new(): ContentDisposition
     /**
      * Parses the input string into a #GMimeContentDisposition object.
+     * @param options a #GMimeParserOptions or %NULL
+     * @param str Content-Disposition field value
      */
     static parse(options: ParserOptions | null, str: string): ContentDisposition
     static $gtype: GObject.Type
@@ -3810,10 +4072,11 @@ interface ContentType_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ContentType {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.ContentType */
     /**
      * Encodes the Content-Disposition header.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     encode(options?: FormatOptions | null): string
     /**
@@ -3831,6 +4094,7 @@ class ContentType {
     get_mime_type(): string
     /**
      * Gets the parameter value specified by `name` if it's available.
+     * @param name parameter name (aka attribute)
      */
     get_parameter(name: string): string
     /**
@@ -3840,14 +4104,18 @@ class ContentType {
     /**
      * Compares the given type and subtype with that of the given mime
      * type object.
+     * @param type MIME type to compare against
+     * @param subtype MIME subtype to compare against
      */
     is_type(type: string, subtype: string): boolean
     /**
      * Sets the Content-Type's media subtype.
+     * @param subtype media subtype
      */
     set_media_subtype(subtype: string): void
     /**
      * Sets the Content-Type's media type.
+     * @param type media type
      */
     set_media_type(type: string): void
     /**
@@ -3855,6 +4123,8 @@ class ContentType {
      * 
      * Note: The `name` should be in US-ASCII while the `value` should be in
      * UTF-8.
+     * @param name parameter name (aka attribute)
+     * @param value parameter value
      */
     set_parameter(name: string, value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3892,6 +4162,10 @@ class ContentType {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3902,6 +4176,12 @@ class ContentType {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3925,6 +4205,7 @@ class ContentType {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3944,11 +4225,14 @@ class ContentType {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3956,6 +4240,8 @@ class ContentType {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3973,6 +4259,7 @@ class ContentType {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4018,6 +4305,7 @@ class ContentType {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4061,15 +4349,20 @@ class ContentType {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4110,6 +4403,7 @@ class ContentType {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4144,6 +4438,7 @@ class ContentType {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4163,6 +4458,7 @@ class ContentType {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4195,6 +4491,7 @@ class ContentType {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ContentType, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ContentType, pspec: GObject.ParamSpec) => void)): number
@@ -4210,6 +4507,8 @@ class ContentType {
     static new(type: string, subtype: string): ContentType
     /**
      * Parses the input string into a #GMimeContentType object.
+     * @param options a #GMimeParserOptions or %NULL
+     * @param str input string containing a content-type (and params)
      */
     static parse(options: ParserOptions | null, str: string): ContentType
     static $gtype: GObject.Type
@@ -4218,7 +4517,7 @@ interface CryptoContext_ConstructProps extends GObject.Object_ConstructProps {
 }
 class CryptoContext {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.CryptoContext */
     /**
      * Decrypts the ciphertext input stream and writes the resulting cleartext
@@ -4240,19 +4539,31 @@ class CryptoContext {
      * Note: It *may* be possible to maliciously design an encrypted stream such
      * that recursively decrypting it will result in an endless loop, causing
      * a denial of service attack on your application.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
+     * @param istream input/ciphertext stream
+     * @param ostream output/cleartext stream
      */
     decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult
     /**
      * Gets the digest id based on the digest name.
+     * @param name digest name
      */
     digest_id(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
+     * @param digest digest id
      */
     digest_name(digest: DigestAlgo): string | null
     /**
      * Encrypts (and optionally signs) the cleartext input stream and
      * writes the resulting ciphertext to the output stream.
+     * @param sign sign as well as encrypt
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
+     * @param istream cleartext input stream
+     * @param ostream ciphertext output stream
      */
     encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
     /**
@@ -4261,6 +4572,8 @@ class CryptoContext {
      * 
      * If `keys` is %NULL or contains only a %NULL element, then all keys
      * will be exported.
+     * @param keys an array of key ids, terminated by a %NULL element
+     * @param ostream output stream
      */
     export_keys(keys: string, ostream: Stream): number
     /**
@@ -4278,10 +4591,15 @@ class CryptoContext {
     /**
      * Imports a stream of keys/certificates contained within `istream`
      * into the key/certificate database controlled by `ctx`.
+     * @param istream input stream (containing keys)
      */
     import_keys(istream: Stream): number
     /**
      * Signs the input stream and writes the resulting signature to the output stream.
+     * @param detach %TRUE if `ostream` should be the detached signature; otherwise, %FALSE
+     * @param userid private key to use to sign the stream
+     * @param istream input stream
+     * @param ostream output stream
      */
     sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
@@ -4290,6 +4608,10 @@ class CryptoContext {
      * provide an `ostream` argument for GMime to output the original
      * plaintext into. Otherwise `sigstream` is assumed to be the signature
      * stream and is used to verify the integirity of the `istream`.
+     * @param flags a #GMimeVerifyFlags
+     * @param istream input stream
+     * @param sigstream detached-signature stream
+     * @param ostream output stream for use with encapsulated signature input streams
      */
     verify(flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null): SignatureList | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -4327,6 +4649,10 @@ class CryptoContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4337,6 +4663,12 @@ class CryptoContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4360,6 +4692,7 @@ class CryptoContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4379,11 +4712,14 @@ class CryptoContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4391,6 +4727,8 @@ class CryptoContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4408,6 +4746,7 @@ class CryptoContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4453,6 +4792,7 @@ class CryptoContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4496,15 +4836,20 @@ class CryptoContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4545,6 +4890,7 @@ class CryptoContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4579,6 +4925,7 @@ class CryptoContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.CryptoContext */
@@ -4602,19 +4949,31 @@ class CryptoContext {
      * Note: It *may* be possible to maliciously design an encrypted stream such
      * that recursively decrypting it will result in an endless loop, causing
      * a denial of service attack on your application.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
+     * @param istream input/ciphertext stream
+     * @param ostream output/cleartext stream
      */
     vfunc_decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult
     /**
      * Gets the digest id based on the digest name.
+     * @param name digest name
      */
     vfunc_digest_id(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
+     * @param digest digest id
      */
     vfunc_digest_name(digest: DigestAlgo): string | null
     /**
      * Encrypts (and optionally signs) the cleartext input stream and
      * writes the resulting ciphertext to the output stream.
+     * @param sign sign as well as encrypt
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
+     * @param istream cleartext input stream
+     * @param ostream ciphertext output stream
      */
     vfunc_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
     /**
@@ -4623,6 +4982,8 @@ class CryptoContext {
      * 
      * If `keys` is %NULL or contains only a %NULL element, then all keys
      * will be exported.
+     * @param keys an array of key ids, terminated by a %NULL element
+     * @param ostream output stream
      */
     vfunc_export_keys(keys: string, ostream: Stream): number
     /**
@@ -4640,10 +5001,15 @@ class CryptoContext {
     /**
      * Imports a stream of keys/certificates contained within `istream`
      * into the key/certificate database controlled by `ctx`.
+     * @param istream input stream (containing keys)
      */
     vfunc_import_keys(istream: Stream): number
     /**
      * Signs the input stream and writes the resulting signature to the output stream.
+     * @param detach %TRUE if `ostream` should be the detached signature; otherwise, %FALSE
+     * @param userid private key to use to sign the stream
+     * @param istream input stream
+     * @param ostream output stream
      */
     vfunc_sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
@@ -4652,6 +5018,10 @@ class CryptoContext {
      * provide an `ostream` argument for GMime to output the original
      * plaintext into. Otherwise `sigstream` is assumed to be the signature
      * stream and is used to verify the integirity of the `istream`.
+     * @param flags a #GMimeVerifyFlags
+     * @param istream input stream
+     * @param sigstream detached-signature stream
+     * @param ostream output stream for use with encapsulated signature input streams
      */
     vfunc_verify(flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null): SignatureList | null
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4671,6 +5041,7 @@ class CryptoContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4703,6 +5074,7 @@ class CryptoContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CryptoContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CryptoContext, pspec: GObject.ParamSpec) => void)): number
@@ -4722,7 +5094,7 @@ interface DataWrapper_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DataWrapper {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.DataWrapper */
     /**
      * Gets the encoding type of the stream wrapped by `wrapper`.
@@ -4734,6 +5106,7 @@ class DataWrapper {
     get_stream(): Stream
     /**
      * Sets the encoding type of the internal stream.
+     * @param encoding encoding
      */
     set_encoding(encoding: ContentEncoding): void
     /**
@@ -4743,10 +5116,12 @@ class DataWrapper {
      * 
      * Note: caller is responsible for its own reference on
      * `stream`.
+     * @param stream a #GMimeStream
      */
     set_stream(stream: Stream): void
     /**
      * Writes the raw (decoded) data to the output stream.
+     * @param stream output stream
      */
     write_to_stream(stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -4784,6 +5159,10 @@ class DataWrapper {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4794,6 +5173,12 @@ class DataWrapper {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4817,6 +5202,7 @@ class DataWrapper {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4836,11 +5222,14 @@ class DataWrapper {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4848,6 +5237,8 @@ class DataWrapper {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4865,6 +5256,7 @@ class DataWrapper {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4910,6 +5302,7 @@ class DataWrapper {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4953,15 +5346,20 @@ class DataWrapper {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5002,6 +5400,7 @@ class DataWrapper {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5036,11 +5435,13 @@ class DataWrapper {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.DataWrapper */
     /**
      * Writes the raw (decoded) data to the output stream.
+     * @param stream output stream
      */
     vfunc_write_to_stream(stream: Stream): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5060,6 +5461,7 @@ class DataWrapper {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5092,6 +5494,7 @@ class DataWrapper {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DataWrapper, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DataWrapper, pspec: GObject.ParamSpec) => void)): number
@@ -5112,7 +5515,7 @@ interface DecryptResult_ConstructProps extends GObject.Object_ConstructProps {
 }
 class DecryptResult {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.DecryptResult */
     /**
      * Get the cipher algorithm used.
@@ -5136,22 +5539,27 @@ class DecryptResult {
     get_signatures(): SignatureList | null
     /**
      * Set the cipher algorithm used.
+     * @param cipher a #GMimeCipherAlgo
      */
     set_cipher(cipher: CipherAlgo): void
     /**
      * Set the mdc digest algorithm used.
+     * @param mdc a #GMimeDigestAlgo
      */
     set_mdc(mdc: DigestAlgo): void
     /**
      * Sets the list of certificates that the stream had been encrypted to.
+     * @param recipients A #GMimeCertificateList
      */
     set_recipients(recipients: CertificateList): void
     /**
      * Set the session key to be returned by this decryption result.
+     * @param session_key a string representing the session key or %NULL to unset the key
      */
     set_session_key(session_key?: string | null): void
     /**
      * Sets the list of signatures.
+     * @param signatures A #GMimeSignatureList
      */
     set_signatures(signatures: SignatureList): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5189,6 +5597,10 @@ class DecryptResult {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5199,6 +5611,12 @@ class DecryptResult {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5222,6 +5640,7 @@ class DecryptResult {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5241,11 +5660,14 @@ class DecryptResult {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5253,6 +5675,8 @@ class DecryptResult {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5270,6 +5694,7 @@ class DecryptResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5315,6 +5740,7 @@ class DecryptResult {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5358,15 +5784,20 @@ class DecryptResult {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5407,6 +5838,7 @@ class DecryptResult {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5441,6 +5873,7 @@ class DecryptResult {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5460,6 +5893,7 @@ class DecryptResult {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5492,6 +5926,7 @@ class DecryptResult {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DecryptResult, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DecryptResult, pspec: GObject.ParamSpec) => void)): number
@@ -5511,15 +5946,18 @@ interface Filter_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Filter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -5528,6 +5966,8 @@ class Filter {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -5536,6 +5976,8 @@ class Filter {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5573,6 +6015,10 @@ class Filter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5583,6 +6029,12 @@ class Filter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5606,6 +6058,7 @@ class Filter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5625,11 +6078,14 @@ class Filter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5637,6 +6093,8 @@ class Filter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5654,6 +6112,7 @@ class Filter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5699,6 +6158,7 @@ class Filter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5742,15 +6202,20 @@ class Filter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5791,6 +6256,7 @@ class Filter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5825,11 +6291,14 @@ class Filter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -5838,6 +6307,8 @@ class Filter {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -5861,6 +6332,7 @@ class Filter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5893,6 +6365,7 @@ class Filter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Filter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Filter, pspec: GObject.ParamSpec) => void)): number
@@ -5913,29 +6386,32 @@ class FilterBasic {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -5944,6 +6420,8 @@ class FilterBasic {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -5952,6 +6430,8 @@ class FilterBasic {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5989,6 +6469,10 @@ class FilterBasic {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5999,6 +6483,12 @@ class FilterBasic {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6022,6 +6512,7 @@ class FilterBasic {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6041,11 +6532,14 @@ class FilterBasic {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6053,6 +6547,8 @@ class FilterBasic {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6070,6 +6566,7 @@ class FilterBasic {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6115,6 +6612,7 @@ class FilterBasic {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6158,15 +6656,20 @@ class FilterBasic {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6207,6 +6710,7 @@ class FilterBasic {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6241,11 +6745,14 @@ class FilterBasic {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6254,6 +6761,8 @@ class FilterBasic {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6277,6 +6786,7 @@ class FilterBasic {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6309,6 +6819,7 @@ class FilterBasic {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterBasic, pspec: GObject.ParamSpec) => void)): number
@@ -6331,21 +6842,21 @@ class FilterBest {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.FilterBest */
     /**
      * Calculates the best charset for encoding the content filtered
@@ -6356,16 +6867,20 @@ class FilterBest {
      * Calculates the most efficient Content-Transfer-Encoding for the
      * content filtered through `best` that fits within the encoding
      * `constraint`.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encoding(constraint: EncodingConstraint): ContentEncoding
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6374,6 +6889,8 @@ class FilterBest {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6382,6 +6899,8 @@ class FilterBest {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6419,6 +6938,10 @@ class FilterBest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6429,6 +6952,12 @@ class FilterBest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6452,6 +6981,7 @@ class FilterBest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6471,11 +7001,14 @@ class FilterBest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6483,6 +7016,8 @@ class FilterBest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6500,6 +7035,7 @@ class FilterBest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6545,6 +7081,7 @@ class FilterBest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6588,15 +7125,20 @@ class FilterBest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6637,6 +7179,7 @@ class FilterBest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6671,11 +7214,14 @@ class FilterBest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6684,6 +7230,8 @@ class FilterBest {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6707,6 +7255,7 @@ class FilterBest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6739,6 +7288,7 @@ class FilterBest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterBest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterBest, pspec: GObject.ParamSpec) => void)): number
@@ -6761,29 +7311,32 @@ class FilterCharset {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6792,6 +7345,8 @@ class FilterCharset {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -6800,6 +7355,8 @@ class FilterCharset {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -6837,6 +7394,10 @@ class FilterCharset {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6847,6 +7408,12 @@ class FilterCharset {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6870,6 +7437,7 @@ class FilterCharset {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6889,11 +7457,14 @@ class FilterCharset {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6901,6 +7472,8 @@ class FilterCharset {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6918,6 +7491,7 @@ class FilterCharset {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6963,6 +7537,7 @@ class FilterCharset {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7006,15 +7581,20 @@ class FilterCharset {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7055,6 +7635,7 @@ class FilterCharset {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7089,11 +7670,14 @@ class FilterCharset {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7102,6 +7686,8 @@ class FilterCharset {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7125,6 +7711,7 @@ class FilterCharset {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7157,6 +7744,7 @@ class FilterCharset {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterCharset, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterCharset, pspec: GObject.ParamSpec) => void)): number
@@ -7179,24 +7767,26 @@ class FilterChecksum {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.FilterChecksum */
     /**
      * Outputs the checksum digest into `digest`.
+     * @param digest the digest buffer
+     * @param len the length of the digest buffer
      */
     get_digest(digest: number, len: number): number
     /**
@@ -7207,10 +7797,13 @@ class FilterChecksum {
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7219,6 +7812,8 @@ class FilterChecksum {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7227,6 +7822,8 @@ class FilterChecksum {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7264,6 +7861,10 @@ class FilterChecksum {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7274,6 +7875,12 @@ class FilterChecksum {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7297,6 +7904,7 @@ class FilterChecksum {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7316,11 +7924,14 @@ class FilterChecksum {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7328,6 +7939,8 @@ class FilterChecksum {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7345,6 +7958,7 @@ class FilterChecksum {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7390,6 +8004,7 @@ class FilterChecksum {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7433,15 +8048,20 @@ class FilterChecksum {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7482,6 +8102,7 @@ class FilterChecksum {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7516,11 +8137,14 @@ class FilterChecksum {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7529,6 +8153,8 @@ class FilterChecksum {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7552,6 +8178,7 @@ class FilterChecksum {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7584,6 +8211,7 @@ class FilterChecksum {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterChecksum, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterChecksum, pspec: GObject.ParamSpec) => void)): number
@@ -7606,29 +8234,32 @@ class FilterDos2Unix {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7637,6 +8268,8 @@ class FilterDos2Unix {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7645,6 +8278,8 @@ class FilterDos2Unix {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7682,6 +8317,10 @@ class FilterDos2Unix {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7692,6 +8331,12 @@ class FilterDos2Unix {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7715,6 +8360,7 @@ class FilterDos2Unix {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7734,11 +8380,14 @@ class FilterDos2Unix {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7746,6 +8395,8 @@ class FilterDos2Unix {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7763,6 +8414,7 @@ class FilterDos2Unix {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7808,6 +8460,7 @@ class FilterDos2Unix {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7851,15 +8504,20 @@ class FilterDos2Unix {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7900,6 +8558,7 @@ class FilterDos2Unix {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7934,11 +8593,14 @@ class FilterDos2Unix {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7947,6 +8609,8 @@ class FilterDos2Unix {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -7970,6 +8634,7 @@ class FilterDos2Unix {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8002,6 +8667,7 @@ class FilterDos2Unix {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterDos2Unix, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterDos2Unix, pspec: GObject.ParamSpec) => void)): number
@@ -8024,29 +8690,32 @@ class FilterEnriched {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8055,6 +8724,8 @@ class FilterEnriched {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8063,6 +8734,8 @@ class FilterEnriched {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8100,6 +8773,10 @@ class FilterEnriched {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8110,6 +8787,12 @@ class FilterEnriched {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8133,6 +8816,7 @@ class FilterEnriched {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8152,11 +8836,14 @@ class FilterEnriched {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8164,6 +8851,8 @@ class FilterEnriched {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8181,6 +8870,7 @@ class FilterEnriched {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8226,6 +8916,7 @@ class FilterEnriched {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8269,15 +8960,20 @@ class FilterEnriched {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8318,6 +9014,7 @@ class FilterEnriched {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8352,11 +9049,14 @@ class FilterEnriched {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8365,6 +9065,8 @@ class FilterEnriched {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8388,6 +9090,7 @@ class FilterEnriched {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8420,6 +9123,7 @@ class FilterEnriched {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterEnriched, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterEnriched, pspec: GObject.ParamSpec) => void)): number
@@ -8442,29 +9146,32 @@ class FilterFrom {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8473,6 +9180,8 @@ class FilterFrom {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8481,6 +9190,8 @@ class FilterFrom {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8518,6 +9229,10 @@ class FilterFrom {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8528,6 +9243,12 @@ class FilterFrom {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8551,6 +9272,7 @@ class FilterFrom {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8570,11 +9292,14 @@ class FilterFrom {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8582,6 +9307,8 @@ class FilterFrom {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8599,6 +9326,7 @@ class FilterFrom {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8644,6 +9372,7 @@ class FilterFrom {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8687,15 +9416,20 @@ class FilterFrom {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8736,6 +9470,7 @@ class FilterFrom {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8770,11 +9505,14 @@ class FilterFrom {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8783,6 +9521,8 @@ class FilterFrom {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8806,6 +9546,7 @@ class FilterFrom {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8838,6 +9579,7 @@ class FilterFrom {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterFrom, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterFrom, pspec: GObject.ParamSpec) => void)): number
@@ -8860,21 +9602,21 @@ class FilterGZip {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.FilterGZip */
     /**
      * Gets the comment that was either previously set or retrieved when decoding a gzip stream.
@@ -8886,20 +9628,25 @@ class FilterGZip {
     get_filename(): string
     /**
      * Sets the comment that should be used when generating the gzip header.
+     * @param comment The comment
      */
     set_comment(comment: string): void
     /**
      * Sets the filename that should be used when generating the gzip header.
+     * @param filename The name of the file
      */
     set_filename(filename: string): void
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8908,6 +9655,8 @@ class FilterGZip {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -8916,6 +9665,8 @@ class FilterGZip {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -8953,6 +9704,10 @@ class FilterGZip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8963,6 +9718,12 @@ class FilterGZip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8986,6 +9747,7 @@ class FilterGZip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9005,11 +9767,14 @@ class FilterGZip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9017,6 +9782,8 @@ class FilterGZip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9034,6 +9801,7 @@ class FilterGZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9079,6 +9847,7 @@ class FilterGZip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9122,15 +9891,20 @@ class FilterGZip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9171,6 +9945,7 @@ class FilterGZip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9205,11 +9980,14 @@ class FilterGZip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9218,6 +9996,8 @@ class FilterGZip {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9241,6 +10021,7 @@ class FilterGZip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9273,6 +10054,7 @@ class FilterGZip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterGZip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterGZip, pspec: GObject.ParamSpec) => void)): number
@@ -9295,29 +10077,32 @@ class FilterHTML {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9326,6 +10111,8 @@ class FilterHTML {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9334,6 +10121,8 @@ class FilterHTML {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9371,6 +10160,10 @@ class FilterHTML {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9381,6 +10174,12 @@ class FilterHTML {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9404,6 +10203,7 @@ class FilterHTML {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9423,11 +10223,14 @@ class FilterHTML {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9435,6 +10238,8 @@ class FilterHTML {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9452,6 +10257,7 @@ class FilterHTML {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9497,6 +10303,7 @@ class FilterHTML {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9540,15 +10347,20 @@ class FilterHTML {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9589,6 +10401,7 @@ class FilterHTML {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9623,11 +10436,14 @@ class FilterHTML {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9636,6 +10452,8 @@ class FilterHTML {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9659,6 +10477,7 @@ class FilterHTML {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9691,6 +10510,7 @@ class FilterHTML {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterHTML, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterHTML, pspec: GObject.ParamSpec) => void)): number
@@ -9713,21 +10533,21 @@ class FilterOpenPGP {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.FilterOpenPGP */
     /**
      * Gets the stream offset of the beginning of the OpenPGP data block, if any have been found.
@@ -9745,10 +10565,13 @@ class FilterOpenPGP {
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9757,6 +10580,8 @@ class FilterOpenPGP {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -9765,6 +10590,8 @@ class FilterOpenPGP {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -9802,6 +10629,10 @@ class FilterOpenPGP {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9812,6 +10643,12 @@ class FilterOpenPGP {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9835,6 +10672,7 @@ class FilterOpenPGP {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9854,11 +10692,14 @@ class FilterOpenPGP {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9866,6 +10707,8 @@ class FilterOpenPGP {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9883,6 +10726,7 @@ class FilterOpenPGP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9928,6 +10772,7 @@ class FilterOpenPGP {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9971,15 +10816,20 @@ class FilterOpenPGP {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10020,6 +10870,7 @@ class FilterOpenPGP {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10054,11 +10905,14 @@ class FilterOpenPGP {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10067,6 +10921,8 @@ class FilterOpenPGP {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10090,6 +10946,7 @@ class FilterOpenPGP {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10122,6 +10979,7 @@ class FilterOpenPGP {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterOpenPGP, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterOpenPGP, pspec: GObject.ParamSpec) => void)): number
@@ -10144,29 +11002,32 @@ class FilterSmtpData {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10175,6 +11036,8 @@ class FilterSmtpData {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10183,6 +11046,8 @@ class FilterSmtpData {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10220,6 +11085,10 @@ class FilterSmtpData {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10230,6 +11099,12 @@ class FilterSmtpData {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10253,6 +11128,7 @@ class FilterSmtpData {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10272,11 +11148,14 @@ class FilterSmtpData {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10284,6 +11163,8 @@ class FilterSmtpData {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10301,6 +11182,7 @@ class FilterSmtpData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10346,6 +11228,7 @@ class FilterSmtpData {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10389,15 +11272,20 @@ class FilterSmtpData {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10438,6 +11326,7 @@ class FilterSmtpData {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10472,11 +11361,14 @@ class FilterSmtpData {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10485,6 +11377,8 @@ class FilterSmtpData {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10508,6 +11402,7 @@ class FilterSmtpData {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10540,6 +11435,7 @@ class FilterSmtpData {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterSmtpData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterSmtpData, pspec: GObject.ParamSpec) => void)): number
@@ -10562,29 +11458,32 @@ class FilterStrip {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10593,6 +11492,8 @@ class FilterStrip {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10601,6 +11502,8 @@ class FilterStrip {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10638,6 +11541,10 @@ class FilterStrip {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10648,6 +11555,12 @@ class FilterStrip {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10671,6 +11584,7 @@ class FilterStrip {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10690,11 +11604,14 @@ class FilterStrip {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10702,6 +11619,8 @@ class FilterStrip {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10719,6 +11638,7 @@ class FilterStrip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10764,6 +11684,7 @@ class FilterStrip {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10807,15 +11728,20 @@ class FilterStrip {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10856,6 +11782,7 @@ class FilterStrip {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10890,11 +11817,14 @@ class FilterStrip {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10903,6 +11833,8 @@ class FilterStrip {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -10926,6 +11858,7 @@ class FilterStrip {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10958,6 +11891,7 @@ class FilterStrip {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterStrip, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterStrip, pspec: GObject.ParamSpec) => void)): number
@@ -10980,29 +11914,32 @@ class FilterUnix2Dos {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11011,6 +11948,8 @@ class FilterUnix2Dos {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11019,6 +11958,8 @@ class FilterUnix2Dos {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11056,6 +11997,10 @@ class FilterUnix2Dos {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11066,6 +12011,12 @@ class FilterUnix2Dos {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11089,6 +12040,7 @@ class FilterUnix2Dos {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11108,11 +12060,14 @@ class FilterUnix2Dos {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11120,6 +12075,8 @@ class FilterUnix2Dos {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11137,6 +12094,7 @@ class FilterUnix2Dos {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11182,6 +12140,7 @@ class FilterUnix2Dos {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11225,15 +12184,20 @@ class FilterUnix2Dos {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11274,6 +12238,7 @@ class FilterUnix2Dos {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11308,11 +12273,14 @@ class FilterUnix2Dos {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11321,6 +12289,8 @@ class FilterUnix2Dos {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11344,6 +12314,7 @@ class FilterUnix2Dos {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11376,6 +12347,7 @@ class FilterUnix2Dos {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterUnix2Dos, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterUnix2Dos, pspec: GObject.ParamSpec) => void)): number
@@ -11398,21 +12370,21 @@ class FilterWindows {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.FilterWindows */
     /**
      * Determines whether or not a Windows-CP125# charset has been
@@ -11427,10 +12399,13 @@ class FilterWindows {
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11439,6 +12414,8 @@ class FilterWindows {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11447,6 +12424,8 @@ class FilterWindows {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11484,6 +12463,10 @@ class FilterWindows {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11494,6 +12477,12 @@ class FilterWindows {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11517,6 +12506,7 @@ class FilterWindows {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11536,11 +12526,14 @@ class FilterWindows {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11548,6 +12541,8 @@ class FilterWindows {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11565,6 +12560,7 @@ class FilterWindows {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11610,6 +12606,7 @@ class FilterWindows {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11653,15 +12650,20 @@ class FilterWindows {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11702,6 +12704,7 @@ class FilterWindows {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11736,11 +12739,14 @@ class FilterWindows {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11749,6 +12755,8 @@ class FilterWindows {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11772,6 +12780,7 @@ class FilterWindows {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11804,6 +12813,7 @@ class FilterWindows {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterWindows, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterWindows, pspec: GObject.ParamSpec) => void)): number
@@ -11826,21 +12836,21 @@ class FilterYenc {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * private state data
      */
-    readonly priv: object
-    readonly outreal: string
-    readonly outbuf: string
-    readonly outptr: string
-    readonly outsize: number
-    readonly outpre: number
-    readonly backbuf: string
-    readonly backsize: number
-    readonly backlen: number
+    priv: object
+    outreal: string
+    outbuf: string
+    outptr: string
+    outsize: number
+    outpre: number
+    backbuf: string
+    backsize: number
+    backlen: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.FilterYenc */
     /**
      * Get the computed crc or (guint32) -1 on fail.
@@ -11852,20 +12862,25 @@ class FilterYenc {
     get_pcrc(): number
     /**
      * Sets the current crc32 value on the yEnc filter `yenc` to `crc`.
+     * @param crc crc32
      */
     set_crc(crc: number): void
     /**
      * Sets the current state of the yencoder/ydecoder
+     * @param state encode/decode state
      */
     set_state(state: number): void
     /* Methods of GMime-3.0.GMime.Filter */
     /**
      * Sets number of bytes backed up on the input, new calls replace
      * previous ones
+     * @param data data to backup
      */
     backup(data: Uint8Array): void
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11874,6 +12889,8 @@ class FilterYenc {
     copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -11882,6 +12899,8 @@ class FilterYenc {
     reset(): void
     /**
      * Ensure this much size is available for filter output (if required)
+     * @param size requested size for the output buffer
+     * @param keep %TRUE if existing data in the output buffer should be kept
      */
     set_size(size: number, keep: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11919,6 +12938,10 @@ class FilterYenc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11929,6 +12952,12 @@ class FilterYenc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11952,6 +12981,7 @@ class FilterYenc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11971,11 +13001,14 @@ class FilterYenc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11983,6 +13016,8 @@ class FilterYenc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12000,6 +13035,7 @@ class FilterYenc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12045,6 +13081,7 @@ class FilterYenc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12088,15 +13125,20 @@ class FilterYenc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12137,6 +13179,7 @@ class FilterYenc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12171,11 +13214,14 @@ class FilterYenc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Filter */
     /**
      * Completes the filtering.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_complete(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -12184,6 +13230,8 @@ class FilterYenc {
     vfunc_copy(): Filter
     /**
      * Filters the input data and writes it to `out`.
+     * @param inbuf input buffer
+     * @param prespace prespace buffer length
      */
     vfunc_filter(inbuf: Uint8Array, prespace: number): [ /* outbuf */ Uint8Array, /* outprespace */ number ]
     /**
@@ -12207,6 +13255,7 @@ class FilterYenc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12239,6 +13288,7 @@ class FilterYenc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterYenc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterYenc, pspec: GObject.ParamSpec) => void)): number
@@ -12261,13 +13311,13 @@ class GpgContext {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * a callback for requesting a password
      */
-    readonly request_passwd: PasswordRequestFunc
+    request_passwd: PasswordRequestFunc
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.CryptoContext */
     /**
      * Decrypts the ciphertext input stream and writes the resulting cleartext
@@ -12289,19 +13339,31 @@ class GpgContext {
      * Note: It *may* be possible to maliciously design an encrypted stream such
      * that recursively decrypting it will result in an endless loop, causing
      * a denial of service attack on your application.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
+     * @param istream input/ciphertext stream
+     * @param ostream output/cleartext stream
      */
     decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult
     /**
      * Gets the digest id based on the digest name.
+     * @param name digest name
      */
     digest_id(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
+     * @param digest digest id
      */
     digest_name(digest: DigestAlgo): string | null
     /**
      * Encrypts (and optionally signs) the cleartext input stream and
      * writes the resulting ciphertext to the output stream.
+     * @param sign sign as well as encrypt
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
+     * @param istream cleartext input stream
+     * @param ostream ciphertext output stream
      */
     encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
     /**
@@ -12310,6 +13372,8 @@ class GpgContext {
      * 
      * If `keys` is %NULL or contains only a %NULL element, then all keys
      * will be exported.
+     * @param keys an array of key ids, terminated by a %NULL element
+     * @param ostream output stream
      */
     export_keys(keys: string, ostream: Stream): number
     /**
@@ -12327,10 +13391,15 @@ class GpgContext {
     /**
      * Imports a stream of keys/certificates contained within `istream`
      * into the key/certificate database controlled by `ctx`.
+     * @param istream input stream (containing keys)
      */
     import_keys(istream: Stream): number
     /**
      * Signs the input stream and writes the resulting signature to the output stream.
+     * @param detach %TRUE if `ostream` should be the detached signature; otherwise, %FALSE
+     * @param userid private key to use to sign the stream
+     * @param istream input stream
+     * @param ostream output stream
      */
     sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
@@ -12339,6 +13408,10 @@ class GpgContext {
      * provide an `ostream` argument for GMime to output the original
      * plaintext into. Otherwise `sigstream` is assumed to be the signature
      * stream and is used to verify the integirity of the `istream`.
+     * @param flags a #GMimeVerifyFlags
+     * @param istream input stream
+     * @param sigstream detached-signature stream
+     * @param ostream output stream for use with encapsulated signature input streams
      */
     verify(flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null): SignatureList | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -12376,6 +13449,10 @@ class GpgContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12386,6 +13463,12 @@ class GpgContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12409,6 +13492,7 @@ class GpgContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12428,11 +13512,14 @@ class GpgContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12440,6 +13527,8 @@ class GpgContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12457,6 +13546,7 @@ class GpgContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12502,6 +13592,7 @@ class GpgContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12545,15 +13636,20 @@ class GpgContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12594,6 +13690,7 @@ class GpgContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12628,6 +13725,7 @@ class GpgContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.CryptoContext */
@@ -12651,19 +13749,31 @@ class GpgContext {
      * Note: It *may* be possible to maliciously design an encrypted stream such
      * that recursively decrypting it will result in an endless loop, causing
      * a denial of service attack on your application.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
+     * @param istream input/ciphertext stream
+     * @param ostream output/cleartext stream
      */
     vfunc_decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult
     /**
      * Gets the digest id based on the digest name.
+     * @param name digest name
      */
     vfunc_digest_id(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
+     * @param digest digest id
      */
     vfunc_digest_name(digest: DigestAlgo): string | null
     /**
      * Encrypts (and optionally signs) the cleartext input stream and
      * writes the resulting ciphertext to the output stream.
+     * @param sign sign as well as encrypt
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
+     * @param istream cleartext input stream
+     * @param ostream ciphertext output stream
      */
     vfunc_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
     /**
@@ -12672,6 +13782,8 @@ class GpgContext {
      * 
      * If `keys` is %NULL or contains only a %NULL element, then all keys
      * will be exported.
+     * @param keys an array of key ids, terminated by a %NULL element
+     * @param ostream output stream
      */
     vfunc_export_keys(keys: string, ostream: Stream): number
     /**
@@ -12689,10 +13801,15 @@ class GpgContext {
     /**
      * Imports a stream of keys/certificates contained within `istream`
      * into the key/certificate database controlled by `ctx`.
+     * @param istream input stream (containing keys)
      */
     vfunc_import_keys(istream: Stream): number
     /**
      * Signs the input stream and writes the resulting signature to the output stream.
+     * @param detach %TRUE if `ostream` should be the detached signature; otherwise, %FALSE
+     * @param userid private key to use to sign the stream
+     * @param istream input stream
+     * @param ostream output stream
      */
     vfunc_sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
@@ -12701,6 +13818,10 @@ class GpgContext {
      * provide an `ostream` argument for GMime to output the original
      * plaintext into. Otherwise `sigstream` is assumed to be the signature
      * stream and is used to verify the integirity of the `istream`.
+     * @param flags a #GMimeVerifyFlags
+     * @param istream input stream
+     * @param sigstream detached-signature stream
+     * @param ostream output stream for use with encapsulated signature input streams
      */
     vfunc_verify(flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null): SignatureList | null
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12720,6 +13841,7 @@ class GpgContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12752,6 +13874,7 @@ class GpgContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GpgContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GpgContext, pspec: GObject.ParamSpec) => void)): number
@@ -12773,41 +13896,62 @@ interface Header_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Header {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Header */
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a Sender, From, Reply-To, To, Cc, or Bcc header value
+     * @param charset a charset (note: unused)
      */
     format_addrlist(options: FormatOptions | null, value: string, charset: string): string
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a Content-Disposition header value
+     * @param charset a charset (note: unused)
      */
     format_content_disposition(options: FormatOptions | null, value: string, charset: string): string
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a Content-Type header value
+     * @param charset a charset (note: unused)
      */
     format_content_type(options: FormatOptions | null, value: string, charset: string): string
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a header value
+     * @param charset a charset to use when encoding the `value`
      */
     format_default(options: FormatOptions | null, value: string, charset: string): string
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a Message-Id or Content-Id header value
+     * @param charset a charset (note: unused)
      */
     format_message_id(options: FormatOptions | null, value: string, charset: string): string
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a Received header value
+     * @param charset a charset (note: unused)
      */
     format_received(options: FormatOptions | null, value: string, charset: string): string
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value a References or In-Reply-To header value
+     * @param charset a charset (note: unused)
      */
     format_references(options: FormatOptions | null, value: string, charset: string): string
     /**
@@ -12836,14 +13980,20 @@ class Header {
     get_value(): string
     /**
      * Sets the header's raw value.
+     * @param raw_value the raw value
      */
     set_raw_value(raw_value: string): void
     /**
      * Sets the header's decoded value.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param value the new header value
+     * @param charset a charset
      */
     set_value(options: FormatOptions | null, value: string, charset: string): void
     /**
      * Write the header to the specified stream.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream a #GMimeStream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -12881,6 +14031,10 @@ class Header {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12891,6 +14045,12 @@ class Header {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12914,6 +14074,7 @@ class Header {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12933,11 +14094,14 @@ class Header {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12945,6 +14109,8 @@ class Header {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12962,6 +14128,7 @@ class Header {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13007,6 +14174,7 @@ class Header {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13050,15 +14218,20 @@ class Header {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13099,6 +14272,7 @@ class Header {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13133,6 +14307,7 @@ class Header {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13152,6 +14327,7 @@ class Header {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13184,6 +14360,7 @@ class Header {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Header, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Header, pspec: GObject.ParamSpec) => void)): number
@@ -13201,12 +14378,15 @@ interface HeaderList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class HeaderList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.HeaderList */
     /**
      * Appends a header. If `value` is %NULL, a space will be set aside for it
      * (useful for setting the order of headers before values can be
      * obtained for them) otherwise the header will be unset.
+     * @param name header name
+     * @param value header value
+     * @param charset a charset
      */
     append(name: string, value: string, charset: string): void
     /**
@@ -13215,6 +14395,7 @@ class HeaderList {
     clear(): void
     /**
      * Checks whether or not a header exists.
+     * @param name header name
      */
     contains(name: string): boolean
     /**
@@ -13223,24 +14404,31 @@ class HeaderList {
     get_count(): number
     /**
      * Gets the first header with the specified name.
+     * @param name header name
      */
     get_header(name: string): Header
     /**
      * Gets the header at the specified `index` within the list.
+     * @param index the 0-based index of the header
      */
     get_header_at(index: number): Header
     /**
      * Prepends a header. If `value` is %NULL, a space will be set aside
      * for it (useful for setting the order of headers before values can
      * be obtained for them) otherwise the header will be unset.
+     * @param name header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend(name: string, value: string, charset: string): void
     /**
      * Remove the first instance of the specified header.
+     * @param name header name
      */
     remove(name: string): boolean
     /**
      * Removes the header at the specified `index` from `headers`.
+     * @param index the 0-based index of the header to remove
      */
     remove_at(index: number): void
     /**
@@ -13252,15 +14440,21 @@ class HeaderList {
      * Note: If there are multiple headers with the specified field name,
      * the first instance of the header will be replaced and further
      * instances will be removed.
+     * @param name header name
+     * @param value header value
+     * @param charset a charset
      */
     set(name: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the raw rfc822 headers
      * contained in `headers`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write the headers to a stream.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream output stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -13298,6 +14492,10 @@ class HeaderList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13308,6 +14506,12 @@ class HeaderList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13331,6 +14535,7 @@ class HeaderList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13350,11 +14555,14 @@ class HeaderList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13362,6 +14570,8 @@ class HeaderList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13379,6 +14589,7 @@ class HeaderList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13424,6 +14635,7 @@ class HeaderList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13467,15 +14679,20 @@ class HeaderList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13516,6 +14733,7 @@ class HeaderList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13550,6 +14768,7 @@ class HeaderList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13569,6 +14788,7 @@ class HeaderList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13601,6 +14821,7 @@ class HeaderList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HeaderList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HeaderList, pspec: GObject.ParamSpec) => void)): number
@@ -13620,7 +14841,7 @@ interface InternetAddress_ConstructProps extends GObject.Object_ConstructProps {
 }
 class InternetAddress {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.InternetAddress */
     /**
      * Gets the charset to be used when encoding the name of the mailbox or group.
@@ -13632,17 +14853,21 @@ class InternetAddress {
     get_name(): string | null
     /**
      * Set the charset to use for encoding the name of the mailbox or group.
+     * @param charset the charset to use when encoding the name or %NULL to use the defaults
      */
     set_charset(charset?: string | null): void
     /**
      * Set the display name of the #InternetAddress.
      * 
      * Note: The `name` string should be in UTF-8.
+     * @param name the display name for the address group or mailbox
      */
     set_name(name: string): void
     /**
      * Allocates a string containing the contents of the #InternetAddress
      * object.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param encode %TRUE if the address should be rfc2047 encoded
      */
     to_string(options: FormatOptions | null, encode: boolean): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -13680,6 +14905,10 @@ class InternetAddress {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13690,6 +14919,12 @@ class InternetAddress {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13713,6 +14948,7 @@ class InternetAddress {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13732,11 +14968,14 @@ class InternetAddress {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13744,6 +14983,8 @@ class InternetAddress {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13761,6 +15002,7 @@ class InternetAddress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13806,6 +15048,7 @@ class InternetAddress {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13849,15 +15092,20 @@ class InternetAddress {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13898,6 +15146,7 @@ class InternetAddress {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13932,6 +15181,7 @@ class InternetAddress {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.InternetAddress */
@@ -13953,6 +15203,7 @@ class InternetAddress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13985,6 +15236,7 @@ class InternetAddress {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternetAddress, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternetAddress, pspec: GObject.ParamSpec) => void)): number
@@ -14005,20 +15257,21 @@ class InternetAddressGroup {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the charset used for encoding the name
      */
-    readonly charset: string
+    charset: string
     /**
      * display name
      */
-    readonly name: string
+    name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.InternetAddressGroup */
     /**
      * Add a contact to the internet address group.
+     * @param member a #InternetAddress
      */
     add_member(member: InternetAddress): number
     /**
@@ -14028,6 +15281,7 @@ class InternetAddressGroup {
     get_members(): InternetAddressList
     /**
      * Set the members of the internet address group.
+     * @param members a #InternetAddressList
      */
     set_members(members: InternetAddressList): void
     /* Methods of GMime-3.0.GMime.InternetAddress */
@@ -14041,17 +15295,21 @@ class InternetAddressGroup {
     get_name(): string | null
     /**
      * Set the charset to use for encoding the name of the mailbox or group.
+     * @param charset the charset to use when encoding the name or %NULL to use the defaults
      */
     set_charset(charset?: string | null): void
     /**
      * Set the display name of the #InternetAddress.
      * 
      * Note: The `name` string should be in UTF-8.
+     * @param name the display name for the address group or mailbox
      */
     set_name(name: string): void
     /**
      * Allocates a string containing the contents of the #InternetAddress
      * object.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param encode %TRUE if the address should be rfc2047 encoded
      */
     to_string(options: FormatOptions | null, encode: boolean): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -14089,6 +15347,10 @@ class InternetAddressGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14099,6 +15361,12 @@ class InternetAddressGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14122,6 +15390,7 @@ class InternetAddressGroup {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14141,11 +15410,14 @@ class InternetAddressGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14153,6 +15425,8 @@ class InternetAddressGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14170,6 +15444,7 @@ class InternetAddressGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14215,6 +15490,7 @@ class InternetAddressGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14258,15 +15534,20 @@ class InternetAddressGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14307,6 +15588,7 @@ class InternetAddressGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14341,6 +15623,7 @@ class InternetAddressGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.InternetAddress */
@@ -14362,6 +15645,7 @@ class InternetAddressGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14394,6 +15678,7 @@ class InternetAddressGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternetAddressGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternetAddressGroup, pspec: GObject.ParamSpec) => void)): number
@@ -14413,14 +15698,16 @@ interface InternetAddressList_ConstructProps extends GObject.Object_ConstructPro
 }
 class InternetAddressList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.InternetAddressList */
     /**
      * Adds an #InternetAddress to the #InternetAddressList.
+     * @param ia a #InternetAddress
      */
     add(ia: InternetAddress): number
     /**
      * Adds all of the addresses in `append` to `list`.
+     * @param append a #InternetAddressList
      */
     append(append: InternetAddressList): void
     /**
@@ -14430,25 +15717,32 @@ class InternetAddressList {
     /**
      * Checks whether or not the specified #InternetAddress is contained
      * within the #InternetAddressList.
+     * @param ia a #InternetAddress
      */
     contains(ia: InternetAddress): boolean
     /**
      * Writes the rfc2047-encoded rfc822 formatted addresses in `list` to
      * `str,` folding appropriately.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param str string to write to
      */
     encode(options: FormatOptions | null, str: GLib.String): void
     /**
      * Gets the #InternetAddress at the specified index.
+     * @param index index of #InternetAddress to get
      */
     get_address(index: number): InternetAddress
     /**
      * Gets the index of the specified #InternetAddress inside the
      * #InternetAddressList.
+     * @param ia a #InternetAddress
      */
     index_of(ia: InternetAddress): number
     /**
      * Inserts an #InternetAddress into the #InternetAddressList at the
      * specified index.
+     * @param index index to insert at
+     * @param ia a #InternetAddress
      */
     insert(index: number, ia: InternetAddress): void
     /**
@@ -14457,24 +15751,31 @@ class InternetAddressList {
     length(): number
     /**
      * Inserts all of the addresses in `prepend` to the beginning of `list`.
+     * @param prepend a #InternetAddressList
      */
     prepend(prepend: InternetAddressList): void
     /**
      * Removes an #InternetAddress from the #InternetAddressList.
+     * @param ia a #InternetAddress
      */
     remove(ia: InternetAddress): boolean
     /**
      * Removes an #InternetAddress from the #InternetAddressList at the
      * specified index.
+     * @param index index to remove
      */
     remove_at(index: number): boolean
     /**
      * Sets the #InternetAddress at the specified index to `ia`.
+     * @param index index of #InternetAddress to set
+     * @param ia a #InternetAddress
      */
     set_address(index: number, ia: InternetAddress): void
     /**
      * Allocates a string buffer containing the rfc822 formatted addresses
      * in `list`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param encode %TRUE if the address should be rfc2047 encoded
      */
     to_string(options: FormatOptions | null, encode: boolean): string | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -14512,6 +15813,10 @@ class InternetAddressList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14522,6 +15827,12 @@ class InternetAddressList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14545,6 +15856,7 @@ class InternetAddressList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14564,11 +15876,14 @@ class InternetAddressList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14576,6 +15891,8 @@ class InternetAddressList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14593,6 +15910,7 @@ class InternetAddressList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14638,6 +15956,7 @@ class InternetAddressList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14681,15 +16000,20 @@ class InternetAddressList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14730,6 +16054,7 @@ class InternetAddressList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14764,6 +16089,7 @@ class InternetAddressList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14783,6 +16109,7 @@ class InternetAddressList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14815,6 +16142,7 @@ class InternetAddressList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternetAddressList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternetAddressList, pspec: GObject.ParamSpec) => void)): number
@@ -14830,6 +16158,8 @@ class InternetAddressList {
     static new(): InternetAddressList
     /**
      * Construct a list of internet addresses from the given string.
+     * @param options a #GMimeParserOptions or %NULL
+     * @param str a string containing internet addresses
      */
     static parse(options: ParserOptions | null, str: string): InternetAddressList | null
     static $gtype: GObject.Type
@@ -14841,17 +16171,17 @@ class InternetAddressMailbox {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * the charset used for encoding the name
      */
-    readonly charset: string
+    charset: string
     /**
      * display name
      */
-    readonly name: string
+    name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.InternetAddressMailbox */
     /**
      * Gets the addr-spec of the internet address mailbox.
@@ -14863,6 +16193,7 @@ class InternetAddressMailbox {
     get_idn_addr(): string
     /**
      * Set the mailbox address.
+     * @param addr contact's email address
      */
     set_addr(addr: string): void
     /* Methods of GMime-3.0.GMime.InternetAddress */
@@ -14876,17 +16207,21 @@ class InternetAddressMailbox {
     get_name(): string | null
     /**
      * Set the charset to use for encoding the name of the mailbox or group.
+     * @param charset the charset to use when encoding the name or %NULL to use the defaults
      */
     set_charset(charset?: string | null): void
     /**
      * Set the display name of the #InternetAddress.
      * 
      * Note: The `name` string should be in UTF-8.
+     * @param name the display name for the address group or mailbox
      */
     set_name(name: string): void
     /**
      * Allocates a string containing the contents of the #InternetAddress
      * object.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param encode %TRUE if the address should be rfc2047 encoded
      */
     to_string(options: FormatOptions | null, encode: boolean): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -14924,6 +16259,10 @@ class InternetAddressMailbox {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14934,6 +16273,12 @@ class InternetAddressMailbox {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14957,6 +16302,7 @@ class InternetAddressMailbox {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14976,11 +16322,14 @@ class InternetAddressMailbox {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14988,6 +16337,8 @@ class InternetAddressMailbox {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15005,6 +16356,7 @@ class InternetAddressMailbox {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15050,6 +16402,7 @@ class InternetAddressMailbox {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15093,15 +16446,20 @@ class InternetAddressMailbox {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15142,6 +16500,7 @@ class InternetAddressMailbox {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15176,6 +16535,7 @@ class InternetAddressMailbox {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.InternetAddress */
@@ -15197,6 +16557,7 @@ class InternetAddressMailbox {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15229,6 +16590,7 @@ class InternetAddressMailbox {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternetAddressMailbox, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternetAddressMailbox, pspec: GObject.ParamSpec) => void)): number
@@ -15251,38 +16613,43 @@ class Message {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Message */
     /**
      * Add a mailbox of a chosen type to the MIME message.
      * 
      * Note: The `name` (and `addr)` strings should be in UTF-8.
+     * @param type A #GMimeAddressType
+     * @param name The name of the mailbox (or %NULL)
+     * @param addr The address of the mailbox
      */
     add_mailbox(type: AddressType, name: string, addr: string): void
     /**
      * Recursively calls `callback` on each of the mime parts in the mime message.
+     * @param callback function to call on each of the mime parts   contained by the mime message
      */
     foreach(callback: ObjectForeachFunc): void
     /**
      * Gets a list of addresses of the specified `type` from the `message`.
+     * @param type A #GMimeAddressType
      */
     get_addresses(type: AddressType): InternetAddressList
     /**
@@ -15306,6 +16673,9 @@ class Message {
      * If decryption fails, returns %NULL.  In this case, an exception
      * will be set on `err` to provide information about the decryption
      * failure.
+     * @param now a #GDateTime object, or %NULL
+     * @param flags a #GMimeDecryptFlags, to be used during decryption
+     * @param session_key session key to use or %NULL
      */
     get_autocrypt_gossip_headers(now: GLib.DateTime, flags: DecryptFlags, session_key: string): AutocryptHeaderList | null
     /**
@@ -15347,6 +16717,8 @@ class Message {
      * 
      * - the Date: header of the message or
      * - `now` (or the current time, if `now` is %NULL)
+     * @param now a #GDateTime object, or %NULL
+     * @param inner_part a #GMimeObject which is the cleartext part of the inner message
      */
     get_autocrypt_gossip_headers_from_inner_part(now: GLib.DateTime, inner_part: Object): AutocryptHeaderList | null
     /**
@@ -15375,6 +16747,7 @@ class Message {
      * 
      * - the Date: header of the message or
      * - `now` (or the current time, if `now` is %NULL)
+     * @param now a #GDateTime object, or %NULL
      */
     get_autocrypt_header(now: GLib.DateTime): AutocryptHeader | null
     /**
@@ -15427,35 +16800,45 @@ class Message {
      * containing a single #GMimeMessagePartial object containing
      * `max_size` bytes or fewer. `nparts` is set to the number of
      * #GMimeMessagePartial objects created.
+     * @param max_size max size
      */
     partial_split_message(max_size: number): [ /* returnType */ Message | null, /* nparts */ number ]
     /**
      * Sets the Date header on a MIME Message.
+     * @param date a date to be used in the Date header
      */
     set_date(date: GLib.DateTime): void
     /**
      * Set the Message-Id on a message.
+     * @param message_id message-id (addr-spec portion)
      */
     set_message_id(message_id: string): void
     /**
      * Set the root-level MIME part of the message.
+     * @param mime_part The root-level MIME Part
      */
     set_mime_part(mime_part: Object): void
     /**
      * Set the subject of a `message`.
      * 
      * Note: The `subject` string should be in UTF-8.
+     * @param subject Subject string
+     * @param charset The charset to use for encoding the subject or %NULL to use the default
      */
     set_subject(subject: string, charset: string): void
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -15465,6 +16848,7 @@ class Message {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -15479,6 +16863,7 @@ class Message {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -15487,6 +16872,7 @@ class Message {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -15496,19 +16882,25 @@ class Message {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -15516,15 +16908,19 @@ class Message {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -15532,6 +16928,8 @@ class Message {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -15539,22 +16937,31 @@ class Message {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -15592,6 +16999,10 @@ class Message {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15602,6 +17013,12 @@ class Message {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15625,6 +17042,7 @@ class Message {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15644,11 +17062,14 @@ class Message {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15656,6 +17077,8 @@ class Message {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15673,6 +17096,7 @@ class Message {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15718,6 +17142,7 @@ class Message {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15761,15 +17186,20 @@ class Message {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15810,6 +17240,7 @@ class Message {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15844,6 +17275,7 @@ class Message {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -15851,11 +17283,13 @@ class Message {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -15865,6 +17299,7 @@ class Message {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -15885,6 +17320,7 @@ class Message {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15917,6 +17353,7 @@ class Message {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
@@ -15941,25 +17378,25 @@ class MessagePart {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.MessagePart */
     /**
      * Gets the message object on the message part object `part`.
@@ -15967,17 +17404,22 @@ class MessagePart {
     get_message(): Message
     /**
      * Sets the `message` object on the message part object `part`.
+     * @param message message
      */
     set_message(message: Message): void
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -15987,6 +17429,7 @@ class MessagePart {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -16001,6 +17444,7 @@ class MessagePart {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -16009,6 +17453,7 @@ class MessagePart {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -16018,19 +17463,25 @@ class MessagePart {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -16038,15 +17489,19 @@ class MessagePart {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -16054,6 +17509,8 @@ class MessagePart {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -16061,22 +17518,31 @@ class MessagePart {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -16114,6 +17580,10 @@ class MessagePart {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16124,6 +17594,12 @@ class MessagePart {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16147,6 +17623,7 @@ class MessagePart {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16166,11 +17643,14 @@ class MessagePart {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16178,6 +17658,8 @@ class MessagePart {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16195,6 +17677,7 @@ class MessagePart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16240,6 +17723,7 @@ class MessagePart {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16283,15 +17767,20 @@ class MessagePart {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16332,6 +17821,7 @@ class MessagePart {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16366,6 +17856,7 @@ class MessagePart {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -16373,11 +17864,13 @@ class MessagePart {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -16387,6 +17880,7 @@ class MessagePart {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -16407,6 +17901,7 @@ class MessagePart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16439,6 +17934,7 @@ class MessagePart {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MessagePart, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MessagePart, pspec: GObject.ParamSpec) => void)): number
@@ -16464,50 +17960,50 @@ class MessagePartial {
     /**
      * parent #GMimeObject
      */
-    readonly parent_object: Object
+    parent_object: Object
     /**
      * a #GMimeContentEncoding
      */
-    readonly encoding: ContentEncoding
+    encoding: ContentEncoding
     /**
      * a #GMimeOpenPGPData
      */
-    readonly openpgp: OpenPGPData
+    openpgp: OpenPGPData
     /**
      * Content-Description string
      */
-    readonly content_description: string
+    content_description: string
     /**
      * Content-Location string
      */
-    readonly content_location: string
+    content_location: string
     /**
      * Content-MD5 string
      */
-    readonly content_md5: string
+    content_md5: string
     /**
      * a #GMimeDataWrapper representing the MIME part's content
      */
-    readonly content: DataWrapper
+    content: DataWrapper
     /* Fields of GMime-3.0.GMime.Object */
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.MessagePartial */
     /**
      * Gets the message/partial id parameter value.
@@ -16526,6 +18022,7 @@ class MessagePartial {
     /**
      * Calculates the most efficient content encoding for the `mime_part`
      * given the `constraint`.
+     * @param constraint a #GMimeEncodingConstraint
      */
     get_best_content_encoding(constraint: EncodingConstraint): ContentEncoding
     /**
@@ -16575,45 +18072,59 @@ class MessagePartial {
     /**
      * Decrypts the content of the `mime_part` and then replaces the content with
      * the new, decrypted, content.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
      */
     openpgp_decrypt(flags: DecryptFlags, session_key?: string | null): DecryptResult | null
     /**
      * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
      * the content with the new, encrypted, content.
+     * @param sign %TRUE if the content should also be signed; otherwise, %FALSE
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
      */
     openpgp_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[]): boolean
     /**
      * Signs the content of the `mime_part` and then replaces the content with
      * the new, signed, content.
+     * @param userid the key id (or email address) to use for signing
      */
     openpgp_sign(userid: string): boolean
     /**
      * Verifies the OpenPGP signature of the `mime_part` and then replaces the content
      * with the original, raw, content.
+     * @param flags a set of #GMimeVerifyFlags
      */
     openpgp_verify(flags: VerifyFlags): SignatureList | null
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     set_content(content: DataWrapper): void
     /**
      * Set the content description for the specified mime part.
+     * @param description content description
      */
     set_content_description(description: string): void
     /**
      * Set the content encoding for the specified mime part.
+     * @param encoding a #GMimeContentEncoding
      */
     set_content_encoding(encoding: ContentEncoding): void
     /**
      * Set the content id for the specified mime part.
+     * @param content_id content id
      */
     set_content_id(content_id: string): void
     /**
      * Set the content location for the specified mime part.
+     * @param content_location content location
      */
     set_content_location(content_location: string): void
     /**
      * Set the content md5 for the specified mime part.
+     * @param content_md5 content md5 or %NULL to generate the md5 digest.
      */
     set_content_md5(content_md5: string): void
     /**
@@ -16621,11 +18132,13 @@ class MessagePartial {
      * "name" parameter on the Content-Type.
      * 
      * Note: The `filename` string should be in UTF-8.
+     * @param filename the file name
      */
     set_filename(filename: string): void
     /**
      * Sets whether or not (and what type) of OpenPGP data is contained
      * within the #GMimePart.
+     * @param data a #GMimeOpenPGPData
      */
     set_openpgp_data(data: OpenPGPData): void
     /**
@@ -16635,12 +18148,16 @@ class MessagePartial {
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -16650,6 +18167,7 @@ class MessagePartial {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -16660,6 +18178,7 @@ class MessagePartial {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -16668,6 +18187,7 @@ class MessagePartial {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -16677,19 +18197,25 @@ class MessagePartial {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -16697,15 +18223,19 @@ class MessagePartial {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -16713,6 +18243,8 @@ class MessagePartial {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -16720,22 +18252,31 @@ class MessagePartial {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -16773,6 +18314,10 @@ class MessagePartial {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16783,6 +18328,12 @@ class MessagePartial {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16806,6 +18357,7 @@ class MessagePartial {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16825,11 +18377,14 @@ class MessagePartial {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16837,6 +18392,8 @@ class MessagePartial {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16854,6 +18411,7 @@ class MessagePartial {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16899,6 +18457,7 @@ class MessagePartial {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16942,15 +18501,20 @@ class MessagePartial {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16991,6 +18555,7 @@ class MessagePartial {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17025,11 +18590,13 @@ class MessagePartial {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Part */
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     vfunc_set_content(content: DataWrapper): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -17037,11 +18604,13 @@ class MessagePartial {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -17051,6 +18620,7 @@ class MessagePartial {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -17071,6 +18641,7 @@ class MessagePartial {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17103,6 +18674,7 @@ class MessagePartial {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MessagePartial, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MessagePartial, pspec: GObject.ParamSpec) => void)): number
@@ -17122,6 +18694,8 @@ class MessagePartial {
     /**
      * Reconstructs the GMimeMessage from the given message/partial parts
      * in `partials`.
+     * @param partials an array of message/partial mime parts
+     * @param num the number of elements in `partials`
      */
     static reconstruct_message(partials: MessagePartial, num: number): Message
     static $gtype: GObject.Type
@@ -17133,28 +18707,29 @@ class Multipart {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Multipart */
     /**
      * Appends a mime part to `multipart`.
+     * @param part a #GMimeObject
      */
     add(part: Object): void
     /**
@@ -17163,10 +18738,12 @@ class Multipart {
     clear(): void
     /**
      * Checks if `part` is contained within `multipart`.
+     * @param part a #GMimeObject
      */
     contains(part: Object): boolean
     /**
      * Recursively calls `callback` on each of `multipart'`s subparts.
+     * @param callback function to call for each of `multipart'`s   subparts.
      */
     foreach(callback: ObjectForeachFunc): void
     /**
@@ -17185,6 +18762,7 @@ class Multipart {
     get_epilogue(): string
     /**
      * Gets the part at the specified `index` within the multipart.
+     * @param index the 0-based index of the part
      */
     get_part(index: number): Object
     /**
@@ -17194,51 +18772,66 @@ class Multipart {
     /**
      * Gets the mime part with the content-id `content_id` from the
      * multipart `multipart`.
+     * @param content_id the content id of the part to look for
      */
     get_subpart_from_content_id(content_id: string): Object
     /**
      * Gets the 0-based index of `part` within `multipart`.
+     * @param part a #GMimeObject
      */
     index_of(part: Object): number
     /**
      * Inserts `part` into `multipart` at the specified `index`.
+     * @param index the 0-based index to insert the part
+     * @param part a #GMimeObject
      */
     insert(index: number, part: Object): void
     /**
      * Removes the specified `part` from `multipart`.
+     * @param part a #GMimeObject
      */
     remove(part: Object): boolean
     /**
      * Removes the part at the specified `index` from `multipart`.
+     * @param index the 0-based index of the part to remove
      */
     remove_at(index: number): Object
     /**
      * Replaces the part at the specified `index` within `multipart` with
      * `replacement`.
+     * @param index the 0-based index of the part to replace
+     * @param replacement a #GMimeObject to use as the replacement
      */
     replace(index: number, replacement: Object): Object
     /**
      * Sets `boundary` as the boundary on the multipart. If `boundary` is
      * %NULL, then a boundary will be auto-generated for you.
+     * @param boundary boundary or %NULL to autogenerate one
      */
     set_boundary(boundary: string): void
     /**
      * Sets the epilogue on the multipart.
+     * @param epilogue epilogue
      */
     set_epilogue(epilogue: string): void
     /**
      * Sets the prologue on the multipart.
+     * @param prologue prologue
      */
     set_prologue(prologue: string): void
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -17248,6 +18841,7 @@ class Multipart {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -17262,6 +18856,7 @@ class Multipart {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -17270,6 +18865,7 @@ class Multipart {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -17279,19 +18875,25 @@ class Multipart {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -17299,15 +18901,19 @@ class Multipart {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -17315,6 +18921,8 @@ class Multipart {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -17322,22 +18930,31 @@ class Multipart {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -17375,6 +18992,10 @@ class Multipart {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17385,6 +19006,12 @@ class Multipart {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17408,6 +19035,7 @@ class Multipart {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17427,11 +19055,14 @@ class Multipart {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17439,6 +19070,8 @@ class Multipart {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17456,6 +19089,7 @@ class Multipart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17501,6 +19135,7 @@ class Multipart {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17544,15 +19179,20 @@ class Multipart {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17593,6 +19233,7 @@ class Multipart {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17627,11 +19268,13 @@ class Multipart {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Multipart */
     /**
      * Appends a mime part to `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_add(part: Object): void
     /**
@@ -17640,6 +19283,7 @@ class Multipart {
     vfunc_clear(): void
     /**
      * Checks if `part` is contained within `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_contains(part: Object): boolean
     /**
@@ -17654,27 +19298,34 @@ class Multipart {
     vfunc_get_count(): number
     /**
      * Gets the part at the specified `index` within the multipart.
+     * @param index the 0-based index of the part
      */
     vfunc_get_part(index: number): Object
     /**
      * Gets the 0-based index of `part` within `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_index_of(part: Object): number
     /**
      * Inserts `part` into `multipart` at the specified `index`.
+     * @param index the 0-based index to insert the part
+     * @param part a #GMimeObject
      */
     vfunc_insert(index: number, part: Object): void
     /**
      * Removes the specified `part` from `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_remove(part: Object): boolean
     /**
      * Removes the part at the specified `index` from `multipart`.
+     * @param index the 0-based index of the part to remove
      */
     vfunc_remove_at(index: number): Object
     /**
      * Sets `boundary` as the boundary on the multipart. If `boundary` is
      * %NULL, then a boundary will be auto-generated for you.
+     * @param boundary boundary or %NULL to autogenerate one
      */
     vfunc_set_boundary(boundary: string): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -17682,11 +19333,13 @@ class Multipart {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -17696,6 +19349,7 @@ class Multipart {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -17716,6 +19370,7 @@ class Multipart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17748,6 +19403,7 @@ class Multipart {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Multipart, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Multipart, pspec: GObject.ParamSpec) => void)): number
@@ -17773,42 +19429,42 @@ class MultipartEncrypted {
     /**
      * parent #GMimeObject
      */
-    readonly parent_object: Object
+    parent_object: Object
     /**
      * array of MIME sub-parts
      */
-    readonly children: object[]
+    children: object[]
     /**
      * MIME boundary
      */
-    readonly boundary: string
+    boundary: string
     /**
      * multipart prologue
      */
-    readonly prologue: string
+    prologue: string
     /**
      * multipart epilogue
      */
-    readonly epilogue: string
+    epilogue: string
     /* Fields of GMime-3.0.GMime.Object */
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.MultipartEncrypted */
     /**
      * Attempts to decrypt the encrypted MIME part contained within the
@@ -17823,11 +19479,14 @@ class MultipartEncrypted {
      * updated to point to a newly-allocated #GMimeDecryptResult with signature
      * status information as well as a list of recipients that the part was
      * encrypted to.
+     * @param flags a #GMimeDecryptFlags
+     * @param session_key session key to use or %NULL
      */
     decrypt(flags: DecryptFlags, session_key: string): [ /* returnType */ Object | null, /* result */ DecryptResult ]
     /* Methods of GMime-3.0.GMime.Multipart */
     /**
      * Appends a mime part to `multipart`.
+     * @param part a #GMimeObject
      */
     add(part: Object): void
     /**
@@ -17836,10 +19495,12 @@ class MultipartEncrypted {
     clear(): void
     /**
      * Checks if `part` is contained within `multipart`.
+     * @param part a #GMimeObject
      */
     contains(part: Object): boolean
     /**
      * Recursively calls `callback` on each of `multipart'`s subparts.
+     * @param callback function to call for each of `multipart'`s   subparts.
      */
     foreach(callback: ObjectForeachFunc): void
     /**
@@ -17858,6 +19519,7 @@ class MultipartEncrypted {
     get_epilogue(): string
     /**
      * Gets the part at the specified `index` within the multipart.
+     * @param index the 0-based index of the part
      */
     get_part(index: number): Object
     /**
@@ -17867,51 +19529,66 @@ class MultipartEncrypted {
     /**
      * Gets the mime part with the content-id `content_id` from the
      * multipart `multipart`.
+     * @param content_id the content id of the part to look for
      */
     get_subpart_from_content_id(content_id: string): Object
     /**
      * Gets the 0-based index of `part` within `multipart`.
+     * @param part a #GMimeObject
      */
     index_of(part: Object): number
     /**
      * Inserts `part` into `multipart` at the specified `index`.
+     * @param index the 0-based index to insert the part
+     * @param part a #GMimeObject
      */
     insert(index: number, part: Object): void
     /**
      * Removes the specified `part` from `multipart`.
+     * @param part a #GMimeObject
      */
     remove(part: Object): boolean
     /**
      * Removes the part at the specified `index` from `multipart`.
+     * @param index the 0-based index of the part to remove
      */
     remove_at(index: number): Object
     /**
      * Replaces the part at the specified `index` within `multipart` with
      * `replacement`.
+     * @param index the 0-based index of the part to replace
+     * @param replacement a #GMimeObject to use as the replacement
      */
     replace(index: number, replacement: Object): Object
     /**
      * Sets `boundary` as the boundary on the multipart. If `boundary` is
      * %NULL, then a boundary will be auto-generated for you.
+     * @param boundary boundary or %NULL to autogenerate one
      */
     set_boundary(boundary: string): void
     /**
      * Sets the epilogue on the multipart.
+     * @param epilogue epilogue
      */
     set_epilogue(epilogue: string): void
     /**
      * Sets the prologue on the multipart.
+     * @param prologue prologue
      */
     set_prologue(prologue: string): void
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -17921,6 +19598,7 @@ class MultipartEncrypted {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -17935,6 +19613,7 @@ class MultipartEncrypted {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -17943,6 +19622,7 @@ class MultipartEncrypted {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -17952,19 +19632,25 @@ class MultipartEncrypted {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -17972,15 +19658,19 @@ class MultipartEncrypted {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -17988,6 +19678,8 @@ class MultipartEncrypted {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -17995,22 +19687,31 @@ class MultipartEncrypted {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -18048,6 +19749,10 @@ class MultipartEncrypted {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18058,6 +19763,12 @@ class MultipartEncrypted {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18081,6 +19792,7 @@ class MultipartEncrypted {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18100,11 +19812,14 @@ class MultipartEncrypted {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18112,6 +19827,8 @@ class MultipartEncrypted {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18129,6 +19846,7 @@ class MultipartEncrypted {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18174,6 +19892,7 @@ class MultipartEncrypted {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18217,15 +19936,20 @@ class MultipartEncrypted {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18266,6 +19990,7 @@ class MultipartEncrypted {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18300,11 +20025,13 @@ class MultipartEncrypted {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Multipart */
     /**
      * Appends a mime part to `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_add(part: Object): void
     /**
@@ -18313,6 +20040,7 @@ class MultipartEncrypted {
     vfunc_clear(): void
     /**
      * Checks if `part` is contained within `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_contains(part: Object): boolean
     /**
@@ -18327,27 +20055,34 @@ class MultipartEncrypted {
     vfunc_get_count(): number
     /**
      * Gets the part at the specified `index` within the multipart.
+     * @param index the 0-based index of the part
      */
     vfunc_get_part(index: number): Object
     /**
      * Gets the 0-based index of `part` within `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_index_of(part: Object): number
     /**
      * Inserts `part` into `multipart` at the specified `index`.
+     * @param index the 0-based index to insert the part
+     * @param part a #GMimeObject
      */
     vfunc_insert(index: number, part: Object): void
     /**
      * Removes the specified `part` from `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_remove(part: Object): boolean
     /**
      * Removes the part at the specified `index` from `multipart`.
+     * @param index the 0-based index of the part to remove
      */
     vfunc_remove_at(index: number): Object
     /**
      * Sets `boundary` as the boundary on the multipart. If `boundary` is
      * %NULL, then a boundary will be auto-generated for you.
+     * @param boundary boundary or %NULL to autogenerate one
      */
     vfunc_set_boundary(boundary: string): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -18355,11 +20090,13 @@ class MultipartEncrypted {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -18369,6 +20106,7 @@ class MultipartEncrypted {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -18389,6 +20127,7 @@ class MultipartEncrypted {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18421,6 +20160,7 @@ class MultipartEncrypted {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MultipartEncrypted, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MultipartEncrypted, pspec: GObject.ParamSpec) => void)): number
@@ -18441,6 +20181,12 @@ class MultipartEncrypted {
      * Attempts to encrypt (and conditionally sign) the `entity` MIME part
      * to the public keys of `recipients` using the `ctx` encryption
      * context. If successful, a new multipart/encrypted object is returned.
+     * @param ctx a #GMimeCryptoContext
+     * @param entity MIME part to encrypt
+     * @param sign %TRUE if the content should also be signed or %FALSE otherwise
+     * @param userid user id to use for signing (only used if `sign` is %TRUE)
+     * @param flags a #GMimeEncryptFlags
+     * @param recipients an array of recipients to encrypt to
      */
     static encrypt(ctx: CryptoContext, entity: Object, sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[]): MultipartEncrypted | null
     static $gtype: GObject.Type
@@ -18452,51 +20198,53 @@ class MultipartSigned {
     /**
      * parent #GMimeObject
      */
-    readonly parent_object: Object
+    parent_object: Object
     /**
      * array of MIME sub-parts
      */
-    readonly children: object[]
+    children: object[]
     /**
      * MIME boundary
      */
-    readonly boundary: string
+    boundary: string
     /**
      * multipart prologue
      */
-    readonly prologue: string
+    prologue: string
     /**
      * multipart epilogue
      */
-    readonly epilogue: string
+    epilogue: string
     /* Fields of GMime-3.0.GMime.Object */
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.MultipartSigned */
     /**
      * Attempts to verify the signed MIME part contained within the
      * multipart/signed object `mps`.
+     * @param flags a #GMimeVerifyFlags
      */
     verify(flags: VerifyFlags): SignatureList | null
     /* Methods of GMime-3.0.GMime.Multipart */
     /**
      * Appends a mime part to `multipart`.
+     * @param part a #GMimeObject
      */
     add(part: Object): void
     /**
@@ -18505,10 +20253,12 @@ class MultipartSigned {
     clear(): void
     /**
      * Checks if `part` is contained within `multipart`.
+     * @param part a #GMimeObject
      */
     contains(part: Object): boolean
     /**
      * Recursively calls `callback` on each of `multipart'`s subparts.
+     * @param callback function to call for each of `multipart'`s   subparts.
      */
     foreach(callback: ObjectForeachFunc): void
     /**
@@ -18527,6 +20277,7 @@ class MultipartSigned {
     get_epilogue(): string
     /**
      * Gets the part at the specified `index` within the multipart.
+     * @param index the 0-based index of the part
      */
     get_part(index: number): Object
     /**
@@ -18536,51 +20287,66 @@ class MultipartSigned {
     /**
      * Gets the mime part with the content-id `content_id` from the
      * multipart `multipart`.
+     * @param content_id the content id of the part to look for
      */
     get_subpart_from_content_id(content_id: string): Object
     /**
      * Gets the 0-based index of `part` within `multipart`.
+     * @param part a #GMimeObject
      */
     index_of(part: Object): number
     /**
      * Inserts `part` into `multipart` at the specified `index`.
+     * @param index the 0-based index to insert the part
+     * @param part a #GMimeObject
      */
     insert(index: number, part: Object): void
     /**
      * Removes the specified `part` from `multipart`.
+     * @param part a #GMimeObject
      */
     remove(part: Object): boolean
     /**
      * Removes the part at the specified `index` from `multipart`.
+     * @param index the 0-based index of the part to remove
      */
     remove_at(index: number): Object
     /**
      * Replaces the part at the specified `index` within `multipart` with
      * `replacement`.
+     * @param index the 0-based index of the part to replace
+     * @param replacement a #GMimeObject to use as the replacement
      */
     replace(index: number, replacement: Object): Object
     /**
      * Sets `boundary` as the boundary on the multipart. If `boundary` is
      * %NULL, then a boundary will be auto-generated for you.
+     * @param boundary boundary or %NULL to autogenerate one
      */
     set_boundary(boundary: string): void
     /**
      * Sets the epilogue on the multipart.
+     * @param epilogue epilogue
      */
     set_epilogue(epilogue: string): void
     /**
      * Sets the prologue on the multipart.
+     * @param prologue prologue
      */
     set_prologue(prologue: string): void
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -18590,6 +20356,7 @@ class MultipartSigned {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -18604,6 +20371,7 @@ class MultipartSigned {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -18612,6 +20380,7 @@ class MultipartSigned {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -18621,19 +20390,25 @@ class MultipartSigned {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -18641,15 +20416,19 @@ class MultipartSigned {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -18657,6 +20436,8 @@ class MultipartSigned {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -18664,22 +20445,31 @@ class MultipartSigned {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -18717,6 +20507,10 @@ class MultipartSigned {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18727,6 +20521,12 @@ class MultipartSigned {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18750,6 +20550,7 @@ class MultipartSigned {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18769,11 +20570,14 @@ class MultipartSigned {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18781,6 +20585,8 @@ class MultipartSigned {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18798,6 +20604,7 @@ class MultipartSigned {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18843,6 +20650,7 @@ class MultipartSigned {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18886,15 +20694,20 @@ class MultipartSigned {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18935,6 +20748,7 @@ class MultipartSigned {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18969,11 +20783,13 @@ class MultipartSigned {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Multipart */
     /**
      * Appends a mime part to `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_add(part: Object): void
     /**
@@ -18982,6 +20798,7 @@ class MultipartSigned {
     vfunc_clear(): void
     /**
      * Checks if `part` is contained within `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_contains(part: Object): boolean
     /**
@@ -18996,27 +20813,34 @@ class MultipartSigned {
     vfunc_get_count(): number
     /**
      * Gets the part at the specified `index` within the multipart.
+     * @param index the 0-based index of the part
      */
     vfunc_get_part(index: number): Object
     /**
      * Gets the 0-based index of `part` within `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_index_of(part: Object): number
     /**
      * Inserts `part` into `multipart` at the specified `index`.
+     * @param index the 0-based index to insert the part
+     * @param part a #GMimeObject
      */
     vfunc_insert(index: number, part: Object): void
     /**
      * Removes the specified `part` from `multipart`.
+     * @param part a #GMimeObject
      */
     vfunc_remove(part: Object): boolean
     /**
      * Removes the part at the specified `index` from `multipart`.
+     * @param index the 0-based index of the part to remove
      */
     vfunc_remove_at(index: number): Object
     /**
      * Sets `boundary` as the boundary on the multipart. If `boundary` is
      * %NULL, then a boundary will be auto-generated for you.
+     * @param boundary boundary or %NULL to autogenerate one
      */
     vfunc_set_boundary(boundary: string): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -19024,11 +20848,13 @@ class MultipartSigned {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -19038,6 +20864,7 @@ class MultipartSigned {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -19058,6 +20885,7 @@ class MultipartSigned {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19090,6 +20918,7 @@ class MultipartSigned {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MultipartSigned, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MultipartSigned, pspec: GObject.ParamSpec) => void)): number
@@ -19110,6 +20939,9 @@ class MultipartSigned {
      * Attempts to sign the `content` MIME part with `userid'`s private key
      * using the `ctx` signing context. If successful, a new multipart/signed
      * object is returned.
+     * @param ctx a #GMimeCryptoContext
+     * @param entity MIME part to sign
+     * @param userid user id to sign with
      */
     static sign(ctx: CryptoContext, entity: Object, userid: string): MultipartSigned | null
     static $gtype: GObject.Type
@@ -19118,16 +20950,20 @@ interface Object_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Object {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -19137,6 +20973,7 @@ class Object {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -19151,6 +20988,7 @@ class Object {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -19159,6 +20997,7 @@ class Object {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -19168,19 +21007,25 @@ class Object {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -19188,15 +21033,19 @@ class Object {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -19204,6 +21053,8 @@ class Object {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -19211,22 +21062,31 @@ class Object {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -19264,6 +21124,10 @@ class Object {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19274,6 +21138,12 @@ class Object {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19297,6 +21167,7 @@ class Object {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19316,11 +21187,14 @@ class Object {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19328,6 +21202,8 @@ class Object {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19345,6 +21221,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19390,6 +21267,7 @@ class Object {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19433,15 +21311,20 @@ class Object {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19482,6 +21365,7 @@ class Object {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19516,6 +21400,7 @@ class Object {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -19523,11 +21408,13 @@ class Object {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -19537,6 +21424,7 @@ class Object {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -19557,6 +21445,7 @@ class Object {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19589,6 +21478,7 @@ class Object {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
@@ -19609,6 +21499,9 @@ class Object {
      * 
      * Note: You may use the wildcard "*" to match any type and/or
      * subtype.
+     * @param type mime type
+     * @param subtype mime subtype
+     * @param object_type object type
      */
     static register_type(type: string, subtype: string, object_type: GObject.Type): void
     static type_registry_init(): void
@@ -19619,7 +21512,7 @@ interface Param_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Param {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Param */
     /**
      * Gets the charset used for encoding the parameter.
@@ -19643,18 +21536,22 @@ class Param {
     get_value(): string
     /**
      * Sets the parameter charset used for encoding the value.
+     * @param charset the charset or %NULL to use the default
      */
     set_charset(charset: string): void
     /**
      * Sets the encoding method used for encoding the value.
+     * @param method a #GMimeParamEncodingMethod
      */
     set_encoding_method(method: ParamEncodingMethod): void
     /**
      * Sets the parameter language specifier used for encoding the value.
+     * @param lang the language specifier
      */
     set_lang(lang: string): void
     /**
      * Sets the parameter value to `value`.
+     * @param value the new parameter value
      */
     set_value(value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19692,6 +21589,10 @@ class Param {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19702,6 +21603,12 @@ class Param {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19725,6 +21632,7 @@ class Param {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19744,11 +21652,14 @@ class Param {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19756,6 +21667,8 @@ class Param {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19773,6 +21686,7 @@ class Param {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19818,6 +21732,7 @@ class Param {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19861,15 +21776,20 @@ class Param {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19910,6 +21830,7 @@ class Param {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19944,6 +21865,7 @@ class Param {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19963,6 +21885,7 @@ class Param {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19995,6 +21918,7 @@ class Param {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Param, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Param, pspec: GObject.ParamSpec) => void)): number
@@ -20012,7 +21936,7 @@ interface ParamList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class ParamList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.ParamList */
     /**
      * Clears the list of parameters.
@@ -20020,14 +21944,19 @@ class ParamList {
     clear(): void
     /**
      * Encodes the parameter list into `str,` folding lines if required.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param fold %TRUE if the parameter list should be folded; otherwise, %FALSE
+     * @param str the output string buffer
      */
     encode(options: FormatOptions, fold: boolean, str: GLib.String): void
     /**
      * Gets the #GMimeParam with the given `name`.
+     * @param name the name of the parameter
      */
     get_parameter(name: string): Param
     /**
      * Gets the #GMimeParam at the specified `index`.
+     * @param index the index of the requested parameter
      */
     get_parameter_at(index: number): Param
     /**
@@ -20036,14 +21965,18 @@ class ParamList {
     length(): number
     /**
      * Removes a parameter from the #GMimeParamList.
+     * @param name the name of the parameter
      */
     remove(name: string): boolean
     /**
      * Removes a #GMimeParam from the #GMimeParamList at the specified index.
+     * @param index index of the param to remove
      */
     remove_at(index: number): boolean
     /**
      * Sets the specified parameter to `value`.
+     * @param name The name of the parameter
+     * @param value The parameter value
      */
     set_parameter(name: string, value: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -20081,6 +22014,10 @@ class ParamList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20091,6 +22028,12 @@ class ParamList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20114,6 +22057,7 @@ class ParamList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20133,11 +22077,14 @@ class ParamList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20145,6 +22092,8 @@ class ParamList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20162,6 +22111,7 @@ class ParamList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20207,6 +22157,7 @@ class ParamList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20250,15 +22201,20 @@ class ParamList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20299,6 +22255,7 @@ class ParamList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20333,6 +22290,7 @@ class ParamList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20352,6 +22310,7 @@ class ParamList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20384,6 +22343,7 @@ class ParamList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ParamList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ParamList, pspec: GObject.ParamSpec) => void)): number
@@ -20399,6 +22359,8 @@ class ParamList {
     static new(): ParamList
     /**
      * Parses the input string into a parameter list.
+     * @param options a #GMimeParserOptions or %NULL
+     * @param str a string to parse
      */
     static parse(options: ParserOptions, str: string): ParamList
     static $gtype: GObject.Type
@@ -20407,14 +22369,16 @@ interface Parser_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Parser {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Parser */
     /**
      * Constructs a MIME message from `parser`.
+     * @param options a #GMimeParserOptions or %NULL
      */
     construct_message(options?: ParserOptions | null): Message | null
     /**
      * Constructs a MIME part from `parser`.
+     * @param options a #GMimeParserOptions or %NULL
      */
     construct_part(options?: ParserOptions | null): Object | null
     /**
@@ -20470,10 +22434,12 @@ class Parser {
      * since `parser` handles its own internal read-ahead buffer. Instead,
      * it is recommended that you use g_mime_parser_tell() if you have a
      * reason to need the current offset of the `parser`.
+     * @param stream raw message or part stream
      */
     init_with_stream(stream: Stream): void
     /**
      * Sets the format that the parser should expect the stream to be in.
+     * @param format a #GMimeFormat
      */
     set_format(format: Format): void
     /**
@@ -20491,6 +22457,7 @@ class Parser {
      * will be ignored.
      * 
      * By default, this feature is enabled if the underlying stream is seekable.
+     * @param persist persist attribute
      */
     set_persist_stream(persist: boolean): void
     /**
@@ -20502,6 +22469,7 @@ class Parser {
      * http://www.jwz.org/doc/content-length.html for details).
      * 
      * By default, this feature is disabled.
+     * @param respect_content_length %TRUE if the parser should use Content-Length headers or %FALSE otherwise.
      */
     set_respect_content_length(respect_content_length: boolean): void
     /**
@@ -20543,6 +22511,10 @@ class Parser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20553,6 +22525,12 @@ class Parser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20576,6 +22554,7 @@ class Parser {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20595,11 +22574,14 @@ class Parser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20607,6 +22589,8 @@ class Parser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20624,6 +22608,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20669,6 +22654,7 @@ class Parser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20712,15 +22698,20 @@ class Parser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20761,6 +22752,7 @@ class Parser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20795,6 +22787,7 @@ class Parser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20814,6 +22807,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20846,6 +22840,7 @@ class Parser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Parser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Parser, pspec: GObject.ParamSpec) => void)): number
@@ -20869,29 +22864,30 @@ class Part {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Part */
     /**
      * Calculates the most efficient content encoding for the `mime_part`
      * given the `constraint`.
+     * @param constraint a #GMimeEncodingConstraint
      */
     get_best_content_encoding(constraint: EncodingConstraint): ContentEncoding
     /**
@@ -20941,45 +22937,59 @@ class Part {
     /**
      * Decrypts the content of the `mime_part` and then replaces the content with
      * the new, decrypted, content.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
      */
     openpgp_decrypt(flags: DecryptFlags, session_key?: string | null): DecryptResult | null
     /**
      * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
      * the content with the new, encrypted, content.
+     * @param sign %TRUE if the content should also be signed; otherwise, %FALSE
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
      */
     openpgp_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[]): boolean
     /**
      * Signs the content of the `mime_part` and then replaces the content with
      * the new, signed, content.
+     * @param userid the key id (or email address) to use for signing
      */
     openpgp_sign(userid: string): boolean
     /**
      * Verifies the OpenPGP signature of the `mime_part` and then replaces the content
      * with the original, raw, content.
+     * @param flags a set of #GMimeVerifyFlags
      */
     openpgp_verify(flags: VerifyFlags): SignatureList | null
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     set_content(content: DataWrapper): void
     /**
      * Set the content description for the specified mime part.
+     * @param description content description
      */
     set_content_description(description: string): void
     /**
      * Set the content encoding for the specified mime part.
+     * @param encoding a #GMimeContentEncoding
      */
     set_content_encoding(encoding: ContentEncoding): void
     /**
      * Set the content id for the specified mime part.
+     * @param content_id content id
      */
     set_content_id(content_id: string): void
     /**
      * Set the content location for the specified mime part.
+     * @param content_location content location
      */
     set_content_location(content_location: string): void
     /**
      * Set the content md5 for the specified mime part.
+     * @param content_md5 content md5 or %NULL to generate the md5 digest.
      */
     set_content_md5(content_md5: string): void
     /**
@@ -20987,11 +22997,13 @@ class Part {
      * "name" parameter on the Content-Type.
      * 
      * Note: The `filename` string should be in UTF-8.
+     * @param filename the file name
      */
     set_filename(filename: string): void
     /**
      * Sets whether or not (and what type) of OpenPGP data is contained
      * within the #GMimePart.
+     * @param data a #GMimeOpenPGPData
      */
     set_openpgp_data(data: OpenPGPData): void
     /**
@@ -21001,12 +23013,16 @@ class Part {
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -21016,6 +23032,7 @@ class Part {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -21026,6 +23043,7 @@ class Part {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -21034,6 +23052,7 @@ class Part {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -21043,19 +23062,25 @@ class Part {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -21063,15 +23088,19 @@ class Part {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -21079,6 +23108,8 @@ class Part {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -21086,22 +23117,31 @@ class Part {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -21139,6 +23179,10 @@ class Part {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21149,6 +23193,12 @@ class Part {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21172,6 +23222,7 @@ class Part {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21191,11 +23242,14 @@ class Part {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21203,6 +23257,8 @@ class Part {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21220,6 +23276,7 @@ class Part {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21265,6 +23322,7 @@ class Part {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21308,15 +23366,20 @@ class Part {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21357,6 +23420,7 @@ class Part {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21391,11 +23455,13 @@ class Part {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Part */
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     vfunc_set_content(content: DataWrapper): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -21403,11 +23469,13 @@ class Part {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -21417,6 +23485,7 @@ class Part {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -21437,6 +23506,7 @@ class Part {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21469,6 +23539,7 @@ class Part {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Part, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Part, pspec: GObject.ParamSpec) => void)): number
@@ -21494,13 +23565,13 @@ class Pkcs7Context {
     /**
      * parent #GObject
      */
-    readonly parent_object: GObject.Object
+    parent_object: GObject.Object
     /**
      * a callback for requesting a password
      */
-    readonly request_passwd: PasswordRequestFunc
+    request_passwd: PasswordRequestFunc
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.CryptoContext */
     /**
      * Decrypts the ciphertext input stream and writes the resulting cleartext
@@ -21522,19 +23593,31 @@ class Pkcs7Context {
      * Note: It *may* be possible to maliciously design an encrypted stream such
      * that recursively decrypting it will result in an endless loop, causing
      * a denial of service attack on your application.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
+     * @param istream input/ciphertext stream
+     * @param ostream output/cleartext stream
      */
     decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult
     /**
      * Gets the digest id based on the digest name.
+     * @param name digest name
      */
     digest_id(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
+     * @param digest digest id
      */
     digest_name(digest: DigestAlgo): string | null
     /**
      * Encrypts (and optionally signs) the cleartext input stream and
      * writes the resulting ciphertext to the output stream.
+     * @param sign sign as well as encrypt
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
+     * @param istream cleartext input stream
+     * @param ostream ciphertext output stream
      */
     encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
     /**
@@ -21543,6 +23626,8 @@ class Pkcs7Context {
      * 
      * If `keys` is %NULL or contains only a %NULL element, then all keys
      * will be exported.
+     * @param keys an array of key ids, terminated by a %NULL element
+     * @param ostream output stream
      */
     export_keys(keys: string, ostream: Stream): number
     /**
@@ -21560,10 +23645,15 @@ class Pkcs7Context {
     /**
      * Imports a stream of keys/certificates contained within `istream`
      * into the key/certificate database controlled by `ctx`.
+     * @param istream input stream (containing keys)
      */
     import_keys(istream: Stream): number
     /**
      * Signs the input stream and writes the resulting signature to the output stream.
+     * @param detach %TRUE if `ostream` should be the detached signature; otherwise, %FALSE
+     * @param userid private key to use to sign the stream
+     * @param istream input stream
+     * @param ostream output stream
      */
     sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
@@ -21572,6 +23662,10 @@ class Pkcs7Context {
      * provide an `ostream` argument for GMime to output the original
      * plaintext into. Otherwise `sigstream` is assumed to be the signature
      * stream and is used to verify the integirity of the `istream`.
+     * @param flags a #GMimeVerifyFlags
+     * @param istream input stream
+     * @param sigstream detached-signature stream
+     * @param ostream output stream for use with encapsulated signature input streams
      */
     verify(flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null): SignatureList | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -21609,6 +23703,10 @@ class Pkcs7Context {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21619,6 +23717,12 @@ class Pkcs7Context {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21642,6 +23746,7 @@ class Pkcs7Context {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21661,11 +23766,14 @@ class Pkcs7Context {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21673,6 +23781,8 @@ class Pkcs7Context {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21690,6 +23800,7 @@ class Pkcs7Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21735,6 +23846,7 @@ class Pkcs7Context {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21778,15 +23890,20 @@ class Pkcs7Context {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21827,6 +23944,7 @@ class Pkcs7Context {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21861,6 +23979,7 @@ class Pkcs7Context {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.CryptoContext */
@@ -21884,19 +24003,31 @@ class Pkcs7Context {
      * Note: It *may* be possible to maliciously design an encrypted stream such
      * that recursively decrypting it will result in an endless loop, causing
      * a denial of service attack on your application.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
+     * @param istream input/ciphertext stream
+     * @param ostream output/cleartext stream
      */
     vfunc_decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult
     /**
      * Gets the digest id based on the digest name.
+     * @param name digest name
      */
     vfunc_digest_id(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
+     * @param digest digest id
      */
     vfunc_digest_name(digest: DigestAlgo): string | null
     /**
      * Encrypts (and optionally signs) the cleartext input stream and
      * writes the resulting ciphertext to the output stream.
+     * @param sign sign as well as encrypt
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
+     * @param istream cleartext input stream
+     * @param ostream ciphertext output stream
      */
     vfunc_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
     /**
@@ -21905,6 +24036,8 @@ class Pkcs7Context {
      * 
      * If `keys` is %NULL or contains only a %NULL element, then all keys
      * will be exported.
+     * @param keys an array of key ids, terminated by a %NULL element
+     * @param ostream output stream
      */
     vfunc_export_keys(keys: string, ostream: Stream): number
     /**
@@ -21922,10 +24055,15 @@ class Pkcs7Context {
     /**
      * Imports a stream of keys/certificates contained within `istream`
      * into the key/certificate database controlled by `ctx`.
+     * @param istream input stream (containing keys)
      */
     vfunc_import_keys(istream: Stream): number
     /**
      * Signs the input stream and writes the resulting signature to the output stream.
+     * @param detach %TRUE if `ostream` should be the detached signature; otherwise, %FALSE
+     * @param userid private key to use to sign the stream
+     * @param istream input stream
+     * @param ostream output stream
      */
     vfunc_sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
@@ -21934,6 +24072,10 @@ class Pkcs7Context {
      * provide an `ostream` argument for GMime to output the original
      * plaintext into. Otherwise `sigstream` is assumed to be the signature
      * stream and is used to verify the integirity of the `istream`.
+     * @param flags a #GMimeVerifyFlags
+     * @param istream input stream
+     * @param sigstream detached-signature stream
+     * @param ostream output stream for use with encapsulated signature input streams
      */
     vfunc_verify(flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null): SignatureList | null
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21953,6 +24095,7 @@ class Pkcs7Context {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21985,6 +24128,7 @@ class Pkcs7Context {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Pkcs7Context, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Pkcs7Context, pspec: GObject.ParamSpec) => void)): number
@@ -22006,7 +24150,7 @@ interface Signature_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Signature {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Signature */
     /**
      * Get the signature's certificate.
@@ -22037,18 +24181,22 @@ class Signature {
     get_status(): SignatureStatus
     /**
      * Set the signature's certificate.
+     * @param cert a #GMimeCertificate
      */
     set_certificate(cert: Certificate): void
     /**
      * Set the creation date of the signature.
+     * @param created creation date
      */
     set_created(created: number): void
     /**
      * Set the expiration date of the signature. A value of %0 means the signature never expires.
+     * @param expires expiration date
      */
     set_expires(expires: number): void
     /**
      * Set the status on the signature.
+     * @param status a #GMimeSignatureStatus
      */
     set_status(status: SignatureStatus): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22086,6 +24234,10 @@ class Signature {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22096,6 +24248,12 @@ class Signature {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22119,6 +24277,7 @@ class Signature {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22138,11 +24297,14 @@ class Signature {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22150,6 +24312,8 @@ class Signature {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22167,6 +24331,7 @@ class Signature {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22212,6 +24377,7 @@ class Signature {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22255,15 +24421,20 @@ class Signature {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22304,6 +24475,7 @@ class Signature {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22338,6 +24510,7 @@ class Signature {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22357,6 +24530,7 @@ class Signature {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22389,6 +24563,7 @@ class Signature {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Signature, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Signature, pspec: GObject.ParamSpec) => void)): number
@@ -22408,10 +24583,11 @@ interface SignatureList_ConstructProps extends GObject.Object_ConstructProps {
 }
 class SignatureList {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.SignatureList */
     /**
      * Adds a #GMimeSignature to the #GMimeSignatureList.
+     * @param sig a #GMimeSignature
      */
     add(sig: Signature): number
     /**
@@ -22421,20 +24597,25 @@ class SignatureList {
     /**
      * Checks whether or not the specified #GMimeSignature is contained within
      * the #GMimeSignatureList.
+     * @param sig a #GMimeSignature
      */
     contains(sig: Signature): boolean
     /**
      * Gets the #GMimeSignature at the specified index.
+     * @param index index of #GMimeSignature to get
      */
     get_signature(index: number): Signature
     /**
      * Gets the index of the specified #GMimeSignature inside the
      * #GMimeSignatureList.
+     * @param sig a #GMimeSignature
      */
     index_of(sig: Signature): number
     /**
      * Inserts a #GMimeSignature into the #GMimeSignatureList at the specified
      * index.
+     * @param index index to insert at
+     * @param sig a #GMimeSignature
      */
     insert(index: number, sig: Signature): void
     /**
@@ -22443,15 +24624,19 @@ class SignatureList {
     length(): number
     /**
      * Removes a #GMimeSignature from the #GMimeSignatureList.
+     * @param sig a #GMimeSignature
      */
     remove(sig: Signature): boolean
     /**
      * Removes a #GMimeSignature from the #GMimeSignatureList at the specified
      * index.
+     * @param index index to remove
      */
     remove_at(index: number): boolean
     /**
      * Sets the #GMimeSignature at the specified index to `sig`.
+     * @param index index of #GMimeSignature to set
+     * @param sig a #GMimeSignature
      */
     set_signature(index: number, sig: Signature): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22489,6 +24674,10 @@ class SignatureList {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22499,6 +24688,12 @@ class SignatureList {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22522,6 +24717,7 @@ class SignatureList {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22541,11 +24737,14 @@ class SignatureList {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22553,6 +24752,8 @@ class SignatureList {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22570,6 +24771,7 @@ class SignatureList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22615,6 +24817,7 @@ class SignatureList {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22658,15 +24861,20 @@ class SignatureList {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22707,6 +24915,7 @@ class SignatureList {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22741,6 +24950,7 @@ class SignatureList {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22760,6 +24970,7 @@ class SignatureList {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22792,6 +25003,7 @@ class SignatureList {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SignatureList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SignatureList, pspec: GObject.ParamSpec) => void)): number
@@ -22811,7 +25023,7 @@ interface Stream_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Stream {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Stream */
     /**
      * Reads in at most one less than `max` characters from `stream` and
@@ -22819,10 +25031,12 @@ class Stream {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -22831,6 +25045,8 @@ class Stream {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -22847,6 +25063,7 @@ class Stream {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -22866,14 +25083,20 @@ class Stream {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -22882,18 +25105,22 @@ class Stream {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -22931,6 +25158,10 @@ class Stream {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22941,6 +25172,12 @@ class Stream {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22964,6 +25201,7 @@ class Stream {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22983,11 +25221,14 @@ class Stream {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22995,6 +25236,8 @@ class Stream {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23012,6 +25255,7 @@ class Stream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23057,6 +25301,7 @@ class Stream {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23100,15 +25345,20 @@ class Stream {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23149,6 +25399,7 @@ class Stream {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23183,6 +25434,7 @@ class Stream {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -23204,6 +25456,7 @@ class Stream {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -23223,10 +25476,14 @@ class Stream {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -23235,6 +25492,7 @@ class Stream {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23254,6 +25512,7 @@ class Stream {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23286,6 +25545,7 @@ class Stream {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Stream, pspec: GObject.ParamSpec) => void)): number
@@ -23303,7 +25563,7 @@ interface StreamBuffer_ConstructProps extends Stream_ConstructProps {
 }
 class StreamBuffer {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.Stream */
     /**
      * Reads in at most one less than `max` characters from `stream` and
@@ -23311,10 +25571,12 @@ class StreamBuffer {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -23323,6 +25585,8 @@ class StreamBuffer {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -23339,6 +25603,7 @@ class StreamBuffer {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -23358,14 +25623,20 @@ class StreamBuffer {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -23374,18 +25645,22 @@ class StreamBuffer {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -23423,6 +25698,10 @@ class StreamBuffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23433,6 +25712,12 @@ class StreamBuffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23456,6 +25741,7 @@ class StreamBuffer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23475,11 +25761,14 @@ class StreamBuffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23487,6 +25776,8 @@ class StreamBuffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23504,6 +25795,7 @@ class StreamBuffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23549,6 +25841,7 @@ class StreamBuffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23592,15 +25885,20 @@ class StreamBuffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23641,6 +25939,7 @@ class StreamBuffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23675,6 +25974,7 @@ class StreamBuffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -23696,6 +25996,7 @@ class StreamBuffer {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -23715,10 +26016,14 @@ class StreamBuffer {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -23727,6 +26032,7 @@ class StreamBuffer {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23746,6 +26052,7 @@ class StreamBuffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23778,6 +26085,7 @@ class StreamBuffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamBuffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamBuffer, pspec: GObject.ParamSpec) => void)): number
@@ -23797,10 +26105,11 @@ interface StreamCat_ConstructProps extends Stream_ConstructProps {
 }
 class StreamCat {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamCat */
     /**
      * Adds the `source` stream to the `cat`.
+     * @param source a source stream
      */
     add_source(source: Stream): number
     /* Methods of GMime-3.0.GMime.Stream */
@@ -23810,10 +26119,12 @@ class StreamCat {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -23822,6 +26133,8 @@ class StreamCat {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -23838,6 +26151,7 @@ class StreamCat {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -23857,14 +26171,20 @@ class StreamCat {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -23873,18 +26193,22 @@ class StreamCat {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -23922,6 +26246,10 @@ class StreamCat {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23932,6 +26260,12 @@ class StreamCat {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23955,6 +26289,7 @@ class StreamCat {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23974,11 +26309,14 @@ class StreamCat {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23986,6 +26324,8 @@ class StreamCat {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24003,6 +26343,7 @@ class StreamCat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24048,6 +26389,7 @@ class StreamCat {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24091,15 +26433,20 @@ class StreamCat {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24140,6 +26487,7 @@ class StreamCat {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24174,6 +26522,7 @@ class StreamCat {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -24195,6 +26544,7 @@ class StreamCat {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -24214,10 +26564,14 @@ class StreamCat {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -24226,6 +26580,7 @@ class StreamCat {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24245,6 +26600,7 @@ class StreamCat {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24277,6 +26633,7 @@ class StreamCat {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamCat, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamCat, pspec: GObject.ParamSpec) => void)): number
@@ -24296,7 +26653,7 @@ interface StreamFile_ConstructProps extends Stream_ConstructProps {
 }
 class StreamFile {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamFile */
     /**
      * Gets whether or not `stream` owns the backend FILE pointer.
@@ -24307,6 +26664,7 @@ class StreamFile {
      * 
      * Note: `owner` should be %TRUE if the stream should fclose() the
      * backend FILE pointer when destroyed or %FALSE otherwise.
+     * @param owner %TRUE if this stream should own the FILE pointer or %FALSE otherwise
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -24316,10 +26674,12 @@ class StreamFile {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -24328,6 +26688,8 @@ class StreamFile {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -24344,6 +26706,7 @@ class StreamFile {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -24363,14 +26726,20 @@ class StreamFile {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -24379,18 +26748,22 @@ class StreamFile {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -24428,6 +26801,10 @@ class StreamFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24438,6 +26815,12 @@ class StreamFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24461,6 +26844,7 @@ class StreamFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24480,11 +26864,14 @@ class StreamFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24492,6 +26879,8 @@ class StreamFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24509,6 +26898,7 @@ class StreamFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24554,6 +26944,7 @@ class StreamFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24597,15 +26988,20 @@ class StreamFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24646,6 +27042,7 @@ class StreamFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24680,6 +27077,7 @@ class StreamFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -24701,6 +27099,7 @@ class StreamFile {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -24720,10 +27119,14 @@ class StreamFile {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -24732,6 +27135,7 @@ class StreamFile {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24751,6 +27155,7 @@ class StreamFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24783,6 +27188,7 @@ class StreamFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamFile, pspec: GObject.ParamSpec) => void)): number
@@ -24799,6 +27205,8 @@ class StreamFile {
     static new_with_bounds(fp: object | null, start: number, end: number): StreamFile
     /**
      * Creates a new #GMimeStreamFile object for the specified `path`.
+     * @param path the path to a file
+     * @param mode as in fopen(3)
      */
     static open(path: string, mode: string): Stream
     static $gtype: GObject.Type
@@ -24807,11 +27215,12 @@ interface StreamFilter_ConstructProps extends Stream_ConstructProps {
 }
 class StreamFilter {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamFilter */
     /**
      * Adds `filter` to `stream`. Filters are applied in the same order in
      * which they are added.
+     * @param filter a #GMimeFilter
      */
     add(filter: Filter): number
     /**
@@ -24821,6 +27230,7 @@ class StreamFilter {
     /**
      * Removed a filter from the stream based on the id (as returned from
      * filter_add).
+     * @param id filter id
      */
     remove(id: number): void
     /**
@@ -24828,6 +27238,7 @@ class StreamFilter {
      * 
      * Note: `owner` should be %TRUE if the stream should close() the
      * backend source stream when destroyed or %FALSE otherwise.
+     * @param owner %TRUE if this stream should own the source stream or %FALSE otherwise
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -24837,10 +27248,12 @@ class StreamFilter {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -24849,6 +27262,8 @@ class StreamFilter {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -24865,6 +27280,7 @@ class StreamFilter {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -24884,14 +27300,20 @@ class StreamFilter {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -24900,18 +27322,22 @@ class StreamFilter {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -24949,6 +27375,10 @@ class StreamFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24959,6 +27389,12 @@ class StreamFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24982,6 +27418,7 @@ class StreamFilter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25001,11 +27438,14 @@ class StreamFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25013,6 +27453,8 @@ class StreamFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25030,6 +27472,7 @@ class StreamFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25075,6 +27518,7 @@ class StreamFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25118,15 +27562,20 @@ class StreamFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25167,6 +27616,7 @@ class StreamFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25201,6 +27651,7 @@ class StreamFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -25222,6 +27673,7 @@ class StreamFilter {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -25241,10 +27693,14 @@ class StreamFilter {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -25253,6 +27709,7 @@ class StreamFilter {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25272,6 +27729,7 @@ class StreamFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25304,6 +27762,7 @@ class StreamFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamFilter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamFilter, pspec: GObject.ParamSpec) => void)): number
@@ -25323,7 +27782,7 @@ interface StreamFs_ConstructProps extends Stream_ConstructProps {
 }
 class StreamFs {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamFs */
     /**
      * Gets whether or not `stream` owns the backend file descriptor.
@@ -25334,6 +27793,7 @@ class StreamFs {
      * 
      * Note: `owner` should be %TRUE if the stream should close() the
      * backend file descriptor when destroyed or %FALSE otherwise.
+     * @param owner %TRUE if this stream should own the file descriptor or %FALSE otherwise
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -25343,10 +27803,12 @@ class StreamFs {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -25355,6 +27817,8 @@ class StreamFs {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -25371,6 +27835,7 @@ class StreamFs {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -25390,14 +27855,20 @@ class StreamFs {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -25406,18 +27877,22 @@ class StreamFs {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -25455,6 +27930,10 @@ class StreamFs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25465,6 +27944,12 @@ class StreamFs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25488,6 +27973,7 @@ class StreamFs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25507,11 +27993,14 @@ class StreamFs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25519,6 +28008,8 @@ class StreamFs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25536,6 +28027,7 @@ class StreamFs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25581,6 +28073,7 @@ class StreamFs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25624,15 +28117,20 @@ class StreamFs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25673,6 +28171,7 @@ class StreamFs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25707,6 +28206,7 @@ class StreamFs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -25728,6 +28228,7 @@ class StreamFs {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -25747,10 +28248,14 @@ class StreamFs {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -25759,6 +28264,7 @@ class StreamFs {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25778,6 +28284,7 @@ class StreamFs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25810,6 +28317,7 @@ class StreamFs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamFs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamFs, pspec: GObject.ParamSpec) => void)): number
@@ -25826,6 +28334,9 @@ class StreamFs {
     static new_with_bounds(fd: number, start: number, end: number): StreamFs
     /**
      * Creates a new #GMimeStreamFs object for the specified `path`.
+     * @param path the path to a file
+     * @param flags as in open(2)
+     * @param mode as in open(2)
      */
     static open(path: string, flags: number, mode: number): Stream
     static $gtype: GObject.Type
@@ -25834,7 +28345,7 @@ interface StreamGIO_ConstructProps extends Stream_ConstructProps {
 }
 class StreamGIO {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamGIO */
     /**
      * Gets whether or not `stream` owns the backend #GFile.
@@ -25845,6 +28356,7 @@ class StreamGIO {
      * 
      * Note: `owner` should be %TRUE if the stream should close() the
      * backend file descriptor when destroyed or %FALSE otherwise.
+     * @param owner %TRUE if this stream should own the #GFile or %FALSE otherwise
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -25854,10 +28366,12 @@ class StreamGIO {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -25866,6 +28380,8 @@ class StreamGIO {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -25882,6 +28398,7 @@ class StreamGIO {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -25901,14 +28418,20 @@ class StreamGIO {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -25917,18 +28440,22 @@ class StreamGIO {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -25966,6 +28493,10 @@ class StreamGIO {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25976,6 +28507,12 @@ class StreamGIO {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25999,6 +28536,7 @@ class StreamGIO {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26018,11 +28556,14 @@ class StreamGIO {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26030,6 +28571,8 @@ class StreamGIO {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26047,6 +28590,7 @@ class StreamGIO {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26092,6 +28636,7 @@ class StreamGIO {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26135,15 +28680,20 @@ class StreamGIO {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26184,6 +28734,7 @@ class StreamGIO {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26218,6 +28769,7 @@ class StreamGIO {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -26239,6 +28791,7 @@ class StreamGIO {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -26258,10 +28811,14 @@ class StreamGIO {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -26270,6 +28827,7 @@ class StreamGIO {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26289,6 +28847,7 @@ class StreamGIO {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26321,6 +28880,7 @@ class StreamGIO {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamGIO, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamGIO, pspec: GObject.ParamSpec) => void)): number
@@ -26341,7 +28901,7 @@ interface StreamMem_ConstructProps extends Stream_ConstructProps {
 }
 class StreamMem {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamMem */
     /**
      * Gets the byte array from the memory stream.
@@ -26356,6 +28916,7 @@ class StreamMem {
      * 
      * Note: The memory stream is not responsible for freeing the byte
      * array. Use g_mime_stream_mem_set_owner() to change this behavior.
+     * @param array stream data
      */
     set_byte_array(array: Uint8Array): void
     /**
@@ -26363,6 +28924,7 @@ class StreamMem {
      * 
      * Note: `owner` should be %TRUE if the stream should free the backend
      * memory buffer when destroyed or %FALSE otherwise.
+     * @param owner %TRUE if this stream should own the #GByteArray or %FALSE otherwise
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -26372,10 +28934,12 @@ class StreamMem {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -26384,6 +28948,8 @@ class StreamMem {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -26400,6 +28966,7 @@ class StreamMem {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -26419,14 +28986,20 @@ class StreamMem {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -26435,18 +29008,22 @@ class StreamMem {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -26484,6 +29061,10 @@ class StreamMem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -26494,6 +29075,12 @@ class StreamMem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -26517,6 +29104,7 @@ class StreamMem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -26536,11 +29124,14 @@ class StreamMem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -26548,6 +29139,8 @@ class StreamMem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -26565,6 +29158,7 @@ class StreamMem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -26610,6 +29204,7 @@ class StreamMem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -26653,15 +29248,20 @@ class StreamMem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -26702,6 +29302,7 @@ class StreamMem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -26736,6 +29337,7 @@ class StreamMem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -26757,6 +29359,7 @@ class StreamMem {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -26776,10 +29379,14 @@ class StreamMem {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -26788,6 +29395,7 @@ class StreamMem {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -26807,6 +29415,7 @@ class StreamMem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -26839,6 +29448,7 @@ class StreamMem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamMem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamMem, pspec: GObject.ParamSpec) => void)): number
@@ -26860,7 +29470,7 @@ interface StreamMmap_ConstructProps extends Stream_ConstructProps {
 }
 class StreamMmap {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamMmap */
     /**
      * Gets whether or not `stream` owns the backend file descriptor.
@@ -26871,6 +29481,7 @@ class StreamMmap {
      * 
      * Note: `owner` should be %TRUE if the stream should close() the
      * backend file descriptor when destroyed or %FALSE otherwise.
+     * @param owner %TRUE if this stream should own the file descriptor or %FALSE otherwise
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -26880,10 +29491,12 @@ class StreamMmap {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -26892,6 +29505,8 @@ class StreamMmap {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -26908,6 +29523,7 @@ class StreamMmap {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -26927,14 +29543,20 @@ class StreamMmap {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -26943,18 +29565,22 @@ class StreamMmap {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -26992,6 +29618,10 @@ class StreamMmap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27002,6 +29632,12 @@ class StreamMmap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27025,6 +29661,7 @@ class StreamMmap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27044,11 +29681,14 @@ class StreamMmap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27056,6 +29696,8 @@ class StreamMmap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27073,6 +29715,7 @@ class StreamMmap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27118,6 +29761,7 @@ class StreamMmap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27161,15 +29805,20 @@ class StreamMmap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27210,6 +29859,7 @@ class StreamMmap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27244,6 +29894,7 @@ class StreamMmap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -27265,6 +29916,7 @@ class StreamMmap {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -27284,10 +29936,14 @@ class StreamMmap {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -27296,6 +29952,7 @@ class StreamMmap {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27315,6 +29972,7 @@ class StreamMmap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27347,6 +30005,7 @@ class StreamMmap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamMmap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamMmap, pspec: GObject.ParamSpec) => void)): number
@@ -27367,7 +30026,7 @@ interface StreamNull_ConstructProps extends Stream_ConstructProps {
 }
 class StreamNull {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamNull */
     /**
      * Gets whether or not the stream should keep track of the number of newlines
@@ -27377,6 +30036,7 @@ class StreamNull {
     /**
      * Sets whether or not the stream should keep track of the number of newlines
      * encountered.
+     * @param count %TRUE if newlines should be counted or %FALSE otherwise
      */
     set_count_newlines(count: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -27386,10 +30046,12 @@ class StreamNull {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -27398,6 +30060,8 @@ class StreamNull {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -27414,6 +30078,7 @@ class StreamNull {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -27433,14 +30098,20 @@ class StreamNull {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -27449,18 +30120,22 @@ class StreamNull {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -27498,6 +30173,10 @@ class StreamNull {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -27508,6 +30187,12 @@ class StreamNull {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -27531,6 +30216,7 @@ class StreamNull {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -27550,11 +30236,14 @@ class StreamNull {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -27562,6 +30251,8 @@ class StreamNull {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -27579,6 +30270,7 @@ class StreamNull {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -27624,6 +30316,7 @@ class StreamNull {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -27667,15 +30360,20 @@ class StreamNull {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -27716,6 +30414,7 @@ class StreamNull {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -27750,6 +30449,7 @@ class StreamNull {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -27771,6 +30471,7 @@ class StreamNull {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -27790,10 +30491,14 @@ class StreamNull {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -27802,6 +30507,7 @@ class StreamNull {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -27821,6 +30527,7 @@ class StreamNull {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -27853,6 +30560,7 @@ class StreamNull {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamNull, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamNull, pspec: GObject.ParamSpec) => void)): number
@@ -27872,7 +30580,7 @@ interface StreamPipe_ConstructProps extends Stream_ConstructProps {
 }
 class StreamPipe {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.StreamPipe */
     /**
      * Gets whether or not `stream` owns the backend pipe descriptor.
@@ -27883,6 +30591,7 @@ class StreamPipe {
      * 
      * Note: `owner` should be %TRUE if the stream should close() the
      * backend pipe descriptor when destroyed or %FALSE otherwise.
+     * @param owner owner
      */
     set_owner(owner: boolean): void
     /* Methods of GMime-3.0.GMime.Stream */
@@ -27892,10 +30601,12 @@ class StreamPipe {
      * an EOS or newline ('\n'). If a newline is read, it is stored into
      * the buffer. A '\0' is stored after the last character in the
      * buffer.
+     * @param buf line buffer
      */
     buffer_gets(buf: Uint8Array): number
     /**
      * Reads a single line into `buffer`.
+     * @param buffer output buffer
      */
     buffer_readln(buffer: Uint8Array): void
     /**
@@ -27904,6 +30615,8 @@ class StreamPipe {
     close(): number
     /**
      * Initializes a new stream with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     construct(start: number, end: number): void
     /**
@@ -27920,6 +30633,7 @@ class StreamPipe {
     length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     read(buf: Uint8Array): number
     /**
@@ -27939,14 +30653,20 @@ class StreamPipe {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     seek(offset: number, whence: SeekWhence): number
     /**
      * Set the bounds on a stream.
+     * @param start start boundary
+     * @param end end boundary
      */
     set_bounds(start: number, end: number): void
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     substream(start: number, end: number): Stream
     /**
@@ -27955,18 +30675,22 @@ class StreamPipe {
     tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     write(buf: Uint8Array): number
     /**
      * Writes `string` to `stream`.
+     * @param str string to write
      */
     write_string(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
+     * @param dest destination stream
      */
     write_to_stream(dest: Stream): number
     /**
      * Writes at most `count` blocks described by `vector` to `stream`.
+     * @param vector a #GMimeStreamIOVector
      */
     writev(vector: StreamIOVector[]): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -28004,6 +30728,10 @@ class StreamPipe {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28014,6 +30742,12 @@ class StreamPipe {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28037,6 +30771,7 @@ class StreamPipe {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28056,11 +30791,14 @@ class StreamPipe {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28068,6 +30806,8 @@ class StreamPipe {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28085,6 +30825,7 @@ class StreamPipe {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28130,6 +30871,7 @@ class StreamPipe {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28173,15 +30915,20 @@ class StreamPipe {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28222,6 +30969,7 @@ class StreamPipe {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28256,6 +31004,7 @@ class StreamPipe {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Stream */
@@ -28277,6 +31026,7 @@ class StreamPipe {
     vfunc_length(): number
     /**
      * Attempts to read up to `len` bytes from `stream` into `buf`.
+     * @param buf buffer
      */
     vfunc_read(buf: Uint8Array): number
     /**
@@ -28296,10 +31046,14 @@ class StreamPipe {
      * 
      *     #GMIME_STREAM_SEEK_END: Seek `offset` bytes relative to the
      *     end of the stream (bound_end if non-negative).
+     * @param offset positional offset
+     * @param whence seek directive
      */
     vfunc_seek(offset: number, whence: SeekWhence): number
     /**
      * Creates a new substream of `stream` with bounds `start` and `end`.
+     * @param start start boundary
+     * @param end end boundary
      */
     vfunc_substream(start: number, end: number): Stream
     /**
@@ -28308,6 +31062,7 @@ class StreamPipe {
     vfunc_tell(): number
     /**
      * Attempts to write up to `len` bytes of `buf` to `stream`.
+     * @param buf buffer
      */
     vfunc_write(buf: Uint8Array): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -28327,6 +31082,7 @@ class StreamPipe {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -28359,6 +31115,7 @@ class StreamPipe {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StreamPipe, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StreamPipe, pspec: GObject.ParamSpec) => void)): number
@@ -28381,50 +31138,50 @@ class TextPart {
     /**
      * parent #GMimeObject
      */
-    readonly parent_object: Object
+    parent_object: Object
     /**
      * a #GMimeContentEncoding
      */
-    readonly encoding: ContentEncoding
+    encoding: ContentEncoding
     /**
      * a #GMimeOpenPGPData
      */
-    readonly openpgp: OpenPGPData
+    openpgp: OpenPGPData
     /**
      * Content-Description string
      */
-    readonly content_description: string
+    content_description: string
     /**
      * Content-Location string
      */
-    readonly content_location: string
+    content_location: string
     /**
      * Content-MD5 string
      */
-    readonly content_md5: string
+    content_md5: string
     /**
      * a #GMimeDataWrapper representing the MIME part's content
      */
-    readonly content: DataWrapper
+    content: DataWrapper
     /* Fields of GMime-3.0.GMime.Object */
     /**
      * a #GMimeContentDisposition
      */
-    readonly disposition: ContentDisposition
+    disposition: ContentDisposition
     /**
      * a #GMimeContentType
      */
-    readonly content_type: ContentType
+    content_type: ContentType
     /**
      * a #GMimeHeaderList
      */
-    readonly headers: HeaderList
+    headers: HeaderList
     /**
      * a Content-Id
      */
-    readonly content_id: string
+    content_id: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GMime-3.0.GMime.TextPart */
     /**
      * Gets the value of the charset parameter on the Content-Type header.
@@ -28436,16 +31193,19 @@ class TextPart {
     get_text(): string
     /**
      * Sets the charset parameter on the Content-Type header to the specified value.
+     * @param charset the name of the charset
      */
     set_charset(charset: string): void
     /**
      * Sets the specified text as the content and updates the charset parameter on the Content-Type header.
+     * @param text the text in utf-8
      */
     set_text(text: string): void
     /* Methods of GMime-3.0.GMime.Part */
     /**
      * Calculates the most efficient content encoding for the `mime_part`
      * given the `constraint`.
+     * @param constraint a #GMimeEncodingConstraint
      */
     get_best_content_encoding(constraint: EncodingConstraint): ContentEncoding
     /**
@@ -28495,45 +31255,59 @@ class TextPart {
     /**
      * Decrypts the content of the `mime_part` and then replaces the content with
      * the new, decrypted, content.
+     * @param flags a set of #GMimeDecryptFlags
+     * @param session_key the session key to use or %NULL
      */
     openpgp_decrypt(flags: DecryptFlags, session_key?: string | null): DecryptResult | null
     /**
      * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
      * the content with the new, encrypted, content.
+     * @param sign %TRUE if the content should also be signed; otherwise, %FALSE
+     * @param userid the key id (or email address) to use when signing (assuming `sign` is %TRUE)
+     * @param flags a set of #GMimeEncryptFlags
+     * @param recipients an array of recipient key ids and/or email addresses
      */
     openpgp_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[]): boolean
     /**
      * Signs the content of the `mime_part` and then replaces the content with
      * the new, signed, content.
+     * @param userid the key id (or email address) to use for signing
      */
     openpgp_sign(userid: string): boolean
     /**
      * Verifies the OpenPGP signature of the `mime_part` and then replaces the content
      * with the original, raw, content.
+     * @param flags a set of #GMimeVerifyFlags
      */
     openpgp_verify(flags: VerifyFlags): SignatureList | null
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     set_content(content: DataWrapper): void
     /**
      * Set the content description for the specified mime part.
+     * @param description content description
      */
     set_content_description(description: string): void
     /**
      * Set the content encoding for the specified mime part.
+     * @param encoding a #GMimeContentEncoding
      */
     set_content_encoding(encoding: ContentEncoding): void
     /**
      * Set the content id for the specified mime part.
+     * @param content_id content id
      */
     set_content_id(content_id: string): void
     /**
      * Set the content location for the specified mime part.
+     * @param content_location content location
      */
     set_content_location(content_location: string): void
     /**
      * Set the content md5 for the specified mime part.
+     * @param content_md5 content md5 or %NULL to generate the md5 digest.
      */
     set_content_md5(content_md5: string): void
     /**
@@ -28541,11 +31315,13 @@ class TextPart {
      * "name" parameter on the Content-Type.
      * 
      * Note: The `filename` string should be in UTF-8.
+     * @param filename the file name
      */
     set_filename(filename: string): void
     /**
      * Sets whether or not (and what type) of OpenPGP data is contained
      * within the #GMimePart.
+     * @param data a #GMimeOpenPGPData
      */
     set_openpgp_data(data: OpenPGPData): void
     /**
@@ -28555,12 +31331,16 @@ class TextPart {
     /* Methods of GMime-3.0.GMime.Object */
     /**
      * Appends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     append_header(header: string, value: string, charset: string): void
     /**
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     encode(constraint: EncodingConstraint): void
     /**
@@ -28570,6 +31350,7 @@ class TextPart {
     /**
      * Gets the value of the Content-Disposition parameter specified by
      * `name,` or %NULL if the parameter does not exist.
+     * @param name parameter name
      */
     get_content_disposition_parameter(name: string): string
     /**
@@ -28580,6 +31361,7 @@ class TextPart {
     /**
      * Gets the value of the content-type param `name` set on the MIME part
      * `object`.
+     * @param name param name
      */
     get_content_type_parameter(name: string): string
     /**
@@ -28588,6 +31370,7 @@ class TextPart {
     get_disposition(): string
     /**
      * Gets the value of the first header with the specified name.
+     * @param header header name
      */
     get_header(header: string): string
     /**
@@ -28597,19 +31380,25 @@ class TextPart {
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     get_headers(options?: FormatOptions | null): string
     /**
      * Prepends a new header to the header list.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     prepend_header(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
+     * @param header header name
      */
     remove_header(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
+     * @param disposition a #GMimeContentDisposition object
      */
     set_content_disposition(disposition: ContentDisposition): void
     /**
@@ -28617,15 +31406,19 @@ class TextPart {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name parameter name
+     * @param value parameter value
      */
     set_content_disposition_parameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
+     * @param content_id content-id (addr-spec portion)
      */
     set_content_id(content_id: string): void
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     set_content_type(content_type: ContentType): void
     /**
@@ -28633,6 +31426,8 @@ class TextPart {
      * 
      * Note: The `name` string should be in US-ASCII while the `value`
      * string should be in UTF-8.
+     * @param name param name
+     * @param value param value
      */
     set_content_type_parameter(name: string, value: string): void
     /**
@@ -28640,22 +31435,31 @@ class TextPart {
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
      * your choice, any other string which would indicate how the MIME
      * part should be displayed by the MUA.
+     * @param disposition disposition ("attachment" or "inline")
      */
     set_disposition(disposition: string): void
     /**
      * Sets a header to the specified value.
+     * @param header header name
+     * @param value header value
+     * @param charset a charset
      */
     set_header(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     to_string(options?: FormatOptions | null): string
     /**
      * Write only the content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_content_to_stream(options: FormatOptions | null, stream: Stream): number
     /**
      * Write the headers and content of the MIME object to `stream`.
+     * @param options a #GMimeFormatOptions or %NULL
+     * @param stream stream
      */
     write_to_stream(options: FormatOptions | null, stream: Stream): number
     /* Methods of GObject-2.0.GObject.Object */
@@ -28693,6 +31497,10 @@ class TextPart {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -28703,6 +31511,12 @@ class TextPart {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -28726,6 +31540,7 @@ class TextPart {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -28745,11 +31560,14 @@ class TextPart {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -28757,6 +31575,8 @@ class TextPart {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -28774,6 +31594,7 @@ class TextPart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -28819,6 +31640,7 @@ class TextPart {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -28862,15 +31684,20 @@ class TextPart {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -28911,6 +31738,7 @@ class TextPart {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -28945,11 +31773,13 @@ class TextPart {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GMime-3.0.GMime.Part */
     /**
      * Sets the content on the mime part.
+     * @param content a #GMimeDataWrapper content object
      */
     vfunc_set_content(content: DataWrapper): void
     /* Virtual methods of GMime-3.0.GMime.Object */
@@ -28957,11 +31787,13 @@ class TextPart {
      * Calculates and sets the most efficient Content-Transfer-Encoding
      * for this #GMimeObject and all child parts based on the `constraint`
      * provided.
+     * @param constraint a #GMimeEncodingConstraint
      */
     vfunc_encode(constraint: EncodingConstraint): void
     /**
      * Allocates a string buffer containing all of the MIME object's raw
      * headers.
+     * @param options a #GMimeFormatOptions or %NULL
      */
     vfunc_get_headers(options?: FormatOptions | null): string
     vfunc_header_added(header: Header): void
@@ -28971,6 +31803,7 @@ class TextPart {
     /**
      * Sets the content-type for the specified MIME object and then
      * serializes it to the Content-Type header field.
+     * @param content_type a #GMimeContentType object
      */
     vfunc_set_content_type(content_type: ContentType): void
     vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number
@@ -28991,6 +31824,7 @@ class TextPart {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29023,6 +31857,7 @@ class TextPart {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TextPart, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TextPart, pspec: GObject.ParamSpec) => void)): number
@@ -29044,27 +31879,27 @@ class TextPart {
 }
 abstract class ApplicationPkcs7MimeClass {
     /* Fields of GMime-3.0.GMime.ApplicationPkcs7MimeClass */
-    readonly parent_class: PartClass
+    parent_class: PartClass
     static name: string
 }
 abstract class AutocryptHeaderClass {
     /* Fields of GMime-3.0.GMime.AutocryptHeaderClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class AutocryptHeaderListClass {
     /* Fields of GMime-3.0.GMime.AutocryptHeaderListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CertificateClass {
     /* Fields of GMime-3.0.GMime.CertificateClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CertificateListClass {
     /* Fields of GMime-3.0.GMime.CertificateListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Charset {
@@ -29072,11 +31907,11 @@ class Charset {
     /**
      * charset mask
      */
-    readonly mask: number
+    mask: number
     /**
      * charset level
      */
-    readonly level: number
+    level: number
     /* Methods of GMime-3.0.GMime.Charset */
     /**
      * Gets the best charset name based on the charset mask `charset`.
@@ -29084,6 +31919,9 @@ class Charset {
     best_name(): string | null
     /**
      * Check to see if the UTF-8 `text` will fit safely within `charset`.
+     * @param charset a charset
+     * @param text utf-8 text to check
+     * @param len length of `text`
      */
     can_encode(charset: string, text: string, len: number): boolean
     /**
@@ -29095,11 +31933,15 @@ class Charset {
      * time (ie, not necessarily 1 byte at a time). Bitwise 'and' our
      * `charset->`mask with the mask for each glyph. This has the effect of
      * limiting what charsets our `charset->`mask can match.
+     * @param inbuf input text buffer (must be in UTF-8)
+     * @param inlen input buffer length
      */
     step(inbuf: string, inlen: number): void
     /* Static methods and pseudo-constructors */
     /**
      * Computes the best charset to use to encode this text buffer.
+     * @param inbuf a UTF-8 text buffer
+     * @param inlen input buffer length
      */
     static best(inbuf: string, inlen: number): string | null
     /**
@@ -29109,21 +31951,25 @@ class Charset {
      * g_mime_charset_iconv_name() unless the system iconv does not use
      * the canonical ISO charset names (such as using ISO8859-1 rather
      * than the canonical form ISO-8859-1).
+     * @param charset charset name
      */
     static canon_name(charset: string): string
     /**
      * Attempts to find an iconv-friendly charset name for `charset`.
+     * @param charset charset name
      */
     static iconv_name(charset: string): string
     /**
      * Maps the ISO-8859-# charset to the equivalent Windows-CP125#
      * charset.
+     * @param isocharset ISO-8859-# charset
      */
     static iso_to_windows(isocharset: string): string
     /**
      * Attempts to find a specific language code that is specific to
      * `charset`. Currently only handles CJK and Russian/Ukranian
      * charset->lang mapping. Everything else will return %NULL.
+     * @param charset charset name
      */
     static language(charset: string): string | null
     /**
@@ -29148,44 +31994,45 @@ class Charset {
      * 
      * Note: This function is deprecated. Use g_mime_charset_iconv_name()
      * instead.
+     * @param charset charset name
      */
     static name(charset: string): string
 }
 abstract class ContentDispositionClass {
     /* Fields of GMime-3.0.GMime.ContentDispositionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ContentTypeClass {
     /* Fields of GMime-3.0.GMime.ContentTypeClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CryptoContextClass {
     /* Fields of GMime-3.0.GMime.CryptoContextClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly digest_id: (ctx: CryptoContext, name: string) => DigestAlgo
-    readonly digest_name: (ctx: CryptoContext, digest: DigestAlgo) => string | null
-    readonly get_signature_protocol: (ctx: CryptoContext) => string | null
-    readonly get_encryption_protocol: (ctx: CryptoContext) => string | null
-    readonly get_key_exchange_protocol: (ctx: CryptoContext) => string | null
-    readonly sign: (ctx: CryptoContext, detach: boolean, userid: string, istream: Stream, ostream: Stream) => number
-    readonly verify: (ctx: CryptoContext, flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null) => SignatureList | null
-    readonly encrypt: (ctx: CryptoContext, sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream) => number
-    readonly decrypt: (ctx: CryptoContext, flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream) => DecryptResult
-    readonly import_keys: (ctx: CryptoContext, istream: Stream) => number
-    readonly export_keys: (ctx: CryptoContext, keys: string, ostream: Stream) => number
+    parent_class: GObject.ObjectClass
+    digest_id: (ctx: CryptoContext, name: string) => DigestAlgo
+    digest_name: (ctx: CryptoContext, digest: DigestAlgo) => string | null
+    get_signature_protocol: (ctx: CryptoContext) => string | null
+    get_encryption_protocol: (ctx: CryptoContext) => string | null
+    get_key_exchange_protocol: (ctx: CryptoContext) => string | null
+    sign: (ctx: CryptoContext, detach: boolean, userid: string, istream: Stream, ostream: Stream) => number
+    verify: (ctx: CryptoContext, flags: VerifyFlags, istream: Stream, sigstream?: Stream | null, ostream?: Stream | null) => SignatureList | null
+    encrypt: (ctx: CryptoContext, sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream) => number
+    decrypt: (ctx: CryptoContext, flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream) => DecryptResult
+    import_keys: (ctx: CryptoContext, istream: Stream) => number
+    export_keys: (ctx: CryptoContext, keys: string, ostream: Stream) => number
     static name: string
 }
 abstract class DataWrapperClass {
     /* Fields of GMime-3.0.GMime.DataWrapperClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly write_to_stream: (wrapper: DataWrapper, stream: Stream) => number
+    parent_class: GObject.ObjectClass
+    write_to_stream: (wrapper: DataWrapper, stream: Stream) => number
     static name: string
 }
 abstract class DecryptResultClass {
     /* Fields of GMime-3.0.GMime.DecryptResultClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Encoding {
@@ -29193,42 +32040,48 @@ class Encoding {
     /**
      * the type of encoding
      */
-    readonly encoding: ContentEncoding
+    encoding: ContentEncoding
     /**
      * a temporary buffer needed when uuencoding data
      */
-    readonly uubuf: Uint8Array
+    uubuf: Uint8Array
     /**
      * %TRUE if encoding or %FALSE if decoding
      */
-    readonly encode: boolean
+    encode: boolean
     /**
      * saved bytes from the previous step
      */
-    readonly save: number
+    save: number
     /**
      * current encder/decoder state
      */
-    readonly state: number
+    state: number
     /* Methods of GMime-3.0.GMime.Encoding */
     /**
      * Completes the incremental encode or decode of the input stream (see
      * g_mime_encoding_step() for details).
+     * @param inbuf an input buffer to encode or decode
+     * @param inlen input buffer length
+     * @param outbuf an output buffer
      */
     flush(inbuf: string, inlen: number, outbuf: string): number
     /**
      * Initializes a #GMimeEncoding state machine for decoding from
      * `encoding`.
+     * @param encoding a #GMimeContentEncoding to use
      */
     init_decode(encoding: ContentEncoding): void
     /**
      * Initializes a #GMimeEncoding state machine for encoding to
      * `encoding`.
+     * @param encoding a #GMimeContentEncoding to use
      */
     init_encode(encoding: ContentEncoding): void
     /**
      * Given the input length, `inlen,` calculate the needed output length
      * to perform an encoding or decoding step.
+     * @param inlen an input length
      */
     outlen(inlen: number): number
     /**
@@ -29242,18 +32095,31 @@ class Encoding {
      * You should make sure `outbuf` is large enough by calling
      * g_mime_encoding_outlen() to find out how large `outbuf` might need
      * to be.
+     * @param inbuf an input buffer to encode or decode
+     * @param inlen input buffer length
+     * @param outbuf an output buffer
      */
     step(inbuf: string, inlen: number, outbuf: string): number
     static name: string
     /* Static methods and pseudo-constructors */
     /**
      * Decodes a chunk of base64 encoded data.
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been decoded
      */
     static base64_decode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
      * Base64 encodes the input stream to the output stream. Call this
      * when finished encoding data with g_mime_encoding_base64_encode_step()
      * to flush off the last little bit.
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been encoded
      */
     static base64_encode_close(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
@@ -29261,34 +32127,65 @@ class Encoding {
      * encodes blocks of 3 characters to the output at a time, saves
      * left-over state in state and save (initialise to 0 on first
      * invocation).
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been encoded
      */
     static base64_encode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
      * Decodes a block of quoted-printable encoded data. Performs a
      * 'decode step' on a chunk of QP encoded data.
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been decoded
      */
     static quoted_decode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
      * Quoted-printable encodes a block of text. Call this when finished
      * encoding data with g_mime_encoding_quoted_encode_step() to flush off
      * the last little bit.
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been encoded
      */
     static quoted_encode_close(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
      * Quoted-printable encodes a block of text. Performs an 'encode
      * step', saves left-over state in state and save (initialise to -1 on
      * first invocation).
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been encoded
      */
     static quoted_encode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
      * Uudecodes a chunk of data. Performs a 'decode step' on a chunk of
      * uuencoded data. Assumes the "begin mode filename" line has
      * been stripped off.
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been decoded
      */
     static uudecode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number
     /**
      * Uuencodes a chunk of data. Call this when finished encoding data
      * with g_mime_encoding_uuencode_step() to flush off the last little bit.
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output buffer
+     * @param uubuf temporary buffer of 60 bytes
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been encoded
      */
     static uuencode_close(inbuf: number, inlen: number, outbuf: number, uubuf: number, state: number, save: number): number
     /**
@@ -29296,97 +32193,104 @@ class Encoding {
      * blocks of 45 characters to the output at a time, saves left-over
      * state in `uubuf,` `state` and `save` (initialize to 0 on first
      * invocation).
+     * @param inbuf input buffer
+     * @param inlen input buffer length
+     * @param outbuf output stream
+     * @param uubuf temporary buffer of 60 bytes
+     * @param state holds the number of bits that are stored in `save`
+     * @param save leftover bits that have not yet been encoded
      */
     static uuencode_step(inbuf: number, inlen: number, outbuf: number, uubuf: number, state: number, save: number): number
 }
 abstract class FilterBasicClass {
     /* Fields of GMime-3.0.GMime.FilterBasicClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterBestClass {
     /* Fields of GMime-3.0.GMime.FilterBestClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterCharsetClass {
     /* Fields of GMime-3.0.GMime.FilterCharsetClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterChecksumClass {
     /* Fields of GMime-3.0.GMime.FilterChecksumClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterClass {
     /* Fields of GMime-3.0.GMime.FilterClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly copy: (filter: Filter) => Filter
-    readonly filter: (filter: Filter, inbuf: Uint8Array, prespace: number) => [ /* outbuf */ Uint8Array, /* outprespace */ number ]
-    readonly complete: (filter: Filter, inbuf: Uint8Array, prespace: number) => [ /* outbuf */ Uint8Array, /* outprespace */ number ]
-    readonly reset: (filter: Filter) => void
+    parent_class: GObject.ObjectClass
+    copy: (filter: Filter) => Filter
+    filter: (filter: Filter, inbuf: Uint8Array, prespace: number) => [ /* outbuf */ Uint8Array, /* outprespace */ number ]
+    complete: (filter: Filter, inbuf: Uint8Array, prespace: number) => [ /* outbuf */ Uint8Array, /* outprespace */ number ]
+    reset: (filter: Filter) => void
     static name: string
 }
 abstract class FilterDos2UnixClass {
     /* Fields of GMime-3.0.GMime.FilterDos2UnixClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterEnrichedClass {
     /* Fields of GMime-3.0.GMime.FilterEnrichedClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterFromClass {
     /* Fields of GMime-3.0.GMime.FilterFromClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterGZipClass {
     /* Fields of GMime-3.0.GMime.FilterGZipClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterHTMLClass {
     /* Fields of GMime-3.0.GMime.FilterHTMLClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterOpenPGPClass {
     /* Fields of GMime-3.0.GMime.FilterOpenPGPClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterSmtpDataClass {
     /* Fields of GMime-3.0.GMime.FilterSmtpDataClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterStripClass {
     /* Fields of GMime-3.0.GMime.FilterStripClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterUnix2DosClass {
     /* Fields of GMime-3.0.GMime.FilterUnix2DosClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterWindowsClass {
     /* Fields of GMime-3.0.GMime.FilterWindowsClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 abstract class FilterYencClass {
     /* Fields of GMime-3.0.GMime.FilterYencClass */
-    readonly parent_class: FilterClass
+    parent_class: FilterClass
     static name: string
 }
 class FormatOptions {
     /* Methods of GMime-3.0.GMime.FormatOptions */
     /**
      * Adds the given header to the list of headers that should be hidden.
+     * @param header a header name
      */
     add_hidden_header(header: string): void
     /**
@@ -29400,6 +32304,7 @@ class FormatOptions {
     /**
      * Creates a #GMimeFilter suitable for converting line-endings to the
      * currently set new-line format.
+     * @param ensure_newline %TRUE if the output must *always* end with a new line
      */
     create_newline_filter(ensure_newline: boolean): Filter
     /**
@@ -29421,14 +32326,17 @@ class FormatOptions {
     get_param_encoding_method(): ParamEncodingMethod
     /**
      * Gets whether or not the specified header should be hidden.
+     * @param header the name of a header
      */
     is_hidden_header(header: string): boolean
     /**
      * Removes the given header from the list of headers that should be hidden.
+     * @param header a header name
      */
     remove_hidden_header(header: string): void
     /**
      * Sets the new-line format that should be used when writing headers and messages.
+     * @param newline a #GMimeNewLineFormat
      */
     set_newline_format(newline: NewLineFormat): void
     /**
@@ -29436,6 +32344,7 @@ class FormatOptions {
      * do not have an encoding method specified.
      * 
      * Note: #GMIME_PARAM_ENCODING_METHOD_DEFAULT is not allowed.
+     * @param method a #GMimeParamEncodingMethod
      */
     set_param_encoding_method(method: ParamEncodingMethod): void
     static name: string
@@ -29453,87 +32362,87 @@ abstract class GpgContextClass {
 }
 abstract class HeaderClass {
     /* Fields of GMime-3.0.GMime.HeaderClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class HeaderListClass {
     /* Fields of GMime-3.0.GMime.HeaderListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class InternetAddressClass {
     /* Fields of GMime-3.0.GMime.InternetAddressClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly to_string: (ia: InternetAddress, options: FormatOptions, flags: number, linelen: number, str: GLib.String) => void
+    parent_class: GObject.ObjectClass
+    to_string: (ia: InternetAddress, options: FormatOptions, flags: number, linelen: number, str: GLib.String) => void
     static name: string
 }
 abstract class InternetAddressGroupClass {
     /* Fields of GMime-3.0.GMime.InternetAddressGroupClass */
-    readonly parent_class: InternetAddressClass
+    parent_class: InternetAddressClass
     static name: string
 }
 abstract class InternetAddressListClass {
     /* Fields of GMime-3.0.GMime.InternetAddressListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class InternetAddressMailboxClass {
     /* Fields of GMime-3.0.GMime.InternetAddressMailboxClass */
-    readonly parent_class: InternetAddressClass
+    parent_class: InternetAddressClass
     static name: string
 }
 abstract class MessageClass {
     /* Fields of GMime-3.0.GMime.MessageClass */
-    readonly parent_class: ObjectClass
+    parent_class: ObjectClass
     static name: string
 }
 abstract class MessagePartClass {
     /* Fields of GMime-3.0.GMime.MessagePartClass */
-    readonly parent_class: ObjectClass
+    parent_class: ObjectClass
     static name: string
 }
 abstract class MessagePartialClass {
     /* Fields of GMime-3.0.GMime.MessagePartialClass */
-    readonly parent_class: PartClass
+    parent_class: PartClass
     static name: string
 }
 abstract class MultipartClass {
     /* Fields of GMime-3.0.GMime.MultipartClass */
-    readonly parent_class: ObjectClass
-    readonly clear: (multipart: Multipart) => void
-    readonly add: (multipart: Multipart, part: Object) => void
-    readonly insert: (multipart: Multipart, index: number, part: Object) => void
-    readonly remove: (multipart: Multipart, part: Object) => boolean
-    readonly remove_at: (multipart: Multipart, index: number) => Object
-    readonly get_part: (multipart: Multipart, index: number) => Object
-    readonly contains: (multipart: Multipart, part: Object) => boolean
-    readonly index_of: (multipart: Multipart, part: Object) => number
-    readonly get_count: (multipart: Multipart) => number
-    readonly set_boundary: (multipart: Multipart, boundary: string) => void
-    readonly get_boundary: (multipart: Multipart) => string
+    parent_class: ObjectClass
+    clear: (multipart: Multipart) => void
+    add: (multipart: Multipart, part: Object) => void
+    insert: (multipart: Multipart, index: number, part: Object) => void
+    remove: (multipart: Multipart, part: Object) => boolean
+    remove_at: (multipart: Multipart, index: number) => Object
+    get_part: (multipart: Multipart, index: number) => Object
+    contains: (multipart: Multipart, part: Object) => boolean
+    index_of: (multipart: Multipart, part: Object) => number
+    get_count: (multipart: Multipart) => number
+    set_boundary: (multipart: Multipart, boundary: string) => void
+    get_boundary: (multipart: Multipart) => string
     static name: string
 }
 abstract class MultipartEncryptedClass {
     /* Fields of GMime-3.0.GMime.MultipartEncryptedClass */
-    readonly parent_class: MultipartClass
+    parent_class: MultipartClass
     static name: string
 }
 abstract class MultipartSignedClass {
     /* Fields of GMime-3.0.GMime.MultipartSignedClass */
-    readonly parent_class: MultipartClass
+    parent_class: MultipartClass
     static name: string
 }
 abstract class ObjectClass {
     /* Fields of GMime-3.0.GMime.ObjectClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly header_added: (object: Object, header: Header) => void
-    readonly header_changed: (object: Object, header: Header) => void
-    readonly header_removed: (object: Object, header: Header) => void
-    readonly headers_cleared: (object: Object) => void
-    readonly set_content_type: (object: Object, content_type: ContentType) => void
-    readonly get_headers: (object: Object, options?: FormatOptions | null) => string
-    readonly write_to_stream: (object: Object, options: FormatOptions, content_only: boolean, stream: Stream) => number
-    readonly encode: (object: Object, constraint: EncodingConstraint) => void
+    parent_class: GObject.ObjectClass
+    header_added: (object: Object, header: Header) => void
+    header_changed: (object: Object, header: Header) => void
+    header_removed: (object: Object, header: Header) => void
+    headers_cleared: (object: Object) => void
+    set_content_type: (object: Object, content_type: ContentType) => void
+    get_headers: (object: Object, options?: FormatOptions | null) => string
+    write_to_stream: (object: Object, options: FormatOptions, content_only: boolean, stream: Stream) => number
+    encode: (object: Object, constraint: EncodingConstraint) => void
     static name: string
 }
 class OpenPGPMarker {
@@ -29541,38 +32450,38 @@ class OpenPGPMarker {
     /**
      * The OpenPGP marker.
      */
-    readonly marker: string
+    marker: string
     /**
      * The length of the OpenPGP marker.
      */
-    readonly len: number
+    len: number
     /**
      * The #GMimeOpenPGPState that the state machine must be in before encountering this marker.
      */
-    readonly before: OpenPGPState
+    before: OpenPGPState
     /**
      * The #GMimeOpenPGPState that the state machine will transition into once this marker is found.
      */
-    readonly after: OpenPGPState
+    after: OpenPGPState
     /**
      * %TRUE if the marker is an end marker; otherwise, %FALSE.
      */
-    readonly is_end_marker: boolean
+    is_end_marker: boolean
     static name: string
 }
 abstract class ParamClass {
     /* Fields of GMime-3.0.GMime.ParamClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ParamListClass {
     /* Fields of GMime-3.0.GMime.ParamListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ParserClass {
     /* Fields of GMime-3.0.GMime.ParserClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class ParserOptions {
@@ -29637,6 +32546,7 @@ class ParserOptions {
      * Note: Even in #GMIME_RFC_COMPLIANCE_STRICT mode, the address parser is fairly liberal in
      * what it accepts. Setting it to #GMIME_RFC_COMPLIANCE_LOOSE just makes it try harder to
      * deal with garbage input.
+     * @param mode a #GMimeRfcComplianceMode
      */
     set_address_compliance_mode(mode: RfcComplianceMode): void
     /**
@@ -29650,6 +32560,7 @@ class ParserOptions {
      * This option exists in order to allow parsing of mailbox addresses that do not have a
      * domain component. These types of addresses are rare and were typically only used when
      * sending mail to other users on the same UNIX system.
+     * @param allow %TRUE if the parser should allow addresses without a domain or %FALSE otherwise
      */
     set_allow_addresses_without_domain(allow: boolean): void
     /**
@@ -29657,6 +32568,7 @@ class ParserOptions {
      * 
      * Note: It is recommended that the list of charsets start with utf-8
      * and end with iso-8859-1.
+     * @param charsets a %NULL-terminated list of charsets or %NULL for the default list
      */
     set_fallback_charsets(charsets: string): void
     /**
@@ -29670,6 +32582,7 @@ class ParserOptions {
      * Note: Even in #GMIME_RFC_COMPLIANCE_STRICT mode, the parameter parser is fairly liberal
      * in what it accepts. Setting it to #GMIME_RFC_COMPLIANCE_LOOSE just makes it try harder
      * to deal with garbage input.
+     * @param mode a #GMimeRfcComplianceMode
      */
     set_parameter_compliance_mode(mode: RfcComplianceMode): void
     /**
@@ -29682,6 +32595,7 @@ class ParserOptions {
      * Note: Even in #GMIME_RFC_COMPLIANCE_STRICT mode, the parameter parser is fairly liberal
      * in what it accepts. Setting it to #GMIME_RFC_COMPLIANCE_LOOSE just makes it try harder
      * to deal with garbage input.
+     * @param mode a #GMimeRfcComplianceMode
      */
     set_rfc2047_compliance_mode(mode: RfcComplianceMode): void
     static name: string
@@ -29696,8 +32610,8 @@ class ParserOptions {
 }
 abstract class PartClass {
     /* Fields of GMime-3.0.GMime.PartClass */
-    readonly parent_class: ObjectClass
-    readonly set_content: (mime_part: Part, content: DataWrapper) => void
+    parent_class: ObjectClass
+    set_content: (mime_part: Part, content: DataWrapper) => void
     static name: string
 }
 class PartIter {
@@ -29735,6 +32649,7 @@ class PartIter {
     /**
      * Updates the state of `iter` to point to the #GMimeObject specified
      * by `path`.
+     * @param path a string representing the path to jump to
      */
     jump_to(path: string): boolean
     /**
@@ -29755,6 +32670,7 @@ class PartIter {
     remove(): boolean
     /**
      * Replaces the #GMimeObject at the current position with `replacement`.
+     * @param replacement a #GMimeObject
      */
     replace(replacement: Object): boolean
     /**
@@ -29775,10 +32691,11 @@ class References {
     /**
      * the array of message-id references
      */
-    readonly array: object[]
+    array: object[]
     /* Methods of GMime-3.0.GMime.References */
     /**
      * Appends a reference to msgid to the list of references.
+     * @param msgid a message-id string
      */
     append(msgid: string): void
     /**
@@ -29795,6 +32712,7 @@ class References {
     free(): void
     /**
      * Gets the specified Message-Id reference from the #GMimeReferences.
+     * @param index the index of the message id
      */
     get_message_id(index: number): string
     /**
@@ -29803,6 +32721,8 @@ class References {
     length(): number
     /**
      * Sets the specified Message-Id reference from the #GMimeReferences.
+     * @param index the index of the message id
+     * @param msgid the message id
      */
     set_message_id(index: number, msgid: string): void
     static name: string
@@ -29813,62 +32733,64 @@ class References {
     /**
      * Decodes a list of msg-ids as in the References and/or In-Reply-To
      * headers defined in rfc822.
+     * @param options a #GMimeParserOptions or %NULL
+     * @param text string containing a list of msg-ids
      */
     static parse(options: ParserOptions | null, text: string): References
 }
 abstract class SignatureClass {
     /* Fields of GMime-3.0.GMime.SignatureClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class SignatureListClass {
     /* Fields of GMime-3.0.GMime.SignatureListClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class StreamBufferClass {
     /* Fields of GMime-3.0.GMime.StreamBufferClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamCatClass {
     /* Fields of GMime-3.0.GMime.StreamCatClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamClass {
     /* Fields of GMime-3.0.GMime.StreamClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly read: (stream: Stream, buf: Uint8Array) => number
-    readonly write: (stream: Stream, buf: Uint8Array) => number
-    readonly flush: (stream: Stream) => number
-    readonly close: (stream: Stream) => number
-    readonly eos: (stream: Stream) => boolean
-    readonly reset: (stream: Stream) => number
-    readonly seek: (stream: Stream, offset: number, whence: SeekWhence) => number
-    readonly tell: (stream: Stream) => number
-    readonly length: (stream: Stream) => number
-    readonly substream: (stream: Stream, start: number, end: number) => Stream
+    parent_class: GObject.ObjectClass
+    read: (stream: Stream, buf: Uint8Array) => number
+    write: (stream: Stream, buf: Uint8Array) => number
+    flush: (stream: Stream) => number
+    close: (stream: Stream) => number
+    eos: (stream: Stream) => boolean
+    reset: (stream: Stream) => number
+    seek: (stream: Stream, offset: number, whence: SeekWhence) => number
+    tell: (stream: Stream) => number
+    length: (stream: Stream) => number
+    substream: (stream: Stream, start: number, end: number) => Stream
     static name: string
 }
 abstract class StreamFileClass {
     /* Fields of GMime-3.0.GMime.StreamFileClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamFilterClass {
     /* Fields of GMime-3.0.GMime.StreamFilterClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamFsClass {
     /* Fields of GMime-3.0.GMime.StreamFsClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamGIOClass {
     /* Fields of GMime-3.0.GMime.StreamGIOClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 class StreamIOVector {
@@ -29876,36 +32798,36 @@ class StreamIOVector {
     /**
      * data to pass to the I/O function.
      */
-    readonly data: object
+    data: object
     /**
      * length of the data, in bytes.
      */
-    readonly len: number
+    len: number
     static name: string
 }
 abstract class StreamMemClass {
     /* Fields of GMime-3.0.GMime.StreamMemClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamMmapClass {
     /* Fields of GMime-3.0.GMime.StreamMmapClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamNullClass {
     /* Fields of GMime-3.0.GMime.StreamNullClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class StreamPipeClass {
     /* Fields of GMime-3.0.GMime.StreamPipeClass */
-    readonly parent_class: StreamClass
+    parent_class: StreamClass
     static name: string
 }
 abstract class TextPartClass {
     /* Fields of GMime-3.0.GMime.TextPartClass */
-    readonly parent_class: PartClass
+    parent_class: PartClass
     static name: string
 }
 }

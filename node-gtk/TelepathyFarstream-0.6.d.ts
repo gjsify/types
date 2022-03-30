@@ -24,14 +24,16 @@ interface Channel_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Channel {
     /* Properties of TelepathyFarstream-0.6.TelepathyFarstream.Channel */
+    readonly channel: TelepathyGLib.Channel
     readonly fsConferences: object[]
     readonly objectPath: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyFarstream-0.6.TelepathyFarstream.Channel */
     /**
      * You must call this function on call messages received on the async bus.
      * #GstMessages are not modified.
+     * @param message A #GstMessage received from the bus
      */
     busMessage(message: Gst.Message): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -69,6 +71,10 @@ class Channel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -79,6 +85,12 @@ class Channel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -102,6 +114,7 @@ class Channel {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -121,11 +134,14 @@ class Channel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -133,6 +149,8 @@ class Channel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -150,6 +168,7 @@ class Channel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -195,6 +214,7 @@ class Channel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -238,15 +258,20 @@ class Channel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -287,6 +312,7 @@ class Channel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -321,6 +347,7 @@ class Channel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -361,16 +388,21 @@ class Channel {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     initAsync(ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     initFinish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     newFinish(res: Gio.AsyncResult): GObject.Object
     /* Signals of TelepathyFarstream-0.6.TelepathyFarstream.Channel */
@@ -390,6 +422,7 @@ class Channel {
      * up to any signal from #TfContent it cares about. Special care should be
      * made to connect #TfContent::src-pad-added as well
      * as the #TfContent::start-sending and #TfContent::stop-sending signals.
+     * @param content a #TfContent
      */
     connect(sigName: "content-added", callback: ((content: Content) => void)): number
     on(sigName: "content-added", callback: (content: Content) => void, after?: boolean): NodeJS.EventEmitter
@@ -398,6 +431,7 @@ class Channel {
     emit(sigName: "content-added", content: Content): void
     /**
      * Tells the application that a content is being removed.
+     * @param content a #TfContent
      */
     connect(sigName: "content-removed", callback: ((content: Content) => void)): number
     on(sigName: "content-removed", callback: (content: Content) => void, after?: boolean): NodeJS.EventEmitter
@@ -407,6 +441,7 @@ class Channel {
     /**
      * When this signal is emitted, the conference should be added to the
      * application's pipeline.
+     * @param conf a #FsConference
      */
     connect(sigName: "fs-conference-added", callback: ((conf: Farstream.Conference) => void)): number
     on(sigName: "fs-conference-added", callback: (conf: Farstream.Conference) => void, after?: boolean): NodeJS.EventEmitter
@@ -416,6 +451,7 @@ class Channel {
     /**
      * When this signal is emitted, the conference should be remove from the
      * application's pipeline.
+     * @param conf a #FsConference
      */
     connect(sigName: "fs-conference-removed", callback: ((conf: Farstream.Conference) => void)): number
     on(sigName: "fs-conference-removed", callback: (conf: Farstream.Conference) => void, after?: boolean): NodeJS.EventEmitter
@@ -451,12 +487,18 @@ class Channel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::channel", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::channel", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::channel", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::fs-conferences", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fs-conferences", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::fs-conferences", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -485,6 +527,8 @@ class Channel {
      * 
      * The user must call tf_channel_new_finish() in the callback
      * to get the finished object.
+     * @param channelProxy a #TpChannel proxy
+     * @param callback a #GAsyncReadyCallback to call when the channel is ready
      */
     static newAsync(channelProxy: TelepathyGLib.Channel, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -494,6 +538,12 @@ class Channel {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param objectType a #GType supporting #GAsyncInitable.
+     * @param nParameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param ioPriority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newvAsync(objectType: GObject.Type, nParameters: number, parameters: GObject.Parameter, ioPriority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static $gtype: GObject.Type
@@ -509,16 +559,19 @@ class Content {
     readonly sinkPad: Gst.Pad
     readonly tfChannel: Channel
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of TelepathyFarstream-0.6.TelepathyFarstream.Content */
     /**
      * Send a fatal streaming error to the Content to the CM, the effect is most
      * likely that the content will be removed.
+     * @param message error Message
      */
     error(message: string): void
     /**
      * Provides a iterator that can be used to iterate through all of the src
      * pads that are are used to receive from a group of Telepathy handles.
+     * @param handles a 0 terminated array of #guint representing Telepathy handles
+     * @param handleCount the numner of handles in `handles`
      */
     iterateSrcPads(handles: number, handleCount: number): Gst.Iterator
     /**
@@ -527,12 +580,16 @@ class Content {
      * and the call.
      * 
      * If handles are not specific, it assumes that it is valid for all handles.
+     * @param handles an array of #guint representing Telepathy handles, may be %NULL
+     * @param handleCount the numner of handles in `handles`
+     * @param message The error message
      */
     receivingFailed(handles: number, handleCount: number, message: string): void
     /**
      * Informs the Connection Manager that sending has failed for this
      * content. This is a transient error and it may or not not end the Content
      * and the call.
+     * @param message The error message
      */
     sendingFailed(message: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -570,6 +627,10 @@ class Content {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -580,6 +641,12 @@ class Content {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -603,6 +670,7 @@ class Content {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -622,11 +690,14 @@ class Content {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -634,6 +705,8 @@ class Content {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -651,6 +724,7 @@ class Content {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -696,6 +770,7 @@ class Content {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -739,15 +814,20 @@ class Content {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -788,6 +868,7 @@ class Content {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -822,6 +903,7 @@ class Content {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of TelepathyFarstream-0.6.TelepathyFarstream.Content */
@@ -839,6 +921,10 @@ class Content {
      * is not emitted on the main thread, so special care must be made to lock
      * the relevant data. When the callback returns from this signal, data will
      * start flowing through the pad, so the application MUST connect a sink.
+     * @param handle the handle of the remote party producing the content on this pad    or 0 if unknown
+     * @param stream the #FsStream for this pad
+     * @param pad a #GstPad
+     * @param codec the #FsCodec for this pad
      */
     connect(sigName: "src-pad-added", callback: ((handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec) => void)): number
     on(sigName: "src-pad-added", callback: (handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec) => void, after?: boolean): NodeJS.EventEmitter
@@ -853,6 +939,8 @@ class Content {
      * This signal will only be emitted after the #TfContent::stop-receiving
      * signal has succeeded. It will not be emitted right after
      *  #TfContent::src-pad-added.
+     * @param handles a 0-terminated array of #guint containing the handles
+     * @param handleCount The number of handles in the `handles` array
      */
     connect(sigName: "start-receiving", callback: ((handles: object, handleCount: number) => boolean)): number
     on(sigName: "start-receiving", callback: (handles: object, handleCount: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -873,6 +961,8 @@ class Content {
     /**
      * This signal is emitted when the connection manager wants to tell the
      * application that it is now allowed to stop receiving.
+     * @param handles a 0-terminated array of #guint containing the handles
+     * @param handleCount The number of handles in the `handles` array
      */
     connect(sigName: "stop-receiving", callback: ((handles: object, handleCount: number) => void)): number
     on(sigName: "stop-receiving", callback: (handles: object, handleCount: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -917,6 +1007,7 @@ class Content {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter

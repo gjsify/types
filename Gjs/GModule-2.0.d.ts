@@ -92,7 +92,8 @@ class Module {
     name(): string
     /**
      * Gets a symbol pointer from a module, such as one exported
-     * by #G_MODULE_EXPORT. Note that a valid symbol can be %NULL.
+     * by %G_MODULE_EXPORT. Note that a valid symbol can be %NULL.
+     * @param symbol_name the name of the symbol to find
      */
     symbol(symbol_name: string): [ /* returnType */ boolean, /* symbol */ object | null ]
     static name: string
@@ -111,6 +112,8 @@ class Module {
      * `directory` of `/lib` and a `module_name` of "mylibrary" will return
      * `/lib/libmylibrary.so`. On a Windows system, using `\Windows` as the
      * directory it will return `\Windows\mylibrary.dll`.
+     * @param directory the directory where the module is. This can be     %NULL or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
+     * @param module_name the name of the module
      */
     static build_path(directory: string | null, module_name: string): string
     /**

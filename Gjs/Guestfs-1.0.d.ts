@@ -159,7 +159,7 @@ class AddDomain {
      */
     readonlydisk: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -195,6 +195,10 @@ class AddDomain {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -205,6 +209,12 @@ class AddDomain {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -228,6 +238,7 @@ class AddDomain {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -247,11 +258,14 @@ class AddDomain {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -259,6 +273,8 @@ class AddDomain {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -276,6 +292,7 @@ class AddDomain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -321,6 +338,7 @@ class AddDomain {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -364,15 +382,20 @@ class AddDomain {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -413,6 +436,7 @@ class AddDomain {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -447,6 +471,7 @@ class AddDomain {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -466,6 +491,7 @@ class AddDomain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -498,6 +524,7 @@ class AddDomain {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AddDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AddDomain, pspec: GObject.ParamSpec) => void)): number
@@ -625,7 +652,7 @@ class AddDrive {
      */
     username: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -661,6 +688,10 @@ class AddDrive {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -671,6 +702,12 @@ class AddDrive {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -694,6 +731,7 @@ class AddDrive {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -713,11 +751,14 @@ class AddDrive {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -725,6 +766,8 @@ class AddDrive {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -742,6 +785,7 @@ class AddDrive {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -787,6 +831,7 @@ class AddDrive {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -830,15 +875,20 @@ class AddDrive {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -879,6 +929,7 @@ class AddDrive {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -913,6 +964,7 @@ class AddDrive {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -932,6 +984,7 @@ class AddDrive {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -964,6 +1017,7 @@ class AddDrive {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AddDrive, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AddDrive, pspec: GObject.ParamSpec) => void)): number
@@ -1023,7 +1077,7 @@ class AddDriveScratch {
      */
     name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1059,6 +1113,10 @@ class AddDriveScratch {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1069,6 +1127,12 @@ class AddDriveScratch {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1092,6 +1156,7 @@ class AddDriveScratch {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1111,11 +1176,14 @@ class AddDriveScratch {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1123,6 +1191,8 @@ class AddDriveScratch {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1140,6 +1210,7 @@ class AddDriveScratch {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1185,6 +1256,7 @@ class AddDriveScratch {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1228,15 +1300,20 @@ class AddDriveScratch {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1277,6 +1354,7 @@ class AddDriveScratch {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1311,6 +1389,7 @@ class AddDriveScratch {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1330,6 +1409,7 @@ class AddDriveScratch {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1362,6 +1442,7 @@ class AddDriveScratch {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AddDriveScratch, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AddDriveScratch, pspec: GObject.ParamSpec) => void)): number
@@ -1443,7 +1524,7 @@ class AddLibvirtDom {
      */
     readonlydisk: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1479,6 +1560,10 @@ class AddLibvirtDom {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1489,6 +1574,12 @@ class AddLibvirtDom {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1512,6 +1603,7 @@ class AddLibvirtDom {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1531,11 +1623,14 @@ class AddLibvirtDom {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1543,6 +1638,8 @@ class AddLibvirtDom {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1560,6 +1657,7 @@ class AddLibvirtDom {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1605,6 +1703,7 @@ class AddLibvirtDom {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1648,15 +1747,20 @@ class AddLibvirtDom {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1697,6 +1801,7 @@ class AddLibvirtDom {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1731,6 +1836,7 @@ class AddLibvirtDom {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1750,6 +1856,7 @@ class AddLibvirtDom {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1782,6 +1889,7 @@ class AddLibvirtDom {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AddLibvirtDom, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AddLibvirtDom, pspec: GObject.ParamSpec) => void)): number
@@ -1825,7 +1933,7 @@ class AugTransform {
      */
     remove: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -1861,6 +1969,10 @@ class AugTransform {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1871,6 +1983,12 @@ class AugTransform {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1894,6 +2012,7 @@ class AugTransform {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1913,11 +2032,14 @@ class AugTransform {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1925,6 +2047,8 @@ class AugTransform {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1942,6 +2066,7 @@ class AugTransform {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1987,6 +2112,7 @@ class AugTransform {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2030,15 +2156,20 @@ class AugTransform {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2079,6 +2210,7 @@ class AugTransform {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2113,6 +2245,7 @@ class AugTransform {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2132,6 +2265,7 @@ class AugTransform {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2164,6 +2298,7 @@ class AugTransform {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AugTransform, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AugTransform, pspec: GObject.ParamSpec) => void)): number
@@ -2203,7 +2338,7 @@ class BTRFSFilesystemDefragment {
      */
     flush: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2239,6 +2374,10 @@ class BTRFSFilesystemDefragment {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2249,6 +2388,12 @@ class BTRFSFilesystemDefragment {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2272,6 +2417,7 @@ class BTRFSFilesystemDefragment {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2291,11 +2437,14 @@ class BTRFSFilesystemDefragment {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2303,6 +2452,8 @@ class BTRFSFilesystemDefragment {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2320,6 +2471,7 @@ class BTRFSFilesystemDefragment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2365,6 +2517,7 @@ class BTRFSFilesystemDefragment {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2408,15 +2561,20 @@ class BTRFSFilesystemDefragment {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2457,6 +2615,7 @@ class BTRFSFilesystemDefragment {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2491,6 +2650,7 @@ class BTRFSFilesystemDefragment {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2510,6 +2670,7 @@ class BTRFSFilesystemDefragment {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2542,6 +2703,7 @@ class BTRFSFilesystemDefragment {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BTRFSFilesystemDefragment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BTRFSFilesystemDefragment, pspec: GObject.ParamSpec) => void)): number
@@ -2575,7 +2737,7 @@ class BTRFSFilesystemResize {
      */
     size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2611,6 +2773,10 @@ class BTRFSFilesystemResize {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2621,6 +2787,12 @@ class BTRFSFilesystemResize {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2644,6 +2816,7 @@ class BTRFSFilesystemResize {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2663,11 +2836,14 @@ class BTRFSFilesystemResize {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2675,6 +2851,8 @@ class BTRFSFilesystemResize {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2692,6 +2870,7 @@ class BTRFSFilesystemResize {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2737,6 +2916,7 @@ class BTRFSFilesystemResize {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2780,15 +2960,20 @@ class BTRFSFilesystemResize {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2829,6 +3014,7 @@ class BTRFSFilesystemResize {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2863,6 +3049,7 @@ class BTRFSFilesystemResize {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2882,6 +3069,7 @@ class BTRFSFilesystemResize {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2914,6 +3102,7 @@ class BTRFSFilesystemResize {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BTRFSFilesystemResize, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BTRFSFilesystemResize, pspec: GObject.ParamSpec) => void)): number
@@ -2945,7 +3134,7 @@ class BTRFSImage {
      */
     compresslevel: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -2981,6 +3170,10 @@ class BTRFSImage {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2991,6 +3184,12 @@ class BTRFSImage {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3014,6 +3213,7 @@ class BTRFSImage {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3033,11 +3233,14 @@ class BTRFSImage {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3045,6 +3248,8 @@ class BTRFSImage {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3062,6 +3267,7 @@ class BTRFSImage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3107,6 +3313,7 @@ class BTRFSImage {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3150,15 +3357,20 @@ class BTRFSImage {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3199,6 +3411,7 @@ class BTRFSImage {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3233,6 +3446,7 @@ class BTRFSImage {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3252,6 +3466,7 @@ class BTRFSImage {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3284,6 +3499,7 @@ class BTRFSImage {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BTRFSImage, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BTRFSImage, pspec: GObject.ParamSpec) => void)): number
@@ -3315,7 +3531,7 @@ class BTRFSSubvolumeCreate {
      */
     qgroupid: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3351,6 +3567,10 @@ class BTRFSSubvolumeCreate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3361,6 +3581,12 @@ class BTRFSSubvolumeCreate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3384,6 +3610,7 @@ class BTRFSSubvolumeCreate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3403,11 +3630,14 @@ class BTRFSSubvolumeCreate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3415,6 +3645,8 @@ class BTRFSSubvolumeCreate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3432,6 +3664,7 @@ class BTRFSSubvolumeCreate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3477,6 +3710,7 @@ class BTRFSSubvolumeCreate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3520,15 +3754,20 @@ class BTRFSSubvolumeCreate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3569,6 +3808,7 @@ class BTRFSSubvolumeCreate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3603,6 +3843,7 @@ class BTRFSSubvolumeCreate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -3622,6 +3863,7 @@ class BTRFSSubvolumeCreate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3654,6 +3896,7 @@ class BTRFSSubvolumeCreate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BTRFSSubvolumeCreate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BTRFSSubvolumeCreate, pspec: GObject.ParamSpec) => void)): number
@@ -3693,7 +3936,7 @@ class BTRFSSubvolumeSnapshot {
      */
     ro: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -3729,6 +3972,10 @@ class BTRFSSubvolumeSnapshot {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3739,6 +3986,12 @@ class BTRFSSubvolumeSnapshot {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3762,6 +4015,7 @@ class BTRFSSubvolumeSnapshot {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3781,11 +4035,14 @@ class BTRFSSubvolumeSnapshot {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3793,6 +4050,8 @@ class BTRFSSubvolumeSnapshot {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3810,6 +4069,7 @@ class BTRFSSubvolumeSnapshot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3855,6 +4115,7 @@ class BTRFSSubvolumeSnapshot {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3898,15 +4159,20 @@ class BTRFSSubvolumeSnapshot {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3947,6 +4213,7 @@ class BTRFSSubvolumeSnapshot {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3981,6 +4248,7 @@ class BTRFSSubvolumeSnapshot {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4000,6 +4268,7 @@ class BTRFSSubvolumeSnapshot {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4032,6 +4301,7 @@ class BTRFSSubvolumeSnapshot {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BTRFSSubvolumeSnapshot, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BTRFSSubvolumeSnapshot, pspec: GObject.ParamSpec) => void)): number
@@ -4073,7 +4343,7 @@ class BtrfsFsck {
      */
     superblock: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4109,6 +4379,10 @@ class BtrfsFsck {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4119,6 +4393,12 @@ class BtrfsFsck {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4142,6 +4422,7 @@ class BtrfsFsck {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4161,11 +4442,14 @@ class BtrfsFsck {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4173,6 +4457,8 @@ class BtrfsFsck {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4190,6 +4476,7 @@ class BtrfsFsck {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4235,6 +4522,7 @@ class BtrfsFsck {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4278,15 +4566,20 @@ class BtrfsFsck {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4327,6 +4620,7 @@ class BtrfsFsck {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4361,6 +4655,7 @@ class BtrfsFsck {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4380,6 +4675,7 @@ class BtrfsFsck {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4412,6 +4708,7 @@ class BtrfsFsck {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: BtrfsFsck, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: BtrfsFsck, pspec: GObject.ParamSpec) => void)): number
@@ -4445,7 +4742,7 @@ class CompressDeviceOut {
      */
     level: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4481,6 +4778,10 @@ class CompressDeviceOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4491,6 +4792,12 @@ class CompressDeviceOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4514,6 +4821,7 @@ class CompressDeviceOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4533,11 +4841,14 @@ class CompressDeviceOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4545,6 +4856,8 @@ class CompressDeviceOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4562,6 +4875,7 @@ class CompressDeviceOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4607,6 +4921,7 @@ class CompressDeviceOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4650,15 +4965,20 @@ class CompressDeviceOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4699,6 +5019,7 @@ class CompressDeviceOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4733,6 +5054,7 @@ class CompressDeviceOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4752,6 +5074,7 @@ class CompressDeviceOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4784,6 +5107,7 @@ class CompressDeviceOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CompressDeviceOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CompressDeviceOut, pspec: GObject.ParamSpec) => void)): number
@@ -4815,7 +5139,7 @@ class CompressOut {
      */
     level: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4851,6 +5175,10 @@ class CompressOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4861,6 +5189,12 @@ class CompressOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4884,6 +5218,7 @@ class CompressOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4903,11 +5238,14 @@ class CompressOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4915,6 +5253,8 @@ class CompressOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4932,6 +5272,7 @@ class CompressOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4977,6 +5318,7 @@ class CompressOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5020,15 +5362,20 @@ class CompressOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5069,6 +5416,7 @@ class CompressOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5103,6 +5451,7 @@ class CompressOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5122,6 +5471,7 @@ class CompressOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5154,6 +5504,7 @@ class CompressOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CompressOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CompressOut, pspec: GObject.ParamSpec) => void)): number
@@ -5209,7 +5560,7 @@ class CopyAttributes {
      */
     xattributes: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -5245,6 +5596,10 @@ class CopyAttributes {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5255,6 +5610,12 @@ class CopyAttributes {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5278,6 +5639,7 @@ class CopyAttributes {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5297,11 +5659,14 @@ class CopyAttributes {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5309,6 +5674,8 @@ class CopyAttributes {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5326,6 +5693,7 @@ class CopyAttributes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5371,6 +5739,7 @@ class CopyAttributes {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5414,15 +5783,20 @@ class CopyAttributes {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5463,6 +5837,7 @@ class CopyAttributes {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5497,6 +5872,7 @@ class CopyAttributes {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5516,6 +5892,7 @@ class CopyAttributes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5548,6 +5925,7 @@ class CopyAttributes {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CopyAttributes, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CopyAttributes, pspec: GObject.ParamSpec) => void)): number
@@ -5617,7 +5995,7 @@ class CopyDeviceToDevice {
      */
     srcoffset: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -5653,6 +6031,10 @@ class CopyDeviceToDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5663,6 +6045,12 @@ class CopyDeviceToDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5686,6 +6074,7 @@ class CopyDeviceToDevice {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5705,11 +6094,14 @@ class CopyDeviceToDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5717,6 +6109,8 @@ class CopyDeviceToDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5734,6 +6128,7 @@ class CopyDeviceToDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5779,6 +6174,7 @@ class CopyDeviceToDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5822,15 +6218,20 @@ class CopyDeviceToDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5871,6 +6272,7 @@ class CopyDeviceToDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5905,6 +6307,7 @@ class CopyDeviceToDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5924,6 +6327,7 @@ class CopyDeviceToDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5956,6 +6360,7 @@ class CopyDeviceToDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CopyDeviceToDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CopyDeviceToDevice, pspec: GObject.ParamSpec) => void)): number
@@ -6027,7 +6432,7 @@ class CopyDeviceToFile {
      */
     srcoffset: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -6063,6 +6468,10 @@ class CopyDeviceToFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6073,6 +6482,12 @@ class CopyDeviceToFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6096,6 +6511,7 @@ class CopyDeviceToFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6115,11 +6531,14 @@ class CopyDeviceToFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6127,6 +6546,8 @@ class CopyDeviceToFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6144,6 +6565,7 @@ class CopyDeviceToFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6189,6 +6611,7 @@ class CopyDeviceToFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6232,15 +6655,20 @@ class CopyDeviceToFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6281,6 +6709,7 @@ class CopyDeviceToFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6315,6 +6744,7 @@ class CopyDeviceToFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6334,6 +6764,7 @@ class CopyDeviceToFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6366,6 +6797,7 @@ class CopyDeviceToFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CopyDeviceToFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CopyDeviceToFile, pspec: GObject.ParamSpec) => void)): number
@@ -6437,7 +6869,7 @@ class CopyFileToDevice {
      */
     srcoffset: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -6473,6 +6905,10 @@ class CopyFileToDevice {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6483,6 +6919,12 @@ class CopyFileToDevice {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6506,6 +6948,7 @@ class CopyFileToDevice {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6525,11 +6968,14 @@ class CopyFileToDevice {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6537,6 +6983,8 @@ class CopyFileToDevice {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6554,6 +7002,7 @@ class CopyFileToDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6599,6 +7048,7 @@ class CopyFileToDevice {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6642,15 +7092,20 @@ class CopyFileToDevice {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6691,6 +7146,7 @@ class CopyFileToDevice {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6725,6 +7181,7 @@ class CopyFileToDevice {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6744,6 +7201,7 @@ class CopyFileToDevice {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6776,6 +7234,7 @@ class CopyFileToDevice {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CopyFileToDevice, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CopyFileToDevice, pspec: GObject.ParamSpec) => void)): number
@@ -6847,7 +7306,7 @@ class CopyFileToFile {
      */
     srcoffset: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -6883,6 +7342,10 @@ class CopyFileToFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6893,6 +7356,12 @@ class CopyFileToFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6916,6 +7385,7 @@ class CopyFileToFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6935,11 +7405,14 @@ class CopyFileToFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6947,6 +7420,8 @@ class CopyFileToFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6964,6 +7439,7 @@ class CopyFileToFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7009,6 +7485,7 @@ class CopyFileToFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7052,15 +7529,20 @@ class CopyFileToFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7101,6 +7583,7 @@ class CopyFileToFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7135,6 +7618,7 @@ class CopyFileToFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7154,6 +7638,7 @@ class CopyFileToFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7186,6 +7671,7 @@ class CopyFileToFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CopyFileToFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CopyFileToFile, pspec: GObject.ParamSpec) => void)): number
@@ -7225,7 +7711,7 @@ class CpioOut {
      */
     format: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -7261,6 +7747,10 @@ class CpioOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7271,6 +7761,12 @@ class CpioOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7294,6 +7790,7 @@ class CpioOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7313,11 +7810,14 @@ class CpioOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7325,6 +7825,8 @@ class CpioOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7342,6 +7844,7 @@ class CpioOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7387,6 +7890,7 @@ class CpioOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7430,15 +7934,20 @@ class CpioOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7479,6 +7988,7 @@ class CpioOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7513,6 +8023,7 @@ class CpioOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7532,6 +8043,7 @@ class CpioOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7564,6 +8076,7 @@ class CpioOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CpioOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CpioOut, pspec: GObject.ParamSpec) => void)): number
@@ -7627,7 +8140,7 @@ class DiskCreate {
      */
     preallocation: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -7663,6 +8176,10 @@ class DiskCreate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7673,6 +8190,12 @@ class DiskCreate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7696,6 +8219,7 @@ class DiskCreate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7715,11 +8239,14 @@ class DiskCreate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7727,6 +8254,8 @@ class DiskCreate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7744,6 +8273,7 @@ class DiskCreate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7789,6 +8319,7 @@ class DiskCreate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7832,15 +8363,20 @@ class DiskCreate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7881,6 +8417,7 @@ class DiskCreate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7915,6 +8452,7 @@ class DiskCreate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7934,6 +8472,7 @@ class DiskCreate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7966,6 +8505,7 @@ class DiskCreate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DiskCreate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DiskCreate, pspec: GObject.ParamSpec) => void)): number
@@ -8005,7 +8545,7 @@ class DownloadBlocks {
      */
     unallocated: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -8041,6 +8581,10 @@ class DownloadBlocks {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8051,6 +8595,12 @@ class DownloadBlocks {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8074,6 +8624,7 @@ class DownloadBlocks {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8093,11 +8644,14 @@ class DownloadBlocks {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8105,6 +8659,8 @@ class DownloadBlocks {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8122,6 +8678,7 @@ class DownloadBlocks {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8167,6 +8724,7 @@ class DownloadBlocks {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8210,15 +8768,20 @@ class DownloadBlocks {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8259,6 +8822,7 @@ class DownloadBlocks {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8293,6 +8857,7 @@ class DownloadBlocks {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8312,6 +8877,7 @@ class DownloadBlocks {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8344,6 +8910,7 @@ class DownloadBlocks {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: DownloadBlocks, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: DownloadBlocks, pspec: GObject.ParamSpec) => void)): number
@@ -8383,7 +8950,7 @@ class E2fsck {
      */
     forceall: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -8419,6 +8986,10 @@ class E2fsck {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8429,6 +9000,12 @@ class E2fsck {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8452,6 +9029,7 @@ class E2fsck {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8471,11 +9049,14 @@ class E2fsck {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8483,6 +9064,8 @@ class E2fsck {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8500,6 +9083,7 @@ class E2fsck {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8545,6 +9129,7 @@ class E2fsck {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8588,15 +9173,20 @@ class E2fsck {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8637,6 +9227,7 @@ class E2fsck {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8671,6 +9262,7 @@ class E2fsck {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -8690,6 +9282,7 @@ class E2fsck {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8722,6 +9315,7 @@ class E2fsck {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: E2fsck, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: E2fsck, pspec: GObject.ParamSpec) => void)): number
@@ -8771,7 +9365,7 @@ class Fstrim {
      */
     offset: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -8807,6 +9401,10 @@ class Fstrim {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8817,6 +9415,12 @@ class Fstrim {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8840,6 +9444,7 @@ class Fstrim {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8859,11 +9464,14 @@ class Fstrim {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8871,6 +9479,8 @@ class Fstrim {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8888,6 +9498,7 @@ class Fstrim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8933,6 +9544,7 @@ class Fstrim {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8976,15 +9588,20 @@ class Fstrim {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9025,6 +9642,7 @@ class Fstrim {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9059,6 +9677,7 @@ class Fstrim {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9078,6 +9697,7 @@ class Fstrim {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9110,6 +9730,7 @@ class Fstrim {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Fstrim, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Fstrim, pspec: GObject.ParamSpec) => void)): number
@@ -9145,7 +9766,7 @@ class GlobExpand {
      */
     directoryslash: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -9181,6 +9802,10 @@ class GlobExpand {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9191,6 +9816,12 @@ class GlobExpand {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9214,6 +9845,7 @@ class GlobExpand {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9233,11 +9865,14 @@ class GlobExpand {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9245,6 +9880,8 @@ class GlobExpand {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9262,6 +9899,7 @@ class GlobExpand {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9307,6 +9945,7 @@ class GlobExpand {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9350,15 +9989,20 @@ class GlobExpand {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9399,6 +10043,7 @@ class GlobExpand {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9433,6 +10078,7 @@ class GlobExpand {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9452,6 +10098,7 @@ class GlobExpand {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9484,6 +10131,7 @@ class GlobExpand {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GlobExpand, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GlobExpand, pspec: GObject.ParamSpec) => void)): number
@@ -9539,7 +10187,7 @@ class Grep {
      */
     insensitive: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -9575,6 +10223,10 @@ class Grep {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9585,6 +10237,12 @@ class Grep {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9608,6 +10266,7 @@ class Grep {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9627,11 +10286,14 @@ class Grep {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9639,6 +10301,8 @@ class Grep {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9656,6 +10320,7 @@ class Grep {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9701,6 +10366,7 @@ class Grep {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9744,15 +10410,20 @@ class Grep {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9793,6 +10464,7 @@ class Grep {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9827,6 +10499,7 @@ class Grep {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -9846,6 +10519,7 @@ class Grep {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -9878,6 +10552,7 @@ class Grep {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Grep, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Grep, pspec: GObject.ParamSpec) => void)): number
@@ -9939,7 +10614,7 @@ class HivexOpen {
      */
     write: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -9975,6 +10650,10 @@ class HivexOpen {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9985,6 +10664,12 @@ class HivexOpen {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10008,6 +10693,7 @@ class HivexOpen {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10027,11 +10713,14 @@ class HivexOpen {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10039,6 +10728,8 @@ class HivexOpen {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10056,6 +10747,7 @@ class HivexOpen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10101,6 +10793,7 @@ class HivexOpen {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10144,15 +10837,20 @@ class HivexOpen {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10193,6 +10891,7 @@ class HivexOpen {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10227,6 +10926,7 @@ class HivexOpen {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10246,6 +10946,7 @@ class HivexOpen {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10278,6 +10979,7 @@ class HivexOpen {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: HivexOpen, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: HivexOpen, pspec: GObject.ParamSpec) => void)): number
@@ -10323,7 +11025,7 @@ class InspectGetIcon {
      */
     highquality: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10359,6 +11061,10 @@ class InspectGetIcon {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10369,6 +11075,12 @@ class InspectGetIcon {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10392,6 +11104,7 @@ class InspectGetIcon {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10411,11 +11124,14 @@ class InspectGetIcon {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10423,6 +11139,8 @@ class InspectGetIcon {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10440,6 +11158,7 @@ class InspectGetIcon {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10485,6 +11204,7 @@ class InspectGetIcon {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10528,15 +11248,20 @@ class InspectGetIcon {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10577,6 +11302,7 @@ class InspectGetIcon {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10611,6 +11337,7 @@ class InspectGetIcon {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10630,6 +11357,7 @@ class InspectGetIcon {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10662,6 +11390,7 @@ class InspectGetIcon {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InspectGetIcon, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InspectGetIcon, pspec: GObject.ParamSpec) => void)): number
@@ -10719,7 +11448,7 @@ class InternalTest {
      */
     ostring: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -10755,6 +11484,10 @@ class InternalTest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10765,6 +11498,12 @@ class InternalTest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10788,6 +11527,7 @@ class InternalTest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10807,11 +11547,14 @@ class InternalTest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10819,6 +11562,8 @@ class InternalTest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10836,6 +11581,7 @@ class InternalTest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10881,6 +11627,7 @@ class InternalTest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10924,15 +11671,20 @@ class InternalTest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10973,6 +11725,7 @@ class InternalTest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11007,6 +11760,7 @@ class InternalTest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11026,6 +11780,7 @@ class InternalTest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11058,6 +11813,7 @@ class InternalTest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternalTest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternalTest, pspec: GObject.ParamSpec) => void)): number
@@ -11591,7 +12347,7 @@ class InternalTest63Optargs {
      */
     opt9: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -11627,6 +12383,10 @@ class InternalTest63Optargs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11637,6 +12397,12 @@ class InternalTest63Optargs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11660,6 +12426,7 @@ class InternalTest63Optargs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11679,11 +12446,14 @@ class InternalTest63Optargs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11691,6 +12461,8 @@ class InternalTest63Optargs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11708,6 +12480,7 @@ class InternalTest63Optargs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11753,6 +12526,7 @@ class InternalTest63Optargs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11796,15 +12570,20 @@ class InternalTest63Optargs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11845,6 +12624,7 @@ class InternalTest63Optargs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11879,6 +12659,7 @@ class InternalTest63Optargs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11898,6 +12679,7 @@ class InternalTest63Optargs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11930,6 +12712,7 @@ class InternalTest63Optargs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternalTest63Optargs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternalTest63Optargs, pspec: GObject.ParamSpec) => void)): number
@@ -12085,7 +12868,7 @@ class InternalTestOnlyOptargs {
      */
     test: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -12121,6 +12904,10 @@ class InternalTestOnlyOptargs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12131,6 +12918,12 @@ class InternalTestOnlyOptargs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12154,6 +12947,7 @@ class InternalTestOnlyOptargs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12173,11 +12967,14 @@ class InternalTestOnlyOptargs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12185,6 +12982,8 @@ class InternalTestOnlyOptargs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12202,6 +13001,7 @@ class InternalTestOnlyOptargs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12247,6 +13047,7 @@ class InternalTestOnlyOptargs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12290,15 +13091,20 @@ class InternalTestOnlyOptargs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12339,6 +13145,7 @@ class InternalTestOnlyOptargs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12373,6 +13180,7 @@ class InternalTestOnlyOptargs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12392,6 +13200,7 @@ class InternalTestOnlyOptargs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12424,6 +13233,7 @@ class InternalTestOnlyOptargs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: InternalTestOnlyOptargs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: InternalTestOnlyOptargs, pspec: GObject.ParamSpec) => void)): number
@@ -12455,7 +13265,7 @@ class IsBlockdev {
      */
     followsymlinks: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -12491,6 +13301,10 @@ class IsBlockdev {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12501,6 +13315,12 @@ class IsBlockdev {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12524,6 +13344,7 @@ class IsBlockdev {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12543,11 +13364,14 @@ class IsBlockdev {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12555,6 +13379,8 @@ class IsBlockdev {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12572,6 +13398,7 @@ class IsBlockdev {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12617,6 +13444,7 @@ class IsBlockdev {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12660,15 +13488,20 @@ class IsBlockdev {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12709,6 +13542,7 @@ class IsBlockdev {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12743,6 +13577,7 @@ class IsBlockdev {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12762,6 +13597,7 @@ class IsBlockdev {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12794,6 +13630,7 @@ class IsBlockdev {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IsBlockdev, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IsBlockdev, pspec: GObject.ParamSpec) => void)): number
@@ -12825,7 +13662,7 @@ class IsChardev {
      */
     followsymlinks: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -12861,6 +13698,10 @@ class IsChardev {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12871,6 +13712,12 @@ class IsChardev {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12894,6 +13741,7 @@ class IsChardev {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12913,11 +13761,14 @@ class IsChardev {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12925,6 +13776,8 @@ class IsChardev {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12942,6 +13795,7 @@ class IsChardev {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12987,6 +13841,7 @@ class IsChardev {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13030,15 +13885,20 @@ class IsChardev {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13079,6 +13939,7 @@ class IsChardev {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13113,6 +13974,7 @@ class IsChardev {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13132,6 +13994,7 @@ class IsChardev {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13164,6 +14027,7 @@ class IsChardev {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IsChardev, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IsChardev, pspec: GObject.ParamSpec) => void)): number
@@ -13195,7 +14059,7 @@ class IsDir {
      */
     followsymlinks: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -13231,6 +14095,10 @@ class IsDir {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13241,6 +14109,12 @@ class IsDir {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13264,6 +14138,7 @@ class IsDir {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13283,11 +14158,14 @@ class IsDir {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13295,6 +14173,8 @@ class IsDir {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13312,6 +14192,7 @@ class IsDir {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13357,6 +14238,7 @@ class IsDir {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13400,15 +14282,20 @@ class IsDir {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13449,6 +14336,7 @@ class IsDir {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13483,6 +14371,7 @@ class IsDir {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13502,6 +14391,7 @@ class IsDir {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13534,6 +14424,7 @@ class IsDir {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IsDir, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IsDir, pspec: GObject.ParamSpec) => void)): number
@@ -13565,7 +14456,7 @@ class IsFifo {
      */
     followsymlinks: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -13601,6 +14492,10 @@ class IsFifo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13611,6 +14506,12 @@ class IsFifo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13634,6 +14535,7 @@ class IsFifo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13653,11 +14555,14 @@ class IsFifo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13665,6 +14570,8 @@ class IsFifo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13682,6 +14589,7 @@ class IsFifo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13727,6 +14635,7 @@ class IsFifo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13770,15 +14679,20 @@ class IsFifo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13819,6 +14733,7 @@ class IsFifo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13853,6 +14768,7 @@ class IsFifo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -13872,6 +14788,7 @@ class IsFifo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13904,6 +14821,7 @@ class IsFifo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IsFifo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IsFifo, pspec: GObject.ParamSpec) => void)): number
@@ -13935,7 +14853,7 @@ class IsFile {
      */
     followsymlinks: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -13971,6 +14889,10 @@ class IsFile {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13981,6 +14903,12 @@ class IsFile {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14004,6 +14932,7 @@ class IsFile {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14023,11 +14952,14 @@ class IsFile {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14035,6 +14967,8 @@ class IsFile {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14052,6 +14986,7 @@ class IsFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14097,6 +15032,7 @@ class IsFile {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14140,15 +15076,20 @@ class IsFile {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14189,6 +15130,7 @@ class IsFile {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14223,6 +15165,7 @@ class IsFile {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14242,6 +15185,7 @@ class IsFile {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14274,6 +15218,7 @@ class IsFile {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IsFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IsFile, pspec: GObject.ParamSpec) => void)): number
@@ -14305,7 +15250,7 @@ class IsSocket {
      */
     followsymlinks: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -14341,6 +15286,10 @@ class IsSocket {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14351,6 +15300,12 @@ class IsSocket {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14374,6 +15329,7 @@ class IsSocket {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14393,11 +15349,14 @@ class IsSocket {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14405,6 +15364,8 @@ class IsSocket {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14422,6 +15383,7 @@ class IsSocket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14467,6 +15429,7 @@ class IsSocket {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14510,15 +15473,20 @@ class IsSocket {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14559,6 +15527,7 @@ class IsSocket {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14593,6 +15562,7 @@ class IsSocket {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14612,6 +15582,7 @@ class IsSocket {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14644,6 +15615,7 @@ class IsSocket {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: IsSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: IsSocket, pspec: GObject.ParamSpec) => void)): number
@@ -14707,7 +15679,7 @@ class MDCreate {
      */
     spare: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -14743,6 +15715,10 @@ class MDCreate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14753,6 +15729,12 @@ class MDCreate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14776,6 +15758,7 @@ class MDCreate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14795,11 +15778,14 @@ class MDCreate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14807,6 +15793,8 @@ class MDCreate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14824,6 +15812,7 @@ class MDCreate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14869,6 +15858,7 @@ class MDCreate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14912,15 +15902,20 @@ class MDCreate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14961,6 +15956,7 @@ class MDCreate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14995,6 +15991,7 @@ class MDCreate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15014,6 +16011,7 @@ class MDCreate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15046,6 +16044,7 @@ class MDCreate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MDCreate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MDCreate, pspec: GObject.ParamSpec) => void)): number
@@ -15381,7 +16380,7 @@ class Mke2fs {
      */
     writesbandgrouponly: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -15417,6 +16416,10 @@ class Mke2fs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15427,6 +16430,12 @@ class Mke2fs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15450,6 +16459,7 @@ class Mke2fs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15469,11 +16479,14 @@ class Mke2fs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15481,6 +16494,8 @@ class Mke2fs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15498,6 +16513,7 @@ class Mke2fs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15543,6 +16559,7 @@ class Mke2fs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15586,15 +16603,20 @@ class Mke2fs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15635,6 +16657,7 @@ class Mke2fs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15669,6 +16692,7 @@ class Mke2fs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15688,6 +16712,7 @@ class Mke2fs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15720,6 +16745,7 @@ class Mke2fs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mke2fs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mke2fs, pspec: GObject.ParamSpec) => void)): number
@@ -15857,7 +16883,7 @@ class Mkfs {
      */
     sectorsize: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -15893,6 +16919,10 @@ class Mkfs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15903,6 +16933,12 @@ class Mkfs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15926,6 +16962,7 @@ class Mkfs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15945,11 +16982,14 @@ class Mkfs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15957,6 +16997,8 @@ class Mkfs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15974,6 +17016,7 @@ class Mkfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16019,6 +17062,7 @@ class Mkfs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16062,15 +17106,20 @@ class Mkfs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16111,6 +17160,7 @@ class Mkfs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16145,6 +17195,7 @@ class Mkfs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16164,6 +17215,7 @@ class Mkfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16196,6 +17248,7 @@ class Mkfs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mkfs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mkfs, pspec: GObject.ParamSpec) => void)): number
@@ -16291,7 +17344,7 @@ class MkfsBtrfs {
      */
     sectorsize: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -16327,6 +17380,10 @@ class MkfsBtrfs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16337,6 +17394,12 @@ class MkfsBtrfs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16360,6 +17423,7 @@ class MkfsBtrfs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16379,11 +17443,14 @@ class MkfsBtrfs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16391,6 +17458,8 @@ class MkfsBtrfs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16408,6 +17477,7 @@ class MkfsBtrfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16453,6 +17523,7 @@ class MkfsBtrfs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16496,15 +17567,20 @@ class MkfsBtrfs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16545,6 +17621,7 @@ class MkfsBtrfs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16579,6 +17656,7 @@ class MkfsBtrfs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16598,6 +17676,7 @@ class MkfsBtrfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16630,6 +17709,7 @@ class MkfsBtrfs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MkfsBtrfs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MkfsBtrfs, pspec: GObject.ParamSpec) => void)): number
@@ -16675,7 +17755,7 @@ class Mksquashfs {
      */
     compress: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -16711,6 +17791,10 @@ class Mksquashfs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16721,6 +17805,12 @@ class Mksquashfs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16744,6 +17834,7 @@ class Mksquashfs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16763,11 +17854,14 @@ class Mksquashfs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16775,6 +17869,8 @@ class Mksquashfs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16792,6 +17888,7 @@ class Mksquashfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16837,6 +17934,7 @@ class Mksquashfs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16880,15 +17978,20 @@ class Mksquashfs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16929,6 +18032,7 @@ class Mksquashfs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16963,6 +18067,7 @@ class Mksquashfs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -16982,6 +18087,7 @@ class Mksquashfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17014,6 +18120,7 @@ class Mksquashfs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mksquashfs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mksquashfs, pspec: GObject.ParamSpec) => void)): number
@@ -17053,7 +18160,7 @@ class Mkswap {
      */
     uuid: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -17089,6 +18196,10 @@ class Mkswap {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17099,6 +18210,12 @@ class Mkswap {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17122,6 +18239,7 @@ class Mkswap {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17141,11 +18259,14 @@ class Mkswap {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17153,6 +18274,8 @@ class Mkswap {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17170,6 +18293,7 @@ class Mkswap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17215,6 +18339,7 @@ class Mkswap {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17258,15 +18383,20 @@ class Mkswap {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17307,6 +18437,7 @@ class Mkswap {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17341,6 +18472,7 @@ class Mkswap {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17360,6 +18492,7 @@ class Mkswap {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17392,6 +18525,7 @@ class Mkswap {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mkswap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mkswap, pspec: GObject.ParamSpec) => void)): number
@@ -17425,7 +18559,7 @@ class Mktemp {
      */
     suffix: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -17461,6 +18595,10 @@ class Mktemp {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17471,6 +18609,12 @@ class Mktemp {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17494,6 +18638,7 @@ class Mktemp {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17513,11 +18658,14 @@ class Mktemp {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17525,6 +18673,8 @@ class Mktemp {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17542,6 +18692,7 @@ class Mktemp {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17587,6 +18738,7 @@ class Mktemp {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -17630,15 +18782,20 @@ class Mktemp {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -17679,6 +18836,7 @@ class Mktemp {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -17713,6 +18871,7 @@ class Mktemp {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -17732,6 +18891,7 @@ class Mktemp {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -17764,6 +18924,7 @@ class Mktemp {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mktemp, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mktemp, pspec: GObject.ParamSpec) => void)): number
@@ -17795,7 +18956,7 @@ class Mount9P {
      */
     options: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -17831,6 +18992,10 @@ class Mount9P {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -17841,6 +19006,12 @@ class Mount9P {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -17864,6 +19035,7 @@ class Mount9P {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -17883,11 +19055,14 @@ class Mount9P {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -17895,6 +19070,8 @@ class Mount9P {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -17912,6 +19089,7 @@ class Mount9P {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -17957,6 +19135,7 @@ class Mount9P {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18000,15 +19179,20 @@ class Mount9P {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18049,6 +19233,7 @@ class Mount9P {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18083,6 +19268,7 @@ class Mount9P {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18102,6 +19288,7 @@ class Mount9P {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18134,6 +19321,7 @@ class Mount9P {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mount9P, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mount9P, pspec: GObject.ParamSpec) => void)): number
@@ -18189,7 +19377,7 @@ class MountLocal {
      */
     readonly: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18225,6 +19413,10 @@ class MountLocal {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18235,6 +19427,12 @@ class MountLocal {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18258,6 +19456,7 @@ class MountLocal {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18277,11 +19476,14 @@ class MountLocal {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18289,6 +19491,8 @@ class MountLocal {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18306,6 +19510,7 @@ class MountLocal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18351,6 +19556,7 @@ class MountLocal {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18394,15 +19600,20 @@ class MountLocal {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18443,6 +19654,7 @@ class MountLocal {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18477,6 +19689,7 @@ class MountLocal {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18496,6 +19709,7 @@ class MountLocal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18528,6 +19742,7 @@ class MountLocal {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MountLocal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MountLocal, pspec: GObject.ParamSpec) => void)): number
@@ -18573,7 +19788,7 @@ class NTFSResizeOpts {
      */
     size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -18609,6 +19824,10 @@ class NTFSResizeOpts {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18619,6 +19838,12 @@ class NTFSResizeOpts {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18642,6 +19867,7 @@ class NTFSResizeOpts {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18661,11 +19887,14 @@ class NTFSResizeOpts {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18673,6 +19902,8 @@ class NTFSResizeOpts {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18690,6 +19921,7 @@ class NTFSResizeOpts {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18735,6 +19967,7 @@ class NTFSResizeOpts {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18778,15 +20011,20 @@ class NTFSResizeOpts {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18827,6 +20065,7 @@ class NTFSResizeOpts {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18861,6 +20100,7 @@ class NTFSResizeOpts {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -18880,6 +20120,7 @@ class NTFSResizeOpts {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18912,6 +20153,7 @@ class NTFSResizeOpts {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NTFSResizeOpts, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NTFSResizeOpts, pspec: GObject.ParamSpec) => void)): number
@@ -18977,7 +20219,7 @@ class NtfscloneOut {
      */
     rescue: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -19013,6 +20255,10 @@ class NtfscloneOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19023,6 +20269,12 @@ class NtfscloneOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19046,6 +20298,7 @@ class NtfscloneOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19065,11 +20318,14 @@ class NtfscloneOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19077,6 +20333,8 @@ class NtfscloneOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19094,6 +20352,7 @@ class NtfscloneOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19139,6 +20398,7 @@ class NtfscloneOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19182,15 +20442,20 @@ class NtfscloneOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19231,6 +20496,7 @@ class NtfscloneOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19265,6 +20531,7 @@ class NtfscloneOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19284,6 +20551,7 @@ class NtfscloneOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19316,6 +20584,7 @@ class NtfscloneOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: NtfscloneOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: NtfscloneOut, pspec: GObject.ParamSpec) => void)): number
@@ -19355,7 +20624,7 @@ class Ntfsfix {
      */
     clearbadsectors: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -19391,6 +20660,10 @@ class Ntfsfix {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19401,6 +20674,12 @@ class Ntfsfix {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19424,6 +20703,7 @@ class Ntfsfix {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19443,11 +20723,14 @@ class Ntfsfix {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19455,6 +20738,8 @@ class Ntfsfix {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19472,6 +20757,7 @@ class Ntfsfix {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19517,6 +20803,7 @@ class Ntfsfix {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19560,15 +20847,20 @@ class Ntfsfix {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19609,6 +20901,7 @@ class Ntfsfix {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19643,6 +20936,7 @@ class Ntfsfix {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -19662,6 +20956,7 @@ class Ntfsfix {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19694,6 +20989,7 @@ class Ntfsfix {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Ntfsfix, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Ntfsfix, pspec: GObject.ParamSpec) => void)): number
@@ -19725,7 +21021,7 @@ class Remount {
      */
     rw: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -19761,6 +21057,10 @@ class Remount {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19771,6 +21071,12 @@ class Remount {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19794,6 +21100,7 @@ class Remount {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19813,11 +21120,14 @@ class Remount {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19825,6 +21135,8 @@ class Remount {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19842,6 +21154,7 @@ class Remount {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19887,6 +21200,7 @@ class Remount {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19930,15 +21244,20 @@ class Remount {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19979,6 +21298,7 @@ class Remount {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20013,6 +21333,7 @@ class Remount {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20032,6 +21353,7 @@ class Remount {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20064,6 +21386,7 @@ class Remount {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Remount, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Remount, pspec: GObject.ParamSpec) => void)): number
@@ -20103,7 +21426,7 @@ class Rsync {
      */
     deletedest: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -20139,6 +21462,10 @@ class Rsync {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20149,6 +21476,12 @@ class Rsync {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20172,6 +21505,7 @@ class Rsync {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20191,11 +21525,14 @@ class Rsync {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20203,6 +21540,8 @@ class Rsync {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20220,6 +21559,7 @@ class Rsync {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20265,6 +21605,7 @@ class Rsync {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20308,15 +21649,20 @@ class Rsync {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20357,6 +21703,7 @@ class Rsync {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20391,6 +21738,7 @@ class Rsync {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20410,6 +21758,7 @@ class Rsync {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20442,6 +21791,7 @@ class Rsync {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Rsync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Rsync, pspec: GObject.ParamSpec) => void)): number
@@ -20483,7 +21833,7 @@ class RsyncIn {
      */
     deletedest: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -20519,6 +21869,10 @@ class RsyncIn {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20529,6 +21883,12 @@ class RsyncIn {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20552,6 +21912,7 @@ class RsyncIn {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20571,11 +21932,14 @@ class RsyncIn {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20583,6 +21947,8 @@ class RsyncIn {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20600,6 +21966,7 @@ class RsyncIn {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20645,6 +22012,7 @@ class RsyncIn {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20688,15 +22056,20 @@ class RsyncIn {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20737,6 +22110,7 @@ class RsyncIn {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20771,6 +22145,7 @@ class RsyncIn {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -20790,6 +22165,7 @@ class RsyncIn {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20822,6 +22198,7 @@ class RsyncIn {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RsyncIn, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RsyncIn, pspec: GObject.ParamSpec) => void)): number
@@ -20863,7 +22240,7 @@ class RsyncOut {
      */
     deletedest: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -20899,6 +22276,10 @@ class RsyncOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -20909,6 +22290,12 @@ class RsyncOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -20932,6 +22319,7 @@ class RsyncOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -20951,11 +22339,14 @@ class RsyncOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -20963,6 +22354,8 @@ class RsyncOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -20980,6 +22373,7 @@ class RsyncOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21025,6 +22419,7 @@ class RsyncOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21068,15 +22463,20 @@ class RsyncOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21117,6 +22517,7 @@ class RsyncOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21151,6 +22552,7 @@ class RsyncOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21170,6 +22572,7 @@ class RsyncOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21202,6 +22605,7 @@ class RsyncOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: RsyncOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: RsyncOut, pspec: GObject.ParamSpec) => void)): number
@@ -21235,7 +22639,7 @@ class SelinuxRelabel {
      */
     force: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -21271,6 +22675,10 @@ class SelinuxRelabel {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21281,6 +22689,12 @@ class SelinuxRelabel {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21304,6 +22718,7 @@ class SelinuxRelabel {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21323,11 +22738,14 @@ class SelinuxRelabel {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21335,6 +22753,8 @@ class SelinuxRelabel {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21352,6 +22772,7 @@ class SelinuxRelabel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21397,6 +22818,7 @@ class SelinuxRelabel {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21440,15 +22862,20 @@ class SelinuxRelabel {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21489,6 +22916,7 @@ class SelinuxRelabel {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21523,6 +22951,7 @@ class SelinuxRelabel {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21542,6 +22971,7 @@ class SelinuxRelabel {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21574,6 +23004,7 @@ class SelinuxRelabel {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SelinuxRelabel, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SelinuxRelabel, pspec: GObject.ParamSpec) => void)): number
@@ -21595,7 +23026,7 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Session {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Guestfs-1.0.Guestfs.Session */
     /**
      * delete the default POSIX ACL of a directory
@@ -21605,6 +23036,7 @@ class Session {
      * 
      * This function depends on the feature "acl".
      * See also guestfs_session_feature_available().
+     * @param dir 
      */
     acl_delete_def_file(dir: string): boolean
     /**
@@ -21625,6 +23057,8 @@ class Session {
      * 
      * This function depends on the feature "acl".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param acltype 
      */
     acl_get_file(path: string, acltype: string): string
     /**
@@ -21662,6 +23096,9 @@ class Session {
      * 
      * This function depends on the feature "acl".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param acltype 
+     * @param acl 
      */
     acl_set_file(path: string, acltype: string, acl: string): boolean
     /**
@@ -21671,6 +23108,7 @@ class Session {
      * 
      * The image is added as read-only drive, so this function is equivalent of
      * guestfs_session_add_drive_ro().
+     * @param filename 
      */
     add_cdrom(filename: string): boolean
     /**
@@ -21750,6 +23188,8 @@ class Session {
      * 
      * The other optional parameters are passed directly through to
      * guestfs_session_add_drive_opts().
+     * @param dom 
+     * @param optargs a GuestfsAddDomain containing optional arguments
      */
     add_domain(dom: string, optargs?: AddDomain | null): number
     /**
@@ -21980,6 +23420,8 @@ class Session {
      * same area of disk.
      * 
      * The default is false.
+     * @param filename 
+     * @param optargs a GuestfsAddDrive containing optional arguments
      */
     add_drive(filename: string, optargs?: AddDrive | null): boolean
     /**
@@ -21989,6 +23431,7 @@ class Session {
      * guestfs_session_add_drive_opts() with the optional parameter
      * `GUESTFS_ADD_DRIVE_OPTS_READONLY` set to 1, so the disk is added
      * read-only, with the format being detected automatically.
+     * @param filename 
      */
     add_drive_ro(filename: string): boolean
     /**
@@ -21996,6 +23439,8 @@ class Session {
      * 
      * This is the same as guestfs_session_add_drive_ro() but it allows you to
      * specify the QEMU interface emulation to use at run time.
+     * @param filename 
+     * @param iface 
      */
     add_drive_ro_with_if(filename: string, iface: string): boolean
     /**
@@ -22008,6 +23453,8 @@ class Session {
      * 
      * The optional arguments `name` and `label` are passed through to
      * guestfs_session_add_drive().
+     * @param size 
+     * @param optargs a GuestfsAddDriveScratch containing optional arguments
      */
     add_drive_scratch(size: number, optargs?: AddDriveScratch | null): boolean
     /**
@@ -22015,6 +23462,8 @@ class Session {
      * 
      * This is the same as guestfs_session_add_drive() but it allows you to
      * specify the QEMU interface emulation to use at run time.
+     * @param filename 
+     * @param iface 
      */
     add_drive_with_if(filename: string, iface: string): boolean
     /**
@@ -22052,6 +23501,8 @@ class Session {
      * 
      * The other optional parameters are passed directly through to
      * guestfs_session_add_drive_opts().
+     * @param dom pointer (not implemented in gobject bindings)
+     * @param optargs a GuestfsAddLibvirtDom containing optional arguments
      */
     add_libvirt_dom(dom?: object | null, optargs?: AddLibvirtDom | null): number
     /**
@@ -22059,6 +23510,7 @@ class Session {
      * 
      * Set the value associated with `path` to `NULL`. This is the same as the
      * augtool(1) `clear` command.
+     * @param augpath 
      */
     aug_clear(augpath: string): boolean
     /**
@@ -22080,6 +23532,9 @@ class Session {
      * 
      * On success this returns a pair containing the number of nodes in the
      * nodeset, and a boolean flag if a node was created.
+     * @param name 
+     * @param expr 
+     * @param val 
      */
     aug_defnode(name: string, expr: string, val: string): IntBool
     /**
@@ -22090,6 +23545,8 @@ class Session {
      * 
      * On success this returns the number of nodes in `expr,` or `0` if `expr`
      * evaluates to something which is not a nodeset.
+     * @param name 
+     * @param expr 
      */
     aug_defvar(name: string, expr?: string | null): number
     /**
@@ -22097,6 +23554,7 @@ class Session {
      * 
      * Look up the value associated with `path`. If `path` matches exactly one
      * node, the `value` is returned.
+     * @param augpath 
      */
     aug_get(augpath: string): string
     /**
@@ -22141,6 +23599,8 @@ class Session {
      * 
      * To find out more about Augeas, see <ulink url='http://augeas.net/'>
      * http://augeas.net/ </ulink>.
+     * @param root 
+     * @param flags 
      */
     aug_init(root: string, flags: number): boolean
     /**
@@ -22151,6 +23611,9 @@ class Session {
      * 
      * `path` must match exactly one existing node in the tree, and `label` must
      * be a label, ie. not contain /, "*" or end with a bracketed index "[N]".
+     * @param augpath 
+     * @param label 
+     * @param before 
      */
     aug_insert(augpath: string, label: string, before: boolean): boolean
     /**
@@ -22159,6 +23622,7 @@ class Session {
      * The label (name of the last element) of the Augeas path expression
      * `augpath` is returned. `augpath` must match exactly one node, else this
      * function returns an error.
+     * @param augpath 
      */
     aug_label(augpath: string): string
     /**
@@ -22174,6 +23638,7 @@ class Session {
      * 
      * This is just a shortcut for listing guestfs_session_aug_match() "path/*"
      * and sorting the resulting nodes into alphabetical order.
+     * @param augpath 
      */
     aug_ls(augpath: string): string[]
     /**
@@ -22182,6 +23647,7 @@ class Session {
      * Returns a list of paths which match the path expression `path`. The
      * returned paths are sufficiently qualified so that they match exactly one
      * node in the current tree.
+     * @param augpath 
      */
     aug_match(augpath: string): string[]
     /**
@@ -22189,6 +23655,8 @@ class Session {
      * 
      * Move the node `src` to `dest`. `src` must match exactly one node. `dest` is
      * overwritten if it exists.
+     * @param src 
+     * @param dest 
      */
     aug_mv(src: string, dest: string): boolean
     /**
@@ -22197,6 +23665,7 @@ class Session {
      * Remove `path` and all of its children.
      * 
      * On success this returns the number of entries which were removed.
+     * @param augpath 
      */
     aug_rm(augpath: string): number
     /**
@@ -22217,6 +23686,8 @@ class Session {
      * to NULL. Due to an oversight in the libguestfs API you cannot do that
      * with this call. Instead you must use the guestfs_session_aug_clear()
      * call.
+     * @param augpath 
+     * @param val 
      */
     aug_set(augpath: string, val: string): boolean
     /**
@@ -22229,6 +23700,9 @@ class Session {
      * nodes are modified.
      * 
      * This returns the number of nodes modified.
+     * @param base 
+     * @param sub 
+     * @param val 
      */
     aug_setm(base: string, sub: string | null, val: string): number
     /**
@@ -22239,6 +23713,9 @@ class Session {
      * 
      * If `remove` is true (`false` by default), then the transformation is
      * removed.
+     * @param lens 
+     * @param file 
+     * @param optargs a GuestfsAugTransform containing optional arguments
      */
     aug_transform(lens: string, file: string, optargs?: AugTransform | null): boolean
     /**
@@ -22290,6 +23767,7 @@ class Session {
      * guestfs_session_version().
      * 
      * See also guestfs_session_filesystem_available().
+     * @param groups an array of strings
      */
     available(groups: string[]): boolean
     /**
@@ -22309,6 +23787,9 @@ class Session {
      * upload base64-encoded data to file
      * 
      * This command uploads base64-encoded data from `base6`4file to filename.
+     * @param base64file 
+     * @param filename 
+     * @param cancellable A GCancellable object
      */
     base64_in(base64file: string, filename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -22316,6 +23797,9 @@ class Session {
      * 
      * This command downloads the contents of filename, writing it out to local
      * file `base6`4file encoded as base64.
+     * @param filename 
+     * @param base64file 
+     * @param cancellable A GCancellable object
      */
     base64_out(filename: string, base64file: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -22332,6 +23816,7 @@ class Session {
      * 
      * This function depends on the feature "blkdiscard".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     blkdiscard(device: string): boolean
     /**
@@ -22346,6 +23831,7 @@ class Session {
      * 
      * This function depends on the feature "blkdiscardzeroes".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     blkdiscardzeroes(device: string): number
     /**
@@ -22369,6 +23855,7 @@ class Session {
      * 
      * `USAGE`
      * The usage of this device, for example `filesystem` or `raid`.
+     * @param device 
      */
     blkid(device: string): GLib.HashTable
     /**
@@ -22377,6 +23864,7 @@ class Session {
      * This tells the kernel to flush internal buffers associated with `device`.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_flushbufs(device: string): boolean
     /**
@@ -22390,6 +23878,7 @@ class Session {
      * what block size to choose.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_getbsz(device: string): number
     /**
@@ -22399,6 +23888,7 @@ class Session {
      * read-only, false if not).
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_getro(device: string): number
     /**
@@ -22409,6 +23899,7 @@ class Session {
      * See also guestfs_session_blockdev_getsz().
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_getsize64(device: string): number
     /**
@@ -22421,6 +23912,7 @@ class Session {
      * guestfs_session_blockdev_getsz() for that).
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_getss(device: string): number
     /**
@@ -22434,6 +23926,7 @@ class Session {
      * *size in bytes*.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_getsz(device: string): number
     /**
@@ -22442,6 +23935,7 @@ class Session {
      * Reread the partition table on `device`.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_rereadpt(device: string): boolean
     /**
@@ -22452,6 +23946,8 @@ class Session {
      * 
      * If you need to set the filesystem block size, use the `blocksize` option
      * of guestfs_session_mkfs().
+     * @param device 
+     * @param blocksize 
      */
     blockdev_setbsz(device: string, blocksize: number): boolean
     /**
@@ -22460,6 +23956,8 @@ class Session {
      * Set readahead (in 512-byte sectors) for the device.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
+     * @param sectors 
      */
     blockdev_setra(device: string, sectors: number): boolean
     /**
@@ -22468,6 +23966,7 @@ class Session {
      * Sets the block device named `device` to read-only.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_setro(device: string): boolean
     /**
@@ -22476,6 +23975,7 @@ class Session {
      * Sets the block device named `device` to read-write.
      * 
      * This uses the blockdev(8) command.
+     * @param device 
      */
     blockdev_setrw(device: string): boolean
     /**
@@ -22485,6 +23985,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_balance_cancel(path: string): boolean
     /**
@@ -22494,6 +23995,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_balance_pause(path: string): boolean
     /**
@@ -22503,6 +24005,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_balance_resume(path: string): boolean
     /**
@@ -22512,6 +24015,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_balance_status(path: string): BTRFSBalance
     /**
@@ -22522,6 +24026,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param devices an array of strings
+     * @param fs 
      */
     btrfs_device_add(devices: string[], fs: string): boolean
     /**
@@ -22532,6 +24038,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param devices an array of strings
+     * @param fs 
      */
     btrfs_device_delete(devices: string[], fs: string): boolean
     /**
@@ -22542,6 +24050,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param fs 
      */
     btrfs_filesystem_balance(fs: string): boolean
     /**
@@ -22552,6 +24061,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param optargs a GuestfsBTRFSFilesystemDefragment containing optional arguments
      */
     btrfs_filesystem_defragment(path: string, optargs?: BTRFSFilesystemDefragment | null): boolean
     /**
@@ -22573,6 +24084,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param mountpoint 
+     * @param optargs a GuestfsBTRFSFilesystemResize containing optional arguments
      */
     btrfs_filesystem_resize(mountpoint: string, optargs?: BTRFSFilesystemResize | null): boolean
     /**
@@ -22585,6 +24098,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     btrfs_filesystem_show(device: string): string[]
     /**
@@ -22594,6 +24108,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param fs 
      */
     btrfs_filesystem_sync(fs: string): boolean
     /**
@@ -22604,6 +24119,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param optargs a GuestfsBtrfsFsck containing optional arguments
      */
     btrfs_fsck(device: string, optargs?: BtrfsFsck | null): boolean
     /**
@@ -22614,6 +24131,9 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param source an array of strings
+     * @param image 
+     * @param optargs a GuestfsBTRFSImage containing optional arguments
      */
     btrfs_image(source: string[], image: string, optargs?: BTRFSImage | null): boolean
     /**
@@ -22624,6 +24144,9 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param src 
+     * @param dst 
+     * @param path 
      */
     btrfs_qgroup_assign(src: string, dst: string, path: string): boolean
     /**
@@ -22633,6 +24156,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param qgroupid 
+     * @param subvolume 
      */
     btrfs_qgroup_create(qgroupid: string, subvolume: string): boolean
     /**
@@ -22642,6 +24167,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param qgroupid 
+     * @param subvolume 
      */
     btrfs_qgroup_destroy(qgroupid: string, subvolume: string): boolean
     /**
@@ -22651,6 +24178,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param subvolume 
+     * @param size 
      */
     btrfs_qgroup_limit(subvolume: string, size: number): boolean
     /**
@@ -22660,6 +24189,9 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param src 
+     * @param dst 
+     * @param path 
      */
     btrfs_qgroup_remove(src: string, dst: string, path: string): boolean
     /**
@@ -22670,6 +24202,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_qgroup_show(path: string): BTRFSQgroup[]
     /**
@@ -22680,6 +24213,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param fs 
+     * @param enable 
      */
     btrfs_quota_enable(fs: string, enable: boolean): boolean
     /**
@@ -22690,6 +24225,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param fs 
      */
     btrfs_quota_rescan(fs: string): boolean
     /**
@@ -22706,6 +24242,9 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param srcdev 
+     * @param targetdev 
+     * @param mntpoint 
      */
     btrfs_replace(srcdev: string, targetdev: string, mntpoint: string): boolean
     /**
@@ -22716,6 +24255,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     btrfs_rescue_chunk_recover(device: string): boolean
     /**
@@ -22725,6 +24265,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     btrfs_rescue_super_recover(device: string): boolean
     /**
@@ -22734,6 +24275,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_scrub_cancel(path: string): boolean
     /**
@@ -22743,6 +24285,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_scrub_resume(path: string): boolean
     /**
@@ -22754,6 +24297,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_scrub_start(path: string): boolean
     /**
@@ -22763,6 +24307,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     btrfs_scrub_status(path: string): BTRFSScrub
     /**
@@ -22773,6 +24318,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param seeding 
      */
     btrfs_set_seeding(device: string, seeding: boolean): boolean
     /**
@@ -22785,6 +24332,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param dest 
+     * @param optargs a GuestfsBTRFSSubvolumeCreate containing optional arguments
      */
     btrfs_subvolume_create(dest: string, optargs?: BTRFSSubvolumeCreate | null): boolean
     /**
@@ -22794,6 +24343,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param subvolume 
      */
     btrfs_subvolume_delete(subvolume: string): boolean
     /**
@@ -22804,6 +24354,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param fs 
      */
     btrfs_subvolume_get_default(fs: string): number
     /**
@@ -22814,6 +24365,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param fs 
      */
     btrfs_subvolume_list(fs: string): BTRFSSubvolume[]
     /**
@@ -22825,6 +24377,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param id 
+     * @param fs 
      */
     btrfs_subvolume_set_default(id: number, fs: string): boolean
     /**
@@ -22834,6 +24388,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param subvolume 
      */
     btrfs_subvolume_show(subvolume: string): GLib.HashTable
     /**
@@ -22848,6 +24403,9 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param source 
+     * @param dest 
+     * @param optargs a GuestfsBTRFSSubvolumeSnapshot containing optional arguments
      */
     btrfs_subvolume_snapshot(source: string, dest: string, optargs?: BTRFSSubvolumeSnapshot | null): boolean
     /**
@@ -22857,6 +24415,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     btrfstune_enable_extended_inode_refs(device: string): boolean
     /**
@@ -22866,6 +24425,7 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     btrfstune_enable_skinny_metadata_extent_refs(device: string): boolean
     /**
@@ -22876,6 +24436,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param seeding 
      */
     btrfstune_seeding(device: string, seeding: boolean): boolean
     /**
@@ -22905,6 +24467,7 @@ class Session {
      * guestfs_session_lvm_canonical_lv_name().
      * 
      * Other strings are returned unmodified.
+     * @param device 
      */
     canonical_device_name(device: string): string
     /**
@@ -22917,6 +24480,7 @@ class Session {
      * 
      * This function depends on the feature "linuxcaps".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     cap_get_file(path: string): string
     /**
@@ -22928,6 +24492,8 @@ class Session {
      * 
      * This function depends on the feature "linuxcaps".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param cap 
      */
     cap_set_file(path: string, cap: string): boolean
     /**
@@ -22975,6 +24541,7 @@ class Session {
      * *Note*: This function does not handle drive names, backslashes etc.
      * 
      * See also guestfs_session_realpath().
+     * @param path 
      */
     case_sensitive_path(path: string): string
     /**
@@ -22986,6 +24553,7 @@ class Session {
      * differentiate between a "\0" character in a file and end of string. To
      * handle binary files, use the guestfs_session_read_file() or
      * guestfs_session_download() functions.
+     * @param path 
      */
     cat(path: string): string
     /**
@@ -23025,6 +24593,8 @@ class Session {
      * 
      * To get the checksums for many files, use
      * guestfs_session_checksums_out().
+     * @param csumtype 
+     * @param path 
      */
     checksum(csumtype: string, path: string): string
     /**
@@ -23033,6 +24603,8 @@ class Session {
      * This call computes the MD5, SHAx or CRC checksum of the contents of the
      * device named `device`. For the types of checksums supported see the
      * guestfs_session_checksum() command.
+     * @param csumtype 
+     * @param device 
      */
     checksum_device(csumtype: string, device: string): string
     /**
@@ -23047,6 +24619,10 @@ class Session {
      * the checksum command (it uses the ones from GNU coreutils). In
      * particular when the filename is not printable, coreutils uses a special
      * backslash syntax. For more information, see the GNU coreutils info file.
+     * @param csumtype 
+     * @param directory 
+     * @param sumsfile 
+     * @param cancellable A GCancellable object
      */
     checksums_out(csumtype: string, directory: string, sumsfile: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23060,6 +24636,8 @@ class Session {
      * `7`00.
      * 
      * The mode actually set is affected by the umask.
+     * @param mode 
+     * @param path 
      */
     chmod(mode: number, path: string): boolean
     /**
@@ -23070,6 +24648,9 @@ class Session {
      * Only numeric uid and gid are supported. If you want to use names, you
      * will need to locate and parse the password file yourself (Augeas support
      * makes this relatively easy).
+     * @param owner 
+     * @param group 
+     * @param path 
      */
     chown(owner: number, group: number, path: string): boolean
     /**
@@ -23082,6 +24663,7 @@ class Session {
      * 0, 1 or greater than 1).
      * 
      * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
+     * @param name 
      */
     clear_backend_setting(name: string): number
     /**
@@ -23115,6 +24697,7 @@ class Session {
      * available on filesystems which are mounted in the correct places. It is
      * the caller’s responsibility to ensure all filesystems that are needed
      * are mounted at the right locations.
+     * @param arguments_ an array of strings
      */
     command(arguments_: string[]): string
     /**
@@ -23124,6 +24707,7 @@ class Session {
      * into a list of lines.
      * 
      * See also: guestfs_session_sh_lines()
+     * @param arguments_ an array of strings
      */
     command_lines(arguments_: string[]): string[]
     /**
@@ -23134,6 +24718,11 @@ class Session {
      * 
      * The `ctype` and optional `level` parameters have the same meaning as in
      * guestfs_session_compress_out().
+     * @param ctype 
+     * @param device 
+     * @param zdevice 
+     * @param optargs a GuestfsCompressDeviceOut containing optional arguments
+     * @param cancellable A GCancellable object
      */
     compress_device_out(ctype: string, device: string, zdevice: string, optargs?: CompressDeviceOut | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23150,6 +24739,11 @@ class Session {
      * The optional `level` parameter controls compression level. The meaning
      * and default for this parameter depends on the compression program being
      * used.
+     * @param ctype 
+     * @param file 
+     * @param zfile 
+     * @param optargs a GuestfsCompressOut containing optional arguments
+     * @param cancellable A GCancellable object
      */
     compress_out(ctype: string, file: string, zfile: string, optargs?: CompressOut | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23163,6 +24757,8 @@ class Session {
      * The first character of `hvparam` string must be a `-` (dash).
      * 
      * `hvvalue` can be NULL.
+     * @param hvparam 
+     * @param hvvalue 
      */
     config(hvparam: string, hvvalue?: string | null): boolean
     /**
@@ -23191,6 +24787,9 @@ class Session {
      * `all`
      * Copy all the attributes from `source` to `destination`. Enabling it
      * enables all the other flags, if they are not specified already.
+     * @param src 
+     * @param dest 
+     * @param optargs a GuestfsCopyAttributes containing optional arguments
      */
     copy_attributes(src: string, dest: string, optargs?: CopyAttributes | null): boolean
     /**
@@ -23223,6 +24822,9 @@ class Session {
      * contain only zeroes, which can help in some situations where the backing
      * disk is thin-provisioned. Note that unless the target is already zeroed,
      * using this option will result in incorrect copying.
+     * @param src 
+     * @param dest 
+     * @param optargs a GuestfsCopyDeviceToDevice containing optional arguments
      */
     copy_device_to_device(src: string, dest: string, optargs?: CopyDeviceToDevice | null): boolean
     /**
@@ -23230,6 +24832,9 @@ class Session {
      * 
      * See guestfs_session_copy_device_to_device() for a general overview of
      * this call.
+     * @param src 
+     * @param dest 
+     * @param optargs a GuestfsCopyDeviceToFile containing optional arguments
      */
     copy_device_to_file(src: string, dest: string, optargs?: CopyDeviceToFile | null): boolean
     /**
@@ -23237,6 +24842,9 @@ class Session {
      * 
      * See guestfs_session_copy_device_to_device() for a general overview of
      * this call.
+     * @param src 
+     * @param dest 
+     * @param optargs a GuestfsCopyFileToDevice containing optional arguments
      */
     copy_file_to_device(src: string, dest: string, optargs?: CopyFileToDevice | null): boolean
     /**
@@ -23249,6 +24857,9 @@ class Session {
      * blocks within existing files. See guestfs_session_cp(),
      * guestfs_session_cp_a() and guestfs_session_mv() for general file copying
      * and moving functions.
+     * @param src 
+     * @param dest 
+     * @param optargs a GuestfsCopyFileToFile containing optional arguments
      */
     copy_file_to_file(src: string, dest: string, optargs?: CopyFileToFile | null): boolean
     /**
@@ -23259,6 +24870,8 @@ class Session {
      * (which must exist).
      * 
      * Wildcards cannot be used.
+     * @param localpath 
+     * @param remotedir 
      */
     copy_in(localpath: string, remotedir: string): boolean
     /**
@@ -23273,6 +24886,8 @@ class Session {
      * <![CDATA[guestfs_session_copy_out() /home .]]>
      * 
      * Wildcards cannot be used.
+     * @param remotepath 
+     * @param localdir 
      */
     copy_out(remotepath: string, localdir: string): boolean
     /**
@@ -23283,6 +24898,9 @@ class Session {
      * 
      * Note this will fail if the source is too short or if the destination is
      * not large enough.
+     * @param src 
+     * @param dest 
+     * @param size 
      */
     copy_size(src: string, dest: string, size: number): boolean
     /**
@@ -23290,6 +24908,8 @@ class Session {
      * 
      * This copies a file from `src` to `dest` where `dest` is either a
      * destination filename or destination directory.
+     * @param src 
+     * @param dest 
      */
     cp(src: string, dest: string): boolean
     /**
@@ -23297,6 +24917,8 @@ class Session {
      * 
      * This copies a file or directory from `src` to `dest` recursively using the
      * "cp -a" command.
+     * @param src 
+     * @param dest 
      */
     cp_a(src: string, dest: string): boolean
     /**
@@ -23309,6 +24931,8 @@ class Session {
      * useful when you don't want to preserve permissions, because the target
      * filesystem does not support it (primarily when writing to DOS FAT
      * filesystems).
+     * @param src 
+     * @param dest 
      */
     cp_r(src: string, dest: string): boolean
     /**
@@ -23328,6 +24952,10 @@ class Session {
      * 
      * `crc`
      * New (SVR4) portable format with a checksum.
+     * @param directory 
+     * @param cpiofile 
+     * @param optargs a GuestfsCpioOut containing optional arguments
+     * @param cancellable A GCancellable object
      */
     cpio_out(directory: string, cpiofile: string, optargs?: CpioOut | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23340,6 +24968,8 @@ class Session {
      * If the destination is a device, it must be as large or larger than the
      * source file or device, otherwise the copy will fail. This command cannot
      * do partial copies (see guestfs_session_copy_device_to_device()).
+     * @param src 
+     * @param dest 
      */
     dd(src: string, dest: string): boolean
     /**
@@ -23351,6 +24981,8 @@ class Session {
      * There is no comprehensive help for this command. You have to look at the
      * file daemon/debug.c in the libguestfs source to find out what you can
      * do.
+     * @param subcmd 
+     * @param extraargs an array of strings
      */
     debug(subcmd: string, extraargs: string[]): string
     /**
@@ -23368,6 +25000,10 @@ class Session {
      * 
      * There is no comprehensive help for this command. You have to look at the
      * file daemon/debug.c in the libguestfs source to find out what it is for.
+     * @param filename 
+     * @param tmpname 
+     * @param mode 
+     * @param cancellable A GCancellable object
      */
     debug_upload(filename: string, tmpname: string, mode: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23380,6 +25016,7 @@ class Session {
      * a string returned from guestfs_session_list_devices().
      * 
      * See also guestfs_session_list_devices(), guestfs_session_part_to_dev().
+     * @param device 
      */
     device_index(device: string): number
     /**
@@ -23440,6 +25077,10 @@ class Session {
      * 
      * Note that this call does not add the new disk to the handle. You may
      * need to call guestfs_session_add_drive_opts() separately.
+     * @param filename 
+     * @param format 
+     * @param size 
+     * @param optargs a GuestfsDiskCreate containing optional arguments
      */
     disk_create(filename: string, format: string, size: number, optargs?: DiskCreate | null): boolean
     /**
@@ -23453,6 +25094,7 @@ class Session {
      * circumstances. See "CVE-2010-3851" in guestfs(3).
      * 
      * See also: "DISK IMAGE FORMATS" in guestfs(3)
+     * @param filename 
      */
     disk_format(filename: string): string
     /**
@@ -23462,6 +25104,7 @@ class Session {
      * 
      * Note that detecting disk features can be insecure under some
      * circumstances. See "CVE-2010-3851" in guestfs(3).
+     * @param filename 
      */
     disk_has_backing_file(filename: string): number
     /**
@@ -23472,6 +25115,7 @@ class Session {
      * 
      * Note that detecting disk features can be insecure under some
      * circumstances. See "CVE-2010-3851" in guestfs(3).
+     * @param filename 
      */
     disk_virtual_size(filename: string): number
     /**
@@ -23494,6 +25138,9 @@ class Session {
      * filename can also be a named pipe.
      * 
      * See also guestfs_session_upload(), guestfs_session_cat().
+     * @param remotefilename 
+     * @param filename 
+     * @param cancellable A GCancellable object
      */
     download(remotefilename: string, filename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23517,6 +25164,12 @@ class Session {
      * 
      * This function depends on the feature "sleuthkit".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param start 
+     * @param stop 
+     * @param filename 
+     * @param optargs a GuestfsDownloadBlocks containing optional arguments
+     * @param cancellable A GCancellable object
      */
     download_blocks(device: string, start: number, stop: number, filename: string, optargs?: DownloadBlocks | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23531,6 +25184,10 @@ class Session {
      * 
      * This function depends on the feature "sleuthkit".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param inode 
+     * @param filename 
+     * @param cancellable A GCancellable object
      */
     download_inode(device: string, inode: number, filename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23547,6 +25204,11 @@ class Session {
      * always reads the full amount unless an error occurs.
      * 
      * See also guestfs_session_download(), guestfs_session_pread().
+     * @param remotefilename 
+     * @param filename 
+     * @param offset 
+     * @param size 
+     * @param cancellable A GCancellable object
      */
     download_offset(remotefilename: string, filename: string, offset: number, size: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -23561,6 +25223,7 @@ class Session {
      * 
      * This automatically calls sync(2) before the operation, so that the
      * maximum guest memory is freed.
+     * @param whattodrop 
      */
     drop_caches(whattodrop: number): boolean
     /**
@@ -23575,6 +25238,7 @@ class Session {
      * 
      * The result is the estimated size in *kilobytes* (ie. units of 1024
      * bytes).
+     * @param path 
      */
     du(path: string): number
     /**
@@ -23597,6 +25261,8 @@ class Session {
      * 
      * This option may not be specified at the same time as the `correct`
      * option.
+     * @param device 
+     * @param optargs a GuestfsE2fsck containing optional arguments
      */
     e2fsck(device: string, optargs?: E2fsck | null): boolean
     /**
@@ -23605,6 +25271,7 @@ class Session {
      * This runs "e2fsck -p -f device", ie. runs the ext2/ext3 filesystem
      * checker on `device,` noninteractively (*-p*), even if the filesystem
      * appears to be clean (*-f*).
+     * @param device 
      */
     e2fsck_f(device: string): boolean
     /**
@@ -23616,12 +25283,15 @@ class Session {
      * You can use this command to test the connection through to the daemon.
      * 
      * See also guestfs_session_ping_daemon().
+     * @param words an array of strings
      */
     echo_daemon(words: string[]): string
     /**
      * return lines matching a pattern
      * 
      * This calls the external `egrep` program and returns the matching lines.
+     * @param regex 
+     * @param path 
      */
     egrep(regex: string, path: string): string[]
     /**
@@ -23629,6 +25299,8 @@ class Session {
      * 
      * This calls the external "egrep -i" program and returns the matching
      * lines.
+     * @param regex 
+     * @param path 
      */
     egrepi(regex: string, path: string): string[]
     /**
@@ -23638,6 +25310,8 @@ class Session {
      * content is exactly equal, or false otherwise.
      * 
      * The external cmp(1) program is used for the comparison.
+     * @param file1 
+     * @param file2 
      */
     equal(file1: string, file2: string): number
     /**
@@ -23648,6 +25322,7 @@ class Session {
      * 
      * See also guestfs_session_is_file(), guestfs_session_is_dir(),
      * guestfs_session_stat().
+     * @param path 
      */
     exists(path: string): number
     /**
@@ -23675,6 +25350,7 @@ class Session {
      * 
      * This function depends on the feature "extlinux".
      * See also guestfs_session_feature_available().
+     * @param directory 
      */
     extlinux(directory: string): boolean
     /**
@@ -23685,6 +25361,7 @@ class Session {
      * 
      * This function depends on the feature "f2fs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     f2fs_expand(device: string): boolean
     /**
@@ -23695,6 +25372,8 @@ class Session {
      * 
      * Do not confuse this with the guestfish-specific `alloc` command which
      * allocates a file in the host and attaches it as a device.
+     * @param path 
+     * @param len 
      */
     fallocate(path: string, len: number): boolean
     /**
@@ -23713,6 +25392,8 @@ class Session {
      * 
      * Do not confuse this with the guestfish-specific `alloc` and `sparse`
      * commands which create a file in the host and attach it as a device.
+     * @param path 
+     * @param len 
      */
     fallocate64(path: string, len: number): boolean
     /**
@@ -23722,12 +25403,15 @@ class Session {
      * returns a simple true/false boolean result, instead of throwing an
      * exception if a feature is not found. For other documentation see
      * guestfs_session_available().
+     * @param groups an array of strings
      */
     feature_available(groups: string[]): number
     /**
      * return lines matching a pattern
      * 
      * This calls the external `fgrep` program and returns the matching lines.
+     * @param pattern 
+     * @param path 
      */
     fgrep(pattern: string, path: string): string[]
     /**
@@ -23735,6 +25419,8 @@ class Session {
      * 
      * This calls the external "fgrep -i" program and returns the matching
      * lines.
+     * @param pattern 
+     * @param path 
      */
     fgrepi(pattern: string, path: string): string[]
     /**
@@ -23756,6 +25442,7 @@ class Session {
      * See also: file(1), guestfs_session_vfs_type(), guestfs_session_lstat(),
      * guestfs_session_is_file(), guestfs_session_is_blockdev() (etc),
      * guestfs_session_is_zero().
+     * @param path 
      */
     file(path: string): string
     /**
@@ -23843,6 +25530,7 @@ class Session {
      * compressed code, and are horribly hard to unpack. If you want to
      * find the architecture of a kernel, use the architecture of the
      * associated initrd or kernel module(s) instead.
+     * @param filename 
      */
     file_architecture(filename: string): string
     /**
@@ -23854,6 +25542,7 @@ class Session {
      * guestfs_session_lstat(), guestfs_session_is_dir(),
      * guestfs_session_is_file() etc. To get the size of block devices, use
      * guestfs_session_blockdev_getsize64().
+     * @param file 
      */
     filesize(file: string): number
     /**
@@ -23872,6 +25561,7 @@ class Session {
      * 
      * See also guestfs_session_available(),
      * guestfs_session_feature_available(), "AVAILABILITY" in guestfs(3).
+     * @param filesystem 
      */
     filesystem_available(filesystem: string): number
     /**
@@ -23969,6 +25659,8 @@ class Session {
      * 
      * This function depends on the feature "libtsk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param cancellable A GCancellable object
      */
     filesystem_walk(device: string, cancellable?: Gio.Cancellable | null): TSKDirent[]
     /**
@@ -23981,6 +25673,9 @@ class Session {
      * To fill a file with zero bytes (sparsely), it is much more efficient to
      * use guestfs_session_truncate_size(). To create a file with a pattern of
      * repeating bytes use guestfs_session_fill_pattern().
+     * @param c 
+     * @param len 
+     * @param path 
      */
     fill(c: number, len: number, path: string): boolean
     /**
@@ -23989,6 +25684,8 @@ class Session {
      * This function, useful for testing filesystems, creates `nr` empty files
      * in the directory `dir` with names `0`0000000 through `nr-1` (ie. each file
      * name is 8 digits long padded with zeroes).
+     * @param dir 
+     * @param nr 
      */
     fill_dir(dir: string, nr: number): boolean
     /**
@@ -23998,6 +25695,9 @@ class Session {
      * new file of length `len` containing the repeating pattern of bytes in
      * `pattern`. The pattern is truncated if necessary to ensure the length of
      * the file is exactly `len` bytes.
+     * @param pattern 
+     * @param len 
+     * @param path 
      */
     fill_pattern(pattern: string, len: number, path: string): boolean
     /**
@@ -24031,6 +25731,7 @@ class Session {
      * If directory is not a directory, then this command returns an error.
      * 
      * The returned list is sorted.
+     * @param directory 
      */
     find(directory: string): string[]
     /**
@@ -24049,6 +25750,9 @@ class Session {
      * See find(1) option *-print0*.
      * 
      * *   The result list is not sorted.
+     * @param directory 
+     * @param files 
+     * @param cancellable A GCancellable object
      */
     find0(directory: string, files: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -24061,6 +25765,9 @@ class Session {
      * 
      * This function depends on the feature "libtsk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param inode 
+     * @param cancellable A GCancellable object
      */
     find_inode(device: string, inode: number, cancellable?: Gio.Cancellable | null): TSKDirent[]
     /**
@@ -24070,6 +25777,7 @@ class Session {
      * given label. An error is returned if no such filesystem can be found.
      * 
      * To find the label of a filesystem, use guestfs_session_vfs_label().
+     * @param label 
      */
     findfs_label(label: string): string
     /**
@@ -24079,6 +25787,7 @@ class Session {
      * given UUID. An error is returned if no such filesystem can be found.
      * 
      * To find the UUID of a filesystem, use guestfs_session_vfs_uuid().
+     * @param uuid 
      */
     findfs_uuid(uuid: string): string
     /**
@@ -24101,6 +25810,8 @@ class Session {
      * 
      * This command is entirely equivalent to running "fsck -a -t fstype
      * device".
+     * @param fstype 
+     * @param device 
      */
     fsck(fstype: string, device: string): number
     /**
@@ -24129,6 +25840,8 @@ class Session {
      * 
      * This function depends on the feature "fstrim".
      * See also guestfs_session_feature_available().
+     * @param mountpoint 
+     * @param optargs a GuestfsFstrim containing optional arguments
      */
     fstrim(mountpoint: string, optargs?: Fstrim | null): boolean
     /**
@@ -24175,6 +25888,7 @@ class Session {
      * (see guestfs_session_last_errno()) will be `ESRCH` in this case.
      * 
      * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
+     * @param name 
      */
     get_backend_setting(name: string): string
     /**
@@ -24268,6 +25982,7 @@ class Session {
      * 
      * Don't confuse these attributes with extended attributes (see
      * guestfs_session_getxattr()).
+     * @param file 
      */
     get_e2attrs(file: string): string
     /**
@@ -24282,18 +25997,21 @@ class Session {
      * error.
      * 
      * See guestfs_session_set_e2generation().
+     * @param file 
      */
     get_e2generation(file: string): number
     /**
      * get the ext2/3/4 filesystem label
      * 
      * This returns the ext2/3/4 filesystem label of the filesystem on `device`.
+     * @param device 
      */
     get_e2label(device: string): string
     /**
      * get the ext2/3/4 filesystem UUID
      * 
      * This returns the ext2/3/4 filesystem UUID of the filesystem on `device`.
+     * @param device 
      */
     get_e2uuid(device: string): string
     /**
@@ -24320,6 +26038,7 @@ class Session {
      * 
      * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
      * code.
+     * @param index 
      */
     get_libvirt_requested_credential_challenge(index: number): string
     /**
@@ -24331,6 +26050,7 @@ class Session {
      * 
      * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
      * code.
+     * @param index 
      */
     get_libvirt_requested_credential_defresult(index: number): string
     /**
@@ -24342,6 +26062,7 @@ class Session {
      * 
      * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
      * code.
+     * @param index 
      */
     get_libvirt_requested_credential_prompt(index: number): string
     /**
@@ -24518,6 +26239,8 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param name 
      */
     getxattr(path: string, name: string): Uint8Array
     /**
@@ -24532,6 +26255,7 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     getxattrs(path: string): XAttr[]
     /**
@@ -24552,6 +26276,8 @@ class Session {
      * Notice that there is no equivalent command for expanding a device name
      * (eg. /dev/sd*). Use guestfs_session_list_devices(),
      * guestfs_session_list_partitions() etc functions instead.
+     * @param pattern 
+     * @param optargs a GuestfsGlobExpand containing optional arguments
      */
     glob_expand(pattern: string, optargs?: GlobExpand | null): string[]
     /**
@@ -24575,6 +26301,9 @@ class Session {
      * `compressed`
      * Use `zgrep` instead of `grep`. This allows the input to be compress-
      * or gzip-compressed.
+     * @param regex 
+     * @param path 
+     * @param optargs a GuestfsGrep containing optional arguments
      */
     grep(regex: string, path: string, optargs?: Grep | null): string[]
     /**
@@ -24582,6 +26311,8 @@ class Session {
      * 
      * This calls the external "grep -i" program and returns the matching
      * lines.
+     * @param regex 
+     * @param path 
      */
     grepi(regex: string, path: string): string[]
     /**
@@ -24613,6 +26344,8 @@ class Session {
      * 
      * This function depends on the feature "grub".
      * See also guestfs_session_feature_available().
+     * @param root 
+     * @param device 
      */
     grub_install(root: string, device: string): boolean
     /**
@@ -24620,6 +26353,7 @@ class Session {
      * 
      * This command returns up to the first 10 lines of a file as a list of
      * strings.
+     * @param path 
      */
     head(path: string): string[]
     /**
@@ -24632,6 +26366,8 @@ class Session {
      * the file `path,` excluding the last `nrlines` lines.
      * 
      * If the parameter `nrlines` is zero, this returns an empty list.
+     * @param nrlines 
+     * @param path 
      */
     head_n(nrlines: number, path: string): string[]
     /**
@@ -24639,6 +26375,7 @@ class Session {
      * 
      * This runs "hexdump -C" on the given `path`. The result is the
      * human-readable, canonical hex dump of the file.
+     * @param path 
      */
     hexdump(path: string): string
     /**
@@ -24666,6 +26403,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param filename 
      */
     hivex_commit(filename?: string | null): boolean
     /**
@@ -24677,6 +26415,8 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param parent 
+     * @param name 
      */
     hivex_node_add_child(parent: number, name: string): number
     /**
@@ -24688,6 +26428,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
      */
     hivex_node_children(nodeh: number): HivexNode[]
     /**
@@ -24699,6 +26440,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
      */
     hivex_node_delete_child(nodeh: number): boolean
     /**
@@ -24711,6 +26453,8 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
+     * @param name 
      */
     hivex_node_get_child(nodeh: number, name: string): number
     /**
@@ -24723,6 +26467,8 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
+     * @param key 
      */
     hivex_node_get_value(nodeh: number, key: string): number
     /**
@@ -24734,6 +26480,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
      */
     hivex_node_name(nodeh: number): string
     /**
@@ -24745,6 +26492,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
      */
     hivex_node_parent(nodeh: number): number
     /**
@@ -24757,6 +26505,10 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
+     * @param key 
+     * @param t 
+     * @param val an array of binary data
      */
     hivex_node_set_value(nodeh: number, key: string, t: number, val: Uint8Array): boolean
     /**
@@ -24768,6 +26520,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param nodeh 
      */
     hivex_node_values(nodeh: number): HivexValue[]
     /**
@@ -24781,6 +26534,8 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param filename 
+     * @param optargs a GuestfsHivexOpen containing optional arguments
      */
     hivex_open(filename: string, optargs?: HivexOpen | null): boolean
     /**
@@ -24803,6 +26558,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param valueh 
      */
     hivex_value_key(valueh: number): string
     /**
@@ -24819,6 +26575,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param valueh 
      */
     hivex_value_string(valueh: number): string
     /**
@@ -24830,6 +26587,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param valueh 
      */
     hivex_value_type(valueh: number): number
     /**
@@ -24846,6 +26604,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param valueh 
      */
     hivex_value_utf8(valueh: number): string
     /**
@@ -24859,6 +26618,7 @@ class Session {
      * 
      * This function depends on the feature "hivex".
      * See also guestfs_session_feature_available().
+     * @param valueh 
      */
     hivex_value_value(valueh: number): Uint8Array
     /**
@@ -24875,6 +26635,8 @@ class Session {
      * <![CDATA[initrd-cat /boot/initrd-<version>.img init]]>
      * 
      * See also guestfs_session_initrd_list().
+     * @param initrdpath 
+     * @param filename 
      */
     initrd_cat(initrdpath: string, filename: string): Uint8Array
     /**
@@ -24889,6 +26651,7 @@ class Session {
      * Old Linux kernels (2.4 and earlier) used a compressed ext2 filesystem as
      * initrd. We *only* support the newer initramfs format (compressed cpio
      * files).
+     * @param path 
      */
     initrd_list(path: string): string[]
     /**
@@ -24904,6 +26667,8 @@ class Session {
      * 
      * This function depends on the feature "inotify".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param mask 
      */
     inotify_add_watch(path: string, mask: number): number
     /**
@@ -24963,6 +26728,7 @@ class Session {
      * 
      * This function depends on the feature "inotify".
      * See also guestfs_session_feature_available().
+     * @param maxevents 
      */
     inotify_init(maxevents: number): boolean
     /**
@@ -24990,6 +26756,7 @@ class Session {
      * 
      * This function depends on the feature "inotify".
      * See also guestfs_session_feature_available().
+     * @param wd 
      */
     inotify_rm_watch(wd: number): boolean
     /**
@@ -25003,6 +26770,7 @@ class Session {
      * returned.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_arch(root: string): string
     /**
@@ -25129,6 +26897,7 @@ class Session {
      * should be prepared to handle any string.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_distro(root: string): string
     /**
@@ -25164,6 +26933,7 @@ class Session {
      * Please read "INSPECTION" in guestfs(3) for more details. See also
      * guestfs_session_inspect_get_mountpoints(),
      * guestfs_session_inspect_get_filesystems().
+     * @param root 
      */
     inspect_get_drive_mappings(root: string): GLib.HashTable
     /**
@@ -25178,6 +26948,7 @@ class Session {
      * 
      * Please read "INSPECTION" in guestfs(3) for more details. See also
      * guestfs_session_inspect_get_mountpoints().
+     * @param root 
      */
     inspect_get_filesystems(root: string): string[]
     /**
@@ -25200,6 +26971,7 @@ class Session {
      * directly to detect installer CDs.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_format(root: string): string
     /**
@@ -25212,6 +26984,7 @@ class Session {
      * returned.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_hostname(root: string): string
     /**
@@ -25259,6 +27032,8 @@ class Session {
      * 
      * *   Operating system icons are usually trademarks. Seek legal advice
      * before using trademarks in applications.
+     * @param root 
+     * @param optargs a GuestfsInspectGetIcon containing optional arguments
      */
     inspect_get_icon(root: string, optargs?: InspectGetIcon | null): Uint8Array
     /**
@@ -25275,6 +27050,7 @@ class Session {
      * If the version could not be determined, then `0` is returned.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_major_version(root: string): number
     /**
@@ -25286,6 +27062,7 @@ class Session {
      * 
      * Please read "INSPECTION" in guestfs(3) for more details. See also
      * guestfs_session_inspect_get_major_version().
+     * @param root 
      */
     inspect_get_minor_version(root: string): number
     /**
@@ -25312,6 +27089,7 @@ class Session {
      * 
      * Please read "INSPECTION" in guestfs(3) for more details. See also
      * guestfs_session_inspect_get_filesystems().
+     * @param root 
      */
     inspect_get_mountpoints(root: string): GLib.HashTable
     /**
@@ -25324,6 +27102,7 @@ class Session {
      * ensures that it actually exists in osinfo-db.
      * 
      * If no ID could not be determined, then the string `unknown` is returned.
+     * @param root 
      */
     inspect_get_osinfo(root: string): string
     /**
@@ -25342,6 +27121,7 @@ class Session {
      * `apk,` `xbps`. Future versions of libguestfs may return other strings.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_package_format(root: string): string
     /**
@@ -25361,6 +27141,7 @@ class Session {
      * Future versions of libguestfs may return other strings.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_package_management(root: string): string
     /**
@@ -25374,6 +27155,7 @@ class Session {
      * returned.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_product_name(root: string): string
     /**
@@ -25399,6 +27181,7 @@ class Session {
      * Please read "INSPECTION" in guestfs(3) for more details. See also
      * guestfs_session_inspect_get_product_name(),
      * guestfs_session_inspect_get_major_version().
+     * @param root 
      */
     inspect_get_product_variant(root: string): string
     /**
@@ -25451,6 +27234,7 @@ class Session {
      * should be prepared to handle any string.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_type(root: string): string
     /**
@@ -25464,6 +27248,7 @@ class Session {
      * returned.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_windows_current_control_set(root: string): string
     /**
@@ -25480,6 +27265,7 @@ class Session {
      * You can use guestfs_session_hivex_open() to read or write to the hive.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_windows_software_hive(root: string): string
     /**
@@ -25496,6 +27282,7 @@ class Session {
      * You can use guestfs_session_hivex_open() to read or write to the hive.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_windows_system_hive(root: string): string
     /**
@@ -25509,6 +27296,7 @@ class Session {
      * is returned.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_get_windows_systemroot(root: string): string
     /**
@@ -25517,6 +27305,7 @@ class Session {
      * This is deprecated and always returns `false`.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_is_live(root: string): number
     /**
@@ -25525,6 +27314,7 @@ class Session {
      * This is deprecated and always returns `false`.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_is_multipart(root: string): number
     /**
@@ -25533,6 +27323,7 @@ class Session {
      * This is deprecated and always returns `false`.
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_is_netinst(root: string): number
     /**
@@ -25611,6 +27402,7 @@ class Session {
      * this is returned as an empty string "".
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_list_applications(root: string): Application[]
     /**
@@ -25694,6 +27486,7 @@ class Session {
      * this is returned as an empty string "".
      * 
      * Please read "INSPECTION" in guestfs(3) for more details.
+     * @param root 
      */
     inspect_list_applications2(root: string): Application2[]
     /**
@@ -25734,6 +27527,7 @@ class Session {
      * cause the daemon to exit (internal use only)
      * 
      * This function is used internally when testing the appliance.
+     * @param cancellable A GCancellable object
      */
     internal_exit(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -25747,6 +27541,17 @@ class Session {
      * file (if guestfs_session_internal_test_set_output() was called).
      * 
      * You probably don't want to call this function.
+     * @param str 
+     * @param optstr 
+     * @param strlist an array of strings
+     * @param b 
+     * @param integer 
+     * @param integer64 
+     * @param filein 
+     * @param fileout 
+     * @param bufferin an array of binary data
+     * @param optargs a GuestfsInternalTest containing optional arguments
+     * @param cancellable A GCancellable object
      */
     internal_test(str: string, optstr: string | null, strlist: string[], b: boolean, integer: number, integer64: number, filein: string, fileout: string, bufferin: Uint8Array, optargs?: InternalTest | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -25761,6 +27566,8 @@ class Session {
      * file (if guestfs_session_internal_test_set_output() was called).
      * 
      * You probably don't want to call this function.
+     * @param optargs a GuestfsInternalTest63Optargs containing optional arguments
+     * @param cancellable A GCancellable object
      */
     internal_test_63_optargs(optargs?: InternalTest63Optargs | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -25787,6 +27594,8 @@ class Session {
      * file (if guestfs_session_internal_test_set_output() was called).
      * 
      * You probably don't want to call this function.
+     * @param optargs a GuestfsInternalTestOnlyOptargs containing optional arguments
+     * @param cancellable A GCancellable object
      */
     internal_test_only_optargs(optargs?: InternalTestOnlyOptargs | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -25799,6 +27608,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rbool(val: string): number
     /**
@@ -25823,6 +27633,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rbufferout(val: string): Uint8Array
     /**
@@ -25847,6 +27658,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rconstoptstring(val: string): string
     /**
@@ -25871,6 +27683,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rconststring(val: string): string
     /**
@@ -25895,6 +27708,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rhashtable(val: string): GLib.HashTable
     /**
@@ -25919,6 +27733,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rint(val: string): number
     /**
@@ -25931,6 +27746,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rint64(val: string): number
     /**
@@ -25967,6 +27783,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rstring(val: string): string
     /**
@@ -25991,6 +27808,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rstringlist(val: string): string[]
     /**
@@ -26015,6 +27833,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rstruct(val: string): PV
     /**
@@ -26039,6 +27858,7 @@ class Session {
      * It converts string `val` to the return type.
      * 
      * You probably don't want to call this function.
+     * @param val 
      */
     internal_test_rstructlist(val: string): PV[]
     /**
@@ -26063,6 +27883,7 @@ class Session {
      * It sets the output file used by guestfs_session_internal_test().
      * 
      * You probably don't want to call this function.
+     * @param filename 
      */
     internal_test_set_output(filename: string): boolean
     /**
@@ -26080,6 +27901,8 @@ class Session {
      * parameter of this call.
      * 
      * See also guestfs_session_stat().
+     * @param path 
+     * @param optargs a GuestfsIsBlockdev containing optional arguments
      */
     is_blockdev(path: string, optargs?: IsBlockdev | null): number
     /**
@@ -26102,6 +27925,8 @@ class Session {
      * true.
      * 
      * See also guestfs_session_stat().
+     * @param path 
+     * @param optargs a GuestfsIsChardev containing optional arguments
      */
     is_chardev(path: string, optargs?: IsChardev | null): number
     /**
@@ -26124,6 +27949,8 @@ class Session {
      * return true.
      * 
      * See also guestfs_session_stat().
+     * @param path 
+     * @param optargs a GuestfsIsDir containing optional arguments
      */
     is_dir(path: string, optargs?: IsDir | null): number
     /**
@@ -26137,6 +27964,8 @@ class Session {
      * true.
      * 
      * See also guestfs_session_stat().
+     * @param path 
+     * @param optargs a GuestfsIsFifo containing optional arguments
      */
     is_fifo(path: string, optargs?: IsFifo | null): number
     /**
@@ -26151,6 +27980,8 @@ class Session {
      * true.
      * 
      * See also guestfs_session_stat().
+     * @param path 
+     * @param optargs a GuestfsIsFile containing optional arguments
      */
     is_file(path: string, optargs?: IsFile | null): number
     /**
@@ -26167,6 +27998,7 @@ class Session {
      * 
      * This command tests whether `mountable` is a logical volume, and returns
      * true iff this is the case.
+     * @param mountable 
      */
     is_lv(mountable: string): number
     /**
@@ -26189,6 +28021,8 @@ class Session {
      * true.
      * 
      * See also guestfs_session_stat().
+     * @param path 
+     * @param optargs a GuestfsIsSocket containing optional arguments
      */
     is_socket(path: string, optargs?: IsSocket | null): number
     /**
@@ -26198,6 +28032,7 @@ class Session {
      * given `path` name.
      * 
      * See also guestfs_session_stat().
+     * @param path 
      */
     is_symlink(path: string): number
     /**
@@ -26205,6 +28040,7 @@ class Session {
      * 
      * This returns `true` if and only if `device` refers to a whole block
      * device. That is, not a partition or a logical device.
+     * @param device 
      */
     is_whole_device(device: string): number
     /**
@@ -26212,6 +28048,7 @@ class Session {
      * 
      * This returns true iff the file exists and the file is empty or it
      * contains all zero bytes.
+     * @param path 
      */
     is_zero(path: string): number
     /**
@@ -26220,6 +28057,7 @@ class Session {
      * This returns true iff the device exists and contains all zero bytes.
      * 
      * Note that for large devices this can take a long time to run.
+     * @param device 
      */
     is_zero_device(device: string): number
     /**
@@ -26230,6 +28068,7 @@ class Session {
      * that in the common case where you have added an ISO file as a libguestfs
      * device, you would *not* call this. Instead you would call
      * guestfs_session_isoinfo_device().
+     * @param isofile 
      */
     isoinfo(isofile: string): ISOInfo
     /**
@@ -26246,6 +28085,7 @@ class Session {
      * For information on the primary volume descriptor fields, see <ulink
      * url='http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor'>
      * http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor </ulink>
+     * @param device 
      */
     isoinfo_device(device: string): ISOInfo
     /**
@@ -26332,6 +28172,7 @@ class Session {
      * 
      * This function depends on the feature "journal".
      * See also guestfs_session_feature_available().
+     * @param directory 
      */
     journal_open(directory: string): boolean
     /**
@@ -26346,6 +28187,7 @@ class Session {
      * 
      * This function depends on the feature "journal".
      * See also guestfs_session_feature_available().
+     * @param threshold 
      */
     journal_set_data_threshold(threshold: number): boolean
     /**
@@ -26361,6 +28203,7 @@ class Session {
      * 
      * This function depends on the feature "journal".
      * See also guestfs_session_feature_available().
+     * @param skip 
      */
     journal_skip(skip: number): number
     /**
@@ -26393,6 +28236,9 @@ class Session {
      * Only numeric uid and gid are supported. If you want to use names, you
      * will need to locate and parse the password file yourself (Augeas support
      * makes this relatively easy).
+     * @param owner 
+     * @param group 
+     * @param path 
      */
     lchown(owner: number, group: number, path: string): boolean
     /**
@@ -26422,6 +28268,7 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param diskgroup 
      */
     ldmtool_diskgroup_disks(diskgroup: string): string[]
     /**
@@ -26433,6 +28280,7 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param diskgroup 
      */
     ldmtool_diskgroup_name(diskgroup: string): string
     /**
@@ -26444,6 +28292,7 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param diskgroup 
      */
     ldmtool_diskgroup_volumes(diskgroup: string): string[]
     /**
@@ -26483,6 +28332,7 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param devices an array of strings
      */
     ldmtool_scan_devices(devices: string[]): string[]
     /**
@@ -26495,6 +28345,8 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param diskgroup 
+     * @param volume 
      */
     ldmtool_volume_hint(diskgroup: string, volume: string): string
     /**
@@ -26505,6 +28357,8 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param diskgroup 
+     * @param volume 
      */
     ldmtool_volume_partitions(diskgroup: string, volume: string): string[]
     /**
@@ -26518,6 +28372,8 @@ class Session {
      * 
      * This function depends on the feature "ldm".
      * See also guestfs_session_feature_available().
+     * @param diskgroup 
+     * @param volume 
      */
     ldmtool_volume_type(diskgroup: string, volume: string): string
     /**
@@ -26542,6 +28398,8 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param name 
      */
     lgetxattr(path: string, name: string): Uint8Array
     /**
@@ -26553,6 +28411,7 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param path 
      */
     lgetxattrs(path: string): XAttr[]
     /**
@@ -26684,6 +28543,7 @@ class Session {
      * 
      * This command is mostly useful for interactive sessions. It is *not*
      * intended that you try to parse the output string.
+     * @param directory 
      */
     ll(directory: string): string
     /**
@@ -26693,12 +28553,15 @@ class Session {
      * 
      * This command is mostly useful for interactive sessions. It is *not*
      * intended that you try to parse the output string.
+     * @param directory 
      */
     llz(directory: string): string
     /**
      * create a hard link
      * 
      * This command creates a hard link using the `ln` command.
+     * @param target 
+     * @param linkname 
      */
     ln(target: string, linkname: string): boolean
     /**
@@ -26706,12 +28569,16 @@ class Session {
      * 
      * This command creates a hard link using the "ln -f" command. The *-f*
      * option removes the link (`linkname)` if it exists already.
+     * @param target 
+     * @param linkname 
      */
     ln_f(target: string, linkname: string): boolean
     /**
      * create a symbolic link
      * 
      * This command creates a symbolic link using the "ln -s" command.
+     * @param target 
+     * @param linkname 
      */
     ln_s(target: string, linkname: string): boolean
     /**
@@ -26719,6 +28586,8 @@ class Session {
      * 
      * This command creates a symbolic link using the "ln -sf" command, The
      * *-f* option removes the link (`linkname)` if it exists already.
+     * @param target 
+     * @param linkname 
      */
     ln_sf(target: string, linkname: string): boolean
     /**
@@ -26729,6 +28598,8 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param xattr 
+     * @param path 
      */
     lremovexattr(xattr: string, path: string): boolean
     /**
@@ -26737,6 +28608,7 @@ class Session {
      * List the files in directory (relative to the root directory, there is no
      * cwd). The '.' and '..' entries are not returned, but hidden files are
      * shown.
+     * @param directory 
      */
     ls(directory: string): string[]
     /**
@@ -26749,6 +28621,8 @@ class Session {
      * In the output file, the filenames are separated by "\0" characters.
      * 
      * "." and ".." are not returned. The filenames are not sorted.
+     * @param dir 
+     * @param filenames 
      */
     ls0(dir: string, filenames: string): boolean
     /**
@@ -26759,6 +28633,10 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param xattr 
+     * @param val 
+     * @param vallen 
+     * @param path 
      */
     lsetxattr(xattr: string, val: string, vallen: number, path: string): boolean
     /**
@@ -26770,6 +28648,7 @@ class Session {
      * symbolic link, then the link is stat-ed, not the file it refers to.
      * 
      * This is the same as the lstat(2) system call.
+     * @param path 
      */
     lstat(path: string): Stat
     /**
@@ -26787,6 +28666,8 @@ class Session {
      * directory contents without making many round-trips. See also
      * guestfs_session_lxattrlist() for a similarly efficient call for getting
      * extended attributes.
+     * @param path 
+     * @param names an array of strings
      */
     lstatlist(path: string, names: string[]): Stat[]
     /**
@@ -26798,6 +28679,7 @@ class Session {
      * symbolic link, then the link is stat-ed, not the file it refers to.
      * 
      * This is the same as the lstat(2) system call.
+     * @param path 
      */
     lstatns(path: string): StatNS
     /**
@@ -26815,6 +28697,8 @@ class Session {
      * directory contents without making many round-trips. See also
      * guestfs_session_lxattrlist() for a similarly efficient call for getting
      * extended attributes.
+     * @param path 
+     * @param names an array of strings
      */
     lstatnslist(path: string, names: string[]): StatNS[]
     /**
@@ -26830,6 +28714,10 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param key 
+     * @param newkey 
+     * @param keyslot 
      */
     luks_add_key(device: string, key: string, newkey: string, keyslot: number): boolean
     /**
@@ -26842,6 +28730,7 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     luks_close(device: string): boolean
     /**
@@ -26853,6 +28742,9 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param key 
+     * @param keyslot 
      */
     luks_format(device: string, key: string, keyslot: number): boolean
     /**
@@ -26863,6 +28755,10 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param key 
+     * @param keyslot 
+     * @param cipher 
      */
     luks_format_cipher(device: string, key: string, keyslot: number, cipher: string): boolean
     /**
@@ -26873,6 +28769,9 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param key 
+     * @param keyslot 
      */
     luks_kill_slot(device: string, key: string, keyslot: number): boolean
     /**
@@ -26898,6 +28797,9 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param key 
+     * @param mapname 
      */
     luks_open(device: string, key: string, mapname: string): boolean
     /**
@@ -26908,6 +28810,9 @@ class Session {
      * 
      * This function depends on the feature "luks".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param key 
+     * @param mapname 
      */
     luks_open_ro(device: string, key: string, mapname: string): boolean
     /**
@@ -26918,6 +28823,9 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param logvol 
+     * @param volgroup 
+     * @param mbytes 
      */
     lvcreate(logvol: string, volgroup: string, mbytes: number): boolean
     /**
@@ -26930,6 +28838,9 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param logvol 
+     * @param volgroup 
+     * @param percent 
      */
     lvcreate_free(logvol: string, volgroup: string, percent: number): boolean
     /**
@@ -26944,6 +28855,7 @@ class Session {
      * 
      * See also guestfs_session_is_lv(),
      * guestfs_session_canonical_device_name().
+     * @param lvname 
      */
     lvm_canonical_lv_name(lvname: string): string
     /**
@@ -26979,6 +28891,7 @@ class Session {
      * you do not normally need to use this API. However it is useful when you
      * have added a new device or deleted an existing device (such as when the
      * guestfs_session_luks_open() API is used).
+     * @param activate 
      */
     lvm_scan(activate: boolean): boolean
     /**
@@ -27005,6 +28918,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param devices an array of strings
      */
     lvm_set_filter(devices: string[]): boolean
     /**
@@ -27018,12 +28932,15 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     lvremove(device: string): boolean
     /**
      * rename an LVM logical volume
      * 
      * Rename a logical volume `logvol` with the new name `newlogvol`.
+     * @param logvol 
+     * @param newlogvol 
      */
     lvrename(logvol: string, newlogvol: string): boolean
     /**
@@ -27034,6 +28951,8 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param mbytes 
      */
     lvresize(device: string, mbytes: number): boolean
     /**
@@ -27046,6 +28965,8 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param lv 
+     * @param percent 
      */
     lvresize_free(lv: string, percent: number): boolean
     /**
@@ -27077,6 +28998,7 @@ class Session {
      * get the UUID of a logical volume
      * 
      * This command returns the UUID of the LVM LV `device`.
+     * @param device 
      */
     lvuuid(device: string): string
     /**
@@ -27102,6 +29024,8 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param names an array of strings
      */
     lxattrlist(path: string, names: string[]): XAttr[]
     /**
@@ -27167,6 +29091,9 @@ class Session {
      * 
      * This function depends on the feature "mdadm".
      * See also guestfs_session_feature_available().
+     * @param name 
+     * @param devices an array of strings
+     * @param optargs a GuestfsMDCreate containing optional arguments
      */
     md_create(name: string, devices: string[], optargs?: MDCreate | null): boolean
     /**
@@ -27193,6 +29120,7 @@ class Session {
      * 
      * This function depends on the feature "mdadm".
      * See also guestfs_session_feature_available().
+     * @param md 
      */
     md_detail(md: string): GLib.HashTable
     /**
@@ -27227,6 +29155,7 @@ class Session {
      * 
      * This function depends on the feature "mdadm".
      * See also guestfs_session_feature_available().
+     * @param md 
      */
     md_stat(md: string): MDStat[]
     /**
@@ -27237,12 +29166,14 @@ class Session {
      * 
      * This function depends on the feature "mdadm".
      * See also guestfs_session_feature_available().
+     * @param md 
      */
     md_stop(md: string): boolean
     /**
      * create a directory
      * 
      * Create a directory named `path`.
+     * @param path 
      */
     mkdir(path: string): boolean
     /**
@@ -27256,6 +29187,8 @@ class Session {
      * in other ways.
      * 
      * See also guestfs_session_mkdir(), guestfs_session_umask()
+     * @param path 
+     * @param mode 
      */
     mkdir_mode(path: string, mode: number): boolean
     /**
@@ -27263,6 +29196,7 @@ class Session {
      * 
      * Create a directory named `path,` creating any parent directories as
      * necessary. This is like the "mkdir -p" shell command.
+     * @param path 
      */
     mkdir_p(path: string): boolean
     /**
@@ -27283,6 +29217,7 @@ class Session {
      * contents after use.
      * 
      * See also: mkdtemp(3)
+     * @param tmpl 
      */
     mkdtemp(tmpl: string): string
     /**
@@ -27294,6 +29229,8 @@ class Session {
      * omitted it defaults to the size of `device`. Note if the filesystem is
      * too small to contain a journal, `mke2`fs will silently create an ext2
      * filesystem instead.
+     * @param device 
+     * @param optargs a GuestfsMke2fs containing optional arguments
      */
     mke2fs(device: string, optargs?: Mke2fs | null): boolean
     /**
@@ -27305,6 +29242,10 @@ class Session {
      * <![CDATA[mke2fs -t fstype -b blocksize -J device=<journal> <device>]]>
      * 
      * See also guestfs_session_mke2journal().
+     * @param fstype 
+     * @param blocksize 
+     * @param device 
+     * @param journal 
      */
     mke2fs_J(fstype: string, blocksize: number, device: string, journal: string): boolean
     /**
@@ -27314,6 +29255,10 @@ class Session {
      * on the journal labeled `label`.
      * 
      * See also guestfs_session_mke2journal_L().
+     * @param fstype 
+     * @param blocksize 
+     * @param device 
+     * @param label 
      */
     mke2fs_JL(fstype: string, blocksize: number, device: string, label: string): boolean
     /**
@@ -27326,6 +29271,10 @@ class Session {
      * 
      * This function depends on the feature "linuxfsuuid".
      * See also guestfs_session_feature_available().
+     * @param fstype 
+     * @param blocksize 
+     * @param device 
+     * @param uuid 
      */
     mke2fs_JU(fstype: string, blocksize: number, device: string, uuid: string): boolean
     /**
@@ -27335,12 +29284,17 @@ class Session {
      * the command:
      * 
      * <![CDATA[mke2fs -O journal_dev -b blocksize device]]>
+     * @param blocksize 
+     * @param device 
      */
     mke2journal(blocksize: number, device: string): boolean
     /**
      * make ext2/3/4 external journal with label
      * 
      * This creates an ext2 external journal on `device` with label `label`.
+     * @param blocksize 
+     * @param label 
+     * @param device 
      */
     mke2journal_L(blocksize: number, label: string, device: string): boolean
     /**
@@ -27350,6 +29304,9 @@ class Session {
      * 
      * This function depends on the feature "linuxfsuuid".
      * See also guestfs_session_feature_available().
+     * @param blocksize 
+     * @param uuid 
+     * @param device 
      */
     mke2journal_U(blocksize: number, uuid: string, device: string): boolean
     /**
@@ -27365,6 +29322,8 @@ class Session {
      * 
      * This function depends on the feature "mknod".
      * See also guestfs_session_feature_available().
+     * @param mode 
+     * @param path 
      */
     mkfifo(mode: number, path: string): boolean
     /**
@@ -27402,6 +29361,9 @@ class Session {
      * `sectorsize`
      * This passes the *-S* parameter to external mkfs.ufs(8) program,
      * which sets sector size for ufs filesystem.
+     * @param fstype 
+     * @param device 
+     * @param optargs a GuestfsMkfs containing optional arguments
      */
     mkfs(fstype: string, device: string, optargs?: Mkfs | null): boolean
     /**
@@ -27414,6 +29376,9 @@ class Session {
      * 
      * For VFAT and NTFS the `blocksize` parameter is treated as the requested
      * cluster size.
+     * @param fstype 
+     * @param blocksize 
+     * @param device 
      */
     mkfs_b(fstype: string, blocksize: number, device: string): boolean
     /**
@@ -27429,6 +29394,8 @@ class Session {
      * 
      * This function depends on the feature "btrfs".
      * See also guestfs_session_feature_available().
+     * @param devices an array of strings
+     * @param optargs a GuestfsMkfsBtrfs containing optional arguments
      */
     mkfs_btrfs(devices: string[], optargs?: MkfsBtrfs | null): boolean
     /**
@@ -27437,6 +29404,7 @@ class Session {
      * Make the "lost+found" directory, normally in the root directory of an
      * ext2/3/4 filesystem. `mountpoint` is the directory under which we try to
      * create the "lost+found" directory.
+     * @param mountpoint 
      */
     mklost_and_found(mountpoint: string): boolean
     /**
@@ -27489,6 +29457,7 @@ class Session {
      * Autosync [see guestfs_session_set_autosync(), this is set by default on
      * handles] can cause guestfs_session_umount_all() to be called when the
      * handle is closed which can also trigger these issues.
+     * @param exemptpath 
      */
     mkmountpoint(exemptpath: string): boolean
     /**
@@ -27513,6 +29482,10 @@ class Session {
      * 
      * This function depends on the feature "mknod".
      * See also guestfs_session_feature_available().
+     * @param mode 
+     * @param devmajor 
+     * @param devminor 
+     * @param path 
      */
     mknod(mode: number, devmajor: number, devminor: number, path: string): boolean
     /**
@@ -27529,6 +29502,10 @@ class Session {
      * 
      * This function depends on the feature "mknod".
      * See also guestfs_session_feature_available().
+     * @param mode 
+     * @param devmajor 
+     * @param devminor 
+     * @param path 
      */
     mknod_b(mode: number, devmajor: number, devminor: number, path: string): boolean
     /**
@@ -27545,6 +29522,10 @@ class Session {
      * 
      * This function depends on the feature "mknod".
      * See also guestfs_session_feature_available().
+     * @param mode 
+     * @param devmajor 
+     * @param devminor 
+     * @param path 
      */
     mknod_c(mode: number, devmajor: number, devminor: number, path: string): boolean
     /**
@@ -27568,6 +29549,10 @@ class Session {
      * 
      * This function depends on the feature "squashfs".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param filename 
+     * @param optargs a GuestfsMksquashfs containing optional arguments
+     * @param cancellable A GCancellable object
      */
     mksquashfs(path: string, filename: string, optargs?: Mksquashfs | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -27577,6 +29562,8 @@ class Session {
      * 
      * The option arguments `label` and `uuid` allow you to set the label and/or
      * UUID of the new swap partition.
+     * @param device 
+     * @param optargs a GuestfsMkswap containing optional arguments
      */
     mkswap(device: string, optargs?: Mkswap | null): boolean
     /**
@@ -27587,6 +29574,8 @@ class Session {
      * Note that you cannot attach a swap label to a block device (eg.
      * /dev/sda), just to a partition. This appears to be a limitation of the
      * kernel or swap tools.
+     * @param label 
+     * @param device 
      */
     mkswap_L(label: string, device: string): boolean
     /**
@@ -27596,6 +29585,8 @@ class Session {
      * 
      * This function depends on the feature "linuxfsuuid".
      * See also guestfs_session_feature_available().
+     * @param uuid 
+     * @param device 
      */
     mkswap_U(uuid: string, device: string): boolean
     /**
@@ -27605,6 +29596,7 @@ class Session {
      * 
      * This command just writes a swap file signature to an existing file. To
      * create the file itself, use something like guestfs_session_fallocate().
+     * @param path 
      */
     mkswap_file(path: string): boolean
     /**
@@ -27627,6 +29619,8 @@ class Session {
      * is appended to the temporary name.
      * 
      * See also: guestfs_session_mkdtemp().
+     * @param tmpl 
+     * @param optargs a GuestfsMktemp containing optional arguments
      */
     mktemp(tmpl: string, optargs?: Mktemp | null): string
     /**
@@ -27636,6 +29630,7 @@ class Session {
      * 
      * This function depends on the feature "linuxmodules".
      * See also guestfs_session_feature_available().
+     * @param modulename 
      */
     modprobe(modulename: string): boolean
     /**
@@ -27661,6 +29656,8 @@ class Session {
      * versions of libguestfs, use guestfs_session_mount_options() instead
      * (using an empty string for the first parameter if you don't want any
      * options).
+     * @param mountable 
+     * @param mountpoint 
      */
     mount(mountable: string, mountpoint: string): boolean
     /**
@@ -27672,6 +29669,9 @@ class Session {
      * If required, "trans=virtio" will be automatically added to the options.
      * Any other options required can be passed in the optional `options`
      * parameter.
+     * @param mounttag 
+     * @param mountpoint 
+     * @param optargs a GuestfsMount9P containing optional arguments
      */
     mount_9p(mounttag: string, mountpoint: string, optargs?: Mount9P | null): boolean
     /**
@@ -27700,6 +29700,8 @@ class Session {
      * guestfs_session_mount_local_run() to run the main loop.
      * 
      * See "MOUNT LOCAL" in guestfs(3) for full documentation.
+     * @param localmountpoint 
+     * @param optargs a GuestfsMountLocal containing optional arguments
      */
     mount_local(localmountpoint: string, optargs?: MountLocal | null): boolean
     /**
@@ -27720,6 +29722,7 @@ class Session {
      * guestfs(3)).
      * 
      * See "MOUNT LOCAL" in guestfs(3) for full documentation.
+     * @param cancellable A GCancellable object
      */
     mount_local_run(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -27728,6 +29731,8 @@ class Session {
      * This command lets you mount file (a filesystem image in a file) on a
      * mount point. It is entirely equivalent to the command "mount -o loop
      * file mountpoint".
+     * @param file 
+     * @param mountpoint 
      */
     mount_loop(file: string, mountpoint: string): boolean
     /**
@@ -27738,6 +29743,9 @@ class Session {
      * 
      * If the `options` parameter is an empty string, then no options are passed
      * (all options default to whatever the filesystem uses).
+     * @param options 
+     * @param mountable 
+     * @param mountpoint 
      */
     mount_options(options: string, mountable: string, mountpoint: string): boolean
     /**
@@ -27745,6 +29753,8 @@ class Session {
      * 
      * This is the same as the guestfs_session_mount() command, but it mounts
      * the filesystem with the read-only (*-o ro*) flag.
+     * @param mountable 
+     * @param mountpoint 
      */
     mount_ro(mountable: string, mountpoint: string): boolean
     /**
@@ -27753,6 +29763,10 @@ class Session {
      * This is the same as the guestfs_session_mount() command, but it allows
      * you to set both the mount options and the vfstype as for the mount(8)
      * *-o* and *-t* flags.
+     * @param options 
+     * @param vfstype 
+     * @param mountable 
+     * @param mountpoint 
      */
     mount_vfs(options: string, vfstype: string, mountable: string, mountpoint: string): boolean
     /**
@@ -27765,6 +29779,7 @@ class Session {
      * a combination of both the device name and the subvolume path (see also
      * guestfs_session_mountable_subvolume() to extract the subvolume path of
      * the mountable if any).
+     * @param mountable 
      */
     mountable_device(mountable: string): string
     /**
@@ -27777,6 +29792,7 @@ class Session {
      * 
      * If the mountable does not represent a btrfs subvolume, then this
      * function fails and the `errno` is set to `EINVAL`.
+     * @param mountable 
      */
     mountable_subvolume(mountable: string): string
     /**
@@ -27805,6 +29821,8 @@ class Session {
      * filename or destination directory.
      * 
      * See also: guestfs_session_rename().
+     * @param src 
+     * @param dest 
      */
     mv(src: string, dest: string): boolean
     /**
@@ -27834,6 +29852,8 @@ class Session {
      * 
      * This function depends on the feature "ntfs3g".
      * See also guestfs_session_feature_available().
+     * @param rw 
+     * @param device 
      */
     ntfs_3g_probe(rw: boolean, device: string): number
     /**
@@ -27847,6 +29867,10 @@ class Session {
      * 
      * The filesystem from which to extract the file must be unmounted,
      * otherwise the call will fail.
+     * @param device 
+     * @param inode 
+     * @param filename 
+     * @param cancellable A GCancellable object
      */
     ntfscat_i(device: string, inode: number, filename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -27858,6 +29882,9 @@ class Session {
      * 
      * This function depends on the feature "ntfs3g".
      * See also guestfs_session_feature_available().
+     * @param backupfile 
+     * @param device 
+     * @param cancellable A GCancellable object
      */
     ntfsclone_in(backupfile: string, device: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -27879,6 +29906,10 @@ class Session {
      * 
      * This function depends on the feature "ntfs3g".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param backupfile 
+     * @param optargs a GuestfsNtfscloneOut containing optional arguments
+     * @param cancellable A GCancellable object
      */
     ntfsclone_out(device: string, backupfile: string, optargs?: NtfscloneOut | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -27896,6 +29927,8 @@ class Session {
      * 
      * This function depends on the feature "ntfs3g".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param optargs a GuestfsNtfsfix containing optional arguments
      */
     ntfsfix(device: string, optargs?: Ntfsfix | null): boolean
     /**
@@ -27925,6 +29958,8 @@ class Session {
      * 
      * This function depends on the feature "ntfsprogs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param optargs a GuestfsNTFSResizeOpts containing optional arguments
      */
     ntfsresize(device: string, optargs?: NTFSResizeOpts | null): boolean
     /**
@@ -27935,6 +29970,8 @@ class Session {
      * 
      * This function depends on the feature "ntfsprogs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param size 
      */
     ntfsresize_size(device: string, size: number): boolean
     /**
@@ -27962,6 +29999,7 @@ class Session {
      * 
      * This is the same as guestfs_session_parse_environment() except that it
      * parses an explicit list of strings instead of the program's environment.
+     * @param environment an array of strings
      */
     parse_environment_list(environment: string[]): boolean
     /**
@@ -27980,6 +30018,10 @@ class Session {
      * 
      * Creating a partition which covers the whole disk is not so easy. Use
      * guestfs_session_part_disk() to do that.
+     * @param device 
+     * @param prlogex 
+     * @param startsect 
+     * @param endsect 
      */
     part_add(device: string, prlogex: string, startsect: number, endsect: number): boolean
     /**
@@ -27989,6 +30031,8 @@ class Session {
      * 
      * Note that in the case of MBR partitioning, deleting an extended
      * partition also deletes any logical partitions it contains.
+     * @param device 
+     * @param partnum 
      */
     part_del(device: string, partnum: number): boolean
     /**
@@ -28000,6 +30044,8 @@ class Session {
      * 
      * `parttype` is the partition table type, usually `mbr` or `gpt,` but other
      * possible values are described in guestfs_session_part_init().
+     * @param device 
+     * @param parttype 
      */
     part_disk(device: string, parttype: string): boolean
     /**
@@ -28013,6 +30059,7 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     part_expand_gpt(device: string): boolean
     /**
@@ -28022,6 +30069,8 @@ class Session {
      * bootable flag set.
      * 
      * See also guestfs_session_part_set_bootable().
+     * @param device 
+     * @param partnum 
      */
     part_get_bootable(device: string, partnum: number): number
     /**
@@ -28032,6 +30081,7 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     part_get_disk_guid(device: string): string
     /**
@@ -28042,6 +30092,8 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param partnum 
      */
     part_get_gpt_attributes(device: string, partnum: number): number
     /**
@@ -28051,6 +30103,8 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param partnum 
      */
     part_get_gpt_guid(device: string, partnum: number): string
     /**
@@ -28062,6 +30116,8 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param partnum 
      */
     part_get_gpt_type(device: string, partnum: number): string
     /**
@@ -28073,6 +30129,8 @@ class Session {
      * Note that only MBR (old DOS-style) partitions have type bytes. You will
      * get undefined results for other partition table types (see
      * guestfs_session_part_get_parttype()).
+     * @param device 
+     * @param partnum 
      */
     part_get_mbr_id(device: string, partnum: number): number
     /**
@@ -28082,6 +30140,8 @@ class Session {
      * device `device`.
      * 
      * It returns `primary,` `logical,` or `extended`.
+     * @param device 
+     * @param partnum 
      */
     part_get_mbr_part_type(device: string, partnum: number): string
     /**
@@ -28092,6 +30152,8 @@ class Session {
      * 
      * The partition name can only be read on certain types of partition table.
      * This works on `gpt` but not on `mbr` partitions.
+     * @param device 
+     * @param partnum 
      */
     part_get_name(device: string, partnum: number): string
     /**
@@ -28104,6 +30166,7 @@ class Session {
      * table), `gpt` (a GPT/EFI-style partition table). Other values are
      * possible, although unusual. See guestfs_session_part_init() for a full
      * list.
+     * @param device 
      */
     part_get_parttype(device: string): string
     /**
@@ -28151,6 +30214,8 @@ class Session {
      * NEC PC-98 format, common in Japan apparently.
      * 
      * sun Sun disk labels.
+     * @param device 
+     * @param parttype 
      */
     part_init(device: string, parttype: string): boolean
     /**
@@ -28173,6 +30238,7 @@ class Session {
      * 
      * part_size
      * Size of the partition in bytes.
+     * @param device 
      */
     part_list(device: string): Partition[]
     /**
@@ -28188,6 +30254,9 @@ class Session {
      * When growing a partition you will want to grow the filesystem
      * afterwards, but when shrinking, you need to shrink the filesystem before
      * the partition.
+     * @param device 
+     * @param partnum 
+     * @param endsect 
      */
     part_resize(device: string, partnum: number, endsect: number): boolean
     /**
@@ -28199,6 +30268,9 @@ class Session {
      * The bootable flag is used by some operating systems (notably Windows) to
      * determine which partition to boot from. It is by no means universally
      * recognized.
+     * @param device 
+     * @param partnum 
+     * @param bootable 
      */
     part_set_bootable(device: string, partnum: number, bootable: boolean): boolean
     /**
@@ -28210,6 +30282,8 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param guid 
      */
     part_set_disk_guid(device: string, guid: string): boolean
     /**
@@ -28221,6 +30295,7 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     part_set_disk_guid_random(device: string): boolean
     /**
@@ -28237,6 +30312,9 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param partnum 
+     * @param attributes 
      */
     part_set_gpt_attributes(device: string, partnum: number, attributes: number): boolean
     /**
@@ -28248,6 +30326,9 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param partnum 
+     * @param guid 
      */
     part_set_gpt_guid(device: string, partnum: number, guid: string): boolean
     /**
@@ -28265,6 +30346,9 @@ class Session {
      * 
      * This function depends on the feature "gdisk".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param partnum 
+     * @param guid 
      */
     part_set_gpt_type(device: string, partnum: number, guid: string): boolean
     /**
@@ -28278,6 +30362,9 @@ class Session {
      * Note that only MBR (old DOS-style) partitions have type bytes. You will
      * get undefined results for other partition table types (see
      * guestfs_session_part_get_parttype()).
+     * @param device 
+     * @param partnum 
+     * @param idbyte 
      */
     part_set_mbr_id(device: string, partnum: number, idbyte: number): boolean
     /**
@@ -28288,6 +30375,9 @@ class Session {
      * 
      * The partition name can only be set on certain types of partition table.
      * This works on `gpt` but not on `mbr` partitions.
+     * @param device 
+     * @param partnum 
+     * @param name 
      */
     part_set_name(device: string, partnum: number, name: string): boolean
     /**
@@ -28301,6 +30391,7 @@ class Session {
      * 
      * See also guestfs_session_part_to_partnum(),
      * guestfs_session_device_index().
+     * @param partition 
      */
     part_to_dev(partition: string): string
     /**
@@ -28313,6 +30404,7 @@ class Session {
      * guestfs_session_list_partitions().
      * 
      * See also guestfs_session_part_to_dev().
+     * @param partition 
      */
     part_to_partnum(partition: string): number
     /**
@@ -28334,6 +30426,9 @@ class Session {
      * pread(2) system call.
      * 
      * See also guestfs_session_pwrite(), guestfs_session_pread_device().
+     * @param path 
+     * @param count 
+     * @param offset 
      */
     pread(path: string, count: number, offset: number): Uint8Array
     /**
@@ -28346,6 +30441,9 @@ class Session {
      * pread(2) system call.
      * 
      * See also guestfs_session_pread().
+     * @param device 
+     * @param count 
+     * @param offset 
      */
     pread_device(device: string, count: number, offset: number): Uint8Array
     /**
@@ -28355,6 +30453,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     pvchange_uuid(device: string): boolean
     /**
@@ -28374,6 +30473,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     pvcreate(device: string): boolean
     /**
@@ -28388,6 +30488,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     pvremove(device: string): boolean
     /**
@@ -28398,6 +30499,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     pvresize(device: string): boolean
     /**
@@ -28408,6 +30510,8 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param size 
      */
     pvresize_size(device: string, size: number): boolean
     /**
@@ -28439,6 +30543,7 @@ class Session {
      * get the UUID of a physical volume
      * 
      * This command returns the UUID of the LVM PV `device`.
+     * @param device 
      */
     pvuuid(device: string): string
     /**
@@ -28454,6 +30559,9 @@ class Session {
      * circumstances.
      * 
      * See also guestfs_session_pread(), guestfs_session_pwrite_device().
+     * @param path 
+     * @param content an array of binary data
+     * @param offset 
      */
     pwrite(path: string, content: Uint8Array, offset: number): number
     /**
@@ -28468,6 +30576,9 @@ class Session {
      * kernels).
      * 
      * See also guestfs_session_pwrite().
+     * @param device 
+     * @param content an array of binary data
+     * @param offset 
      */
     pwrite_device(device: string, content: Uint8Array, offset: number): number
     /**
@@ -28477,6 +30588,7 @@ class Session {
      * 
      * Unlike guestfs_session_cat(), this function can correctly handle files
      * that contain embedded ASCII NUL characters.
+     * @param path 
      */
     read_file(path: string): Uint8Array
     /**
@@ -28491,6 +30603,7 @@ class Session {
      * (specifically, files containing "\0" character which is treated as end
      * of string). For those you need to use the guestfs_session_read_file()
      * function and split the buffer into lines yourself.
+     * @param path 
      */
     read_lines(path: string): string[]
     /**
@@ -28527,12 +30640,14 @@ class Session {
      * This function is primarily intended for use by programs. To get a simple
      * list of names, use guestfs_session_ls(). To get a printable directory
      * for human consumption, use guestfs_session_ll().
+     * @param dir 
      */
     readdir(dir: string): Dirent[]
     /**
      * read the target of a symbolic link
      * 
      * This command reads the target of a symbolic link.
+     * @param path 
      */
     readlink(path: string): string
     /**
@@ -28553,6 +30668,8 @@ class Session {
      * 
      * This call is intended for programs that want to efficiently list a
      * directory contents without making many round-trips.
+     * @param path 
+     * @param names an array of strings
      */
     readlinklist(path: string, names: string[]): string[]
     /**
@@ -28560,6 +30677,7 @@ class Session {
      * 
      * Return the canonicalized absolute pathname of `path`. The returned path
      * has no ".", ".." or symbolic link path elements.
+     * @param path 
      */
     realpath(path: string): string
     /**
@@ -28571,6 +30689,8 @@ class Session {
      * 
      * Note that at the moment you must supply the "optional" `rw` parameter. In
      * future we may allow other flags to be adjusted.
+     * @param mountpoint 
+     * @param optargs a GuestfsRemount containing optional arguments
      */
     remount(mountpoint: string, optargs?: Remount | null): boolean
     /**
@@ -28589,6 +30709,7 @@ class Session {
      * the drive: see "HOTPLUGGING" in guestfs(3). The disk must not be in use
      * (eg. mounted) when you do this. We try to detect if the disk is in use
      * and stop you from doing this.
+     * @param label 
      */
     remove_drive(label: string): boolean
     /**
@@ -28600,6 +30721,8 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param xattr 
+     * @param path 
      */
     removexattr(xattr: string, path: string): boolean
     /**
@@ -28608,6 +30731,8 @@ class Session {
      * Rename a file to a new place on the same filesystem. This is the same as
      * the Linux rename(2) system call. In most cases you are better to use
      * guestfs_session_mv() instead.
+     * @param oldpath 
+     * @param newpath 
      */
     rename(oldpath: string, newpath: string): boolean
     /**
@@ -28617,6 +30742,7 @@ class Session {
      * underlying device.
      * 
      * See also "RESIZE2FS ERRORS" in guestfs(3).
+     * @param device 
      */
     resize2fs(device: string): boolean
     /**
@@ -28632,6 +30758,7 @@ class Session {
      * of the minimal filesystem in bytes.
      * 
      * See also "RESIZE2FS ERRORS" in guestfs(3).
+     * @param device 
      */
     resize2fs_M(device: string): boolean
     /**
@@ -28641,12 +30768,15 @@ class Session {
      * allows you to specify the new size (in bytes) explicitly.
      * 
      * See also "RESIZE2FS ERRORS" in guestfs(3).
+     * @param device 
+     * @param size 
      */
     resize2fs_size(device: string, size: number): boolean
     /**
      * remove a file
      * 
      * Remove the single file `path`.
+     * @param path 
      */
     rm(path: string): boolean
     /**
@@ -28660,6 +30790,7 @@ class Session {
      * This call cannot remove directories. Use guestfs_session_rmdir() to
      * remove an empty directory, or guestfs_session_rm_rf() to remove
      * directories recursively.
+     * @param path 
      */
     rm_f(path: string): boolean
     /**
@@ -28667,12 +30798,14 @@ class Session {
      * 
      * Remove the file or directory `path,` recursively removing the contents if
      * its a directory. This is like the "rm -rf" shell command.
+     * @param path 
      */
     rm_rf(path: string): boolean
     /**
      * remove a directory
      * 
      * Remove the single directory `path`.
+     * @param path 
      */
     rmdir(path: string): boolean
     /**
@@ -28681,6 +30814,7 @@ class Session {
      * This call removes a mountpoint that was previously created with
      * guestfs_session_mkmountpoint(). See guestfs_session_mkmountpoint() for
      * full details.
+     * @param exemptpath 
      */
     rmmountpoint(exemptpath: string): boolean
     /**
@@ -28704,6 +30838,9 @@ class Session {
      * 
      * This function depends on the feature "rsync".
      * See also guestfs_session_feature_available().
+     * @param src 
+     * @param dest 
+     * @param optargs a GuestfsRsync containing optional arguments
      */
     rsync(src: string, dest: string, optargs?: Rsync | null): boolean
     /**
@@ -28729,6 +30866,9 @@ class Session {
      * 
      * This function depends on the feature "rsync".
      * See also guestfs_session_feature_available().
+     * @param remote 
+     * @param dest 
+     * @param optargs a GuestfsRsyncIn containing optional arguments
      */
     rsync_in(remote: string, dest: string, optargs?: RsyncIn | null): boolean
     /**
@@ -28761,6 +30901,9 @@ class Session {
      * 
      * This function depends on the feature "rsync".
      * See also guestfs_session_feature_available().
+     * @param src 
+     * @param remote 
+     * @param optargs a GuestfsRsyncOut containing optional arguments
      */
     rsync_out(src: string, remote: string, optargs?: RsyncOut | null): boolean
     /**
@@ -28774,6 +30917,7 @@ class Session {
      * 
      * This function depends on the feature "scrub".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     scrub_device(device: string): boolean
     /**
@@ -28789,6 +30933,7 @@ class Session {
      * 
      * This function depends on the feature "scrub".
      * See also guestfs_session_feature_available().
+     * @param file 
      */
     scrub_file(file: string): boolean
     /**
@@ -28804,6 +30949,7 @@ class Session {
      * 
      * This function depends on the feature "scrub".
      * See also guestfs_session_feature_available().
+     * @param dir 
      */
     scrub_freespace(dir: string): boolean
     /**
@@ -28826,6 +30972,9 @@ class Session {
      * 
      * This function depends on the feature "selinuxrelabel".
      * See also guestfs_session_feature_available().
+     * @param specfile 
+     * @param path 
+     * @param optargs a GuestfsSelinuxRelabel containing optional arguments
      */
     selinux_relabel(specfile: string, path: string, optargs?: SelinuxRelabel | null): boolean
     /**
@@ -28839,6 +30988,7 @@ class Session {
      * 
      * Setting `append` to `NULL` means *no* additional options are passed
      * (libguestfs always adds a few of its own).
+     * @param append 
      */
     set_append(append?: string | null): boolean
     /**
@@ -28848,6 +30998,7 @@ class Session {
      * daemon.
      * 
      * See "BACKEND" in guestfs(3).
+     * @param backend 
      */
     set_attach_method(backend: string): boolean
     /**
@@ -28859,6 +31010,7 @@ class Session {
      * 
      * This is enabled by default (since libguestfs 1.5.24, previously it was
      * disabled by default).
+     * @param autosync 
      */
     set_autosync(autosync: boolean): boolean
     /**
@@ -28870,6 +31022,7 @@ class Session {
      * This handle property was previously called the "attach method".
      * 
      * See "BACKEND" in guestfs(3).
+     * @param backend 
      */
     set_backend(backend: string): boolean
     /**
@@ -28880,6 +31033,8 @@ class Session {
      * that setting is replaced.
      * 
      * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
+     * @param name 
+     * @param val 
      */
     set_backend_setting(name: string, val: string): boolean
     /**
@@ -28899,6 +31054,7 @@ class Session {
      * guestfs_session_clear_backend_setting().
      * 
      * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
+     * @param settings an array of strings
      */
     set_backend_settings(settings: string[]): boolean
     /**
@@ -28912,6 +31068,7 @@ class Session {
      * default value: If `LIBGUESTFS_CACHEDIR` is set, then that is the default.
      * Else if `TMPDIR` is set, then that is the default. Else /var/tmp is the
      * default.
+     * @param cachedir 
      */
     set_cachedir(cachedir?: string | null): boolean
     /**
@@ -28927,6 +31084,7 @@ class Session {
      * You probably don't want to use this unless you know what you are doing.
      * 
      * The default is disabled.
+     * @param direct 
      */
     set_direct(direct: boolean): boolean
     /**
@@ -28950,6 +31108,9 @@ class Session {
      * These attributes are only present when the file is located on an
      * ext2/3/4 filesystem. Using this call on other filesystem types will
      * result in an error.
+     * @param file 
+     * @param attrs 
+     * @param optargs a GuestfsSetE2attrs containing optional arguments
      */
     set_e2attrs(file: string, attrs: string, optargs?: SetE2attrs | null): boolean
     /**
@@ -28958,6 +31119,8 @@ class Session {
      * This sets the ext2 file generation of a file.
      * 
      * See guestfs_session_get_e2generation().
+     * @param file 
+     * @param generation 
      */
     set_e2generation(file: string, generation: number): boolean
     /**
@@ -28969,6 +31132,8 @@ class Session {
      * You can use either guestfs_session_tune2fs_l() or
      * guestfs_session_get_e2label() to return the existing label on a
      * filesystem.
+     * @param device 
+     * @param label 
      */
     set_e2label(device: string, label: string): boolean
     /**
@@ -28980,6 +31145,8 @@ class Session {
      * 
      * You can use guestfs_session_vfs_uuid() to return the existing UUID of a
      * filesystem.
+     * @param device 
+     * @param uuid 
      */
     set_e2uuid(device: string, uuid: string): boolean
     /**
@@ -29002,6 +31169,7 @@ class Session {
      * results. Using the environment variable `LIBGUESTFS_HV` is safest of all
      * since that picks the qemu binary at the same time as the handle is
      * created.
+     * @param hv 
      */
     set_hv(hv: string): boolean
     /**
@@ -29031,6 +31199,7 @@ class Session {
      * 
      * See also guestfs_session_set_program(), guestfs_session_set_trace(),
      * guestfs_session_get_identifier().
+     * @param identifier 
      */
     set_identifier(identifier: string): boolean
     /**
@@ -29065,6 +31234,8 @@ class Session {
      * specified filesystem, set_label will fail and set errno as ENOTSUP.
      * 
      * To read the label on a filesystem, call guestfs_session_vfs_label().
+     * @param mountable 
+     * @param label 
      */
     set_label(mountable: string, label: string): boolean
     /**
@@ -29075,6 +31246,8 @@ class Session {
      * 
      * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
      * code.
+     * @param index 
+     * @param cred an array of binary data
      */
     set_libvirt_requested_credential(index: number, cred: Uint8Array): boolean
     /**
@@ -29101,6 +31274,7 @@ class Session {
      * 
      * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
      * code.
+     * @param creds an array of strings
      */
     set_libvirt_supported_credentials(creds: string[]): boolean
     /**
@@ -29113,6 +31287,7 @@ class Session {
      * `LIBGUESTFS_MEMSIZE` before the handle is created.
      * 
      * For more information on the architecture of libguestfs, see guestfs(3).
+     * @param memsize 
      */
     set_memsize(memsize: number): boolean
     /**
@@ -29126,6 +31301,7 @@ class Session {
      * 
      * You must call this before calling guestfs_session_launch(), otherwise it
      * has no effect.
+     * @param network 
      */
     set_network(network: boolean): boolean
     /**
@@ -29137,6 +31313,7 @@ class Session {
      * `LIBGUESTFS_PATH` environment variable.
      * 
      * Setting `path` to `NULL` restores the default path.
+     * @param searchpath 
      */
     set_path(searchpath?: string | null): boolean
     /**
@@ -29152,6 +31329,7 @@ class Session {
      * kill the subprocess. Guestfish sets this flag to true when used
      * interactively, so that "^C" can cancel long-running commands gracefully
      * (see guestfs_session_user_cancel()).
+     * @param pgroup 
      */
     set_pgroup(pgroup: boolean): boolean
     /**
@@ -29162,6 +31340,7 @@ class Session {
      * 
      * When the handle is created, the program name in the handle is set to the
      * basename from "argv[0]". The program name can never be `NULL`.
+     * @param program 
      */
     set_program(program: string): boolean
     /**
@@ -29184,6 +31363,7 @@ class Session {
      * results. Using the environment variable `LIBGUESTFS_HV` is safest of all
      * since that picks the qemu binary at the same time as the handle is
      * created.
+     * @param hv 
      */
     set_qemu(hv?: string | null): boolean
     /**
@@ -29201,6 +31381,7 @@ class Session {
      * process will fork itself into the background ("daemonize" itself). In
      * this case the recovery process thinks that the main program has
      * disappeared and so kills the hypervisor, which is not very helpful.
+     * @param recoveryproc 
      */
     set_recovery_proc(recoveryproc: boolean): boolean
     /**
@@ -29213,6 +31394,7 @@ class Session {
      * ("enforcing=0").
      * 
      * For more information on the architecture of libguestfs, see guestfs(3).
+     * @param selinux 
      */
     set_selinux(selinux: boolean): boolean
     /**
@@ -29223,6 +31405,7 @@ class Session {
      * effect.
      * 
      * This function must be called before guestfs_session_launch().
+     * @param smp 
      */
     set_smp(smp: number): boolean
     /**
@@ -29234,6 +31417,7 @@ class Session {
      * default value: If `LIBGUESTFS_TMPDIR` is set, then that is the default.
      * Else if `TMPDIR` is set, then that is the default. Else /tmp is the
      * default.
+     * @param tmpdir 
      */
     set_tmpdir(tmpdir?: string | null): boolean
     /**
@@ -29251,6 +31435,7 @@ class Session {
      * Trace messages are normally sent to `stderr,` unless you register a
      * callback to send them somewhere else (see
      * guestfs_session_set_event_callback()).
+     * @param trace 
      */
     set_trace(trace: boolean): boolean
     /**
@@ -29263,6 +31448,8 @@ class Session {
      * Only some filesystem types support setting UUIDs.
      * 
      * To read the UUID on a filesystem, call guestfs_session_vfs_uuid().
+     * @param device 
+     * @param uuid 
      */
     set_uuid(device: string, uuid: string): boolean
     /**
@@ -29275,6 +31462,7 @@ class Session {
      * Only some filesystem types support setting UUIDs.
      * 
      * To read the UUID on a filesystem, call guestfs_session_vfs_uuid().
+     * @param device 
      */
     set_uuid_random(device: string): boolean
     /**
@@ -29288,6 +31476,7 @@ class Session {
      * Verbose messages are normally sent to `stderr,` unless you register a
      * callback to send them somewhere else (see
      * guestfs_session_set_event_callback()).
+     * @param verbose 
      */
     set_verbose(verbose: boolean): boolean
     /**
@@ -29300,6 +31489,7 @@ class Session {
      * 
      * This function depends on the feature "selinux".
      * See also guestfs_session_feature_available().
+     * @param context 
      */
     setcon(context: string): boolean
     /**
@@ -29312,6 +31502,10 @@ class Session {
      * 
      * This function depends on the feature "linuxxattrs".
      * See also guestfs_session_feature_available().
+     * @param xattr 
+     * @param val 
+     * @param vallen 
+     * @param path 
      */
     setxattr(xattr: string, val: string, vallen: number, path: string): boolean
     /**
@@ -29339,6 +31533,11 @@ class Session {
      * 
      * See also: guestfs_session_sfdisk_l(), guestfs_session_sfdisk_N(),
      * guestfs_session_part_init()
+     * @param device 
+     * @param cyls 
+     * @param heads 
+     * @param sectors 
+     * @param lines an array of strings
      */
     sfdisk(device: string, cyls: number, heads: number, sectors: number, lines: string[]): boolean
     /**
@@ -29351,6 +31550,8 @@ class Session {
      * 
      * See also: guestfs_session_sfdisk(), the sfdisk(8) manpage and
      * guestfs_session_part_disk()
+     * @param device 
+     * @param lines an array of strings
      */
     sfdiskM(device: string, lines: string[]): boolean
     /**
@@ -29363,6 +31564,12 @@ class Session {
      * pass `0` for the cyls/heads/sectors parameters.
      * 
      * See also: guestfs_session_part_add()
+     * @param device 
+     * @param partnum 
+     * @param cyls 
+     * @param heads 
+     * @param sectors 
+     * @param line 
      */
     sfdisk_N(device: string, partnum: number, cyls: number, heads: number, sectors: number, line: string): boolean
     /**
@@ -29374,6 +31581,7 @@ class Session {
      * (see guestfs_session_sfdisk_kernel_geometry()).
      * 
      * The result is in human-readable format, and not designed to be parsed.
+     * @param device 
      */
     sfdisk_disk_geometry(device: string): string
     /**
@@ -29382,6 +31590,7 @@ class Session {
      * This displays the kernel’s idea of the geometry of `device`.
      * 
      * The result is in human-readable format, and not designed to be parsed.
+     * @param device 
      */
     sfdisk_kernel_geometry(device: string): string
     /**
@@ -29391,6 +31600,7 @@ class Session {
      * output of the sfdisk(8) command. It is not intended to be parsed.
      * 
      * See also: guestfs_session_part_list()
+     * @param device 
      */
     sfdisk_l(device: string): string
     /**
@@ -29407,6 +31617,7 @@ class Session {
      * expanded, shell expressions being interpolated and so on.
      * 
      * All the provisos about guestfs_session_command() apply to this call.
+     * @param command 
      */
     sh(command: string): string
     /**
@@ -29416,6 +31627,7 @@ class Session {
      * list of lines.
      * 
      * See also: guestfs_session_command_lines()
+     * @param command 
      */
     sh_lines(command: string): string[]
     /**
@@ -29442,6 +31654,7 @@ class Session {
      * sleep for some seconds
      * 
      * Sleep for `secs` seconds.
+     * @param secs 
      */
     sleep(secs: number): boolean
     /**
@@ -29450,6 +31663,7 @@ class Session {
      * Returns file information for the given `path`.
      * 
      * This is the same as the stat(2) system call.
+     * @param path 
      */
     stat(path: string): Stat
     /**
@@ -29458,6 +31672,7 @@ class Session {
      * Returns file information for the given `path`.
      * 
      * This is the same as the stat(2) system call.
+     * @param path 
      */
     statns(path: string): StatNS
     /**
@@ -29468,6 +31683,7 @@ class Session {
      * mount point itself, but it doesn't need to be).
      * 
      * This is the same as the statvfs(2) system call.
+     * @param path 
      */
     statvfs(path: string): StatVFS
     /**
@@ -29479,6 +31695,7 @@ class Session {
      * The `strings` command has, in the past, had problems with parsing
      * untrusted files. These are mitigated in the current version of
      * libguestfs, but see "CVE-2014-8484" in guestfs(3).
+     * @param path 
      */
     strings(path: string): string[]
     /**
@@ -29511,6 +31728,8 @@ class Session {
      * The `strings` command has, in the past, had problems with parsing
      * untrusted files. These are mitigated in the current version of
      * libguestfs, but see "CVE-2014-8484" in guestfs(3).
+     * @param encoding 
+     * @param path 
      */
     strings_e(encoding: string, path: string): string[]
     /**
@@ -29518,12 +31737,14 @@ class Session {
      * 
      * This command disables the libguestfs appliance swap device or partition
      * named `device`. See guestfs_session_swapon_device().
+     * @param device 
      */
     swapoff_device(device: string): boolean
     /**
      * disable swap on file
      * 
      * This command disables the libguestfs appliance swap on file.
+     * @param file 
      */
     swapoff_file(file: string): boolean
     /**
@@ -29531,6 +31752,7 @@ class Session {
      * 
      * This command disables the libguestfs appliance swap on labeled swap
      * partition.
+     * @param label 
      */
     swapoff_label(label: string): boolean
     /**
@@ -29541,6 +31763,7 @@ class Session {
      * 
      * This function depends on the feature "linuxfsuuid".
      * See also guestfs_session_feature_available().
+     * @param uuid 
      */
     swapoff_uuid(uuid: string): boolean
     /**
@@ -29556,6 +31779,7 @@ class Session {
      * or other information that the guest doesn't want you to trash. You also
      * risk leaking information about the host to the guest this way. Instead,
      * attach a new host device to the guest and swap on that.
+     * @param device 
      */
     swapon_device(device: string): boolean
     /**
@@ -29563,6 +31787,7 @@ class Session {
      * 
      * This command enables swap to a file. See guestfs_session_swapon_device()
      * for other notes.
+     * @param file 
      */
     swapon_file(file: string): boolean
     /**
@@ -29570,6 +31795,7 @@ class Session {
      * 
      * This command enables swap to a labeled swap partition. See
      * guestfs_session_swapon_device() for other notes.
+     * @param label 
      */
     swapon_label(label: string): boolean
     /**
@@ -29580,6 +31806,7 @@ class Session {
      * 
      * This function depends on the feature "linuxfsuuid".
      * See also guestfs_session_feature_available().
+     * @param uuid 
      */
     swapon_uuid(uuid: string): boolean
     /**
@@ -29621,6 +31848,8 @@ class Session {
      * 
      * This function depends on the feature "syslinux".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param optargs a GuestfsSyslinux containing optional arguments
      */
     syslinux(device: string, optargs?: Syslinux | null): boolean
     /**
@@ -29628,6 +31857,7 @@ class Session {
      * 
      * This command returns up to the last 10 lines of a file as a list of
      * strings.
+     * @param path 
      */
     tail(path: string): string[]
     /**
@@ -29640,6 +31870,8 @@ class Session {
      * the file `path,` starting with the `-nrlinesth` line.
      * 
      * If the parameter `nrlines` is zero, this returns an empty list.
+     * @param nrlines 
+     * @param path 
      */
     tail_n(nrlines: number, path: string): string[]
     /**
@@ -29663,6 +31895,10 @@ class Session {
      * 
      * `acls`
      * If set to true, POSIX ACLs are restored from the tar file.
+     * @param tarfile 
+     * @param directory 
+     * @param optargs a GuestfsTarIn containing optional arguments
+     * @param cancellable A GCancellable object
      */
     tar_in(tarfile: string, directory: string, optargs?: TarIn | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29695,6 +31931,10 @@ class Session {
      * 
      * `acls`
      * If set to true, POSIX ACLs are saved in the output tar.
+     * @param directory 
+     * @param tarfile 
+     * @param optargs a GuestfsTarOut containing optional arguments
+     * @param cancellable A GCancellable object
      */
     tar_out(directory: string, tarfile: string, optargs?: TarOut | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29702,6 +31942,9 @@ class Session {
      * 
      * This command uploads and unpacks local file `tarball` (a *gzip
      * compressed* tar file) into directory.
+     * @param tarball 
+     * @param directory 
+     * @param cancellable A GCancellable object
      */
     tgz_in(tarball: string, directory: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29709,6 +31952,9 @@ class Session {
      * 
      * This command packs the contents of directory and downloads it to local
      * file `tarball`.
+     * @param directory 
+     * @param tarball 
+     * @param cancellable A GCancellable object
      */
     tgz_out(directory: string, tarball: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29720,6 +31966,7 @@ class Session {
      * 
      * This command only works on regular files, and will fail on other file
      * types such as directories, symbolic links, block special etc.
+     * @param path 
      */
     touch(path: string): boolean
     /**
@@ -29727,6 +31974,7 @@ class Session {
      * 
      * This command truncates `path` to a zero-length file. The file must exist
      * already.
+     * @param path 
      */
     truncate(path: string): boolean
     /**
@@ -29739,6 +31987,8 @@ class Session {
      * the required size with zero bytes. This creates a sparse file (ie. disk
      * blocks are not allocated for the file until you write to it). To create
      * a non-sparse file of zeroes, use guestfs_session_fallocate64() instead.
+     * @param path 
+     * @param size 
      */
     truncate_size(path: string, size: number): boolean
     /**
@@ -29800,6 +32050,8 @@ class Session {
      * To get the current values of filesystem parameters, see
      * guestfs_session_tune2fs_l(). For precise details of how tune2fs works,
      * see the tune2fs(8) man page.
+     * @param device 
+     * @param optargs a GuestfsTune2FS containing optional arguments
      */
     tune2fs(device: string, optargs?: Tune2FS | null): boolean
     /**
@@ -29812,6 +32064,7 @@ class Session {
      * for more details. The list of fields returned isn't clearly defined, and
      * depends on both the version of `tune2`fs that libguestfs was built
      * against, and the filesystem itself.
+     * @param device 
      */
     tune2fs_l(device: string): GLib.HashTable
     /**
@@ -29822,6 +32075,9 @@ class Session {
      * 
      * This function depends on the feature "xz".
      * See also guestfs_session_feature_available().
+     * @param tarball 
+     * @param directory 
+     * @param cancellable A GCancellable object
      */
     txz_in(tarball: string, directory: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29832,6 +32088,9 @@ class Session {
      * 
      * This function depends on the feature "xz".
      * See also guestfs_session_feature_available().
+     * @param directory 
+     * @param tarball 
+     * @param cancellable A GCancellable object
      */
     txz_out(directory: string, tarball: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29852,6 +32111,7 @@ class Session {
      * guestfs_session_mkdir().
      * 
      * This call returns the previous umask.
+     * @param mask 
      */
     umask(mask: number): number
     /**
@@ -29860,6 +32120,8 @@ class Session {
      * This unmounts the given filesystem. The filesystem may be specified
      * either by its mountpoint (path) or the device which contains the
      * filesystem.
+     * @param pathordevice 
+     * @param optargs a GuestfsUmount containing optional arguments
      */
     umount(pathordevice: string, optargs?: Umount | null): boolean
     /**
@@ -29877,6 +32139,7 @@ class Session {
      * this unmounts it.
      * 
      * See "MOUNT LOCAL" in guestfs(3) for full documentation.
+     * @param optargs a GuestfsUmountLocal containing optional arguments
      */
     umount_local(optargs?: UmountLocal | null): boolean
     /**
@@ -29887,6 +32150,9 @@ class Session {
      * filename can also be a named pipe.
      * 
      * See also guestfs_session_download().
+     * @param filename 
+     * @param remotefilename 
+     * @param cancellable A GCancellable object
      */
     upload(filename: string, remotefilename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29905,6 +32171,10 @@ class Session {
      * always writes the full amount unless an error occurs.
      * 
      * See also guestfs_session_upload(), guestfs_session_pwrite().
+     * @param filename 
+     * @param remotefilename 
+     * @param offset 
+     * @param cancellable A GCancellable object
      */
     upload_offset(filename: string, remotefilename: string, offset: number, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -29956,6 +32226,11 @@ class Session {
      * If the *nsecs field contains the special value `-2` then the
      * corresponding timestamp is left unchanged. (The *secs field is ignored
      * in this case).
+     * @param path 
+     * @param atsecs 
+     * @param atnsecs 
+     * @param mtsecs 
+     * @param mtnsecs 
      */
     utimens(path: string, atsecs: number, atnsecs: number, mtsecs: number, mtnsecs: number): boolean
     /**
@@ -30005,6 +32280,7 @@ class Session {
      * If the filesystem is unlabeled, this returns the empty string.
      * 
      * To find a filesystem from the label, use guestfs_session_findfs_label().
+     * @param mountable 
      */
     vfs_label(mountable: string): string
     /**
@@ -30017,6 +32293,7 @@ class Session {
      * will fail and set errno as ENOTSUP.
      * 
      * See also ntfsresize(8), resize2fs(8), btrfs(8), xfs_info(8).
+     * @param mountable 
      */
     vfs_minimum_size(mountable: string): number
     /**
@@ -30029,6 +32306,7 @@ class Session {
      * which would be used to mount this filesystem if you mounted it without
      * specifying the filesystem type. For example a string such as `ext3` or
      * `ntfs`.
+     * @param mountable 
      */
     vfs_type(mountable: string): string
     /**
@@ -30039,6 +32317,7 @@ class Session {
      * If the filesystem does not have a UUID, this returns the empty string.
      * 
      * To find a filesystem from the UUID, use guestfs_session_findfs_uuid().
+     * @param mountable 
      */
     vfs_uuid(mountable: string): string
     /**
@@ -30054,6 +32333,8 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param activate 
+     * @param volgroups an array of strings
      */
     vg_activate(activate: boolean, volgroups: string[]): boolean
     /**
@@ -30066,6 +32347,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param activate 
      */
     vg_activate_all(activate: boolean): boolean
     /**
@@ -30075,6 +32357,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param vg 
      */
     vgchange_uuid(vg: string): boolean
     /**
@@ -30094,6 +32377,8 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param volgroup 
+     * @param physvols an array of strings
      */
     vgcreate(volgroup: string, physvols: string[]): boolean
     /**
@@ -30107,6 +32392,7 @@ class Session {
      * groups.
      * 
      * See also guestfs_session_vgpvuuids().
+     * @param vgname 
      */
     vglvuuids(vgname: string): string[]
     /**
@@ -30120,6 +32406,7 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param vgname 
      */
     vgmeta(vgname: string): Uint8Array
     /**
@@ -30133,6 +32420,7 @@ class Session {
      * groups.
      * 
      * See also guestfs_session_vglvuuids().
+     * @param vgname 
      */
     vgpvuuids(vgname: string): string[]
     /**
@@ -30145,12 +32433,15 @@ class Session {
      * 
      * This function depends on the feature "lvm2".
      * See also guestfs_session_feature_available().
+     * @param vgname 
      */
     vgremove(vgname: string): boolean
     /**
      * rename an LVM volume group
      * 
      * Rename a volume group `volgroup` with the new name `newvolgroup`.
+     * @param volgroup 
+     * @param newvolgroup 
      */
     vgrename(volgroup: string, newvolgroup: string): boolean
     /**
@@ -30189,6 +32480,7 @@ class Session {
      * get the UUID of a volume group
      * 
      * This command returns the UUID of the LVM VG named `vgname`.
+     * @param vgname 
      */
     vguuid(vgname: string): string
     /**
@@ -30211,6 +32503,7 @@ class Session {
      * 
      * This command counts the characters in a file, using the "wc -c" external
      * command.
+     * @param path 
      */
     wc_c(path: string): number
     /**
@@ -30218,6 +32511,7 @@ class Session {
      * 
      * This command counts the lines in a file, using the "wc -l" external
      * command.
+     * @param path 
      */
     wc_l(path: string): number
     /**
@@ -30225,6 +32519,7 @@ class Session {
      * 
      * This command counts the words in a file, using the "wc -w" external
      * command.
+     * @param path 
      */
     wc_w(path: string): number
     /**
@@ -30241,6 +32536,7 @@ class Session {
      * 
      * This function depends on the feature "wipefs".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     wipefs(device: string): boolean
     /**
@@ -30250,6 +32546,8 @@ class Session {
      * string `content` (which can contain any 8 bit data).
      * 
      * See also guestfs_session_write_append().
+     * @param path 
+     * @param content an array of binary data
      */
     write(path: string, content: Uint8Array): boolean
     /**
@@ -30259,6 +32557,8 @@ class Session {
      * exist, then a new file is created.
      * 
      * See also guestfs_session_write().
+     * @param path 
+     * @param content an array of binary data
      */
     write_append(path: string, content: Uint8Array): boolean
     /**
@@ -30273,6 +32573,9 @@ class Session {
      * 
      * *NB.* Owing to a bug, writing content containing ASCII NUL characters
      * does *not* work, even if the length is specified.
+     * @param path 
+     * @param content 
+     * @param size 
      */
     write_file(path: string, content: string, size: number): boolean
     /**
@@ -30289,6 +32592,8 @@ class Session {
      * 
      * This function depends on the feature "xfs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param optargs a GuestfsXfsAdmin containing optional arguments
      */
     xfs_admin(device: string, optargs?: XfsAdmin | null): boolean
     /**
@@ -30301,6 +32606,8 @@ class Session {
      * 
      * This function depends on the feature "xfs".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param optargs a GuestfsXfsGrowfs containing optional arguments
      */
     xfs_growfs(path: string, optargs?: XfsGrowfs | null): boolean
     /**
@@ -30314,6 +32621,7 @@ class Session {
      * 
      * This function depends on the feature "xfs".
      * See also guestfs_session_feature_available().
+     * @param pathordevice 
      */
     xfs_info(pathordevice: string): XFSInfo
     /**
@@ -30335,6 +32643,8 @@ class Session {
      * 
      * This function depends on the feature "xfs".
      * See also guestfs_session_feature_available().
+     * @param device 
+     * @param optargs a GuestfsXfsRepair containing optional arguments
      */
     xfs_repair(device: string, optargs?: XfsRepair | null): number
     /**
@@ -30367,6 +32677,8 @@ class Session {
      * 
      * This function depends on the feature "libyara".
      * See also guestfs_session_feature_available().
+     * @param filename 
+     * @param cancellable A GCancellable object
      */
     yara_load(filename: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -30386,12 +32698,16 @@ class Session {
      * 
      * This function depends on the feature "libyara".
      * See also guestfs_session_feature_available().
+     * @param path 
+     * @param cancellable A GCancellable object
      */
     yara_scan(path: string, cancellable?: Gio.Cancellable | null): YaraDetection[]
     /**
      * return lines matching a pattern
      * 
      * This calls the external `zegrep` program and returns the matching lines.
+     * @param regex 
+     * @param path 
      */
     zegrep(regex: string, path: string): string[]
     /**
@@ -30399,6 +32715,8 @@ class Session {
      * 
      * This calls the external "zegrep -i" program and returns the matching
      * lines.
+     * @param regex 
+     * @param path 
      */
     zegrepi(regex: string, path: string): string[]
     /**
@@ -30416,6 +32734,7 @@ class Session {
      * 
      * See also: guestfs_session_zero_device(), guestfs_session_scrub_device(),
      * guestfs_session_is_zero_device()
+     * @param device 
      */
     zero(device: string): boolean
     /**
@@ -30428,6 +32747,7 @@ class Session {
      * If blocks are already zero, then this command avoids writing zeroes.
      * This prevents the underlying device from becoming non-sparse or growing
      * unnecessarily.
+     * @param device 
      */
     zero_device(device: string): boolean
     /**
@@ -30442,6 +32762,7 @@ class Session {
      * Free space is not "trimmed". You may want to call
      * guestfs_session_fstrim() either as an alternative to this, or after
      * calling this, depending on your requirements.
+     * @param directory 
      */
     zero_free_space(directory: string): boolean
     /**
@@ -30458,12 +32779,15 @@ class Session {
      * 
      * This function depends on the feature "zerofree".
      * See also guestfs_session_feature_available().
+     * @param device 
      */
     zerofree(device: string): boolean
     /**
      * return lines matching a pattern
      * 
      * This calls the external `zfgrep` program and returns the matching lines.
+     * @param pattern 
+     * @param path 
      */
     zfgrep(pattern: string, path: string): string[]
     /**
@@ -30471,6 +32795,8 @@ class Session {
      * 
      * This calls the external "zfgrep -i" program and returns the matching
      * lines.
+     * @param pattern 
+     * @param path 
      */
     zfgrepi(pattern: string, path: string): string[]
     /**
@@ -30482,12 +32808,16 @@ class Session {
      * 
      * Since 1.0.63, use guestfs_session_file() instead which can now process
      * compressed files.
+     * @param meth 
+     * @param path 
      */
     zfile(meth: string, path: string): string
     /**
      * return lines matching a pattern
      * 
      * This calls the external `zgrep` program and returns the matching lines.
+     * @param regex 
+     * @param path 
      */
     zgrep(regex: string, path: string): string[]
     /**
@@ -30495,6 +32825,8 @@ class Session {
      * 
      * This calls the external "zgrep -i" program and returns the matching
      * lines.
+     * @param regex 
+     * @param path 
      */
     zgrepi(regex: string, path: string): string[]
     /* Methods of GObject-2.0.GObject.Object */
@@ -30532,6 +32864,10 @@ class Session {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30542,6 +32878,12 @@ class Session {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -30565,6 +32907,7 @@ class Session {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -30584,11 +32927,14 @@ class Session {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -30596,6 +32942,8 @@ class Session {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -30613,6 +32961,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -30658,6 +33007,7 @@ class Session {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -30701,15 +33051,20 @@ class Session {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -30750,6 +33105,7 @@ class Session {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -30784,6 +33140,7 @@ class Session {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -30803,6 +33160,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -30810,6 +33168,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "appliance", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "appliance", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30817,6 +33176,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "close", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "close", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30824,6 +33184,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "enter", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "enter", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30834,6 +33195,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "library", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "library", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30844,6 +33206,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "progress", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "progress", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30854,6 +33217,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "trace", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "trace", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30861,6 +33225,7 @@ class Session {
     /**
      * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
      * more details about this event.
+     * @param params An object containing event parameters
      */
     connect(sigName: "warning", callback: (($obj: Session, params: SessionEventParams) => void)): number
     connect_after(sigName: "warning", callback: (($obj: Session, params: SessionEventParams) => void)): number
@@ -30894,6 +33259,7 @@ class Session {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
@@ -30923,7 +33289,7 @@ class SetE2attrs {
      */
     clear: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -30959,6 +33325,10 @@ class SetE2attrs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -30969,6 +33339,12 @@ class SetE2attrs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -30992,6 +33368,7 @@ class SetE2attrs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31011,11 +33388,14 @@ class SetE2attrs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31023,6 +33403,8 @@ class SetE2attrs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31040,6 +33422,7 @@ class SetE2attrs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31085,6 +33468,7 @@ class SetE2attrs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31128,15 +33512,20 @@ class SetE2attrs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31177,6 +33566,7 @@ class SetE2attrs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31211,6 +33601,7 @@ class SetE2attrs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -31230,6 +33621,7 @@ class SetE2attrs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31262,6 +33654,7 @@ class SetE2attrs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SetE2attrs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SetE2attrs, pspec: GObject.ParamSpec) => void)): number
@@ -31293,7 +33686,7 @@ class Syslinux {
      */
     directory: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -31329,6 +33722,10 @@ class Syslinux {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31339,6 +33736,12 @@ class Syslinux {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -31362,6 +33765,7 @@ class Syslinux {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31381,11 +33785,14 @@ class Syslinux {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31393,6 +33800,8 @@ class Syslinux {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31410,6 +33819,7 @@ class Syslinux {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31455,6 +33865,7 @@ class Syslinux {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31498,15 +33909,20 @@ class Syslinux {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31547,6 +33963,7 @@ class Syslinux {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31581,6 +33998,7 @@ class Syslinux {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -31600,6 +34018,7 @@ class Syslinux {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -31632,6 +34051,7 @@ class Syslinux {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Syslinux, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Syslinux, pspec: GObject.ParamSpec) => void)): number
@@ -31687,7 +34107,7 @@ class TarIn {
      */
     xattrs: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -31723,6 +34143,10 @@ class TarIn {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -31733,6 +34157,12 @@ class TarIn {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -31756,6 +34186,7 @@ class TarIn {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -31775,11 +34206,14 @@ class TarIn {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -31787,6 +34221,8 @@ class TarIn {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -31804,6 +34240,7 @@ class TarIn {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -31849,6 +34286,7 @@ class TarIn {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -31892,15 +34330,20 @@ class TarIn {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -31941,6 +34384,7 @@ class TarIn {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -31975,6 +34419,7 @@ class TarIn {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -31994,6 +34439,7 @@ class TarIn {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -32026,6 +34472,7 @@ class TarIn {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TarIn, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TarIn, pspec: GObject.ParamSpec) => void)): number
@@ -32095,7 +34542,7 @@ class TarOut {
      */
     xattrs: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -32131,6 +34578,10 @@ class TarOut {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32141,6 +34592,12 @@ class TarOut {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -32164,6 +34621,7 @@ class TarOut {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -32183,11 +34641,14 @@ class TarOut {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -32195,6 +34656,8 @@ class TarOut {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -32212,6 +34675,7 @@ class TarOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -32257,6 +34721,7 @@ class TarOut {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -32300,15 +34765,20 @@ class TarOut {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -32349,6 +34819,7 @@ class TarOut {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -32383,6 +34854,7 @@ class TarOut {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -32402,6 +34874,7 @@ class TarOut {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -32434,6 +34907,7 @@ class TarOut {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: TarOut, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: TarOut, pspec: GObject.ParamSpec) => void)): number
@@ -32545,7 +35019,7 @@ class Tune2FS {
      */
     user: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -32581,6 +35055,10 @@ class Tune2FS {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32591,6 +35069,12 @@ class Tune2FS {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -32614,6 +35098,7 @@ class Tune2FS {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -32633,11 +35118,14 @@ class Tune2FS {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -32645,6 +35133,8 @@ class Tune2FS {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -32662,6 +35152,7 @@ class Tune2FS {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -32707,6 +35198,7 @@ class Tune2FS {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -32750,15 +35242,20 @@ class Tune2FS {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -32799,6 +35296,7 @@ class Tune2FS {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -32833,6 +35331,7 @@ class Tune2FS {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -32852,6 +35351,7 @@ class Tune2FS {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -32884,6 +35384,7 @@ class Tune2FS {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Tune2FS, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Tune2FS, pspec: GObject.ParamSpec) => void)): number
@@ -32941,7 +35442,7 @@ class Umount {
      */
     lazyunmount: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -32977,6 +35478,10 @@ class Umount {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -32987,6 +35492,12 @@ class Umount {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -33010,6 +35521,7 @@ class Umount {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -33029,11 +35541,14 @@ class Umount {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -33041,6 +35556,8 @@ class Umount {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -33058,6 +35575,7 @@ class Umount {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -33103,6 +35621,7 @@ class Umount {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -33146,15 +35665,20 @@ class Umount {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -33195,6 +35719,7 @@ class Umount {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -33229,6 +35754,7 @@ class Umount {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -33248,6 +35774,7 @@ class Umount {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -33280,6 +35807,7 @@ class Umount {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Umount, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Umount, pspec: GObject.ParamSpec) => void)): number
@@ -33313,7 +35841,7 @@ class UmountLocal {
      */
     retry: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -33349,6 +35877,10 @@ class UmountLocal {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -33359,6 +35891,12 @@ class UmountLocal {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -33382,6 +35920,7 @@ class UmountLocal {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -33401,11 +35940,14 @@ class UmountLocal {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -33413,6 +35955,8 @@ class UmountLocal {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -33430,6 +35974,7 @@ class UmountLocal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -33475,6 +36020,7 @@ class UmountLocal {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -33518,15 +36064,20 @@ class UmountLocal {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -33567,6 +36118,7 @@ class UmountLocal {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -33601,6 +36153,7 @@ class UmountLocal {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -33620,6 +36173,7 @@ class UmountLocal {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -33652,6 +36206,7 @@ class UmountLocal {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UmountLocal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UmountLocal, pspec: GObject.ParamSpec) => void)): number
@@ -33731,7 +36286,7 @@ class XfsAdmin {
      */
     v2log: Tristate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -33767,6 +36322,10 @@ class XfsAdmin {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -33777,6 +36336,12 @@ class XfsAdmin {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -33800,6 +36365,7 @@ class XfsAdmin {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -33819,11 +36385,14 @@ class XfsAdmin {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -33831,6 +36400,8 @@ class XfsAdmin {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -33848,6 +36419,7 @@ class XfsAdmin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -33893,6 +36465,7 @@ class XfsAdmin {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -33936,15 +36509,20 @@ class XfsAdmin {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -33985,6 +36563,7 @@ class XfsAdmin {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -34019,6 +36598,7 @@ class XfsAdmin {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -34038,6 +36618,7 @@ class XfsAdmin {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -34070,6 +36651,7 @@ class XfsAdmin {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: XfsAdmin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: XfsAdmin, pspec: GObject.ParamSpec) => void)): number
@@ -34169,7 +36751,7 @@ class XfsGrowfs {
      */
     rtsize: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -34205,6 +36787,10 @@ class XfsGrowfs {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -34215,6 +36801,12 @@ class XfsGrowfs {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -34238,6 +36830,7 @@ class XfsGrowfs {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -34257,11 +36850,14 @@ class XfsGrowfs {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -34269,6 +36865,8 @@ class XfsGrowfs {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -34286,6 +36884,7 @@ class XfsGrowfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -34331,6 +36930,7 @@ class XfsGrowfs {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -34374,15 +36974,20 @@ class XfsGrowfs {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -34423,6 +37028,7 @@ class XfsGrowfs {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -34457,6 +37063,7 @@ class XfsGrowfs {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -34476,6 +37083,7 @@ class XfsGrowfs {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -34508,6 +37116,7 @@ class XfsGrowfs {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: XfsGrowfs, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: XfsGrowfs, pspec: GObject.ParamSpec) => void)): number
@@ -34625,7 +37234,7 @@ class XfsRepair {
      */
     rtdev: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -34661,6 +37270,10 @@ class XfsRepair {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -34671,6 +37284,12 @@ class XfsRepair {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -34694,6 +37313,7 @@ class XfsRepair {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -34713,11 +37333,14 @@ class XfsRepair {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -34725,6 +37348,8 @@ class XfsRepair {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -34742,6 +37367,7 @@ class XfsRepair {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -34787,6 +37413,7 @@ class XfsRepair {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -34830,15 +37457,20 @@ class XfsRepair {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -34879,6 +37511,7 @@ class XfsRepair {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -34913,6 +37546,7 @@ class XfsRepair {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -34932,6 +37566,7 @@ class XfsRepair {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -34964,6 +37599,7 @@ class XfsRepair {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: XfsRepair, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: XfsRepair, pspec: GObject.ParamSpec) => void)): number
@@ -35004,7 +37640,7 @@ abstract class AddDomainClass {
     /**
      * The superclass of GuestfsAddDomainClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AddDomainPrivate {
@@ -35015,7 +37651,7 @@ abstract class AddDriveClass {
     /**
      * The superclass of GuestfsAddDriveClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AddDrivePrivate {
@@ -35026,7 +37662,7 @@ abstract class AddDriveScratchClass {
     /**
      * The superclass of GuestfsAddDriveScratchClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AddDriveScratchPrivate {
@@ -35037,7 +37673,7 @@ abstract class AddLibvirtDomClass {
     /**
      * The superclass of GuestfsAddLibvirtDomClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AddLibvirtDomPrivate {
@@ -35048,51 +37684,51 @@ class Application {
     /**
      * A NULL-terminated string
      */
-    readonly app_name: string
+    app_name: string
     /**
      * A NULL-terminated string
      */
-    readonly app_display_name: string
+    app_display_name: string
     /**
      * A signed 32-bit integer
      */
-    readonly app_epoch: number
+    app_epoch: number
     /**
      * A NULL-terminated string
      */
-    readonly app_version: string
+    app_version: string
     /**
      * A NULL-terminated string
      */
-    readonly app_release: string
+    app_release: string
     /**
      * A NULL-terminated string
      */
-    readonly app_install_path: string
+    app_install_path: string
     /**
      * A NULL-terminated string
      */
-    readonly app_trans_path: string
+    app_trans_path: string
     /**
      * A NULL-terminated string
      */
-    readonly app_publisher: string
+    app_publisher: string
     /**
      * A NULL-terminated string
      */
-    readonly app_url: string
+    app_url: string
     /**
      * A NULL-terminated string
      */
-    readonly app_source_package: string
+    app_source_package: string
     /**
      * A NULL-terminated string
      */
-    readonly app_summary: string
+    app_summary: string
     /**
      * A NULL-terminated string
      */
-    readonly app_description: string
+    app_description: string
     static name: string
 }
 class Application2 {
@@ -35100,71 +37736,71 @@ class Application2 {
     /**
      * A NULL-terminated string
      */
-    readonly app2_name: string
+    app2_name: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_display_name: string
+    app2_display_name: string
     /**
      * A signed 32-bit integer
      */
-    readonly app2_epoch: number
+    app2_epoch: number
     /**
      * A NULL-terminated string
      */
-    readonly app2_version: string
+    app2_version: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_release: string
+    app2_release: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_arch: string
+    app2_arch: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_install_path: string
+    app2_install_path: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_trans_path: string
+    app2_trans_path: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_publisher: string
+    app2_publisher: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_url: string
+    app2_url: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_source_package: string
+    app2_source_package: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_summary: string
+    app2_summary: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_description: string
+    app2_description: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_spare1: string
+    app2_spare1: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_spare2: string
+    app2_spare2: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_spare3: string
+    app2_spare3: string
     /**
      * A NULL-terminated string
      */
-    readonly app2_spare4: string
+    app2_spare4: string
     static name: string
 }
 abstract class AugTransformClass {
@@ -35172,7 +37808,7 @@ abstract class AugTransformClass {
     /**
      * The superclass of GuestfsAugTransformClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class AugTransformPrivate {
@@ -35183,23 +37819,23 @@ class BTRFSBalance {
     /**
      * A NULL-terminated string
      */
-    readonly btrfsbalance_status: string
+    btrfsbalance_status: string
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsbalance_total: number
+    btrfsbalance_total: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsbalance_balanced: number
+    btrfsbalance_balanced: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsbalance_considered: number
+    btrfsbalance_considered: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsbalance_left: number
+    btrfsbalance_left: number
     static name: string
 }
 abstract class BTRFSFilesystemDefragmentClass {
@@ -35207,7 +37843,7 @@ abstract class BTRFSFilesystemDefragmentClass {
     /**
      * The superclass of GuestfsBTRFSFilesystemDefragmentClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class BTRFSFilesystemDefragmentPrivate {
@@ -35218,7 +37854,7 @@ abstract class BTRFSFilesystemResizeClass {
     /**
      * The superclass of GuestfsBTRFSFilesystemResizeClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class BTRFSFilesystemResizePrivate {
@@ -35229,7 +37865,7 @@ abstract class BTRFSImageClass {
     /**
      * The superclass of GuestfsBTRFSImageClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class BTRFSImagePrivate {
@@ -35240,15 +37876,15 @@ class BTRFSQgroup {
     /**
      * A NULL-terminated string
      */
-    readonly btrfsqgroup_id: string
+    btrfsqgroup_id: string
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsqgroup_rfer: number
+    btrfsqgroup_rfer: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsqgroup_excl: number
+    btrfsqgroup_excl: number
     static name: string
 }
 class BTRFSScrub {
@@ -35256,63 +37892,63 @@ class BTRFSScrub {
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_data_extents_scrubbed: number
+    btrfsscrub_data_extents_scrubbed: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_tree_extents_scrubbed: number
+    btrfsscrub_tree_extents_scrubbed: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_data_bytes_scrubbed: number
+    btrfsscrub_data_bytes_scrubbed: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_tree_bytes_scrubbed: number
+    btrfsscrub_tree_bytes_scrubbed: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_read_errors: number
+    btrfsscrub_read_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_csum_errors: number
+    btrfsscrub_csum_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_verify_errors: number
+    btrfsscrub_verify_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_no_csum: number
+    btrfsscrub_no_csum: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_csum_discards: number
+    btrfsscrub_csum_discards: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_super_errors: number
+    btrfsscrub_super_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_malloc_errors: number
+    btrfsscrub_malloc_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_uncorrectable_errors: number
+    btrfsscrub_uncorrectable_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_unverified_errors: number
+    btrfsscrub_unverified_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_corrected_errors: number
+    btrfsscrub_corrected_errors: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfsscrub_last_physical: number
+    btrfsscrub_last_physical: number
     static name: string
 }
 class BTRFSSubvolume {
@@ -35320,15 +37956,15 @@ class BTRFSSubvolume {
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfssubvolume_id: number
+    btrfssubvolume_id: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly btrfssubvolume_top_level_id: number
+    btrfssubvolume_top_level_id: number
     /**
      * A NULL-terminated string
      */
-    readonly btrfssubvolume_path: string
+    btrfssubvolume_path: string
     static name: string
 }
 abstract class BTRFSSubvolumeCreateClass {
@@ -35336,7 +37972,7 @@ abstract class BTRFSSubvolumeCreateClass {
     /**
      * The superclass of GuestfsBTRFSSubvolumeCreateClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class BTRFSSubvolumeCreatePrivate {
@@ -35347,7 +37983,7 @@ abstract class BTRFSSubvolumeSnapshotClass {
     /**
      * The superclass of GuestfsBTRFSSubvolumeSnapshotClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class BTRFSSubvolumeSnapshotPrivate {
@@ -35358,7 +37994,7 @@ abstract class BtrfsFsckClass {
     /**
      * The superclass of GuestfsBtrfsFsckClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class BtrfsFsckPrivate {
@@ -35369,7 +38005,7 @@ abstract class CompressDeviceOutClass {
     /**
      * The superclass of GuestfsCompressDeviceOutClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CompressDeviceOutPrivate {
@@ -35380,7 +38016,7 @@ abstract class CompressOutClass {
     /**
      * The superclass of GuestfsCompressOutClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CompressOutPrivate {
@@ -35391,7 +38027,7 @@ abstract class CopyAttributesClass {
     /**
      * The superclass of GuestfsCopyAttributesClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CopyAttributesPrivate {
@@ -35402,7 +38038,7 @@ abstract class CopyDeviceToDeviceClass {
     /**
      * The superclass of GuestfsCopyDeviceToDeviceClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CopyDeviceToDevicePrivate {
@@ -35413,7 +38049,7 @@ abstract class CopyDeviceToFileClass {
     /**
      * The superclass of GuestfsCopyDeviceToFileClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CopyDeviceToFilePrivate {
@@ -35424,7 +38060,7 @@ abstract class CopyFileToDeviceClass {
     /**
      * The superclass of GuestfsCopyFileToDeviceClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CopyFileToDevicePrivate {
@@ -35435,7 +38071,7 @@ abstract class CopyFileToFileClass {
     /**
      * The superclass of GuestfsCopyFileToFileClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CopyFileToFilePrivate {
@@ -35446,7 +38082,7 @@ abstract class CpioOutClass {
     /**
      * The superclass of GuestfsCpioOutClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CpioOutPrivate {
@@ -35457,15 +38093,15 @@ class Dirent {
     /**
      * A signed 64-bit integer
      */
-    readonly ino: number
+    ino: number
     /**
      * A character
      */
-    readonly ftyp: number
+    ftyp: number
     /**
      * A NULL-terminated string
      */
-    readonly name: string
+    name: string
     static name: string
 }
 abstract class DiskCreateClass {
@@ -35473,7 +38109,7 @@ abstract class DiskCreateClass {
     /**
      * The superclass of GuestfsDiskCreateClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class DiskCreatePrivate {
@@ -35484,7 +38120,7 @@ abstract class DownloadBlocksClass {
     /**
      * The superclass of GuestfsDownloadBlocksClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class DownloadBlocksPrivate {
@@ -35495,7 +38131,7 @@ abstract class E2fsckClass {
     /**
      * The superclass of GuestfsE2fsckClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class E2fsckPrivate {
@@ -35506,7 +38142,7 @@ abstract class FstrimClass {
     /**
      * The superclass of GuestfsFstrimClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class FstrimPrivate {
@@ -35517,7 +38153,7 @@ abstract class GlobExpandClass {
     /**
      * The superclass of GuestfsGlobExpandClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class GlobExpandPrivate {
@@ -35528,7 +38164,7 @@ abstract class GrepClass {
     /**
      * The superclass of GuestfsGrepClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class GrepPrivate {
@@ -35539,7 +38175,7 @@ class HivexNode {
     /**
      * A signed 64-bit integer
      */
-    readonly hivex_node_h: number
+    hivex_node_h: number
     static name: string
 }
 abstract class HivexOpenClass {
@@ -35547,7 +38183,7 @@ abstract class HivexOpenClass {
     /**
      * The superclass of GuestfsHivexOpenClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class HivexOpenPrivate {
@@ -35558,7 +38194,7 @@ class HivexValue {
     /**
      * A signed 64-bit integer
      */
-    readonly hivex_value_h: number
+    hivex_value_h: number
     static name: string
 }
 class INotifyEvent {
@@ -35566,19 +38202,19 @@ class INotifyEvent {
     /**
      * A signed 64-bit integer
      */
-    readonly in_wd: number
+    in_wd: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly in_mask: number
+    in_mask: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly in_cookie: number
+    in_cookie: number
     /**
      * A NULL-terminated string
      */
-    readonly in_name: string
+    in_name: string
     static name: string
 }
 class ISOInfo {
@@ -35586,71 +38222,71 @@ class ISOInfo {
     /**
      * A NULL-terminated string
      */
-    readonly iso_system_id: string
+    iso_system_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_volume_id: string
+    iso_volume_id: string
     /**
      * An unsigned 32-bit integer
      */
-    readonly iso_volume_space_size: number
+    iso_volume_space_size: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly iso_volume_set_size: number
+    iso_volume_set_size: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly iso_volume_sequence_number: number
+    iso_volume_sequence_number: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly iso_logical_block_size: number
+    iso_logical_block_size: number
     /**
      * A NULL-terminated string
      */
-    readonly iso_volume_set_id: string
+    iso_volume_set_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_publisher_id: string
+    iso_publisher_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_data_preparer_id: string
+    iso_data_preparer_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_application_id: string
+    iso_application_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_copyright_file_id: string
+    iso_copyright_file_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_abstract_file_id: string
+    iso_abstract_file_id: string
     /**
      * A NULL-terminated string
      */
-    readonly iso_bibliographic_file_id: string
+    iso_bibliographic_file_id: string
     /**
      * A signed 64-bit integer
      */
-    readonly iso_volume_creation_t: number
+    iso_volume_creation_t: number
     /**
      * A signed 64-bit integer
      */
-    readonly iso_volume_modification_t: number
+    iso_volume_modification_t: number
     /**
      * A signed 64-bit integer
      */
-    readonly iso_volume_expiration_t: number
+    iso_volume_expiration_t: number
     /**
      * A signed 64-bit integer
      */
-    readonly iso_volume_effective_t: number
+    iso_volume_effective_t: number
     static name: string
 }
 abstract class InspectGetIconClass {
@@ -35658,7 +38294,7 @@ abstract class InspectGetIconClass {
     /**
      * The superclass of GuestfsInspectGetIconClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class InspectGetIconPrivate {
@@ -35669,11 +38305,11 @@ class IntBool {
     /**
      * A signed 32-bit integer
      */
-    readonly i: number
+    i: number
     /**
      * A signed 32-bit integer
      */
-    readonly b: number
+    b: number
     static name: string
 }
 abstract class InternalTest63OptargsClass {
@@ -35681,7 +38317,7 @@ abstract class InternalTest63OptargsClass {
     /**
      * The superclass of GuestfsInternalTest63OptargsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class InternalTest63OptargsPrivate {
@@ -35692,7 +38328,7 @@ abstract class InternalTestClass {
     /**
      * The superclass of GuestfsInternalTestClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class InternalTestOnlyOptargsClass {
@@ -35700,7 +38336,7 @@ abstract class InternalTestOnlyOptargsClass {
     /**
      * The superclass of GuestfsInternalTestOnlyOptargsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class InternalTestOnlyOptargsPrivate {
@@ -35714,7 +38350,7 @@ abstract class IsBlockdevClass {
     /**
      * The superclass of GuestfsIsBlockdevClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class IsBlockdevPrivate {
@@ -35725,7 +38361,7 @@ abstract class IsChardevClass {
     /**
      * The superclass of GuestfsIsChardevClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class IsChardevPrivate {
@@ -35736,7 +38372,7 @@ abstract class IsDirClass {
     /**
      * The superclass of GuestfsIsDirClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class IsDirPrivate {
@@ -35747,7 +38383,7 @@ abstract class IsFifoClass {
     /**
      * The superclass of GuestfsIsFifoClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class IsFifoPrivate {
@@ -35758,7 +38394,7 @@ abstract class IsFileClass {
     /**
      * The superclass of GuestfsIsFileClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class IsFilePrivate {
@@ -35769,7 +38405,7 @@ abstract class IsSocketClass {
     /**
      * The superclass of GuestfsIsSocketClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class IsSocketPrivate {
@@ -35780,67 +38416,67 @@ class LV {
     /**
      * A NULL-terminated string
      */
-    readonly lv_name: string
+    lv_name: string
     /**
      * A 32 byte UUID. Note that this is not NULL-terminated
      */
-    readonly lv_uuid: number[]
+    lv_uuid: number[]
     /**
      * A NULL-terminated string
      */
-    readonly lv_attr: string
+    lv_attr: string
     /**
      * A signed 64-bit integer
      */
-    readonly lv_major: number
+    lv_major: number
     /**
      * A signed 64-bit integer
      */
-    readonly lv_minor: number
+    lv_minor: number
     /**
      * A signed 64-bit integer
      */
-    readonly lv_kernel_major: number
+    lv_kernel_major: number
     /**
      * A signed 64-bit integer
      */
-    readonly lv_kernel_minor: number
+    lv_kernel_minor: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly lv_size: number
+    lv_size: number
     /**
      * A signed 64-bit integer
      */
-    readonly seg_count: number
+    seg_count: number
     /**
      * A NULL-terminated string
      */
-    readonly origin: string
+    origin: string
     /**
      * A floating point number. A value between 0 and 100 represents a percentage. A value of -1 represents 'not present'
      */
-    readonly snap_percent: number
+    snap_percent: number
     /**
      * A floating point number. A value between 0 and 100 represents a percentage. A value of -1 represents 'not present'
      */
-    readonly copy_percent: number
+    copy_percent: number
     /**
      * A NULL-terminated string
      */
-    readonly move_pv: string
+    move_pv: string
     /**
      * A NULL-terminated string
      */
-    readonly lv_tags: string
+    lv_tags: string
     /**
      * A NULL-terminated string
      */
-    readonly mirror_log: string
+    mirror_log: string
     /**
      * A NULL-terminated string
      */
-    readonly modules: string
+    modules: string
     static name: string
 }
 abstract class MDCreateClass {
@@ -35848,7 +38484,7 @@ abstract class MDCreateClass {
     /**
      * The superclass of GuestfsMDCreateClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MDCreatePrivate {
@@ -35859,15 +38495,15 @@ class MDStat {
     /**
      * A NULL-terminated string
      */
-    readonly mdstat_device: string
+    mdstat_device: string
     /**
      * A signed 32-bit integer
      */
-    readonly mdstat_index: number
+    mdstat_index: number
     /**
      * A NULL-terminated string
      */
-    readonly mdstat_flags: string
+    mdstat_flags: string
     static name: string
 }
 abstract class Mke2fsClass {
@@ -35875,7 +38511,7 @@ abstract class Mke2fsClass {
     /**
      * The superclass of GuestfsMke2fsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Mke2fsPrivate {
@@ -35886,7 +38522,7 @@ abstract class MkfsBtrfsClass {
     /**
      * The superclass of GuestfsMkfsBtrfsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MkfsBtrfsPrivate {
@@ -35897,7 +38533,7 @@ abstract class MkfsClass {
     /**
      * The superclass of GuestfsMkfsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MkfsPrivate {
@@ -35908,7 +38544,7 @@ abstract class MksquashfsClass {
     /**
      * The superclass of GuestfsMksquashfsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MksquashfsPrivate {
@@ -35919,7 +38555,7 @@ abstract class MkswapClass {
     /**
      * The superclass of GuestfsMkswapClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MkswapPrivate {
@@ -35930,7 +38566,7 @@ abstract class MktempClass {
     /**
      * The superclass of GuestfsMktempClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MktempPrivate {
@@ -35941,7 +38577,7 @@ abstract class Mount9PClass {
     /**
      * The superclass of GuestfsMount9PClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Mount9PPrivate {
@@ -35952,7 +38588,7 @@ abstract class MountLocalClass {
     /**
      * The superclass of GuestfsMountLocalClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class MountLocalPrivate {
@@ -35963,7 +38599,7 @@ abstract class NTFSResizeOptsClass {
     /**
      * The superclass of GuestfsNTFSResizeOptsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class NTFSResizeOptsPrivate {
@@ -35974,7 +38610,7 @@ abstract class NtfscloneOutClass {
     /**
      * The superclass of GuestfsNtfscloneOutClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class NtfscloneOutPrivate {
@@ -35985,7 +38621,7 @@ abstract class NtfsfixClass {
     /**
      * The superclass of GuestfsNtfsfixClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class NtfsfixPrivate {
@@ -35996,59 +38632,59 @@ class PV {
     /**
      * A NULL-terminated string
      */
-    readonly pv_name: string
+    pv_name: string
     /**
      * A 32 byte UUID. Note that this is not NULL-terminated
      */
-    readonly pv_uuid: number[]
+    pv_uuid: number[]
     /**
      * A NULL-terminated string
      */
-    readonly pv_fmt: string
+    pv_fmt: string
     /**
      * An unsigned 64-bit integer
      */
-    readonly pv_size: number
+    pv_size: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly dev_size: number
+    dev_size: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly pv_free: number
+    pv_free: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly pv_used: number
+    pv_used: number
     /**
      * A NULL-terminated string
      */
-    readonly pv_attr: string
+    pv_attr: string
     /**
      * A signed 64-bit integer
      */
-    readonly pv_pe_count: number
+    pv_pe_count: number
     /**
      * A signed 64-bit integer
      */
-    readonly pv_pe_alloc_count: number
+    pv_pe_alloc_count: number
     /**
      * A NULL-terminated string
      */
-    readonly pv_tags: string
+    pv_tags: string
     /**
      * An unsigned 64-bit integer
      */
-    readonly pe_start: number
+    pe_start: number
     /**
      * A signed 64-bit integer
      */
-    readonly pv_mda_count: number
+    pv_mda_count: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly pv_mda_free: number
+    pv_mda_free: number
     static name: string
 }
 class Partition {
@@ -36056,19 +38692,19 @@ class Partition {
     /**
      * A signed 32-bit integer
      */
-    readonly part_num: number
+    part_num: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly part_start: number
+    part_start: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly part_end: number
+    part_end: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly part_size: number
+    part_size: number
     static name: string
 }
 abstract class RemountClass {
@@ -36076,7 +38712,7 @@ abstract class RemountClass {
     /**
      * The superclass of GuestfsRemountClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class RemountPrivate {
@@ -36087,7 +38723,7 @@ abstract class RsyncClass {
     /**
      * The superclass of GuestfsRsyncClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class RsyncInClass {
@@ -36095,7 +38731,7 @@ abstract class RsyncInClass {
     /**
      * The superclass of GuestfsRsyncInClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class RsyncInPrivate {
@@ -36106,7 +38742,7 @@ abstract class RsyncOutClass {
     /**
      * The superclass of GuestfsRsyncOutClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class RsyncOutPrivate {
@@ -36120,7 +38756,7 @@ abstract class SelinuxRelabelClass {
     /**
      * The superclass of GuestfsSelinuxRelabelClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SelinuxRelabelPrivate {
@@ -36131,7 +38767,7 @@ abstract class SessionClass {
     /**
      * The superclass of GuestfsSession
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SessionEventParams {
@@ -36139,24 +38775,24 @@ class SessionEventParams {
     /**
      * The event
      */
-    readonly event: SessionEvent
+    event: SessionEvent
     /**
      * Unused
      */
-    readonly flags: number
+    flags: number
     /**
      * A message buffer. This buffer can contain arbitrary 8 bit data,
      *       including NUL bytes
      */
-    readonly buf: Uint8Array
+    buf: Uint8Array
     /**
      * An array of 64-bit unsigned integers
      */
-    readonly array: number[]
+    array: number[]
     /**
      * The length of `array`
      */
-    readonly array_len: number
+    array_len: number
     static name: string
 }
 class SessionPrivate {
@@ -36167,7 +38803,7 @@ abstract class SetE2attrsClass {
     /**
      * The superclass of GuestfsSetE2attrsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SetE2attrsPrivate {
@@ -36178,55 +38814,55 @@ class Stat {
     /**
      * A signed 64-bit integer
      */
-    readonly dev: number
+    dev: number
     /**
      * A signed 64-bit integer
      */
-    readonly ino: number
+    ino: number
     /**
      * A signed 64-bit integer
      */
-    readonly mode: number
+    mode: number
     /**
      * A signed 64-bit integer
      */
-    readonly nlink: number
+    nlink: number
     /**
      * A signed 64-bit integer
      */
-    readonly uid: number
+    uid: number
     /**
      * A signed 64-bit integer
      */
-    readonly gid: number
+    gid: number
     /**
      * A signed 64-bit integer
      */
-    readonly rdev: number
+    rdev: number
     /**
      * A signed 64-bit integer
      */
-    readonly size: number
+    size: number
     /**
      * A signed 64-bit integer
      */
-    readonly blksize: number
+    blksize: number
     /**
      * A signed 64-bit integer
      */
-    readonly blocks: number
+    blocks: number
     /**
      * A signed 64-bit integer
      */
-    readonly atime: number
+    atime: number
     /**
      * A signed 64-bit integer
      */
-    readonly mtime: number
+    mtime: number
     /**
      * A signed 64-bit integer
      */
-    readonly ctime: number
+    ctime: number
     static name: string
 }
 class StatNS {
@@ -36234,91 +38870,91 @@ class StatNS {
     /**
      * A signed 64-bit integer
      */
-    readonly st_dev: number
+    st_dev: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_ino: number
+    st_ino: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_mode: number
+    st_mode: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_nlink: number
+    st_nlink: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_uid: number
+    st_uid: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_gid: number
+    st_gid: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_rdev: number
+    st_rdev: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_size: number
+    st_size: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_blksize: number
+    st_blksize: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_blocks: number
+    st_blocks: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_atime_sec: number
+    st_atime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_atime_nsec: number
+    st_atime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_mtime_sec: number
+    st_mtime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_mtime_nsec: number
+    st_mtime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_ctime_sec: number
+    st_ctime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_ctime_nsec: number
+    st_ctime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_spare1: number
+    st_spare1: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_spare2: number
+    st_spare2: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_spare3: number
+    st_spare3: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_spare4: number
+    st_spare4: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_spare5: number
+    st_spare5: number
     /**
      * A signed 64-bit integer
      */
-    readonly st_spare6: number
+    st_spare6: number
     static name: string
 }
 class StatVFS {
@@ -36326,47 +38962,47 @@ class StatVFS {
     /**
      * A signed 64-bit integer
      */
-    readonly bsize: number
+    bsize: number
     /**
      * A signed 64-bit integer
      */
-    readonly frsize: number
+    frsize: number
     /**
      * A signed 64-bit integer
      */
-    readonly blocks: number
+    blocks: number
     /**
      * A signed 64-bit integer
      */
-    readonly bfree: number
+    bfree: number
     /**
      * A signed 64-bit integer
      */
-    readonly bavail: number
+    bavail: number
     /**
      * A signed 64-bit integer
      */
-    readonly files: number
+    files: number
     /**
      * A signed 64-bit integer
      */
-    readonly ffree: number
+    ffree: number
     /**
      * A signed 64-bit integer
      */
-    readonly favail: number
+    favail: number
     /**
      * A signed 64-bit integer
      */
-    readonly fsid: number
+    fsid: number
     /**
      * A signed 64-bit integer
      */
-    readonly flag: number
+    flag: number
     /**
      * A signed 64-bit integer
      */
-    readonly namemax: number
+    namemax: number
     static name: string
 }
 abstract class SyslinuxClass {
@@ -36374,7 +39010,7 @@ abstract class SyslinuxClass {
     /**
      * The superclass of GuestfsSyslinuxClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SyslinuxPrivate {
@@ -36385,67 +39021,67 @@ class TSKDirent {
     /**
      * An unsigned 64-bit integer
      */
-    readonly tsk_inode: number
+    tsk_inode: number
     /**
      * A character
      */
-    readonly tsk_type: number
+    tsk_type: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_size: number
+    tsk_size: number
     /**
      * A NULL-terminated string
      */
-    readonly tsk_name: string
+    tsk_name: string
     /**
      * An unsigned 32-bit integer
      */
-    readonly tsk_flags: number
+    tsk_flags: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_atime_sec: number
+    tsk_atime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_atime_nsec: number
+    tsk_atime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_mtime_sec: number
+    tsk_mtime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_mtime_nsec: number
+    tsk_mtime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_ctime_sec: number
+    tsk_ctime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_ctime_nsec: number
+    tsk_ctime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_crtime_sec: number
+    tsk_crtime_sec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_crtime_nsec: number
+    tsk_crtime_nsec: number
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_nlink: number
+    tsk_nlink: number
     /**
      * A NULL-terminated string
      */
-    readonly tsk_link: string
+    tsk_link: string
     /**
      * A signed 64-bit integer
      */
-    readonly tsk_spare1: number
+    tsk_spare1: number
     static name: string
 }
 abstract class TarInClass {
@@ -36453,7 +39089,7 @@ abstract class TarInClass {
     /**
      * The superclass of GuestfsTarInClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class TarInPrivate {
@@ -36464,7 +39100,7 @@ abstract class TarOutClass {
     /**
      * The superclass of GuestfsTarOutClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class TarOutPrivate {
@@ -36475,7 +39111,7 @@ abstract class Tune2FSClass {
     /**
      * The superclass of GuestfsTune2FSClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class Tune2FSPrivate {
@@ -36486,19 +39122,19 @@ class UTSName {
     /**
      * A NULL-terminated string
      */
-    readonly uts_sysname: string
+    uts_sysname: string
     /**
      * A NULL-terminated string
      */
-    readonly uts_release: string
+    uts_release: string
     /**
      * A NULL-terminated string
      */
-    readonly uts_version: string
+    uts_version: string
     /**
      * A NULL-terminated string
      */
-    readonly uts_machine: string
+    uts_machine: string
     static name: string
 }
 abstract class UmountClass {
@@ -36506,7 +39142,7 @@ abstract class UmountClass {
     /**
      * The superclass of GuestfsUmountClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class UmountLocalClass {
@@ -36514,7 +39150,7 @@ abstract class UmountLocalClass {
     /**
      * The superclass of GuestfsUmountLocalClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class UmountLocalPrivate {
@@ -36528,79 +39164,79 @@ class VG {
     /**
      * A NULL-terminated string
      */
-    readonly vg_name: string
+    vg_name: string
     /**
      * A 32 byte UUID. Note that this is not NULL-terminated
      */
-    readonly vg_uuid: number[]
+    vg_uuid: number[]
     /**
      * A NULL-terminated string
      */
-    readonly vg_fmt: string
+    vg_fmt: string
     /**
      * A NULL-terminated string
      */
-    readonly vg_attr: string
+    vg_attr: string
     /**
      * An unsigned 64-bit integer
      */
-    readonly vg_size: number
+    vg_size: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly vg_free: number
+    vg_free: number
     /**
      * A NULL-terminated string
      */
-    readonly vg_sysid: string
+    vg_sysid: string
     /**
      * An unsigned 64-bit integer
      */
-    readonly vg_extent_size: number
+    vg_extent_size: number
     /**
      * A signed 64-bit integer
      */
-    readonly vg_extent_count: number
+    vg_extent_count: number
     /**
      * A signed 64-bit integer
      */
-    readonly vg_free_count: number
+    vg_free_count: number
     /**
      * A signed 64-bit integer
      */
-    readonly max_lv: number
+    max_lv: number
     /**
      * A signed 64-bit integer
      */
-    readonly max_pv: number
+    max_pv: number
     /**
      * A signed 64-bit integer
      */
-    readonly pv_count: number
+    pv_count: number
     /**
      * A signed 64-bit integer
      */
-    readonly lv_count: number
+    lv_count: number
     /**
      * A signed 64-bit integer
      */
-    readonly snap_count: number
+    snap_count: number
     /**
      * A signed 64-bit integer
      */
-    readonly vg_seqno: number
+    vg_seqno: number
     /**
      * A NULL-terminated string
      */
-    readonly vg_tags: string
+    vg_tags: string
     /**
      * A signed 64-bit integer
      */
-    readonly vg_mda_count: number
+    vg_mda_count: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly vg_mda_free: number
+    vg_mda_free: number
     static name: string
 }
 class Version {
@@ -36608,19 +39244,19 @@ class Version {
     /**
      * A signed 64-bit integer
      */
-    readonly major: number
+    major: number
     /**
      * A signed 64-bit integer
      */
-    readonly minor: number
+    minor: number
     /**
      * A signed 64-bit integer
      */
-    readonly release: number
+    release: number
     /**
      * A NULL-terminated string
      */
-    readonly extra: string
+    extra: string
     static name: string
 }
 class XAttr {
@@ -36628,11 +39264,11 @@ class XAttr {
     /**
      * A NULL-terminated string
      */
-    readonly attrname: string
+    attrname: string
     /**
      * A GByteArray
      */
-    readonly attrval: Uint8Array
+    attrval: Uint8Array
     static name: string
 }
 class XFSInfo {
@@ -36640,103 +39276,103 @@ class XFSInfo {
     /**
      * A NULL-terminated string
      */
-    readonly xfs_mntpoint: string
+    xfs_mntpoint: string
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_inodesize: number
+    xfs_inodesize: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_agcount: number
+    xfs_agcount: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_agsize: number
+    xfs_agsize: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_sectsize: number
+    xfs_sectsize: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_attr: number
+    xfs_attr: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_blocksize: number
+    xfs_blocksize: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly xfs_datablocks: number
+    xfs_datablocks: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_imaxpct: number
+    xfs_imaxpct: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_sunit: number
+    xfs_sunit: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_swidth: number
+    xfs_swidth: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_dirversion: number
+    xfs_dirversion: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_dirblocksize: number
+    xfs_dirblocksize: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_cimode: number
+    xfs_cimode: number
     /**
      * A NULL-terminated string
      */
-    readonly xfs_logname: string
+    xfs_logname: string
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_logblocksize: number
+    xfs_logblocksize: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_logblocks: number
+    xfs_logblocks: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_logversion: number
+    xfs_logversion: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_logsectsize: number
+    xfs_logsectsize: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_logsunit: number
+    xfs_logsunit: number
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_lazycount: number
+    xfs_lazycount: number
     /**
      * A NULL-terminated string
      */
-    readonly xfs_rtname: string
+    xfs_rtname: string
     /**
      * An unsigned 32-bit integer
      */
-    readonly xfs_rtextsize: number
+    xfs_rtextsize: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly xfs_rtblocks: number
+    xfs_rtblocks: number
     /**
      * An unsigned 64-bit integer
      */
-    readonly xfs_rtextents: number
+    xfs_rtextents: number
     static name: string
 }
 abstract class XfsAdminClass {
@@ -36744,7 +39380,7 @@ abstract class XfsAdminClass {
     /**
      * The superclass of GuestfsXfsAdminClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class XfsAdminPrivate {
@@ -36755,7 +39391,7 @@ abstract class XfsGrowfsClass {
     /**
      * The superclass of GuestfsXfsGrowfsClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class XfsGrowfsPrivate {
@@ -36766,7 +39402,7 @@ abstract class XfsRepairClass {
     /**
      * The superclass of GuestfsXfsRepairClass
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class XfsRepairPrivate {
@@ -36777,11 +39413,11 @@ class YaraDetection {
     /**
      * A NULL-terminated string
      */
-    readonly yara_name: string
+    yara_name: string
     /**
      * A NULL-terminated string
      */
-    readonly yara_rule: string
+    yara_rule: string
     static name: string
 }
 }

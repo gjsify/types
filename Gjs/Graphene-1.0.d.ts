@@ -262,18 +262,22 @@ class Box {
     /**
      * Checks whether the #graphene_box_t `a` contains the given
      * #graphene_box_t `b`.
+     * @param b a #graphene_box_t
      */
     contains_box(b: Box): boolean
     /**
      * Checks whether `box` contains the given `point`.
+     * @param point the coordinates to check
      */
     contains_point(point: Point3D): boolean
     /**
      * Checks whether the two given boxes are equal.
+     * @param b a #graphene_box_t
      */
     equal(b: Box): boolean
     /**
      * Expands the dimensions of `box` to include the coordinates at `point`.
+     * @param point the coordinates of the point to include
      */
     expand(point: Point3D): /* res */ Box
     /**
@@ -281,11 +285,13 @@ class Box {
      * 
      * If `scalar` is positive, the #graphene_box_t will grow; if `scalar` is
      * negative, the #graphene_box_t will shrink.
+     * @param scalar a scalar value
      */
     expand_scalar(scalar: number): /* res */ Box
     /**
      * Expands the dimensions of `box` to include the coordinates of the
      * given vector.
+     * @param vec the coordinates of the point to include, as a #graphene_vec3_t
      */
     expand_vec3(vec: Vec3): /* res */ Box
     /**
@@ -334,11 +340,14 @@ class Box {
     get_width(): number
     /**
      * Initializes the given #graphene_box_t with two vertices.
+     * @param min the coordinates of the minimum vertex
+     * @param max the coordinates of the maximum vertex
      */
     init(min?: Point3D | null, max?: Point3D | null): Box
     /**
      * Initializes the given #graphene_box_t with the vertices of
      * another #graphene_box_t.
+     * @param src a #graphene_box_t
      */
     init_from_box(src: Box): Box
     /**
@@ -347,11 +356,14 @@ class Box {
      * 
      * If `n_points` is 0, the returned box is initialized with
      * graphene_box_empty().
+     * @param points an array of #graphene_point3d_t
      */
     init_from_points(points: Point3D[]): Box
     /**
      * Initializes the given #graphene_box_t with two vertices
      * stored inside #graphene_vec3_t.
+     * @param min the coordinates of the minimum vertex
+     * @param max the coordinates of the maximum vertex
      */
     init_from_vec3(min?: Vec3 | null, max?: Vec3 | null): Box
     /**
@@ -360,6 +372,7 @@ class Box {
      * 
      * If `n_vectors` is 0, the returned box is initialized with
      * graphene_box_empty().
+     * @param vectors an array of #graphene_vec3_t
      */
     init_from_vectors(vectors: Vec3[]): Box
     /**
@@ -367,10 +380,12 @@ class Box {
      * 
      * If the two boxes do not intersect, `res` will contain a degenerate box
      * initialized with graphene_box_empty().
+     * @param b a #graphene_box_t
      */
     intersection(b: Box): [ /* returnType */ boolean, /* res */ Box | null ]
     /**
      * Unions the two given #graphene_box_t.
+     * @param b the box to union to `a`
      */
     union(b: Box): /* res */ Box
     static name: string
@@ -420,6 +435,7 @@ class Euler {
     /* Methods of Graphene-1.0.Graphene.Euler */
     /**
      * Checks if two #graphene_euler_t are equal.
+     * @param b a #graphene_euler_t
      */
     equal(b: Euler): boolean
     /**
@@ -473,6 +489,9 @@ class Euler {
      * Initializes a #graphene_euler_t using the given angles.
      * 
      * The order of the rotations is %GRAPHENE_EULER_ORDER_DEFAULT.
+     * @param x rotation angle on the X axis, in degrees
+     * @param y rotation angle on the Y axis, in degrees
+     * @param z rotation angle on the Z axis, in degrees
      */
     init(x: number, y: number, z: number): Euler
     /**
@@ -481,6 +500,7 @@ class Euler {
      * 
      * If the #graphene_euler_t `src` is %NULL, this function is equivalent
      * to calling graphene_euler_init() with all angles set to 0.
+     * @param src a #graphene_euler_t
      */
     init_from_euler(src?: Euler | null): Euler
     /**
@@ -488,6 +508,8 @@ class Euler {
      * 
      * If the #graphene_matrix_t `m` is %NULL, the #graphene_euler_t will
      * be initialized with all angles set to 0.
+     * @param m a rotation matrix
+     * @param order the order used to apply the rotations
      */
     init_from_matrix(m: Matrix | null, order: EulerOrder): Euler
     /**
@@ -495,11 +517,17 @@ class Euler {
      * 
      * If the #graphene_quaternion_t `q` is %NULL, the #graphene_euler_t will
      * be initialized with all angles set to 0.
+     * @param q a normalized #graphene_quaternion_t
+     * @param order the order used to apply the rotations
      */
     init_from_quaternion(q: Quaternion | null, order: EulerOrder): Euler
     /**
      * Initializes a #graphene_euler_t using the given angles
      * and order of rotation.
+     * @param x rotation angle on the X axis, in radians
+     * @param y rotation angle on the Y axis, in radians
+     * @param z rotation angle on the Z axis, in radians
+     * @param order order of rotations
      */
     init_from_radians(x: number, y: number, z: number, order: EulerOrder): Euler
     /**
@@ -508,10 +536,16 @@ class Euler {
      * 
      * If the #graphene_vec3_t `v` is %NULL, the #graphene_euler_t will be
      * initialized with all angles set to 0.
+     * @param v a #graphene_vec3_t containing the rotation   angles in degrees
+     * @param order the order used to apply the rotations
      */
     init_from_vec3(v: Vec3 | null, order: EulerOrder): Euler
     /**
      * Initializes a #graphene_euler_t with the given angles and `order`.
+     * @param x rotation angle on the X axis, in degrees
+     * @param y rotation angle on the Y axis, in degrees
+     * @param z rotation angle on the Z axis, in degrees
+     * @param order the order used to apply the rotations
      */
     init_with_order(x: number, y: number, z: number, order: EulerOrder): Euler
     /**
@@ -520,6 +554,7 @@ class Euler {
      * This function is equivalent to creating a #graphene_quaternion_t from the
      * given #graphene_euler_t, and then converting the quaternion into another
      * #graphene_euler_t.
+     * @param order the new order
      */
     reorder(order: EulerOrder): /* res */ Euler
     /**
@@ -559,10 +594,12 @@ class Frustum {
     /**
      * Checks whether a point is inside the volume defined by the given
      * #graphene_frustum_t.
+     * @param point a #graphene_point3d_t
      */
     contains_point(point: Point3D): boolean
     /**
      * Checks whether the two given #graphene_frustum_t are equal.
+     * @param b a #graphene_frustum_t
      */
     equal(b: Frustum): boolean
     /**
@@ -576,25 +613,35 @@ class Frustum {
     /**
      * Initializes the given #graphene_frustum_t using the provided
      * clipping planes.
+     * @param p0 a clipping plane
+     * @param p1 a clipping plane
+     * @param p2 a clipping plane
+     * @param p3 a clipping plane
+     * @param p4 a clipping plane
+     * @param p5 a clipping plane
      */
     init(p0: Plane, p1: Plane, p2: Plane, p3: Plane, p4: Plane, p5: Plane): Frustum
     /**
      * Initializes the given #graphene_frustum_t using the clipping
      * planes of another #graphene_frustum_t.
+     * @param src a #graphene_frustum_t
      */
     init_from_frustum(src: Frustum): Frustum
     /**
      * Initializes a #graphene_frustum_t using the given `matrix`.
+     * @param matrix a #graphene_matrix_t
      */
     init_from_matrix(matrix: Matrix): Frustum
     /**
      * Checks whether the given `box` intersects a plane of
      * a #graphene_frustum_t.
+     * @param box a #graphene_box_t
      */
     intersects_box(box: Box): boolean
     /**
      * Checks whether the given `sphere` intersects a plane of
      * a #graphene_frustum_t.
+     * @param sphere a #graphene_sphere_t
      */
     intersects_sphere(sphere: Sphere): boolean
     static name: string
@@ -619,6 +666,7 @@ class Matrix {
     determinant(): number
     /**
      * Checks whether the two given #graphene_matrix_t matrices are equal.
+     * @param b a #graphene_matrix_t
      */
     equal(b: Matrix): boolean
     /**
@@ -647,6 +695,7 @@ class Matrix {
      *     }
      * ```
      * 
+     * @param b a #graphene_matrix_t
      */
     equal_fast(b: Matrix): boolean
     /**
@@ -655,10 +704,13 @@ class Matrix {
     free(): void
     /**
      * Retrieves the given row vector at `index_` inside a matrix.
+     * @param index_ the index of the row vector, between 0 and 3
      */
     get_row(index_: number): /* res */ Vec4
     /**
      * Retrieves the value at the given `row` and `col` index.
+     * @param row the row index
+     * @param col the column index
      */
     get_value(row: number, col: number): number
     /**
@@ -700,27 +752,45 @@ class Matrix {
      * 
      * This function can be used to convert between an affine matrix type
      * from other libraries and a #graphene_matrix_t.
+     * @param xx the xx member
+     * @param yx the yx member
+     * @param xy the xy member
+     * @param yy the yy member
+     * @param x_0 the x0 member
+     * @param y_0 the y0 member
      */
     init_from_2d(xx: number, yx: number, xy: number, yy: number, x_0: number, y_0: number): Matrix
     /**
      * Initializes a #graphene_matrix_t with the given array of floating
      * point values.
+     * @param v an array of at least 16 floating   point values
      */
     init_from_float(v: number[]): Matrix
     /**
      * Initializes a #graphene_matrix_t using the values of the
      * given matrix.
+     * @param src a #graphene_matrix_t
      */
     init_from_matrix(src: Matrix): Matrix
     /**
      * Initializes a #graphene_matrix_t with the given four row
      * vectors.
+     * @param v0 the first row vector
+     * @param v1 the second row vector
+     * @param v2 the third row vector
+     * @param v3 the fourth row vector
      */
     init_from_vec4(v0: Vec4, v1: Vec4, v2: Vec4, v3: Vec4): Matrix
     /**
      * Initializes a #graphene_matrix_t compatible with #graphene_frustum_t.
      * 
      * See also: graphene_frustum_init_from_matrix()
+     * @param left distance of the left clipping plane
+     * @param right distance of the right clipping plane
+     * @param bottom distance of the bottom clipping plane
+     * @param top distance of the top clipping plane
+     * @param z_near distance of the near clipping plane
+     * @param z_far distance of the far clipping plane
      */
     init_frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): Matrix
     /**
@@ -744,33 +814,54 @@ class Matrix {
      * coordinates of the camera. Typically you would then apply the
      * camera projection transform to get from view to screen
      * coordinates.
+     * @param eye the vector describing the position to look from
+     * @param center the vector describing the position to look at
+     * @param up the vector describing the world's upward direction; usually,   this is the graphene_vec3_y_axis() vector
      */
     init_look_at(eye: Vec3, center: Vec3, up: Vec3): Matrix
     /**
      * Initializes a #graphene_matrix_t with an orthographic projection.
+     * @param left the left edge of the clipping plane
+     * @param right the right edge of the clipping plane
+     * @param top the top edge of the clipping plane
+     * @param bottom the bottom edge of the clipping plane
+     * @param z_near the distance of the near clipping plane
+     * @param z_far the distance of the far clipping plane
      */
     init_ortho(left: number, right: number, top: number, bottom: number, z_near: number, z_far: number): Matrix
     /**
      * Initializes a #graphene_matrix_t with a perspective projection.
+     * @param fovy the field of view angle, in degrees
+     * @param aspect the aspect value
+     * @param z_near the near Z plane
+     * @param z_far the far Z plane
      */
     init_perspective(fovy: number, aspect: number, z_near: number, z_far: number): Matrix
     /**
      * Initializes `m` to represent a rotation of `angle` degrees on
      * the axis represented by the `axis` vector.
+     * @param angle the rotation angle, in degrees
+     * @param axis the axis vector as a #graphene_vec3_t
      */
     init_rotate(angle: number, axis: Vec3): Matrix
     /**
      * Initializes a #graphene_matrix_t with the given scaling factors.
+     * @param x the scale factor on the X axis
+     * @param y the scale factor on the Y axis
+     * @param z the scale factor on the Z axis
      */
     init_scale(x: number, y: number, z: number): Matrix
     /**
      * Initializes a #graphene_matrix_t with a skew transformation
      * with the given factors.
+     * @param x_skew skew factor, in radians, on the X axis
+     * @param y_skew skew factor, in radians, on the Y axis
      */
     init_skew(x_skew: number, y_skew: number): Matrix
     /**
      * Initializes a #graphene_matrix_t with a translation to the
      * given coordinates.
+     * @param p the translation coordinates
      */
     init_translate(p: Point3D): Matrix
     /**
@@ -780,6 +871,8 @@ class Matrix {
      * If either matrix cannot be reduced to their transformations
      * then the interpolation cannot be performed, and this function
      * will return an identity matrix.
+     * @param b a #graphene_matrix_t
+     * @param factor the linear interpolation factor
      */
     interpolate(b: Matrix, factor: number): /* res */ Matrix
     /**
@@ -808,12 +901,15 @@ class Matrix {
      * 
      * Matrix multiplication is not commutative in general; the order of the factors matters.
      * The product of this multiplication is (`a` × `b)`
+     * @param b a #graphene_matrix_t
      */
     multiply(b: Matrix): /* res */ Matrix
     /**
      * Compares the two given #graphene_matrix_t matrices and checks
      * whether their values are within the given `epsilon` of each
      * other.
+     * @param b a #graphene_matrix_t
+     * @param epsilon the threshold between the two matrices
      */
     near(b: Matrix, epsilon: number): boolean
     /**
@@ -822,6 +918,7 @@ class Matrix {
     normalize(): /* res */ Matrix
     /**
      * Applies a perspective of `depth` to the matrix.
+     * @param depth the depth of the perspective
      */
     perspective(depth: number): /* res */ Matrix
     /**
@@ -833,12 +930,14 @@ class Matrix {
     print(): void
     /**
      * Projects a #graphene_point_t using the matrix `m`.
+     * @param p a #graphene_point_t
      */
     project_point(p: Point): /* res */ Point
     /**
      * Projects all corners of a #graphene_rect_t using the given matrix.
      * 
      * See also: graphene_matrix_project_point()
+     * @param r a #graphene_rect_t
      */
     project_rect(r: Rect): /* res */ Quad
     /**
@@ -846,6 +945,7 @@ class Matrix {
      * 
      * The resulting rectangle is the axis aligned bounding rectangle capable
      * of fully containing the projected rectangle.
+     * @param r a #graphene_rect_t
      */
     project_rect_bounds(r: Rect): /* res */ Rect
     /**
@@ -854,11 +954,14 @@ class Matrix {
      * 
      * This is the equivalent of calling graphene_matrix_init_rotate() and
      * then multiplying the matrix `m` with the rotation matrix.
+     * @param angle the rotation angle, in degrees
+     * @param axis the rotation axis, as a #graphene_vec3_t
      */
     rotate(angle: number, axis: Vec3): void
     /**
      * Adds a rotation transformation to `m,` using the given
      * #graphene_euler_t.
+     * @param e a rotation described by a #graphene_euler_t
      */
     rotate_euler(e: Euler): void
     /**
@@ -867,6 +970,7 @@ class Matrix {
      * 
      * This is the equivalent of calling graphene_quaternion_to_matrix() and
      * then multiplying `m` with the rotation matrix.
+     * @param q a rotation described by a #graphene_quaternion_t
      */
     rotate_quaternion(q: Quaternion): void
     /**
@@ -874,6 +978,7 @@ class Matrix {
      * the given `angle`.
      * 
      * See also: graphene_matrix_rotate()
+     * @param angle the rotation angle, in degrees
      */
     rotate_x(angle: number): void
     /**
@@ -881,6 +986,7 @@ class Matrix {
      * the given `angle`.
      * 
      * See also: graphene_matrix_rotate()
+     * @param angle the rotation angle, in degrees
      */
     rotate_y(angle: number): void
     /**
@@ -888,6 +994,7 @@ class Matrix {
      * the given `angle`.
      * 
      * See also: graphene_matrix_rotate()
+     * @param angle the rotation angle, in degrees
      */
     rotate_z(angle: number): void
     /**
@@ -896,18 +1003,24 @@ class Matrix {
      * 
      * This is the equivalent of calling graphene_matrix_init_scale() and then
      * multiplying the matrix `m` with the scale matrix.
+     * @param factor_x scaling factor on the X axis
+     * @param factor_y scaling factor on the Y axis
+     * @param factor_z scaling factor on the Z axis
      */
     scale(factor_x: number, factor_y: number, factor_z: number): void
     /**
      * Adds a skew of `factor` on the X and Y axis to the given matrix.
+     * @param factor skew factor
      */
     skew_xy(factor: number): void
     /**
      * Adds a skew of `factor` on the X and Z axis to the given matrix.
+     * @param factor skew factor
      */
     skew_xz(factor: number): void
     /**
      * Adds a skew of `factor` on the Y and Z axis to the given matrix.
+     * @param factor skew factor
      */
     skew_yz(factor: number): void
     /**
@@ -939,6 +1052,7 @@ class Matrix {
      * quadrilateral.
      * 
      * See also: graphene_matrix_transform_point()
+     * @param r a #graphene_rect_t
      */
     transform_bounds(r: Rect): /* res */ Rect
     /**
@@ -946,6 +1060,7 @@ class Matrix {
      * 
      * The result is the axis aligned bounding box containing the transformed
      * vertices.
+     * @param b a #graphene_box_t
      */
     transform_box(b: Box): /* res */ Box
     /**
@@ -956,6 +1071,7 @@ class Matrix {
      * the dot product of each row vector of the matrix.
      * 
      * See also: graphene_simd4x4f_point3_mul()
+     * @param p a #graphene_point_t
      */
     transform_point(p: Point): /* res */ Point
     /**
@@ -966,10 +1082,12 @@ class Matrix {
      * the dot product of each row vector of the matrix.
      * 
      * See also: graphene_simd4x4f_point3_mul()
+     * @param p a #graphene_point3d_t
      */
     transform_point3d(p: Point3D): /* res */ Point3D
     /**
      * Transform a #graphene_ray_t using the given matrix `m`.
+     * @param r a #graphene_ray_t
      */
     transform_ray(r: Ray): /* res */ Ray
     /**
@@ -978,11 +1096,13 @@ class Matrix {
      * The result is a coplanar quadrilateral.
      * 
      * See also: graphene_matrix_transform_point()
+     * @param r a #graphene_rect_t
      */
     transform_rect(r: Rect): /* res */ Quad
     /**
      * Transforms a #graphene_sphere_t using the given matrix `m`. The
      * result is the bounding sphere containing the transformed sphere.
+     * @param s a #graphene_sphere_t
      */
     transform_sphere(s: Sphere): /* res */ Sphere
     /**
@@ -993,12 +1113,14 @@ class Matrix {
      * be ignored.
      * 
      * See also: graphene_simd4x4f_vec3_mul()
+     * @param v a #graphene_vec3_t
      */
     transform_vec3(v: Vec3): /* res */ Vec3
     /**
      * Transforms the given #graphene_vec4_t using the matrix `m`.
      * 
      * See also: graphene_simd4x4f_vec4_mul()
+     * @param v a #graphene_vec4_t
      */
     transform_vec4(v: Vec4): /* res */ Vec4
     /**
@@ -1007,6 +1129,7 @@ class Matrix {
      * 
      * This is the equivalent of calling graphene_matrix_init_translate() and
      * then multiplying `m` with the translation matrix.
+     * @param pos a #graphene_point3d_t
      */
     translate(pos: Point3D): void
     /**
@@ -1016,16 +1139,22 @@ class Matrix {
     /**
      * Unprojects the given `point` using the `projection` matrix and
      * a `modelview` matrix.
+     * @param modelview a #graphene_matrix_t for the modelview matrix; this is   the inverse of the modelview used when projecting the point
+     * @param point a #graphene_point3d_t with the coordinates of the point
      */
     unproject_point3d(modelview: Matrix, point: Point3D): /* res */ Point3D
     /**
      * Undoes the transformation on the corners of a #graphene_rect_t using the
      * given matrix, within the given axis aligned rectangular `bounds`.
+     * @param r a #graphene_rect_t
+     * @param bounds the bounds of the transformation
      */
     untransform_bounds(r: Rect, bounds: Rect): /* res */ Rect
     /**
      * Undoes the transformation of a #graphene_point_t using the
      * given matrix, within the given axis aligned rectangular `bounds`.
+     * @param p a #graphene_point_t
+     * @param bounds the bounds of the transformation
      */
     untransform_point(p: Point, bounds: Rect): [ /* returnType */ boolean, /* res */ Point ]
     static name: string
@@ -1036,10 +1165,12 @@ class Plane {
     /* Methods of Graphene-1.0.Graphene.Plane */
     /**
      * Computes the distance of `point` from a #graphene_plane_t.
+     * @param point a #graphene_point3d_t
      */
     distance(point: Point3D): number
     /**
      * Checks whether the two given #graphene_plane_t are equal.
+     * @param b a #graphene_plane_t
      */
     equal(b: Plane): boolean
     /**
@@ -1059,16 +1190,21 @@ class Plane {
     /**
      * Initializes the given #graphene_plane_t using the given `normal` vector
      * and `constant` values.
+     * @param normal a unit length normal vector defining the plane   pointing towards the origin; if unset, we use the X axis by default
+     * @param constant the distance from the origin to the plane along the   normal vector; the sign determines the half-space occupied by the   plane
      */
     init(normal: Vec3 | null, constant: number): Plane
     /**
      * Initializes the given #graphene_plane_t using the normal
      * vector and constant of another #graphene_plane_t.
+     * @param src a #graphene_plane_t
      */
     init_from_plane(src: Plane): Plane
     /**
      * Initializes the given #graphene_plane_t using the given normal vector
      * and an arbitrary co-planar point.
+     * @param normal a normal vector defining the plane pointing towards the origin
+     * @param point a #graphene_point3d_t
      */
     init_from_point(normal: Vec3, point: Point3D): Plane
     /**
@@ -1077,11 +1213,15 @@ class Plane {
      * 
      * The winding order is counter-clockwise, and determines which direction
      * the normal vector will point.
+     * @param a a #graphene_point3d_t
+     * @param b a #graphene_point3d_t
+     * @param c a #graphene_point3d_t
      */
     init_from_points(a: Point3D, b: Point3D, c: Point3D): Plane
     /**
      * Initializes the given #graphene_plane_t using the components of
      * the given #graphene_vec4_t vector.
+     * @param src a #graphene_vec4_t containing the normal vector in its first   three components, and the distance in its fourth component
      */
     init_from_vec4(src: Vec4): Plane
     /**
@@ -1103,6 +1243,8 @@ class Plane {
      * multiple planes using the same `matrix` it's recommended to compute
      * the normal matrix beforehand to avoid incurring in the cost of
      * recomputing it every time.
+     * @param matrix a #graphene_matrix_t
+     * @param normal_matrix a #graphene_matrix_t
      */
     transform(matrix: Matrix, normal_matrix?: Matrix | null): /* res */ Plane
     static name: string
@@ -1114,14 +1256,15 @@ class Point {
     /**
      * the X coordinate of the point
      */
-    readonly x: number
+    x: number
     /**
      * the Y coordinate of the point
      */
-    readonly y: number
+    y: number
     /* Methods of Graphene-1.0.Graphene.Point */
     /**
      * Computes the distance between `a` and `b`.
+     * @param b a #graphene_point_t
      */
     distance(b: Point): [ /* returnType */ number, /* d_x */ number | null, /* d_y */ number | null ]
     /**
@@ -1131,6 +1274,7 @@ class Point {
      * This function accounts for floating point fluctuations; if
      * you want to control the fuzziness of the match, you can use
      * graphene_point_near() instead.
+     * @param b a #graphene_point_t
      */
     equal(b: Point): boolean
     /**
@@ -1141,24 +1285,32 @@ class Point {
      * Initializes `p` to the given `x` and `y` coordinates.
      * 
      * It's safe to call this function multiple times.
+     * @param x the X coordinate
+     * @param y the Y coordinate
      */
     init(x: number, y: number): Point
     /**
      * Initializes `p` with the same coordinates of `src`.
+     * @param src the #graphene_point_t to use
      */
     init_from_point(src: Point): Point
     /**
      * Initializes `p` with the coordinates inside the given #graphene_vec2_t.
+     * @param src a #graphene_vec2_t
      */
     init_from_vec2(src: Vec2): Point
     /**
      * Linearly interpolates the coordinates of `a` and `b` using the
      * given `factor`.
+     * @param b a #graphene_point_t
+     * @param factor the linear interpolation factor
      */
     interpolate(b: Point, factor: number): /* res */ Point
     /**
      * Checks whether the two points `a` and `b` are within
      * the threshold of `epsilon`.
+     * @param b a #graphene_point_t
+     * @param epsilon threshold between the two points
      */
     near(b: Point, epsilon: number): boolean
     /**
@@ -1179,30 +1331,34 @@ class Point3D {
     /**
      * the X coordinate
      */
-    readonly x: number
+    x: number
     /**
      * the Y coordinate
      */
-    readonly y: number
+    y: number
     /**
      * the Z coordinate
      */
-    readonly z: number
+    z: number
     /* Methods of Graphene-1.0.Graphene.Point3D */
     /**
      * Computes the cross product of the two given #graphene_point3d_t.
+     * @param b a #graphene_point3d_t
      */
     cross(b: Point3D): /* res */ Point3D
     /**
      * Computes the distance between the two given #graphene_point3d_t.
+     * @param b a #graphene_point3d_t
      */
     distance(b: Point3D): [ /* returnType */ number, /* delta */ Vec3 | null ]
     /**
      * Computes the dot product of the two given #graphene_point3d_t.
+     * @param b a #graphene_point3d_t
      */
     dot(b: Point3D): number
     /**
      * Checks whether two given points are equal.
+     * @param b a #graphene_point3d_t
      */
     equal(b: Point3D): boolean
     /**
@@ -1211,21 +1367,28 @@ class Point3D {
     free(): void
     /**
      * Initializes a #graphene_point3d_t with the given coordinates.
+     * @param x the X coordinate of the point
+     * @param y the Y coordinate of the point
+     * @param z the Z coordinate of the point
      */
     init(x: number, y: number, z: number): Point3D
     /**
      * Initializes a #graphene_point3d_t using the coordinates of
      * another #graphene_point3d_t.
+     * @param src a #graphene_point3d_t
      */
     init_from_point(src: Point3D): Point3D
     /**
      * Initializes a #graphene_point3d_t using the components
      * of a #graphene_vec3_t.
+     * @param v a #graphene_vec3_t
      */
     init_from_vec3(v: Vec3): Point3D
     /**
      * Linearly interpolates each component of `a` and `b` using the
      * provided `factor,` and places the result in `res`.
+     * @param b a #graphene_point3d_t
+     * @param factor the interpolation factor
      */
     interpolate(b: Point3D, factor: number): /* res */ Point3D
     /**
@@ -1236,6 +1399,8 @@ class Point3D {
     /**
      * Checks whether the two points are near each other, within
      * an `epsilon` factor.
+     * @param b a #graphene_point3d_t
+     * @param epsilon fuzzyness factor
      */
     near(b: Point3D, epsilon: number): boolean
     /**
@@ -1249,11 +1414,15 @@ class Point3D {
      * 
      * The coordinates of the resulting #graphene_point3d_t will be
      * in the [ -1, 1 ] range.
+     * @param viewport a #graphene_rect_t representing a viewport
+     * @param z_near the coordinate of the near clipping plane, or 0 for   the default near clipping plane
+     * @param z_far the coordinate of the far clipping plane, or 1 for the   default far clipping plane
      */
     normalize_viewport(viewport: Rect, z_near: number, z_far: number): /* res */ Point3D
     /**
      * Scales the coordinates of the given #graphene_point3d_t by
      * the given `factor`.
+     * @param factor the scaling factor
      */
     scale(factor: number): /* res */ Point3D
     /**
@@ -1277,6 +1446,7 @@ class Quad {
     bounds(): /* r */ Rect
     /**
      * Checks if the given #graphene_quad_t contains the given #graphene_point_t.
+     * @param p a #graphene_point_t
      */
     contains(p: Point): boolean
     /**
@@ -1285,19 +1455,26 @@ class Quad {
     free(): void
     /**
      * Retrieves the point of a #graphene_quad_t at the given index.
+     * @param index_ the index of the point to retrieve
      */
     get_point(index_: number): Point
     /**
      * Initializes a #graphene_quad_t with the given points.
+     * @param p1 the first point of the quadrilateral
+     * @param p2 the second point of the quadrilateral
+     * @param p3 the third point of the quadrilateral
+     * @param p4 the fourth point of the quadrilateral
      */
     init(p1: Point, p2: Point, p3: Point, p4: Point): Quad
     /**
      * Initializes a #graphene_quad_t using an array of points.
+     * @param points an array of 4 #graphene_point_t
      */
     init_from_points(points: Point[]): Quad
     /**
      * Initializes a #graphene_quad_t using the four corners of the
      * given #graphene_rect_t.
+     * @param r a #graphene_rect_t
      */
     init_from_rect(r: Rect): Quad
     static name: string
@@ -1308,14 +1485,17 @@ class Quaternion {
     /* Methods of Graphene-1.0.Graphene.Quaternion */
     /**
      * Adds two #graphene_quaternion_t `a` and `b`.
+     * @param b a #graphene_quaternion_t
      */
     add(b: Quaternion): /* res */ Quaternion
     /**
      * Computes the dot product of two #graphene_quaternion_t.
+     * @param b a #graphene_quaternion_t
      */
     dot(b: Quaternion): number
     /**
      * Checks whether the given quaternions are equal.
+     * @param b a #graphene_quaternion_t
      */
     equal(b: Quaternion): boolean
     /**
@@ -1324,11 +1504,17 @@ class Quaternion {
     free(): void
     /**
      * Initializes a #graphene_quaternion_t using the given four values.
+     * @param x the first component of the quaternion
+     * @param y the second component of the quaternion
+     * @param z the third component of the quaternion
+     * @param w the fourth component of the quaternion
      */
     init(x: number, y: number, z: number, w: number): Quaternion
     /**
      * Initializes a #graphene_quaternion_t using an `angle` on a
      * specific `axis`.
+     * @param angle the rotation on a given axis, in degrees
+     * @param axis the axis of rotation, expressed as a vector
      */
     init_from_angle_vec3(angle: number, axis: Vec3): Quaternion
     /**
@@ -1337,19 +1523,25 @@ class Quaternion {
      * on each axis.
      * 
      * See also: graphene_quaternion_init_from_euler()
+     * @param deg_x rotation angle on the X axis (yaw), in degrees
+     * @param deg_y rotation angle on the Y axis (pitch), in degrees
+     * @param deg_z rotation angle on the Z axis (roll), in degrees
      */
     init_from_angles(deg_x: number, deg_y: number, deg_z: number): Quaternion
     /**
      * Initializes a #graphene_quaternion_t using the given #graphene_euler_t.
+     * @param e a #graphene_euler_t
      */
     init_from_euler(e: Euler): Quaternion
     /**
      * Initializes a #graphene_quaternion_t using the rotation components
      * of a transformation matrix.
+     * @param m a #graphene_matrix_t
      */
     init_from_matrix(m: Matrix): Quaternion
     /**
      * Initializes a #graphene_quaternion_t with the values from `src`.
+     * @param src a #graphene_quaternion_t
      */
     init_from_quaternion(src: Quaternion): Quaternion
     /**
@@ -1358,10 +1550,14 @@ class Quaternion {
      * on each axis.
      * 
      * See also: graphene_quaternion_init_from_euler()
+     * @param rad_x rotation angle on the X axis (yaw), in radians
+     * @param rad_y rotation angle on the Y axis (pitch), in radians
+     * @param rad_z rotation angle on the Z axis (roll), in radians
      */
     init_from_radians(rad_x: number, rad_y: number, rad_z: number): Quaternion
     /**
      * Initializes a #graphene_quaternion_t with the values from `src`.
+     * @param src a #graphene_vec4_t
      */
     init_from_vec4(src: Vec4): Quaternion
     /**
@@ -1376,6 +1572,7 @@ class Quaternion {
     invert(): /* res */ Quaternion
     /**
      * Multiplies two #graphene_quaternion_t `a` and `b`.
+     * @param b a #graphene_quaternion_t
      */
     multiply(b: Quaternion): /* res */ Quaternion
     /**
@@ -1385,12 +1582,15 @@ class Quaternion {
     /**
      * Scales all the elements of a #graphene_quaternion_t `q` using
      * the given scalar factor.
+     * @param factor a scaling factor
      */
     scale(factor: number): /* res */ Quaternion
     /**
      * Interpolates between the two given quaternions using a spherical
      * linear interpolation, or [SLERP](http://en.wikipedia.org/wiki/Slerp),
      * using the given interpolation `factor`.
+     * @param b a #graphene_quaternion_t
+     * @param factor the linear interpolation factor
      */
     slerp(b: Quaternion, factor: number): /* res */ Quaternion
     /**
@@ -1427,6 +1627,7 @@ class Ray {
     /* Methods of Graphene-1.0.Graphene.Ray */
     /**
      * Checks whether the two given #graphene_ray_t are equal.
+     * @param b a #graphene_ray_t
      */
     equal(b: Ray): boolean
     /**
@@ -1436,6 +1637,7 @@ class Ray {
     /**
      * Computes the point on the given #graphene_ray_t that is closest to the
      * given point `p`.
+     * @param p a #graphene_point3d_t
      */
     get_closest_point_to_point(p: Point3D): /* res */ Point3D
     /**
@@ -1447,6 +1649,7 @@ class Ray {
      * given plane.
      * 
      * If the ray does not intersect the plane, this function returns `INFINITY`.
+     * @param p a #graphene_plane_t
      */
     get_distance_to_plane(p: Plane): number
     /**
@@ -1456,6 +1659,7 @@ class Ray {
      * The closest approach to a ray from a point is the distance
      * between the point and the projection of the point on the
      * ray itself.
+     * @param p a #graphene_point3d_t
      */
     get_distance_to_point(p: Point3D): number
     /**
@@ -1465,35 +1669,44 @@ class Ray {
     /**
      * Retrieves the coordinates of a point at the distance `t` along the
      * given #graphene_ray_t.
+     * @param t the distance along the ray
      */
     get_position_at(t: number): /* position */ Point3D
     /**
      * Initializes the given #graphene_ray_t using the given `origin`
      * and `direction` values.
+     * @param origin the origin of the ray
+     * @param direction the direction vector
      */
     init(origin?: Point3D | null, direction?: Vec3 | null): Ray
     /**
      * Initializes the given #graphene_ray_t using the origin and direction
      * values of another #graphene_ray_t.
+     * @param src a #graphene_ray_t
      */
     init_from_ray(src: Ray): Ray
     /**
      * Initializes the given #graphene_ray_t using the given vectors.
+     * @param origin a #graphene_vec3_t
+     * @param direction a #graphene_vec3_t
      */
     init_from_vec3(origin?: Vec3 | null, direction?: Vec3 | null): Ray
     /**
      * Intersects the given #graphene_ray_t `r` with the given
      * #graphene_box_t `b`.
+     * @param b a #graphene_box_t
      */
     intersect_box(b: Box): [ /* returnType */ RayIntersectionKind, /* t_out */ number ]
     /**
      * Intersects the given #graphene_ray_t `r` with the given
      * #graphene_sphere_t `s`.
+     * @param s a #graphene_sphere_t
      */
     intersect_sphere(s: Sphere): [ /* returnType */ RayIntersectionKind, /* t_out */ number ]
     /**
      * Intersects the given #graphene_ray_t `r` with the given
      * #graphene_triangle_t `t`.
+     * @param t a #graphene_triangle_t
      */
     intersect_triangle(t: Triangle): [ /* returnType */ RayIntersectionKind, /* t_out */ number ]
     /**
@@ -1501,6 +1714,7 @@ class Ray {
      * given #graphene_box_t `b`.
      * 
      * See also: graphene_ray_intersect_box()
+     * @param b a #graphene_box_t
      */
     intersects_box(b: Box): boolean
     /**
@@ -1508,6 +1722,7 @@ class Ray {
      * given #graphene_sphere_t `s`.
      * 
      * See also: graphene_ray_intersect_sphere()
+     * @param s a #graphene_sphere_t
      */
     intersects_sphere(s: Sphere): boolean
     /**
@@ -1515,6 +1730,7 @@ class Ray {
      * given #graphene_triangle_t `b`.
      * 
      * See also: graphene_ray_intersect_triangle()
+     * @param t a #graphene_triangle_t
      */
     intersects_triangle(t: Triangle): boolean
     static name: string
@@ -1526,27 +1742,31 @@ class Rect {
     /**
      * the coordinates of the origin of the rectangle
      */
-    readonly origin: Point
+    origin: Point
     /**
      * the size of the rectangle
      */
-    readonly size: Size
+    size: Size
     /* Methods of Graphene-1.0.Graphene.Rect */
     /**
      * Checks whether a #graphene_rect_t contains the given coordinates.
+     * @param p a #graphene_point_t
      */
     contains_point(p: Point): boolean
     /**
      * Checks whether a #graphene_rect_t fully contains the given
      * rectangle.
+     * @param b a #graphene_rect_t
      */
     contains_rect(b: Rect): boolean
     /**
      * Checks whether the two given rectangle are equal.
+     * @param b a #graphene_rect_t
      */
     equal(b: Rect): boolean
     /**
      * Expands a #graphene_rect_t to contain the given #graphene_point_t.
+     * @param p a #graphene_point_t
      */
     expand(p: Point): /* res */ Rect
     /**
@@ -1604,6 +1824,10 @@ class Rect {
      * 
      * This function will implicitly normalize the #graphene_rect_t
      * before returning.
+     * @param x the X coordinate of the `graphene_rect_t`.origin
+     * @param y the Y coordinate of the `graphene_rect_t`.origin
+     * @param width the width of the `graphene_rect_t`.size
+     * @param height the height of the `graphene_rect_t`.size
      */
     init(x: number, y: number, width: number, height: number): Rect
     /**
@@ -1611,6 +1835,7 @@ class Rect {
      * 
      * This function will implicitly normalize the #graphene_rect_t
      * before returning.
+     * @param src a #graphene_rect_t
      */
     init_from_rect(src: Rect): Rect
     /**
@@ -1628,6 +1853,8 @@ class Rect {
      * 
      * If the size of the resulting inset rectangle has a negative width or
      * height then the size will be set to zero.
+     * @param d_x the horizontal inset
+     * @param d_y the vertical inset
      */
     inset(d_x: number, d_y: number): Rect
     /**
@@ -1645,11 +1872,15 @@ class Rect {
      * 
      * If the size of the resulting inset rectangle has a negative width or
      * height then the size will be set to zero.
+     * @param d_x the horizontal inset
+     * @param d_y the vertical inset
      */
     inset_r(d_x: number, d_y: number): /* res */ Rect
     /**
      * Linearly interpolates the origin and size of the two given
      * rectangles.
+     * @param b a #graphene_rect_t
+     * @param factor the linear interpolation factor
      */
     interpolate(b: Rect, factor: number): /* res */ Rect
     /**
@@ -1661,6 +1892,7 @@ class Rect {
      * 
      * If the two rectangles do not intersect, `res` will contain
      * a degenerate rectangle with origin in (0, 0) and a size of 0.
+     * @param b a #graphene_rect_t
      */
     intersection(b: Rect): [ /* returnType */ boolean, /* res */ Rect | null ]
     /**
@@ -1683,12 +1915,16 @@ class Rect {
      * Offsets the origin by `d_x` and `d_y`.
      * 
      * The size of the rectangle is unchanged.
+     * @param d_x the horizontal offset
+     * @param d_y the vertical offset
      */
     offset(d_x: number, d_y: number): Rect
     /**
      * Offsets the origin of the given rectangle by `d_x` and `d_y`.
      * 
      * The size of the rectangle is left unchanged.
+     * @param d_x the horizontal offset
+     * @param d_y the vertical offset
      */
     offset_r(d_x: number, d_y: number): /* res */ Rect
     /**
@@ -1736,6 +1972,8 @@ class Rect {
     /**
      * Scales the size and origin of a rectangle horizontaly by `s_h,`
      * and vertically by `s_v`. The result `res` is normalized.
+     * @param s_h horizontal scale factor
+     * @param s_v vertical scale factor
      */
     scale(s_h: number, s_v: number): /* res */ Rect
     /**
@@ -1744,6 +1982,7 @@ class Rect {
      * ![](rectangle-union.png)
      * 
      * The union in the image above is the blue outline.
+     * @param b a #graphene_rect_t
      */
     union(b: Rect): /* res */ Rect
     static name: string
@@ -1771,14 +2010,15 @@ class Size {
     /**
      * the width
      */
-    readonly width: number
+    width: number
     /**
      * the height
      */
-    readonly height: number
+    height: number
     /* Methods of Graphene-1.0.Graphene.Size */
     /**
      * Checks whether the two give #graphene_size_t are equal.
+     * @param b a #graphene_size_t
      */
     equal(b: Size): boolean
     /**
@@ -1787,20 +2027,26 @@ class Size {
     free(): void
     /**
      * Initializes a #graphene_size_t using the given `width` and `height`.
+     * @param width the width
+     * @param height the height
      */
     init(width: number, height: number): Size
     /**
      * Initializes a #graphene_size_t using the width and height of
      * the given `src`.
+     * @param src a #graphene_size_t
      */
     init_from_size(src: Size): Size
     /**
      * Linearly interpolates the two given #graphene_size_t using the given
      * interpolation `factor`.
+     * @param b a #graphene_size_t
+     * @param factor the linear interpolation factor
      */
     interpolate(b: Size, factor: number): /* res */ Size
     /**
      * Scales the components of a #graphene_size_t using the given `factor`.
+     * @param factor the scaling factor
      */
     scale(factor: number): /* res */ Size
     static name: string
@@ -1817,15 +2063,18 @@ class Sphere {
     /**
      * Checks whether the given `point` is contained in the volume
      * of a #graphene_sphere_t.
+     * @param point a #graphene_point3d_t
      */
     contains_point(point: Point3D): boolean
     /**
      * Computes the distance of the given `point` from the surface of
      * a #graphene_sphere_t.
+     * @param point a #graphene_point3d_t
      */
     distance(point: Point3D): number
     /**
      * Checks whether two #graphene_sphere_t are equal.
+     * @param b a #graphene_sphere_t
      */
     equal(b: Sphere): boolean
     /**
@@ -1847,6 +2096,8 @@ class Sphere {
     get_radius(): number
     /**
      * Initializes the given #graphene_sphere_t with the given `center` and `radius`.
+     * @param center the coordinates of the center of the sphere, or %NULL   for a center in (0, 0, 0)
+     * @param radius the radius of the sphere
      */
     init(center: Point3D | null, radius: number): Sphere
     /**
@@ -1855,6 +2106,8 @@ class Sphere {
      * 
      * The center of the sphere can either be specified, or will be center
      * of the 3D volume that encompasses all `points`.
+     * @param points an array of #graphene_point3d_t
+     * @param center the center of the sphere
      */
     init_from_points(points: Point3D[], center?: Point3D | null): Sphere
     /**
@@ -1863,6 +2116,8 @@ class Sphere {
      * 
      * The center of the sphere can either be specified, or will be center
      * of the 3D volume that encompasses all `vectors`.
+     * @param vectors an array of #graphene_vec3_t
+     * @param center the center of the sphere
      */
     init_from_vectors(vectors: Vec3[], center?: Point3D | null): Sphere
     /**
@@ -1872,6 +2127,7 @@ class Sphere {
     /**
      * Translates the center of the given #graphene_sphere_t using the `point`
      * coordinates as the delta of the translation.
+     * @param point the coordinates of the translation
      */
     translate(point: Point3D): /* res */ Sphere
     static name: string
@@ -1882,10 +2138,12 @@ class Triangle {
     /* Methods of Graphene-1.0.Graphene.Triangle */
     /**
      * Checks whether the given triangle `t` contains the point `p`.
+     * @param p a #graphene_point3d_t
      */
     contains_point(p: Point3D): boolean
     /**
      * Checks whether the two given #graphene_triangle_t are equal.
+     * @param b a #graphene_triangle_t
      */
     equal(b: Triangle): boolean
     /**
@@ -1913,6 +2171,7 @@ class Triangle {
      * 
      *  - `res.x = u`
      *  - `res.y = v`
+     * @param p a #graphene_point3d_t
      */
     get_barycoords(p?: Point3D | null): [ /* returnType */ boolean, /* res */ Vec2 ]
     /**
@@ -1952,6 +2211,10 @@ class Triangle {
      *  - `res.y = v`
      * 
      * See also: graphene_triangle_get_barycoords()
+     * @param p a #graphene_point3d_t
+     * @param uv_a the UV coordinates of the first point
+     * @param uv_b the UV coordinates of the second point
+     * @param uv_c the UV coordinates of the third point
      */
     get_uv(p: Point3D | null, uv_a: Vec2, uv_b: Vec2, uv_c: Vec2): [ /* returnType */ boolean, /* res */ Vec2 ]
     /**
@@ -1962,14 +2225,23 @@ class Triangle {
      * Initializes a #graphene_triangle_t using the three given arrays
      * of floating point values, each representing the coordinates of
      * a point in 3D space.
+     * @param a an array of 3 floating point values
+     * @param b an array of 3 floating point values
+     * @param c an array of 3 floating point values
      */
     init_from_float(a: number[], b: number[], c: number[]): Triangle
     /**
      * Initializes a #graphene_triangle_t using the three given 3D points.
+     * @param a a #graphene_point3d_t
+     * @param b a #graphene_point3d_t
+     * @param c a #graphene_point3d_t
      */
     init_from_point3d(a?: Point3D | null, b?: Point3D | null, c?: Point3D | null): Triangle
     /**
      * Initializes a #graphene_triangle_t using the three given vectors.
+     * @param a a #graphene_vec3_t
+     * @param b a #graphene_vec3_t
+     * @param c a #graphene_vec3_t
      */
     init_from_vec3(a?: Vec3 | null, b?: Vec3 | null, c?: Vec3 | null): Triangle
     static name: string
@@ -1981,20 +2253,24 @@ class Vec2 {
     /**
      * Adds each component of the two passed vectors and places
      * each result into the components of `res`.
+     * @param b a #graphene_vec2_t
      */
     add(b: Vec2): /* res */ Vec2
     /**
      * Divides each component of the first operand `a` by the corresponding
      * component of the second operand `b,` and places the results into the
      * vector `res`.
+     * @param b a #graphene_vec2_t
      */
     divide(b: Vec2): /* res */ Vec2
     /**
      * Computes the dot product of the two given vectors.
+     * @param b a #graphene_vec2_t
      */
     dot(b: Vec2): number
     /**
      * Checks whether the two given #graphene_vec2_t are equal.
+     * @param v2 a #graphene_vec2_t
      */
     equal(v2: Vec2): boolean
     /**
@@ -2013,18 +2289,24 @@ class Vec2 {
      * Initializes a #graphene_vec2_t using the given values.
      * 
      * This function can be called multiple times.
+     * @param x the X field of the vector
+     * @param y the Y field of the vector
      */
     init(x: number, y: number): Vec2
     /**
      * Initializes `v` with the contents of the given array.
+     * @param src an array of floating point values   with at least two elements
      */
     init_from_float(src: number[]): Vec2
     /**
      * Copies the contents of `src` into `v`.
+     * @param src a #graphene_vec2_t
      */
     init_from_vec2(src: Vec2): Vec2
     /**
      * Linearly interpolates `v1` and `v2` using the given `factor`.
+     * @param v2 a #graphene_vec2_t
+     * @param factor the interpolation factor
      */
     interpolate(v2: Vec2, factor: number): /* res */ Vec2
     /**
@@ -2034,21 +2316,26 @@ class Vec2 {
     /**
      * Compares the two given vectors and places the maximum
      * values of each component into `res`.
+     * @param b a #graphene_vec2_t
      */
     max(b: Vec2): /* res */ Vec2
     /**
      * Compares the two given vectors and places the minimum
      * values of each component into `res`.
+     * @param b a #graphene_vec2_t
      */
     min(b: Vec2): /* res */ Vec2
     /**
      * Multiplies each component of the two passed vectors and places
      * each result into the components of `res`.
+     * @param b a #graphene_vec2_t
      */
     multiply(b: Vec2): /* res */ Vec2
     /**
      * Compares the two given #graphene_vec2_t vectors and checks
      * whether their values are within the given `epsilon`.
+     * @param v2 a #graphene_vec2_t
+     * @param epsilon the threshold between the two vectors
      */
     near(v2: Vec2, epsilon: number): boolean
     /**
@@ -2061,12 +2348,14 @@ class Vec2 {
     normalize(): /* res */ Vec2
     /**
      * Multiplies all components of the given vector with the given scalar `factor`.
+     * @param factor the scalar factor
      */
     scale(factor: number): /* res */ Vec2
     /**
      * Subtracts from each component of the first operand `a` the
      * corresponding component of the second operand `b` and places
      * each result into the components of `res`.
+     * @param b a #graphene_vec2_t
      */
     subtract(b: Vec2): /* res */ Vec2
     /**
@@ -2097,24 +2386,29 @@ class Vec3 {
     /* Methods of Graphene-1.0.Graphene.Vec3 */
     /**
      * Adds each component of the two given vectors.
+     * @param b a #graphene_vec3_t
      */
     add(b: Vec3): /* res */ Vec3
     /**
      * Computes the cross product of the two given vectors.
+     * @param b a #graphene_vec3_t
      */
     cross(b: Vec3): /* res */ Vec3
     /**
      * Divides each component of the first operand `a` by the corresponding
      * component of the second operand `b,` and places the results into the
      * vector `res`.
+     * @param b a #graphene_vec3_t
      */
     divide(b: Vec3): /* res */ Vec3
     /**
      * Computes the dot product of the two given vectors.
+     * @param b a #graphene_vec3_t
      */
     dot(b: Vec3): number
     /**
      * Checks whether the two given #graphene_vec3_t are equal.
+     * @param v2 a #graphene_vec3_t
      */
     equal(v2: Vec3): boolean
     /**
@@ -2148,6 +2442,7 @@ class Vec3 {
     /**
      * Converts a #graphene_vec3_t in a #graphene_vec4_t using `w` as
      * the value of the fourth component of the resulting vector.
+     * @param w the value of the W component
      */
     get_xyzw(w: number): /* res */ Vec4
     /**
@@ -2162,19 +2457,26 @@ class Vec3 {
      * Initializes a #graphene_vec3_t using the given values.
      * 
      * This function can be called multiple times.
+     * @param x the X field of the vector
+     * @param y the Y field of the vector
+     * @param z the Z field of the vector
      */
     init(x: number, y: number, z: number): Vec3
     /**
      * Initializes a #graphene_vec3_t with the values from an array.
+     * @param src an array of 3 floating point values
      */
     init_from_float(src: number[]): Vec3
     /**
      * Initializes a #graphene_vec3_t with the values of another
      * #graphene_vec3_t.
+     * @param src a #graphene_vec3_t
      */
     init_from_vec3(src: Vec3): Vec3
     /**
      * Linearly interpolates `v1` and `v2` using the given `factor`.
+     * @param v2 a #graphene_vec3_t
+     * @param factor the interpolation factor
      */
     interpolate(v2: Vec3, factor: number): /* res */ Vec3
     /**
@@ -2184,20 +2486,25 @@ class Vec3 {
     /**
      * Compares each component of the two given vectors and creates a
      * vector that contains the maximum values.
+     * @param b a #graphene_vec3_t
      */
     max(b: Vec3): /* res */ Vec3
     /**
      * Compares each component of the two given vectors and creates a
      * vector that contains the minimum values.
+     * @param b a #graphene_vec3_t
      */
     min(b: Vec3): /* res */ Vec3
     /**
      * Multiplies each component of the two given vectors.
+     * @param b a #graphene_vec3_t
      */
     multiply(b: Vec3): /* res */ Vec3
     /**
      * Compares the two given #graphene_vec3_t vectors and checks
      * whether their values are within the given `epsilon`.
+     * @param v2 a #graphene_vec3_t
+     * @param epsilon the threshold between the two vectors
      */
     near(v2: Vec3, epsilon: number): boolean
     /**
@@ -2210,12 +2517,14 @@ class Vec3 {
     normalize(): /* res */ Vec3
     /**
      * Multiplies all components of the given vector with the given scalar `factor`.
+     * @param factor the scalar factor
      */
     scale(factor: number): /* res */ Vec3
     /**
      * Subtracts from each component of the first operand `a` the
      * corresponding component of the second operand `b` and places
      * each result into the components of `res`.
+     * @param b a #graphene_vec3_t
      */
     subtract(b: Vec3): /* res */ Vec3
     /**
@@ -2255,20 +2564,24 @@ class Vec4 {
     /* Methods of Graphene-1.0.Graphene.Vec4 */
     /**
      * Adds each component of the two given vectors.
+     * @param b a #graphene_vec4_t
      */
     add(b: Vec4): /* res */ Vec4
     /**
      * Divides each component of the first operand `a` by the corresponding
      * component of the second operand `b,` and places the results into the
      * vector `res`.
+     * @param b a #graphene_vec4_t
      */
     divide(b: Vec4): /* res */ Vec4
     /**
      * Computes the dot product of the two given vectors.
+     * @param b a #graphene_vec4_t
      */
     dot(b: Vec4): number
     /**
      * Checks whether the two given #graphene_vec4_t are equal.
+     * @param v2 a #graphene_vec4_t
      */
     equal(v2: Vec4): boolean
     /**
@@ -2305,29 +2618,42 @@ class Vec4 {
      * Initializes a #graphene_vec4_t using the given values.
      * 
      * This function can be called multiple times.
+     * @param x the X field of the vector
+     * @param y the Y field of the vector
+     * @param z the Z field of the vector
+     * @param w the W field of the vector
      */
     init(x: number, y: number, z: number, w: number): Vec4
     /**
      * Initializes a #graphene_vec4_t with the values inside the given array.
+     * @param src an array of four floating point values
      */
     init_from_float(src: number[]): Vec4
     /**
      * Initializes a #graphene_vec4_t using the components of a
      * #graphene_vec2_t and the values of `z` and `w`.
+     * @param src a #graphene_vec2_t
+     * @param z the value for the third component of `v`
+     * @param w the value for the fourth component of `v`
      */
     init_from_vec2(src: Vec2, z: number, w: number): Vec4
     /**
      * Initializes a #graphene_vec4_t using the components of a
      * #graphene_vec3_t and the value of `w`.
+     * @param src a #graphene_vec3_t
+     * @param w the value for the fourth component of `v`
      */
     init_from_vec3(src: Vec3, w: number): Vec4
     /**
      * Initializes a #graphene_vec4_t using the components of
      * another #graphene_vec4_t.
+     * @param src a #graphene_vec4_t
      */
     init_from_vec4(src: Vec4): Vec4
     /**
      * Linearly interpolates `v1` and `v2` using the given `factor`.
+     * @param v2 a #graphene_vec4_t
+     * @param factor the interpolation factor
      */
     interpolate(v2: Vec4, factor: number): /* res */ Vec4
     /**
@@ -2337,20 +2663,25 @@ class Vec4 {
     /**
      * Compares each component of the two given vectors and creates a
      * vector that contains the maximum values.
+     * @param b a #graphene_vec4_t
      */
     max(b: Vec4): /* res */ Vec4
     /**
      * Compares each component of the two given vectors and creates a
      * vector that contains the minimum values.
+     * @param b a #graphene_vec4_t
      */
     min(b: Vec4): /* res */ Vec4
     /**
      * Multiplies each component of the two given vectors.
+     * @param b a #graphene_vec4_t
      */
     multiply(b: Vec4): /* res */ Vec4
     /**
      * Compares the two given #graphene_vec4_t vectors and checks
      * whether their values are within the given `epsilon`.
+     * @param v2 a #graphene_vec4_t
+     * @param epsilon the threshold between the two vectors
      */
     near(v2: Vec4, epsilon: number): boolean
     /**
@@ -2363,12 +2694,14 @@ class Vec4 {
     normalize(): /* res */ Vec4
     /**
      * Multiplies all components of the given vector with the given scalar `factor`.
+     * @param factor the scalar factor
      */
     scale(factor: number): /* res */ Vec4
     /**
      * Subtracts from each component of the first operand `a` the
      * corresponding component of the second operand `b` and places
      * each result into the components of `res`.
+     * @param b a #graphene_vec4_t
      */
     subtract(b: Vec4): /* res */ Vec4
     /**

@@ -134,6 +134,16 @@ class Client {
      */
     active: boolean
     /**
+     * The IP protocol address family this client works on. When specified
+     * during construction without giving a concrete address, it will be
+     * used to determine the proper address.
+     * 
+     * If not specified, will contain the currrent address family after
+     * the call to g_initable_init()<!-- -->. Use %G_SOCKET_FAMILY_INVALID
+     * to specifiy using the default socket family (legacy IP)
+     */
+    readonly address_family: Gio.SocketFamily
+    /**
      * The value of the BOOTID.UPNP.ORG header
      * 
      * Since 1.2.0
@@ -154,6 +164,17 @@ class Client {
      */
     host_mask: Gio.InetAddressMask
     /**
+     * The name of the network interface this client is associated with.
+     * Set to NULL to autodetect.
+     */
+    readonly interface: string
+    /**
+     * UDP port to use for sending multicast M-SEARCH requests on the
+     * network. If not set (or set to 0) a random port will be used.
+     * This property can be only set during object construction.
+     */
+    readonly msearch_port: number
+    /**
      * The network this client is currently connected to. You could set this
      * to anything you want to identify the network this client is
      * associated with. If you are using #GUPnPContextManager and associated
@@ -166,8 +187,18 @@ class Client {
      * The SSDP server's identifier.
      */
     server_id: string
+    /**
+     * Time-to-live value to use for all sockets created by this client.
+     * If not set (or set to 0) the value recommended by UPnP will be used.
+     * This property can only be set during object construction.
+     */
+    readonly socket_ttl: number
+    /**
+     * The UPnP version the client adheres to.
+     */
+    readonly uda_version: UDAVersion
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSSDP-1.2.GSSDP.Client */
     /**
      * Add `user_agent` for `ip_address`.
@@ -177,6 +208,8 @@ class Client {
      * 
      * This information can be used in higher layers to get an User-Agent for
      * devices that do not set the User-Agent header in their SOAP requests.
+     * @param ip_address The host to add to the cache
+     * @param user_agent User agent ot the host to add
      */
     add_cache_entry(ip_address: string, user_agent: string): void
     /**
@@ -184,10 +217,13 @@ class Client {
      * be used by clients requiring vendor specific header fields.
      * 
      * If there is an existing header with `name` it will append another one.
+     * @param name Header name
+     * @param value Header value
      */
     append_header(name: string, value?: string | null): void
     /**
      * Check if the peer at `address` is reachable using this `client`.
+     * @param address A #GInetSocketAddress of the target. The port part of the address may be 0
      */
     can_reach(address: Gio.InetSocketAddress): boolean
     /**
@@ -222,11 +258,13 @@ class Client {
     get_uda_version(): UDAVersion
     /**
      * Try to get a User-Agent for `ip_address`.
+     * @param ip_address IP address to guess the user-agent for
      */
     guess_user_agent(ip_address: string): string
     /**
      * Removes `name` from the list of headers. If there are multiple values for
      * `name,` they are all removed.
+     * @param name Header name
      */
     remove_header(name: string): void
     /**
@@ -235,15 +273,18 @@ class Client {
      * 
      * The boot-id is used to signalize changes in the network configuration
      * for multi-homed hosts
+     * @param boot_id The new boot-id for the client
      */
     set_boot_id(boot_id: number): void
     /**
      * The config-id is used to allow caching of the device or service description.
      * It should be changed if that changes.
+     * @param config_id The new config-id for the client
      */
     set_config_id(config_id: number): void
     /**
      * Sets the network identification of `client` to `network`.
+     * @param network The string identifying the network
      */
     set_network(network: string): void
     /**
@@ -253,6 +294,7 @@ class Client {
      * 
      * By default, GSSDP will generate a header conforming to the requirements
      * defined in the UDA documents: OS/Version UPnP/Version GSSDP/Version.
+     * @param server_id The server ID
      */
     set_server_id(server_id: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -290,6 +332,10 @@ class Client {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -300,6 +346,12 @@ class Client {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -323,6 +375,7 @@ class Client {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -342,11 +395,14 @@ class Client {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -354,6 +410,8 @@ class Client {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -371,6 +429,7 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -416,6 +475,7 @@ class Client {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -459,15 +519,20 @@ class Client {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -508,6 +573,7 @@ class Client {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -542,6 +608,7 @@ class Client {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -584,6 +651,7 @@ class Client {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GSSDP-1.2.GSSDP.Client */
@@ -626,6 +694,7 @@ class Client {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -645,12 +714,17 @@ class Client {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of GSSDP-1.2.GSSDP.Client */
     /**
      * Internal signal.
+     * @param from_ip The IP address of the source.
+     * @param from_port The UDP port used by the sender.
+     * @param type The #_GSSDPMessageType.
+     * @param headers Parsed #SoupMessageHeaders from the message.
      */
     connect(sigName: "message-received", callback: (($obj: Client, from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders) => void)): number
     connect_after(sigName: "message-received", callback: (($obj: Client, from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders) => void)): number
@@ -684,12 +758,15 @@ class Client {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::active", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::address-family", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::address-family", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::boot-id", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::boot-id", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::config-id", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
@@ -698,10 +775,18 @@ class Client {
     connect_after(sigName: "notify::host-ip", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::host-mask", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::host-mask", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::interface", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::interface", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::msearch-port", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::msearch-port", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::network", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::network", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::server-id", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::server-id", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::socket-ttl", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::socket-ttl", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::uda-version", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::uda-version", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -716,6 +801,9 @@ class Client {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -747,6 +835,10 @@ class ResourceBrowser {
      */
     active: boolean
     /**
+     * The [class`GSSDP`.Client] to use for listening to SSDP messages
+     */
+    readonly client: Client
+    /**
      * The maximum number of seconds in which to request other parties
      * to respond.
      */
@@ -756,7 +848,7 @@ class ResourceBrowser {
      */
     target: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSSDP-1.2.GSSDP.ResourceBrowser */
     /**
      * Get whether the browser is currently active.
@@ -781,14 +873,17 @@ class ResourceBrowser {
     rescan(): boolean
     /**
      * (De)activates `resource_browser`.
+     * @param active %TRUE to activate `resource_browser`
      */
     set_active(active: boolean): void
     /**
      * Sets the used MX value of `resource_browser` to `mx`.
+     * @param mx The to be used MX value
      */
     set_mx(mx: number): void
     /**
      * Sets the browser target of `resource_browser` to `target`.
+     * @param target The browser target
      */
     set_target(target: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -826,6 +921,10 @@ class ResourceBrowser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -836,6 +935,12 @@ class ResourceBrowser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -859,6 +964,7 @@ class ResourceBrowser {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -878,11 +984,14 @@ class ResourceBrowser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -890,6 +999,8 @@ class ResourceBrowser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -907,6 +1018,7 @@ class ResourceBrowser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -952,6 +1064,7 @@ class ResourceBrowser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -995,15 +1108,20 @@ class ResourceBrowser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1044,6 +1162,7 @@ class ResourceBrowser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1078,6 +1197,7 @@ class ResourceBrowser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GSSDP-1.2.GSSDP.ResourceBrowser */
@@ -1100,6 +1220,7 @@ class ResourceBrowser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1107,6 +1228,8 @@ class ResourceBrowser {
     /**
      * The ::resource-available signal is emitted whenever a new resource
      * has become available.
+     * @param usn The USN of the discovered resource
+     * @param locations A [struct`GLib`.List] of strings describing the locations of the discovered resource.
      */
     connect(sigName: "resource-available", callback: (($obj: ResourceBrowser, usn: string, locations: string[]) => void)): number
     connect_after(sigName: "resource-available", callback: (($obj: ResourceBrowser, usn: string, locations: string[]) => void)): number
@@ -1114,6 +1237,7 @@ class ResourceBrowser {
     /**
      * The ::resource-unavailable signal is emitted whenever a resource
      * is not available any more.
+     * @param usn The USN of the resource
      */
     connect(sigName: "resource-unavailable", callback: (($obj: ResourceBrowser, usn: string) => void)): number
     connect_after(sigName: "resource-unavailable", callback: (($obj: ResourceBrowser, usn: string) => void)): number
@@ -1121,6 +1245,9 @@ class ResourceBrowser {
     /**
      * The ::resource-update signal is emitted whenever an UPnP 1.1
      * device is about to change it's BOOTID.
+     * @param usn The USN of the resource
+     * @param boot_id The current boot-id
+     * @param next_boot_id The next boot-id
      */
     connect(sigName: "resource-update", callback: (($obj: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number) => void)): number
     connect_after(sigName: "resource-update", callback: (($obj: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number) => void)): number
@@ -1154,12 +1281,15 @@ class ResourceBrowser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::active", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::active", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::mx", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mx", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::target", callback: (($obj: ResourceBrowser, pspec: GObject.ParamSpec) => void)): number
@@ -1202,6 +1332,10 @@ class ResourceGroup {
      */
     available: boolean
     /**
+     * The #GSSDPClient to use.
+     */
+    readonly client: Client
+    /**
      * The number of seconds our advertisements are valid.
      */
     max_age: number
@@ -1211,7 +1345,7 @@ class ResourceGroup {
      */
     message_delay: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GSSDP-1.2.GSSDP.ResourceGroup */
     /**
      * Add an additional resource to announce in this resource group.
@@ -1225,6 +1359,9 @@ class ResourceGroup {
      * 
      * The resource id that is returned by this function can be used with
      * [method`GSSDP`.ResourceGroup.remove_resource].
+     * @param target The resource's target
+     * @param usn The resource's USN
+     * @param locations A #GList of the resource's locations
      */
     add_resource(target: string, usn: string, locations: string[]): number
     /**
@@ -1234,6 +1371,9 @@ class ResourceGroup {
      * 
      * The resource id that is returned by this function can be used with
      * [method`GSSDP`.ResourceGroup.remove_resource].
+     * @param target The resource's target
+     * @param usn The resource's USN
+     * @param location The resource's location
      */
     add_resource_simple(target: string, usn: string, location: string): number
     get_available(): boolean
@@ -1242,25 +1382,30 @@ class ResourceGroup {
     get_message_delay(): number
     /**
      * Removes the resource with ID `resource_id` from `resource_group`.
+     * @param resource_id The ID of the resource to remove
      */
     remove_resource(resource_id: number): void
     /**
      * Sets `resource_group<`!-- -->s availability to `available`. Changing
      * `resource_group<`!-- -->s availability causes it to announce its new state
      * to listening SSDP clients.
+     * @param available %TRUE if `resource_group` should be available (advertised)
      */
     set_available(available: boolean): void
     /**
      * Sets the number of seconds advertisements are valid to `max_age`.
+     * @param max_age The number of seconds advertisements are valid
      */
     set_max_age(max_age: number): void
     /**
      * Sets the minimum time between each SSDP message.
+     * @param message_delay The message delay in ms.
      */
     set_message_delay(message_delay: number): void
     /**
      * Send an `ssdp::update` message if the underlying `GSSDPClient` is running
      * the UDA 1.1 protocol. Does nothing otherwise.
+     * @param new_boot_id The new boot id of the device
      */
     update(new_boot_id: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1298,6 +1443,10 @@ class ResourceGroup {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1308,6 +1457,12 @@ class ResourceGroup {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1331,6 +1486,7 @@ class ResourceGroup {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1350,11 +1506,14 @@ class ResourceGroup {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1362,6 +1521,8 @@ class ResourceGroup {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1379,6 +1540,7 @@ class ResourceGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1424,6 +1586,7 @@ class ResourceGroup {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1467,15 +1630,20 @@ class ResourceGroup {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1516,6 +1684,7 @@ class ResourceGroup {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1550,6 +1719,7 @@ class ResourceGroup {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1569,6 +1739,7 @@ class ResourceGroup {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1601,12 +1772,15 @@ class ResourceGroup {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::available", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::available", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::max-age", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-age", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::message-delay", callback: (($obj: ResourceGroup, pspec: GObject.ParamSpec) => void)): number
@@ -1624,19 +1798,19 @@ class ResourceGroup {
 }
 abstract class ClientClass {
     /* Fields of GSSDP-1.2.GSSDP.ClientClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class ResourceBrowserClass {
     /* Fields of GSSDP-1.2.GSSDP.ResourceBrowserClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly resource_update: (resource_browser: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number) => void
-    readonly resource_unavailable: (resource_browser: ResourceBrowser, usn: string) => void
+    parent_class: GObject.ObjectClass
+    resource_update: (resource_browser: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number) => void
+    resource_unavailable: (resource_browser: ResourceBrowser, usn: string) => void
     static name: string
 }
 abstract class ResourceGroupClass {
     /* Fields of GSSDP-1.2.GSSDP.ResourceGroupClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 }

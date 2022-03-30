@@ -1024,30 +1024,37 @@ class Buildable {
     /* Methods of IAnjuta-3.0.IAnjuta.Buildable */
     /**
      * fixme
+     * @param uri fixme
      */
     build(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     clean(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     configure(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     execute(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     generate(uri: string): void
     /**
      * Retrieves the currently set command override.
+     * @param command_id Command to get override.
      */
     get_command(command_id: BuildableCommand): string
     /**
      * fixme
+     * @param uri fixme
      */
     install(uri: string): void
     /**
@@ -1056,35 +1063,44 @@ class Buildable {
     reset_commands(): void
     /**
      * Overrides the default command for the given command.
+     * @param command_id Command to override.
+     * @param command Build command to override.
      */
     set_command(command_id: BuildableCommand, command: string): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Buildable */
     /**
      * fixme
+     * @param uri fixme
      */
     vfunc_build(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     vfunc_clean(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     vfunc_configure(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     vfunc_execute(uri: string): void
     /**
      * fixme
+     * @param uri fixme
      */
     vfunc_generate(uri: string): void
     /**
      * Retrieves the currently set command override.
+     * @param command_id Command to get override.
      */
     vfunc_get_command(command_id: BuildableCommand): string
     /**
      * fixme
+     * @param uri fixme
      */
     vfunc_install(uri: string): void
     /**
@@ -1093,6 +1109,8 @@ class Buildable {
     vfunc_reset_commands(): void
     /**
      * Overrides the default command for the given command.
+     * @param command_id Command to override.
+     * @param command Build command to override.
      */
     vfunc_set_command(command_id: BuildableCommand, command: string): void
     static name: string
@@ -1104,10 +1122,12 @@ class Builder {
     /**
      * Cancel specified command. The callback function will not
      * be called.
+     * @param handle handle of the command to cancel
      */
     cancel(handle: BuilderHandle): void
     /**
      * Get the configuration corresponding to the target uri.
+     * @param uri target uri
      */
     get_uri_configuration(uri: string): string
     /**
@@ -1121,10 +1141,12 @@ class Builder {
     /**
      * Cancel specified command. The callback function will not
      * be called.
+     * @param handle handle of the command to cancel
      */
     vfunc_cancel(handle: BuilderHandle): void
     /**
      * Get the configuration corresponding to the target uri.
+     * @param uri target uri
      */
     vfunc_get_uri_configuration(uri: string): string
     /**
@@ -1144,10 +1166,13 @@ class DebugManager {
     quit(): boolean
     /**
      * Start the debugger of the given uri
+     * @param uri uri of the target
      */
     start(uri: string): boolean
     /**
      * Start the debugger of the given uri
+     * @param server server (IP address:port)
+     * @param uri uri of the local target
      */
     start_remote(server: string, uri: string): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.DebugManager */
@@ -1171,10 +1196,13 @@ class DebugManager {
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start the debugger of the given uri
+     * @param uri uri of the target
      */
     vfunc_start(uri: string): boolean
     /**
      * Start the debugger of the given uri
+     * @param server server (IP address:port)
+     * @param uri uri of the local target
      */
     vfunc_start_remote(server: string, uri: string): boolean
     /* Signals of IAnjuta-3.0.IAnjuta.DebugManager */
@@ -1232,10 +1260,16 @@ class Debugger {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1244,6 +1278,7 @@ class Debugger {
     disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enable_log(log: MessageView): void
     /**
@@ -1256,6 +1291,10 @@ class Debugger {
     get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1264,6 +1303,9 @@ class Debugger {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
@@ -1277,37 +1319,49 @@ class Debugger {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1335,10 +1389,16 @@ class Debugger {
     vfunc_abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
@@ -1350,6 +1410,7 @@ class Debugger {
     vfunc_disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     vfunc_enable_log(log: MessageView): void
     /**
@@ -1363,6 +1424,10 @@ class Debugger {
     vfunc_get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1371,6 +1436,9 @@ class Debugger {
     vfunc_interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
@@ -1389,39 +1457,51 @@ class Debugger {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     vfunc_set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     vfunc_set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     vfunc_set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1491,10 +1571,16 @@ class DebuggerBreakpoint {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1503,6 +1589,7 @@ class DebuggerBreakpoint {
     disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enable_log(log: MessageView): void
     /**
@@ -1515,6 +1602,10 @@ class DebuggerBreakpoint {
     get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1523,6 +1614,9 @@ class DebuggerBreakpoint {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
@@ -1536,37 +1630,49 @@ class DebuggerBreakpoint {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1599,10 +1705,16 @@ class DebuggerBreakpoint {
     vfunc_abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
@@ -1614,6 +1726,7 @@ class DebuggerBreakpoint {
     vfunc_disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     vfunc_enable_log(log: MessageView): void
     /**
@@ -1627,6 +1740,10 @@ class DebuggerBreakpoint {
     vfunc_get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1635,6 +1752,9 @@ class DebuggerBreakpoint {
     vfunc_interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
@@ -1653,39 +1773,51 @@ class DebuggerBreakpoint {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     vfunc_set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     vfunc_set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     vfunc_set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1748,10 +1880,12 @@ class DebuggerInstruction {
     /* Methods of IAnjuta-3.0.IAnjuta.DebuggerInstruction */
     /**
      * Restart the program starting from address address
+     * @param address Run from this addresss
      */
     run_from_address(address: number): boolean
     /**
      * Start the program until it reachs the address address
+     * @param address Run to this addresss
      */
     run_to_address(address: number): boolean
     /**
@@ -1770,10 +1904,16 @@ class DebuggerInstruction {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1782,6 +1922,7 @@ class DebuggerInstruction {
     disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enable_log(log: MessageView): void
     /**
@@ -1794,6 +1935,10 @@ class DebuggerInstruction {
     get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1802,6 +1947,9 @@ class DebuggerInstruction {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
@@ -1815,37 +1963,49 @@ class DebuggerInstruction {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -1869,10 +2029,12 @@ class DebuggerInstruction {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.DebuggerInstruction */
     /**
      * Restart the program starting from address address
+     * @param address Run from this addresss
      */
     vfunc_run_from_address(address: number): boolean
     /**
      * Start the program until it reachs the address address
+     * @param address Run to this addresss
      */
     vfunc_run_to_address(address: number): boolean
     /**
@@ -1891,10 +2053,16 @@ class DebuggerInstruction {
     vfunc_abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
@@ -1906,6 +2074,7 @@ class DebuggerInstruction {
     vfunc_disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     vfunc_enable_log(log: MessageView): void
     /**
@@ -1919,6 +2088,10 @@ class DebuggerInstruction {
     vfunc_get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -1927,6 +2100,9 @@ class DebuggerInstruction {
     vfunc_interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
@@ -1945,39 +2121,51 @@ class DebuggerInstruction {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     vfunc_set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     vfunc_set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     vfunc_set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2044,10 +2232,16 @@ class DebuggerMemory {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2056,6 +2250,7 @@ class DebuggerMemory {
     disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enable_log(log: MessageView): void
     /**
@@ -2068,6 +2263,10 @@ class DebuggerMemory {
     get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2076,6 +2275,9 @@ class DebuggerMemory {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
@@ -2089,37 +2291,49 @@ class DebuggerMemory {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2147,10 +2361,16 @@ class DebuggerMemory {
     vfunc_abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
@@ -2162,6 +2382,7 @@ class DebuggerMemory {
     vfunc_disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     vfunc_enable_log(log: MessageView): void
     /**
@@ -2175,6 +2396,10 @@ class DebuggerMemory {
     vfunc_get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2183,6 +2408,9 @@ class DebuggerMemory {
     vfunc_interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
@@ -2201,39 +2429,51 @@ class DebuggerMemory {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     vfunc_set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     vfunc_set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     vfunc_set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2296,6 +2536,7 @@ class DebuggerRegister {
     /* Methods of IAnjuta-3.0.IAnjuta.DebuggerRegister */
     /**
      * Change the value of one register. Only the num and value field are used.
+     * @param value Modified register with a new value
      */
     write_register(value: DebuggerRegisterData): boolean
     /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
@@ -2305,10 +2546,16 @@ class DebuggerRegister {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2317,6 +2564,7 @@ class DebuggerRegister {
     disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enable_log(log: MessageView): void
     /**
@@ -2329,6 +2577,10 @@ class DebuggerRegister {
     get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2337,6 +2589,9 @@ class DebuggerRegister {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
@@ -2350,37 +2605,49 @@ class DebuggerRegister {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2404,6 +2671,7 @@ class DebuggerRegister {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.DebuggerRegister */
     /**
      * Change the value of one register. Only the num and value field are used.
+     * @param value Modified register with a new value
      */
     vfunc_write_register(value: DebuggerRegisterData): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Debugger */
@@ -2413,10 +2681,16 @@ class DebuggerRegister {
     vfunc_abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
@@ -2428,6 +2702,7 @@ class DebuggerRegister {
     vfunc_disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     vfunc_enable_log(log: MessageView): void
     /**
@@ -2441,6 +2716,10 @@ class DebuggerRegister {
     vfunc_get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2449,6 +2728,9 @@ class DebuggerRegister {
     vfunc_interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
@@ -2467,39 +2749,51 @@ class DebuggerRegister {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     vfunc_set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     vfunc_set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     vfunc_set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2562,11 +2856,14 @@ class DebuggerVariable {
     /* Methods of IAnjuta-3.0.IAnjuta.DebuggerVariable */
     /**
      * Set the value of one variable or child object.
+     * @param name Variable name
+     * @param value Variable value
      */
     assign(name: string, value: string): boolean
     /**
      * Delete a previously created variable or child object
      * including its own children.
+     * @param name Variable name
      */
     destroy(name: string): boolean
     /* Methods of IAnjuta-3.0.IAnjuta.Debugger */
@@ -2576,10 +2873,16 @@ class DebuggerVariable {
     abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2588,6 +2891,7 @@ class DebuggerVariable {
     disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     enable_log(log: MessageView): void
     /**
@@ -2600,6 +2904,10 @@ class DebuggerVariable {
     get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2608,6 +2916,9 @@ class DebuggerVariable {
     interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
@@ -2621,37 +2932,49 @@ class DebuggerVariable {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2675,11 +2998,14 @@ class DebuggerVariable {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.DebuggerVariable */
     /**
      * Set the value of one variable or child object.
+     * @param name Variable name
+     * @param value Variable value
      */
     vfunc_assign(name: string, value: string): boolean
     /**
      * Delete a previously created variable or child object
      * including its own children.
+     * @param name Variable name
      */
     vfunc_destroy(name: string): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Debugger */
@@ -2689,10 +3015,16 @@ class DebuggerVariable {
     vfunc_abort(): boolean
     /**
      * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_attach(pid: number, source_search_directories: string[]): boolean
     /**
      * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
@@ -2704,6 +3036,7 @@ class DebuggerVariable {
     vfunc_disable_log(): void
     /**
      * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
      */
     vfunc_enable_log(log: MessageView): void
     /**
@@ -2717,6 +3050,10 @@ class DebuggerVariable {
     vfunc_get_state(): DebuggerState
     /**
      * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
      */
     vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
@@ -2725,6 +3062,9 @@ class DebuggerVariable {
     vfunc_interrupt(): boolean
     /**
      * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
      */
     vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
@@ -2743,39 +3083,51 @@ class DebuggerVariable {
     /**
      * Execute the program from a new position.
      * This function is optional.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
+     * @param file target file name
+     * @param line target line in file
      */
     vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
      * probably gives some troubles in the debug manager.
+     * @param command command
      */
     vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
+     * @param env List environment variable
      */
     vfunc_set_environment(env: string): boolean
     /**
      * Set the current frame.
+     * @param frame frame number
      */
     vfunc_set_frame(frame: number): boolean
     /**
      * Set the current thread.
+     * @param thread thread number
      */
     vfunc_set_thread(thread: number): boolean
     /**
      * Set program working directory.
+     * @param dir working program directory
      */
     vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
     vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
      */
     vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
@@ -2955,16 +3307,20 @@ class DocumentManager {
     /**
      * Creates a new editor buffer of the given name and sets the given
      * content as its initial content.
+     * @param name Name of the editor buffer.
+     * @param content Initial content of the buffer.
      */
     add_buffer(name: string, content: string): Editor
     /**
      * Adds a document to the document manager. This will open a new
      * Notebook tab and show the document there
+     * @param document the document to add
      */
     add_document(document: Document): void
     /**
      * Finds the document that has the file  loaded. Only
      * the editor that matches the file will be searched.
+     * @param file The file to find.
      */
     find_document_with_file(file: Gio.File): Document
     /**
@@ -2980,26 +3336,35 @@ class DocumentManager {
      * Given the short filename, finds the file of the filename, if the
      * editor that has it loaded is found. If there is no editor that has
      * this file opened, returns NULL.
+     * @param filename short filename
      */
     get_file(filename: string): Gio.File
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
      */
     goto_file_line(file: Gio.File, lineno: number): Editor
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor. Optionally also marks
      * the line with line marker if `mark` is given TRUE.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     * @param mark TRUE if the line should be marked with a marker.
      */
     goto_file_line_mark(file: Gio.File, lineno: number, mark: boolean): Editor
     /**
      * Closes and removes the given document. If `save_before` is TRUE, also
      * saves the document before closing.
+     * @param document Document to close.
+     * @param save_before If true, saves the document before closing.
      */
     remove_document(document: Document, save_before: boolean): boolean
     /**
      * Sets the given document as current document.
+     * @param document the document to set as current.
      */
     set_current_document(document: Document): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.DocumentManager */
@@ -3007,11 +3372,14 @@ class DocumentManager {
     /**
      * Creates a new editor buffer of the given name and sets the given
      * content as its initial content.
+     * @param name Name of the editor buffer.
+     * @param content Initial content of the buffer.
      */
     vfunc_add_buffer(name: string, content: string): Editor
     /**
      * Adds a document to the document manager. This will open a new
      * Notebook tab and show the document there
+     * @param document the document to add
      */
     vfunc_add_document(document: Document): void
     vfunc_document_added(doc: Document): void
@@ -3019,6 +3387,7 @@ class DocumentManager {
     /**
      * Finds the document that has the file  loaded. Only
      * the editor that matches the file will be searched.
+     * @param file The file to find.
      */
     vfunc_find_document_with_file(file: Gio.File): Document
     /**
@@ -3034,37 +3403,48 @@ class DocumentManager {
      * Given the short filename, finds the file of the filename, if the
      * editor that has it loaded is found. If there is no editor that has
      * this file opened, returns NULL.
+     * @param filename short filename
      */
     vfunc_get_file(filename: string): Gio.File
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
      */
     vfunc_goto_file_line(file: Gio.File, lineno: number): Editor
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor. Optionally also marks
      * the line with line marker if `mark` is given TRUE.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     * @param mark TRUE if the line should be marked with a marker.
      */
     vfunc_goto_file_line_mark(file: Gio.File, lineno: number, mark: boolean): Editor
     /**
      * Closes and removes the given document. If `save_before` is TRUE, also
      * saves the document before closing.
+     * @param document Document to close.
+     * @param save_before If true, saves the document before closing.
      */
     vfunc_remove_document(document: Document, save_before: boolean): boolean
     /**
      * Sets the given document as current document.
+     * @param document the document to set as current.
      */
     vfunc_set_current_document(document: Document): void
     /* Signals of IAnjuta-3.0.IAnjuta.DocumentManager */
     /**
      * Emitted when a document was added to the document manager.
+     * @param doc The #IAnjutaDocument that was added.
      */
     connect(sigName: "document-added", callback: (($obj: DocumentManager, doc: Document) => void)): number
     connect_after(sigName: "document-added", callback: (($obj: DocumentManager, doc: Document) => void)): number
     emit(sigName: "document-added", doc: Document): void
     /**
      * Emitted when a document was removed from the document manager.
+     * @param doc The #IAnjutaDocument that was removed.
      */
     connect(sigName: "document-removed", callback: (($obj: DocumentManager, doc: Document) => void)): number
     connect_after(sigName: "document-removed", callback: (($obj: DocumentManager, doc: Document) => void)): number
@@ -3076,6 +3456,8 @@ class Editor {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -3109,10 +3491,12 @@ class Editor {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -3144,6 +3528,8 @@ class Editor {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -3163,11 +3549,13 @@ class Editor {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -3178,25 +3566,32 @@ class Editor {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -3204,6 +3599,8 @@ class Editor {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -3242,10 +3639,12 @@ class Editor {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -3277,6 +3676,8 @@ class Editor {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -3298,11 +3699,13 @@ class Editor {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -3313,6 +3716,9 @@ class Editor {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -3320,19 +3726,23 @@ class Editor {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -3348,6 +3758,11 @@ class Editor {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: Editor, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: Editor, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -3355,6 +3770,8 @@ class Editor {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: Editor, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: Editor, ch: Iterable, obj: number) => void)): number
@@ -3362,6 +3779,8 @@ class Editor {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: Editor, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: Editor, code: Iterable, obj: string) => void)): number
@@ -3374,18 +3793,29 @@ class Editor {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: Editor, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: Editor, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: Editor, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: Editor, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: Editor, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: Editor, double_click: number) => void)): number
@@ -3401,6 +3831,10 @@ class EditorAssist {
      * proposals async as long as the last call sets finished to TRUE. That
      * is usually called by the IAnjutaProvider after it was triggered by
      * ianjuta_provider_populate()
+     * @param provider a IAnjutaProvider
+     * @param proposals a list of IAnjutaProposals
+     * @param pre_word the word before the cursor
+     * @param finished whether is was the last call in an async operation
      */
     proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void
     remove(provider: Provider): void
@@ -3408,6 +3842,8 @@ class EditorAssist {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -3441,10 +3877,12 @@ class EditorAssist {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -3476,6 +3914,8 @@ class EditorAssist {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -3495,11 +3935,13 @@ class EditorAssist {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -3510,25 +3952,32 @@ class EditorAssist {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -3541,6 +3990,10 @@ class EditorAssist {
      * proposals async as long as the last call sets finished to TRUE. That
      * is usually called by the IAnjutaProvider after it was triggered by
      * ianjuta_provider_populate()
+     * @param provider a IAnjutaProvider
+     * @param proposals a list of IAnjutaProposals
+     * @param pre_word the word before the cursor
+     * @param finished whether is was the last call in an async operation
      */
     vfunc_proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void
     vfunc_remove(provider: Provider): void
@@ -3548,6 +4001,8 @@ class EditorAssist {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -3586,10 +4041,12 @@ class EditorAssist {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -3621,6 +4078,8 @@ class EditorAssist {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -3642,11 +4101,13 @@ class EditorAssist {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -3657,6 +4118,9 @@ class EditorAssist {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -3664,19 +4128,23 @@ class EditorAssist {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -3701,6 +4169,11 @@ class EditorAssist {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorAssist, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorAssist, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -3708,6 +4181,8 @@ class EditorAssist {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorAssist, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorAssist, ch: Iterable, obj: number) => void)): number
@@ -3715,6 +4190,8 @@ class EditorAssist {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorAssist, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorAssist, code: Iterable, obj: string) => void)): number
@@ -3727,18 +4204,29 @@ class EditorAssist {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorAssist, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorAssist, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorAssist, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorAssist, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorAssist, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorAssist, double_click: number) => void)): number
@@ -3759,6 +4247,7 @@ class EditorCell {
      * Since there is dynamic allocation of unicode character string
      * involved in ianjuta_editor_cell_get_character(), this function
      * is mainly useful for fast iteration (such as copying data).
+     * @param char_index 
      */
     get_char(char_index: number): number
     /**
@@ -3783,6 +4272,7 @@ class EditorCell {
      * Since there is dynamic allocation of unicode character string
      * involved in ianjuta_editor_cell_get_character(), this function
      * is mainly useful for fast iteration (such as copying data).
+     * @param char_index 
      */
     vfunc_get_char(char_index: number): number
     /**
@@ -3816,6 +4306,7 @@ class EditorCellStyle {
      * Since there is dynamic allocation of unicode character string
      * involved in ianjuta_editor_cell_get_character(), this function
      * is mainly useful for fast iteration (such as copying data).
+     * @param char_index 
      */
     get_char(char_index: number): number
     /**
@@ -3844,6 +4335,7 @@ class EditorCellStyle {
      * Since there is dynamic allocation of unicode character string
      * involved in ianjuta_editor_cell_get_character(), this function
      * is mainly useful for fast iteration (such as copying data).
+     * @param char_index 
      */
     vfunc_get_char(char_index: number): number
     /**
@@ -3879,6 +4371,8 @@ class EditorComment {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -3912,10 +4406,12 @@ class EditorComment {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -3947,6 +4443,8 @@ class EditorComment {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -3966,11 +4464,13 @@ class EditorComment {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -3981,25 +4481,32 @@ class EditorComment {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -4020,6 +4527,8 @@ class EditorComment {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -4058,10 +4567,12 @@ class EditorComment {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -4093,6 +4604,8 @@ class EditorComment {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -4114,11 +4627,13 @@ class EditorComment {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -4129,6 +4644,9 @@ class EditorComment {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -4136,19 +4654,23 @@ class EditorComment {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -4164,6 +4686,11 @@ class EditorComment {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorComment, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorComment, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -4171,6 +4698,8 @@ class EditorComment {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorComment, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorComment, ch: Iterable, obj: number) => void)): number
@@ -4178,6 +4707,8 @@ class EditorComment {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorComment, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorComment, code: Iterable, obj: string) => void)): number
@@ -4190,18 +4721,29 @@ class EditorComment {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorComment, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorComment, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorComment, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorComment, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorComment, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorComment, double_click: number) => void)): number
@@ -4214,16 +4756,22 @@ class EditorConvert {
     /* Methods of IAnjuta-3.0.IAnjuta.EditorConvert */
     /**
      * change characters from start position to end position to lowercase
+     * @param start_position Start position.
+     * @param end_position End position.
      */
     to_lower(start_position: Iterable, end_position: Iterable): void
     /**
      * change characters from start position to end position to uppercase.
+     * @param start_position Start position.
+     * @param end_position End position.
      */
     to_upper(start_position: Iterable, end_position: Iterable): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -4257,10 +4805,12 @@ class EditorConvert {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -4292,6 +4842,8 @@ class EditorConvert {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -4311,11 +4863,13 @@ class EditorConvert {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -4326,41 +4880,54 @@ class EditorConvert {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.EditorConvert */
     /**
      * change characters from start position to end position to lowercase
+     * @param start_position Start position.
+     * @param end_position End position.
      */
     vfunc_to_lower(start_position: Iterable, end_position: Iterable): void
     /**
      * change characters from start position to end position to uppercase.
+     * @param start_position Start position.
+     * @param end_position End position.
      */
     vfunc_to_upper(start_position: Iterable, end_position: Iterable): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -4399,10 +4966,12 @@ class EditorConvert {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -4434,6 +5003,8 @@ class EditorConvert {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -4455,11 +5026,13 @@ class EditorConvert {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -4470,6 +5043,9 @@ class EditorConvert {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -4477,19 +5053,23 @@ class EditorConvert {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -4505,6 +5085,11 @@ class EditorConvert {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorConvert, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorConvert, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -4512,6 +5097,8 @@ class EditorConvert {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorConvert, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorConvert, ch: Iterable, obj: number) => void)): number
@@ -4519,6 +5106,8 @@ class EditorConvert {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorConvert, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorConvert, code: Iterable, obj: string) => void)): number
@@ -4531,18 +5120,29 @@ class EditorConvert {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorConvert, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorConvert, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorConvert, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorConvert, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorConvert, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorConvert, double_click: number) => void)): number
@@ -4565,6 +5165,8 @@ class EditorFolds {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -4598,10 +5200,12 @@ class EditorFolds {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -4633,6 +5237,8 @@ class EditorFolds {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -4652,11 +5258,13 @@ class EditorFolds {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -4667,25 +5275,32 @@ class EditorFolds {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -4697,6 +5312,8 @@ class EditorFolds {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -4735,10 +5352,12 @@ class EditorFolds {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -4770,6 +5389,8 @@ class EditorFolds {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -4791,11 +5412,13 @@ class EditorFolds {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -4806,6 +5429,9 @@ class EditorFolds {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -4813,19 +5439,23 @@ class EditorFolds {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -4841,6 +5471,11 @@ class EditorFolds {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorFolds, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorFolds, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -4848,6 +5483,8 @@ class EditorFolds {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorFolds, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorFolds, ch: Iterable, obj: number) => void)): number
@@ -4855,6 +5492,8 @@ class EditorFolds {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorFolds, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorFolds, code: Iterable, obj: string) => void)): number
@@ -4867,18 +5506,29 @@ class EditorFolds {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorFolds, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorFolds, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorFolds, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorFolds, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorFolds, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorFolds, double_click: number) => void)): number
@@ -4892,6 +5542,8 @@ class EditorGladeSignal {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -4925,10 +5577,12 @@ class EditorGladeSignal {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -4960,6 +5614,8 @@ class EditorGladeSignal {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -4979,11 +5635,13 @@ class EditorGladeSignal {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -4994,25 +5652,32 @@ class EditorGladeSignal {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -5023,6 +5688,8 @@ class EditorGladeSignal {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -5061,10 +5728,12 @@ class EditorGladeSignal {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -5096,6 +5765,8 @@ class EditorGladeSignal {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -5117,11 +5788,13 @@ class EditorGladeSignal {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -5132,6 +5805,9 @@ class EditorGladeSignal {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -5139,31 +5815,38 @@ class EditorGladeSignal {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
     /* Signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal */
     /**
      * Emitted when a signal was received per drag & drop
+     * @param iter a IAnjutaIterable of the position where drop happens
+     * @param signal_data Signal data in form "widget:signal:handler", e.g. "GtkToggleButton:toggled:on_toggle_button_toggled"
      */
     connect(sigName: "drop", callback: (($obj: EditorGladeSignal, iter: Iterable, signal_data: string) => void)): number
     connect_after(sigName: "drop", callback: (($obj: EditorGladeSignal, iter: Iterable, signal_data: string) => void)): number
     emit(sigName: "drop", iter: Iterable, signal_data: string): void
     /**
      * Emitted when a signal is dragged over the editor
+     * @param iter a IAnjutaIterable of the position where drop would happen
      */
     connect(sigName: "drop-possible", callback: (($obj: EditorGladeSignal, iter: Iterable) => boolean)): number
     connect_after(sigName: "drop-possible", callback: (($obj: EditorGladeSignal, iter: Iterable) => boolean)): number
@@ -5180,6 +5863,11 @@ class EditorGladeSignal {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorGladeSignal, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorGladeSignal, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -5187,6 +5875,8 @@ class EditorGladeSignal {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorGladeSignal, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorGladeSignal, ch: Iterable, obj: number) => void)): number
@@ -5194,6 +5884,8 @@ class EditorGladeSignal {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorGladeSignal, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorGladeSignal, code: Iterable, obj: string) => void)): number
@@ -5206,18 +5898,29 @@ class EditorGladeSignal {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorGladeSignal, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorGladeSignal, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorGladeSignal, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorGladeSignal, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorGladeSignal, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorGladeSignal, double_click: number) => void)): number
@@ -5244,6 +5947,8 @@ class EditorGoto {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -5277,10 +5982,12 @@ class EditorGoto {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -5312,6 +6019,8 @@ class EditorGoto {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -5331,11 +6040,13 @@ class EditorGoto {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -5346,25 +6057,32 @@ class EditorGoto {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -5385,6 +6103,8 @@ class EditorGoto {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -5423,10 +6143,12 @@ class EditorGoto {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -5458,6 +6180,8 @@ class EditorGoto {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -5479,11 +6203,13 @@ class EditorGoto {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -5494,6 +6220,9 @@ class EditorGoto {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -5501,19 +6230,23 @@ class EditorGoto {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -5529,6 +6262,11 @@ class EditorGoto {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorGoto, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorGoto, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -5536,6 +6274,8 @@ class EditorGoto {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorGoto, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorGoto, ch: Iterable, obj: number) => void)): number
@@ -5543,6 +6283,8 @@ class EditorGoto {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorGoto, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorGoto, code: Iterable, obj: string) => void)): number
@@ -5555,18 +6297,29 @@ class EditorGoto {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorGoto, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorGoto, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorGoto, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorGoto, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorGoto, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorGoto, double_click: number) => void)): number
@@ -5579,12 +6332,16 @@ class EditorHover {
     /* Methods of IAnjuta-3.0.IAnjuta.EditorHover */
     /**
      * Show `info` as tooltip
+     * @param position 
+     * @param info String to display
      */
     display(position: Iterable, info: string): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -5618,10 +6375,12 @@ class EditorHover {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -5653,6 +6412,8 @@ class EditorHover {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -5672,11 +6433,13 @@ class EditorHover {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -5687,31 +6450,40 @@ class EditorHover {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.EditorHover */
     /**
      * Show `info` as tooltip
+     * @param position 
+     * @param info String to display
      */
     vfunc_display(position: Iterable, info: string): void
     vfunc_hover_leave(position: Iterable): void
@@ -5720,6 +6492,8 @@ class EditorHover {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -5758,10 +6532,12 @@ class EditorHover {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -5793,6 +6569,8 @@ class EditorHover {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -5814,11 +6592,13 @@ class EditorHover {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -5829,6 +6609,9 @@ class EditorHover {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -5836,19 +6619,23 @@ class EditorHover {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -5856,6 +6643,7 @@ class EditorHover {
     /**
      * User moved the mouse away - can be used to clean up things done in
      * #IAnjutaEditorHover::hover-over
+     * @param position IAnjutaEditorCell specifying the position the mouse was over
      */
     connect(sigName: "hover-leave", callback: (($obj: EditorHover, position: Iterable) => void)): number
     connect_after(sigName: "hover-leave", callback: (($obj: EditorHover, position: Iterable) => void)): number
@@ -5863,6 +6651,7 @@ class EditorHover {
     /**
      * The mouse is held for a moment over `position`. This can be used to show
      * all tooltip.
+     * @param position IAnjutaEditorCell specifying the position the mouse is over
      */
     connect(sigName: "hover-over", callback: (($obj: EditorHover, position: Iterable) => void)): number
     connect_after(sigName: "hover-over", callback: (($obj: EditorHover, position: Iterable) => void)): number
@@ -5879,6 +6668,11 @@ class EditorHover {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorHover, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorHover, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -5886,6 +6680,8 @@ class EditorHover {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorHover, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorHover, ch: Iterable, obj: number) => void)): number
@@ -5893,6 +6689,8 @@ class EditorHover {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorHover, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorHover, code: Iterable, obj: string) => void)): number
@@ -5905,18 +6703,29 @@ class EditorHover {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorHover, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorHover, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorHover, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorHover, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorHover, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorHover, double_click: number) => void)): number
@@ -5940,12 +6749,15 @@ class EditorLanguage {
     get_supported_languages(): string[]
     /**
      * Force the editor to use a given language
+     * @param language Language
      */
     set_language(language: string): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -5979,10 +6791,12 @@ class EditorLanguage {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -6014,6 +6828,8 @@ class EditorLanguage {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -6033,11 +6849,13 @@ class EditorLanguage {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -6048,25 +6866,32 @@ class EditorLanguage {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -6085,12 +6910,15 @@ class EditorLanguage {
     vfunc_language_changed(language: string): void
     /**
      * Force the editor to use a given language
+     * @param language Language
      */
     vfunc_set_language(language: string): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -6129,10 +6957,12 @@ class EditorLanguage {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -6164,6 +6994,8 @@ class EditorLanguage {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -6185,11 +7017,13 @@ class EditorLanguage {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -6200,6 +7034,9 @@ class EditorLanguage {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -6207,25 +7044,30 @@ class EditorLanguage {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
     /* Signals of IAnjuta-3.0.IAnjuta.EditorLanguage */
     /**
      * the language of the editor changed to `language`
+     * @param language new language
      */
     connect(sigName: "language-changed", callback: (($obj: EditorLanguage, language: string) => void)): number
     connect_after(sigName: "language-changed", callback: (($obj: EditorLanguage, language: string) => void)): number
@@ -6242,6 +7084,11 @@ class EditorLanguage {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorLanguage, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorLanguage, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -6249,6 +7096,8 @@ class EditorLanguage {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorLanguage, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorLanguage, ch: Iterable, obj: number) => void)): number
@@ -6256,6 +7105,8 @@ class EditorLanguage {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorLanguage, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorLanguage, code: Iterable, obj: string) => void)): number
@@ -6268,18 +7119,29 @@ class EditorLanguage {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorLanguage, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorLanguage, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorLanguage, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorLanguage, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorLanguage, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorLanguage, double_click: number) => void)): number
@@ -6293,6 +7155,7 @@ class EditorLineMode {
     /**
      * Set the line ending mode to the given `mode` and convert all line end
      * characters in the buffer to `mode` line end characters.
+     * @param mode Line mode to convert.
      */
     convert(mode: EditorLineModeType): void
     /**
@@ -6309,12 +7172,15 @@ class EditorLineMode {
      * Set the line ending mode to the given `mode`. Existing line end
      * characters in the buffer are not touched. Only the newly added
      * texts will have `mode` line end characters.
+     * @param mode Line mode to set.
      */
     set(mode: EditorLineModeType): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -6348,10 +7214,12 @@ class EditorLineMode {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -6383,6 +7251,8 @@ class EditorLineMode {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -6402,11 +7272,13 @@ class EditorLineMode {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -6417,25 +7289,32 @@ class EditorLineMode {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -6443,6 +7322,7 @@ class EditorLineMode {
     /**
      * Set the line ending mode to the given `mode` and convert all line end
      * characters in the buffer to `mode` line end characters.
+     * @param mode Line mode to convert.
      */
     vfunc_convert(mode: EditorLineModeType): void
     /**
@@ -6459,12 +7339,15 @@ class EditorLineMode {
      * Set the line ending mode to the given `mode`. Existing line end
      * characters in the buffer are not touched. Only the newly added
      * texts will have `mode` line end characters.
+     * @param mode Line mode to set.
      */
     vfunc_set(mode: EditorLineModeType): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -6503,10 +7386,12 @@ class EditorLineMode {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -6538,6 +7423,8 @@ class EditorLineMode {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -6559,11 +7446,13 @@ class EditorLineMode {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -6574,6 +7463,9 @@ class EditorLineMode {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -6581,19 +7473,23 @@ class EditorLineMode {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -6609,6 +7505,11 @@ class EditorLineMode {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorLineMode, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorLineMode, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -6616,6 +7517,8 @@ class EditorLineMode {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorLineMode, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorLineMode, ch: Iterable, obj: number) => void)): number
@@ -6623,6 +7526,8 @@ class EditorLineMode {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorLineMode, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorLineMode, code: Iterable, obj: string) => void)): number
@@ -6635,18 +7540,29 @@ class EditorLineMode {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorLineMode, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorLineMode, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorLineMode, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorLineMode, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorLineMode, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorLineMode, double_click: number) => void)): number
@@ -6659,16 +7575,26 @@ class EditorSearch {
     /* Methods of IAnjuta-3.0.IAnjuta.EditorSearch */
     /**
      * Search backward from end to start
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
      */
     backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     /**
      * Search forward from start to end
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
      */
     forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -6702,10 +7628,12 @@ class EditorSearch {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -6737,6 +7665,8 @@ class EditorSearch {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -6756,11 +7686,13 @@ class EditorSearch {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -6771,41 +7703,58 @@ class EditorSearch {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.EditorSearch */
     /**
      * Search backward from end to start
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
      */
     vfunc_backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     /**
      * Search forward from start to end
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
      */
     vfunc_forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -6844,10 +7793,12 @@ class EditorSearch {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -6879,6 +7830,8 @@ class EditorSearch {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -6900,11 +7853,13 @@ class EditorSearch {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -6915,6 +7870,9 @@ class EditorSearch {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -6922,19 +7880,23 @@ class EditorSearch {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -6950,6 +7912,11 @@ class EditorSearch {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorSearch, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorSearch, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -6957,6 +7924,8 @@ class EditorSearch {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorSearch, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorSearch, ch: Iterable, obj: number) => void)): number
@@ -6964,6 +7933,8 @@ class EditorSearch {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorSearch, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorSearch, code: Iterable, obj: string) => void)): number
@@ -6976,18 +7947,29 @@ class EditorSearch {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorSearch, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorSearch, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorSearch, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorSearch, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorSearch, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorSearch, double_click: number) => void)): number
@@ -7011,6 +7993,8 @@ class EditorSelection {
     /**
      * Replaces currently selected text with the `text`. Only `length` amount
      * of characters are used from `text` buffer to replace.
+     * @param text Replacement text.
+     * @param length Length of the text to used in `text`.
      */
     replace(text: string, length: number): void
     select_all(): void
@@ -7031,12 +8015,17 @@ class EditorSelection {
     /**
      * Select characters between start and end. Start and end don't have to
      * be ordered.
+     * @param start Begin of selection
+     * @param end End of selection
+     * @param scroll Scroll selection onscreen
      */
     set(start: Iterable, end: Iterable, scroll: boolean): void
     /* Methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -7070,10 +8059,12 @@ class EditorSelection {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -7105,6 +8096,8 @@ class EditorSelection {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -7124,11 +8117,13 @@ class EditorSelection {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -7139,25 +8134,32 @@ class EditorSelection {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -7175,6 +8177,8 @@ class EditorSelection {
     /**
      * Replaces currently selected text with the `text`. Only `length` amount
      * of characters are used from `text` buffer to replace.
+     * @param text Replacement text.
+     * @param length Length of the text to used in `text`.
      */
     vfunc_replace(text: string, length: number): void
     vfunc_select_all(): void
@@ -7195,12 +8199,17 @@ class EditorSelection {
     /**
      * Select characters between start and end. Start and end don't have to
      * be ordered.
+     * @param start Begin of selection
+     * @param end End of selection
+     * @param scroll Scroll selection onscreen
      */
     vfunc_set(start: Iterable, end: Iterable, scroll: boolean): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Editor */
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -7239,10 +8248,12 @@ class EditorSelection {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -7274,6 +8285,8 @@ class EditorSelection {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -7295,11 +8308,13 @@ class EditorSelection {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -7310,6 +8325,9 @@ class EditorSelection {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -7317,19 +8335,23 @@ class EditorSelection {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -7345,6 +8367,11 @@ class EditorSelection {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorSelection, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorSelection, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -7352,6 +8379,8 @@ class EditorSelection {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorSelection, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorSelection, ch: Iterable, obj: number) => void)): number
@@ -7359,6 +8388,8 @@ class EditorSelection {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorSelection, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorSelection, code: Iterable, obj: string) => void)): number
@@ -7371,18 +8402,29 @@ class EditorSelection {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorSelection, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorSelection, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorSelection, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorSelection, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorSelection, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorSelection, double_click: number) => void)): number
@@ -7404,6 +8446,8 @@ class EditorTip {
      * the suggestions. Usually the editor would use this to
      * align the choices displayed such that the carat is just at this
      * position when the choices are displayed.
+     * @param tips list of alternative tips.
+     * @param position Tip position.
      */
     show(tips: string[], position: Iterable): void
     visible(): boolean
@@ -7411,6 +8455,8 @@ class EditorTip {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -7444,10 +8490,12 @@ class EditorTip {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -7479,6 +8527,8 @@ class EditorTip {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -7498,11 +8548,13 @@ class EditorTip {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -7513,25 +8565,32 @@ class EditorTip {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -7547,6 +8606,8 @@ class EditorTip {
      * the suggestions. Usually the editor would use this to
      * align the choices displayed such that the carat is just at this
      * position when the choices are displayed.
+     * @param tips list of alternative tips.
+     * @param position Tip position.
      */
     vfunc_show(tips: string[], position: Iterable): void
     vfunc_visible(): boolean
@@ -7554,6 +8615,8 @@ class EditorTip {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -7592,10 +8655,12 @@ class EditorTip {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -7627,6 +8692,8 @@ class EditorTip {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -7648,11 +8715,13 @@ class EditorTip {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -7663,6 +8732,9 @@ class EditorTip {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -7670,19 +8742,23 @@ class EditorTip {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -7698,6 +8774,11 @@ class EditorTip {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorTip, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorTip, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -7705,6 +8786,8 @@ class EditorTip {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorTip, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorTip, ch: Iterable, obj: number) => void)): number
@@ -7712,6 +8795,8 @@ class EditorTip {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorTip, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorTip, code: Iterable, obj: string) => void)): number
@@ -7724,18 +8809,29 @@ class EditorTip {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorTip, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorTip, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorTip, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorTip, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorTip, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorTip, double_click: number) => void)): number
@@ -7766,6 +8862,8 @@ class EditorView {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -7799,10 +8897,12 @@ class EditorView {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -7834,6 +8934,8 @@ class EditorView {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -7853,11 +8955,13 @@ class EditorView {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -7868,25 +8972,32 @@ class EditorView {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -7911,6 +9022,8 @@ class EditorView {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -7949,10 +9062,12 @@ class EditorView {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -7984,6 +9099,8 @@ class EditorView {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -8005,11 +9122,13 @@ class EditorView {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -8020,6 +9139,9 @@ class EditorView {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -8027,19 +9149,23 @@ class EditorView {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -8055,6 +9181,11 @@ class EditorView {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorView, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorView, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -8062,6 +9193,8 @@ class EditorView {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorView, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorView, ch: Iterable, obj: number) => void)): number
@@ -8069,6 +9202,8 @@ class EditorView {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorView, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorView, code: Iterable, obj: string) => void)): number
@@ -8081,18 +9216,29 @@ class EditorView {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorView, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorView, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorView, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorView, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorView, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorView, double_click: number) => void)): number
@@ -8115,6 +9261,8 @@ class EditorZoom {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
@@ -8148,10 +9296,12 @@ class EditorZoom {
     get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     get_line_end_position(line: number): Iterable
     get_line_from_position(position: Iterable): number
@@ -8183,6 +9333,8 @@ class EditorZoom {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     get_text(begin: Iterable, end: Iterable): string
     /**
@@ -8202,11 +9354,13 @@ class EditorZoom {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     goto_position(position: Iterable): void
     /**
@@ -8217,25 +9371,32 @@ class EditorZoom {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     set_tabsize(tabsize: number): void
     set_use_spaces(use_spaces: boolean): void
@@ -8252,6 +9413,8 @@ class EditorZoom {
     /**
      * Appends `length` characters from `text` buffer at the end of editor
      * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
@@ -8290,10 +9453,12 @@ class EditorZoom {
     vfunc_get_length(): number
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_begin_position(line: number): Iterable
     /**
      * fixme
+     * @param line fixme
      */
     vfunc_get_line_end_position(line: number): Iterable
     vfunc_get_line_from_position(position: Iterable): number
@@ -8325,6 +9490,8 @@ class EditorZoom {
      * The iterators `begin` and `end` could be in either order. The returned
      * text, however, is in right order. If both `begin` and `end` points
      * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
      */
     vfunc_get_text(begin: Iterable, end: Iterable): string
     /**
@@ -8346,11 +9513,13 @@ class EditorZoom {
     /**
      * Carat is moved to the given `lineno` line and text view is scrolled to
      * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
      */
     vfunc_goto_line(lineno: number): void
     /**
      * Carat is moved to the given `position` and text view is scrolled to
      * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
      */
     vfunc_goto_position(position: Iterable): void
     /**
@@ -8361,6 +9530,9 @@ class EditorZoom {
     /**
      * Inserts `length` characters from `text` buffer at given `position` of
      * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of `text` to use.
      */
     vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
@@ -8368,19 +9540,23 @@ class EditorZoom {
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
      * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
      */
     vfunc_set_auto_indent(auto_indent: boolean): void
     /**
      * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
      */
     vfunc_set_indentsize(indentsize: number): void
     /**
      * Set Editor popup menu. This is the menu shown in the editor when one
      * right-clicks on it.
+     * @param menu Popupmenu
      */
     vfunc_set_popup_menu(menu: Gtk.Widget): void
     /**
      * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
      */
     vfunc_set_tabsize(tabsize: number): void
     vfunc_set_use_spaces(use_spaces: boolean): void
@@ -8396,6 +9572,11 @@ class EditorZoom {
      * The changes begin at `position`. `text` is not garanteed to be NULL
      * terminated. Use `length` to read the text. `lines` represent the
      * number of line breaks in the added or removed text.
+     * @param added TRUE if added, FALSE if deleted.
+     * @param length Length of the text changed.
+     * @param lines Number of lines added or removed.
+     * @param text The text added or removed.
+     * @param obj Self
      */
     connect(sigName: "changed", callback: (($obj: EditorZoom, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
     connect_after(sigName: "changed", callback: (($obj: EditorZoom, added: Iterable, length: boolean, lines: number, text: number, obj: string) => void)): number
@@ -8403,6 +9584,8 @@ class EditorZoom {
     /**
      * This signal is emitted when any character is added inside the editor.
      * The newly added character is `ch` which has been inserted at `position`.
+     * @param ch The character that has been added.
+     * @param obj Self
      */
     connect(sigName: "char-added", callback: (($obj: EditorZoom, ch: Iterable, obj: number) => void)): number
     connect_after(sigName: "char-added", callback: (($obj: EditorZoom, ch: Iterable, obj: number) => void)): number
@@ -8410,6 +9593,8 @@ class EditorZoom {
     /**
      * This signal is emitted when code is changed inside the editor.
      * When such information is availabe, `position` stores the position where `code` was added.
+     * @param code The code that has been added or NULL.
+     * @param obj Self
      */
     connect(sigName: "code-changed", callback: (($obj: EditorZoom, code: Iterable, obj: string) => void)): number
     connect_after(sigName: "code-changed", callback: (($obj: EditorZoom, code: Iterable, obj: string) => void)): number
@@ -8422,18 +9607,29 @@ class EditorZoom {
     emit(sigName: "cursor-moved"): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param signal_name Name of the signal.
+     * @param handler_name Name of the signal handler.
+     * @param object Name of the object to be passed.
+     * @param swap The "swap" signal property.
+     * @param after The "after" signal property.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-callback-add", callback: (($obj: EditorZoom, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     connect_after(sigName: "glade-callback-add", callback: (($obj: EditorZoom, signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void)): number
     emit(sigName: "glade-callback-add", signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string): void
     /**
      * This signal is emitted when code for a widget must be generated.
+     * @param widget_name Name of the widget that will become a member of the class.
+     * @param filename Path for the .ui file that generated the signal.
+     * @param obj Self
      */
     connect(sigName: "glade-member-add", callback: (($obj: EditorZoom, widget_name: string, filename: string, obj: string) => void)): number
     connect_after(sigName: "glade-member-add", callback: (($obj: EditorZoom, widget_name: string, filename: string, obj: string) => void)): number
     emit(sigName: "glade-member-add", widget_name: string, filename: string, obj: string): void
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the line marks gutter was double clicked
      */
     connect(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorZoom, double_click: number) => void)): number
     connect_after(sigName: "line-marks-gutter-clicked", callback: (($obj: EditorZoom, double_click: number) => void)): number
@@ -8449,10 +9645,14 @@ class Environment {
      * It is useful when the environment use chroot. Take care that
      * the input directory string is freed using g_free but and you need to
      * free the output string when not needed.
+     * @param dir A directory path in the environment
      */
     get_real_directory(dir: string): string
     /**
      * Override a command to work in another build environment
+     * @param dirp a pointer on the working directory
+     * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
+     * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
      */
     override(dirp: string, argvp: string, envp: string): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Environment */
@@ -8461,10 +9661,14 @@ class Environment {
      * It is useful when the environment use chroot. Take care that
      * the input directory string is freed using g_free but and you need to
      * free the output string when not needed.
+     * @param dir A directory path in the environment
      */
     vfunc_get_real_directory(dir: string): string
     /**
      * Override a command to work in another build environment
+     * @param dirp a pointer on the working directory
+     * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
+     * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
      */
     vfunc_override(dirp: string, argvp: string, envp: string): boolean
     static name: string
@@ -8477,6 +9681,7 @@ class File {
     get_file(): Gio.File
     /**
      * The implementor opens the given file.
+     * @param file file to open.
      */
     open(file: Gio.File): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.File */
@@ -8486,6 +9691,7 @@ class File {
     vfunc_get_file(): Gio.File
     /**
      * The implementor opens the given file.
+     * @param file file to open.
      */
     vfunc_open(file: Gio.File): void
     vfunc_opened(): void
@@ -8513,25 +9719,30 @@ class FileManager {
     /* Methods of IAnjuta-3.0.IAnjuta.FileManager */
     /**
      * fixme
+     * @param root_uri fixme
      */
     set_root(root_uri: string): void
     /**
      * fixme.
+     * @param file File to select
      */
     set_selected(file: Gio.File): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.FileManager */
     vfunc_section_changed(file: Gio.File): void
     /**
      * fixme
+     * @param root_uri fixme
      */
     vfunc_set_root(root_uri: string): void
     /**
      * fixme.
+     * @param file File to select
      */
     vfunc_set_selected(file: Gio.File): void
     /* Signals of IAnjuta-3.0.IAnjuta.FileManager */
     /**
      * fixme
+     * @param err Error propagation and reporting.
      */
     connect(sigName: "section-changed", callback: (($obj: FileManager, err: Gio.File) => void)): number
     connect_after(sigName: "section-changed", callback: (($obj: FileManager, err: Gio.File) => void)): number
@@ -8564,12 +9775,14 @@ class FileSavable {
     /**
      * Saves the content to a different File.
      * The signal saved is always emitted even if the save fails.
+     * @param file File to save the content.
      */
     save_as(file: Gio.File): void
     /**
      * if `dirty` is TRUE, sets dirty for the content. Save point will be
      * left and the content will be considered not saved. Otherwise,
      * content will considered saved and save-point will be entered.
+     * @param dirty Whether the file was edited or not
      */
     set_dirty(dirty: boolean): void
     /* Methods of IAnjuta-3.0.IAnjuta.File */
@@ -8579,6 +9792,7 @@ class FileSavable {
     get_file(): Gio.File
     /**
      * The implementor opens the given file.
+     * @param file file to open.
      */
     open(file: Gio.File): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.FileSavable */
@@ -8604,6 +9818,7 @@ class FileSavable {
     /**
      * Saves the content to a different File.
      * The signal saved is always emitted even if the save fails.
+     * @param file File to save the content.
      */
     vfunc_save_as(file: Gio.File): void
     vfunc_saved(file: Gio.File): void
@@ -8611,6 +9826,7 @@ class FileSavable {
      * if `dirty` is TRUE, sets dirty for the content. Save point will be
      * left and the content will be considered not saved. Otherwise,
      * content will considered saved and save-point will be entered.
+     * @param dirty Whether the file was edited or not
      */
     vfunc_set_dirty(dirty: boolean): void
     vfunc_update_save_ui(): void
@@ -8621,12 +9837,14 @@ class FileSavable {
     vfunc_get_file(): Gio.File
     /**
      * The implementor opens the given file.
+     * @param file file to open.
      */
     vfunc_open(file: Gio.File): void
     vfunc_opened(): void
     /* Signals of IAnjuta-3.0.IAnjuta.FileSavable */
     /**
      * This signal is emitted when the content is saved.
+     * @param file file where the content is saved or NULL if save failed
      */
     connect(sigName: "saved", callback: (($obj: FileSavable, file: Gio.File) => void)): number
     connect_after(sigName: "saved", callback: (($obj: FileSavable, file: Gio.File) => void)): number
@@ -8658,11 +9876,13 @@ class Help {
     /* Methods of IAnjuta-3.0.IAnjuta.Help */
     /**
      * Search for string `query` in the help and display the result
+     * @param query string to search in the help
      */
     search(query: string): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Help */
     /**
      * Search for string `query` in the help and display the result
+     * @param query string to search in the help
      */
     vfunc_search(query: string): void
     static name: string
@@ -8677,6 +9897,8 @@ class Indenter {
      * Only one indenter can be loaded at a time.
      * Note: Indenters always affect full lines, so start and end will be moved
      * according to the next line start/end.
+     * @param start Start of the area to indent
+     * @param end End of the area to indent
      */
     indent(start: Iterable, end: Iterable): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Indenter */
@@ -8686,6 +9908,8 @@ class Indenter {
      * Only one indenter can be loaded at a time.
      * Note: Indenters always affect full lines, so start and end will be moved
      * according to the next line start/end.
+     * @param start Start of the area to indent
+     * @param end End of the area to indent
      */
     vfunc_indent(start: Iterable, end: Iterable): void
     static name: string
@@ -8700,6 +9924,9 @@ class Indicable {
     clear(): void
     /**
      * Set an indicator
+     * @param begin_location Location where the indication should start
+     * @param end_location Location where the indication should end
+     * @param indicator the indicator to use
      */
     set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Indicable */
@@ -8709,6 +9936,9 @@ class Indicable {
     vfunc_clear(): void
     /**
      * Set an indicator
+     * @param begin_location Location where the indication should start
+     * @param end_location Location where the indication should end
+     * @param indicator the indicator to use
      */
     vfunc_set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void
     static name: string
@@ -8719,6 +9949,7 @@ class Iterable {
     /* Methods of IAnjuta-3.0.IAnjuta.Iterable */
     /**
      * Assigns the iter position from `src_iter`.
+     * @param src_iter Source iter from which to copy the assignment.
      */
     assign(src_iter: Iterable): void
     /**
@@ -8732,11 +9963,13 @@ class Iterable {
      * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
      * If you want difference of the iter positions, use
      * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
      */
     compare(iter2: Iterable): number
     /**
      * Compares the position of `iter2` with this `obj` and returns difference
      * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
      */
     diff(iter2: Iterable): number
     /**
@@ -8782,11 +10015,13 @@ class Iterable {
      * returns TRUE for the above cases. FLASE will be returned, if
      * out-of-range `position` is passed (`position` > length - 1) and iter is
      * set to end-iter.
+     * @param position New position for the iter.
      */
     set_position(position: number): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Iterable */
     /**
      * Assigns the iter position from `src_iter`.
+     * @param src_iter Source iter from which to copy the assignment.
      */
     vfunc_assign(src_iter: Iterable): void
     /**
@@ -8800,11 +10035,13 @@ class Iterable {
      * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
      * If you want difference of the iter positions, use
      * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
      */
     vfunc_compare(iter2: Iterable): number
     /**
      * Compares the position of `iter2` with this `obj` and returns difference
      * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
      */
     vfunc_diff(iter2: Iterable): number
     /**
@@ -8850,6 +10087,7 @@ class Iterable {
      * returns TRUE for the above cases. FLASE will be returned, if
      * out-of-range `position` is passed (`position` > length - 1) and iter is
      * set to end-iter.
+     * @param position New position for the iter.
      */
     vfunc_set_position(position: number): boolean
     static name: string
@@ -8875,6 +10113,7 @@ class IterableTree {
     /* Methods of IAnjuta-3.0.IAnjuta.Iterable */
     /**
      * Assigns the iter position from `src_iter`.
+     * @param src_iter Source iter from which to copy the assignment.
      */
     assign(src_iter: Iterable): void
     /**
@@ -8888,11 +10127,13 @@ class IterableTree {
      * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
      * If you want difference of the iter positions, use
      * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
      */
     compare(iter2: Iterable): number
     /**
      * Compares the position of `iter2` with this `obj` and returns difference
      * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
      */
     diff(iter2: Iterable): number
     /**
@@ -8938,6 +10179,7 @@ class IterableTree {
      * returns TRUE for the above cases. FLASE will be returned, if
      * out-of-range `position` is passed (`position` > length - 1) and iter is
      * set to end-iter.
+     * @param position New position for the iter.
      */
     set_position(position: number): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.IterableTree */
@@ -8958,6 +10200,7 @@ class IterableTree {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Iterable */
     /**
      * Assigns the iter position from `src_iter`.
+     * @param src_iter Source iter from which to copy the assignment.
      */
     vfunc_assign(src_iter: Iterable): void
     /**
@@ -8971,11 +10214,13 @@ class IterableTree {
      * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
      * If you want difference of the iter positions, use
      * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
      */
     vfunc_compare(iter2: Iterable): number
     /**
      * Compares the position of `iter2` with this `obj` and returns difference
      * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
      */
     vfunc_diff(iter2: Iterable): number
     /**
@@ -9021,6 +10266,7 @@ class IterableTree {
      * returns TRUE for the above cases. FLASE will be returned, if
      * out-of-range `position` is passed (`position` > length - 1) and iter is
      * set to end-iter.
+     * @param position New position for the iter.
      */
     vfunc_set_position(position: number): boolean
     static name: string
@@ -9031,6 +10277,7 @@ class Language {
     /* Methods of IAnjuta-3.0.IAnjuta.Language */
     /**
      * Conviniece method to get the id directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
      */
     get_from_editor(editor: EditorLanguage): LanguageId
     get_from_mime_type(mime_type: string): LanguageId
@@ -9040,11 +10287,13 @@ class Language {
     get_name(id: LanguageId): string
     /**
      * Conviniece method to get the name directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
      */
     get_name_from_editor(editor: EditorLanguage): string
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Language */
     /**
      * Conviniece method to get the id directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
      */
     vfunc_get_from_editor(editor: EditorLanguage): LanguageId
     vfunc_get_from_mime_type(mime_type: string): LanguageId
@@ -9054,6 +10303,7 @@ class Language {
     vfunc_get_name(id: LanguageId): string
     /**
      * Conviniece method to get the name directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
      */
     vfunc_get_name_from_editor(editor: EditorLanguage): string
     static name: string
@@ -9064,14 +10314,18 @@ class LanguageProvider {
     /* Methods of IAnjuta-3.0.IAnjuta.LanguageProvider */
     /**
      * Searches for a calltip in the cache
+     * @param call_context name of the method to show a calltip
      */
     get_calltip_cache(call_context: string): string[]
     /**
      * Searches for a calltip context
+     * @param iter current cursor position
      */
     get_calltip_context(iter: Iterable): string
     /**
      * Creates a new calltip
+     * @param call_context name of the method to create a new calltip
+     * @param iter current cursor position
      */
     new_calltip(call_context: string, iter: Iterable): void
     /**
@@ -9080,11 +10334,14 @@ class LanguageProvider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     populate_completions(iter: Iterable): Iterable | null
     /* Methods of IAnjuta-3.0.IAnjuta.Provider */
     /**
      * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
     activate(iter: Iterable, data?: object | null): void
     /**
@@ -9101,19 +10358,24 @@ class LanguageProvider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     populate(iter: Iterable): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.LanguageProvider */
     /**
      * Searches for a calltip in the cache
+     * @param call_context name of the method to show a calltip
      */
     vfunc_get_calltip_cache(call_context: string): string[]
     /**
      * Searches for a calltip context
+     * @param iter current cursor position
      */
     vfunc_get_calltip_context(iter: Iterable): string
     /**
      * Creates a new calltip
+     * @param call_context name of the method to create a new calltip
+     * @param iter current cursor position
      */
     vfunc_new_calltip(call_context: string, iter: Iterable): void
     /**
@@ -9122,11 +10384,14 @@ class LanguageProvider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     vfunc_populate_completions(iter: Iterable): Iterable | null
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Provider */
     /**
      * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
     vfunc_activate(iter: Iterable, data?: object | null): void
     /**
@@ -9143,6 +10408,7 @@ class LanguageProvider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     vfunc_populate(iter: Iterable): void
     static name: string
@@ -9158,10 +10424,13 @@ class Markable {
     /* Methods of IAnjuta-3.0.IAnjuta.Markable */
     /**
      * Delete the `marker` from all locations.
+     * @param marker Marker to delete.
      */
     delete_all_markers(marker: MarkableMarker): void
     /**
      * Check if the `marker` is set at the given `location`.
+     * @param location Location to check.
+     * @param marker Marker to check.
      */
     is_marker_set(location: number, marker: MarkableMarker): boolean
     /**
@@ -9169,25 +10438,34 @@ class Markable {
      * the implementation. To retrieve the correct location where the marker
      * has moved, pass the handle retured by ianjuta_markable_mark() to this
      * method.
+     * @param handle Handle of location.
      */
     location_from_handle(handle: number): number
     /**
      * Marks the specified location with the given marker type. Location is
      * implementation depenedent. For example, for an editor location means
      * lines where markers are set.
+     * @param location Location at which the marker to set.
+     * @param marker Type of marker to be used
+     * @param tooltip optional tooltip displayed with the marker
      */
     mark(location: number, marker: MarkableMarker, tooltip?: string | null): number
     /**
      * Clears the `marker` at given `location`.
+     * @param location Location where the marker is set.
+     * @param marker The marker to unset.
      */
     unmark(location: number, marker: MarkableMarker): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Markable */
     /**
      * Delete the `marker` from all locations.
+     * @param marker Marker to delete.
      */
     vfunc_delete_all_markers(marker: MarkableMarker): void
     /**
      * Check if the `marker` is set at the given `location`.
+     * @param location Location to check.
+     * @param marker Marker to check.
      */
     vfunc_is_marker_set(location: number, marker: MarkableMarker): boolean
     /**
@@ -9195,22 +10473,30 @@ class Markable {
      * the implementation. To retrieve the correct location where the marker
      * has moved, pass the handle retured by ianjuta_markable_mark() to this
      * method.
+     * @param handle Handle of location.
      */
     vfunc_location_from_handle(handle: number): number
     /**
      * Marks the specified location with the given marker type. Location is
      * implementation depenedent. For example, for an editor location means
      * lines where markers are set.
+     * @param location Location at which the marker to set.
+     * @param marker Type of marker to be used
+     * @param tooltip optional tooltip displayed with the marker
      */
     vfunc_mark(location: number, marker: MarkableMarker, tooltip?: string | null): number
     vfunc_marker_clicked(double_click: boolean, location: number): void
     /**
      * Clears the `marker` at given `location`.
+     * @param location Location where the marker is set.
+     * @param marker The marker to unset.
      */
     vfunc_unmark(location: number, marker: MarkableMarker): void
     /* Signals of IAnjuta-3.0.IAnjuta.Markable */
     /**
      * The signal is emitted when the user clicks on a marker
+     * @param double_click whether the marker was double clicked
+     * @param location location of the clicked marker
      */
     connect(sigName: "marker-clicked", callback: (($obj: Markable, double_click: boolean, location: number) => void)): number
     connect_after(sigName: "marker-clicked", callback: (($obj: Markable, double_click: boolean, location: number) => void)): number
@@ -9222,44 +10508,60 @@ class MessageManager {
     /**
      * Remove view from the message-manager. The view
      * will become invalid.
+     * @param view The view to remove
      */
     remove_view(view: MessageView): void
     /**
      * Set view to be on top of the notebook.
+     * @param view A message view
      */
     set_current_view(view: MessageView): void
     /**
      * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
      */
     set_view_icon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void
     /**
      * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
      */
     set_view_icon_from_stock(view: MessageView, icon: string): void
     /**
      * Sets the title of view.
+     * @param view A message view
+     * @param title Sets the title of view.
      */
     set_view_title(view: MessageView, title: string): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.MessageManager */
     /**
      * Remove view from the message-manager. The view
      * will become invalid.
+     * @param view The view to remove
      */
     vfunc_remove_view(view: MessageView): void
     /**
      * Set view to be on top of the notebook.
+     * @param view A message view
      */
     vfunc_set_current_view(view: MessageView): void
     /**
      * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
      */
     vfunc_set_view_icon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void
     /**
      * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
      */
     vfunc_set_view_icon_from_stock(view: MessageView, icon: string): void
     /**
      * Sets the title of view.
+     * @param view A message view
+     * @param title Sets the title of view.
      */
     vfunc_set_view_title(view: MessageView, title: string): void
     static name: string
@@ -9268,11 +10570,15 @@ class MessageView {
     /* Methods of IAnjuta-3.0.IAnjuta.MessageView */
     /**
      * Append the message with summary displayed and details displayed as tooltip
+     * @param type type of the message
+     * @param summary summary of the message
+     * @param details details of the message
      */
     append(type: MessageViewType, summary: string, details: string): void
     /**
      * Appends the text in buffer. Flushes the buffer where a newline is found.
      * by emiiting buffer_flushed signal. The string is expected to be utf8.
+     * @param text text to show as message
      */
     buffer_append(text: string): void
     /**
@@ -9294,11 +10600,15 @@ class MessageView {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.MessageView */
     /**
      * Append the message with summary displayed and details displayed as tooltip
+     * @param type type of the message
+     * @param summary summary of the message
+     * @param details details of the message
      */
     vfunc_append(type: MessageViewType, summary: string, details: string): void
     /**
      * Appends the text in buffer. Flushes the buffer where a newline is found.
      * by emiiting buffer_flushed signal. The string is expected to be utf8.
+     * @param text text to show as message
      */
     vfunc_buffer_append(text: string): void
     vfunc_buffer_flushed(line: string): void
@@ -9322,12 +10632,14 @@ class MessageView {
     /* Signals of IAnjuta-3.0.IAnjuta.MessageView */
     /**
      * Emitted when #ianjuta_message_view_buffer_append found a newline
+     * @param line the current line
      */
     connect(sigName: "buffer-flushed", callback: (($obj: MessageView, line: string) => void)): number
     connect_after(sigName: "buffer-flushed", callback: (($obj: MessageView, line: string) => void)): number
     emit(sigName: "buffer-flushed", line: string): void
     /**
      * Emitted when the user clicks on a message
+     * @param message text of the clicked message
      */
     connect(sigName: "message-clicked", callback: (($obj: MessageView, message: string) => void)): number
     connect_after(sigName: "message-clicked", callback: (($obj: MessageView, message: string) => void)): number
@@ -9343,19 +10655,23 @@ class Preferences {
     /* Methods of IAnjuta-3.0.IAnjuta.Preferences */
     /**
      * When called, the plugin should install it's preferences
+     * @param prefs AnjutaPreferences to install to
      */
     merge(prefs: Anjuta.Preferences): void
     /**
      * When called, the plugin should uninstall it's preferences
+     * @param prefs AnjutaPreferences to install to
      */
     unmerge(prefs: Anjuta.Preferences): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Preferences */
     /**
      * When called, the plugin should install it's preferences
+     * @param prefs AnjutaPreferences to install to
      */
     vfunc_merge(prefs: Anjuta.Preferences): void
     /**
      * When called, the plugin should uninstall it's preferences
+     * @param prefs AnjutaPreferences to install to
      */
     vfunc_unmerge(prefs: Anjuta.Preferences): void
     static name: string
@@ -9391,10 +10707,20 @@ class Project {
     /* Methods of IAnjuta-3.0.IAnjuta.Project */
     /**
      * Create a new node and insert it after sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
      */
     add_node_after(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
     /**
      * Create a new node and insert it before sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
      */
     add_node_before(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
     /**
@@ -9411,31 +10737,51 @@ class Project {
     is_loaded(): boolean
     /**
      * Reload a project node
+     * @param node Project node to reload
      */
     load_node(node: Anjuta.ProjectNode): boolean
     /**
      * Remove a node
+     * @param node Node
      */
     remove_node(node: Anjuta.ProjectNode): boolean
     /**
      * Remove a property of the node
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
      */
     remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean
     /**
      * Save a project node
+     * @param node Project node to save
      */
     save_node(node: Anjuta.ProjectNode): boolean
     /**
      * Change a properties on node.
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     * @param value Value
      */
     set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Project */
     /**
      * Create a new node and insert it after sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
      */
     vfunc_add_node_after(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
     /**
      * Create a new node and insert it before sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
      */
     vfunc_add_node_before(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null): Anjuta.ProjectNode
     vfunc_file_changed(node?: object | null): void
@@ -9453,6 +10799,7 @@ class Project {
     vfunc_is_loaded(): boolean
     /**
      * Reload a project node
+     * @param node Project node to reload
      */
     vfunc_load_node(node: Anjuta.ProjectNode): boolean
     vfunc_node_changed(node: object | null, error: GLib.Error): void
@@ -9460,24 +10807,34 @@ class Project {
     vfunc_node_saved(node: object | null, error: GLib.Error): void
     /**
      * Remove a node
+     * @param node Node
      */
     vfunc_remove_node(node: Anjuta.ProjectNode): boolean
     /**
      * Remove a property of the node
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
      */
     vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean
     /**
      * Save a project node
+     * @param node Project node to save
      */
     vfunc_save_node(node: Anjuta.ProjectNode): boolean
     /**
      * Change a properties on node.
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     * @param value Value
      */
     vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
     /* Signals of IAnjuta-3.0.IAnjuta.Project */
     /**
      * This signal is emitted when the project is changed on the disk. The
      * corresponding node has to be reloaded.
+     * @param node Node to be reloaded.
      */
     connect(sigName: "file-changed", callback: (($obj: Project, node?: object | null) => void)): number
     connect_after(sigName: "file-changed", callback: (($obj: Project, node?: object | null) => void)): number
@@ -9486,6 +10843,8 @@ class Project {
      * This signal is emitted when a node is changed by a function of this
      * interface. The error argument is not NULL if the change was not
      * possible. The corresponding node need to be saved.
+     * @param node Changed node.
+     * @param error Error while changing node
      */
     connect(sigName: "node-changed", callback: (($obj: Project, node: object | null, error: GLib.Error) => void)): number
     connect_after(sigName: "node-changed", callback: (($obj: Project, node: object | null, error: GLib.Error) => void)): number
@@ -9493,6 +10852,8 @@ class Project {
     /**
      * This signal is emitted when a node is loaded. It returns an error if the
      * load operation fail.
+     * @param node Loaded node.
+     * @param error Error while loading node
      */
     connect(sigName: "node-loaded", callback: (($obj: Project, node: object | null, error: GLib.Error) => void)): number
     connect_after(sigName: "node-loaded", callback: (($obj: Project, node: object | null, error: GLib.Error) => void)): number
@@ -9500,6 +10861,8 @@ class Project {
     /**
      * This signal is emitted when a node is saved. It returns an error if the
      * save operation fail.
+     * @param node Saved node.
+     * @param error Error while saving node
      */
     connect(sigName: "node-saved", callback: (($obj: Project, node: object | null, error: GLib.Error) => void)): number
     connect_after(sigName: "node-saved", callback: (($obj: Project, node: object | null, error: GLib.Error) => void)): number
@@ -9510,21 +10873,25 @@ class ProjectBackend {
     /* Methods of IAnjuta-3.0.IAnjuta.ProjectBackend */
     /**
      * Create a new Anjuta project.
+     * @param file Project file or directory
      */
     new_project(file: Gio.File): Project
     /**
      * Check if the directory contains a project supported by this
      * backend.
+     * @param directory Project file or directory
      */
     probe(directory: Gio.File): number
     /* Virtual methods of IAnjuta-3.0.IAnjuta.ProjectBackend */
     /**
      * Create a new Anjuta project.
+     * @param file Project file or directory
      */
     vfunc_new_project(file: Gio.File): Project
     /**
      * Check if the directory contains a project supported by this
      * backend.
+     * @param directory Project file or directory
      */
     vfunc_probe(directory: Gio.File): number
     static name: string
@@ -9553,6 +10920,8 @@ class ProjectChooser {
      *     to select a target using a package.</para></listitem>
      *   </varlistentry>
      * </variablelist>
+     * @param manager A project manager
+     * @param child_type Select one element type: source, group or target
      */
     set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.ProjectChooser */
@@ -9577,6 +10946,8 @@ class ProjectChooser {
      *     to select a target using a package.</para></listitem>
      *   </varlistentry>
      * </variablelist>
+     * @param manager A project manager
+     * @param child_type Select one element type: source, group or target
      */
     vfunc_set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean
     /* Signals of IAnjuta-3.0.IAnjuta.ProjectChooser */
@@ -9595,6 +10966,8 @@ class ProjectManager {
     /**
      * Prompts the user to add a new group to the project. The user can select
      * a parent group different from the one set as default.
+     * @param name Group name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
     add_group(name: string, default_group?: Gio.File | null): Gio.File
     /**
@@ -9605,6 +10978,8 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param name Source name or URI.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      */
     add_source(name: string, default_target?: Gio.File | null): Gio.File
     /**
@@ -9614,6 +10989,8 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param name Source name or URI.
+     * @param target A #GFile corresponding to the parent target or group.
      */
     add_source_quiet(name: string, target: Gio.File): Gio.File
     /**
@@ -9625,11 +11002,15 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param names Sources name or URI to add.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if don't care.
      */
     add_sources(names: string[], default_target?: Gio.File | null): Gio.File[]
     /**
      * Prompts the user to add a new target to the project. The user can select
      * a parent group different from the one set as default.
+     * @param name Target name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
     add_target(name: string, default_group?: Gio.File | null): Gio.File
     /**
@@ -9640,6 +11021,8 @@ class ProjectManager {
     /**
      * Recursively gets the list of all children below the corresponding
      * parent having the specify type.
+     * @param parent A #GFile corresponding to the parent.
+     * @param children_type Select one element type: source, group or target
      */
     get_children(parent: Gio.File, children_type: number): Gio.File[]
     /**
@@ -9648,6 +11031,7 @@ class ProjectManager {
     get_current_project(): Project
     /**
      * Get a list of all elements of this type in the project.
+     * @param element_type Select one element type: source, group or target
      */
     get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[]
     get_packages(): string[]
@@ -9657,10 +11041,12 @@ class ProjectManager {
     get_selected(): Gio.File
     /**
      * Get the type of the corresponding target: program, library...
+     * @param target A #GFile corresponding to a target
      */
     get_target_type(target: Gio.File): Anjuta.ProjectNodeType
     /**
      * Get a list of targets in the project with the corresponding type.
+     * @param target_type type of the target
      */
     get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[]
     /**
@@ -9671,12 +11057,15 @@ class ProjectManager {
      * Remove a source file from the project. If the file is used in several
      * targets, it is removed from all targets. The file could be removed from
      * the disk.
+     * @param file A #GFile that will be removed from the project
      */
     remove_file(file: Gio.File): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.ProjectManager */
     /**
      * Prompts the user to add a new group to the project. The user can select
      * a parent group different from the one set as default.
+     * @param name Group name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
     vfunc_add_group(name: string, default_group?: Gio.File | null): Gio.File
     /**
@@ -9687,6 +11076,8 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param name Source name or URI.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      */
     vfunc_add_source(name: string, default_target?: Gio.File | null): Gio.File
     /**
@@ -9696,6 +11087,8 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param name Source name or URI.
+     * @param target A #GFile corresponding to the parent target or group.
      */
     vfunc_add_source_quiet(name: string, target: Gio.File): Gio.File
     /**
@@ -9707,11 +11100,15 @@ class ProjectManager {
      * signal will be emitted with a non existing file. So it is
      * up to the caller to reemit this signal later when the file
      * is created.
+     * @param names Sources name or URI to add.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if don't care.
      */
     vfunc_add_sources(names: string[], default_target?: Gio.File | null): Gio.File[]
     /**
      * Prompts the user to add a new target to the project. The user can select
      * a parent group different from the one set as default.
+     * @param name Target name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
     vfunc_add_target(name: string, default_group?: Gio.File | null): Gio.File
     vfunc_element_added(element: Gio.File): void
@@ -9725,6 +11122,8 @@ class ProjectManager {
     /**
      * Recursively gets the list of all children below the corresponding
      * parent having the specify type.
+     * @param parent A #GFile corresponding to the parent.
+     * @param children_type Select one element type: source, group or target
      */
     vfunc_get_children(parent: Gio.File, children_type: number): Gio.File[]
     /**
@@ -9733,6 +11132,7 @@ class ProjectManager {
     vfunc_get_current_project(): Project
     /**
      * Get a list of all elements of this type in the project.
+     * @param element_type Select one element type: source, group or target
      */
     vfunc_get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[]
     vfunc_get_packages(): string[]
@@ -9742,10 +11142,12 @@ class ProjectManager {
     vfunc_get_selected(): Gio.File
     /**
      * Get the type of the corresponding target: program, library...
+     * @param target A #GFile corresponding to a target
      */
     vfunc_get_target_type(target: Gio.File): Anjuta.ProjectNodeType
     /**
      * Get a list of targets in the project with the corresponding type.
+     * @param target_type type of the target
      */
     vfunc_get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[]
     /**
@@ -9757,6 +11159,7 @@ class ProjectManager {
      * Remove a source file from the project. If the file is used in several
      * targets, it is removed from all targets. The file could be removed from
      * the disk.
+     * @param file A #GFile that will be removed from the project
      */
     vfunc_remove_file(file: Gio.File): boolean
     /* Signals of IAnjuta-3.0.IAnjuta.ProjectManager */
@@ -9780,6 +11183,8 @@ class Provider {
     /* Methods of IAnjuta-3.0.IAnjuta.Provider */
     /**
      * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
     activate(iter: Iterable, data?: object | null): void
     /**
@@ -9796,11 +11201,14 @@ class Provider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     populate(iter: Iterable): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Provider */
     /**
      * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
     vfunc_activate(iter: Iterable, data?: object | null): void
     /**
@@ -9817,6 +11225,7 @@ class Provider {
      * 
      * Note that this is called after every character typed and the list of proposals
      * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
      */
     vfunc_populate(iter: Iterable): void
     static name: string
@@ -9827,11 +11236,15 @@ class SnippetsManager {
     /* Methods of IAnjuta-3.0.IAnjuta.SnippetsManager */
     /**
      * Insert snippet in the current editor.
+     * @param key Trigger-key of the snippet
+     * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
     insert(key: string, editing_session: boolean): boolean
     /* Virtual methods of IAnjuta-3.0.IAnjuta.SnippetsManager */
     /**
      * Insert snippet in the current editor.
+     * @param key Trigger-key of the snippet
+     * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
     vfunc_insert(key: string, editing_session: boolean): boolean
     static name: string
@@ -9842,11 +11255,13 @@ class Stream {
     /* Methods of IAnjuta-3.0.IAnjuta.Stream */
     /**
      * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
     open(stream?: object | null): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Stream */
     /**
      * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
     vfunc_open(stream?: object | null): void
     static name: string
@@ -9858,12 +11273,14 @@ class StreamLoader {
     /**
      * Peeks the stream and determines the interface which can load
      * this stream.
+     * @param stream Stream to load
      */
     peek_interface(stream?: object | null): string
     /* Virtual methods of IAnjuta-3.0.IAnjuta.StreamLoader */
     /**
      * Peeks the stream and determines the interface which can load
      * this stream.
+     * @param stream Stream to load
      */
     vfunc_peek_interface(stream?: object | null): string
     static name: string
@@ -9876,6 +11293,7 @@ class StreamSavable {
     /* Methods of IAnjuta-3.0.IAnjuta.Stream */
     /**
      * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
     open(stream?: object | null): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.StreamSavable */
@@ -9883,6 +11301,7 @@ class StreamSavable {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Stream */
     /**
      * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
     vfunc_open(stream?: object | null): void
     static name: string
@@ -9893,6 +11312,7 @@ class Symbol {
     /* Methods of IAnjuta-3.0.IAnjuta.Symbol */
     /**
      * Retreives the boolean value of a boolean `field`.
+     * @param field The field to retrieve.
      */
     get_boolean(field: SymbolField): boolean
     /**
@@ -9903,10 +11323,12 @@ class Symbol {
     get_icon(): GdkPixbuf.Pixbuf
     /**
      * Retreives the integer value of an integer `field`.
+     * @param field The field to retrieve.
      */
     get_int(field: SymbolField): number
     /**
      * Retreives the string value of a string `field`.
+     * @param field The field to retrieve.
      */
     get_string(field: SymbolField): string
     /**
@@ -9917,6 +11339,7 @@ class Symbol {
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Symbol */
     /**
      * Retreives the boolean value of a boolean `field`.
+     * @param field The field to retrieve.
      */
     vfunc_get_boolean(field: SymbolField): boolean
     /**
@@ -9927,10 +11350,12 @@ class Symbol {
     vfunc_get_icon(): GdkPixbuf.Pixbuf
     /**
      * Retreives the integer value of an integer `field`.
+     * @param field The field to retrieve.
      */
     vfunc_get_int(field: SymbolField): number
     /**
      * Retreives the string value of a string `field`.
+     * @param field The field to retrieve.
      */
     vfunc_get_string(field: SymbolField): string
     /**
@@ -9946,6 +11371,8 @@ class SymbolManager {
     /* Methods of IAnjuta-3.0.IAnjuta.SymbolManager */
     /**
      * Activates the package for searches in the global symbol database.
+     * @param pkg_name Name of the package to activate. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
      */
     activate_package(pkg_name: string, pkg_version: string): boolean
     /**
@@ -9955,11 +11382,15 @@ class SymbolManager {
     /**
      * Deactivates the package if it was found. If package is NULL, deactivate all
      * packages.
+     * @param pkg_name name of the package. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
      */
     deactivate_package(pkg_name: string, pkg_version: string): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.SymbolManager */
     /**
      * Activates the package for searches in the global symbol database.
+     * @param pkg_name Name of the package to activate. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
      */
     vfunc_activate_package(pkg_name: string, pkg_version: string): boolean
     /**
@@ -9969,6 +11400,8 @@ class SymbolManager {
     /**
      * Deactivates the package if it was found. If package is NULL, deactivate all
      * packages.
+     * @param pkg_name name of the package. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
      */
     vfunc_deactivate_package(pkg_name: string, pkg_version: string): void
     vfunc_prj_scan_end(process_id: number): void
@@ -9989,38 +11422,48 @@ class SymbolQuery {
     cancel(): void
     /**
      * Sets the fields of Query.
+     * @param n_fields Then number of fields to retrieve.
+     * @param fields The fields to retrieve in the query. The array length must   be `n_fields`.
      */
     set_fields(n_fields: number, fields: SymbolField): void
     /**
      * Sets the filescope search of Query.
+     * @param filescope_search The filescope to search.
      */
     set_file_scope(filescope_search: SymbolQueryFileScope): void
     /**
      * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
      * symbols satisfying the given symbol types are selected, otherwise
      * they are excluded.
+     * @param filters The mode of query.
+     * @param include_types TRUE if filter is positive, FALSE if reversed.
      */
     set_filters(filters: SymbolType, include_types: boolean): void
     /**
      * Sets the field with which result of query is grouped. As a result
      * there will be no duplicates of with this field.
+     * @param field The field to group results.
      */
     set_group_by(field: SymbolField): void
     /**
      * Sets the limit of Query results. No more than `limit` results are
      * returned.
+     * @param limit The limit of query.
      */
     set_limit(limit: number): void
     /**
      * Sets the mode of Query.
+     * @param mode The mode of query.
      */
     set_mode(mode: SymbolQueryMode): void
     /**
      * Sets the offset index of Query results.
+     * @param offset Offset of the resultset.
      */
     set_offset(offset: number): void
     /**
      * Sets the field with which result of query is ordered.
+     * @param field The field to order the result.
      */
     set_order_by(field: SymbolField): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.SymbolQuery */
@@ -10028,38 +11471,48 @@ class SymbolQuery {
     vfunc_cancel(): void
     /**
      * Sets the fields of Query.
+     * @param n_fields Then number of fields to retrieve.
+     * @param fields The fields to retrieve in the query. The array length must   be `n_fields`.
      */
     vfunc_set_fields(n_fields: number, fields: SymbolField): void
     /**
      * Sets the filescope search of Query.
+     * @param filescope_search The filescope to search.
      */
     vfunc_set_file_scope(filescope_search: SymbolQueryFileScope): void
     /**
      * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
      * symbols satisfying the given symbol types are selected, otherwise
      * they are excluded.
+     * @param filters The mode of query.
+     * @param include_types TRUE if filter is positive, FALSE if reversed.
      */
     vfunc_set_filters(filters: SymbolType, include_types: boolean): void
     /**
      * Sets the field with which result of query is grouped. As a result
      * there will be no duplicates of with this field.
+     * @param field The field to group results.
      */
     vfunc_set_group_by(field: SymbolField): void
     /**
      * Sets the limit of Query results. No more than `limit` results are
      * returned.
+     * @param limit The limit of query.
      */
     vfunc_set_limit(limit: number): void
     /**
      * Sets the mode of Query.
+     * @param mode The mode of query.
      */
     vfunc_set_mode(mode: SymbolQueryMode): void
     /**
      * Sets the offset index of Query results.
+     * @param offset Offset of the resultset.
      */
     vfunc_set_offset(offset: number): void
     /**
      * Sets the field with which result of query is ordered.
+     * @param field The field to order the result.
      */
     vfunc_set_order_by(field: SymbolField): void
     /* Signals of IAnjuta-3.0.IAnjuta.SymbolQuery */
@@ -10075,6 +11528,9 @@ class Terminal {
     /**
      * Run the command in a terminal, setting the working directory
      * and environment variables.
+     * @param directory Working directory
+     * @param command Command executed followed by arguments
+     * @param environment List of additional environment variables
      */
     execute_command(directory: string, command: string, environment: string[]): number
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Terminal */
@@ -10082,6 +11538,9 @@ class Terminal {
     /**
      * Run the command in a terminal, setting the working directory
      * and environment variables.
+     * @param directory Working directory
+     * @param command Command executed followed by arguments
+     * @param environment List of additional environment variables
      */
     vfunc_execute_command(directory: string, command: string, environment: string[]): number
     /* Signals of IAnjuta-3.0.IAnjuta.Terminal */
@@ -10105,27 +11564,43 @@ class Vcs {
     /* Methods of IAnjuta-3.0.IAnjuta.Vcs */
     /**
      * Add files to the VCS repository.
+     * @param files List of List of files, represented as #Gfile objects, to add
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     add(files: Gio.File[], notify: Anjuta.AsyncNotify): void
     /**
      * Check out a copy of a code repository.
+     * @param repository_location Location of repository to check out
+     * @param dest Destination of checked out copy
+     * @param cancel An optional #GCancellable object to cancel the operation, or NULL
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     checkout(repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     /**
      * Remove files from the VCS repository.
+     * @param files List of files, represented as #Gfile objects, to remove
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
     /* Virtual methods of IAnjuta-3.0.IAnjuta.Vcs */
     /**
      * Add files to the VCS repository.
+     * @param files List of List of files, represented as #Gfile objects, to add
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     vfunc_add(files: Gio.File[], notify: Anjuta.AsyncNotify): void
     /**
      * Check out a copy of a code repository.
+     * @param repository_location Location of repository to check out
+     * @param dest Destination of checked out copy
+     * @param cancel An optional #GCancellable object to cancel the operation, or NULL
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     vfunc_checkout(repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     /**
      * Remove files from the VCS repository.
+     * @param files List of files, represented as #Gfile objects, to remove
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
     vfunc_remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
     vfunc_status_changed(): void
@@ -10152,52 +11627,52 @@ class Wizard {
 }
 abstract class BuildableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.BuildableIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly build: (obj: Buildable, uri: string) => void
-    readonly clean: (obj: Buildable, uri: string) => void
-    readonly configure: (obj: Buildable, uri: string) => void
-    readonly execute: (obj: Buildable, uri: string) => void
-    readonly generate: (obj: Buildable, uri: string) => void
-    readonly get_command: (obj: Buildable, command_id: BuildableCommand) => string
-    readonly install: (obj: Buildable, uri: string) => void
-    readonly reset_commands: (obj: Buildable) => void
-    readonly set_command: (obj: Buildable, command_id: BuildableCommand, command: string) => void
+    g_iface: GObject.TypeInterface
+    build: (obj: Buildable, uri: string) => void
+    clean: (obj: Buildable, uri: string) => void
+    configure: (obj: Buildable, uri: string) => void
+    execute: (obj: Buildable, uri: string) => void
+    generate: (obj: Buildable, uri: string) => void
+    get_command: (obj: Buildable, command_id: BuildableCommand) => string
+    install: (obj: Buildable, uri: string) => void
+    reset_commands: (obj: Buildable) => void
+    set_command: (obj: Buildable, command_id: BuildableCommand, command: string) => void
     static name: string
 }
 abstract class BuilderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.BuilderIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly cancel: (obj: Builder, handle: BuilderHandle) => void
-    readonly get_uri_configuration: (obj: Builder, uri: string) => string
-    readonly list_configuration: (obj: Builder) => string[]
+    g_iface: GObject.TypeInterface
+    cancel: (obj: Builder, handle: BuilderHandle) => void
+    get_uri_configuration: (obj: Builder, uri: string) => string
+    list_configuration: (obj: Builder) => string[]
     static name: string
 }
 abstract class DebugManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebugManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly breakpoint_changed: (obj: DebugManager, breakpoint: DebuggerBreakpointItem) => void
-    readonly debugger_started: (obj: DebugManager) => void
-    readonly debugger_stopped: (obj: DebugManager, err: GLib.Error) => void
-    readonly frame_changed: (obj: DebugManager, frame: number, thread: number) => void
-    readonly location_changed: (obj: DebugManager, address: number, uri: string, line: number) => void
-    readonly program_exited: (obj: DebugManager) => void
-    readonly program_loaded: (obj: DebugManager) => void
-    readonly program_moved: (obj: DebugManager, pid: number, tid: number, address: number, file: string, line: number) => void
-    readonly program_running: (obj: DebugManager) => void
-    readonly program_started: (obj: DebugManager) => void
-    readonly program_stopped: (obj: DebugManager) => void
-    readonly program_unloaded: (obj: DebugManager) => void
-    readonly sharedlib_event: (obj: DebugManager) => void
-    readonly signal_received: (obj: DebugManager, name: string, description: string) => void
-    readonly quit: (obj: DebugManager) => boolean
-    readonly start: (obj: DebugManager, uri: string) => boolean
-    readonly start_remote: (obj: DebugManager, server: string, uri: string) => boolean
+    g_iface: GObject.TypeInterface
+    breakpoint_changed: (obj: DebugManager, breakpoint: DebuggerBreakpointItem) => void
+    debugger_started: (obj: DebugManager) => void
+    debugger_stopped: (obj: DebugManager, err: GLib.Error) => void
+    frame_changed: (obj: DebugManager, frame: number, thread: number) => void
+    location_changed: (obj: DebugManager, address: number, uri: string, line: number) => void
+    program_exited: (obj: DebugManager) => void
+    program_loaded: (obj: DebugManager) => void
+    program_moved: (obj: DebugManager, pid: number, tid: number, address: number, file: string, line: number) => void
+    program_running: (obj: DebugManager) => void
+    program_started: (obj: DebugManager) => void
+    program_stopped: (obj: DebugManager) => void
+    program_unloaded: (obj: DebugManager) => void
+    sharedlib_event: (obj: DebugManager) => void
+    signal_received: (obj: DebugManager, name: string, description: string) => void
+    quit: (obj: DebugManager) => boolean
+    start: (obj: DebugManager, uri: string) => boolean
+    start_remote: (obj: DebugManager, server: string, uri: string) => boolean
     static name: string
 }
 abstract class DebuggerBreakpointIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerBreakpointIface */
-    readonly g_iface: DebuggerIface
-    readonly implement_breakpoint: (obj: DebuggerBreakpoint) => number
+    g_iface: DebuggerIface
+    implement_breakpoint: (obj: DebuggerBreakpoint) => number
     static name: string
 }
 class DebuggerBreakpointItem {
@@ -10205,51 +11680,51 @@ class DebuggerBreakpointItem {
     /**
      * type see #IAnjutaBreakpointType enumeration
      */
-    readonly type: number
+    type: number
     /**
      * unique identifier
      */
-    readonly id: number
+    id: number
     /**
      * source file where is the breakpoint
      */
-    readonly file: string
+    file: string
     /**
      * corresponding source file line number
      */
-    readonly line: number
+    line: number
     /**
      * corresponding function name
      */
-    readonly function_: string
+    function_: string
     /**
      * corresponding address
      */
-    readonly address: number
+    address: number
     /**
      * TRUE if the breakpoint is enabled
      */
-    readonly enable: boolean
+    enable: boolean
     /**
      * TRUE if the breakpoint is ignored
      */
-    readonly ignore: number
+    ignore: number
     /**
      * Count how many time the breakpoint is triggered
      */
-    readonly times: number
+    times: number
     /**
      * Additional condition for triggering the breakpoint
      */
-    readonly condition: string
+    condition: string
     /**
      * TRUE if the breakpoint is temporary
      */
-    readonly temporary: boolean
+    temporary: boolean
     /**
      * TRUE if the breakpoint is pending
      */
-    readonly pending: boolean
+    pending: boolean
     static name: string
 }
 class DebuggerFrame {
@@ -10257,75 +11732,75 @@ class DebuggerFrame {
     /**
      * Thread identifier.
      */
-    readonly thread: number
+    thread: number
     /**
      * Level of the frame, 0 is the topmost one.
      */
-    readonly level: number
+    level: number
     /**
      * List of argument of the caller.
      */
-    readonly args: string
+    args: string
     /**
      * Source file name where is the program counter.
      */
-    readonly file: string
+    file: string
     /**
      * Line number in the file above.
      */
-    readonly line: number
+    line: number
     /**
      * Function name where is the program counter.
      */
-    readonly function_: string
+    function_: string
     /**
      * Library name where is the program counter.
      */
-    readonly library: string
+    library: string
     /**
      * Address of the program counter.
      */
-    readonly address: number
+    address: number
     static name: string
 }
 abstract class DebuggerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly debugger_ready: (obj: Debugger, state: DebuggerState) => void
-    readonly debugger_started: (obj: Debugger) => void
-    readonly debugger_stopped: (obj: Debugger, err: GLib.Error) => void
-    readonly frame_changed: (obj: Debugger, frame: number, thread: number) => void
-    readonly program_exited: (obj: Debugger) => void
-    readonly program_loaded: (obj: Debugger) => void
-    readonly program_moved: (obj: Debugger, pid: number, tid: number, address: number, file: string, line: number) => void
-    readonly program_running: (obj: Debugger) => void
-    readonly program_stopped: (obj: Debugger) => void
-    readonly sharedlib_event: (obj: Debugger) => void
-    readonly signal_received: (obj: Debugger, name: string, description: string) => void
-    readonly abort: (obj: Debugger) => boolean
-    readonly attach: (obj: Debugger, pid: number, source_search_directories: string[]) => boolean
-    readonly connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
-    readonly disable_log: (obj: Debugger) => void
-    readonly enable_log: (obj: Debugger, log: MessageView) => void
-    readonly exit: (obj: Debugger) => boolean
-    readonly get_state: (obj: Debugger) => DebuggerState
-    readonly handle_signal: (obj: Debugger, name: string, stop: boolean, print: boolean, ignore: boolean) => boolean
-    readonly interrupt: (obj: Debugger) => boolean
-    readonly load: (obj: Debugger, file: string, mime_type: string, source_search_directories: string[]) => boolean
-    readonly quit: (obj: Debugger) => boolean
-    readonly run: (obj: Debugger) => boolean
-    readonly run_from: (obj: Debugger, file: string, line: number) => boolean
-    readonly run_to: (obj: Debugger, file: string, line: number) => boolean
-    readonly send_command: (obj: Debugger, command: string) => boolean
-    readonly set_environment: (obj: Debugger, env: string) => boolean
-    readonly set_frame: (obj: Debugger, frame: number) => boolean
-    readonly set_thread: (obj: Debugger, thread: number) => boolean
-    readonly set_working_directory: (obj: Debugger, dir: string) => boolean
-    readonly start: (obj: Debugger, args: string, terminal: boolean, stop: boolean) => boolean
-    readonly step_in: (obj: Debugger) => boolean
-    readonly step_out: (obj: Debugger) => boolean
-    readonly step_over: (obj: Debugger) => boolean
-    readonly unload: (obj: Debugger) => boolean
+    g_iface: GObject.TypeInterface
+    debugger_ready: (obj: Debugger, state: DebuggerState) => void
+    debugger_started: (obj: Debugger) => void
+    debugger_stopped: (obj: Debugger, err: GLib.Error) => void
+    frame_changed: (obj: Debugger, frame: number, thread: number) => void
+    program_exited: (obj: Debugger) => void
+    program_loaded: (obj: Debugger) => void
+    program_moved: (obj: Debugger, pid: number, tid: number, address: number, file: string, line: number) => void
+    program_running: (obj: Debugger) => void
+    program_stopped: (obj: Debugger) => void
+    sharedlib_event: (obj: Debugger) => void
+    signal_received: (obj: Debugger, name: string, description: string) => void
+    abort: (obj: Debugger) => boolean
+    attach: (obj: Debugger, pid: number, source_search_directories: string[]) => boolean
+    connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
+    disable_log: (obj: Debugger) => void
+    enable_log: (obj: Debugger, log: MessageView) => void
+    exit: (obj: Debugger) => boolean
+    get_state: (obj: Debugger) => DebuggerState
+    handle_signal: (obj: Debugger, name: string, stop: boolean, print: boolean, ignore: boolean) => boolean
+    interrupt: (obj: Debugger) => boolean
+    load: (obj: Debugger, file: string, mime_type: string, source_search_directories: string[]) => boolean
+    quit: (obj: Debugger) => boolean
+    run: (obj: Debugger) => boolean
+    run_from: (obj: Debugger, file: string, line: number) => boolean
+    run_to: (obj: Debugger, file: string, line: number) => boolean
+    send_command: (obj: Debugger, command: string) => boolean
+    set_environment: (obj: Debugger, env: string) => boolean
+    set_frame: (obj: Debugger, frame: number) => boolean
+    set_thread: (obj: Debugger, thread: number) => boolean
+    set_working_directory: (obj: Debugger, dir: string) => boolean
+    start: (obj: Debugger, args: string, terminal: boolean, stop: boolean) => boolean
+    step_in: (obj: Debugger) => boolean
+    step_out: (obj: Debugger) => boolean
+    step_over: (obj: Debugger) => boolean
+    unload: (obj: Debugger) => boolean
     static name: string
 }
 class DebuggerInstructionALine {
@@ -10333,15 +11808,15 @@ class DebuggerInstructionALine {
     /**
      * Address of the line
      */
-    readonly address: number
+    address: number
     /**
      * Optional label
      */
-    readonly label: string
+    label: string
     /**
      * Diassembled instruction on the line
      */
-    readonly text: string
+    text: string
     static name: string
 }
 class DebuggerInstructionDisassembly {
@@ -10349,32 +11824,32 @@ class DebuggerInstructionDisassembly {
     /**
      * Number of line
      */
-    readonly size: number
+    size: number
     /**
      * Array of all lines
      */
-    readonly data: DebuggerInstructionALine[]
+    data: DebuggerInstructionALine[]
     static name: string
 }
 abstract class DebuggerInstructionIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerInstructionIface */
-    readonly g_iface: DebuggerIface
-    readonly run_from_address: (obj: DebuggerInstruction, address: number) => boolean
-    readonly run_to_address: (obj: DebuggerInstruction, address: number) => boolean
-    readonly step_in_instruction: (obj: DebuggerInstruction) => boolean
-    readonly step_over_instruction: (obj: DebuggerInstruction) => boolean
+    g_iface: DebuggerIface
+    run_from_address: (obj: DebuggerInstruction, address: number) => boolean
+    run_to_address: (obj: DebuggerInstruction, address: number) => boolean
+    step_in_instruction: (obj: DebuggerInstruction) => boolean
+    step_over_instruction: (obj: DebuggerInstruction) => boolean
     static name: string
 }
 class DebuggerMemoryBlock {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryBlock */
-    readonly address: number
-    readonly length: number
-    readonly data: string
+    address: number
+    length: number
+    data: string
     static name: string
 }
 abstract class DebuggerMemoryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerMemoryIface */
-    readonly g_iface: DebuggerIface
+    g_iface: DebuggerIface
     static name: string
 }
 class DebuggerRegisterData {
@@ -10382,28 +11857,28 @@ class DebuggerRegisterData {
     /**
      * register identifier
      */
-    readonly num: number
+    num: number
     /**
      * register name
      */
-    readonly name: string
+    name: string
     /**
      * register value
      */
-    readonly value: string
+    value: string
     static name: string
 }
 abstract class DebuggerRegisterIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerRegisterIface */
-    readonly g_iface: DebuggerIface
-    readonly write_register: (obj: DebuggerRegister, value: DebuggerRegisterData) => boolean
+    g_iface: DebuggerIface
+    write_register: (obj: DebuggerRegister, value: DebuggerRegisterData) => boolean
     static name: string
 }
 abstract class DebuggerVariableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DebuggerVariableIface */
-    readonly g_iface: DebuggerIface
-    readonly assign: (obj: DebuggerVariable, name: string, value: string) => boolean
-    readonly destroy: (obj: DebuggerVariable, name: string) => boolean
+    g_iface: DebuggerIface
+    assign: (obj: DebuggerVariable, name: string, value: string) => boolean
+    destroy: (obj: DebuggerVariable, name: string) => boolean
     static name: string
 }
 class DebuggerVariableObject {
@@ -10411,591 +11886,591 @@ class DebuggerVariableObject {
     /**
      * unique variable object name created by backend
      */
-    readonly name: string
+    name: string
     /**
      * corresponding variable name or expression
      */
-    readonly expression: string
+    expression: string
     /**
      * variable type
      */
-    readonly type: string
+    type: string
     /**
      * variable value
      */
-    readonly value: string
+    value: string
     /**
      * TRUE if the variable has changed
      */
-    readonly changed: boolean
+    changed: boolean
     /**
      * TRUE if the variable is outside current scope
      */
-    readonly exited: boolean
+    exited: boolean
     /**
      * TRUE if the variable has been removed
      */
-    readonly deleted: boolean
+    deleted: boolean
     /**
      * Number of variable children, -1 if unknown
      */
-    readonly children: number
+    children: number
     /**
      * TRUE if the children value is wrong
      */
-    readonly has_more: boolean
+    has_more: boolean
     static name: string
 }
 abstract class DocumentIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DocumentIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly update_ui: (obj: Document) => void
-    readonly begin_undo_action: (obj: Document) => void
-    readonly can_redo: (obj: Document) => boolean
-    readonly can_undo: (obj: Document) => boolean
-    readonly clear: (obj: Document) => void
-    readonly copy: (obj: Document) => void
-    readonly cut: (obj: Document) => void
-    readonly end_undo_action: (obj: Document) => void
-    readonly get_filename: (obj: Document) => string
-    readonly grab_focus: (obj: Document) => void
-    readonly paste: (obj: Document) => void
-    readonly redo: (obj: Document) => void
-    readonly undo: (obj: Document) => void
+    g_iface: GObject.TypeInterface
+    update_ui: (obj: Document) => void
+    begin_undo_action: (obj: Document) => void
+    can_redo: (obj: Document) => boolean
+    can_undo: (obj: Document) => boolean
+    clear: (obj: Document) => void
+    copy: (obj: Document) => void
+    cut: (obj: Document) => void
+    end_undo_action: (obj: Document) => void
+    get_filename: (obj: Document) => string
+    grab_focus: (obj: Document) => void
+    paste: (obj: Document) => void
+    redo: (obj: Document) => void
+    undo: (obj: Document) => void
     static name: string
 }
 abstract class DocumentManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.DocumentManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly document_added: (obj: DocumentManager, doc: Document) => void
-    readonly document_removed: (obj: DocumentManager, doc: Document) => void
-    readonly add_bookmark: (obj: DocumentManager, file: Gio.File, line: number) => void
-    readonly add_buffer: (obj: DocumentManager, name: string, content: string) => Editor
-    readonly add_document: (obj: DocumentManager, document: Document) => void
-    readonly find_document_with_file: (obj: DocumentManager, file: Gio.File) => Document
-    readonly get_current_document: (obj: DocumentManager) => Document
-    readonly get_doc_widgets: (obj: DocumentManager) => Gtk.Widget[]
-    readonly get_file: (obj: DocumentManager, filename: string) => Gio.File
-    readonly goto_file_line: (obj: DocumentManager, file: Gio.File, lineno: number) => Editor
-    readonly goto_file_line_mark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
-    readonly remove_document: (obj: DocumentManager, document: Document, save_before: boolean) => boolean
-    readonly set_current_document: (obj: DocumentManager, document: Document) => void
+    g_iface: GObject.TypeInterface
+    document_added: (obj: DocumentManager, doc: Document) => void
+    document_removed: (obj: DocumentManager, doc: Document) => void
+    add_bookmark: (obj: DocumentManager, file: Gio.File, line: number) => void
+    add_buffer: (obj: DocumentManager, name: string, content: string) => Editor
+    add_document: (obj: DocumentManager, document: Document) => void
+    find_document_with_file: (obj: DocumentManager, file: Gio.File) => Document
+    get_current_document: (obj: DocumentManager) => Document
+    get_doc_widgets: (obj: DocumentManager) => Gtk.Widget[]
+    get_file: (obj: DocumentManager, filename: string) => Gio.File
+    goto_file_line: (obj: DocumentManager, file: Gio.File, lineno: number) => Editor
+    goto_file_line_mark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
+    remove_document: (obj: DocumentManager, document: Document, save_before: boolean) => boolean
+    set_current_document: (obj: DocumentManager, document: Document) => void
     static name: string
 }
 abstract class EditorAssistIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorAssistIface */
-    readonly g_iface: EditorIface
-    readonly cancelled: (obj: EditorAssist) => void
-    readonly add: (obj: EditorAssist, provider: Provider) => void
-    readonly invoke: (obj: EditorAssist, provider: Provider) => void
-    readonly proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean) => void
-    readonly remove: (obj: EditorAssist, provider: Provider) => void
+    g_iface: EditorIface
+    cancelled: (obj: EditorAssist) => void
+    add: (obj: EditorAssist, provider: Provider) => void
+    invoke: (obj: EditorAssist, provider: Provider) => void
+    proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean) => void
+    remove: (obj: EditorAssist, provider: Provider) => void
     static name: string
 }
 class EditorAssistProposal {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorAssistProposal */
-    readonly label: string
-    readonly markup: string
-    readonly info: string
-    readonly text: string
-    readonly icon: GdkPixbuf.Pixbuf
-    readonly data: object
+    label: string
+    markup: string
+    info: string
+    text: string
+    icon: GdkPixbuf.Pixbuf
+    data: object
     static name: string
 }
 abstract class EditorCellIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorCellIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly get_attribute: (obj: EditorCell) => EditorAttribute
-    readonly get_char: (obj: EditorCell, char_index: number) => number
-    readonly get_character: (obj: EditorCell) => string
-    readonly get_length: (obj: EditorCell) => number
+    g_iface: GObject.TypeInterface
+    get_attribute: (obj: EditorCell) => EditorAttribute
+    get_char: (obj: EditorCell, char_index: number) => number
+    get_character: (obj: EditorCell) => string
+    get_length: (obj: EditorCell) => number
     static name: string
 }
 abstract class EditorCellStyleIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorCellStyleIface */
-    readonly g_iface: EditorCellIface
-    readonly get_background_color: (obj: EditorCellStyle) => string
-    readonly get_color: (obj: EditorCellStyle) => string
-    readonly get_font_description: (obj: EditorCellStyle) => string
+    g_iface: EditorCellIface
+    get_background_color: (obj: EditorCellStyle) => string
+    get_color: (obj: EditorCellStyle) => string
+    get_font_description: (obj: EditorCellStyle) => string
     static name: string
 }
 abstract class EditorCommentIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorCommentIface */
-    readonly g_iface: EditorIface
-    readonly block: (obj: EditorComment) => void
-    readonly box: (obj: EditorComment) => void
-    readonly stream: (obj: EditorComment) => void
+    g_iface: EditorIface
+    block: (obj: EditorComment) => void
+    box: (obj: EditorComment) => void
+    stream: (obj: EditorComment) => void
     static name: string
 }
 abstract class EditorConvertIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorConvertIface */
-    readonly g_iface: EditorIface
-    readonly to_lower: (obj: EditorConvert, start_position: Iterable, end_position: Iterable) => void
-    readonly to_upper: (obj: EditorConvert, start_position: Iterable, end_position: Iterable) => void
+    g_iface: EditorIface
+    to_lower: (obj: EditorConvert, start_position: Iterable, end_position: Iterable) => void
+    to_upper: (obj: EditorConvert, start_position: Iterable, end_position: Iterable) => void
     static name: string
 }
 abstract class EditorFactoryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorFactoryIface */
-    readonly g_iface: GObject.TypeInterface
+    g_iface: GObject.TypeInterface
     static name: string
 }
 abstract class EditorFoldsIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorFoldsIface */
-    readonly g_iface: EditorIface
-    readonly close_all: (obj: EditorFolds) => void
-    readonly open_all: (obj: EditorFolds) => void
-    readonly toggle_current: (obj: EditorFolds) => void
+    g_iface: EditorIface
+    close_all: (obj: EditorFolds) => void
+    open_all: (obj: EditorFolds) => void
+    toggle_current: (obj: EditorFolds) => void
     static name: string
 }
 abstract class EditorGladeSignalIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface */
-    readonly g_iface: EditorIface
-    readonly drop: (obj: EditorGladeSignal, iterator: Iterable, signal_data: string) => void
-    readonly drop_possible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
+    g_iface: EditorIface
+    drop: (obj: EditorGladeSignal, iterator: Iterable, signal_data: string) => void
+    drop_possible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
     static name: string
 }
 abstract class EditorGotoIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorGotoIface */
-    readonly g_iface: EditorIface
-    readonly end_block: (obj: EditorGoto) => void
-    readonly matching_brace: (obj: EditorGoto) => void
-    readonly start_block: (obj: EditorGoto) => void
+    g_iface: EditorIface
+    end_block: (obj: EditorGoto) => void
+    matching_brace: (obj: EditorGoto) => void
+    start_block: (obj: EditorGoto) => void
     static name: string
 }
 abstract class EditorHoverIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorHoverIface */
-    readonly g_iface: EditorIface
-    readonly hover_leave: (obj: EditorHover, position: Iterable) => void
-    readonly hover_over: (obj: EditorHover, position: Iterable) => void
-    readonly display: (obj: EditorHover, position: Iterable, info: string) => void
+    g_iface: EditorIface
+    hover_leave: (obj: EditorHover, position: Iterable) => void
+    hover_over: (obj: EditorHover, position: Iterable) => void
+    display: (obj: EditorHover, position: Iterable, info: string) => void
     static name: string
 }
 abstract class EditorIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly backspace: (obj: Editor) => void
-    readonly changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
-    readonly char_added: (obj: Editor, position: Iterable, ch: number) => void
-    readonly code_changed: (obj: Editor, position: Iterable, code: string) => void
-    readonly cursor_moved: (obj: Editor) => void
-    readonly glade_callback_add: (obj: Editor, widget_typename: string, signal_name: string, handler_name: string, object: string, swap: boolean, after: boolean, filename: string) => void
-    readonly glade_member_add: (obj: Editor, widget_typename: string, widget_name: string, filename: string) => void
-    readonly line_marks_gutter_clicked: (obj: Editor, location: number) => void
-    readonly append: (obj: Editor, text: string, length: number) => void
-    readonly erase: (obj: Editor, position_start: Iterable, position_end: Iterable) => void
-    readonly erase_all: (obj: Editor) => void
-    readonly get_column: (obj: Editor) => number
-    readonly get_current_word: (obj: Editor) => string
-    readonly get_end_position: (obj: Editor) => Iterable
-    readonly get_indentsize: (obj: Editor) => number
-    readonly get_length: (obj: Editor) => number
-    readonly get_line_begin_position: (obj: Editor, line: number) => Iterable
-    readonly get_line_end_position: (obj: Editor, line: number) => Iterable
-    readonly get_line_from_position: (obj: Editor, position: Iterable) => number
-    readonly get_lineno: (obj: Editor) => number
-    readonly get_offset: (obj: Editor) => number
-    readonly get_overwrite: (obj: Editor) => boolean
-    readonly get_position: (obj: Editor) => Iterable
-    readonly get_start_position: (obj: Editor) => Iterable
-    readonly get_tabsize: (obj: Editor) => number
-    readonly get_text: (obj: Editor, begin: Iterable, end: Iterable) => string
-    readonly get_text_all: (obj: Editor) => string
-    readonly get_use_spaces: (obj: Editor) => boolean
-    readonly goto_end: (obj: Editor) => void
-    readonly goto_line: (obj: Editor, lineno: number) => void
-    readonly goto_position: (obj: Editor, position: Iterable) => void
-    readonly goto_start: (obj: Editor) => void
-    readonly insert: (obj: Editor, position: Iterable, text: string, length: number) => void
-    readonly set_auto_indent: (obj: Editor, auto_indent: boolean) => void
-    readonly set_indentsize: (obj: Editor, indentsize: number) => void
-    readonly set_popup_menu: (obj: Editor, menu: Gtk.Widget) => void
-    readonly set_tabsize: (obj: Editor, tabsize: number) => void
-    readonly set_use_spaces: (obj: Editor, use_spaces: boolean) => void
+    g_iface: GObject.TypeInterface
+    backspace: (obj: Editor) => void
+    changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
+    char_added: (obj: Editor, position: Iterable, ch: number) => void
+    code_changed: (obj: Editor, position: Iterable, code: string) => void
+    cursor_moved: (obj: Editor) => void
+    glade_callback_add: (obj: Editor, widget_typename: string, signal_name: string, handler_name: string, object: string, swap: boolean, after: boolean, filename: string) => void
+    glade_member_add: (obj: Editor, widget_typename: string, widget_name: string, filename: string) => void
+    line_marks_gutter_clicked: (obj: Editor, location: number) => void
+    append: (obj: Editor, text: string, length: number) => void
+    erase: (obj: Editor, position_start: Iterable, position_end: Iterable) => void
+    erase_all: (obj: Editor) => void
+    get_column: (obj: Editor) => number
+    get_current_word: (obj: Editor) => string
+    get_end_position: (obj: Editor) => Iterable
+    get_indentsize: (obj: Editor) => number
+    get_length: (obj: Editor) => number
+    get_line_begin_position: (obj: Editor, line: number) => Iterable
+    get_line_end_position: (obj: Editor, line: number) => Iterable
+    get_line_from_position: (obj: Editor, position: Iterable) => number
+    get_lineno: (obj: Editor) => number
+    get_offset: (obj: Editor) => number
+    get_overwrite: (obj: Editor) => boolean
+    get_position: (obj: Editor) => Iterable
+    get_start_position: (obj: Editor) => Iterable
+    get_tabsize: (obj: Editor) => number
+    get_text: (obj: Editor, begin: Iterable, end: Iterable) => string
+    get_text_all: (obj: Editor) => string
+    get_use_spaces: (obj: Editor) => boolean
+    goto_end: (obj: Editor) => void
+    goto_line: (obj: Editor, lineno: number) => void
+    goto_position: (obj: Editor, position: Iterable) => void
+    goto_start: (obj: Editor) => void
+    insert: (obj: Editor, position: Iterable, text: string, length: number) => void
+    set_auto_indent: (obj: Editor, auto_indent: boolean) => void
+    set_indentsize: (obj: Editor, indentsize: number) => void
+    set_popup_menu: (obj: Editor, menu: Gtk.Widget) => void
+    set_tabsize: (obj: Editor, tabsize: number) => void
+    set_use_spaces: (obj: Editor, use_spaces: boolean) => void
     static name: string
 }
 abstract class EditorLanguageIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorLanguageIface */
-    readonly g_iface: EditorIface
-    readonly language_changed: (obj: EditorLanguage, language: string) => void
-    readonly get_language: (obj: EditorLanguage) => string
-    readonly get_language_name: (obj: EditorLanguage, language: string) => string
-    readonly get_supported_languages: (obj: EditorLanguage) => string[]
-    readonly set_language: (obj: EditorLanguage, language: string) => void
+    g_iface: EditorIface
+    language_changed: (obj: EditorLanguage, language: string) => void
+    get_language: (obj: EditorLanguage) => string
+    get_language_name: (obj: EditorLanguage, language: string) => string
+    get_supported_languages: (obj: EditorLanguage) => string[]
+    set_language: (obj: EditorLanguage, language: string) => void
     static name: string
 }
 abstract class EditorLineModeIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorLineModeIface */
-    readonly g_iface: EditorIface
-    readonly convert: (obj: EditorLineMode, mode: EditorLineModeType) => void
-    readonly fix: (obj: EditorLineMode) => void
-    readonly get: (obj: EditorLineMode) => EditorLineModeType
-    readonly set: (obj: EditorLineMode, mode: EditorLineModeType) => void
+    g_iface: EditorIface
+    convert: (obj: EditorLineMode, mode: EditorLineModeType) => void
+    fix: (obj: EditorLineMode) => void
+    get: (obj: EditorLineMode) => EditorLineModeType
+    set: (obj: EditorLineMode, mode: EditorLineModeType) => void
     static name: string
 }
 abstract class EditorSearchIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorSearchIface */
-    readonly g_iface: EditorIface
-    readonly backward: (obj: EditorSearch, search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
-    readonly forward: (obj: EditorSearch, search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    g_iface: EditorIface
+    backward: (obj: EditorSearch, search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    forward: (obj: EditorSearch, search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     static name: string
 }
 abstract class EditorSelectionIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorSelectionIface */
-    readonly g_iface: EditorIface
-    readonly get: (obj: EditorSelection) => string
-    readonly has_selection: (obj: EditorSelection) => boolean
-    readonly replace: (obj: EditorSelection, text: string, length: number) => void
-    readonly select_all: (obj: EditorSelection) => void
-    readonly select_block: (obj: EditorSelection) => void
-    readonly select_function: (obj: EditorSelection) => void
-    readonly set: (obj: EditorSelection, start: Iterable, end: Iterable, scroll: boolean) => void
+    g_iface: EditorIface
+    get: (obj: EditorSelection) => string
+    has_selection: (obj: EditorSelection) => boolean
+    replace: (obj: EditorSelection, text: string, length: number) => void
+    select_all: (obj: EditorSelection) => void
+    select_block: (obj: EditorSelection) => void
+    select_function: (obj: EditorSelection) => void
+    set: (obj: EditorSelection, start: Iterable, end: Iterable, scroll: boolean) => void
     static name: string
 }
 abstract class EditorTipIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorTipIface */
-    readonly g_iface: EditorIface
-    readonly cancel: (obj: EditorTip) => void
-    readonly show: (obj: EditorTip, tips: string[], position: Iterable) => void
-    readonly visible: (obj: EditorTip) => boolean
+    g_iface: EditorIface
+    cancel: (obj: EditorTip) => void
+    show: (obj: EditorTip, tips: string[], position: Iterable) => void
+    visible: (obj: EditorTip) => boolean
     static name: string
 }
 abstract class EditorViewIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorViewIface */
-    readonly g_iface: EditorIface
-    readonly create: (obj: EditorView) => void
-    readonly get_count: (obj: EditorView) => number
-    readonly remove_current: (obj: EditorView) => void
+    g_iface: EditorIface
+    create: (obj: EditorView) => void
+    get_count: (obj: EditorView) => number
+    remove_current: (obj: EditorView) => void
     static name: string
 }
 abstract class EditorZoomIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EditorZoomIface */
-    readonly g_iface: EditorIface
-    readonly in_: (obj: EditorZoom) => void
-    readonly out: (obj: EditorZoom) => void
+    g_iface: EditorIface
+    in_: (obj: EditorZoom) => void
+    out: (obj: EditorZoom) => void
     static name: string
 }
 abstract class EnvironmentIface {
     /* Fields of IAnjuta-3.0.IAnjuta.EnvironmentIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly get_real_directory: (obj: Environment, dir: string) => string
-    readonly override: (obj: Environment, dirp: string, argvp: string, envp: string) => boolean
+    g_iface: GObject.TypeInterface
+    get_real_directory: (obj: Environment, dir: string) => string
+    override: (obj: Environment, dirp: string, argvp: string, envp: string) => boolean
     static name: string
 }
 abstract class FileIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly opened: (obj: File) => void
-    readonly get_file: (obj: File) => Gio.File
-    readonly open: (obj: File, file: Gio.File) => void
+    g_iface: GObject.TypeInterface
+    opened: (obj: File) => void
+    get_file: (obj: File) => Gio.File
+    open: (obj: File, file: Gio.File) => void
     static name: string
 }
 abstract class FileLoaderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileLoaderIface */
-    readonly g_iface: LoaderIface
-    readonly peek_interface: (obj: FileLoader, file: Gio.File) => string
+    g_iface: LoaderIface
+    peek_interface: (obj: FileLoader, file: Gio.File) => string
     static name: string
 }
 abstract class FileManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly section_changed: (obj: FileManager, file: Gio.File) => void
-    readonly set_root: (obj: FileManager, root_uri: string) => void
-    readonly set_selected: (obj: FileManager, file: Gio.File) => void
+    g_iface: GObject.TypeInterface
+    section_changed: (obj: FileManager, file: Gio.File) => void
+    set_root: (obj: FileManager, root_uri: string) => void
+    set_selected: (obj: FileManager, file: Gio.File) => void
     static name: string
 }
 abstract class FileSavableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.FileSavableIface */
-    readonly g_iface: FileIface
-    readonly saved: (obj: FileSavable, file: Gio.File) => void
-    readonly update_save_ui: (obj: FileSavable) => void
-    readonly is_conflict: (obj: FileSavable) => boolean
-    readonly is_dirty: (obj: FileSavable) => boolean
-    readonly is_read_only: (obj: FileSavable) => boolean
-    readonly save: (obj: FileSavable) => void
-    readonly save_as: (obj: FileSavable, file: Gio.File) => void
-    readonly set_dirty: (obj: FileSavable, dirty: boolean) => void
+    g_iface: FileIface
+    saved: (obj: FileSavable, file: Gio.File) => void
+    update_save_ui: (obj: FileSavable) => void
+    is_conflict: (obj: FileSavable) => boolean
+    is_dirty: (obj: FileSavable) => boolean
+    is_read_only: (obj: FileSavable) => boolean
+    save: (obj: FileSavable) => void
+    save_as: (obj: FileSavable, file: Gio.File) => void
+    set_dirty: (obj: FileSavable, dirty: boolean) => void
     static name: string
 }
 abstract class GladeIface {
     /* Fields of IAnjuta-3.0.IAnjuta.GladeIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly add_association: (obj: Glade, master: string, slave: string) => void
+    g_iface: GObject.TypeInterface
+    add_association: (obj: Glade, master: string, slave: string) => void
     static name: string
 }
 abstract class HelpIface {
     /* Fields of IAnjuta-3.0.IAnjuta.HelpIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly search: (obj: Help, query: string) => void
+    g_iface: GObject.TypeInterface
+    search: (obj: Help, query: string) => void
     static name: string
 }
 abstract class IndenterIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IndenterIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly indent: (obj: Indenter, start: Iterable, end: Iterable) => void
+    g_iface: GObject.TypeInterface
+    indent: (obj: Indenter, start: Iterable, end: Iterable) => void
     static name: string
 }
 abstract class IndicableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IndicableIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly clear: (obj: Indicable) => void
-    readonly set: (obj: Indicable, begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator) => void
+    g_iface: GObject.TypeInterface
+    clear: (obj: Indicable) => void
+    set: (obj: Indicable, begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator) => void
     static name: string
 }
 abstract class IterableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IterableIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly assign: (obj: Iterable, src_iter: Iterable) => void
-    readonly clone: (obj: Iterable) => Iterable
-    readonly compare: (obj: Iterable, iter2: Iterable) => number
-    readonly diff: (obj: Iterable, iter2: Iterable) => number
-    readonly first: (obj: Iterable) => boolean
-    readonly get_length: (obj: Iterable) => number
-    readonly get_position: (obj: Iterable) => number
-    readonly last: (obj: Iterable) => boolean
-    readonly next: (obj: Iterable) => boolean
-    readonly previous: (obj: Iterable) => boolean
-    readonly set_position: (obj: Iterable, position: number) => boolean
+    g_iface: GObject.TypeInterface
+    assign: (obj: Iterable, src_iter: Iterable) => void
+    clone: (obj: Iterable) => Iterable
+    compare: (obj: Iterable, iter2: Iterable) => number
+    diff: (obj: Iterable, iter2: Iterable) => number
+    first: (obj: Iterable) => boolean
+    get_length: (obj: Iterable) => number
+    get_position: (obj: Iterable) => number
+    last: (obj: Iterable) => boolean
+    next: (obj: Iterable) => boolean
+    previous: (obj: Iterable) => boolean
+    set_position: (obj: Iterable, position: number) => boolean
     static name: string
 }
 abstract class IterableTreeIface {
     /* Fields of IAnjuta-3.0.IAnjuta.IterableTreeIface */
-    readonly g_iface: IterableIface
-    readonly children: (obj: IterableTree) => boolean
-    readonly has_children: (obj: IterableTree) => boolean
-    readonly parent: (obj: IterableTree) => boolean
+    g_iface: IterableIface
+    children: (obj: IterableTree) => boolean
+    has_children: (obj: IterableTree) => boolean
+    parent: (obj: IterableTree) => boolean
     static name: string
 }
 abstract class LanguageIface {
     /* Fields of IAnjuta-3.0.IAnjuta.LanguageIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly get_from_editor: (obj: Language, editor: EditorLanguage) => LanguageId
-    readonly get_from_mime_type: (obj: Language, mime_type: string) => LanguageId
-    readonly get_from_string: (obj: Language, string: string) => LanguageId
-    readonly get_languages: (obj: Language) => number[]
-    readonly get_make_target: (obj: Language, id: LanguageId) => string
-    readonly get_name: (obj: Language, id: LanguageId) => string
-    readonly get_name_from_editor: (obj: Language, editor: EditorLanguage) => string
+    g_iface: GObject.TypeInterface
+    get_from_editor: (obj: Language, editor: EditorLanguage) => LanguageId
+    get_from_mime_type: (obj: Language, mime_type: string) => LanguageId
+    get_from_string: (obj: Language, string: string) => LanguageId
+    get_languages: (obj: Language) => number[]
+    get_make_target: (obj: Language, id: LanguageId) => string
+    get_name: (obj: Language, id: LanguageId) => string
+    get_name_from_editor: (obj: Language, editor: EditorLanguage) => string
     static name: string
 }
 abstract class LanguageProviderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.LanguageProviderIface */
-    readonly g_iface: ProviderIface
-    readonly get_calltip_cache: (obj: LanguageProvider, call_context: string) => string[]
-    readonly get_calltip_context: (obj: LanguageProvider, iter: Iterable) => string
-    readonly new_calltip: (obj: LanguageProvider, call_context: string, iter: Iterable) => void
-    readonly populate_completions: (obj: LanguageProvider, iter: Iterable) => Iterable | null
+    g_iface: ProviderIface
+    get_calltip_cache: (obj: LanguageProvider, call_context: string) => string[]
+    get_calltip_context: (obj: LanguageProvider, iter: Iterable) => string
+    new_calltip: (obj: LanguageProvider, call_context: string, iter: Iterable) => void
+    populate_completions: (obj: LanguageProvider, iter: Iterable) => Iterable | null
     static name: string
 }
 abstract class LoaderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.LoaderIface */
-    readonly g_iface: GObject.TypeInterface
+    g_iface: GObject.TypeInterface
     static name: string
 }
 abstract class MarkableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.MarkableIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly marker_clicked: (obj: Markable, double_click: boolean, location: number) => void
-    readonly delete_all_markers: (obj: Markable, marker: MarkableMarker) => void
-    readonly is_marker_set: (obj: Markable, location: number, marker: MarkableMarker) => boolean
-    readonly location_from_handle: (obj: Markable, handle: number) => number
-    readonly mark: (obj: Markable, location: number, marker: MarkableMarker, tooltip?: string | null) => number
-    readonly unmark: (obj: Markable, location: number, marker: MarkableMarker) => void
+    g_iface: GObject.TypeInterface
+    marker_clicked: (obj: Markable, double_click: boolean, location: number) => void
+    delete_all_markers: (obj: Markable, marker: MarkableMarker) => void
+    is_marker_set: (obj: Markable, location: number, marker: MarkableMarker) => boolean
+    location_from_handle: (obj: Markable, handle: number) => number
+    mark: (obj: Markable, location: number, marker: MarkableMarker, tooltip?: string | null) => number
+    unmark: (obj: Markable, location: number, marker: MarkableMarker) => void
     static name: string
 }
 abstract class MessageManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.MessageManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly remove_view: (obj: MessageManager, view: MessageView) => void
-    readonly set_current_view: (obj: MessageManager, view: MessageView) => void
-    readonly set_view_icon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
-    readonly set_view_icon_from_stock: (obj: MessageManager, view: MessageView, icon: string) => void
-    readonly set_view_title: (obj: MessageManager, view: MessageView, title: string) => void
+    g_iface: GObject.TypeInterface
+    remove_view: (obj: MessageManager, view: MessageView) => void
+    set_current_view: (obj: MessageManager, view: MessageView) => void
+    set_view_icon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
+    set_view_icon_from_stock: (obj: MessageManager, view: MessageView, icon: string) => void
+    set_view_title: (obj: MessageManager, view: MessageView, title: string) => void
     static name: string
 }
 abstract class MessageViewIface {
     /* Fields of IAnjuta-3.0.IAnjuta.MessageViewIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly buffer_flushed: (obj: MessageView, line: string) => void
-    readonly message_clicked: (obj: MessageView, message: string) => void
-    readonly append: (obj: MessageView, type: MessageViewType, summary: string, details: string) => void
-    readonly buffer_append: (obj: MessageView, text: string) => void
-    readonly clear: (obj: MessageView) => void
-    readonly get_current_message: (obj: MessageView) => string
-    readonly select_next: (obj: MessageView) => void
-    readonly select_previous: (obj: MessageView) => void
+    g_iface: GObject.TypeInterface
+    buffer_flushed: (obj: MessageView, line: string) => void
+    message_clicked: (obj: MessageView, message: string) => void
+    append: (obj: MessageView, type: MessageViewType, summary: string, details: string) => void
+    buffer_append: (obj: MessageView, text: string) => void
+    clear: (obj: MessageView) => void
+    get_current_message: (obj: MessageView) => string
+    select_next: (obj: MessageView) => void
+    select_previous: (obj: MessageView) => void
     static name: string
 }
 abstract class PluginFactoryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.PluginFactoryIface */
-    readonly g_iface: GObject.TypeInterface
+    g_iface: GObject.TypeInterface
     static name: string
 }
 abstract class PreferencesIface {
     /* Fields of IAnjuta-3.0.IAnjuta.PreferencesIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly merge: (obj: Preferences, prefs: Anjuta.Preferences) => void
-    readonly unmerge: (obj: Preferences, prefs: Anjuta.Preferences) => void
+    g_iface: GObject.TypeInterface
+    merge: (obj: Preferences, prefs: Anjuta.Preferences) => void
+    unmerge: (obj: Preferences, prefs: Anjuta.Preferences) => void
     static name: string
 }
 abstract class PrintIface {
     /* Fields of IAnjuta-3.0.IAnjuta.PrintIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly print: (obj: Print) => void
-    readonly print_preview: (obj: Print) => void
+    g_iface: GObject.TypeInterface
+    print: (obj: Print) => void
+    print_preview: (obj: Print) => void
     static name: string
 }
 abstract class ProjectBackendIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectBackendIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly new_project: (obj: ProjectBackend, file: Gio.File) => Project
-    readonly probe: (obj: ProjectBackend, directory: Gio.File) => number
+    g_iface: GObject.TypeInterface
+    new_project: (obj: ProjectBackend, file: Gio.File) => Project
+    probe: (obj: ProjectBackend, directory: Gio.File) => number
     static name: string
 }
 abstract class ProjectChooserIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectChooserIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly changed: (obj: ProjectChooser) => void
-    readonly get_selected: (obj: ProjectChooser) => Gio.File
-    readonly set_project_model: (obj: ProjectChooser, manager: ProjectManager, child_type: Anjuta.ProjectNodeType) => boolean
+    g_iface: GObject.TypeInterface
+    changed: (obj: ProjectChooser) => void
+    get_selected: (obj: ProjectChooser) => Gio.File
+    set_project_model: (obj: ProjectChooser, manager: ProjectManager, child_type: Anjuta.ProjectNodeType) => boolean
     static name: string
 }
 abstract class ProjectIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly file_changed: (obj: Project, node?: object | null) => void
-    readonly node_changed: (obj: Project, node: object | null, error: GLib.Error) => void
-    readonly node_loaded: (obj: Project, node: object | null, error: GLib.Error) => void
-    readonly node_saved: (obj: Project, node: object | null, error: GLib.Error) => void
-    readonly add_node_after: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
-    readonly add_node_before: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
-    readonly get_node_info: (obj: Project) => Anjuta.ProjectNodeInfo[]
-    readonly get_root: (obj: Project) => Anjuta.ProjectNode
-    readonly is_loaded: (obj: Project) => boolean
-    readonly load_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    readonly remove_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    readonly remove_property: (obj: Project, node: Anjuta.ProjectNode, id: string, name?: string | null) => boolean
-    readonly save_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    readonly set_property: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
+    g_iface: GObject.TypeInterface
+    file_changed: (obj: Project, node?: object | null) => void
+    node_changed: (obj: Project, node: object | null, error: GLib.Error) => void
+    node_loaded: (obj: Project, node: object | null, error: GLib.Error) => void
+    node_saved: (obj: Project, node: object | null, error: GLib.Error) => void
+    add_node_after: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
+    add_node_before: (obj: Project, parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file?: Gio.File | null, name?: string | null) => Anjuta.ProjectNode
+    get_node_info: (obj: Project) => Anjuta.ProjectNodeInfo[]
+    get_root: (obj: Project) => Anjuta.ProjectNode
+    is_loaded: (obj: Project) => boolean
+    load_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
+    remove_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
+    remove_property: (obj: Project, node: Anjuta.ProjectNode, id: string, name?: string | null) => boolean
+    save_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
+    set_property: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
     static name: string
 }
 abstract class ProjectManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProjectManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly element_added: (obj: ProjectManager, element: Gio.File) => void
-    readonly element_removed: (obj: ProjectManager, element: Gio.File) => void
-    readonly element_selected: (obj: ProjectManager, element: Gio.File) => void
-    readonly project_loaded: (obj: ProjectManager, error: GLib.Error) => void
-    readonly add_group: (obj: ProjectManager, name: string, default_group?: Gio.File | null) => Gio.File
-    readonly add_source: (obj: ProjectManager, name: string, default_target?: Gio.File | null) => Gio.File
-    readonly add_source_quiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
-    readonly add_sources: (obj: ProjectManager, names: string[], default_target?: Gio.File | null) => Gio.File[]
-    readonly add_target: (obj: ProjectManager, name: string, default_group?: Gio.File | null) => Gio.File
-    readonly get_capabilities: (obj: ProjectManager) => number
-    readonly get_children: (obj: ProjectManager, parent: Gio.File, children_type: number) => Gio.File[]
-    readonly get_current_project: (obj: ProjectManager) => Project
-    readonly get_elements: (obj: ProjectManager, element_type: Anjuta.ProjectNodeType) => Gio.File[]
-    readonly get_packages: (obj: ProjectManager) => string[]
-    readonly get_selected: (obj: ProjectManager) => Gio.File
-    readonly get_target_type: (obj: ProjectManager, target: Gio.File) => Anjuta.ProjectNodeType
-    readonly get_targets: (obj: ProjectManager, target_type: Anjuta.ProjectNodeType) => Gio.File[]
-    readonly is_open: (obj: ProjectManager) => boolean
-    readonly remove_file: (obj: ProjectManager, file: Gio.File) => boolean
+    g_iface: GObject.TypeInterface
+    element_added: (obj: ProjectManager, element: Gio.File) => void
+    element_removed: (obj: ProjectManager, element: Gio.File) => void
+    element_selected: (obj: ProjectManager, element: Gio.File) => void
+    project_loaded: (obj: ProjectManager, error: GLib.Error) => void
+    add_group: (obj: ProjectManager, name: string, default_group?: Gio.File | null) => Gio.File
+    add_source: (obj: ProjectManager, name: string, default_target?: Gio.File | null) => Gio.File
+    add_source_quiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
+    add_sources: (obj: ProjectManager, names: string[], default_target?: Gio.File | null) => Gio.File[]
+    add_target: (obj: ProjectManager, name: string, default_group?: Gio.File | null) => Gio.File
+    get_capabilities: (obj: ProjectManager) => number
+    get_children: (obj: ProjectManager, parent: Gio.File, children_type: number) => Gio.File[]
+    get_current_project: (obj: ProjectManager) => Project
+    get_elements: (obj: ProjectManager, element_type: Anjuta.ProjectNodeType) => Gio.File[]
+    get_packages: (obj: ProjectManager) => string[]
+    get_selected: (obj: ProjectManager) => Gio.File
+    get_target_type: (obj: ProjectManager, target: Gio.File) => Anjuta.ProjectNodeType
+    get_targets: (obj: ProjectManager, target_type: Anjuta.ProjectNodeType) => Gio.File[]
+    is_open: (obj: ProjectManager) => boolean
+    remove_file: (obj: ProjectManager, file: Gio.File) => boolean
     static name: string
 }
 abstract class ProviderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.ProviderIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly activate: (obj: Provider, iter: Iterable, data?: object | null) => void
-    readonly get_name: (obj: Provider) => string
-    readonly get_start_iter: (obj: Provider) => Iterable
-    readonly populate: (obj: Provider, iter: Iterable) => void
+    g_iface: GObject.TypeInterface
+    activate: (obj: Provider, iter: Iterable, data?: object | null) => void
+    get_name: (obj: Provider) => string
+    get_start_iter: (obj: Provider) => Iterable
+    populate: (obj: Provider, iter: Iterable) => void
     static name: string
 }
 abstract class SnippetsManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SnippetsManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly insert: (obj: SnippetsManager, key: string, editing_session: boolean) => boolean
+    g_iface: GObject.TypeInterface
+    insert: (obj: SnippetsManager, key: string, editing_session: boolean) => boolean
     static name: string
 }
 abstract class StreamIface {
     /* Fields of IAnjuta-3.0.IAnjuta.StreamIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly open: (obj: Stream, stream?: object | null) => void
+    g_iface: GObject.TypeInterface
+    open: (obj: Stream, stream?: object | null) => void
     static name: string
 }
 abstract class StreamLoaderIface {
     /* Fields of IAnjuta-3.0.IAnjuta.StreamLoaderIface */
-    readonly g_iface: LoaderIface
-    readonly peek_interface: (obj: StreamLoader, stream?: object | null) => string
+    g_iface: LoaderIface
+    peek_interface: (obj: StreamLoader, stream?: object | null) => string
     static name: string
 }
 abstract class StreamSavableIface {
     /* Fields of IAnjuta-3.0.IAnjuta.StreamSavableIface */
-    readonly g_iface: StreamIface
-    readonly save: (obj: StreamSavable, stream?: object | null) => void
+    g_iface: StreamIface
+    save: (obj: StreamSavable, stream?: object | null) => void
     static name: string
 }
 abstract class SymbolIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SymbolIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly get_boolean: (obj: Symbol, field: SymbolField) => boolean
-    readonly get_icon: (obj: Symbol) => GdkPixbuf.Pixbuf
-    readonly get_int: (obj: Symbol, field: SymbolField) => number
-    readonly get_string: (obj: Symbol, field: SymbolField) => string
-    readonly get_sym_type: (obj: Symbol) => SymbolType
+    g_iface: GObject.TypeInterface
+    get_boolean: (obj: Symbol, field: SymbolField) => boolean
+    get_icon: (obj: Symbol) => GdkPixbuf.Pixbuf
+    get_int: (obj: Symbol, field: SymbolField) => number
+    get_string: (obj: Symbol, field: SymbolField) => string
+    get_sym_type: (obj: Symbol) => SymbolType
     static name: string
 }
 abstract class SymbolManagerIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SymbolManagerIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly prj_scan_end: (obj: SymbolManager, process_id: number) => void
-    readonly sys_scan_end: (obj: SymbolManager, process_id: number) => void
-    readonly activate_package: (obj: SymbolManager, pkg_name: string, pkg_version: string) => boolean
-    readonly deactivate_all: (obj: SymbolManager) => void
-    readonly deactivate_package: (obj: SymbolManager, pkg_name: string, pkg_version: string) => void
+    g_iface: GObject.TypeInterface
+    prj_scan_end: (obj: SymbolManager, process_id: number) => void
+    sys_scan_end: (obj: SymbolManager, process_id: number) => void
+    activate_package: (obj: SymbolManager, pkg_name: string, pkg_version: string) => boolean
+    deactivate_all: (obj: SymbolManager) => void
+    deactivate_package: (obj: SymbolManager, pkg_name: string, pkg_version: string) => void
     static name: string
 }
 abstract class SymbolQueryIface {
     /* Fields of IAnjuta-3.0.IAnjuta.SymbolQueryIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly async_result: (obj: SymbolQuery, result: GObject.Object) => void
-    readonly cancel: (obj: SymbolQuery) => void
-    readonly set_fields: (obj: SymbolQuery, n_fields: number, fields: SymbolField) => void
-    readonly set_file_scope: (obj: SymbolQuery, filescope_search: SymbolQueryFileScope) => void
-    readonly set_filters: (obj: SymbolQuery, filters: SymbolType, include_types: boolean) => void
-    readonly set_group_by: (obj: SymbolQuery, field: SymbolField) => void
-    readonly set_limit: (obj: SymbolQuery, limit: number) => void
-    readonly set_mode: (obj: SymbolQuery, mode: SymbolQueryMode) => void
-    readonly set_offset: (obj: SymbolQuery, offset: number) => void
-    readonly set_order_by: (obj: SymbolQuery, field: SymbolField) => void
+    g_iface: GObject.TypeInterface
+    async_result: (obj: SymbolQuery, result: GObject.Object) => void
+    cancel: (obj: SymbolQuery) => void
+    set_fields: (obj: SymbolQuery, n_fields: number, fields: SymbolField) => void
+    set_file_scope: (obj: SymbolQuery, filescope_search: SymbolQueryFileScope) => void
+    set_filters: (obj: SymbolQuery, filters: SymbolType, include_types: boolean) => void
+    set_group_by: (obj: SymbolQuery, field: SymbolField) => void
+    set_limit: (obj: SymbolQuery, limit: number) => void
+    set_mode: (obj: SymbolQuery, mode: SymbolQueryMode) => void
+    set_offset: (obj: SymbolQuery, offset: number) => void
+    set_order_by: (obj: SymbolQuery, field: SymbolField) => void
     static name: string
 }
 abstract class TerminalIface {
     /* Fields of IAnjuta-3.0.IAnjuta.TerminalIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly child_exited: (obj: Terminal, pid: number, status: number) => void
-    readonly execute_command: (obj: Terminal, directory: string, command: string, environment: string[]) => number
+    g_iface: GObject.TypeInterface
+    child_exited: (obj: Terminal, pid: number, status: number) => void
+    execute_command: (obj: Terminal, directory: string, command: string, environment: string[]) => number
     static name: string
 }
 abstract class TodoIface {
     /* Fields of IAnjuta-3.0.IAnjuta.TodoIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly load: (obj: Todo, file: Gio.File) => void
+    g_iface: GObject.TypeInterface
+    load: (obj: Todo, file: Gio.File) => void
     static name: string
 }
 abstract class VcsIface {
     /* Fields of IAnjuta-3.0.IAnjuta.VcsIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly status_changed: (obj: Vcs) => void
-    readonly add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
-    readonly checkout: (obj: Vcs, repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
-    readonly remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
+    g_iface: GObject.TypeInterface
+    status_changed: (obj: Vcs) => void
+    add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
+    checkout: (obj: Vcs, repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
+    remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
     static name: string
 }
 abstract class WizardIface {
     /* Fields of IAnjuta-3.0.IAnjuta.WizardIface */
-    readonly g_iface: GObject.TypeInterface
-    readonly activate: (obj: Wizard) => void
+    g_iface: GObject.TypeInterface
+    activate: (obj: Wizard) => void
     static name: string
 }
     type BuilderHandle = object

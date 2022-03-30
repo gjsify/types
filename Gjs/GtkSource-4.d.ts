@@ -361,6 +361,7 @@ class CompletionProposal {
      * Get whether two proposal objects are the same.  This is used to (together
      * with gtk_source_completion_proposal_hash()) to match proposals in the
      * completion model. By default, it uses direct equality (g_direct_equal()).
+     * @param other a #GtkSourceCompletionProposal.
      */
     equal(other: CompletionProposal): boolean
     /**
@@ -421,6 +422,7 @@ class CompletionProposal {
      * Get whether two proposal objects are the same.  This is used to (together
      * with gtk_source_completion_proposal_hash()) to match proposals in the
      * completion model. By default, it uses direct equality (g_direct_equal()).
+     * @param other a #GtkSourceCompletionProposal.
      */
     vfunc_equal(other: CompletionProposal): boolean
     /**
@@ -493,6 +495,8 @@ class CompletionProvider {
      * gtk_source_completion_provider_get_start_iter()). If a start iter is defined,
      * the start of the word is the start iter. Else, the word (as long as possible)
      * will contain only alphanumerical and the "_" characters.
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param iter a #GtkTextIter.
      */
     activate_proposal(proposal: CompletionProposal, iter: Gtk.TextIter): boolean
     /**
@@ -527,6 +531,7 @@ class CompletionProvider {
      *     <emphasis>must</emphasis> also be implemented.
      *   </para>
      * </note>
+     * @param proposal a currently selected #GtkSourceCompletionProposal.
      */
     get_info_widget(proposal: CompletionProposal): Gtk.Widget | null
     /**
@@ -560,16 +565,20 @@ class CompletionProvider {
      * When the `proposal` is activated, the default handler uses `iter` as the start
      * of the word to replace. See
      * gtk_source_completion_provider_activate_proposal() for more information.
+     * @param context a #GtkSourceCompletionContext.
+     * @param proposal a #GtkSourceCompletionProposal.
      */
     get_start_iter(context: CompletionContext, proposal: CompletionProposal): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Get whether the provider match the context of completion detailed in
      * `context`.
+     * @param context a #GtkSourceCompletionContext.
      */
     match(context: CompletionContext): boolean
     /**
      * Populate `context` with proposals from `provider` added with the
      * gtk_source_completion_context_add_proposals() function.
+     * @param context a #GtkSourceCompletionContext.
      */
     populate(context: CompletionContext): void
     /**
@@ -581,6 +590,8 @@ class CompletionProvider {
      *     gtk_source_completion_provider_get_info_widget() is implemented.
      *   </para>
      * </note>
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param info a #GtkSourceCompletionInfo.
      */
     update_info(proposal: CompletionProposal, info: CompletionInfo): void
     /* Virtual methods of GtkSource-4.GtkSource.CompletionProvider */
@@ -595,6 +606,8 @@ class CompletionProvider {
      * gtk_source_completion_provider_get_start_iter()). If a start iter is defined,
      * the start of the word is the start iter. Else, the word (as long as possible)
      * will contain only alphanumerical and the "_" characters.
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param iter a #GtkTextIter.
      */
     vfunc_activate_proposal(proposal: CompletionProposal, iter: Gtk.TextIter): boolean
     /**
@@ -629,6 +642,7 @@ class CompletionProvider {
      *     <emphasis>must</emphasis> also be implemented.
      *   </para>
      * </note>
+     * @param proposal a currently selected #GtkSourceCompletionProposal.
      */
     vfunc_get_info_widget(proposal: CompletionProposal): Gtk.Widget | null
     /**
@@ -662,16 +676,20 @@ class CompletionProvider {
      * When the `proposal` is activated, the default handler uses `iter` as the start
      * of the word to replace. See
      * gtk_source_completion_provider_activate_proposal() for more information.
+     * @param context a #GtkSourceCompletionContext.
+     * @param proposal a #GtkSourceCompletionProposal.
      */
     vfunc_get_start_iter(context: CompletionContext, proposal: CompletionProposal): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Get whether the provider match the context of completion detailed in
      * `context`.
+     * @param context a #GtkSourceCompletionContext.
      */
     vfunc_match(context: CompletionContext): boolean
     /**
      * Populate `context` with proposals from `provider` added with the
      * gtk_source_completion_context_add_proposals() function.
+     * @param context a #GtkSourceCompletionContext.
      */
     vfunc_populate(context: CompletionContext): void
     /**
@@ -683,6 +701,8 @@ class CompletionProvider {
      *     gtk_source_completion_provider_get_info_widget() is implemented.
      *   </para>
      * </note>
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param info a #GtkSourceCompletionInfo.
      */
     vfunc_update_info(proposal: CompletionProposal, info: CompletionInfo): void
     static name: string
@@ -702,6 +722,7 @@ class StyleSchemeChooser {
     get_style_scheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     set_style_scheme(scheme: StyleScheme): void
     /* Virtual methods of GtkSource-4.GtkSource.StyleSchemeChooser */
@@ -711,6 +732,7 @@ class StyleSchemeChooser {
     vfunc_get_style_scheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     vfunc_set_style_scheme(scheme: StyleScheme): void
     static name: string
@@ -889,21 +911,24 @@ class Buffer {
      * and as DND destination.
      */
     readonly paste_target_list: Gtk.TargetList
+    readonly tag_table: Gtk.TextTagTable
     /**
      * The text content of the buffer. Without child widgets and images,
      * see gtk_text_buffer_get_text() for more information.
      */
     text: string
     /* Fields of Gtk-3.0.Gtk.TextBuffer */
-    readonly parent_instance: GObject.Object
-    readonly priv: Gtk.TextBufferPrivate
+    parent_instance: GObject.Object
+    priv: Gtk.TextBufferPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Buffer */
     /**
      * Moves `iter` to the position of the previous #GtkSourceMark of the given
      * category. Returns %TRUE if `iter` was moved. If `category` is NULL, the
      * previous source mark can be of any category.
+     * @param iter an iterator.
+     * @param category category to search for, or %NULL
      */
     backward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -918,6 +943,9 @@ class Buffer {
     begin_not_undoable_action(): void
     /**
      * Changes the case of the text between the specified iterators.
+     * @param case_type how to change the case.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
      */
     change_case(case_type: ChangeCaseType, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -934,6 +962,9 @@ class Buffer {
      * 
      * Typical uses for a source mark are bookmarks, breakpoints, current
      * executing instruction indication in a source file, etc..
+     * @param name the name of the mark, or %NULL.
+     * @param category a string defining the mark category.
+     * @param where location to place the mark.
      */
     create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark
     /**
@@ -953,18 +984,23 @@ class Buffer {
      *     visible is highlighted, for instance before printing.
      *   </para>
      * </note>
+     * @param start start of the area to highlight.
+     * @param end end of the area to highlight.
      */
     ensure_highlight(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * Moves `iter` to the position of the next #GtkSourceMark of the given
      * `category`. Returns %TRUE if `iter` was moved. If `category` is NULL, the
      * next source mark can be of any category.
+     * @param iter an iterator.
+     * @param category category to search for, or %NULL
      */
     forward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Get all defined context classes at `iter`.
      * 
      * See the #GtkSourceBuffer description for the list of default context classes.
+     * @param iter a #GtkTextIter.
      */
     get_context_classes_at_iter(iter: Gtk.TextIter): string[]
     /**
@@ -991,11 +1027,15 @@ class Buffer {
     /**
      * Returns the list of marks of the given category at `iter`. If `category`
      * is %NULL it returns all marks at `iter`.
+     * @param iter an iterator.
+     * @param category category to search for, or %NULL
      */
     get_source_marks_at_iter(iter: Gtk.TextIter, category?: string | null): Mark[]
     /**
      * Returns the list of marks of the given category at `line`.
      * If `category` is %NULL, all marks at `line` are returned.
+     * @param line a line number.
+     * @param category category to search for, or %NULL
      */
     get_source_marks_at_line(line: number, category?: string | null): Mark[]
     /**
@@ -1018,6 +1058,8 @@ class Buffer {
      * toggle is found.
      * 
      * See the #GtkSourceBuffer description for the list of default context classes.
+     * @param iter a #GtkTextIter.
+     * @param context_class the context class.
      */
     iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -1028,16 +1070,22 @@ class Buffer {
      * toggle is found.
      * 
      * See the #GtkSourceBuffer description for the list of default context classes.
+     * @param iter a #GtkTextIter.
+     * @param context_class the context class.
      */
     iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Check if the class `context_class` is set on `iter`.
      * 
      * See the #GtkSourceBuffer description for the list of default context classes.
+     * @param iter a #GtkTextIter.
+     * @param context_class class to search for.
      */
     iter_has_context_class(iter: Gtk.TextIter, context_class: string): boolean
     /**
      * Joins the lines of text between the specified iterators.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
      */
     join_lines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1050,6 +1098,9 @@ class Buffer {
     /**
      * Remove all marks of `category` between `start` and `end` from the buffer.
      * If `category` is NULL, all marks in the range will be removed.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param category category to search for, or %NULL.
      */
     remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category?: string | null): void
     /**
@@ -1057,6 +1108,7 @@ class Buffer {
      * activated, when you position your cursor over a bracket character
      * (a parenthesis, a square bracket, etc.) the matching opening or
      * closing bracket character will be highlighted.
+     * @param highlight %TRUE if you want matching brackets highlighted.
      */
     set_highlight_matching_brackets(highlight: boolean): void
     /**
@@ -1069,6 +1121,7 @@ class Buffer {
      * If `highlight` is %FALSE, syntax highlighting is disabled and all the
      * #GtkTextTag objects that have been added by the syntax highlighting engine
      * are removed from the buffer.
+     * @param highlight %TRUE to enable syntax highlighting, %FALSE to disable it.
      */
     set_highlight_syntax(highlight: boolean): void
     /**
@@ -1087,6 +1140,7 @@ class Buffer {
      * On the other hand, if `implicit_trailing_newline` is %FALSE, the file's
      * content is not modified when loaded into the `buffer,` and the `buffer'`s
      * content is not modified when saved into a file.
+     * @param implicit_trailing_newline the new value.
      */
     set_implicit_trailing_newline(implicit_trailing_newline: boolean): void
     /**
@@ -1097,6 +1151,7 @@ class Buffer {
      * syntax highlighting, see gtk_source_buffer_set_highlight_syntax().
      * 
      * The buffer holds a reference to `language`.
+     * @param language a #GtkSourceLanguage to set, or %NULL.
      */
     set_language(language?: Language | null): void
     /**
@@ -1107,6 +1162,7 @@ class Buffer {
      * If `max_undo_levels` is -1, the undo/redo is unlimited.
      * 
      * If `max_undo_levels` is 0, the undo/redo is disabled.
+     * @param max_undo_levels the desired maximum number of undo levels.
      */
     set_max_undo_levels(max_undo_levels: number): void
     /**
@@ -1123,15 +1179,21 @@ class Buffer {
      * background color).
      * 
      * The buffer holds a reference to `scheme`.
+     * @param scheme a #GtkSourceStyleScheme or %NULL.
      */
     set_style_scheme(scheme?: StyleScheme | null): void
     /**
      * Set the buffer undo manager. If `manager` is %NULL the default undo manager
      * will be set.
+     * @param manager A #GtkSourceUndoManager or %NULL.
      */
     set_undo_manager(manager?: UndoManager | null): void
     /**
      * Sort the lines of text between the specified iterators.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param flags #GtkSourceSortFlags specifying how the sort should behave
+     * @param column sort considering the text starting at the given column
      */
     sort_lines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags, column: number): void
     /**
@@ -1150,23 +1212,32 @@ class Buffer {
      * 
      * Emits the #GtkTextBuffer::mark-set signal as notification of the mark's
      * initial placement.
+     * @param mark the mark to add
+     * @param where location to place mark
      */
     add_mark(mark: Gtk.TextMark, where: Gtk.TextIter): void
     /**
      * Adds `clipboard` to the list of clipboards in which the selection
      * contents of `buffer` are available. In most cases, `clipboard` will be
      * the #GtkClipboard of type %GDK_SELECTION_PRIMARY for a view of `buffer`.
+     * @param clipboard a #GtkClipboard
      */
     add_selection_clipboard(clipboard: Gtk.Clipboard): void
     /**
      * Emits the “apply-tag” signal on `buffer`. The default
      * handler for the signal applies `tag` to the given range.
      * `start` and `end` do not have to be in order.
+     * @param tag a #GtkTextTag
+     * @param start one bound of range to be tagged
+     * @param end other bound of range to be tagged
      */
     apply_tag(tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * Calls gtk_text_tag_table_lookup() on the buffer’s tag table to
      * get a #GtkTextTag, then calls gtk_text_buffer_apply_tag().
+     * @param name name of a named #GtkTextTag
+     * @param start one bound of range to be tagged
+     * @param end other bound of range to be tagged
      */
     apply_tag_by_name(name: string, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1180,6 +1251,9 @@ class Buffer {
      * Because the buffer is modified, all outstanding iterators become
      * invalid after calling this function; however, the `iter` will be
      * re-initialized to point to the location where text was deleted.
+     * @param iter a position in `buffer`
+     * @param interactive whether the deletion is caused by user interaction
+     * @param default_editable whether the buffer is editable by default
      */
     backspace(iter: Gtk.TextIter, interactive: boolean, default_editable: boolean): boolean
     /**
@@ -1204,6 +1278,7 @@ class Buffer {
     begin_user_action(): void
     /**
      * Copies the currently-selected text to a clipboard.
+     * @param clipboard the #GtkClipboard object to copy to
      */
     copy_clipboard(clipboard: Gtk.Clipboard): void
     /**
@@ -1212,6 +1287,7 @@ class Buffer {
      * with gtk_text_buffer_insert_child_anchor(). The new anchor is
      * owned by the buffer; no reference count is returned to
      * the caller of gtk_text_buffer_create_child_anchor().
+     * @param iter location in the buffer
      */
     create_child_anchor(iter: Gtk.TextIter): Gtk.TextChildAnchor
     /**
@@ -1232,11 +1308,16 @@ class Buffer {
      * 
      * Emits the #GtkTextBuffer::mark-set signal as notification of the mark's
      * initial placement.
+     * @param mark_name name for mark, or %NULL
+     * @param where location to place mark
+     * @param left_gravity whether the mark has left gravity
      */
     create_mark(mark_name: string | null, where: Gtk.TextIter, left_gravity: boolean): Gtk.TextMark
     /**
      * Copies the currently-selected text to a clipboard, then deletes
      * said text if it’s editable.
+     * @param clipboard the #GtkClipboard object to cut to
+     * @param default_editable default editability of the buffer
      */
     cut_clipboard(clipboard: Gtk.Clipboard, default_editable: boolean): void
     /**
@@ -1247,6 +1328,8 @@ class Buffer {
      * buffer is modified, all outstanding iterators become invalid after
      * calling this function; however, the `start` and `end` will be
      * re-initialized to point to the location where text was deleted.
+     * @param start a position in `buffer`
+     * @param end another position in `buffer`
      */
     delete(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1255,6 +1338,9 @@ class Buffer {
      * [`start,``end)`. `start` and `end` are revalidated to point to
      * the location of the last deleted range, or left untouched if
      * no text was deleted.
+     * @param start_iter start of range to delete
+     * @param end_iter end of range
+     * @param default_editable whether the buffer is editable by default
      */
     delete_interactive(start_iter: Gtk.TextIter, end_iter: Gtk.TextIter, default_editable: boolean): boolean
     /**
@@ -1267,11 +1353,13 @@ class Buffer {
      * find out if a mark has been removed from its buffer.
      * The #GtkTextBuffer::mark-deleted signal will be emitted as notification after
      * the mark is deleted.
+     * @param mark a #GtkTextMark in `buffer`
      */
     delete_mark(mark: Gtk.TextMark): void
     /**
      * Deletes the mark named `name;` the mark must exist. See
      * gtk_text_buffer_delete_mark() for details.
+     * @param name name of a mark in `buffer`
      */
     delete_mark_by_name(name: string): void
     /**
@@ -1279,6 +1367,8 @@ class Buffer {
      * that is, the currently-selected text. If `interactive` is %TRUE,
      * the editability of the selection will be considered (users can’t delete
      * uneditable text).
+     * @param interactive whether the deletion is caused by user interaction
+     * @param default_editable whether the buffer is editable by default
      */
     delete_selection(interactive: boolean, default_editable: boolean): boolean
     /**
@@ -1288,11 +1378,16 @@ class Buffer {
      * `formats` to be used must be registered using
      * gtk_text_buffer_register_deserialize_format() or
      * gtk_text_buffer_register_deserialize_tagset() beforehand.
+     * @param content_buffer the #GtkTextBuffer to deserialize into
+     * @param format the rich text format to use for deserializing
+     * @param iter insertion point for the deserialized text
+     * @param data data to deserialize
      */
     deserialize(content_buffer: Gtk.TextBuffer, format: Gdk.Atom, iter: Gtk.TextIter, data: Uint8Array): boolean
     /**
      * This functions returns the value set with
      * gtk_text_buffer_deserialize_set_can_create_tags()
+     * @param format a #GdkAtom representing a registered rich text format
      */
     deserialize_get_can_create_tags(format: Gdk.Atom): boolean
     /**
@@ -1313,6 +1408,8 @@ class Buffer {
      * suite’s text buffers and you know that it’s fine to receive new
      * tags from these buffers, because you know that your application can
      * handle the newly created tags.
+     * @param format a #GdkAtom representing a registered rich text format
+     * @param can_create_tags whether deserializing this format may create tags
      */
     deserialize_set_can_create_tags(format: Gdk.Atom, can_create_tags: boolean): void
     /**
@@ -1368,11 +1465,13 @@ class Buffer {
     get_insert(): Gtk.TextMark
     /**
      * Obtains the location of `anchor` within `buffer`.
+     * @param anchor a child anchor that appears in `buffer`
      */
     get_iter_at_child_anchor(anchor: Gtk.TextChildAnchor): /* iter */ Gtk.TextIter
     /**
      * Initializes `iter` to the start of the given line. If `line_number` is greater
      * than the number of lines in the `buffer,` the end iterator is returned.
+     * @param line_number line number counting from 0
      */
     get_iter_at_line(line_number: number): /* iter */ Gtk.TextIter
     /**
@@ -1385,6 +1484,8 @@ class Buffer {
      * Since the 3.20 version, if `line_number` is greater than the number of lines
      * in the `buffer,` the end iterator is returned. And if `byte_index` is off the
      * end of the line, the iterator at the end of the line is returned.
+     * @param line_number line number counting from 0
+     * @param byte_index byte index from start of line
      */
     get_iter_at_line_index(line_number: number, byte_index: number): /* iter */ Gtk.TextIter
     /**
@@ -1396,10 +1497,13 @@ class Buffer {
      * Since the 3.20 version, if `line_number` is greater than the number of lines
      * in the `buffer,` the end iterator is returned. And if `char_offset` is off the
      * end of the line, the iterator at the end of the line is returned.
+     * @param line_number line number counting from 0
+     * @param char_offset char offset from start of line
      */
     get_iter_at_line_offset(line_number: number, char_offset: number): /* iter */ Gtk.TextIter
     /**
      * Initializes `iter` with the current position of `mark`.
+     * @param mark a #GtkTextMark in `buffer`
      */
     get_iter_at_mark(mark: Gtk.TextMark): /* iter */ Gtk.TextIter
     /**
@@ -1407,6 +1511,7 @@ class Buffer {
      * of the entire buffer. If `char_offset` is -1 or greater than the number
      * of characters in the buffer, `iter` is initialized to the end iterator,
      * the iterator one past the last valid character in the buffer.
+     * @param char_offset char offset from start of buffer, counting from 0, or -1
      */
     get_iter_at_offset(char_offset: number): /* iter */ Gtk.TextIter
     /**
@@ -1417,6 +1522,7 @@ class Buffer {
     /**
      * Returns the mark named `name` in buffer `buffer,` or %NULL if no such
      * mark exists in the buffer.
+     * @param name a mark name
      */
     get_mark(name: string): Gtk.TextMark | null
     /**
@@ -1474,6 +1580,9 @@ class Buffer {
      * gtk_text_buffer_get_text(). Note that 0xFFFC can occur in normal
      * text as well, so it is not a reliable indicator that a pixbuf or
      * widget is in the buffer.
+     * @param start start of a range
+     * @param end end of a range
+     * @param include_hidden_chars whether to include invisible text
      */
     get_slice(start: Gtk.TextIter, end: Gtk.TextIter, include_hidden_chars: boolean): string
     /**
@@ -1494,6 +1603,9 @@ class Buffer {
      * the returned string do not correspond to byte
      * and character indexes into the buffer. Contrast with
      * gtk_text_buffer_get_slice().
+     * @param start start of a range
+     * @param end end of a range
+     * @param include_hidden_chars whether to include invisible text
      */
     get_text(start: Gtk.TextIter, end: Gtk.TextIter, include_hidden_chars: boolean): string
     /**
@@ -1504,11 +1616,16 @@ class Buffer {
      * insertion occurs (because the buffer contents change), but the
      * default signal handler revalidates it to point to the end of the
      * inserted text.
+     * @param iter a position in the buffer
+     * @param text text in UTF-8 format
+     * @param len length of text in bytes, or -1
      */
     insert(iter: Gtk.TextIter, text: string, len: number): void
     /**
      * Simply calls gtk_text_buffer_insert(), using the current
      * cursor position as the insertion point.
+     * @param text text in UTF-8 format
+     * @param len length of text, in bytes
      */
     insert_at_cursor(text: string, len: number): void
     /**
@@ -1523,6 +1640,8 @@ class Buffer {
      * gtk_text_buffer_create_child_anchor() as a more convenient
      * alternative to this function. The buffer will add a reference to
      * the anchor, so you can unref it after insertion.
+     * @param iter location to insert the anchor
+     * @param anchor a #GtkTextChildAnchor
      */
     insert_child_anchor(iter: Gtk.TextIter, anchor: Gtk.TextChildAnchor): void
     /**
@@ -1534,6 +1653,10 @@ class Buffer {
      * `default_editable` indicates the editability of text that doesn't
      * have a tag affecting editability applied to it. Typically the
      * result of gtk_text_view_get_editable() is appropriate here.
+     * @param iter a position in `buffer`
+     * @param text some UTF-8 text
+     * @param len length of text in bytes, or -1
+     * @param default_editable default editability of buffer
      */
     insert_interactive(iter: Gtk.TextIter, text: string, len: number, default_editable: boolean): boolean
     /**
@@ -1543,6 +1666,9 @@ class Buffer {
      * `default_editable` indicates the editability of text that doesn't
      * have a tag affecting editability applied to it. Typically the
      * result of gtk_text_view_get_editable() is appropriate here.
+     * @param text text in UTF-8 format
+     * @param len length of text in bytes, or -1
+     * @param default_editable default editability of buffer
      */
     insert_interactive_at_cursor(text: string, len: number, default_editable: boolean): boolean
     /**
@@ -1551,6 +1677,9 @@ class Buffer {
      * #GtkTextBuffer::insert-text signal, possibly multiple times; insertion
      * actually occurs in the default handler for the signal. `iter` will point
      * to the end of the inserted text on return.
+     * @param iter location to insert the markup
+     * @param markup a nul-terminated UTF-8 string containing [Pango markup][PangoMarkupFormat]
+     * @param len length of `markup` in bytes, or -1
      */
     insert_markup(iter: Gtk.TextIter, markup: string, len: number): void
     /**
@@ -1562,6 +1691,8 @@ class Buffer {
      * this character for pixbufs, but the “text” variants do
      * not. e.g. see gtk_text_buffer_get_slice() and
      * gtk_text_buffer_get_text().
+     * @param iter location to insert the pixbuf
+     * @param pixbuf a #GdkPixbuf
      */
     insert_pixbuf(iter: Gtk.TextIter, pixbuf: GdkPixbuf.Pixbuf): void
     /**
@@ -1573,6 +1704,9 @@ class Buffer {
      * 
      * Implemented via emissions of the insert_text and apply_tag signals,
      * so expect those.
+     * @param iter a position in `buffer`
+     * @param start a position in a #GtkTextBuffer
+     * @param end another position in the same buffer as `start`
      */
     insert_range(iter: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1581,16 +1715,24 @@ class Buffer {
      * indicates whether the text is editable at `iter` if no tags
      * enclosing `iter` affect editability. Typically the result of
      * gtk_text_view_get_editable() is appropriate here.
+     * @param iter a position in `buffer`
+     * @param start a position in a #GtkTextBuffer
+     * @param end another position in the same buffer as `start`
+     * @param default_editable default editability of the buffer
      */
     insert_range_interactive(iter: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter, default_editable: boolean): boolean
     /**
      * Moves `mark` to the new location `where`. Emits the #GtkTextBuffer::mark-set
      * signal as notification of the move.
+     * @param mark a #GtkTextMark
+     * @param where new location for `mark` in `buffer`
      */
     move_mark(mark: Gtk.TextMark, where: Gtk.TextIter): void
     /**
      * Moves the mark named `name` (which must exist) to location `where`.
      * See gtk_text_buffer_move_mark() for details.
+     * @param name name of a mark
+     * @param where new location for mark
      */
     move_mark_by_name(name: string, where: Gtk.TextIter): void
     /**
@@ -1601,6 +1743,9 @@ class Buffer {
      * Note: pasting is asynchronous, that is, we’ll ask for the paste data and
      * return, and at some point later after the main loop runs, the paste data will
      * be inserted.
+     * @param clipboard the #GtkClipboard to paste from
+     * @param override_location location to insert pasted text, or %NULL
+     * @param default_editable whether the buffer is editable by default
      */
     paste_clipboard(clipboard: Gtk.Clipboard, override_location: Gtk.TextIter | null, default_editable: boolean): void
     /**
@@ -1611,22 +1756,28 @@ class Buffer {
      * inefficient since the temporarily-selected region will force stuff
      * to be recalculated. This function moves them as a unit, which can
      * be optimized.
+     * @param where where to put the cursor
      */
     place_cursor(where: Gtk.TextIter): void
     /**
      * This function registers a rich text deserialization `function` along with
      * its `mime_type` with the passed `buffer`.
+     * @param mime_type the format’s mime-type
+     * @param function_ the deserialize function to register
      */
     register_deserialize_format(mime_type: string, function_: Gtk.TextBufferDeserializeFunc): Gdk.Atom
     /**
      * This function registers GTK+’s internal rich text serialization
      * format with the passed `buffer`. See
      * gtk_text_buffer_register_serialize_tagset() for details.
+     * @param tagset_name an optional tagset name, on %NULL
      */
     register_deserialize_tagset(tagset_name?: string | null): Gdk.Atom
     /**
      * This function registers a rich text serialization `function` along with
      * its `mime_type` with the passed `buffer`.
+     * @param mime_type the format’s mime-type
+     * @param function_ the serialize function to register
      */
     register_serialize_format(mime_type: string, function_: Gtk.TextBufferSerializeFunc): Gdk.Atom
     /**
@@ -1647,6 +1798,7 @@ class Buffer {
      * tags from being pasted. It is probably the common case to pass an
      * identifier != %NULL here, since the %NULL tagset requires the
      * receiving buffer to deal with with pasting of arbitrary tags.
+     * @param tagset_name an optional tagset name, on %NULL
      */
     register_serialize_tagset(tagset_name?: string | null): Gdk.Atom
     /**
@@ -1655,22 +1807,31 @@ class Buffer {
      * the code you’re currently writing. That is, using this function is
      * probably a bad idea if you have two or more unrelated code sections
      * that add tags.
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     remove_all_tags(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * Removes a #GtkClipboard added with
      * gtk_text_buffer_add_selection_clipboard().
+     * @param clipboard a #GtkClipboard added to `buffer` by             gtk_text_buffer_add_selection_clipboard()
      */
     remove_selection_clipboard(clipboard: Gtk.Clipboard): void
     /**
      * Emits the “remove-tag” signal. The default handler for the signal
      * removes all occurrences of `tag` from the given range. `start` and
      * `end` don’t have to be in order.
+     * @param tag a #GtkTextTag
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     remove_tag(tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * Calls gtk_text_tag_table_lookup() on the buffer’s tag table to
      * get a #GtkTextTag, then calls gtk_text_buffer_remove_tag().
+     * @param name name of a #GtkTextTag
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     remove_tag_by_name(name: string, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -1681,6 +1842,8 @@ class Buffer {
      * inefficient since the temporarily-selected region will force stuff
      * to be recalculated. This function moves them as a unit, which can
      * be optimized.
+     * @param ins where to put the “insert” mark
+     * @param bound where to put the “selection_bound” mark
      */
     select_range(ins: Gtk.TextIter, bound: Gtk.TextIter): void
     /**
@@ -1690,6 +1853,10 @@ class Buffer {
      * `formats` to be used must be registered using
      * gtk_text_buffer_register_serialize_format() or
      * gtk_text_buffer_register_serialize_tagset() beforehand.
+     * @param content_buffer the #GtkTextBuffer to serialize
+     * @param format the rich text format to use for serializing
+     * @param start start of block of text to serialize
+     * @param end end of block of test to serialize
      */
     serialize(content_buffer: Gtk.TextBuffer, format: Gdk.Atom, start: Gtk.TextIter, end: Gtk.TextIter): Uint8Array
     /**
@@ -1698,23 +1865,28 @@ class Buffer {
      * gtk_text_buffer_set_modified (`buffer,` FALSE). When the buffer is modified,
      * it will automatically toggled on the modified bit again. When the modified
      * bit flips, the buffer emits the #GtkTextBuffer::modified-changed signal.
+     * @param setting modification flag setting
      */
     set_modified(setting: boolean): void
     /**
      * Deletes current contents of `buffer,` and inserts `text` instead. If
      * `len` is -1, `text` must be nul-terminated. `text` must be valid UTF-8.
+     * @param text UTF-8 text to insert
+     * @param len length of `text` in bytes
      */
     set_text(text: string, len: number): void
     /**
      * This function unregisters a rich text format that was previously
      * registered using gtk_text_buffer_register_deserialize_format() or
      * gtk_text_buffer_register_deserialize_tagset().
+     * @param format a #GdkAtom representing a registered rich text format.
      */
     unregister_deserialize_format(format: Gdk.Atom): void
     /**
      * This function unregisters a rich text format that was previously
      * registered using gtk_text_buffer_register_serialize_format() or
      * gtk_text_buffer_register_serialize_tagset()
+     * @param format a #GdkAtom representing a registered rich text format.
      */
     unregister_serialize_format(format: Gdk.Atom): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -1752,6 +1924,10 @@ class Buffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1762,6 +1938,12 @@ class Buffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1785,6 +1967,7 @@ class Buffer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -1804,11 +1987,14 @@ class Buffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -1816,6 +2002,8 @@ class Buffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1833,6 +2021,7 @@ class Buffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -1878,6 +2067,7 @@ class Buffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1921,15 +2111,20 @@ class Buffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1970,6 +2165,7 @@ class Buffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2004,6 +2200,7 @@ class Buffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GtkSource-4.GtkSource.Buffer */
@@ -2028,6 +2225,9 @@ class Buffer {
      * Emits the “apply-tag” signal on `buffer`. The default
      * handler for the signal applies `tag` to the given range.
      * `start` and `end` do not have to be in order.
+     * @param tag a #GtkTextTag
+     * @param start one bound of range to be tagged
+     * @param end other bound of range to be tagged
      */
     vfunc_apply_tag(tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -2069,6 +2269,8 @@ class Buffer {
      * gtk_text_buffer_create_child_anchor() as a more convenient
      * alternative to this function. The buffer will add a reference to
      * the anchor, so you can unref it after insertion.
+     * @param iter location to insert the anchor
+     * @param anchor a #GtkTextChildAnchor
      */
     vfunc_insert_child_anchor(iter: Gtk.TextIter, anchor: Gtk.TextChildAnchor): void
     /**
@@ -2080,6 +2282,8 @@ class Buffer {
      * this character for pixbufs, but the “text” variants do
      * not. e.g. see gtk_text_buffer_get_slice() and
      * gtk_text_buffer_get_text().
+     * @param iter location to insert the pixbuf
+     * @param pixbuf a #GdkPixbuf
      */
     vfunc_insert_pixbuf(iter: Gtk.TextIter, pixbuf: GdkPixbuf.Pixbuf): void
     vfunc_insert_text(pos: Gtk.TextIter, new_text: string, new_text_length: number): void
@@ -2091,6 +2295,9 @@ class Buffer {
      * Emits the “remove-tag” signal. The default handler for the signal
      * removes all occurrences of `tag` from the given range. `start` and
      * `end` don’t have to be in order.
+     * @param tag a #GtkTextTag
+     * @param start one bound of range to be untagged
+     * @param end other bound of range to be untagged
      */
     vfunc_remove_tag(tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2110,6 +2317,7 @@ class Buffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2123,6 +2331,8 @@ class Buffer {
      * the cursor moves.
      * 
      * A use-case for this signal is to show messages in a #GtkStatusbar.
+     * @param iter if found, the location of the matching bracket.
+     * @param state state of bracket matching.
      */
     connect(sigName: "bracket-matched", callback: (($obj: Buffer, iter: Gtk.TextIter | null, state: BracketMatchType) => void)): number
     connect_after(sigName: "bracket-matched", callback: (($obj: Buffer, iter: Gtk.TextIter | null, state: BracketMatchType) => void)): number
@@ -2131,6 +2341,8 @@ class Buffer {
      * The ::highlight-updated signal is emitted when the syntax
      * highlighting and [context classes][context-classes] are updated in a
      * certain region of the `buffer`.
+     * @param start the start of the updated region
+     * @param end the end of the updated region
      */
     connect(sigName: "highlight-updated", callback: (($obj: Buffer, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     connect_after(sigName: "highlight-updated", callback: (($obj: Buffer, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
@@ -2144,6 +2356,7 @@ class Buffer {
     /**
      * The ::source-mark-updated signal is emitted each time
      * a mark is added to, moved or removed from the `buffer`.
+     * @param mark the #GtkSourceMark
      */
     connect(sigName: "source-mark-updated", callback: (($obj: Buffer, mark: Gtk.TextMark) => void)): number
     connect_after(sigName: "source-mark-updated", callback: (($obj: Buffer, mark: Gtk.TextMark) => void)): number
@@ -2168,6 +2381,9 @@ class Buffer {
      * gtk_text_buffer_apply_tag(),
      * gtk_text_buffer_insert_with_tags(),
      * gtk_text_buffer_insert_range().
+     * @param tag the applied tag
+     * @param start the start of the range the tag is applied to
+     * @param end the end of the range the tag is applied to
      */
     connect(sigName: "apply-tag", callback: (($obj: Buffer, tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     connect_after(sigName: "apply-tag", callback: (($obj: Buffer, tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
@@ -2206,6 +2422,8 @@ class Buffer {
      * do not have access to the deleted text.
      * 
      * See also: gtk_text_buffer_delete().
+     * @param start the start of the range to be deleted
+     * @param end the end of the range to be deleted
      */
     connect(sigName: "delete-range", callback: (($obj: Buffer, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     connect_after(sigName: "delete-range", callback: (($obj: Buffer, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
@@ -2237,6 +2455,8 @@ class Buffer {
      * inserted `anchor`.
      * 
      * See also: gtk_text_buffer_insert_child_anchor().
+     * @param location position to insert `anchor` in `textbuffer`
+     * @param anchor the #GtkTextChildAnchor to be inserted
      */
     connect(sigName: "insert-child-anchor", callback: (($obj: Buffer, location: Gtk.TextIter, anchor: Gtk.TextChildAnchor) => void)): number
     connect_after(sigName: "insert-child-anchor", callback: (($obj: Buffer, location: Gtk.TextIter, anchor: Gtk.TextChildAnchor) => void)): number
@@ -2251,6 +2471,8 @@ class Buffer {
      * inserted `pixbuf`.
      * 
      * See also: gtk_text_buffer_insert_pixbuf().
+     * @param location position to insert `pixbuf` in `textbuffer`
+     * @param pixbuf the #GdkPixbuf to be inserted
      */
     connect(sigName: "insert-pixbuf", callback: (($obj: Buffer, location: Gtk.TextIter, pixbuf: GdkPixbuf.Pixbuf) => void)): number
     connect_after(sigName: "insert-pixbuf", callback: (($obj: Buffer, location: Gtk.TextIter, pixbuf: GdkPixbuf.Pixbuf) => void)): number
@@ -2267,6 +2489,9 @@ class Buffer {
      * See also:
      * gtk_text_buffer_insert(),
      * gtk_text_buffer_insert_range().
+     * @param location position to insert `text` in `textbuffer`
+     * @param text the UTF-8 text to be inserted
+     * @param len length of the inserted text in bytes
      */
     connect(sigName: "insert-text", callback: (($obj: Buffer, location: Gtk.TextIter, text: string, len: number) => void)): number
     connect_after(sigName: "insert-text", callback: (($obj: Buffer, location: Gtk.TextIter, text: string, len: number) => void)): number
@@ -2277,6 +2502,7 @@ class Buffer {
      * 
      * See also:
      * gtk_text_buffer_delete_mark().
+     * @param mark The mark that was deleted
      */
     connect(sigName: "mark-deleted", callback: (($obj: Buffer, mark: Gtk.TextMark) => void)): number
     connect_after(sigName: "mark-deleted", callback: (($obj: Buffer, mark: Gtk.TextMark) => void)): number
@@ -2288,6 +2514,8 @@ class Buffer {
      * See also:
      * gtk_text_buffer_create_mark(),
      * gtk_text_buffer_move_mark().
+     * @param location The location of `mark` in `textbuffer`
+     * @param mark The mark that is set
      */
     connect(sigName: "mark-set", callback: (($obj: Buffer, location: Gtk.TextIter, mark: Gtk.TextMark) => void)): number
     connect_after(sigName: "mark-set", callback: (($obj: Buffer, location: Gtk.TextIter, mark: Gtk.TextMark) => void)): number
@@ -2306,6 +2534,7 @@ class Buffer {
      * The paste-done signal is emitted after paste operation has been completed.
      * This is useful to properly scroll the view to the end of the pasted text.
      * See gtk_text_buffer_paste_clipboard() for more details.
+     * @param clipboard the #GtkClipboard pasted from
      */
     connect(sigName: "paste-done", callback: (($obj: Buffer, clipboard: Gtk.Clipboard) => void)): number
     connect_after(sigName: "paste-done", callback: (($obj: Buffer, clipboard: Gtk.Clipboard) => void)): number
@@ -2320,6 +2549,9 @@ class Buffer {
      * 
      * See also:
      * gtk_text_buffer_remove_tag().
+     * @param tag the tag to be removed
+     * @param start the start of the range the tag is removed from
+     * @param end the end of the range the tag is removed from
      */
     connect(sigName: "remove-tag", callback: (($obj: Buffer, tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
     connect_after(sigName: "remove-tag", callback: (($obj: Buffer, tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter) => void)): number
@@ -2353,6 +2585,7 @@ class Buffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
@@ -2383,6 +2616,8 @@ class Buffer {
     connect_after(sigName: "notify::has-selection", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::paste-target-list", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::paste-target-list", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::tag-table", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::tag-table", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::text", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text", callback: (($obj: Buffer, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -2504,13 +2739,18 @@ class Completion {
      * the completion popup.
      */
     show_icons: boolean
+    /**
+     * The #GtkSourceView bound to the completion object.
+     */
+    readonly view: View
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Completion */
     /**
      * Add a new #GtkSourceCompletionProvider to the completion object. This will
      * add a reference `provider,` so make sure to unref your own copy when you
      * no longer need it.
+     * @param provider a #GtkSourceCompletionProvider.
      */
     add_provider(provider: CompletionProvider): boolean
     /**
@@ -2528,6 +2768,7 @@ class Completion {
      * Create a new #GtkSourceCompletionContext for `completion`. The position where
      * the completion occurs can be specified by `position`. If `position` is %NULL,
      * the current cursor position will be used.
+     * @param position a #GtkTextIter, or %NULL.
      */
     create_context(position?: Gtk.TextIter | null): CompletionContext
     /**
@@ -2551,6 +2792,7 @@ class Completion {
     hide(): void
     /**
      * Remove `provider` from the completion.
+     * @param provider a #GtkSourceCompletionProvider.
      */
     remove_provider(provider: CompletionProvider): boolean
     /**
@@ -2563,6 +2805,8 @@ class Completion {
      * Another solution is to add providers with
      * gtk_source_completion_add_provider(), and implement
      * gtk_source_completion_provider_match() for each provider.
+     * @param providers  a list of #GtkSourceCompletionProvider, or %NULL.
+     * @param context The #GtkSourceCompletionContext with which to start the completion.
      */
     start(providers: CompletionProvider[] | null, context: CompletionContext): boolean
     /**
@@ -2606,6 +2850,10 @@ class Completion {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2616,6 +2864,12 @@ class Completion {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2639,6 +2893,7 @@ class Completion {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2658,11 +2913,14 @@ class Completion {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2670,6 +2928,8 @@ class Completion {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2687,6 +2947,7 @@ class Completion {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2732,6 +2993,7 @@ class Completion {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2775,15 +3037,20 @@ class Completion {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2824,6 +3091,7 @@ class Completion {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2858,12 +3126,16 @@ class Completion {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -2871,24 +3143,39 @@ class Completion {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -2905,14 +3192,19 @@ class Completion {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Virtual methods of GtkSource-4.GtkSource.Completion */
@@ -2929,6 +3221,9 @@ class Completion {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -2936,24 +3231,39 @@ class Completion {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -2970,14 +3280,19 @@ class Completion {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2997,6 +3312,7 @@ class Completion {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3037,6 +3353,8 @@ class Completion {
      * Applications should not connect to it, but may emit it with
      * g_signal_emit_by_name() if they need to control the cursor
      * programmatically.
+     * @param step The #GtkScrollStep by which to move the cursor
+     * @param num The amount of steps to move the cursor
      */
     connect(sigName: "move-cursor", callback: (($obj: Completion, step: Gtk.ScrollStep, num: number) => void)): number
     connect_after(sigName: "move-cursor", callback: (($obj: Completion, step: Gtk.ScrollStep, num: number) => void)): number
@@ -3061,6 +3379,8 @@ class Completion {
      * Applications should not connect to it, but may emit it with
      * g_signal_emit_by_name() if they need to control the page selection
      * programmatically.
+     * @param step The #GtkScrollStep by which to move the page
+     * @param num The amount of steps to move the page
      */
     connect(sigName: "move-page", callback: (($obj: Completion, step: Gtk.ScrollStep, num: number) => void)): number
     connect_after(sigName: "move-page", callback: (($obj: Completion, step: Gtk.ScrollStep, num: number) => void)): number
@@ -3068,6 +3388,7 @@ class Completion {
     /**
      * Emitted just before starting to populate the completion with providers.
      * You can use this signal to add additional attributes in the context.
+     * @param context The #GtkSourceCompletionContext for the current completion
      */
     connect(sigName: "populate-context", callback: (($obj: Completion, context: CompletionContext) => void)): number
     connect_after(sigName: "populate-context", callback: (($obj: Completion, context: CompletionContext) => void)): number
@@ -3108,6 +3429,7 @@ class Completion {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
@@ -3128,6 +3450,8 @@ class Completion {
     connect_after(sigName: "notify::show-headers", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::show-icons", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::show-icons", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::view", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::view", callback: (($obj: Completion, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3159,11 +3483,15 @@ class CompletionContext {
      */
     activation: CompletionActivation
     /**
+     * The #GtkSourceCompletion associated with the context.
+     */
+    readonly completion: Completion
+    /**
      * The #GtkTextIter at which the completion is invoked.
      */
     iter: Gtk.TextIter
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.CompletionContext */
     /**
      * Providers can use this function to add proposals to the completion. They
@@ -3172,6 +3500,9 @@ class CompletionContext {
      * once each population (even if no proposals need to be added).
      * Population occurs when the gtk_source_completion_provider_populate()
      * function is called.
+     * @param provider a #GtkSourceCompletionProvider.
+     * @param proposals The list of proposals to add.
+     * @param finished Whether the provider is finished adding proposals.
      */
     add_proposals(provider: CompletionProvider, proposals: CompletionProposal[] | null, finished: boolean): void
     /**
@@ -3218,6 +3549,10 @@ class CompletionContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3228,6 +3563,12 @@ class CompletionContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3251,6 +3592,7 @@ class CompletionContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3270,11 +3612,14 @@ class CompletionContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3282,6 +3627,8 @@ class CompletionContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3299,6 +3646,7 @@ class CompletionContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3344,6 +3692,7 @@ class CompletionContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3387,15 +3736,20 @@ class CompletionContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3436,6 +3790,7 @@ class CompletionContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3470,6 +3825,7 @@ class CompletionContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GtkSource-4.GtkSource.CompletionContext */
@@ -3491,6 +3847,7 @@ class CompletionContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3532,12 +3889,15 @@ class CompletionContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::activation", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::activation", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::completion", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::completion", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::iter", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::iter", callback: (($obj: CompletionContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -3657,6 +4017,7 @@ class CompletionInfo {
      * more details about transient windows.
      */
     transient_for: Gtk.Window
+    readonly type: Gtk.WindowType
     type_hint: Gdk.WindowTypeHint
     urgency_hint: boolean
     window_position: Gtk.WindowPosition
@@ -3838,22 +4199,24 @@ class CompletionInfo {
      */
     readonly window: Gdk.Window
     /* Fields of Gtk-3.0.Gtk.Window */
-    readonly bin: Gtk.Bin
-    readonly priv: Gtk.WindowPrivate
+    bin: Gtk.Bin
+    priv: Gtk.WindowPrivate
     /* Fields of Gtk-3.0.Gtk.Bin */
-    readonly container: Gtk.Container
+    container: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.CompletionInfo */
     /**
      * Moves the #GtkSourceCompletionInfo to `iter`. If `iter` is %NULL `info` is
      * moved to the cursor position. Moving will respect the #GdkGravity setting
      * of the info window and will ensure the line at `iter` is not occluded by
      * the window.
+     * @param view a #GtkTextView on which the info window should be positioned.
+     * @param iter a #GtkTextIter.
      */
     move_to_iter(view: Gtk.TextView, iter?: Gtk.TextIter | null): void
     /* Methods of Gtk-3.0.Gtk.Window */
@@ -3873,16 +4236,20 @@ class CompletionInfo {
      * called by the default ::key_press_event handler for toplevel windows,
      * however in some cases it may be useful to call this directly when
      * overriding the standard key handling for a toplevel window.
+     * @param event a #GdkEventKey
      */
     activate_key(event: Gdk.EventKey): boolean
     /**
      * Associate `accel_group` with `window,` such that calling
      * gtk_accel_groups_activate() on `window` will activate accelerators
      * in `accel_group`.
+     * @param accel_group a #GtkAccelGroup
      */
     add_accel_group(accel_group: Gtk.AccelGroup): void
     /**
      * Adds a mnemonic to this window.
+     * @param keyval the mnemonic
+     * @param target the widget that gets activated by the mnemonic
      */
     add_mnemonic(keyval: number, target: Gtk.Widget): void
     /**
@@ -3892,6 +4259,10 @@ class CompletionInfo {
      * [window manager][gtk-X11-arch] or windowing
      * system. Otherwise, GDK will try to emulate window movement,
      * potentially not all that well, depending on the windowing system.
+     * @param button mouse button that initiated the drag
+     * @param root_x X position where the user clicked to initiate the drag, in root window coordinates
+     * @param root_y Y position where the user clicked to initiate the drag
+     * @param timestamp timestamp from the click event that initiated the drag
      */
     begin_move_drag(button: number, root_x: number, root_y: number, timestamp: number): void
     /**
@@ -3901,6 +4272,11 @@ class CompletionInfo {
      * [window manager][gtk-X11-arch] or windowing
      * system. Otherwise, GDK will try to emulate window resizing,
      * potentially not all that well, depending on the windowing system.
+     * @param edge position of the resize control
+     * @param button mouse button that initiated the drag
+     * @param root_x X position where the user clicked to initiate the drag, in root window coordinates
+     * @param root_y Y position where the user clicked to initiate the drag
+     * @param timestamp timestamp from the click event that initiated the drag
      */
     begin_resize_drag(edge: Gdk.WindowEdge, button: number, root_x: number, root_y: number, timestamp: number): void
     /**
@@ -3941,6 +4317,8 @@ class CompletionInfo {
      * 
      * You can track the fullscreen state via the "window-state-event" signal
      * on #GtkWidget.
+     * @param screen a #GdkScreen to draw to
+     * @param monitor which monitor to go fullscreen on
      */
     fullscreen_on_monitor(screen: Gdk.Screen, monitor: number): void
     /**
@@ -4264,6 +4642,8 @@ class CompletionInfo {
     maximize(): void
     /**
      * Activates the targets associated with the mnemonic.
+     * @param keyval the mnemonic
+     * @param modifier the modifiers
      */
     mnemonic_activate(keyval: number, modifier: Gdk.ModifierType): boolean
     /**
@@ -4300,6 +4680,8 @@ class CompletionInfo {
      * has a nice table of gravities in the “implementation notes” section.
      * 
      * The gtk_window_get_position() documentation may also be relevant.
+     * @param x X coordinate to move window to
+     * @param y Y coordinate to move window to
      */
     move(x: number, y: number): void
     /**
@@ -4376,6 +4758,7 @@ class CompletionInfo {
      * }
      * ```
      * 
+     * @param geometry geometry string
      */
     parse_geometry(geometry: string): boolean
     /**
@@ -4403,6 +4786,7 @@ class CompletionInfo {
      * timestamp should be gathered when the window was requested to be shown
      * (when clicking a link for example), rather than once the window is
      * ready to be shown.
+     * @param timestamp the timestamp of the user interaction (typically a   button or key press event) which triggered this call
      */
     present_with_time(timestamp: number): void
     /**
@@ -4412,14 +4796,18 @@ class CompletionInfo {
      * ::key_release_event handlers for toplevel windows,
      * however in some cases it may be useful to call this directly when
      * overriding the standard key handling for a toplevel window.
+     * @param event a #GdkEventKey
      */
     propagate_key_event(event: Gdk.EventKey): boolean
     /**
      * Reverses the effects of gtk_window_add_accel_group().
+     * @param accel_group a #GtkAccelGroup
      */
     remove_accel_group(accel_group: Gtk.AccelGroup): void
     /**
      * Removes a mnemonic from this window.
+     * @param keyval the mnemonic
+     * @param target the widget that gets activated by the mnemonic
      */
     remove_mnemonic(keyval: number, target: Gtk.Widget): void
     /**
@@ -4457,6 +4845,8 @@ class CompletionInfo {
      * and cause the titlebar widget to grow in height, this will result in a
      * window content smaller that specified by gtk_window_resize() and not
      * a larger window.
+     * @param width width in pixels to resize the window to
+     * @param height height in pixels to resize the window to
      */
     resize(width: number, height: number): void
     /**
@@ -4467,11 +4857,14 @@ class CompletionInfo {
      * Like gtk_window_resize(), but `width` and `height` are interpreted
      * in terms of the base size and increment set with
      * gtk_window_set_geometry_hints.
+     * @param width width in resize increments to resize the window to
+     * @param height height in resize increments to resize the window to
      */
     resize_to_geometry(width: number, height: number): void
     /**
      * Windows may set a hint asking the desktop environment not to receive
      * the input focus. This function sets this hint.
+     * @param setting %TRUE to let this window receive input focus
      */
     set_accept_focus(setting: boolean): void
     /**
@@ -4487,6 +4880,7 @@ class CompletionInfo {
      * 
      * This is equivalent to calling gtk_application_remove_window() and/or
      * gtk_application_add_window() on the old/new applications as relevant.
+     * @param application a #GtkApplication, or %NULL to unset
      */
     set_application(application?: Gtk.Application | null): void
     /**
@@ -4504,6 +4898,7 @@ class CompletionInfo {
      * between two toplevels instead.
      * 
      * Passing %NULL for `attach_widget` detaches the window.
+     * @param attach_widget a #GtkWidget, or %NULL
      */
     set_attached_to(attach_widget?: Gtk.Widget | null): void
     /**
@@ -4518,6 +4913,7 @@ class CompletionInfo {
      * 
      * On Windows, this function always works, since there’s no window manager
      * policy involved.
+     * @param setting %TRUE to decorate the window
      */
     set_decorated(setting: boolean): void
     /**
@@ -4528,12 +4924,15 @@ class CompletionInfo {
      * gtk_widget_grab_default() on the widget. Before making a widget
      * the default widget, you must call gtk_widget_set_can_default() on
      * the widget you’d like to make the default.
+     * @param default_widget widget to be the default, or %NULL     to unset the default widget for the toplevel
      */
     set_default(default_widget?: Gtk.Widget | null): void
     /**
      * Like gtk_window_set_default_size(), but `width` and `height` are interpreted
      * in terms of the base size and increment set with
      * gtk_window_set_geometry_hints.
+     * @param width width in resize increments, or -1 to unset the default width
+     * @param height height in resize increments, or -1 to unset the default height
      */
     set_default_geometry(width: number, height: number): void
     /**
@@ -4570,6 +4969,8 @@ class CompletionInfo {
      * note that the appropriate size to save is the one returned by
      * gtk_window_get_size(). Using the window allocation directly will not
      * work in all circumstances and can lead to growing or shrinking windows.
+     * @param width width in pixels, or -1 to unset the default width
+     * @param height height in pixels, or -1 to unset the default height
      */
     set_default_size(width: number, height: number): void
     /**
@@ -4583,6 +4984,7 @@ class CompletionInfo {
      * 
      * On Windows, this function always works, since there’s no window manager
      * policy involved.
+     * @param setting %TRUE to decorate the window as deletable
      */
     set_deletable(setting: boolean): void
     /**
@@ -4590,6 +4992,7 @@ class CompletionInfo {
      * will also destroy `window` itself. This is useful for dialogs that
      * shouldn’t persist beyond the lifetime of the main window they're
      * associated with, for example.
+     * @param setting whether to destroy `window` with its transient parent
      */
     set_destroy_with_parent(setting: boolean): void
     /**
@@ -4598,16 +5001,19 @@ class CompletionInfo {
      * the focus widget for this window. To set the focus to a particular
      * widget in the toplevel, it is usually more convenient to use
      * gtk_widget_grab_focus() instead of this function.
+     * @param focus widget to be the new focus widget, or %NULL to unset   any focus widget for the toplevel window.
      */
     set_focus(focus?: Gtk.Widget | null): void
     /**
      * Windows may set a hint asking the desktop environment not to receive
      * the input focus when the window is mapped.  This function sets this
      * hint.
+     * @param setting %TRUE to let this window receive input focus on map
      */
     set_focus_on_map(setting: boolean): void
     /**
      * Sets the #GtkWindow:focus-visible property.
+     * @param setting the new value
      */
     set_focus_visible(setting: boolean): void
     /**
@@ -4615,6 +5021,9 @@ class CompletionInfo {
      * the user.  You can set a minimum and maximum size; allowed resize
      * increments (e.g. for xterm, you can only resize by the size of a
      * character); aspect ratios; and more. See the #GdkGeometry struct.
+     * @param geometry_widget widget the geometry hints used to be applied to   or %NULL. Since 3.20 this argument is ignored and GTK behaves as if %NULL was   set.
+     * @param geometry struct containing geometry information or %NULL
+     * @param geom_mask mask indicating which struct fields should be paid attention to
      */
     set_geometry_hints(geometry_widget: Gtk.Widget | null, geometry: Gdk.Geometry | null, geom_mask: Gdk.WindowHints): void
     /**
@@ -4624,6 +5033,7 @@ class CompletionInfo {
      * 
      * The default window gravity is #GDK_GRAVITY_NORTH_WEST which will
      * typically “do what you mean.”
+     * @param gravity window gravity
      */
     set_gravity(gravity: Gdk.Gravity): void
     /**
@@ -4633,6 +5043,7 @@ class CompletionInfo {
      * is actually resizable and not maximized. Use
      * gtk_window_resize_grip_is_visible() to find out if the
      * resize grip is currently shown.
+     * @param value %TRUE to allow a resize grip
      */
     set_has_resize_grip(value: boolean): void
     /**
@@ -4643,6 +5054,7 @@ class CompletionInfo {
      * bindings which may need to keep the window alive until their
      * wrapper object is garbage collected. There is no justification
      * for ever calling this function in an application.
+     * @param setting the new value
      */
     set_has_user_ref_count(setting: boolean): void
     /**
@@ -4656,6 +5068,7 @@ class CompletionInfo {
      * Note that custom titlebars set with gtk_window_set_titlebar() are
      * not affected by this. The application is in full control of their
      * content and visibility anyway.
+     * @param setting whether to hide the titlebar when `window` is maximized
      */
     set_hide_titlebar_when_maximized(setting: boolean): void
     /**
@@ -4678,6 +5091,7 @@ class CompletionInfo {
      * 
      * See also gtk_window_set_default_icon_list() to set the icon
      * for all windows in your application in one go.
+     * @param icon icon image, or %NULL
      */
     set_icon(icon?: GdkPixbuf.Pixbuf | null): void
     /**
@@ -4686,6 +5100,7 @@ class CompletionInfo {
      * 
      * This function is equivalent to calling gtk_window_set_icon()
      * with a pixbuf created by loading the image from `filename`.
+     * @param filename location of icon file
      */
     set_icon_from_file(filename: string): boolean
     /**
@@ -4714,6 +5129,7 @@ class CompletionInfo {
      * window using gtk_window_set_transient_for()) will inherit their
      * icon from their transient parent. So there’s no need to explicitly
      * set the icon on transient windows.
+     * @param list list of #GdkPixbuf
      */
     set_icon_list(list: GdkPixbuf.Pixbuf[]): void
     /**
@@ -4723,6 +5139,7 @@ class CompletionInfo {
      * 
      * Note that this has nothing to do with the WM_ICON_NAME
      * property which is mentioned in the ICCCM.
+     * @param name the name of the themed icon
      */
     set_icon_name(name?: string | null): void
     /**
@@ -4746,6 +5163,7 @@ class CompletionInfo {
      * the above state is mainly meant for user preferences and should not
      * be used by applications e.g. for drawing attention to their
      * dialogs.
+     * @param setting whether to keep `window` above other windows
      */
     set_keep_above(setting: boolean): void
     /**
@@ -4769,14 +5187,17 @@ class CompletionInfo {
      * the above state is mainly meant for user preferences and should not
      * be used by applications e.g. for drawing attention to their
      * dialogs.
+     * @param setting whether to keep `window` below other windows
      */
     set_keep_below(setting: boolean): void
     /**
      * Sets the mnemonic modifier for this window.
+     * @param modifier the modifier mask used to activate               mnemonics on this window.
      */
     set_mnemonic_modifier(modifier: Gdk.ModifierType): void
     /**
      * Sets the #GtkWindow:mnemonics-visible property.
+     * @param setting the new value
      */
     set_mnemonics_visible(setting: boolean): void
     /**
@@ -4786,6 +5207,7 @@ class CompletionInfo {
      * gtk_window_set_transient_for() to make the dialog transient for the
      * parent; most [window managers][gtk-X11-arch]
      * will then disallow lowering the dialog below the parent.
+     * @param modal whether the window is modal
      */
     set_modal(modal: boolean): void
     /**
@@ -4798,17 +5220,20 @@ class CompletionInfo {
      * 
      * Note that setting a window’s opacity after the window has been
      * shown causes it to flicker once on Windows.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
      * Sets a position constraint for this window. If the old or new
      * constraint is %GTK_WIN_POS_CENTER_ALWAYS, this will also cause
      * the window to be repositioned to satisfy the new constraint.
+     * @param position a position constraint.
      */
     set_position(position: Gtk.WindowPosition): void
     /**
      * Sets whether the user can resize a window. Windows are user resizable
      * by default.
+     * @param resizable %TRUE if the user can resize this window
      */
     set_resizable(resizable: boolean): void
     /**
@@ -4824,12 +5249,14 @@ class CompletionInfo {
      * If a window already has a unique title, you don’t need to set the
      * role, since the WM can use the title to identify the window when
      * restoring the session.
+     * @param role unique identifier for the window to be used when restoring a session
      */
     set_role(role: string): void
     /**
      * Sets the #GdkScreen where the `window` is displayed; if
      * the window is already mapped, it will be unmapped, and
      * then remapped on the new screen.
+     * @param screen a #GdkScreen.
      */
     set_screen(screen: Gdk.Screen): void
     /**
@@ -4838,11 +5265,13 @@ class CompletionInfo {
      * (A "pager" is any desktop navigation tool such as a workspace
      * switcher that displays a thumbnail representation of the windows
      * on the screen.)
+     * @param setting %TRUE to keep this window from appearing in the pager
      */
     set_skip_pager_hint(setting: boolean): void
     /**
      * Windows may set a hint asking the desktop environment not to display
      * the window in the task bar. This function sets this hint.
+     * @param setting %TRUE to keep this window from appearing in the task bar
      */
     set_skip_taskbar_hint(setting: boolean): void
     /**
@@ -4856,6 +5285,7 @@ class CompletionInfo {
      * function generating a window map event.
      * 
      * This function is only useful on X11, not with other GTK+ targets.
+     * @param startup_id a string with startup-notification identifier
      */
     set_startup_id(startup_id: string): void
     /**
@@ -4867,6 +5297,7 @@ class CompletionInfo {
      * user distinguish this window from other windows they may have
      * open. A good title might include the application name and current
      * document filename, for example.
+     * @param title title of the window
      */
     set_title(title: string): void
     /**
@@ -4880,6 +5311,7 @@ class CompletionInfo {
      * Depending on the system, this function may not work for a window
      * that is already visible, so you set the titlebar before calling
      * gtk_widget_show().
+     * @param titlebar the widget to use as titlebar
      */
     set_titlebar(titlebar?: Gtk.Widget | null): void
     /**
@@ -4901,6 +5333,7 @@ class CompletionInfo {
      * 
      * On Windows, this function puts the child window on top of the parent,
      * much as the window manager would have done on X.
+     * @param parent parent window, or %NULL
      */
     set_transient_for(parent?: Gtk.Window | null): void
     /**
@@ -4912,11 +5345,13 @@ class CompletionInfo {
      * 
      * gtk_dialog_new_with_buttons() and other convenience functions in GTK+
      * will sometimes call gtk_window_set_type_hint() on your behalf.
+     * @param hint the window type
      */
     set_type_hint(hint: Gdk.WindowTypeHint): void
     /**
      * Windows may set a hint asking the desktop environment to draw
      * the users attention to the window. This function sets this hint.
+     * @param setting %TRUE to mark this window as urgent
      */
     set_urgency_hint(setting: boolean): void
     /**
@@ -4928,6 +5363,8 @@ class CompletionInfo {
      * gtk_window_set_role() on each window in your application, for the
      * benefit of the session manager. Setting the role allows the window
      * manager to restore window positions when loading a saved session.
+     * @param wmclass_name window name hint
+     * @param wmclass_class window class hint
      */
     set_wmclass(wmclass_name: string, wmclass_class: string): void
     /**
@@ -5003,11 +5440,15 @@ class CompletionInfo {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -5018,6 +5459,8 @@ class CompletionInfo {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -5026,10 +5469,15 @@ class CompletionInfo {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -5049,6 +5497,7 @@ class CompletionInfo {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -5063,6 +5512,7 @@ class CompletionInfo {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -5102,6 +5552,7 @@ class CompletionInfo {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -5125,6 +5576,8 @@ class CompletionInfo {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -5137,6 +5590,7 @@ class CompletionInfo {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -5150,6 +5604,7 @@ class CompletionInfo {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -5160,6 +5615,7 @@ class CompletionInfo {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -5171,6 +5627,7 @@ class CompletionInfo {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -5183,6 +5640,7 @@ class CompletionInfo {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -5195,6 +5653,7 @@ class CompletionInfo {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -5202,6 +5661,7 @@ class CompletionInfo {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -5210,6 +5670,7 @@ class CompletionInfo {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -5233,17 +5694,25 @@ class CompletionInfo {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -5253,6 +5722,7 @@ class CompletionInfo {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -5276,6 +5746,7 @@ class CompletionInfo {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -5286,6 +5757,7 @@ class CompletionInfo {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -5308,6 +5780,7 @@ class CompletionInfo {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -5318,6 +5791,7 @@ class CompletionInfo {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -5337,6 +5811,7 @@ class CompletionInfo {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -5354,6 +5829,7 @@ class CompletionInfo {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -5398,6 +5874,7 @@ class CompletionInfo {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -5406,11 +5883,16 @@ class CompletionInfo {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -5439,12 +5921,22 @@ class CompletionInfo {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -5479,6 +5971,8 @@ class CompletionInfo {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -5533,16 +6027,23 @@ class CompletionInfo {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -5552,6 +6053,7 @@ class CompletionInfo {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -5569,6 +6071,9 @@ class CompletionInfo {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -5609,33 +6114,41 @@ class CompletionInfo {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -5665,6 +6178,7 @@ class CompletionInfo {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -5694,6 +6208,7 @@ class CompletionInfo {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -5725,6 +6240,7 @@ class CompletionInfo {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -5787,6 +6303,7 @@ class CompletionInfo {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -5851,6 +6368,7 @@ class CompletionInfo {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -5860,11 +6378,13 @@ class CompletionInfo {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -6018,6 +6538,7 @@ class CompletionInfo {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -6100,6 +6621,7 @@ class CompletionInfo {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -6111,6 +6633,7 @@ class CompletionInfo {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -6152,6 +6675,7 @@ class CompletionInfo {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -6271,6 +6795,8 @@ class CompletionInfo {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -6489,6 +7015,7 @@ class CompletionInfo {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -6499,6 +7026,8 @@ class CompletionInfo {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -6506,11 +7035,13 @@ class CompletionInfo {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -6578,6 +7109,7 @@ class CompletionInfo {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -6614,6 +7146,7 @@ class CompletionInfo {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -6632,6 +7165,8 @@ class CompletionInfo {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6649,6 +7184,8 @@ class CompletionInfo {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6658,6 +7195,8 @@ class CompletionInfo {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -6665,6 +7204,8 @@ class CompletionInfo {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6672,6 +7213,7 @@ class CompletionInfo {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -6693,6 +7235,7 @@ class CompletionInfo {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -6703,6 +7246,8 @@ class CompletionInfo {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -6710,6 +7255,8 @@ class CompletionInfo {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -6738,6 +7285,8 @@ class CompletionInfo {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -6748,11 +7297,14 @@ class CompletionInfo {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -6761,6 +7313,8 @@ class CompletionInfo {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -6814,6 +7368,10 @@ class CompletionInfo {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -6827,6 +7385,7 @@ class CompletionInfo {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -6872,6 +7431,7 @@ class CompletionInfo {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -6883,11 +7443,15 @@ class CompletionInfo {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -6895,11 +7459,13 @@ class CompletionInfo {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -6914,6 +7480,9 @@ class CompletionInfo {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -6926,11 +7495,14 @@ class CompletionInfo {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -6959,6 +7531,7 @@ class CompletionInfo {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -6987,6 +7560,7 @@ class CompletionInfo {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -7011,6 +7585,8 @@ class CompletionInfo {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -7023,6 +7599,7 @@ class CompletionInfo {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -7037,18 +7614,21 @@ class CompletionInfo {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -7069,6 +7649,7 @@ class CompletionInfo {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -7082,11 +7663,13 @@ class CompletionInfo {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -7096,6 +7679,8 @@ class CompletionInfo {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -7110,6 +7695,8 @@ class CompletionInfo {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -7125,6 +7712,7 @@ class CompletionInfo {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -7153,6 +7741,7 @@ class CompletionInfo {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -7167,6 +7756,7 @@ class CompletionInfo {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -7174,26 +7764,31 @@ class CompletionInfo {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -7207,6 +7802,7 @@ class CompletionInfo {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -7235,6 +7831,7 @@ class CompletionInfo {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -7253,6 +7850,7 @@ class CompletionInfo {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -7260,36 +7858,43 @@ class CompletionInfo {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -7302,6 +7907,7 @@ class CompletionInfo {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -7310,6 +7916,7 @@ class CompletionInfo {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -7327,6 +7934,7 @@ class CompletionInfo {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -7336,6 +7944,7 @@ class CompletionInfo {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -7347,6 +7956,7 @@ class CompletionInfo {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -7356,6 +7966,7 @@ class CompletionInfo {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -7365,6 +7976,7 @@ class CompletionInfo {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -7383,6 +7995,7 @@ class CompletionInfo {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -7390,6 +8003,7 @@ class CompletionInfo {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -7423,12 +8037,15 @@ class CompletionInfo {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -7445,11 +8062,14 @@ class CompletionInfo {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -7457,6 +8077,7 @@ class CompletionInfo {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -7468,6 +8089,7 @@ class CompletionInfo {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -7476,6 +8098,7 @@ class CompletionInfo {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -7484,11 +8107,13 @@ class CompletionInfo {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -7496,6 +8121,7 @@ class CompletionInfo {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -7503,6 +8129,7 @@ class CompletionInfo {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -7513,6 +8140,7 @@ class CompletionInfo {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -7523,6 +8151,7 @@ class CompletionInfo {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -7537,12 +8166,14 @@ class CompletionInfo {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -7584,6 +8215,7 @@ class CompletionInfo {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -7600,6 +8232,8 @@ class CompletionInfo {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -7634,6 +8268,8 @@ class CompletionInfo {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -7647,6 +8283,9 @@ class CompletionInfo {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -7676,12 +8315,14 @@ class CompletionInfo {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7719,6 +8360,10 @@ class CompletionInfo {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7729,6 +8374,12 @@ class CompletionInfo {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7752,6 +8403,7 @@ class CompletionInfo {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7771,11 +8423,14 @@ class CompletionInfo {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7783,6 +8438,8 @@ class CompletionInfo {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7800,6 +8457,7 @@ class CompletionInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7845,6 +8503,7 @@ class CompletionInfo {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7888,15 +8547,20 @@ class CompletionInfo {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7937,6 +8601,7 @@ class CompletionInfo {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7971,12 +8636,16 @@ class CompletionInfo {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -7984,24 +8653,39 @@ class CompletionInfo {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -8010,20 +8694,28 @@ class CompletionInfo {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Virtual methods of GtkSource-4.GtkSource.CompletionInfo */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -8031,24 +8723,39 @@ class CompletionInfo {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -8065,14 +8772,19 @@ class CompletionInfo {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /* Virtual methods of Gtk-3.0.Gtk.Window */
@@ -8086,6 +8798,7 @@ class CompletionInfo {
      * the focus widget for this window. To set the focus to a particular
      * widget in the toplevel, it is usually more convenient to use
      * gtk_widget_grab_focus() instead of this function.
+     * @param focus widget to be the new focus widget, or %NULL to unset   any focus widget for the toplevel window.
      */
     vfunc_set_focus(focus?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Container */
@@ -8102,6 +8815,7 @@ class CompletionInfo {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -8123,12 +8837,15 @@ class CompletionInfo {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -8141,6 +8858,7 @@ class CompletionInfo {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8153,6 +8871,7 @@ class CompletionInfo {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -8170,6 +8889,7 @@ class CompletionInfo {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -8180,6 +8900,7 @@ class CompletionInfo {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -8244,6 +8965,7 @@ class CompletionInfo {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -8286,6 +9008,7 @@ class CompletionInfo {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -8297,6 +9020,7 @@ class CompletionInfo {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -8320,6 +9044,7 @@ class CompletionInfo {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -8383,6 +9108,7 @@ class CompletionInfo {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -8394,6 +9120,7 @@ class CompletionInfo {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -8415,6 +9142,7 @@ class CompletionInfo {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -8477,6 +9205,7 @@ class CompletionInfo {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -8515,6 +9244,7 @@ class CompletionInfo {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8546,6 +9276,7 @@ class CompletionInfo {
      * 
      * The default bindings for this signal are Ctrl-Shift-I
      * and Ctrl-Shift-D.
+     * @param toggle toggle the debugger
      */
     connect(sigName: "enable-debugging", callback: (($obj: CompletionInfo, toggle: boolean) => boolean)): number
     connect_after(sigName: "enable-debugging", callback: (($obj: CompletionInfo, toggle: boolean) => boolean)): number
@@ -8560,6 +9291,7 @@ class CompletionInfo {
     /**
      * This signal is emitted whenever the currently focused widget in
      * this window changes.
+     * @param widget the newly focused widget (or %NULL for no focus)
      */
     connect(sigName: "set-focus", callback: (($obj: CompletionInfo, widget?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "set-focus", callback: (($obj: CompletionInfo, widget?: Gtk.Widget | null) => void)): number
@@ -8589,6 +9321,7 @@ class CompletionInfo {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: CompletionInfo, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: CompletionInfo, event: Gdk.EventButton) => boolean)): number
@@ -8601,6 +9334,7 @@ class CompletionInfo {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: CompletionInfo, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: CompletionInfo, event: Gdk.EventButton) => boolean)): number
@@ -8611,6 +9345,7 @@ class CompletionInfo {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: CompletionInfo, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: CompletionInfo, signal_id: number) => boolean)): number
@@ -8619,6 +9354,7 @@ class CompletionInfo {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: CompletionInfo, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: CompletionInfo, child_property: GObject.ParamSpec) => void)): number
@@ -8638,6 +9374,7 @@ class CompletionInfo {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: CompletionInfo, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: CompletionInfo, event: Gdk.EventConfigure) => boolean)): number
@@ -8646,6 +9383,7 @@ class CompletionInfo {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: CompletionInfo, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: CompletionInfo, event: Gdk.EventExpose) => boolean)): number
@@ -8656,6 +9394,7 @@ class CompletionInfo {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: CompletionInfo, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: CompletionInfo, event: Gdk.Event) => boolean)): number
@@ -8679,6 +9418,7 @@ class CompletionInfo {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: CompletionInfo, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: CompletionInfo, event: Gdk.Event) => boolean)): number
@@ -8686,6 +9426,7 @@ class CompletionInfo {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: CompletionInfo, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: CompletionInfo, previous_direction: Gtk.TextDirection) => void)): number
@@ -8698,6 +9439,7 @@ class CompletionInfo {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: CompletionInfo, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: CompletionInfo, context: Gdk.DragContext) => void)): number
@@ -8707,6 +9449,7 @@ class CompletionInfo {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: CompletionInfo, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: CompletionInfo, context: Gdk.DragContext) => void)): number
@@ -8717,6 +9460,10 @@ class CompletionInfo {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: CompletionInfo, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: CompletionInfo, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -8784,6 +9531,12 @@ class CompletionInfo {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: CompletionInfo, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: CompletionInfo, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -8799,6 +9552,10 @@ class CompletionInfo {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: CompletionInfo, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: CompletionInfo, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -8807,6 +9564,7 @@ class CompletionInfo {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: CompletionInfo, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: CompletionInfo, context: Gdk.DragContext) => void)): number
@@ -8817,6 +9575,8 @@ class CompletionInfo {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: CompletionInfo, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: CompletionInfo, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -8831,6 +9591,8 @@ class CompletionInfo {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: CompletionInfo, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: CompletionInfo, context: Gdk.DragContext, time: number) => void)): number
@@ -8924,6 +9686,10 @@ class CompletionInfo {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: CompletionInfo, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: CompletionInfo, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -8946,6 +9712,7 @@ class CompletionInfo {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: CompletionInfo, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: CompletionInfo, cr: cairo.Context) => boolean)): number
@@ -8958,6 +9725,7 @@ class CompletionInfo {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventCrossing) => boolean)): number
@@ -8968,6 +9736,7 @@ class CompletionInfo {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: CompletionInfo, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: CompletionInfo, event: Gdk.Event) => boolean)): number
@@ -8976,6 +9745,7 @@ class CompletionInfo {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: CompletionInfo, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: CompletionInfo, event: Gdk.Event) => void)): number
@@ -8989,6 +9759,7 @@ class CompletionInfo {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: CompletionInfo, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: CompletionInfo, event: Gdk.EventFocus) => boolean)): number
@@ -8999,6 +9770,7 @@ class CompletionInfo {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: CompletionInfo, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: CompletionInfo, event: Gdk.EventFocus) => boolean)): number
@@ -9010,6 +9782,7 @@ class CompletionInfo {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: CompletionInfo, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: CompletionInfo, event: Gdk.EventGrabBroken) => boolean)): number
@@ -9026,6 +9799,7 @@ class CompletionInfo {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: CompletionInfo, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: CompletionInfo, was_grabbed: boolean) => void)): number
@@ -9043,6 +9817,7 @@ class CompletionInfo {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: CompletionInfo, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: CompletionInfo, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -9055,6 +9830,7 @@ class CompletionInfo {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: CompletionInfo, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: CompletionInfo, event: Gdk.EventKey) => boolean)): number
@@ -9066,6 +9842,7 @@ class CompletionInfo {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: CompletionInfo, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: CompletionInfo, event: Gdk.EventKey) => boolean)): number
@@ -9073,6 +9850,7 @@ class CompletionInfo {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: CompletionInfo, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: CompletionInfo, direction: Gtk.DirectionType) => boolean)): number
@@ -9085,6 +9863,7 @@ class CompletionInfo {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventCrossing) => boolean)): number
@@ -9110,6 +9889,7 @@ class CompletionInfo {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: CompletionInfo, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: CompletionInfo, event: Gdk.EventAny) => boolean)): number
@@ -9117,6 +9897,7 @@ class CompletionInfo {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: CompletionInfo, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: CompletionInfo, group_cycling: boolean) => boolean)): number
@@ -9129,6 +9910,7 @@ class CompletionInfo {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventMotion) => boolean)): number
@@ -9139,6 +9921,7 @@ class CompletionInfo {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: CompletionInfo, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: CompletionInfo, old_parent?: Gtk.Widget | null) => void)): number
@@ -9161,6 +9944,7 @@ class CompletionInfo {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventProperty) => boolean)): number
@@ -9170,6 +9954,7 @@ class CompletionInfo {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: CompletionInfo, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: CompletionInfo, event: Gdk.EventProximity) => boolean)): number
@@ -9179,6 +9964,7 @@ class CompletionInfo {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: CompletionInfo, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: CompletionInfo, event: Gdk.EventProximity) => boolean)): number
@@ -9196,6 +9982,10 @@ class CompletionInfo {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: CompletionInfo, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: CompletionInfo, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -9211,6 +10001,7 @@ class CompletionInfo {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: CompletionInfo, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: CompletionInfo, previous_screen?: Gdk.Screen | null) => void)): number
@@ -9224,6 +10015,7 @@ class CompletionInfo {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: CompletionInfo, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: CompletionInfo, event: Gdk.EventScroll) => boolean)): number
@@ -9231,6 +10023,7 @@ class CompletionInfo {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: CompletionInfo, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: CompletionInfo, event: Gdk.EventSelection) => boolean)): number
@@ -9248,6 +10041,7 @@ class CompletionInfo {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: CompletionInfo, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: CompletionInfo, event: Gdk.EventSelection) => boolean)): number
@@ -9268,6 +10062,7 @@ class CompletionInfo {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: CompletionInfo, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: CompletionInfo, state: Gtk.StateType) => void)): number
@@ -9275,6 +10070,7 @@ class CompletionInfo {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: CompletionInfo, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: CompletionInfo, flags: Gtk.StateFlags) => void)): number
@@ -9287,6 +10083,7 @@ class CompletionInfo {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: CompletionInfo, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: CompletionInfo, previous_style?: Gtk.Style | null) => void)): number
@@ -9323,6 +10120,7 @@ class CompletionInfo {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: CompletionInfo, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: CompletionInfo, event: Gdk.EventAny) => boolean)): number
@@ -9342,6 +10140,7 @@ class CompletionInfo {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: CompletionInfo, event: Gdk.EventVisibility) => boolean)): number
@@ -9353,6 +10152,7 @@ class CompletionInfo {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: CompletionInfo, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: CompletionInfo, event: Gdk.EventWindowState) => boolean)): number
@@ -9386,6 +10186,7 @@ class CompletionInfo {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
@@ -9448,6 +10249,8 @@ class CompletionInfo {
     connect_after(sigName: "notify::title", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::transient-for", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::transient-for", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::type", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::type-hint", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type-hint", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::urgency-hint", callback: (($obj: CompletionInfo, pspec: GObject.ParamSpec) => void)): number
@@ -9613,7 +10416,7 @@ class CompletionItem {
      */
     text: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.CompletionItem */
     set_gicon(gicon?: Gio.Icon | null): void
     set_icon(icon?: GdkPixbuf.Pixbuf | null): void
@@ -9657,6 +10460,10 @@ class CompletionItem {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9667,6 +10474,12 @@ class CompletionItem {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9690,6 +10503,7 @@ class CompletionItem {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9709,11 +10523,14 @@ class CompletionItem {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -9721,6 +10538,8 @@ class CompletionItem {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -9738,6 +10557,7 @@ class CompletionItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -9783,6 +10603,7 @@ class CompletionItem {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -9826,15 +10647,20 @@ class CompletionItem {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -9875,6 +10701,7 @@ class CompletionItem {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -9909,6 +10736,7 @@ class CompletionItem {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GtkSource-4.GtkSource.CompletionProposal */
@@ -9922,6 +10750,7 @@ class CompletionItem {
      * Get whether two proposal objects are the same.  This is used to (together
      * with gtk_source_completion_proposal_hash()) to match proposals in the
      * completion model. By default, it uses direct equality (g_direct_equal()).
+     * @param other a #GtkSourceCompletionProposal.
      */
     equal(other: CompletionProposal): boolean
     /**
@@ -9982,6 +10811,7 @@ class CompletionItem {
      * Get whether two proposal objects are the same.  This is used to (together
      * with gtk_source_completion_proposal_hash()) to match proposals in the
      * completion model. By default, it uses direct equality (g_direct_equal()).
+     * @param other a #GtkSourceCompletionProposal.
      */
     vfunc_equal(other: CompletionProposal): boolean
     /**
@@ -10048,6 +10878,7 @@ class CompletionItem {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10080,6 +10911,7 @@ class CompletionItem {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CompletionItem, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CompletionItem, pspec: GObject.ParamSpec) => void)): number
@@ -10145,14 +10977,16 @@ class CompletionWords {
     proposals_batch_size: number
     scan_batch_size: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.CompletionWords */
     /**
      * Registers `buffer` in the `words` provider.
+     * @param buffer a #GtkTextBuffer
      */
     register(buffer: Gtk.TextBuffer): void
     /**
      * Unregisters `buffer` from the `words` provider.
+     * @param buffer a #GtkTextBuffer
      */
     unregister(buffer: Gtk.TextBuffer): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10190,6 +11024,10 @@ class CompletionWords {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10200,6 +11038,12 @@ class CompletionWords {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10223,6 +11067,7 @@ class CompletionWords {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10242,11 +11087,14 @@ class CompletionWords {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10254,6 +11102,8 @@ class CompletionWords {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10271,6 +11121,7 @@ class CompletionWords {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10316,6 +11167,7 @@ class CompletionWords {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10359,15 +11211,20 @@ class CompletionWords {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10408,6 +11265,7 @@ class CompletionWords {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10442,6 +11300,7 @@ class CompletionWords {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of GtkSource-4.GtkSource.CompletionProvider */
@@ -10456,6 +11315,8 @@ class CompletionWords {
      * gtk_source_completion_provider_get_start_iter()). If a start iter is defined,
      * the start of the word is the start iter. Else, the word (as long as possible)
      * will contain only alphanumerical and the "_" characters.
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param iter a #GtkTextIter.
      */
     activate_proposal(proposal: CompletionProposal, iter: Gtk.TextIter): boolean
     /**
@@ -10490,6 +11351,7 @@ class CompletionWords {
      *     <emphasis>must</emphasis> also be implemented.
      *   </para>
      * </note>
+     * @param proposal a currently selected #GtkSourceCompletionProposal.
      */
     get_info_widget(proposal: CompletionProposal): Gtk.Widget | null
     /**
@@ -10523,16 +11385,20 @@ class CompletionWords {
      * When the `proposal` is activated, the default handler uses `iter` as the start
      * of the word to replace. See
      * gtk_source_completion_provider_activate_proposal() for more information.
+     * @param context a #GtkSourceCompletionContext.
+     * @param proposal a #GtkSourceCompletionProposal.
      */
     get_start_iter(context: CompletionContext, proposal: CompletionProposal): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Get whether the provider match the context of completion detailed in
      * `context`.
+     * @param context a #GtkSourceCompletionContext.
      */
     match(context: CompletionContext): boolean
     /**
      * Populate `context` with proposals from `provider` added with the
      * gtk_source_completion_context_add_proposals() function.
+     * @param context a #GtkSourceCompletionContext.
      */
     populate(context: CompletionContext): void
     /**
@@ -10544,6 +11410,8 @@ class CompletionWords {
      *     gtk_source_completion_provider_get_info_widget() is implemented.
      *   </para>
      * </note>
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param info a #GtkSourceCompletionInfo.
      */
     update_info(proposal: CompletionProposal, info: CompletionInfo): void
     /* Virtual methods of GtkSource-4.GtkSource.CompletionWords */
@@ -10558,6 +11426,8 @@ class CompletionWords {
      * gtk_source_completion_provider_get_start_iter()). If a start iter is defined,
      * the start of the word is the start iter. Else, the word (as long as possible)
      * will contain only alphanumerical and the "_" characters.
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param iter a #GtkTextIter.
      */
     vfunc_activate_proposal(proposal: CompletionProposal, iter: Gtk.TextIter): boolean
     /**
@@ -10592,6 +11462,7 @@ class CompletionWords {
      *     <emphasis>must</emphasis> also be implemented.
      *   </para>
      * </note>
+     * @param proposal a currently selected #GtkSourceCompletionProposal.
      */
     vfunc_get_info_widget(proposal: CompletionProposal): Gtk.Widget | null
     /**
@@ -10625,16 +11496,20 @@ class CompletionWords {
      * When the `proposal` is activated, the default handler uses `iter` as the start
      * of the word to replace. See
      * gtk_source_completion_provider_activate_proposal() for more information.
+     * @param context a #GtkSourceCompletionContext.
+     * @param proposal a #GtkSourceCompletionProposal.
      */
     vfunc_get_start_iter(context: CompletionContext, proposal: CompletionProposal): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Get whether the provider match the context of completion detailed in
      * `context`.
+     * @param context a #GtkSourceCompletionContext.
      */
     vfunc_match(context: CompletionContext): boolean
     /**
      * Populate `context` with proposals from `provider` added with the
      * gtk_source_completion_context_add_proposals() function.
+     * @param context a #GtkSourceCompletionContext.
      */
     vfunc_populate(context: CompletionContext): void
     /**
@@ -10646,6 +11521,8 @@ class CompletionWords {
      *     gtk_source_completion_provider_get_info_widget() is implemented.
      *   </para>
      * </note>
+     * @param proposal a #GtkSourceCompletionProposal.
+     * @param info a #GtkSourceCompletionInfo.
      */
     vfunc_update_info(proposal: CompletionProposal, info: CompletionInfo): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -10665,6 +11542,7 @@ class CompletionWords {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10697,6 +11575,7 @@ class CompletionWords {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CompletionWords, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CompletionWords, pspec: GObject.ParamSpec) => void)): number
@@ -10760,7 +11639,7 @@ class File {
      */
     readonly read_only: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.File */
     /**
      * Checks synchronously the file on disk, to know whether the file is externally
@@ -10813,6 +11692,7 @@ class File {
     is_readonly(): boolean
     /**
      * Sets the location.
+     * @param location the new #GFile, or %NULL.
      */
     set_location(location?: Gio.File | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -10850,6 +11730,10 @@ class File {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -10860,6 +11744,12 @@ class File {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -10883,6 +11773,7 @@ class File {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -10902,11 +11793,14 @@ class File {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10914,6 +11808,8 @@ class File {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10931,6 +11827,7 @@ class File {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10976,6 +11873,7 @@ class File {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11019,15 +11917,20 @@ class File {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11068,6 +11971,7 @@ class File {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11102,6 +12006,7 @@ class File {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11121,6 +12026,7 @@ class File {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11153,6 +12059,7 @@ class File {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: File, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: File, pspec: GObject.ParamSpec) => void)): number
@@ -11203,8 +12110,30 @@ interface FileLoader_ConstructProps extends GObject.Object_ConstructProps {
     location?: Gio.File
 }
 class FileLoader {
+    /* Properties of GtkSource-4.GtkSource.FileLoader */
+    /**
+     * The #GtkSourceBuffer to load the contents into. The
+     * #GtkSourceFileLoader object has a weak reference to the buffer.
+     */
+    readonly buffer: Buffer
+    /**
+     * The #GtkSourceFile. The #GtkSourceFileLoader object has a weak
+     * reference to the file.
+     */
+    readonly file: File
+    /**
+     * The #GInputStream to load. Useful for reading stdin. If this property
+     * is set, the #GtkSourceFileLoader:location property is ignored.
+     */
+    readonly input_stream: Gio.InputStream
+    /**
+     * The #GFile to load. If the #GtkSourceFileLoader:input-stream is
+     * %NULL, by default the location is taken from the #GtkSourceFile at
+     * construction time.
+     */
+    readonly location: Gio.File
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.FileLoader */
     get_buffer(): Buffer
     get_compression_type(): CompressionType
@@ -11217,6 +12146,10 @@ class FileLoader {
      * Loads asynchronously the file or input stream contents into the
      * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
      * function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     load_async(io_priority: number, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11225,6 +12158,7 @@ class FileLoader {
      * If the contents has been loaded, the following #GtkSourceFile properties will
      * be updated: the location, the encoding, the newline type and the compression
      * type.
+     * @param result a #GAsyncResult.
      */
     load_finish(result: Gio.AsyncResult): boolean
     /**
@@ -11239,6 +12173,7 @@ class FileLoader {
      * gtk_source_file_get_encoding().
      * 2. The default candidates as returned by
      * gtk_source_encoding_get_default_candidates().
+     * @param candidate_encodings a list of   #GtkSourceEncoding<!-- -->s.
      */
     set_candidate_encodings(candidate_encodings: Encoding[]): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11276,6 +12211,10 @@ class FileLoader {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11286,6 +12225,12 @@ class FileLoader {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11309,6 +12254,7 @@ class FileLoader {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11328,11 +12274,14 @@ class FileLoader {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11340,6 +12289,8 @@ class FileLoader {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11357,6 +12308,7 @@ class FileLoader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11402,6 +12354,7 @@ class FileLoader {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11445,15 +12398,20 @@ class FileLoader {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11494,6 +12452,7 @@ class FileLoader {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11528,6 +12487,7 @@ class FileLoader {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11547,6 +12507,7 @@ class FileLoader {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11579,10 +12540,19 @@ class FileLoader {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::file", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::input-stream", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::input-stream", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::location", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: (($obj: FileLoader, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -11632,6 +12602,11 @@ interface FileSaver_ConstructProps extends GObject.Object_ConstructProps {
 class FileSaver {
     /* Properties of GtkSource-4.GtkSource.FileSaver */
     /**
+     * The #GtkSourceBuffer to save. The #GtkSourceFileSaver object has a
+     * weak reference to the buffer.
+     */
+    readonly buffer: Buffer
+    /**
      * The compression type.
      */
     compression_type: CompressionType
@@ -11640,15 +12615,25 @@ class FileSaver {
      */
     encoding: Encoding
     /**
+     * The #GtkSourceFile. The #GtkSourceFileSaver object has a weak
+     * reference to the file.
+     */
+    readonly file: File
+    /**
      * File saving flags.
      */
     flags: FileSaverFlags
+    /**
+     * The #GFile where to save the buffer. By default the location is taken
+     * from the #GtkSourceFile at construction time.
+     */
+    readonly location: Gio.File
     /**
      * The newline type.
      */
     newline_type: NewlineType
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.FileSaver */
     get_buffer(): Buffer
     get_compression_type(): CompressionType
@@ -11660,6 +12645,10 @@ class FileSaver {
     /**
      * Saves asynchronously the buffer into the file. See the #GAsyncResult
      * documentation to know how to use this function.
+     * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+     * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
      */
     save_async(io_priority: number, cancellable?: Gio.Cancellable | null, progress_callback?: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -11671,22 +12660,26 @@ class FileSaver {
      * 
      * Since the 3.20 version, gtk_text_buffer_set_modified() is called with %FALSE
      * if the file has been saved successfully.
+     * @param result a #GAsyncResult.
      */
     save_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets the compression type. By default the compression type is taken from the
      * #GtkSourceFile.
+     * @param compression_type the new compression type.
      */
     set_compression_type(compression_type: CompressionType): void
     /**
      * Sets the encoding. If `encoding` is %NULL, the UTF-8 encoding will be set.
      * By default the encoding is taken from the #GtkSourceFile.
+     * @param encoding the new encoding, or %NULL for UTF-8.
      */
     set_encoding(encoding?: Encoding | null): void
     set_flags(flags: FileSaverFlags): void
     /**
      * Sets the newline type. By default the newline type is taken from the
      * #GtkSourceFile.
+     * @param newline_type the new newline type.
      */
     set_newline_type(newline_type: NewlineType): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -11724,6 +12717,10 @@ class FileSaver {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11734,6 +12731,12 @@ class FileSaver {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11757,6 +12760,7 @@ class FileSaver {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11776,11 +12780,14 @@ class FileSaver {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11788,6 +12795,8 @@ class FileSaver {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11805,6 +12814,7 @@ class FileSaver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11850,6 +12860,7 @@ class FileSaver {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11893,15 +12904,20 @@ class FileSaver {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11942,6 +12958,7 @@ class FileSaver {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11976,6 +12993,7 @@ class FileSaver {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -11995,6 +13013,7 @@ class FileSaver {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12027,16 +13046,23 @@ class FileSaver {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::compression-type", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::compression-type", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::encoding", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::encoding", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::file", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::flags", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::flags", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::location", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::location", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::newline-type", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::newline-type", callback: (($obj: FileSaver, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -12063,11 +13089,22 @@ interface Gutter_ConstructProps extends GObject.Object_ConstructProps {
     window_type?: Gtk.TextWindowType
 }
 class Gutter {
+    /* Properties of GtkSource-4.GtkSource.Gutter */
+    /**
+     * The #GtkSourceView of the gutter.
+     */
+    readonly view: View
+    /**
+     * The text window type on which the window is placed.
+     */
+    readonly window_type: Gtk.TextWindowType
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Gutter */
     /**
      * Finds the #GtkSourceGutterRenderer at (x, y).
+     * @param x The x position to get identified.
+     * @param y The y position to get identified.
      */
     get_renderer_at_pos(x: number, y: number): GutterRenderer | null
     get_view(): View
@@ -12076,6 +13113,8 @@ class Gutter {
      * Insert `renderer` into the gutter. If `renderer` is yet unowned then gutter
      * claims its ownership. Otherwise just increases renderer's reference count.
      * `renderer` cannot be already inserted to another gutter.
+     * @param renderer a gutter renderer (must inherit from #GtkSourceGutterRenderer).
+     * @param position the renderer position.
      */
     insert(renderer: GutterRenderer, position: number): boolean
     /**
@@ -12085,10 +13124,13 @@ class Gutter {
     queue_draw(): void
     /**
      * Removes `renderer` from `gutter`.
+     * @param renderer a #GtkSourceGutterRenderer.
      */
     remove(renderer: GutterRenderer): void
     /**
      * Reorders `renderer` in `gutter` to new `position`.
+     * @param renderer a #GtkCellRenderer.
+     * @param position the new renderer position.
      */
     reorder(renderer: GutterRenderer, position: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12126,6 +13168,10 @@ class Gutter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12136,6 +13182,12 @@ class Gutter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12159,6 +13211,7 @@ class Gutter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12178,11 +13231,14 @@ class Gutter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12190,6 +13246,8 @@ class Gutter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12207,6 +13265,7 @@ class Gutter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12252,6 +13311,7 @@ class Gutter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12295,15 +13355,20 @@ class Gutter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12344,6 +13409,7 @@ class Gutter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12378,6 +13444,7 @@ class Gutter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -12397,6 +13464,7 @@ class Gutter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12429,10 +13497,15 @@ class Gutter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Gutter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Gutter, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::view", callback: (($obj: Gutter, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::view", callback: (($obj: Gutter, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::window-type", callback: (($obj: Gutter, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::window-type", callback: (($obj: Gutter, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -12525,17 +13598,25 @@ class GutterRenderer {
      */
     ypad: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.GutterRenderer */
     /**
      * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
      * called from #GtkSourceGutter and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param event the event that triggered the activation
      */
     activate(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): void
     /**
      * Called when drawing a region begins. The region to be drawn is indicated
      * by `start` and `end`. The purpose is to allow the implementation to precompute
      * some state before the draw method is called for each cell.
+     * @param cr a #cairo_t
+     * @param background_area a #GdkRectangle
+     * @param cell_area a #GdkRectangle
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
      */
     begin(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -12552,6 +13633,12 @@ class GutterRenderer {
      * The `state` argument indicates the current state of the renderer and should
      * be taken into account to properly draw the different possible states
      * (cursor, prelit, selected) if appropriate.
+     * @param cr the cairo render context
+     * @param background_area a #GdkRectangle indicating the total area to be drawn
+     * @param cell_area a #GdkRectangle indicating the area to draw content
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state a #GtkSourceGutterRendererState
      */
     draw(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
@@ -12595,6 +13682,9 @@ class GutterRenderer {
      * Get whether the renderer is activatable at the location in `event`. This is
      * called from #GtkSourceGutter to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
+     * @param event the event that triggered the query
      */
     query_activatable(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): boolean
     /**
@@ -12603,12 +13693,20 @@ class GutterRenderer {
      * #GtkSourceGutter.  Implementations can override the default signal handler or
      * can connect a signal handler externally to the
      * #GtkSourceGutterRenderer::query-data signal.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param state a #GtkSourceGutterRendererState.
      */
     query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
      * Emits the #GtkSourceGutterRenderer::query-tooltip signal. This function is
      * called from #GtkSourceGutter. Implementations can override the default signal
      * handler or can connect to the signal externally.
+     * @param iter a #GtkTextIter.
+     * @param area a #GdkRectangle.
+     * @param x The x position of the tooltip.
+     * @param y The y position of the tooltip.
+     * @param tooltip a #GtkTooltip.
      */
     query_tooltip(iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip): boolean
     /**
@@ -12625,16 +13723,20 @@ class GutterRenderer {
      * `xalign` is the horizontal alignment. Set to 0 for a left alignment. 1 for a
      * right alignment. And 0.5 for centering the cells. `yalign` is the vertical
      * alignment. Set to 0 for a top alignment. 1 for a bottom alignment.
+     * @param xalign the x-alignment
+     * @param yalign the y-alignment
      */
     set_alignment(xalign: number, yalign: number): void
     /**
      * Set the alignment mode. The alignment mode describes the manner in which the
      * renderer is aligned (see :xalign and :yalign).
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     set_alignment_mode(mode: GutterRendererAlignmentMode): void
     /**
      * Set the background color of the renderer. If `color` is set to %NULL, the
      * renderer will not have a background color.
+     * @param color a #GdkRGBA or %NULL
      */
     set_background(color?: Gdk.RGBA | null): void
     /**
@@ -12643,15 +13745,19 @@ class GutterRenderer {
      * one of the values).
      * 
      * `xpad` is the left and right padding. `ypad` is the top and bottom padding.
+     * @param xpad the x-padding
+     * @param ypad the y-padding
      */
     set_padding(xpad: number, ypad: number): void
     /**
      * Sets the size of the renderer. A value of -1 specifies that the size
      * is to be determined dynamically.
+     * @param size the size
      */
     set_size(size: number): void
     /**
      * Set whether the gutter renderer is visible.
+     * @param visible the visibility
      */
     set_visible(visible: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -12689,6 +13795,10 @@ class GutterRenderer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12699,6 +13809,12 @@ class GutterRenderer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12722,6 +13838,7 @@ class GutterRenderer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12741,11 +13858,14 @@ class GutterRenderer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12753,6 +13873,8 @@ class GutterRenderer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12770,6 +13892,7 @@ class GutterRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12815,6 +13938,7 @@ class GutterRenderer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12858,15 +13982,20 @@ class GutterRenderer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12907,6 +14036,7 @@ class GutterRenderer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12941,26 +14071,37 @@ class GutterRenderer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GtkSource-4.GtkSource.GutterRenderer */
     /**
      * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
      * called from #GtkSourceGutter and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param event the event that triggered the activation
      */
     vfunc_activate(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): void
     /**
      * Called when drawing a region begins. The region to be drawn is indicated
      * by `start` and `end`. The purpose is to allow the implementation to precompute
      * some state before the draw method is called for each cell.
+     * @param cr a #cairo_t
+     * @param background_area a #GdkRectangle
+     * @param cell_area a #GdkRectangle
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
      */
     vfunc_begin(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * This is called when the text buffer changes for `renderer`.
+     * @param old_buffer the old #GtkTextBuffer.
      */
     vfunc_change_buffer(old_buffer?: Gtk.TextBuffer | null): void
     /**
      * This is called when the text view changes for `renderer`.
+     * @param old_view the old #GtkTextView.
      */
     vfunc_change_view(old_view?: Gtk.TextView | null): void
     /**
@@ -12977,6 +14118,12 @@ class GutterRenderer {
      * The `state` argument indicates the current state of the renderer and should
      * be taken into account to properly draw the different possible states
      * (cursor, prelit, selected) if appropriate.
+     * @param cr the cairo render context
+     * @param background_area a #GdkRectangle indicating the total area to be drawn
+     * @param cell_area a #GdkRectangle indicating the area to draw content
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state a #GtkSourceGutterRendererState
      */
     vfunc_draw(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
@@ -12987,6 +14134,9 @@ class GutterRenderer {
      * Get whether the renderer is activatable at the location in `event`. This is
      * called from #GtkSourceGutter to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
+     * @param event the event that triggered the query
      */
     vfunc_query_activatable(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): boolean
     /**
@@ -12995,12 +14145,20 @@ class GutterRenderer {
      * #GtkSourceGutter.  Implementations can override the default signal handler or
      * can connect a signal handler externally to the
      * #GtkSourceGutterRenderer::query-data signal.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param state a #GtkSourceGutterRendererState.
      */
     vfunc_query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
      * Emits the #GtkSourceGutterRenderer::query-tooltip signal. This function is
      * called from #GtkSourceGutter. Implementations can override the default signal
      * handler or can connect to the signal externally.
+     * @param iter a #GtkTextIter.
+     * @param area a #GdkRectangle.
+     * @param x The x position of the tooltip.
+     * @param y The y position of the tooltip.
+     * @param tooltip a #GtkTooltip.
      */
     vfunc_query_tooltip(iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip): boolean
     /**
@@ -13026,6 +14184,7 @@ class GutterRenderer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13033,6 +14192,9 @@ class GutterRenderer {
     /**
      * The ::activate signal is emitted when the renderer is
      * activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param event the event that caused the activation
      */
     connect(sigName: "activate", callback: (($obj: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void)): number
     connect_after(sigName: "activate", callback: (($obj: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void)): number
@@ -13040,6 +14202,9 @@ class GutterRenderer {
     /**
      * The ::query-activatable signal is emitted when the renderer
      * can possibly be activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param event the #GdkEvent that is causing the activatable query
      */
     connect(sigName: "query-activatable", callback: (($obj: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "query-activatable", callback: (($obj: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean)): number
@@ -13049,6 +14214,9 @@ class GutterRenderer {
      * to be filled with data just before a cell is drawn. This can
      * be used by general renderer implementations to allow render
      * data to be filled in externally.
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state the renderer state
      */
     connect(sigName: "query-data", callback: (($obj: GutterRenderer, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void)): number
     connect_after(sigName: "query-data", callback: (($obj: GutterRenderer, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void)): number
@@ -13056,6 +14224,11 @@ class GutterRenderer {
     /**
      * The ::query-tooltip signal is emitted when the renderer can
      * show a tooltip.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param x the x position (in window coordinates)
+     * @param y the y position (in window coordinates)
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean)): number
@@ -13098,6 +14271,7 @@ class GutterRenderer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GutterRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GutterRenderer, pspec: GObject.ParamSpec) => void)): number
@@ -13189,9 +14363,9 @@ class GutterRendererPixbuf {
      */
     ypad: number
     /* Fields of GtkSource-4.GtkSource.GutterRenderer */
-    readonly parent: GObject.InitiallyUnowned
+    parent: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.GutterRendererPixbuf */
     /**
      * Get the gicon of the renderer
@@ -13209,12 +14383,20 @@ class GutterRendererPixbuf {
     /**
      * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
      * called from #GtkSourceGutter and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param event the event that triggered the activation
      */
     activate(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): void
     /**
      * Called when drawing a region begins. The region to be drawn is indicated
      * by `start` and `end`. The purpose is to allow the implementation to precompute
      * some state before the draw method is called for each cell.
+     * @param cr a #cairo_t
+     * @param background_area a #GdkRectangle
+     * @param cell_area a #GdkRectangle
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
      */
     begin(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -13231,6 +14413,12 @@ class GutterRendererPixbuf {
      * The `state` argument indicates the current state of the renderer and should
      * be taken into account to properly draw the different possible states
      * (cursor, prelit, selected) if appropriate.
+     * @param cr the cairo render context
+     * @param background_area a #GdkRectangle indicating the total area to be drawn
+     * @param cell_area a #GdkRectangle indicating the area to draw content
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state a #GtkSourceGutterRendererState
      */
     draw(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
@@ -13274,6 +14462,9 @@ class GutterRendererPixbuf {
      * Get whether the renderer is activatable at the location in `event`. This is
      * called from #GtkSourceGutter to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
+     * @param event the event that triggered the query
      */
     query_activatable(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): boolean
     /**
@@ -13282,12 +14473,20 @@ class GutterRendererPixbuf {
      * #GtkSourceGutter.  Implementations can override the default signal handler or
      * can connect a signal handler externally to the
      * #GtkSourceGutterRenderer::query-data signal.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param state a #GtkSourceGutterRendererState.
      */
     query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
      * Emits the #GtkSourceGutterRenderer::query-tooltip signal. This function is
      * called from #GtkSourceGutter. Implementations can override the default signal
      * handler or can connect to the signal externally.
+     * @param iter a #GtkTextIter.
+     * @param area a #GdkRectangle.
+     * @param x The x position of the tooltip.
+     * @param y The y position of the tooltip.
+     * @param tooltip a #GtkTooltip.
      */
     query_tooltip(iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip): boolean
     /**
@@ -13304,16 +14503,20 @@ class GutterRendererPixbuf {
      * `xalign` is the horizontal alignment. Set to 0 for a left alignment. 1 for a
      * right alignment. And 0.5 for centering the cells. `yalign` is the vertical
      * alignment. Set to 0 for a top alignment. 1 for a bottom alignment.
+     * @param xalign the x-alignment
+     * @param yalign the y-alignment
      */
     set_alignment(xalign: number, yalign: number): void
     /**
      * Set the alignment mode. The alignment mode describes the manner in which the
      * renderer is aligned (see :xalign and :yalign).
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     set_alignment_mode(mode: GutterRendererAlignmentMode): void
     /**
      * Set the background color of the renderer. If `color` is set to %NULL, the
      * renderer will not have a background color.
+     * @param color a #GdkRGBA or %NULL
      */
     set_background(color?: Gdk.RGBA | null): void
     /**
@@ -13322,15 +14525,19 @@ class GutterRendererPixbuf {
      * one of the values).
      * 
      * `xpad` is the left and right padding. `ypad` is the top and bottom padding.
+     * @param xpad the x-padding
+     * @param ypad the y-padding
      */
     set_padding(xpad: number, ypad: number): void
     /**
      * Sets the size of the renderer. A value of -1 specifies that the size
      * is to be determined dynamically.
+     * @param size the size
      */
     set_size(size: number): void
     /**
      * Set whether the gutter renderer is visible.
+     * @param visible the visibility
      */
     set_visible(visible: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -13368,6 +14575,10 @@ class GutterRendererPixbuf {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -13378,6 +14589,12 @@ class GutterRendererPixbuf {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -13401,6 +14618,7 @@ class GutterRendererPixbuf {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -13420,11 +14638,14 @@ class GutterRendererPixbuf {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -13432,6 +14653,8 @@ class GutterRendererPixbuf {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -13449,6 +14672,7 @@ class GutterRendererPixbuf {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -13494,6 +14718,7 @@ class GutterRendererPixbuf {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -13537,15 +14762,20 @@ class GutterRendererPixbuf {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -13586,6 +14816,7 @@ class GutterRendererPixbuf {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -13620,26 +14851,37 @@ class GutterRendererPixbuf {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GtkSource-4.GtkSource.GutterRenderer */
     /**
      * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
      * called from #GtkSourceGutter and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param event the event that triggered the activation
      */
     vfunc_activate(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): void
     /**
      * Called when drawing a region begins. The region to be drawn is indicated
      * by `start` and `end`. The purpose is to allow the implementation to precompute
      * some state before the draw method is called for each cell.
+     * @param cr a #cairo_t
+     * @param background_area a #GdkRectangle
+     * @param cell_area a #GdkRectangle
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
      */
     vfunc_begin(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * This is called when the text buffer changes for `renderer`.
+     * @param old_buffer the old #GtkTextBuffer.
      */
     vfunc_change_buffer(old_buffer?: Gtk.TextBuffer | null): void
     /**
      * This is called when the text view changes for `renderer`.
+     * @param old_view the old #GtkTextView.
      */
     vfunc_change_view(old_view?: Gtk.TextView | null): void
     /**
@@ -13656,6 +14898,12 @@ class GutterRendererPixbuf {
      * The `state` argument indicates the current state of the renderer and should
      * be taken into account to properly draw the different possible states
      * (cursor, prelit, selected) if appropriate.
+     * @param cr the cairo render context
+     * @param background_area a #GdkRectangle indicating the total area to be drawn
+     * @param cell_area a #GdkRectangle indicating the area to draw content
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state a #GtkSourceGutterRendererState
      */
     vfunc_draw(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
@@ -13666,6 +14914,9 @@ class GutterRendererPixbuf {
      * Get whether the renderer is activatable at the location in `event`. This is
      * called from #GtkSourceGutter to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
+     * @param event the event that triggered the query
      */
     vfunc_query_activatable(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): boolean
     /**
@@ -13674,12 +14925,20 @@ class GutterRendererPixbuf {
      * #GtkSourceGutter.  Implementations can override the default signal handler or
      * can connect a signal handler externally to the
      * #GtkSourceGutterRenderer::query-data signal.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param state a #GtkSourceGutterRendererState.
      */
     vfunc_query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
      * Emits the #GtkSourceGutterRenderer::query-tooltip signal. This function is
      * called from #GtkSourceGutter. Implementations can override the default signal
      * handler or can connect to the signal externally.
+     * @param iter a #GtkTextIter.
+     * @param area a #GdkRectangle.
+     * @param x The x position of the tooltip.
+     * @param y The y position of the tooltip.
+     * @param tooltip a #GtkTooltip.
      */
     vfunc_query_tooltip(iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip): boolean
     /**
@@ -13705,6 +14964,7 @@ class GutterRendererPixbuf {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -13712,6 +14972,9 @@ class GutterRendererPixbuf {
     /**
      * The ::activate signal is emitted when the renderer is
      * activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param event the event that caused the activation
      */
     connect(sigName: "activate", callback: (($obj: GutterRendererPixbuf, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void)): number
     connect_after(sigName: "activate", callback: (($obj: GutterRendererPixbuf, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void)): number
@@ -13719,6 +14982,9 @@ class GutterRendererPixbuf {
     /**
      * The ::query-activatable signal is emitted when the renderer
      * can possibly be activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param event the #GdkEvent that is causing the activatable query
      */
     connect(sigName: "query-activatable", callback: (($obj: GutterRendererPixbuf, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "query-activatable", callback: (($obj: GutterRendererPixbuf, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean)): number
@@ -13728,6 +14994,9 @@ class GutterRendererPixbuf {
      * to be filled with data just before a cell is drawn. This can
      * be used by general renderer implementations to allow render
      * data to be filled in externally.
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state the renderer state
      */
     connect(sigName: "query-data", callback: (($obj: GutterRendererPixbuf, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void)): number
     connect_after(sigName: "query-data", callback: (($obj: GutterRendererPixbuf, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void)): number
@@ -13735,6 +15004,11 @@ class GutterRendererPixbuf {
     /**
      * The ::query-tooltip signal is emitted when the renderer can
      * show a tooltip.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param x the x position (in window coordinates)
+     * @param y the y position (in window coordinates)
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: GutterRendererPixbuf, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: GutterRendererPixbuf, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean)): number
@@ -13777,6 +15051,7 @@ class GutterRendererPixbuf {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GutterRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GutterRendererPixbuf, pspec: GObject.ParamSpec) => void)): number
@@ -13874,18 +15149,20 @@ class GutterRendererText {
      */
     ypad: number
     /* Fields of GtkSource-4.GtkSource.GutterRenderer */
-    readonly parent: GObject.InitiallyUnowned
+    parent: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.GutterRendererText */
     /**
      * Measures the text provided using the pango layout used by the
      * #GtkSourceGutterRendererText.
+     * @param text the text to measure.
      */
     measure(text: string): [ /* width */ number | null, /* height */ number | null ]
     /**
      * Measures the pango markup provided using the pango layout used by the
      * #GtkSourceGutterRendererText.
+     * @param markup the pango markup to measure.
      */
     measure_markup(markup: string): [ /* width */ number | null, /* height */ number | null ]
     set_markup(markup: string, length: number): void
@@ -13894,12 +15171,20 @@ class GutterRendererText {
     /**
      * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
      * called from #GtkSourceGutter and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param event the event that triggered the activation
      */
     activate(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): void
     /**
      * Called when drawing a region begins. The region to be drawn is indicated
      * by `start` and `end`. The purpose is to allow the implementation to precompute
      * some state before the draw method is called for each cell.
+     * @param cr a #cairo_t
+     * @param background_area a #GdkRectangle
+     * @param cell_area a #GdkRectangle
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
      */
     begin(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -13916,6 +15201,12 @@ class GutterRendererText {
      * The `state` argument indicates the current state of the renderer and should
      * be taken into account to properly draw the different possible states
      * (cursor, prelit, selected) if appropriate.
+     * @param cr the cairo render context
+     * @param background_area a #GdkRectangle indicating the total area to be drawn
+     * @param cell_area a #GdkRectangle indicating the area to draw content
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state a #GtkSourceGutterRendererState
      */
     draw(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
@@ -13959,6 +15250,9 @@ class GutterRendererText {
      * Get whether the renderer is activatable at the location in `event`. This is
      * called from #GtkSourceGutter to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
+     * @param event the event that triggered the query
      */
     query_activatable(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): boolean
     /**
@@ -13967,12 +15261,20 @@ class GutterRendererText {
      * #GtkSourceGutter.  Implementations can override the default signal handler or
      * can connect a signal handler externally to the
      * #GtkSourceGutterRenderer::query-data signal.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param state a #GtkSourceGutterRendererState.
      */
     query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
      * Emits the #GtkSourceGutterRenderer::query-tooltip signal. This function is
      * called from #GtkSourceGutter. Implementations can override the default signal
      * handler or can connect to the signal externally.
+     * @param iter a #GtkTextIter.
+     * @param area a #GdkRectangle.
+     * @param x The x position of the tooltip.
+     * @param y The y position of the tooltip.
+     * @param tooltip a #GtkTooltip.
      */
     query_tooltip(iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip): boolean
     /**
@@ -13989,16 +15291,20 @@ class GutterRendererText {
      * `xalign` is the horizontal alignment. Set to 0 for a left alignment. 1 for a
      * right alignment. And 0.5 for centering the cells. `yalign` is the vertical
      * alignment. Set to 0 for a top alignment. 1 for a bottom alignment.
+     * @param xalign the x-alignment
+     * @param yalign the y-alignment
      */
     set_alignment(xalign: number, yalign: number): void
     /**
      * Set the alignment mode. The alignment mode describes the manner in which the
      * renderer is aligned (see :xalign and :yalign).
+     * @param mode a #GtkSourceGutterRendererAlignmentMode
      */
     set_alignment_mode(mode: GutterRendererAlignmentMode): void
     /**
      * Set the background color of the renderer. If `color` is set to %NULL, the
      * renderer will not have a background color.
+     * @param color a #GdkRGBA or %NULL
      */
     set_background(color?: Gdk.RGBA | null): void
     /**
@@ -14007,15 +15313,19 @@ class GutterRendererText {
      * one of the values).
      * 
      * `xpad` is the left and right padding. `ypad` is the top and bottom padding.
+     * @param xpad the x-padding
+     * @param ypad the y-padding
      */
     set_padding(xpad: number, ypad: number): void
     /**
      * Sets the size of the renderer. A value of -1 specifies that the size
      * is to be determined dynamically.
+     * @param size the size
      */
     set_size(size: number): void
     /**
      * Set whether the gutter renderer is visible.
+     * @param visible the visibility
      */
     set_visible(visible: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -14053,6 +15363,10 @@ class GutterRendererText {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14063,6 +15377,12 @@ class GutterRendererText {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14086,6 +15406,7 @@ class GutterRendererText {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14105,11 +15426,14 @@ class GutterRendererText {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14117,6 +15441,8 @@ class GutterRendererText {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14134,6 +15460,7 @@ class GutterRendererText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14179,6 +15506,7 @@ class GutterRendererText {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14222,15 +15550,20 @@ class GutterRendererText {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14271,6 +15604,7 @@ class GutterRendererText {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14305,26 +15639,37 @@ class GutterRendererText {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GtkSource-4.GtkSource.GutterRenderer */
     /**
      * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
      * called from #GtkSourceGutter and should never have to be called manually.
+     * @param iter a #GtkTextIter at the start of the line where the renderer is activated
+     * @param area a #GdkRectangle of the cell area where the renderer is activated
+     * @param event the event that triggered the activation
      */
     vfunc_activate(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): void
     /**
      * Called when drawing a region begins. The region to be drawn is indicated
      * by `start` and `end`. The purpose is to allow the implementation to precompute
      * some state before the draw method is called for each cell.
+     * @param cr a #cairo_t
+     * @param background_area a #GdkRectangle
+     * @param cell_area a #GdkRectangle
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
      */
     vfunc_begin(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
      * This is called when the text buffer changes for `renderer`.
+     * @param old_buffer the old #GtkTextBuffer.
      */
     vfunc_change_buffer(old_buffer?: Gtk.TextBuffer | null): void
     /**
      * This is called when the text view changes for `renderer`.
+     * @param old_view the old #GtkTextView.
      */
     vfunc_change_view(old_view?: Gtk.TextView | null): void
     /**
@@ -14341,6 +15686,12 @@ class GutterRendererText {
      * The `state` argument indicates the current state of the renderer and should
      * be taken into account to properly draw the different possible states
      * (cursor, prelit, selected) if appropriate.
+     * @param cr the cairo render context
+     * @param background_area a #GdkRectangle indicating the total area to be drawn
+     * @param cell_area a #GdkRectangle indicating the area to draw content
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state a #GtkSourceGutterRendererState
      */
     vfunc_draw(cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
@@ -14351,6 +15702,9 @@ class GutterRendererText {
      * Get whether the renderer is activatable at the location in `event`. This is
      * called from #GtkSourceGutter to determine whether a renderer is activatable
      * using the mouse pointer.
+     * @param iter a #GtkTextIter at the start of the line to be activated
+     * @param area a #GdkRectangle of the cell area to be activated
+     * @param event the event that triggered the query
      */
     vfunc_query_activatable(iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event): boolean
     /**
@@ -14359,12 +15713,20 @@ class GutterRendererText {
      * #GtkSourceGutter.  Implementations can override the default signal handler or
      * can connect a signal handler externally to the
      * #GtkSourceGutterRenderer::query-data signal.
+     * @param start a #GtkTextIter.
+     * @param end a #GtkTextIter.
+     * @param state a #GtkSourceGutterRendererState.
      */
     vfunc_query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void
     /**
      * Emits the #GtkSourceGutterRenderer::query-tooltip signal. This function is
      * called from #GtkSourceGutter. Implementations can override the default signal
      * handler or can connect to the signal externally.
+     * @param iter a #GtkTextIter.
+     * @param area a #GdkRectangle.
+     * @param x The x position of the tooltip.
+     * @param y The y position of the tooltip.
+     * @param tooltip a #GtkTooltip.
      */
     vfunc_query_tooltip(iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip): boolean
     /**
@@ -14390,6 +15752,7 @@ class GutterRendererText {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14397,6 +15760,9 @@ class GutterRendererText {
     /**
      * The ::activate signal is emitted when the renderer is
      * activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param event the event that caused the activation
      */
     connect(sigName: "activate", callback: (($obj: GutterRendererText, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void)): number
     connect_after(sigName: "activate", callback: (($obj: GutterRendererText, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void)): number
@@ -14404,6 +15770,9 @@ class GutterRendererText {
     /**
      * The ::query-activatable signal is emitted when the renderer
      * can possibly be activated.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param event the #GdkEvent that is causing the activatable query
      */
     connect(sigName: "query-activatable", callback: (($obj: GutterRendererText, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "query-activatable", callback: (($obj: GutterRendererText, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean)): number
@@ -14413,6 +15782,9 @@ class GutterRendererText {
      * to be filled with data just before a cell is drawn. This can
      * be used by general renderer implementations to allow render
      * data to be filled in externally.
+     * @param start a #GtkTextIter
+     * @param end a #GtkTextIter
+     * @param state the renderer state
      */
     connect(sigName: "query-data", callback: (($obj: GutterRendererText, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void)): number
     connect_after(sigName: "query-data", callback: (($obj: GutterRendererText, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void)): number
@@ -14420,6 +15792,11 @@ class GutterRendererText {
     /**
      * The ::query-tooltip signal is emitted when the renderer can
      * show a tooltip.
+     * @param iter a #GtkTextIter
+     * @param area a #GdkRectangle
+     * @param x the x position (in window coordinates)
+     * @param y the y position (in window coordinates)
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: GutterRendererText, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: GutterRendererText, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean)): number
@@ -14462,6 +15839,7 @@ class GutterRendererText {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: GutterRendererText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: GutterRendererText, pspec: GObject.ParamSpec) => void)): number
@@ -14512,7 +15890,7 @@ class Language {
     readonly name: string
     readonly section: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Language */
     /**
      * Returns the globs associated to this language. This is just
@@ -14555,6 +15933,7 @@ class Language {
     /**
      * Returns the ID of the style to use if the specified `style_id`
      * is not present in the current style scheme.
+     * @param style_id a style ID.
      */
     get_style_fallback(style_id: string): string | null
     /**
@@ -14563,6 +15942,7 @@ class Language {
     get_style_ids(): string[] | null
     /**
      * Returns the name of the style with ID `style_id` defined by this `language`.
+     * @param style_id a style ID.
      */
     get_style_name(style_id: string): string | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -14600,6 +15980,10 @@ class Language {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14610,6 +15994,12 @@ class Language {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14633,6 +16023,7 @@ class Language {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14652,11 +16043,14 @@ class Language {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14664,6 +16058,8 @@ class Language {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14681,6 +16077,7 @@ class Language {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14726,6 +16123,7 @@ class Language {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14769,15 +16167,20 @@ class Language {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14818,6 +16221,7 @@ class Language {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14852,6 +16256,7 @@ class Language {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -14871,6 +16276,7 @@ class Language {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14903,6 +16309,7 @@ class Language {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Language, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Language, pspec: GObject.ParamSpec) => void)): number
@@ -14933,11 +16340,12 @@ class LanguageManager {
     readonly language_ids: string[]
     search_path: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.LanguageManager */
     /**
      * Gets the #GtkSourceLanguage identified by the given `id` in the language
      * manager.
+     * @param id a language id.
      */
     get_language(id: string): Language | null
     /**
@@ -14981,6 +16389,8 @@ class LanguageManager {
      * 
      * etc. Use gtk_source_language_get_mime_types() and gtk_source_language_get_globs()
      * if you need full control over file -> language mapping.
+     * @param filename a filename in Glib filename encoding, or %NULL.
+     * @param content_type a content type (as in GIO API), or %NULL.
      */
     guess_language(filename?: string | null, content_type?: string | null): Language | null
     /**
@@ -14996,6 +16406,7 @@ class LanguageManager {
      *     you have to call this function right after creating it.
      *   </para>
      * </note>
+     * @param dirs  a %NULL-terminated array of strings or %NULL.
      */
     set_search_path(dirs?: string[] | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -15033,6 +16444,10 @@ class LanguageManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15043,6 +16458,12 @@ class LanguageManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15066,6 +16487,7 @@ class LanguageManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15085,11 +16507,14 @@ class LanguageManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15097,6 +16522,8 @@ class LanguageManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15114,6 +16541,7 @@ class LanguageManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15159,6 +16587,7 @@ class LanguageManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15202,15 +16631,20 @@ class LanguageManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15251,6 +16685,7 @@ class LanguageManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15285,6 +16720,7 @@ class LanguageManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -15304,6 +16740,7 @@ class LanguageManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -15336,6 +16773,7 @@ class LanguageManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: LanguageManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: LanguageManager, pspec: GObject.ParamSpec) => void)): number
@@ -15718,14 +17156,14 @@ class Map {
      */
     vscroll_policy: Gtk.ScrollablePolicy
     /* Fields of GtkSource-4.GtkSource.View */
-    readonly parent: Gtk.TextView
-    readonly priv: ViewPrivate
+    parent: Gtk.TextView
+    priv: ViewPrivate
     /* Fields of Gtk-3.0.Gtk.TextView */
-    readonly parent_instance: Gtk.Container
+    parent_instance: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Map */
     /**
      * Gets the #GtkSourceMap:view property, which is the view this widget is mapping.
@@ -15733,6 +17171,7 @@ class Map {
     get_view(): View | null
     /**
      * Sets the view that `map` will be doing the mapping to.
+     * @param view a #GtkSourceView
      */
     set_view(view: View): void
     /* Methods of GtkSource-4.GtkSource.View */
@@ -15756,6 +17195,7 @@ class Map {
      * Only GTK_TEXT_WINDOW_LEFT and GTK_TEXT_WINDOW_RIGHT are supported,
      * respectively corresponding to the left and right gutter. The line numbers
      * and mark category icons are rendered in the left gutter.
+     * @param window_type the gutter window type.
      */
     get_gutter(window_type: Gtk.TextWindowType): Gutter
     /**
@@ -15779,6 +17219,8 @@ class Map {
     get_insert_spaces_instead_of_tabs(): boolean
     /**
      * Gets attributes and priority for the `category`.
+     * @param category the category.
+     * @param priority place where priority of the category will be stored.
      */
     get_mark_attributes(category: string, priority: number): MarkAttributes
     /**
@@ -15820,11 +17262,14 @@ class Map {
     /**
      * Determines the visual column at `iter` taking into consideration the
      * #GtkSourceView:tab-width of `view`.
+     * @param iter a position in `view`.
      */
     get_visual_column(iter: Gtk.TextIter): number
     /**
      * Inserts one indentation level at the beginning of the specified lines. The
      * empty lines are not indented.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     indent_lines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -15834,14 +17279,17 @@ class Map {
      * same indentation as the previous line. This is <emphasis>not</emphasis> a
      * "smart indentation" where an indentation level is added or removed depending
      * on the context.
+     * @param enable whether to enable auto indentation.
      */
     set_auto_indent(enable: boolean): void
     /**
      * Set if and how the background pattern should be displayed.
+     * @param background_pattern the #GtkSourceBackgroundPatternType.
      */
     set_background_pattern(background_pattern: BackgroundPatternType): void
     /**
      * If `highlight` is %TRUE the current line will be highlighted.
+     * @param highlight whether to highlight the current line.
      */
     set_highlight_current_line(highlight: boolean): void
     /**
@@ -15854,6 +17302,7 @@ class Map {
      * 
      * When the selection doesn't span several lines, the tab key always replaces
      * the selection with a normal \t character.
+     * @param enable whether to indent a block when tab is pressed.
      */
     set_indent_on_tab(enable: boolean): void
     /**
@@ -15877,58 +17326,74 @@ class Map {
      * The test-widget program (available in the GtkSourceView repository) may be
      * useful to better understand the indentation settings (enable the space
      * drawing!).
+     * @param width indent width in characters.
      */
     set_indent_width(width: number): void
     /**
      * If %TRUE a tab key pressed is replaced by a group of space characters. Of
      * course it is still possible to insert a real \t programmatically with the
      * #GtkTextBuffer API.
+     * @param enable whether to insert spaces instead of tabs.
      */
     set_insert_spaces_instead_of_tabs(enable: boolean): void
     /**
      * Sets attributes and priority for the `category`.
+     * @param category the category.
+     * @param attributes mark attributes.
+     * @param priority priority of the category.
      */
     set_mark_attributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
+     * @param pos the width in characters where to position the right margin.
      */
     set_right_margin_position(pos: number): void
     /**
      * If %TRUE line marks will be displayed beside the text.
+     * @param show whether line marks should be displayed.
      */
     set_show_line_marks(show: boolean): void
     /**
      * If %TRUE line numbers will be displayed beside the text.
+     * @param show whether line numbers should be displayed.
      */
     set_show_line_numbers(show: boolean): void
     /**
      * If %TRUE a right margin is displayed.
+     * @param show whether to show a right margin.
      */
     set_show_right_margin(show: boolean): void
     /**
      * When set to %TRUE, pressing the Backspace key will try to delete spaces
      * up to the previous tab stop.
+     * @param smart_backspace whether to enable smart Backspace handling.
      */
     set_smart_backspace(smart_backspace: boolean): void
     /**
      * Set the desired movement of the cursor when HOME and END keys
      * are pressed.
+     * @param smart_home_end the desired behavior among #GtkSourceSmartHomeEndType.
      */
     set_smart_home_end(smart_home_end: SmartHomeEndType): void
     /**
      * Sets the width of tabulation in characters. The #GtkTextBuffer still contains
      * \t characters, but they can take a different visual width in a #GtkSourceView
      * widget.
+     * @param width width of tab in characters.
      */
     set_tab_width(width: number): void
     /**
      * Removes one indentation level at the beginning of the
      * specified lines.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     unindent_lines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /* Methods of Gtk-3.0.Gtk.TextView */
     /**
      * Adds a child widget in the text buffer, at the given `anchor`.
+     * @param child a #GtkWidget
+     * @param anchor a #GtkTextChildAnchor in the #GtkTextBuffer for `text_view`
      */
     add_child_at_anchor(child: Gtk.Widget, anchor: Gtk.TextChildAnchor): void
     /**
@@ -15942,6 +17407,10 @@ class Map {
      * irrelevant, the child floats above all scrollable areas. But when
      * placing a child in one of the scrollable windows (border windows or
      * text window) it will move with the scrolling as needed.
+     * @param child a #GtkWidget
+     * @param which_window which window the child should appear in
+     * @param xpos X position of child in window coordinates
+     * @param ypos Y position of child in window coordinates
      */
     add_child_in_window(child: Gtk.Widget, which_window: Gtk.TextWindowType, xpos: number, ypos: number): void
     /**
@@ -15953,6 +17422,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     backward_display_line(iter: Gtk.TextIter): boolean
     /**
@@ -15964,6 +17434,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     backward_display_line_start(iter: Gtk.TextIter): boolean
     /**
@@ -15972,6 +17443,9 @@ class Map {
      * 
      * Note that you can’t convert coordinates for a nonexisting window (see
      * gtk_text_view_set_border_window_size()).
+     * @param win a #GtkTextWindowType, except %GTK_TEXT_WINDOW_PRIVATE
+     * @param buffer_x buffer x coordinate
+     * @param buffer_y buffer y coordinate
      */
     buffer_to_window_coords(win: Gtk.TextWindowType, buffer_x: number, buffer_y: number): [ /* window_x */ number | null, /* window_y */ number | null ]
     /**
@@ -15983,6 +17457,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     forward_display_line(iter: Gtk.TextIter): boolean
     /**
@@ -15994,6 +17469,7 @@ class Map {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     forward_display_line_end(iter: Gtk.TextIter): boolean
     /**
@@ -16004,6 +17480,7 @@ class Map {
     /**
      * Gets the width of the specified border window. See
      * gtk_text_view_set_border_window_size().
+     * @param type window to return size from
      */
     get_border_window_size(type: Gtk.TextWindowType): number
     /**
@@ -16036,6 +17513,7 @@ class Map {
      * The rectangle position is in buffer coordinates; use
      * gtk_text_view_buffer_to_window_coords() to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a #GtkTextIter
      */
     get_cursor_locations(iter?: Gtk.TextIter | null): [ /* strong */ Gdk.Rectangle | null, /* weak */ Gdk.Rectangle | null ]
     /**
@@ -16082,6 +17560,8 @@ class Map {
      * currently-displayed portion.  If you have coordinates from an
      * event, you have to convert those to buffer coordinates with
      * gtk_text_view_window_to_buffer_coords().
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     get_iter_at_location(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -16095,6 +17575,8 @@ class Map {
      * Note that this is different from gtk_text_view_get_iter_at_location(),
      * which returns cursor locations, i.e. positions between
      * characters.
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     get_iter_at_position(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter, /* trailing */ number | null ]
     /**
@@ -16102,6 +17584,7 @@ class Map {
      * The rectangle position is in buffer coordinates; use
      * gtk_text_view_buffer_to_window_coords() to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a #GtkTextIter
      */
     get_iter_location(iter: Gtk.TextIter): /* location */ Gdk.Rectangle
     /**
@@ -16120,12 +17603,14 @@ class Map {
      * window coordinates with gtk_text_view_window_to_buffer_coords().
      * If non-%NULL, `line_top` will be filled with the coordinate of the top
      * edge of the line.
+     * @param y a y coordinate
      */
     get_line_at_y(y: number): [ /* target_iter */ Gtk.TextIter, /* line_top */ number ]
     /**
      * Gets the y coordinate of the top of the line containing `iter,`
      * and the height of the line. The coordinate is a buffer coordinate;
      * convert to window coordinates with gtk_text_view_buffer_to_window_coords().
+     * @param iter a #GtkTextIter
      */
     get_line_yrange(iter: Gtk.TextIter): [ /* y */ number, /* height */ number ]
     /**
@@ -16186,6 +17671,7 @@ class Map {
      * text buffer. Windows are %NULL and nonexistent if their width or
      * height is 0, and are nonexistent before the widget has been
      * realized.
+     * @param win window to get
      */
     get_window(win: Gtk.TextWindowType): Gdk.Window | null
     /**
@@ -16193,6 +17679,7 @@ class Map {
      * 
      * If you connect to an event signal on `text_view,` this function
      * should be called on `event->window` to see which window it was.
+     * @param window a window type
      */
     get_window_type(window: Gdk.Window): Gtk.TextWindowType
     /**
@@ -16232,15 +17719,20 @@ class Map {
      * }
      * ```
      * 
+     * @param event the key event
      */
     im_context_filter_keypress(event: Gdk.EventKey): boolean
     /**
      * Updates the position of a child, as for gtk_text_view_add_child_in_window().
+     * @param child child widget already added to the text view
+     * @param xpos new X position in window coordinates
+     * @param ypos new Y position in window coordinates
      */
     move_child(child: Gtk.Widget, xpos: number, ypos: number): void
     /**
      * Moves a mark within the buffer so that it's
      * located within the currently-visible text area.
+     * @param mark a #GtkTextMark
      */
     move_mark_onscreen(mark: Gtk.TextMark): boolean
     /**
@@ -16255,6 +17747,8 @@ class Map {
      * between logical and visual order will depend on the direction
      * of the current run, and there may be jumps when the cursor
      * is moved off of the end of a run.
+     * @param iter a #GtkTextIter
+     * @param count number of characters to move (negative moves left,    positive moves right)
      */
     move_visually(iter: Gtk.TextIter, count: number): boolean
     /**
@@ -16282,6 +17776,7 @@ class Map {
     /**
      * Scrolls `text_view` the minimum distance such that `mark` is contained
      * within the visible area of the widget.
+     * @param mark a mark in the buffer for `text_view`
      */
     scroll_mark_onscreen(mark: Gtk.TextMark): void
     /**
@@ -16299,6 +17794,11 @@ class Map {
      * called before the height computations. To avoid oddness, consider
      * using gtk_text_view_scroll_to_mark() which saves a point to be
      * scrolled to after line validation.
+     * @param iter a #GtkTextIter
+     * @param within_margin margin as a [0.0,0.5) fraction of screen size
+     * @param use_align whether to use alignment arguments (if %FALSE,    just get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scroll_to_iter(iter: Gtk.TextIter, within_margin: number, use_align: boolean, xalign: number, yalign: number): boolean
     /**
@@ -16309,6 +17809,11 @@ class Map {
      * get the mark onscreen, possibly not scrolling at all. The effective
      * screen for purposes of this function is reduced by a margin of size
      * `within_margin`.
+     * @param mark a #GtkTextMark
+     * @param within_margin margin as a [0.0,0.5) fraction of screen size
+     * @param use_align whether to use alignment arguments (if %FALSE, just    get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scroll_to_mark(mark: Gtk.TextMark, within_margin: number, use_align: boolean, xalign: number, yalign: number): void
     /**
@@ -16316,6 +17821,7 @@ class Map {
      * If `accepts_tab` is %TRUE, a tab character is inserted. If `accepts_tab`
      * is %FALSE the keyboard focus is moved to the next widget in the focus
      * chain.
+     * @param accepts_tab %TRUE if pressing the Tab key should insert a tab    character, %FALSE, if pressing the Tab key should move the    keyboard focus.
      */
     set_accepts_tab(accepts_tab: boolean): void
     /**
@@ -16326,6 +17832,8 @@ class Map {
      * function can only be used for the “border windows”, and it won’t
      * work with %GTK_TEXT_WINDOW_WIDGET, %GTK_TEXT_WINDOW_TEXT, or
      * %GTK_TEXT_WINDOW_PRIVATE.
+     * @param type window to affect
+     * @param size width or height of the window
      */
     set_border_window_size(type: Gtk.TextWindowType, size: number): void
     /**
@@ -16333,6 +17841,7 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param bottom_margin bottom margin in pixels
      */
     set_bottom_margin(bottom_margin: number): void
     /**
@@ -16341,6 +17850,7 @@ class Map {
      * added to `buffer`. If you owned a reference to `buffer` before passing it
      * to this function, you must remove that reference yourself; #GtkTextView
      * will not “adopt” it.
+     * @param buffer a #GtkTextBuffer
      */
     set_buffer(buffer?: Gtk.TextBuffer | null): void
     /**
@@ -16350,33 +17860,39 @@ class Map {
      * 
      * Note that this property may be overridden by the
      * #GtkSettings:gtk-keynave-use-caret settings.
+     * @param setting whether to show the insertion cursor
      */
     set_cursor_visible(setting: boolean): void
     /**
      * Sets the default editability of the #GtkTextView. You can override
      * this default setting with tags in the buffer, using the “editable”
      * attribute of tags.
+     * @param setting whether it’s editable
      */
     set_editable(setting: boolean): void
     /**
      * Sets the default indentation for paragraphs in `text_view`.
      * Tags in the buffer may override the default.
+     * @param indent indentation in pixels
      */
     set_indent(indent: number): void
     /**
      * Sets the #GtkTextView:input-hints property, which
      * allows input methods to fine-tune their behaviour.
+     * @param hints the hints
      */
     set_input_hints(hints: Gtk.InputHints): void
     /**
      * Sets the #GtkTextView:input-purpose property which
      * can be used by on-screen keyboards and other input
      * methods to adjust their behaviour.
+     * @param purpose the purpose
      */
     set_input_purpose(purpose: Gtk.InputPurpose): void
     /**
      * Sets the default justification of text in `text_view`.
      * Tags in the view’s buffer may override the default.
+     * @param justification justification
      */
     set_justification(justification: Gtk.Justification): void
     /**
@@ -16385,33 +17901,39 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param left_margin left margin in pixels
      */
     set_left_margin(left_margin: number): void
     /**
      * Sets the #GtkTextView:monospace property, which
      * indicates that the text view should use monospace
      * fonts.
+     * @param monospace %TRUE to request monospace styling
      */
     set_monospace(monospace: boolean): void
     /**
      * Changes the #GtkTextView overwrite mode.
+     * @param overwrite %TRUE to turn on overwrite mode, %FALSE to turn it off
      */
     set_overwrite(overwrite: boolean): void
     /**
      * Sets the default number of blank pixels above paragraphs in `text_view`.
      * Tags in the buffer for `text_view` may override the defaults.
+     * @param pixels_above_lines pixels above paragraphs
      */
     set_pixels_above_lines(pixels_above_lines: number): void
     /**
      * Sets the default number of pixels of blank space
      * to put below paragraphs in `text_view`. May be overridden
      * by tags applied to `text_view’`s buffer.
+     * @param pixels_below_lines pixels below paragraphs
      */
     set_pixels_below_lines(pixels_below_lines: number): void
     /**
      * Sets the default number of pixels of blank space to leave between
      * display/wrapped lines within a paragraph. May be overridden by
      * tags in `text_view’`s buffer.
+     * @param pixels_inside_wrap default number of pixels between wrapped lines
      */
     set_pixels_inside_wrap(pixels_inside_wrap: number): void
     /**
@@ -16420,11 +17942,13 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param right_margin right margin in pixels
      */
     set_right_margin(right_margin: number): void
     /**
      * Sets the default tab stops for paragraphs in `text_view`.
      * Tags in the buffer may override the default.
+     * @param tabs tabs as a #PangoTabArray
      */
     set_tabs(tabs: Pango.TabArray): void
     /**
@@ -16432,16 +17956,19 @@ class Map {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param top_margin top margin in pixels
      */
     set_top_margin(top_margin: number): void
     /**
      * Sets the line wrapping for the view.
+     * @param wrap_mode a #GtkWrapMode
      */
     set_wrap_mode(wrap_mode: Gtk.WrapMode): void
     /**
      * Determines whether `iter` is at the start of a display line.
      * See gtk_text_view_forward_display_line() for an explanation of
      * display lines vs. paragraphs.
+     * @param iter a #GtkTextIter
      */
     starts_display_line(iter: Gtk.TextIter): boolean
     /**
@@ -16450,6 +17977,9 @@ class Map {
      * 
      * Note that you can’t convert coordinates for a nonexisting window (see
      * gtk_text_view_set_border_window_size()).
+     * @param win a #GtkTextWindowType except %GTK_TEXT_WINDOW_PRIVATE
+     * @param window_x window x coordinate
+     * @param window_y window y coordinate
      */
     window_to_buffer_coords(win: Gtk.TextWindowType, window_x: number, window_y: number): [ /* buffer_x */ number | null, /* buffer_y */ number | null ]
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -16466,11 +17996,15 @@ class Map {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -16481,6 +18015,8 @@ class Map {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -16489,10 +18025,15 @@ class Map {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -16512,6 +18053,7 @@ class Map {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -16526,6 +18068,7 @@ class Map {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -16565,6 +18108,7 @@ class Map {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -16588,6 +18132,8 @@ class Map {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -16600,6 +18146,7 @@ class Map {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -16613,6 +18160,7 @@ class Map {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -16623,6 +18171,7 @@ class Map {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -16634,6 +18183,7 @@ class Map {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -16646,6 +18196,7 @@ class Map {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -16658,6 +18209,7 @@ class Map {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -16665,6 +18217,7 @@ class Map {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -16673,6 +18226,7 @@ class Map {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -16696,17 +18250,25 @@ class Map {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -16716,6 +18278,7 @@ class Map {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -16739,6 +18302,7 @@ class Map {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -16749,6 +18313,7 @@ class Map {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -16771,6 +18336,7 @@ class Map {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -16781,6 +18347,7 @@ class Map {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -16800,6 +18367,7 @@ class Map {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -16817,6 +18385,7 @@ class Map {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -16861,6 +18430,7 @@ class Map {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -16869,11 +18439,16 @@ class Map {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -16902,12 +18477,22 @@ class Map {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -16942,6 +18527,8 @@ class Map {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -16996,16 +18583,23 @@ class Map {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -17015,6 +18609,7 @@ class Map {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -17032,6 +18627,9 @@ class Map {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -17072,33 +18670,41 @@ class Map {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -17128,6 +18734,7 @@ class Map {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -17157,6 +18764,7 @@ class Map {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -17188,6 +18796,7 @@ class Map {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -17250,6 +18859,7 @@ class Map {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -17314,6 +18924,7 @@ class Map {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -17323,11 +18934,13 @@ class Map {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -17481,6 +19094,7 @@ class Map {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -17568,6 +19182,7 @@ class Map {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -17579,6 +19194,7 @@ class Map {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -17620,6 +19236,7 @@ class Map {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -17750,6 +19367,8 @@ class Map {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -17968,6 +19587,7 @@ class Map {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -17978,6 +19598,8 @@ class Map {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -17985,11 +19607,13 @@ class Map {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -18057,6 +19681,7 @@ class Map {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -18093,6 +19718,7 @@ class Map {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -18111,6 +19737,8 @@ class Map {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -18128,6 +19756,8 @@ class Map {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -18137,6 +19767,8 @@ class Map {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -18144,6 +19776,8 @@ class Map {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -18151,6 +19785,7 @@ class Map {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -18172,6 +19807,7 @@ class Map {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -18182,6 +19818,8 @@ class Map {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -18189,6 +19827,8 @@ class Map {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -18217,6 +19857,8 @@ class Map {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -18227,11 +19869,14 @@ class Map {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -18240,6 +19885,8 @@ class Map {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -18293,6 +19940,10 @@ class Map {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -18306,6 +19957,7 @@ class Map {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -18351,6 +20003,7 @@ class Map {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -18362,11 +20015,15 @@ class Map {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -18374,11 +20031,13 @@ class Map {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -18393,6 +20052,9 @@ class Map {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -18405,11 +20067,14 @@ class Map {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -18438,6 +20103,7 @@ class Map {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -18466,6 +20132,7 @@ class Map {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -18490,6 +20157,8 @@ class Map {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -18502,6 +20171,7 @@ class Map {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -18516,18 +20186,21 @@ class Map {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -18548,6 +20221,7 @@ class Map {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -18561,11 +20235,13 @@ class Map {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -18575,6 +20251,8 @@ class Map {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -18589,6 +20267,8 @@ class Map {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -18604,6 +20284,7 @@ class Map {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -18632,6 +20313,7 @@ class Map {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -18646,6 +20328,7 @@ class Map {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -18653,26 +20336,31 @@ class Map {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -18686,6 +20374,7 @@ class Map {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -18714,6 +20403,7 @@ class Map {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -18732,6 +20422,7 @@ class Map {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -18739,36 +20430,43 @@ class Map {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -18781,6 +20479,7 @@ class Map {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -18789,6 +20488,7 @@ class Map {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -18806,6 +20506,7 @@ class Map {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -18815,6 +20516,7 @@ class Map {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -18826,6 +20528,7 @@ class Map {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -18835,6 +20538,7 @@ class Map {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -18844,6 +20548,7 @@ class Map {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -18862,6 +20567,7 @@ class Map {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -18869,6 +20575,7 @@ class Map {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -18902,12 +20609,15 @@ class Map {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -18924,11 +20634,14 @@ class Map {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -18936,6 +20649,7 @@ class Map {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -18947,6 +20661,7 @@ class Map {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -18955,6 +20670,7 @@ class Map {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -18963,11 +20679,13 @@ class Map {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -18975,6 +20693,7 @@ class Map {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -18982,6 +20701,7 @@ class Map {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -18992,6 +20712,7 @@ class Map {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -19002,6 +20723,7 @@ class Map {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -19016,12 +20738,14 @@ class Map {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -19063,6 +20787,7 @@ class Map {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -19079,6 +20804,8 @@ class Map {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -19113,6 +20840,8 @@ class Map {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -19126,6 +20855,9 @@ class Map {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -19155,12 +20887,14 @@ class Map {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -19198,6 +20932,10 @@ class Map {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19208,6 +20946,12 @@ class Map {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19231,6 +20975,7 @@ class Map {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19250,11 +20995,14 @@ class Map {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19262,6 +21010,8 @@ class Map {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19279,6 +21029,7 @@ class Map {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -19324,6 +21075,7 @@ class Map {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -19367,15 +21119,20 @@ class Map {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -19416,6 +21173,7 @@ class Map {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -19450,12 +21208,16 @@ class Map {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -19463,24 +21225,39 @@ class Map {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -19489,14 +21266,19 @@ class Map {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of Gtk-3.0.Gtk.Scrollable */
@@ -19518,28 +21300,35 @@ class Map {
     get_vscroll_policy(): Gtk.ScrollablePolicy
     /**
      * Sets the horizontal adjustment of the #GtkScrollable.
+     * @param hadjustment a #GtkAdjustment
      */
     set_hadjustment(hadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * horizontal scrolling should start below the minimum width or
      * below the natural width.
+     * @param policy the horizontal #GtkScrollablePolicy
      */
     set_hscroll_policy(policy: Gtk.ScrollablePolicy): void
     /**
      * Sets the vertical adjustment of the #GtkScrollable.
+     * @param vadjustment a #GtkAdjustment
      */
     set_vadjustment(vadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * vertical scrolling should start below the minimum height or
      * below the natural height.
+     * @param policy the vertical #GtkScrollablePolicy
      */
     set_vscroll_policy(policy: Gtk.ScrollablePolicy): void
     /* Virtual methods of GtkSource-4.GtkSource.Map */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -19547,24 +21336,39 @@ class Map {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -19581,14 +21385,19 @@ class Map {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /**
@@ -19609,6 +21418,9 @@ class Map {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -19616,24 +21428,39 @@ class Map {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -19650,14 +21477,19 @@ class Map {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /**
@@ -19696,6 +21528,7 @@ class Map {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -19717,12 +21550,15 @@ class Map {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -19735,6 +21571,7 @@ class Map {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -19747,6 +21584,7 @@ class Map {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -19764,6 +21602,7 @@ class Map {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -19774,6 +21613,7 @@ class Map {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -19838,6 +21678,7 @@ class Map {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -19880,6 +21721,7 @@ class Map {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -19891,6 +21733,7 @@ class Map {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -19914,6 +21757,7 @@ class Map {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -19977,6 +21821,7 @@ class Map {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -19988,6 +21833,7 @@ class Map {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -20009,6 +21855,7 @@ class Map {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -20071,6 +21918,7 @@ class Map {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -20109,18 +21957,21 @@ class Map {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of GtkSource-4.GtkSource.View */
     /**
      * Keybinding signal to change case of the text at the current cursor position.
+     * @param case_type the case to use
      */
     connect(sigName: "change-case", callback: (($obj: Map, case_type: ChangeCaseType) => void)): number
     connect_after(sigName: "change-case", callback: (($obj: Map, case_type: ChangeCaseType) => void)): number
     emit(sigName: "change-case", case_type: ChangeCaseType): void
     /**
      * Keybinding signal to edit a number at the current cursor position.
+     * @param count the number to add to the number at the current position
      */
     connect(sigName: "change-number", callback: (($obj: Map, count: number) => void)): number
     connect_after(sigName: "change-number", callback: (($obj: Map, count: number) => void)): number
@@ -20135,6 +21986,8 @@ class Map {
      * Emitted when a line mark has been activated (for instance when there
      * was a button press in the line marks gutter). You can use `iter` to
      * determine on which line the activation took place.
+     * @param iter a #GtkTextIter
+     * @param event the #GdkEvent that activated the event
      */
     connect(sigName: "line-mark-activated", callback: (($obj: Map, iter: Gtk.TextIter, event: Gdk.Event) => void)): number
     connect_after(sigName: "line-mark-activated", callback: (($obj: Map, iter: Gtk.TextIter, event: Gdk.Event) => void)): number
@@ -20144,12 +21997,14 @@ class Map {
      * when the user initiates moving a line. The default binding key
      * is Alt+Up/Down arrow. And moves the currently selected lines,
      * or the current line up or down by one line.
+     * @param down %TRUE to move down, %FALSE to move up.
      */
     connect(sigName: "move-lines", callback: (($obj: Map, down: boolean) => void)): number
     connect_after(sigName: "move-lines", callback: (($obj: Map, down: boolean) => void)): number
     emit(sigName: "move-lines", down: boolean): void
     /**
      * Keybinding signal to move the cursor to the matching bracket.
+     * @param extend_selection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-to-matching-bracket", callback: (($obj: Map, extend_selection: boolean) => void)): number
     connect_after(sigName: "move-to-matching-bracket", callback: (($obj: Map, extend_selection: boolean) => void)): number
@@ -20159,6 +22014,7 @@ class Map {
      * when the user initiates moving a word. The default binding key
      * is Alt+Left/Right Arrow and moves the current selection, or the current
      * word by one word.
+     * @param count the number of words to move over
      */
     connect(sigName: "move-words", callback: (($obj: Map, count: number) => void)): number
     connect_after(sigName: "move-words", callback: (($obj: Map, count: number) => void)): number
@@ -20187,6 +22043,8 @@ class Map {
      * during the GtkTextView::move-cursor action. This can be used to find
      * out whether the cursor was moved by a normal home/end or by a smart
      * home/end.
+     * @param iter a #GtkTextIter
+     * @param count the count
      */
     connect(sigName: "smart-home-end", callback: (($obj: Map, iter: Gtk.TextIter, count: number) => void)): number
     connect_after(sigName: "smart-home-end", callback: (($obj: Map, iter: Gtk.TextIter, count: number) => void)): number
@@ -20241,6 +22099,8 @@ class Map {
      * Delete for deleting a character, Ctrl-Delete for
      * deleting a word and Ctrl-Backspace for deleting a word
      * backwords.
+     * @param type the granularity of the deletion, as a #GtkDeleteType
+     * @param count the number of `type` units to delete
      */
     connect(sigName: "delete-from-cursor", callback: (($obj: Map, type: Gtk.DeleteType, count: number) => void)): number
     connect_after(sigName: "delete-from-cursor", callback: (($obj: Map, type: Gtk.DeleteType, count: number) => void)): number
@@ -20248,6 +22108,10 @@ class Map {
     /**
      * The ::extend-selection signal is emitted when the selection needs to be
      * extended at `location`.
+     * @param granularity the granularity type
+     * @param location the location where to extend the selection
+     * @param start where the selection should start
+     * @param end where the selection should end
      */
     connect(sigName: "extend-selection", callback: (($obj: Map, granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => boolean)): number
     connect_after(sigName: "extend-selection", callback: (($obj: Map, granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => boolean)): number
@@ -20259,6 +22123,7 @@ class Map {
      * fixed string at the cursor.
      * 
      * This signal has no default bindings.
+     * @param string the string to insert
      */
     connect(sigName: "insert-at-cursor", callback: (($obj: Map, string: string) => void)): number
     connect_after(sigName: "insert-at-cursor", callback: (($obj: Map, string: string) => void)): number
@@ -20293,6 +22158,9 @@ class Map {
      * - Home/End keys move to the ends of the buffer
      * - PageUp/PageDown keys move vertically by pages
      * - Ctrl-PageUp/PageDown keys move horizontally by pages
+     * @param step the granularity of the move, as a #GtkMovementStep
+     * @param count the number of `step` units to move
+     * @param extend_selection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-cursor", callback: (($obj: Map, step: Gtk.MovementStep, count: number, extend_selection: boolean) => void)): number
     connect_after(sigName: "move-cursor", callback: (($obj: Map, step: Gtk.MovementStep, count: number, extend_selection: boolean) => void)): number
@@ -20305,6 +22173,8 @@ class Map {
      * is visible in a containing scrolled window.
      * 
      * There are no default bindings for this signal.
+     * @param step the granularity of the movement, as a #GtkScrollStep
+     * @param count the number of `step` units to move
      */
     connect(sigName: "move-viewport", callback: (($obj: Map, step: Gtk.ScrollStep, count: number) => void)): number
     connect_after(sigName: "move-viewport", callback: (($obj: Map, step: Gtk.ScrollStep, count: number) => void)): number
@@ -20336,6 +22206,7 @@ class Map {
      * The signal handler should not make assumptions about the
      * type of `widget,` but check whether `popup` is a #GtkMenu
      * or #GtkToolbar or another kind of container.
+     * @param popup the container that is being populated
      */
     connect(sigName: "populate-popup", callback: (($obj: Map, popup: Gtk.Widget) => void)): number
     connect_after(sigName: "populate-popup", callback: (($obj: Map, popup: Gtk.Widget) => void)): number
@@ -20347,6 +22218,7 @@ class Map {
      * 
      * This signal is only emitted if the text at the given position
      * is actually editable.
+     * @param preedit the current preedit string
      */
     connect(sigName: "preedit-changed", callback: (($obj: Map, preedit: string) => void)): number
     connect_after(sigName: "preedit-changed", callback: (($obj: Map, preedit: string) => void)): number
@@ -20359,6 +22231,7 @@ class Map {
      * 
      * The default bindings for this signal are Ctrl-a and Ctrl-/
      * for selecting and Shift-Ctrl-a and Ctrl-\ for unselecting.
+     * @param select %TRUE to select, %FALSE to unselect
      */
     connect(sigName: "select-all", callback: (($obj: Map, select: boolean) => void)): number
     connect_after(sigName: "select-all", callback: (($obj: Map, select: boolean) => void)): number
@@ -20421,6 +22294,7 @@ class Map {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: Map, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: Map, event: Gdk.EventButton) => boolean)): number
@@ -20433,6 +22307,7 @@ class Map {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: Map, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: Map, event: Gdk.EventButton) => boolean)): number
@@ -20443,6 +22318,7 @@ class Map {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: Map, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: Map, signal_id: number) => boolean)): number
@@ -20451,6 +22327,7 @@ class Map {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: Map, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: Map, child_property: GObject.ParamSpec) => void)): number
@@ -20470,6 +22347,7 @@ class Map {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: Map, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: Map, event: Gdk.EventConfigure) => boolean)): number
@@ -20478,6 +22356,7 @@ class Map {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: Map, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: Map, event: Gdk.EventExpose) => boolean)): number
@@ -20488,6 +22367,7 @@ class Map {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: Map, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: Map, event: Gdk.Event) => boolean)): number
@@ -20511,6 +22391,7 @@ class Map {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: Map, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: Map, event: Gdk.Event) => boolean)): number
@@ -20518,6 +22399,7 @@ class Map {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: Map, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: Map, previous_direction: Gtk.TextDirection) => void)): number
@@ -20530,6 +22412,7 @@ class Map {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: Map, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: Map, context: Gdk.DragContext) => void)): number
@@ -20539,6 +22422,7 @@ class Map {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: Map, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: Map, context: Gdk.DragContext) => void)): number
@@ -20549,6 +22433,10 @@ class Map {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: Map, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: Map, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -20616,6 +22504,12 @@ class Map {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: Map, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: Map, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -20631,6 +22525,10 @@ class Map {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: Map, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: Map, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -20639,6 +22537,7 @@ class Map {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: Map, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: Map, context: Gdk.DragContext) => void)): number
@@ -20649,6 +22548,8 @@ class Map {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: Map, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: Map, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -20663,6 +22564,8 @@ class Map {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: Map, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: Map, context: Gdk.DragContext, time: number) => void)): number
@@ -20756,6 +22659,10 @@ class Map {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: Map, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: Map, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -20778,6 +22685,7 @@ class Map {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: Map, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: Map, cr: cairo.Context) => boolean)): number
@@ -20790,6 +22698,7 @@ class Map {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: Map, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: Map, event: Gdk.EventCrossing) => boolean)): number
@@ -20800,6 +22709,7 @@ class Map {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: Map, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: Map, event: Gdk.Event) => boolean)): number
@@ -20808,6 +22718,7 @@ class Map {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: Map, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: Map, event: Gdk.Event) => void)): number
@@ -20821,6 +22732,7 @@ class Map {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: Map, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: Map, event: Gdk.EventFocus) => boolean)): number
@@ -20831,6 +22743,7 @@ class Map {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: Map, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: Map, event: Gdk.EventFocus) => boolean)): number
@@ -20842,6 +22755,7 @@ class Map {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: Map, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: Map, event: Gdk.EventGrabBroken) => boolean)): number
@@ -20858,6 +22772,7 @@ class Map {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: Map, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: Map, was_grabbed: boolean) => void)): number
@@ -20875,6 +22790,7 @@ class Map {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: Map, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: Map, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -20887,6 +22803,7 @@ class Map {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: Map, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: Map, event: Gdk.EventKey) => boolean)): number
@@ -20898,6 +22815,7 @@ class Map {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: Map, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: Map, event: Gdk.EventKey) => boolean)): number
@@ -20905,6 +22823,7 @@ class Map {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: Map, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: Map, direction: Gtk.DirectionType) => boolean)): number
@@ -20917,6 +22836,7 @@ class Map {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: Map, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: Map, event: Gdk.EventCrossing) => boolean)): number
@@ -20942,6 +22862,7 @@ class Map {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: Map, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: Map, event: Gdk.EventAny) => boolean)): number
@@ -20949,6 +22870,7 @@ class Map {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: Map, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: Map, group_cycling: boolean) => boolean)): number
@@ -20961,6 +22883,7 @@ class Map {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: Map, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: Map, event: Gdk.EventMotion) => boolean)): number
@@ -20971,6 +22894,7 @@ class Map {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: Map, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: Map, old_parent?: Gtk.Widget | null) => void)): number
@@ -20993,6 +22917,7 @@ class Map {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: Map, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: Map, event: Gdk.EventProperty) => boolean)): number
@@ -21002,6 +22927,7 @@ class Map {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: Map, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: Map, event: Gdk.EventProximity) => boolean)): number
@@ -21011,6 +22937,7 @@ class Map {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: Map, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: Map, event: Gdk.EventProximity) => boolean)): number
@@ -21028,6 +22955,10 @@ class Map {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: Map, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: Map, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -21043,6 +22974,7 @@ class Map {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: Map, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: Map, previous_screen?: Gdk.Screen | null) => void)): number
@@ -21056,6 +22988,7 @@ class Map {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: Map, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: Map, event: Gdk.EventScroll) => boolean)): number
@@ -21063,6 +22996,7 @@ class Map {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: Map, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: Map, event: Gdk.EventSelection) => boolean)): number
@@ -21080,6 +23014,7 @@ class Map {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: Map, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: Map, event: Gdk.EventSelection) => boolean)): number
@@ -21100,6 +23035,7 @@ class Map {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: Map, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: Map, state: Gtk.StateType) => void)): number
@@ -21107,6 +23043,7 @@ class Map {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: Map, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: Map, flags: Gtk.StateFlags) => void)): number
@@ -21119,6 +23056,7 @@ class Map {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: Map, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: Map, previous_style?: Gtk.Style | null) => void)): number
@@ -21155,6 +23093,7 @@ class Map {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: Map, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: Map, event: Gdk.EventAny) => boolean)): number
@@ -21174,6 +23113,7 @@ class Map {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: Map, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: Map, event: Gdk.EventVisibility) => boolean)): number
@@ -21185,6 +23125,7 @@ class Map {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: Map, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: Map, event: Gdk.EventWindowState) => boolean)): number
@@ -21218,6 +23159,7 @@ class Map {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Map, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Map, pspec: GObject.ParamSpec) => void)): number
@@ -21411,10 +23353,27 @@ interface Mark_ConstructProps extends Gtk.TextMark_ConstructProps {
     category?: string
 }
 class Mark {
+    /* Properties of GtkSource-4.GtkSource.Mark */
+    /**
+     * The category of the #GtkSourceMark, classifies the mark and controls
+     * which pixbuf is used and with which priority it is drawn.
+     */
+    readonly category: string
+    /* Properties of Gtk-3.0.Gtk.TextMark */
+    /**
+     * Whether the mark has left gravity. When text is inserted at the mark’s
+     * current location, if the mark has left gravity it will be moved
+     * to the left of the newly-inserted text, otherwise to the right.
+     */
+    readonly left_gravity: boolean
+    /**
+     * The name of the mark or %NULL if the mark is anonymous.
+     */
+    readonly name: string
     /* Fields of Gtk-3.0.Gtk.TextMark */
-    readonly parent_instance: GObject.Object
+    parent_instance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Mark */
     /**
      * Returns the mark category.
@@ -21425,6 +23384,7 @@ class Mark {
      * was not added to a buffer. If there is no next mark, %NULL will be returned.
      * 
      * If `category` is %NULL, looks for marks of any category.
+     * @param category a string specifying the mark category, or %NULL.
      */
     next(category?: string | null): Mark | null
     /**
@@ -21432,6 +23392,7 @@ class Mark {
      * was not added to a buffer. If there is no previous mark, %NULL is returned.
      * 
      * If `category` is %NULL, looks for marks of any category
+     * @param category a string specifying the mark category, or %NULL.
      */
     prev(category: string): Mark | null
     /* Methods of Gtk-3.0.Gtk.TextMark */
@@ -21465,6 +23426,7 @@ class Mark {
      * widget uses a visible mark to indicate where a drop will occur when
      * dragging-and-dropping text. Most other marks are not visible.
      * Marks are not visible by default.
+     * @param setting visibility of mark
      */
     set_visible(setting: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -21502,6 +23464,10 @@ class Mark {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21512,6 +23478,12 @@ class Mark {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21535,6 +23507,7 @@ class Mark {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -21554,11 +23527,14 @@ class Mark {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -21566,6 +23542,8 @@ class Mark {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -21583,6 +23561,7 @@ class Mark {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -21628,6 +23607,7 @@ class Mark {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -21671,15 +23651,20 @@ class Mark {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -21720,6 +23705,7 @@ class Mark {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -21754,6 +23740,7 @@ class Mark {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -21773,6 +23760,7 @@ class Mark {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -21805,10 +23793,17 @@ class Mark {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::category", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::category", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::left-gravity", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::left-gravity", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: Mark, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -21860,7 +23855,7 @@ class MarkAttributes {
      */
     pixbuf: GdkPixbuf.Pixbuf
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.MarkAttributes */
     /**
      * Stores background color in `background`.
@@ -21885,12 +23880,14 @@ class MarkAttributes {
      * Queries for a tooltip by emitting
      * a #GtkSourceMarkAttributes::query-tooltip-markup signal. The tooltip may contain
      * a markup.
+     * @param mark a #GtkSourceMark.
      */
     get_tooltip_markup(mark: Mark): string
     /**
      * Queries for a tooltip by emitting
      * a #GtkSourceMarkAttributes::query-tooltip-text signal. The tooltip is a plain
      * text.
+     * @param mark a #GtkSourceMark.
      */
     get_tooltip_text(mark: Mark): string
     /**
@@ -21898,22 +23895,28 @@ class MarkAttributes {
      * to one of: gtk_source_mark_attributes_set_pixbuf(),
      * gtk_source_mark_attributes_set_gicon() or
      * gtk_source_mark_attributes_set_icon_name(). `size` cannot be lower than 1.
+     * @param widget widget of which style settings may be used.
+     * @param size size of the rendered icon.
      */
     render_icon(widget: Gtk.Widget, size: number): GdkPixbuf.Pixbuf
     /**
      * Sets background color to the one given in `background`.
+     * @param background a #GdkRGBA.
      */
     set_background(background: Gdk.RGBA): void
     /**
      * Sets an icon to be used as a base for rendered icon.
+     * @param gicon a #GIcon to be used.
      */
     set_gicon(gicon: Gio.Icon): void
     /**
      * Sets a name of an icon to be used as a base for rendered icon.
+     * @param icon_name name of an icon to be used.
      */
     set_icon_name(icon_name: string): void
     /**
      * Sets a pixbuf to be used as a base for rendered icon.
+     * @param pixbuf a #GdkPixbuf to be used.
      */
     set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -21951,6 +23954,10 @@ class MarkAttributes {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -21961,6 +23968,12 @@ class MarkAttributes {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -21984,6 +23997,7 @@ class MarkAttributes {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22003,11 +24017,14 @@ class MarkAttributes {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22015,6 +24032,8 @@ class MarkAttributes {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22032,6 +24051,7 @@ class MarkAttributes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -22077,6 +24097,7 @@ class MarkAttributes {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -22120,15 +24141,20 @@ class MarkAttributes {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -22169,6 +24195,7 @@ class MarkAttributes {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -22203,6 +24230,7 @@ class MarkAttributes {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -22222,6 +24250,7 @@ class MarkAttributes {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -22229,6 +24258,7 @@ class MarkAttributes {
     /**
      * The code should connect to this signal to provide a tooltip for given
      * `mark`. The tooltip can contain a markup.
+     * @param mark The #GtkSourceMark.
      */
     connect(sigName: "query-tooltip-markup", callback: (($obj: MarkAttributes, mark: Mark) => string)): number
     connect_after(sigName: "query-tooltip-markup", callback: (($obj: MarkAttributes, mark: Mark) => string)): number
@@ -22236,6 +24266,7 @@ class MarkAttributes {
     /**
      * The code should connect to this signal to provide a tooltip for given
      * `mark`. The tooltip should be just a plain text.
+     * @param mark The #GtkSourceMark.
      */
     connect(sigName: "query-tooltip-text", callback: (($obj: MarkAttributes, mark: Mark) => string)): number
     connect_after(sigName: "query-tooltip-text", callback: (($obj: MarkAttributes, mark: Mark) => string)): number
@@ -22269,6 +24300,7 @@ class MarkAttributes {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: MarkAttributes, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: MarkAttributes, pspec: GObject.ParamSpec) => void)): number
@@ -22412,6 +24444,10 @@ class PrintCompositor {
      */
     body_font_name: string
     /**
+     * The GtkSourceBuffer object to print.
+     */
+    readonly buffer: Buffer
+    /**
      * Name of the font used to print page footer.
      * If this property is unspecified, the text body font is used.
      * 
@@ -22505,7 +24541,7 @@ class PrintCompositor {
      */
     wrap_mode: Gtk.WrapMode
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.PrintCompositor */
     /**
      * Draw page `page_nr` for printing on the the Cairo context encapsuled in `context`.
@@ -22531,6 +24567,8 @@ class PrintCompositor {
      *                                            page_nr);
      * }
      * </programlisting></informalexample>
+     * @param context the #GtkPrintContext encapsulating the context information that is required when           drawing the page for printing.
+     * @param page_nr the number of the page to print.
      */
     draw_page(context: Gtk.PrintContext, page_nr: number): void
     /**
@@ -22540,6 +24578,7 @@ class PrintCompositor {
     get_body_font_name(): string
     /**
      * Gets the bottom margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     get_bottom_margin(unit: Gtk.Unit): number
     /**
@@ -22566,6 +24605,7 @@ class PrintCompositor {
     get_highlight_syntax(): boolean
     /**
      * Gets the left margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     get_left_margin(unit: Gtk.Unit): number
     /**
@@ -22604,6 +24644,7 @@ class PrintCompositor {
     get_print_line_numbers(): number
     /**
      * Gets the right margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     get_right_margin(unit: Gtk.Unit): number
     /**
@@ -22612,6 +24653,7 @@ class PrintCompositor {
     get_tab_width(): number
     /**
      * Gets the top margin in units of `unit`.
+     * @param unit the unit for the return value.
      */
     get_top_margin(unit: Gtk.Unit): number
     /**
@@ -22679,6 +24721,7 @@ class PrintCompositor {
      *     gtk_print_operation_set_n_pages (operation, n_pages);
      * }
      * </programlisting></informalexample>
+     * @param context the #GtkPrintContext whose parameters (e.g. paper size, print margins, etc.) are used by the the `compositor` to paginate the document.
      */
     paginate(context: Gtk.PrintContext): boolean
     /**
@@ -22691,10 +24734,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param font_name the name of the default font for the body text.
      */
     set_body_font_name(font_name: string): void
     /**
      * Sets the bottom margin used by `compositor`.
+     * @param margin the new bottom margin in units of `unit`.
+     * @param unit the units for `margin`.
      */
     set_bottom_margin(margin: number, unit: Gtk.Unit): void
     /**
@@ -22709,11 +24755,16 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param font_name the name of the font for the footer text, or %NULL.
      */
     set_footer_font_name(font_name?: string | null): void
     /**
      * See gtk_source_print_compositor_set_header_format() for more information
      * about the parameters.
+     * @param separator %TRUE if you want a separator line to be printed.
+     * @param left a format string to print on the left of the footer.
+     * @param center a format string to print on the center of the footer.
+     * @param right a format string to print on the right of the footer.
      */
     set_footer_format(separator: boolean, left?: string | null, center?: string | null, right?: string | null): void
     /**
@@ -22728,6 +24779,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param font_name the name of the font for header text, or %NULL.
      */
     set_header_font_name(font_name?: string | null): void
     /**
@@ -22752,6 +24804,10 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param separator %TRUE if you want a separator line to be printed.
+     * @param left a format string to print on the left of the header.
+     * @param center a format string to print on the center of the header.
+     * @param right a format string to print on the right of the header.
      */
     set_header_format(separator: boolean, left?: string | null, center?: string | null, right?: string | null): void
     /**
@@ -22760,10 +24816,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param highlight whether syntax should be highlighted.
      */
     set_highlight_syntax(highlight: boolean): void
     /**
      * Sets the left margin used by `compositor`.
+     * @param margin the new left margin in units of `unit`.
+     * @param unit the units for `margin`.
      */
     set_left_margin(margin: number, unit: Gtk.Unit): void
     /**
@@ -22778,6 +24837,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param font_name the name of the font for line numbers, or %NULL.
      */
     set_line_numbers_font_name(font_name?: string | null): void
     /**
@@ -22791,6 +24851,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param print %TRUE if you want the footer to be printed.
      */
     set_print_footer(print: boolean): void
     /**
@@ -22804,6 +24865,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param print %TRUE if you want the header to be printed.
      */
     set_print_header(print: boolean): void
     /**
@@ -22815,10 +24877,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param interval interval for printed line numbers.
      */
     set_print_line_numbers(interval: number): void
     /**
      * Sets the right margin used by `compositor`.
+     * @param margin the new right margin in units of `unit`.
+     * @param unit the units for `margin`.
      */
     set_right_margin(margin: number, unit: Gtk.Unit): void
     /**
@@ -22826,10 +24891,13 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param width width of tab in characters.
      */
     set_tab_width(width: number): void
     /**
      * Sets the top margin used by `compositor`.
+     * @param margin the new top margin in units of `unit`
+     * @param unit the units for `margin`
      */
     set_top_margin(margin: number, unit: Gtk.Unit): void
     /**
@@ -22837,6 +24905,7 @@ class PrintCompositor {
      * 
      * This function cannot be called anymore after the first call to the
      * gtk_source_print_compositor_paginate() function.
+     * @param wrap_mode a #GtkWrapMode.
      */
     set_wrap_mode(wrap_mode: Gtk.WrapMode): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -22874,6 +24943,10 @@ class PrintCompositor {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -22884,6 +24957,12 @@ class PrintCompositor {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -22907,6 +24986,7 @@ class PrintCompositor {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -22926,11 +25006,14 @@ class PrintCompositor {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -22938,6 +25021,8 @@ class PrintCompositor {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -22955,6 +25040,7 @@ class PrintCompositor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23000,6 +25086,7 @@ class PrintCompositor {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23043,15 +25130,20 @@ class PrintCompositor {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23092,6 +25184,7 @@ class PrintCompositor {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23126,6 +25219,7 @@ class PrintCompositor {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23145,6 +25239,7 @@ class PrintCompositor {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23177,12 +25272,15 @@ class PrintCompositor {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
     connect(sigName: "notify::body-font-name", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::body-font-name", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::buffer", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::footer-font-name", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::footer-font-name", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::header-font-name", callback: (($obj: PrintCompositor, pspec: GObject.ParamSpec) => void)): number
@@ -23224,15 +25322,24 @@ interface Region_ConstructProps extends GObject.Object_ConstructProps {
     buffer?: Gtk.TextBuffer
 }
 class Region {
+    /* Properties of GtkSource-4.GtkSource.Region */
+    /**
+     * The #GtkTextBuffer. The #GtkSourceRegion has a weak reference to the
+     * buffer.
+     */
+    readonly buffer: Gtk.TextBuffer
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Region */
     /**
      * Adds `region_to_add` to `region`. `region_to_add` is not modified.
+     * @param region_to_add the #GtkSourceRegion to add to `region,` or %NULL.
      */
     add_region(region_to_add?: Region | null): void
     /**
      * Adds the subregion delimited by `_start` and `_end` to `region`.
+     * @param _start the start of the subregion.
+     * @param _end the end of the subregion.
      */
     add_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): void
     /**
@@ -23248,11 +25355,14 @@ class Region {
     /**
      * Returns the intersection between `region1` and `region2`. `region1` and
      * `region2` are not modified.
+     * @param region2 a #GtkSourceRegion, or %NULL.
      */
     intersect_region(region2?: Region | null): Region | null
     /**
      * Returns the intersection between `region` and the subregion delimited by
      * `_start` and `_end`. `region` is not modified.
+     * @param _start the start of the subregion.
+     * @param _end the end of the subregion.
      */
     intersect_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): Region | null
     /**
@@ -23262,10 +25372,13 @@ class Region {
     /**
      * Subtracts `region_to_subtract` from `region`. `region_to_subtract` is not
      * modified.
+     * @param region_to_subtract the #GtkSourceRegion to subtract from   `region,` or %NULL.
      */
     subtract_region(region_to_subtract?: Region | null): void
     /**
      * Subtracts the subregion delimited by `_start` and `_end` from `region`.
+     * @param _start the start of the subregion.
+     * @param _end the end of the subregion.
      */
     subtract_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): void
     /**
@@ -23310,6 +25423,10 @@ class Region {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23320,6 +25437,12 @@ class Region {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23343,6 +25466,7 @@ class Region {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23362,11 +25486,14 @@ class Region {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23374,6 +25501,8 @@ class Region {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23391,6 +25520,7 @@ class Region {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23436,6 +25566,7 @@ class Region {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -23479,15 +25610,20 @@ class Region {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -23528,6 +25664,7 @@ class Region {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -23562,6 +25699,7 @@ class Region {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -23581,6 +25719,7 @@ class Region {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -23613,10 +25752,13 @@ class Region {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Region, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Region, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: (($obj: Region, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: (($obj: Region, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -23652,6 +25794,10 @@ interface SearchContext_ConstructProps extends GObject.Object_ConstructProps {
 class SearchContext {
     /* Properties of GtkSource-4.GtkSource.SearchContext */
     /**
+     * The #GtkSourceBuffer associated to the search context.
+     */
+    readonly buffer: Buffer
+    /**
      * Highlight the search occurrences.
      */
     highlight: boolean
@@ -23673,8 +25819,14 @@ class SearchContext {
      * Free with g_error_free().
      */
     readonly regex_error: object
+    /**
+     * The #GtkSourceSearchSettings associated to the search context.
+     * 
+     * This property is construct-only since version 4.0.
+     */
+    readonly settings: SearchSettings
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.SearchContext */
     /**
      * Synchronous backward search. It is recommended to use the asynchronous
@@ -23687,6 +25839,7 @@ class SearchContext {
      * The `has_wrapped_around` out parameter is set independently of whether a match
      * is found. So if this function returns %FALSE, `has_wrapped_around` will have
      * the same value as the #GtkSourceSearchSettings:wrap-around property.
+     * @param iter start of search.
      */
     backward(iter: Gtk.TextIter): [ /* returnType */ boolean, /* match_start */ Gtk.TextIter | null, /* match_end */ Gtk.TextIter | null, /* has_wrapped_around */ boolean | null ]
     /**
@@ -23700,6 +25853,9 @@ class SearchContext {
      * If the operation is cancelled, the `callback` will only be called if
      * `cancellable` was not %NULL. gtk_source_search_context_backward_async() takes
      * ownership of `cancellable,` so you can unref it after calling this function.
+     * @param iter start of search.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     backward_async(iter: Gtk.TextIter, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -23708,6 +25864,7 @@ class SearchContext {
      * 
      * See the documentation of gtk_source_search_context_backward() for more
      * details.
+     * @param result a #GAsyncResult.
      */
     backward_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* match_start */ Gtk.TextIter | null, /* match_end */ Gtk.TextIter | null, /* has_wrapped_around */ boolean | null ]
     /**
@@ -23721,6 +25878,7 @@ class SearchContext {
      * The `has_wrapped_around` out parameter is set independently of whether a match
      * is found. So if this function returns %FALSE, `has_wrapped_around` will have
      * the same value as the #GtkSourceSearchSettings:wrap-around property.
+     * @param iter start of search.
      */
     forward(iter: Gtk.TextIter): [ /* returnType */ boolean, /* match_start */ Gtk.TextIter | null, /* match_end */ Gtk.TextIter | null, /* has_wrapped_around */ boolean | null ]
     /**
@@ -23734,6 +25892,9 @@ class SearchContext {
      * If the operation is cancelled, the `callback` will only be called if
      * `cancellable` was not %NULL. gtk_source_search_context_forward_async() takes
      * ownership of `cancellable,` so you can unref it after calling this function.
+     * @param iter start of search.
+     * @param cancellable a #GCancellable, or %NULL.
+     * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
     forward_async(iter: Gtk.TextIter, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -23742,6 +25903,7 @@ class SearchContext {
      * 
      * See the documentation of gtk_source_search_context_forward() for more
      * details.
+     * @param result a #GAsyncResult.
      */
     forward_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* match_start */ Gtk.TextIter | null, /* match_end */ Gtk.TextIter | null, /* has_wrapped_around */ boolean | null ]
     get_buffer(): Buffer
@@ -23752,6 +25914,8 @@ class SearchContext {
      * scanned, the position may be unknown, and -1 is returned. If 0 is returned,
      * it means that this part of the buffer has already been scanned, and that
      * `match_start` and `match_end` don't delimit an occurrence.
+     * @param match_start the start of the occurrence.
+     * @param match_end the end of the occurrence.
      */
     get_occurrence_position(match_start: Gtk.TextIter, match_end: Gtk.TextIter): number
     /**
@@ -23779,6 +25943,10 @@ class SearchContext {
      * For a regular expression replacement, you can check if `replace` is valid by
      * calling g_regex_check_replacement(). The `replace` text can contain
      * backreferences; read the g_regex_replace() documentation for more details.
+     * @param match_start the start of the match to replace.
+     * @param match_end the end of the match to replace.
+     * @param replace the replacement text.
+     * @param replace_length the length of `replace` in bytes, or -1.
      */
     replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean
     /**
@@ -23788,10 +25956,13 @@ class SearchContext {
      * For a regular expression replacement, you can check if `replace` is valid by
      * calling g_regex_check_replacement(). The `replace` text can contain
      * backreferences; read the g_regex_replace() documentation for more details.
+     * @param replace the replacement text.
+     * @param replace_length the length of `replace` in bytes, or -1.
      */
     replace_all(replace: string, replace_length: number): number
     /**
      * Enables or disables the search occurrences highlighting.
+     * @param highlight the setting.
      */
     set_highlight(highlight: boolean): void
     /**
@@ -23799,6 +25970,7 @@ class SearchContext {
      * theme's scheme 'match-style' will be used.
      * To enable or disable the search highlighting, use
      * gtk_source_search_context_set_highlight().
+     * @param match_style a #GtkSourceStyle, or %NULL.
      */
     set_match_style(match_style?: Style | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -23836,6 +26008,10 @@ class SearchContext {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -23846,6 +26022,12 @@ class SearchContext {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -23869,6 +26051,7 @@ class SearchContext {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -23888,11 +26071,14 @@ class SearchContext {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -23900,6 +26086,8 @@ class SearchContext {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -23917,6 +26105,7 @@ class SearchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -23962,6 +26151,7 @@ class SearchContext {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24005,15 +26195,20 @@ class SearchContext {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24054,6 +26249,7 @@ class SearchContext {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24088,6 +26284,7 @@ class SearchContext {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24107,6 +26304,7 @@ class SearchContext {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24139,10 +26337,13 @@ class SearchContext {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::buffer", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::buffer", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::highlight", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::highlight", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::match-style", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
@@ -24151,6 +26352,8 @@ class SearchContext {
     connect_after(sigName: "notify::occurrences-count", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::regex-error", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::regex-error", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::settings", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::settings", callback: (($obj: SearchContext, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -24220,7 +26423,7 @@ class SearchSettings {
      */
     wrap_around: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.SearchSettings */
     get_at_word_boundaries(): boolean
     get_case_sensitive(): boolean
@@ -24238,10 +26441,12 @@ class SearchSettings {
      * is %TRUE, a search match must start and end a word. The match can span
      * multiple words. See also gtk_text_iter_starts_word() and
      * gtk_text_iter_ends_word().
+     * @param at_word_boundaries the setting.
      */
     set_at_word_boundaries(at_word_boundaries: boolean): void
     /**
      * Enables or disables the case sensitivity for the search.
+     * @param case_sensitive the setting.
      */
     set_case_sensitive(case_sensitive: boolean): void
     /**
@@ -24252,6 +26457,7 @@ class SearchSettings {
      * #GtkSourceSearchContext uses #GRegex when regex search is enabled. See the
      * [Regular expression syntax](https://developer.gnome.org/glib/stable/glib-regex-syntax.html)
      * page in the GLib reference manual.
+     * @param regex_enabled the setting.
      */
     set_regex_enabled(regex_enabled: boolean): void
     /**
@@ -24261,6 +26467,7 @@ class SearchSettings {
      * 
      * You may be interested to call gtk_source_utils_unescape_search_text() before
      * this function.
+     * @param search_text the nul-terminated text to search, or %NULL to disable the search.
      */
     set_search_text(search_text?: string | null): void
     /**
@@ -24268,6 +26475,7 @@ class SearchSettings {
      * forward search continues at the beginning of the buffer if no search
      * occurrences are found. Similarly, the backward search continues to search at
      * the end of the buffer.
+     * @param wrap_around the setting.
      */
     set_wrap_around(wrap_around: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -24305,6 +26513,10 @@ class SearchSettings {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24315,6 +26527,12 @@ class SearchSettings {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24338,6 +26556,7 @@ class SearchSettings {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24357,11 +26576,14 @@ class SearchSettings {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24369,6 +26591,8 @@ class SearchSettings {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24386,6 +26610,7 @@ class SearchSettings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24431,6 +26656,7 @@ class SearchSettings {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24474,15 +26700,20 @@ class SearchSettings {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24523,6 +26754,7 @@ class SearchSettings {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -24557,6 +26789,7 @@ class SearchSettings {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -24576,6 +26809,7 @@ class SearchSettings {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -24608,6 +26842,7 @@ class SearchSettings {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SearchSettings, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SearchSettings, pspec: GObject.ParamSpec) => void)): number
@@ -24679,7 +26914,7 @@ class SpaceDrawer {
      */
     matrix: GLib.Variant
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.SpaceDrawer */
     /**
      * Binds the #GtkSourceSpaceDrawer:matrix property to a #GSettings key.
@@ -24691,6 +26926,9 @@ class SpaceDrawer {
      * mapping functions don't support #GVariant properties (maybe it will be
      * supported by a future GIO version, in which case this function can be
      * deprecated).
+     * @param settings a #GSettings object.
+     * @param key the `settings` key to bind.
+     * @param flags flags for the binding.
      */
     bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void
     get_enable_matrix(): boolean
@@ -24711,10 +26949,12 @@ class SpaceDrawer {
      * those locations. Which means that if a certain kind of white space is present
      * in the return value, then that kind of white space is drawn at all the
      * specified `locations`.
+     * @param locations one or several #GtkSourceSpaceLocationFlags.
      */
     get_types_for_locations(locations: SpaceLocationFlags): SpaceTypeFlags
     /**
      * Sets whether the #GtkSourceSpaceDrawer:matrix property is enabled.
+     * @param enable_matrix the new value.
      */
     set_enable_matrix(enable_matrix: boolean): void
     /**
@@ -24725,11 +26965,14 @@ class SpaceDrawer {
      * 
      * The gtk_source_space_drawer_set_types_for_locations() function may be more
      * convenient to use.
+     * @param matrix the new matrix value, or %NULL.
      */
     set_matrix(matrix?: GLib.Variant | null): void
     /**
      * Modifies the #GtkSourceSpaceDrawer:matrix property at the specified
      * `locations`.
+     * @param locations one or several #GtkSourceSpaceLocationFlags.
+     * @param types a combination of #GtkSourceSpaceTypeFlags.
      */
     set_types_for_locations(locations: SpaceLocationFlags, types: SpaceTypeFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -24767,6 +27010,10 @@ class SpaceDrawer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -24777,6 +27024,12 @@ class SpaceDrawer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -24800,6 +27053,7 @@ class SpaceDrawer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -24819,11 +27073,14 @@ class SpaceDrawer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -24831,6 +27088,8 @@ class SpaceDrawer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -24848,6 +27107,7 @@ class SpaceDrawer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -24893,6 +27153,7 @@ class SpaceDrawer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -24936,15 +27197,20 @@ class SpaceDrawer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -24985,6 +27251,7 @@ class SpaceDrawer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25019,6 +27286,7 @@ class SpaceDrawer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25038,6 +27306,7 @@ class SpaceDrawer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25070,6 +27339,7 @@ class SpaceDrawer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SpaceDrawer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SpaceDrawer, pspec: GObject.ParamSpec) => void)): number
@@ -25111,8 +27381,27 @@ interface Style_ConstructProps extends GObject.Object_ConstructProps {
     underline_set?: boolean
 }
 class Style {
+    /* Properties of GtkSource-4.GtkSource.Style */
+    readonly background: string
+    readonly background_set: boolean
+    readonly bold: boolean
+    readonly bold_set: boolean
+    readonly foreground: string
+    readonly foreground_set: boolean
+    readonly italic: boolean
+    readonly italic_set: boolean
+    readonly line_background: string
+    readonly line_background_set: boolean
+    readonly pango_underline: Pango.Underline
+    readonly scale: string
+    readonly scale_set: boolean
+    readonly strikethrough: boolean
+    readonly strikethrough_set: boolean
+    readonly underline_color: string
+    readonly underline_color_set: boolean
+    readonly underline_set: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.Style */
     /**
      * This function modifies the #GtkTextTag properties that are related to the
@@ -25122,6 +27411,7 @@ class Style {
      * 
      * If `style` is %NULL, the related *-set properties of #GtkTextTag are set to
      * %FALSE.
+     * @param tag a #GtkTextTag to apply styles to.
      */
     apply(tag: Gtk.TextTag): void
     /**
@@ -25164,6 +27454,10 @@ class Style {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25174,6 +27468,12 @@ class Style {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25197,6 +27497,7 @@ class Style {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25216,11 +27517,14 @@ class Style {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25228,6 +27532,8 @@ class Style {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25245,6 +27551,7 @@ class Style {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25290,6 +27597,7 @@ class Style {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25333,15 +27641,20 @@ class Style {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25382,6 +27695,7 @@ class Style {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25416,6 +27730,7 @@ class Style {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25435,6 +27750,7 @@ class Style {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25467,10 +27783,47 @@ class Style {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::background", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::background", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::background-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::background-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bold", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bold", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::bold-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bold-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::foreground", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::foreground", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::foreground-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::foreground-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::italic", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::italic", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::italic-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::italic-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::line-background", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::line-background", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::line-background-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::line-background-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::pango-underline", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::pango-underline", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::scale", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::scale-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::scale-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::strikethrough", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::strikethrough", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::strikethrough-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::strikethrough-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::underline-color", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-color", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::underline-color-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-color-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::underline-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underline-set", callback: (($obj: Style, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -25499,11 +27852,16 @@ class StyleScheme {
      */
     readonly filename: string
     /**
+     * Style scheme id, a unique string used to identify the style scheme
+     * in #GtkSourceStyleSchemeManager.
+     */
+    readonly id: string
+    /**
      * Style scheme name, a translatable string to present to the user.
      */
     readonly name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.StyleScheme */
     get_authors(): string[] | null
     get_description(): string | null
@@ -25546,6 +27904,10 @@ class StyleScheme {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -25556,6 +27918,12 @@ class StyleScheme {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -25579,6 +27947,7 @@ class StyleScheme {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -25598,11 +27967,14 @@ class StyleScheme {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -25610,6 +27982,8 @@ class StyleScheme {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -25627,6 +28001,7 @@ class StyleScheme {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -25672,6 +28047,7 @@ class StyleScheme {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -25715,15 +28091,20 @@ class StyleScheme {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -25764,6 +28145,7 @@ class StyleScheme {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -25798,6 +28180,7 @@ class StyleScheme {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -25817,6 +28200,7 @@ class StyleScheme {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -25849,6 +28233,7 @@ class StyleScheme {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
@@ -25857,6 +28242,8 @@ class StyleScheme {
     connect_after(sigName: "notify::description", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::filename", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::id", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::id", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::name", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: StyleScheme, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -26146,13 +28533,13 @@ class StyleSchemeChooserButton {
      */
     style_scheme: StyleScheme
     /* Fields of Gtk-3.0.Gtk.Bin */
-    readonly container: Gtk.Container
+    container: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gtk-3.0.Gtk.Button */
     /**
      * Emits a #GtkButton::clicked signal to the given #GtkButton.
@@ -26228,6 +28615,8 @@ class StyleSchemeChooserButton {
     /**
      * Sets the alignment of the child. This property has no effect unless
      * the child is a #GtkMisc or a #GtkAlignment.
+     * @param xalign the horizontal position of the child, 0.0 is left aligned,   1.0 is right aligned
+     * @param yalign the vertical position of the child, 0.0 is top aligned,   1.0 is bottom aligned
      */
     set_alignment(xalign: number, yalign: number): void
     /**
@@ -26236,6 +28625,7 @@ class StyleSchemeChooserButton {
      * 
      * Use this property if the button  would be useless or hard to use
      * without the image.
+     * @param always_show %TRUE if the menuitem should always show the image
      */
     set_always_show_image(always_show: boolean): void
     /**
@@ -26243,6 +28633,7 @@ class StyleSchemeChooserButton {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the button grabs focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
@@ -26250,11 +28641,13 @@ class StyleSchemeChooserButton {
      * displayed if the label text is %NULL or if
      * #GtkButton:always-show-image is %TRUE. You don’t have to call
      * gtk_widget_show() on `image` yourself.
+     * @param image a widget to set as the image for the button, or %NULL to unset
      */
     set_image(image?: Gtk.Widget | null): void
     /**
      * Sets the position of the image relative to the text
      * inside the button.
+     * @param position the position
      */
     set_image_position(position: Gtk.PositionType): void
     /**
@@ -26263,6 +28656,7 @@ class StyleSchemeChooserButton {
      * is used.
      * 
      * This will also clear any previously set labels.
+     * @param label a string
      */
     set_label(label: string): void
     /**
@@ -26271,16 +28665,19 @@ class StyleSchemeChooserButton {
      * The default style is, as one can guess, %GTK_RELIEF_NORMAL.
      * The deprecated value %GTK_RELIEF_HALF behaves the same as
      * %GTK_RELIEF_NORMAL.
+     * @param relief The GtkReliefStyle as described above
      */
     set_relief(relief: Gtk.ReliefStyle): void
     /**
      * If %TRUE, the label set on the button is used as a
      * stock id to select the stock item for the button.
+     * @param use_stock %TRUE if the button should use a stock item
      */
     set_use_stock(use_stock: boolean): void
     /**
      * If true, an underline in the text of the button label indicates
      * the next character should be used for the mnemonic accelerator key.
+     * @param use_underline %TRUE if underlines in the text indicate mnemonics
      */
     set_use_underline(use_underline: boolean): void
     /* Methods of Gtk-3.0.Gtk.Bin */
@@ -26304,11 +28701,15 @@ class StyleSchemeChooserButton {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -26319,6 +28720,8 @@ class StyleSchemeChooserButton {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -26327,10 +28730,15 @@ class StyleSchemeChooserButton {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -26350,6 +28758,7 @@ class StyleSchemeChooserButton {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -26364,6 +28773,7 @@ class StyleSchemeChooserButton {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -26403,6 +28813,7 @@ class StyleSchemeChooserButton {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -26426,6 +28837,8 @@ class StyleSchemeChooserButton {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -26438,6 +28851,7 @@ class StyleSchemeChooserButton {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -26451,6 +28865,7 @@ class StyleSchemeChooserButton {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -26461,6 +28876,7 @@ class StyleSchemeChooserButton {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -26472,6 +28888,7 @@ class StyleSchemeChooserButton {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -26484,6 +28901,7 @@ class StyleSchemeChooserButton {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -26496,6 +28914,7 @@ class StyleSchemeChooserButton {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -26503,6 +28922,7 @@ class StyleSchemeChooserButton {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -26511,6 +28931,7 @@ class StyleSchemeChooserButton {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -26534,17 +28955,25 @@ class StyleSchemeChooserButton {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -26554,6 +28983,7 @@ class StyleSchemeChooserButton {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -26577,6 +29007,7 @@ class StyleSchemeChooserButton {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -26587,6 +29018,7 @@ class StyleSchemeChooserButton {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -26609,6 +29041,7 @@ class StyleSchemeChooserButton {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -26619,6 +29052,7 @@ class StyleSchemeChooserButton {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -26638,6 +29072,7 @@ class StyleSchemeChooserButton {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -26655,6 +29090,7 @@ class StyleSchemeChooserButton {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -26699,6 +29135,7 @@ class StyleSchemeChooserButton {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -26707,11 +29144,16 @@ class StyleSchemeChooserButton {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -26740,12 +29182,22 @@ class StyleSchemeChooserButton {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -26780,6 +29232,8 @@ class StyleSchemeChooserButton {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -26834,16 +29288,23 @@ class StyleSchemeChooserButton {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -26853,6 +29314,7 @@ class StyleSchemeChooserButton {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -26870,6 +29332,9 @@ class StyleSchemeChooserButton {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -26910,33 +29375,41 @@ class StyleSchemeChooserButton {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -26966,6 +29439,7 @@ class StyleSchemeChooserButton {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -26995,6 +29469,7 @@ class StyleSchemeChooserButton {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -27026,6 +29501,7 @@ class StyleSchemeChooserButton {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -27088,6 +29564,7 @@ class StyleSchemeChooserButton {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -27152,6 +29629,7 @@ class StyleSchemeChooserButton {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -27161,11 +29639,13 @@ class StyleSchemeChooserButton {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -27314,6 +29794,7 @@ class StyleSchemeChooserButton {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -27401,6 +29882,7 @@ class StyleSchemeChooserButton {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -27412,6 +29894,7 @@ class StyleSchemeChooserButton {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -27453,6 +29936,7 @@ class StyleSchemeChooserButton {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -27583,6 +30067,8 @@ class StyleSchemeChooserButton {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -27801,6 +30287,7 @@ class StyleSchemeChooserButton {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -27811,6 +30298,8 @@ class StyleSchemeChooserButton {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -27818,11 +30307,13 @@ class StyleSchemeChooserButton {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -27890,6 +30381,7 @@ class StyleSchemeChooserButton {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -27926,6 +30418,7 @@ class StyleSchemeChooserButton {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -27944,6 +30437,8 @@ class StyleSchemeChooserButton {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27961,6 +30456,8 @@ class StyleSchemeChooserButton {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27970,6 +30467,8 @@ class StyleSchemeChooserButton {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -27977,6 +30476,8 @@ class StyleSchemeChooserButton {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -27984,6 +30485,7 @@ class StyleSchemeChooserButton {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -28005,6 +30507,7 @@ class StyleSchemeChooserButton {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -28015,6 +30518,8 @@ class StyleSchemeChooserButton {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -28022,6 +30527,8 @@ class StyleSchemeChooserButton {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -28050,6 +30557,8 @@ class StyleSchemeChooserButton {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -28060,11 +30569,14 @@ class StyleSchemeChooserButton {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -28073,6 +30585,8 @@ class StyleSchemeChooserButton {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -28126,6 +30640,10 @@ class StyleSchemeChooserButton {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -28139,6 +30657,7 @@ class StyleSchemeChooserButton {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -28184,6 +30703,7 @@ class StyleSchemeChooserButton {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -28195,11 +30715,15 @@ class StyleSchemeChooserButton {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -28207,11 +30731,13 @@ class StyleSchemeChooserButton {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -28226,6 +30752,9 @@ class StyleSchemeChooserButton {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -28238,11 +30767,14 @@ class StyleSchemeChooserButton {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -28271,6 +30803,7 @@ class StyleSchemeChooserButton {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -28299,6 +30832,7 @@ class StyleSchemeChooserButton {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -28323,6 +30857,8 @@ class StyleSchemeChooserButton {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -28335,6 +30871,7 @@ class StyleSchemeChooserButton {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -28349,18 +30886,21 @@ class StyleSchemeChooserButton {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -28381,6 +30921,7 @@ class StyleSchemeChooserButton {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -28394,11 +30935,13 @@ class StyleSchemeChooserButton {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -28408,6 +30951,8 @@ class StyleSchemeChooserButton {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -28422,6 +30967,8 @@ class StyleSchemeChooserButton {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -28437,6 +30984,7 @@ class StyleSchemeChooserButton {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -28465,6 +31013,7 @@ class StyleSchemeChooserButton {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -28479,6 +31028,7 @@ class StyleSchemeChooserButton {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -28486,26 +31036,31 @@ class StyleSchemeChooserButton {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -28519,6 +31074,7 @@ class StyleSchemeChooserButton {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -28547,6 +31103,7 @@ class StyleSchemeChooserButton {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -28565,6 +31122,7 @@ class StyleSchemeChooserButton {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -28572,36 +31130,43 @@ class StyleSchemeChooserButton {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -28614,6 +31179,7 @@ class StyleSchemeChooserButton {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -28622,6 +31188,7 @@ class StyleSchemeChooserButton {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -28639,6 +31206,7 @@ class StyleSchemeChooserButton {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -28648,6 +31216,7 @@ class StyleSchemeChooserButton {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -28659,6 +31228,7 @@ class StyleSchemeChooserButton {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -28668,6 +31238,7 @@ class StyleSchemeChooserButton {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -28677,6 +31248,7 @@ class StyleSchemeChooserButton {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -28695,6 +31267,7 @@ class StyleSchemeChooserButton {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -28702,6 +31275,7 @@ class StyleSchemeChooserButton {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -28735,12 +31309,15 @@ class StyleSchemeChooserButton {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -28757,11 +31334,14 @@ class StyleSchemeChooserButton {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -28769,6 +31349,7 @@ class StyleSchemeChooserButton {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -28780,6 +31361,7 @@ class StyleSchemeChooserButton {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -28788,6 +31370,7 @@ class StyleSchemeChooserButton {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -28796,11 +31379,13 @@ class StyleSchemeChooserButton {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -28808,6 +31393,7 @@ class StyleSchemeChooserButton {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -28815,6 +31401,7 @@ class StyleSchemeChooserButton {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -28825,6 +31412,7 @@ class StyleSchemeChooserButton {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -28835,6 +31423,7 @@ class StyleSchemeChooserButton {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -28849,12 +31438,14 @@ class StyleSchemeChooserButton {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -28896,6 +31487,7 @@ class StyleSchemeChooserButton {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -28912,6 +31504,8 @@ class StyleSchemeChooserButton {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -28946,6 +31540,8 @@ class StyleSchemeChooserButton {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -28959,6 +31555,9 @@ class StyleSchemeChooserButton {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -28988,12 +31587,14 @@ class StyleSchemeChooserButton {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -29031,6 +31632,10 @@ class StyleSchemeChooserButton {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -29041,6 +31646,12 @@ class StyleSchemeChooserButton {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -29064,6 +31675,7 @@ class StyleSchemeChooserButton {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -29083,11 +31695,14 @@ class StyleSchemeChooserButton {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -29095,6 +31710,8 @@ class StyleSchemeChooserButton {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -29112,6 +31729,7 @@ class StyleSchemeChooserButton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -29157,6 +31775,7 @@ class StyleSchemeChooserButton {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -29200,15 +31819,20 @@ class StyleSchemeChooserButton {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -29249,6 +31873,7 @@ class StyleSchemeChooserButton {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -29283,6 +31908,7 @@ class StyleSchemeChooserButton {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Actionable */
@@ -29310,6 +31936,7 @@ class StyleSchemeChooserButton {
      * containing #GtkApplicationWindow or its associated #GtkApplication,
      * respectively.  This is the same form used for actions in the #GMenu
      * associated with the window.
+     * @param action_name an action name, or %NULL
      */
     set_action_name(action_name?: string | null): void
     /**
@@ -29332,6 +31959,7 @@ class StyleSchemeChooserButton {
      * is now equal to the target value of the button, the button will now
      * be rendered as active (and the other buttons, with different targets,
      * rendered inactive).
+     * @param target_value a #GVariant to set as the target value, or %NULL
      */
     set_action_target_value(target_value?: GLib.Variant | null): void
     /**
@@ -29346,6 +31974,7 @@ class StyleSchemeChooserButton {
      * `detailed_action_name` must be of the form `"action::target"` where
      * `action` is the action name and `target` is the string to use
      * as the target.)
+     * @param detailed_action_name the detailed action name
      */
     set_detailed_action_name(detailed_action_name: string): void
     /* Methods of Gtk-3.0.Gtk.Activatable */
@@ -29365,6 +31994,7 @@ class StyleSchemeChooserButton {
      * > copy of the #GtkAction property, since this function uses
      * > gtk_activatable_get_related_action() to retrieve the
      * > previous action.
+     * @param action the #GtkAction to set
      */
     do_set_related_action(action: Gtk.Action): void
     /**
@@ -29382,6 +32012,7 @@ class StyleSchemeChooserButton {
      * 
      * > #GtkActivatable implementors need to handle the #GtkActivatable:related-action
      * > property and call gtk_activatable_do_set_related_action() when it changes.
+     * @param action the #GtkAction to set
      */
     set_related_action(action: Gtk.Action): void
     /**
@@ -29392,6 +32023,7 @@ class StyleSchemeChooserButton {
      * > #GtkActivatable:use-action-appearance property and call
      * > gtk_activatable_sync_action_properties() to update `activatable`
      * > if needed.
+     * @param use_appearance whether to use the actions appearance
      */
     set_use_action_appearance(use_appearance: boolean): void
     /**
@@ -29399,12 +32031,16 @@ class StyleSchemeChooserButton {
      * internally when the #GtkActivatable:related-action property is set
      * or unset and by the implementing class when
      * #GtkActivatable:use-action-appearance changes.
+     * @param action the related #GtkAction or %NULL
      */
     sync_action_properties(action?: Gtk.Action | null): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -29412,24 +32048,39 @@ class StyleSchemeChooserButton {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -29438,14 +32089,19 @@ class StyleSchemeChooserButton {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of GtkSource-4.GtkSource.StyleSchemeChooser */
@@ -29455,6 +32111,7 @@ class StyleSchemeChooserButton {
     get_style_scheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     set_style_scheme(scheme: StyleScheme): void
     /* Virtual methods of GtkSource-4.GtkSource.StyleSchemeChooserButton */
@@ -29482,6 +32139,7 @@ class StyleSchemeChooserButton {
      * containing #GtkApplicationWindow or its associated #GtkApplication,
      * respectively.  This is the same form used for actions in the #GMenu
      * associated with the window.
+     * @param action_name an action name, or %NULL
      */
     vfunc_set_action_name(action_name?: string | null): void
     /**
@@ -29504,6 +32162,7 @@ class StyleSchemeChooserButton {
      * is now equal to the target value of the button, the button will now
      * be rendered as active (and the other buttons, with different targets,
      * rendered inactive).
+     * @param target_value a #GVariant to set as the target value, or %NULL
      */
     vfunc_set_action_target_value(target_value?: GLib.Variant | null): void
     /**
@@ -29511,12 +32170,16 @@ class StyleSchemeChooserButton {
      * internally when the #GtkActivatable:related-action property is set
      * or unset and by the implementing class when
      * #GtkActivatable:use-action-appearance changes.
+     * @param action the related #GtkAction or %NULL
      */
     vfunc_sync_action_properties(action?: Gtk.Action | null): void
     vfunc_update(action: Gtk.Action, property_name: string): void
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -29524,24 +32187,39 @@ class StyleSchemeChooserButton {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -29558,14 +32236,19 @@ class StyleSchemeChooserButton {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /**
@@ -29574,6 +32257,7 @@ class StyleSchemeChooserButton {
     vfunc_get_style_scheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     vfunc_set_style_scheme(scheme: StyleScheme): void
     /* Virtual methods of Gtk-3.0.Gtk.Button */
@@ -29612,6 +32296,7 @@ class StyleSchemeChooserButton {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -29633,12 +32318,15 @@ class StyleSchemeChooserButton {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -29651,6 +32339,7 @@ class StyleSchemeChooserButton {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -29663,6 +32352,7 @@ class StyleSchemeChooserButton {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -29680,6 +32370,7 @@ class StyleSchemeChooserButton {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -29690,6 +32381,7 @@ class StyleSchemeChooserButton {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -29754,6 +32446,7 @@ class StyleSchemeChooserButton {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -29796,6 +32489,7 @@ class StyleSchemeChooserButton {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -29807,6 +32501,7 @@ class StyleSchemeChooserButton {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -29830,6 +32525,7 @@ class StyleSchemeChooserButton {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -29893,6 +32589,7 @@ class StyleSchemeChooserButton {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -29904,6 +32601,7 @@ class StyleSchemeChooserButton {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -29925,6 +32623,7 @@ class StyleSchemeChooserButton {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -29987,6 +32686,7 @@ class StyleSchemeChooserButton {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -30025,6 +32725,7 @@ class StyleSchemeChooserButton {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -30093,6 +32794,7 @@ class StyleSchemeChooserButton {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventButton) => boolean)): number
@@ -30105,6 +32807,7 @@ class StyleSchemeChooserButton {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventButton) => boolean)): number
@@ -30115,6 +32818,7 @@ class StyleSchemeChooserButton {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: StyleSchemeChooserButton, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: StyleSchemeChooserButton, signal_id: number) => boolean)): number
@@ -30123,6 +32827,7 @@ class StyleSchemeChooserButton {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: StyleSchemeChooserButton, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: StyleSchemeChooserButton, child_property: GObject.ParamSpec) => void)): number
@@ -30142,6 +32847,7 @@ class StyleSchemeChooserButton {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventConfigure) => boolean)): number
@@ -30150,6 +32856,7 @@ class StyleSchemeChooserButton {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventExpose) => boolean)): number
@@ -30160,6 +32867,7 @@ class StyleSchemeChooserButton {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => boolean)): number
@@ -30183,6 +32891,7 @@ class StyleSchemeChooserButton {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => boolean)): number
@@ -30190,6 +32899,7 @@ class StyleSchemeChooserButton {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: StyleSchemeChooserButton, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: StyleSchemeChooserButton, previous_direction: Gtk.TextDirection) => void)): number
@@ -30202,6 +32912,7 @@ class StyleSchemeChooserButton {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext) => void)): number
@@ -30211,6 +32922,7 @@ class StyleSchemeChooserButton {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext) => void)): number
@@ -30221,6 +32933,10 @@ class StyleSchemeChooserButton {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -30288,6 +33004,12 @@ class StyleSchemeChooserButton {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -30303,6 +33025,10 @@ class StyleSchemeChooserButton {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -30311,6 +33037,7 @@ class StyleSchemeChooserButton {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext) => void)): number
@@ -30321,6 +33048,8 @@ class StyleSchemeChooserButton {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -30335,6 +33064,8 @@ class StyleSchemeChooserButton {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, time: number) => void)): number
@@ -30428,6 +33159,10 @@ class StyleSchemeChooserButton {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: StyleSchemeChooserButton, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -30450,6 +33185,7 @@ class StyleSchemeChooserButton {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: StyleSchemeChooserButton, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: StyleSchemeChooserButton, cr: cairo.Context) => boolean)): number
@@ -30462,6 +33198,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventCrossing) => boolean)): number
@@ -30472,6 +33209,7 @@ class StyleSchemeChooserButton {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => boolean)): number
@@ -30480,6 +33218,7 @@ class StyleSchemeChooserButton {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: StyleSchemeChooserButton, event: Gdk.Event) => void)): number
@@ -30493,6 +33232,7 @@ class StyleSchemeChooserButton {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventFocus) => boolean)): number
@@ -30503,6 +33243,7 @@ class StyleSchemeChooserButton {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventFocus) => boolean)): number
@@ -30514,6 +33255,7 @@ class StyleSchemeChooserButton {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventGrabBroken) => boolean)): number
@@ -30530,6 +33272,7 @@ class StyleSchemeChooserButton {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: StyleSchemeChooserButton, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: StyleSchemeChooserButton, was_grabbed: boolean) => void)): number
@@ -30547,6 +33290,7 @@ class StyleSchemeChooserButton {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: StyleSchemeChooserButton, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: StyleSchemeChooserButton, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -30559,6 +33303,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventKey) => boolean)): number
@@ -30570,6 +33315,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventKey) => boolean)): number
@@ -30577,6 +33323,7 @@ class StyleSchemeChooserButton {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: StyleSchemeChooserButton, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: StyleSchemeChooserButton, direction: Gtk.DirectionType) => boolean)): number
@@ -30589,6 +33336,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventCrossing) => boolean)): number
@@ -30614,6 +33362,7 @@ class StyleSchemeChooserButton {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventAny) => boolean)): number
@@ -30621,6 +33370,7 @@ class StyleSchemeChooserButton {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: StyleSchemeChooserButton, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: StyleSchemeChooserButton, group_cycling: boolean) => boolean)): number
@@ -30633,6 +33383,7 @@ class StyleSchemeChooserButton {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventMotion) => boolean)): number
@@ -30643,6 +33394,7 @@ class StyleSchemeChooserButton {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: StyleSchemeChooserButton, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: StyleSchemeChooserButton, old_parent?: Gtk.Widget | null) => void)): number
@@ -30665,6 +33417,7 @@ class StyleSchemeChooserButton {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventProperty) => boolean)): number
@@ -30674,6 +33427,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventProximity) => boolean)): number
@@ -30683,6 +33437,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventProximity) => boolean)): number
@@ -30700,6 +33455,10 @@ class StyleSchemeChooserButton {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: StyleSchemeChooserButton, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: StyleSchemeChooserButton, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -30715,6 +33474,7 @@ class StyleSchemeChooserButton {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: StyleSchemeChooserButton, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: StyleSchemeChooserButton, previous_screen?: Gdk.Screen | null) => void)): number
@@ -30728,6 +33488,7 @@ class StyleSchemeChooserButton {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventScroll) => boolean)): number
@@ -30735,6 +33496,7 @@ class StyleSchemeChooserButton {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventSelection) => boolean)): number
@@ -30752,6 +33514,7 @@ class StyleSchemeChooserButton {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventSelection) => boolean)): number
@@ -30772,6 +33535,7 @@ class StyleSchemeChooserButton {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: StyleSchemeChooserButton, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: StyleSchemeChooserButton, state: Gtk.StateType) => void)): number
@@ -30779,6 +33543,7 @@ class StyleSchemeChooserButton {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: StyleSchemeChooserButton, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: StyleSchemeChooserButton, flags: Gtk.StateFlags) => void)): number
@@ -30791,6 +33556,7 @@ class StyleSchemeChooserButton {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: StyleSchemeChooserButton, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: StyleSchemeChooserButton, previous_style?: Gtk.Style | null) => void)): number
@@ -30827,6 +33593,7 @@ class StyleSchemeChooserButton {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventAny) => boolean)): number
@@ -30846,6 +33613,7 @@ class StyleSchemeChooserButton {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventVisibility) => boolean)): number
@@ -30857,6 +33625,7 @@ class StyleSchemeChooserButton {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: StyleSchemeChooserButton, event: Gdk.EventWindowState) => boolean)): number
@@ -30890,6 +33659,7 @@ class StyleSchemeChooserButton {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StyleSchemeChooserButton, pspec: GObject.ParamSpec) => void)): number
@@ -31212,13 +33982,13 @@ class StyleSchemeChooserWidget {
      */
     style_scheme: StyleScheme
     /* Fields of Gtk-3.0.Gtk.Bin */
-    readonly container: Gtk.Container
+    container: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of Gtk-3.0.Gtk.Widget */
-    readonly parent_instance: GObject.InitiallyUnowned
+    parent_instance: GObject.InitiallyUnowned
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gtk-3.0.Gtk.Bin */
     /**
      * Gets the child of the #GtkBin, or %NULL if the bin contains
@@ -31240,11 +34010,15 @@ class StyleSchemeChooserWidget {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -31255,6 +34029,8 @@ class StyleSchemeChooserWidget {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -31263,10 +34039,15 @@ class StyleSchemeChooserWidget {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -31286,6 +34067,7 @@ class StyleSchemeChooserWidget {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -31300,6 +34082,7 @@ class StyleSchemeChooserWidget {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -31339,6 +34122,7 @@ class StyleSchemeChooserWidget {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -31362,6 +34146,8 @@ class StyleSchemeChooserWidget {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -31374,6 +34160,7 @@ class StyleSchemeChooserWidget {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -31387,6 +34174,7 @@ class StyleSchemeChooserWidget {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -31397,6 +34185,7 @@ class StyleSchemeChooserWidget {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -31408,6 +34197,7 @@ class StyleSchemeChooserWidget {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -31420,6 +34210,7 @@ class StyleSchemeChooserWidget {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -31432,6 +34223,7 @@ class StyleSchemeChooserWidget {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -31439,6 +34231,7 @@ class StyleSchemeChooserWidget {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -31447,6 +34240,7 @@ class StyleSchemeChooserWidget {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -31470,17 +34264,25 @@ class StyleSchemeChooserWidget {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -31490,6 +34292,7 @@ class StyleSchemeChooserWidget {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -31513,6 +34316,7 @@ class StyleSchemeChooserWidget {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -31523,6 +34327,7 @@ class StyleSchemeChooserWidget {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -31545,6 +34350,7 @@ class StyleSchemeChooserWidget {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -31555,6 +34361,7 @@ class StyleSchemeChooserWidget {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -31574,6 +34381,7 @@ class StyleSchemeChooserWidget {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -31591,6 +34399,7 @@ class StyleSchemeChooserWidget {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -31635,6 +34444,7 @@ class StyleSchemeChooserWidget {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -31643,11 +34453,16 @@ class StyleSchemeChooserWidget {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -31676,12 +34491,22 @@ class StyleSchemeChooserWidget {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -31716,6 +34541,8 @@ class StyleSchemeChooserWidget {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -31770,16 +34597,23 @@ class StyleSchemeChooserWidget {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -31789,6 +34623,7 @@ class StyleSchemeChooserWidget {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -31806,6 +34641,9 @@ class StyleSchemeChooserWidget {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -31846,33 +34684,41 @@ class StyleSchemeChooserWidget {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -31902,6 +34748,7 @@ class StyleSchemeChooserWidget {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -31931,6 +34778,7 @@ class StyleSchemeChooserWidget {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -31962,6 +34810,7 @@ class StyleSchemeChooserWidget {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -32024,6 +34873,7 @@ class StyleSchemeChooserWidget {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -32088,6 +34938,7 @@ class StyleSchemeChooserWidget {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -32097,11 +34948,13 @@ class StyleSchemeChooserWidget {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -32255,6 +35108,7 @@ class StyleSchemeChooserWidget {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -32342,6 +35196,7 @@ class StyleSchemeChooserWidget {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -32353,6 +35208,7 @@ class StyleSchemeChooserWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -32394,6 +35250,7 @@ class StyleSchemeChooserWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -32524,6 +35381,8 @@ class StyleSchemeChooserWidget {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -32742,6 +35601,7 @@ class StyleSchemeChooserWidget {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -32752,6 +35612,8 @@ class StyleSchemeChooserWidget {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -32759,11 +35621,13 @@ class StyleSchemeChooserWidget {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -32831,6 +35695,7 @@ class StyleSchemeChooserWidget {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -32867,6 +35732,7 @@ class StyleSchemeChooserWidget {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -32885,6 +35751,8 @@ class StyleSchemeChooserWidget {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -32902,6 +35770,8 @@ class StyleSchemeChooserWidget {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -32911,6 +35781,8 @@ class StyleSchemeChooserWidget {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -32918,6 +35790,8 @@ class StyleSchemeChooserWidget {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -32925,6 +35799,7 @@ class StyleSchemeChooserWidget {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -32946,6 +35821,7 @@ class StyleSchemeChooserWidget {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -32956,6 +35832,8 @@ class StyleSchemeChooserWidget {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -32963,6 +35841,8 @@ class StyleSchemeChooserWidget {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -32991,6 +35871,8 @@ class StyleSchemeChooserWidget {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -33001,11 +35883,14 @@ class StyleSchemeChooserWidget {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -33014,6 +35899,8 @@ class StyleSchemeChooserWidget {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -33067,6 +35954,10 @@ class StyleSchemeChooserWidget {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -33080,6 +35971,7 @@ class StyleSchemeChooserWidget {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -33125,6 +36017,7 @@ class StyleSchemeChooserWidget {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -33136,11 +36029,15 @@ class StyleSchemeChooserWidget {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -33148,11 +36045,13 @@ class StyleSchemeChooserWidget {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -33167,6 +36066,9 @@ class StyleSchemeChooserWidget {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -33179,11 +36081,14 @@ class StyleSchemeChooserWidget {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -33212,6 +36117,7 @@ class StyleSchemeChooserWidget {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -33240,6 +36146,7 @@ class StyleSchemeChooserWidget {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -33264,6 +36171,8 @@ class StyleSchemeChooserWidget {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -33276,6 +36185,7 @@ class StyleSchemeChooserWidget {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -33290,18 +36200,21 @@ class StyleSchemeChooserWidget {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -33322,6 +36235,7 @@ class StyleSchemeChooserWidget {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -33335,11 +36249,13 @@ class StyleSchemeChooserWidget {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -33349,6 +36265,8 @@ class StyleSchemeChooserWidget {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -33363,6 +36281,8 @@ class StyleSchemeChooserWidget {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -33378,6 +36298,7 @@ class StyleSchemeChooserWidget {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -33406,6 +36327,7 @@ class StyleSchemeChooserWidget {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -33420,6 +36342,7 @@ class StyleSchemeChooserWidget {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -33427,26 +36350,31 @@ class StyleSchemeChooserWidget {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -33460,6 +36388,7 @@ class StyleSchemeChooserWidget {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -33488,6 +36417,7 @@ class StyleSchemeChooserWidget {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -33506,6 +36436,7 @@ class StyleSchemeChooserWidget {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -33513,36 +36444,43 @@ class StyleSchemeChooserWidget {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -33555,6 +36493,7 @@ class StyleSchemeChooserWidget {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -33563,6 +36502,7 @@ class StyleSchemeChooserWidget {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -33580,6 +36520,7 @@ class StyleSchemeChooserWidget {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -33589,6 +36530,7 @@ class StyleSchemeChooserWidget {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -33600,6 +36542,7 @@ class StyleSchemeChooserWidget {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -33609,6 +36552,7 @@ class StyleSchemeChooserWidget {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -33618,6 +36562,7 @@ class StyleSchemeChooserWidget {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -33636,6 +36581,7 @@ class StyleSchemeChooserWidget {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -33643,6 +36589,7 @@ class StyleSchemeChooserWidget {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -33676,12 +36623,15 @@ class StyleSchemeChooserWidget {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -33698,11 +36648,14 @@ class StyleSchemeChooserWidget {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -33710,6 +36663,7 @@ class StyleSchemeChooserWidget {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -33721,6 +36675,7 @@ class StyleSchemeChooserWidget {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -33729,6 +36684,7 @@ class StyleSchemeChooserWidget {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -33737,11 +36693,13 @@ class StyleSchemeChooserWidget {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -33749,6 +36707,7 @@ class StyleSchemeChooserWidget {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -33756,6 +36715,7 @@ class StyleSchemeChooserWidget {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -33766,6 +36726,7 @@ class StyleSchemeChooserWidget {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -33776,6 +36737,7 @@ class StyleSchemeChooserWidget {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -33790,12 +36752,14 @@ class StyleSchemeChooserWidget {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -33837,6 +36801,7 @@ class StyleSchemeChooserWidget {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -33853,6 +36818,8 @@ class StyleSchemeChooserWidget {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -33887,6 +36854,8 @@ class StyleSchemeChooserWidget {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -33900,6 +36869,9 @@ class StyleSchemeChooserWidget {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -33929,12 +36901,14 @@ class StyleSchemeChooserWidget {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -33972,6 +36946,10 @@ class StyleSchemeChooserWidget {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -33982,6 +36960,12 @@ class StyleSchemeChooserWidget {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -34005,6 +36989,7 @@ class StyleSchemeChooserWidget {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -34024,11 +37009,14 @@ class StyleSchemeChooserWidget {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -34036,6 +37024,8 @@ class StyleSchemeChooserWidget {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -34053,6 +37043,7 @@ class StyleSchemeChooserWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -34098,6 +37089,7 @@ class StyleSchemeChooserWidget {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -34141,15 +37133,20 @@ class StyleSchemeChooserWidget {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -34190,6 +37187,7 @@ class StyleSchemeChooserWidget {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -34224,12 +37222,16 @@ class StyleSchemeChooserWidget {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -34237,24 +37239,39 @@ class StyleSchemeChooserWidget {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -34263,14 +37280,19 @@ class StyleSchemeChooserWidget {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of GtkSource-4.GtkSource.StyleSchemeChooser */
@@ -34280,12 +37302,16 @@ class StyleSchemeChooserWidget {
     get_style_scheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     set_style_scheme(scheme: StyleScheme): void
     /* Virtual methods of GtkSource-4.GtkSource.StyleSchemeChooserWidget */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -34293,24 +37319,39 @@ class StyleSchemeChooserWidget {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -34327,14 +37368,19 @@ class StyleSchemeChooserWidget {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /**
@@ -34343,6 +37389,7 @@ class StyleSchemeChooserWidget {
     vfunc_get_style_scheme(): StyleScheme
     /**
      * Sets the scheme.
+     * @param scheme a #GtkSourceStyleScheme
      */
     vfunc_set_style_scheme(scheme: StyleScheme): void
     /* Virtual methods of Gtk-3.0.Gtk.Container */
@@ -34359,6 +37406,7 @@ class StyleSchemeChooserWidget {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -34380,12 +37428,15 @@ class StyleSchemeChooserWidget {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -34398,6 +37449,7 @@ class StyleSchemeChooserWidget {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -34410,6 +37462,7 @@ class StyleSchemeChooserWidget {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -34427,6 +37480,7 @@ class StyleSchemeChooserWidget {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -34437,6 +37491,7 @@ class StyleSchemeChooserWidget {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -34501,6 +37556,7 @@ class StyleSchemeChooserWidget {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -34543,6 +37599,7 @@ class StyleSchemeChooserWidget {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -34554,6 +37611,7 @@ class StyleSchemeChooserWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -34577,6 +37635,7 @@ class StyleSchemeChooserWidget {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -34640,6 +37699,7 @@ class StyleSchemeChooserWidget {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -34651,6 +37711,7 @@ class StyleSchemeChooserWidget {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -34672,6 +37733,7 @@ class StyleSchemeChooserWidget {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -34734,6 +37796,7 @@ class StyleSchemeChooserWidget {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -34772,6 +37835,7 @@ class StyleSchemeChooserWidget {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -34800,6 +37864,7 @@ class StyleSchemeChooserWidget {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventButton) => boolean)): number
@@ -34812,6 +37877,7 @@ class StyleSchemeChooserWidget {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventButton) => boolean)): number
@@ -34822,6 +37888,7 @@ class StyleSchemeChooserWidget {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: StyleSchemeChooserWidget, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: StyleSchemeChooserWidget, signal_id: number) => boolean)): number
@@ -34830,6 +37897,7 @@ class StyleSchemeChooserWidget {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: StyleSchemeChooserWidget, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: StyleSchemeChooserWidget, child_property: GObject.ParamSpec) => void)): number
@@ -34849,6 +37917,7 @@ class StyleSchemeChooserWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventConfigure) => boolean)): number
@@ -34857,6 +37926,7 @@ class StyleSchemeChooserWidget {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventExpose) => boolean)): number
@@ -34867,6 +37937,7 @@ class StyleSchemeChooserWidget {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => boolean)): number
@@ -34890,6 +37961,7 @@ class StyleSchemeChooserWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => boolean)): number
@@ -34897,6 +37969,7 @@ class StyleSchemeChooserWidget {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: StyleSchemeChooserWidget, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: StyleSchemeChooserWidget, previous_direction: Gtk.TextDirection) => void)): number
@@ -34909,6 +37982,7 @@ class StyleSchemeChooserWidget {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext) => void)): number
@@ -34918,6 +37992,7 @@ class StyleSchemeChooserWidget {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext) => void)): number
@@ -34928,6 +38003,10 @@ class StyleSchemeChooserWidget {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -34995,6 +38074,12 @@ class StyleSchemeChooserWidget {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -35010,6 +38095,10 @@ class StyleSchemeChooserWidget {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -35018,6 +38107,7 @@ class StyleSchemeChooserWidget {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext) => void)): number
@@ -35028,6 +38118,8 @@ class StyleSchemeChooserWidget {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -35042,6 +38134,8 @@ class StyleSchemeChooserWidget {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, time: number) => void)): number
@@ -35135,6 +38229,10 @@ class StyleSchemeChooserWidget {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: StyleSchemeChooserWidget, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -35157,6 +38255,7 @@ class StyleSchemeChooserWidget {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: StyleSchemeChooserWidget, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: StyleSchemeChooserWidget, cr: cairo.Context) => boolean)): number
@@ -35169,6 +38268,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventCrossing) => boolean)): number
@@ -35179,6 +38279,7 @@ class StyleSchemeChooserWidget {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => boolean)): number
@@ -35187,6 +38288,7 @@ class StyleSchemeChooserWidget {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.Event) => void)): number
@@ -35200,6 +38302,7 @@ class StyleSchemeChooserWidget {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventFocus) => boolean)): number
@@ -35210,6 +38313,7 @@ class StyleSchemeChooserWidget {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventFocus) => boolean)): number
@@ -35221,6 +38325,7 @@ class StyleSchemeChooserWidget {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventGrabBroken) => boolean)): number
@@ -35237,6 +38342,7 @@ class StyleSchemeChooserWidget {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: StyleSchemeChooserWidget, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: StyleSchemeChooserWidget, was_grabbed: boolean) => void)): number
@@ -35254,6 +38360,7 @@ class StyleSchemeChooserWidget {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: StyleSchemeChooserWidget, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: StyleSchemeChooserWidget, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -35266,6 +38373,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventKey) => boolean)): number
@@ -35277,6 +38385,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventKey) => boolean)): number
@@ -35284,6 +38393,7 @@ class StyleSchemeChooserWidget {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: StyleSchemeChooserWidget, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: StyleSchemeChooserWidget, direction: Gtk.DirectionType) => boolean)): number
@@ -35296,6 +38406,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventCrossing) => boolean)): number
@@ -35321,6 +38432,7 @@ class StyleSchemeChooserWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventAny) => boolean)): number
@@ -35328,6 +38440,7 @@ class StyleSchemeChooserWidget {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: StyleSchemeChooserWidget, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: StyleSchemeChooserWidget, group_cycling: boolean) => boolean)): number
@@ -35340,6 +38453,7 @@ class StyleSchemeChooserWidget {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventMotion) => boolean)): number
@@ -35350,6 +38464,7 @@ class StyleSchemeChooserWidget {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: StyleSchemeChooserWidget, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: StyleSchemeChooserWidget, old_parent?: Gtk.Widget | null) => void)): number
@@ -35372,6 +38487,7 @@ class StyleSchemeChooserWidget {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventProperty) => boolean)): number
@@ -35381,6 +38497,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventProximity) => boolean)): number
@@ -35390,6 +38507,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventProximity) => boolean)): number
@@ -35407,6 +38525,10 @@ class StyleSchemeChooserWidget {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: StyleSchemeChooserWidget, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: StyleSchemeChooserWidget, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -35422,6 +38544,7 @@ class StyleSchemeChooserWidget {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: StyleSchemeChooserWidget, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: StyleSchemeChooserWidget, previous_screen?: Gdk.Screen | null) => void)): number
@@ -35435,6 +38558,7 @@ class StyleSchemeChooserWidget {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventScroll) => boolean)): number
@@ -35442,6 +38566,7 @@ class StyleSchemeChooserWidget {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventSelection) => boolean)): number
@@ -35459,6 +38584,7 @@ class StyleSchemeChooserWidget {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventSelection) => boolean)): number
@@ -35479,6 +38605,7 @@ class StyleSchemeChooserWidget {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: StyleSchemeChooserWidget, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: StyleSchemeChooserWidget, state: Gtk.StateType) => void)): number
@@ -35486,6 +38613,7 @@ class StyleSchemeChooserWidget {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: StyleSchemeChooserWidget, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: StyleSchemeChooserWidget, flags: Gtk.StateFlags) => void)): number
@@ -35498,6 +38626,7 @@ class StyleSchemeChooserWidget {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: StyleSchemeChooserWidget, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: StyleSchemeChooserWidget, previous_style?: Gtk.Style | null) => void)): number
@@ -35534,6 +38663,7 @@ class StyleSchemeChooserWidget {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventAny) => boolean)): number
@@ -35553,6 +38683,7 @@ class StyleSchemeChooserWidget {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventVisibility) => boolean)): number
@@ -35564,6 +38695,7 @@ class StyleSchemeChooserWidget {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: StyleSchemeChooserWidget, event: Gdk.EventWindowState) => boolean)): number
@@ -35597,6 +38729,7 @@ class StyleSchemeChooserWidget {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StyleSchemeChooserWidget, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StyleSchemeChooserWidget, pspec: GObject.ParamSpec) => void)): number
@@ -35707,12 +38840,13 @@ class StyleSchemeManager {
     readonly scheme_ids: string[]
     search_path: string[]
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.StyleSchemeManager */
     /**
      * Appends `path` to the list of directories where the `manager` looks for
      * style scheme files.
      * See gtk_source_style_scheme_manager_set_search_path() for details.
+     * @param path a directory or a filename.
      */
     append_search_path(path: string): void
     /**
@@ -35723,6 +38857,7 @@ class StyleSchemeManager {
     force_rescan(): void
     /**
      * Looks up style scheme by id.
+     * @param scheme_id style scheme id to find.
      */
     get_scheme(scheme_id: string): StyleScheme | null
     /**
@@ -35738,12 +38873,14 @@ class StyleSchemeManager {
      * Prepends `path` to the list of directories where the `manager` looks
      * for style scheme files.
      * See gtk_source_style_scheme_manager_set_search_path() for details.
+     * @param path a directory or a filename.
      */
     prepend_search_path(path: string): void
     /**
      * Sets the list of directories where the `manager` looks for
      * style scheme files.
      * If `path` is %NULL, the search path is reset to default.
+     * @param path  a %NULL-terminated array of strings or %NULL.
      */
     set_search_path(path?: string[] | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -35781,6 +38918,10 @@ class StyleSchemeManager {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -35791,6 +38932,12 @@ class StyleSchemeManager {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -35814,6 +38961,7 @@ class StyleSchemeManager {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -35833,11 +38981,14 @@ class StyleSchemeManager {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -35845,6 +38996,8 @@ class StyleSchemeManager {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -35862,6 +39015,7 @@ class StyleSchemeManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -35907,6 +39061,7 @@ class StyleSchemeManager {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -35950,15 +39105,20 @@ class StyleSchemeManager {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -35999,6 +39159,7 @@ class StyleSchemeManager {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -36033,6 +39194,7 @@ class StyleSchemeManager {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -36052,6 +39214,7 @@ class StyleSchemeManager {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -36084,6 +39247,7 @@ class StyleSchemeManager {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: StyleSchemeManager, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: StyleSchemeManager, pspec: GObject.ParamSpec) => void)): number
@@ -36227,6 +39391,7 @@ class Tag {
      */
     letter_spacing: number
     letter_spacing_set: boolean
+    readonly name: string
     /**
      * The paragraph background color as a string.
      */
@@ -36294,10 +39459,10 @@ class Tag {
     wrap_mode: Gtk.WrapMode
     wrap_mode_set: boolean
     /* Fields of Gtk-3.0.Gtk.TextTag */
-    readonly parent_instance: GObject.Object
-    readonly priv: Gtk.TextTagPrivate
+    parent_instance: GObject.Object
+    priv: Gtk.TextTagPrivate
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gtk-3.0.Gtk.TextTag */
     /**
      * Emits the #GtkTextTagTable::tag-changed signal on the #GtkTextTagTable where
@@ -36305,10 +39470,14 @@ class Tag {
      * 
      * The signal is already emitted when setting a #GtkTextTag property. This
      * function is useful for a #GtkTextTag subclass.
+     * @param size_changed whether the change affects the #GtkTextView layout.
      */
     changed(size_changed: boolean): void
     /**
      * Emits the “event” signal on the #GtkTextTag.
+     * @param event_object object that received the event, such as a widget
+     * @param event the event
+     * @param iter location where the event was received
      */
     event(event_object: GObject.Object, event: Gdk.Event, iter: Gtk.TextIter): boolean
     /**
@@ -36327,6 +39496,7 @@ class Tag {
      * is the order in which they were added to the table, or created with
      * gtk_text_buffer_create_tag(), which adds the tag to the buffer’s table
      * automatically.
+     * @param priority the new priority
      */
     set_priority(priority: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -36364,6 +39534,10 @@ class Tag {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -36374,6 +39548,12 @@ class Tag {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -36397,6 +39577,7 @@ class Tag {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -36416,11 +39597,14 @@ class Tag {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -36428,6 +39612,8 @@ class Tag {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -36445,6 +39631,7 @@ class Tag {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -36490,6 +39677,7 @@ class Tag {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -36533,15 +39721,20 @@ class Tag {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -36582,6 +39775,7 @@ class Tag {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -36616,11 +39810,15 @@ class Tag {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gtk-3.0.Gtk.TextTag */
     /**
      * Emits the “event” signal on the #GtkTextTag.
+     * @param event_object object that received the event, such as a widget
+     * @param event the event
+     * @param iter location where the event was received
      */
     vfunc_event(event_object: GObject.Object, event: Gdk.Event, iter: Gtk.TextIter): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -36640,6 +39838,7 @@ class Tag {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -36647,6 +39846,9 @@ class Tag {
     /**
      * The ::event signal is emitted when an event occurs on a region of the
      * buffer marked with this tag.
+     * @param object the object the event was fired from (typically a #GtkTextView)
+     * @param event the event which triggered the signal
+     * @param iter a #GtkTextIter pointing at the location the event occurred
      */
     connect(sigName: "event", callback: (($obj: Tag, object: GObject.Object, event: Gdk.Event, iter: Gtk.TextIter) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: Tag, object: GObject.Object, event: Gdk.Event, iter: Gtk.TextIter) => boolean)): number
@@ -36680,6 +39882,7 @@ class Tag {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
@@ -36756,6 +39959,8 @@ class Tag {
     connect_after(sigName: "notify::letter-spacing", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::letter-spacing-set", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::letter-spacing-set", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::name", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::paragraph-background", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::paragraph-background", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::paragraph-background-gdk", callback: (($obj: Tag, pspec: GObject.ParamSpec) => void)): number
@@ -37242,11 +40447,11 @@ class View {
      */
     vscroll_policy: Gtk.ScrollablePolicy
     /* Fields of Gtk-3.0.Gtk.TextView */
-    readonly parent_instance: Gtk.Container
+    parent_instance: Gtk.Container
     /* Fields of Gtk-3.0.Gtk.Container */
-    readonly widget: Gtk.Widget
+    widget: Gtk.Widget
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GtkSource-4.GtkSource.View */
     /**
      * Returns whether auto-indentation of text is enabled.
@@ -37268,6 +40473,7 @@ class View {
      * Only GTK_TEXT_WINDOW_LEFT and GTK_TEXT_WINDOW_RIGHT are supported,
      * respectively corresponding to the left and right gutter. The line numbers
      * and mark category icons are rendered in the left gutter.
+     * @param window_type the gutter window type.
      */
     get_gutter(window_type: Gtk.TextWindowType): Gutter
     /**
@@ -37291,6 +40497,8 @@ class View {
     get_insert_spaces_instead_of_tabs(): boolean
     /**
      * Gets attributes and priority for the `category`.
+     * @param category the category.
+     * @param priority place where priority of the category will be stored.
      */
     get_mark_attributes(category: string, priority: number): MarkAttributes
     /**
@@ -37332,11 +40540,14 @@ class View {
     /**
      * Determines the visual column at `iter` taking into consideration the
      * #GtkSourceView:tab-width of `view`.
+     * @param iter a position in `view`.
      */
     get_visual_column(iter: Gtk.TextIter): number
     /**
      * Inserts one indentation level at the beginning of the specified lines. The
      * empty lines are not indented.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     indent_lines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /**
@@ -37346,14 +40557,17 @@ class View {
      * same indentation as the previous line. This is <emphasis>not</emphasis> a
      * "smart indentation" where an indentation level is added or removed depending
      * on the context.
+     * @param enable whether to enable auto indentation.
      */
     set_auto_indent(enable: boolean): void
     /**
      * Set if and how the background pattern should be displayed.
+     * @param background_pattern the #GtkSourceBackgroundPatternType.
      */
     set_background_pattern(background_pattern: BackgroundPatternType): void
     /**
      * If `highlight` is %TRUE the current line will be highlighted.
+     * @param highlight whether to highlight the current line.
      */
     set_highlight_current_line(highlight: boolean): void
     /**
@@ -37366,6 +40580,7 @@ class View {
      * 
      * When the selection doesn't span several lines, the tab key always replaces
      * the selection with a normal \t character.
+     * @param enable whether to indent a block when tab is pressed.
      */
     set_indent_on_tab(enable: boolean): void
     /**
@@ -37389,58 +40604,74 @@ class View {
      * The test-widget program (available in the GtkSourceView repository) may be
      * useful to better understand the indentation settings (enable the space
      * drawing!).
+     * @param width indent width in characters.
      */
     set_indent_width(width: number): void
     /**
      * If %TRUE a tab key pressed is replaced by a group of space characters. Of
      * course it is still possible to insert a real \t programmatically with the
      * #GtkTextBuffer API.
+     * @param enable whether to insert spaces instead of tabs.
      */
     set_insert_spaces_instead_of_tabs(enable: boolean): void
     /**
      * Sets attributes and priority for the `category`.
+     * @param category the category.
+     * @param attributes mark attributes.
+     * @param priority priority of the category.
      */
     set_mark_attributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
+     * @param pos the width in characters where to position the right margin.
      */
     set_right_margin_position(pos: number): void
     /**
      * If %TRUE line marks will be displayed beside the text.
+     * @param show whether line marks should be displayed.
      */
     set_show_line_marks(show: boolean): void
     /**
      * If %TRUE line numbers will be displayed beside the text.
+     * @param show whether line numbers should be displayed.
      */
     set_show_line_numbers(show: boolean): void
     /**
      * If %TRUE a right margin is displayed.
+     * @param show whether to show a right margin.
      */
     set_show_right_margin(show: boolean): void
     /**
      * When set to %TRUE, pressing the Backspace key will try to delete spaces
      * up to the previous tab stop.
+     * @param smart_backspace whether to enable smart Backspace handling.
      */
     set_smart_backspace(smart_backspace: boolean): void
     /**
      * Set the desired movement of the cursor when HOME and END keys
      * are pressed.
+     * @param smart_home_end the desired behavior among #GtkSourceSmartHomeEndType.
      */
     set_smart_home_end(smart_home_end: SmartHomeEndType): void
     /**
      * Sets the width of tabulation in characters. The #GtkTextBuffer still contains
      * \t characters, but they can take a different visual width in a #GtkSourceView
      * widget.
+     * @param width width of tab in characters.
      */
     set_tab_width(width: number): void
     /**
      * Removes one indentation level at the beginning of the
      * specified lines.
+     * @param start #GtkTextIter of the first line to indent
+     * @param end #GtkTextIter of the last line to indent
      */
     unindent_lines(start: Gtk.TextIter, end: Gtk.TextIter): void
     /* Methods of Gtk-3.0.Gtk.TextView */
     /**
      * Adds a child widget in the text buffer, at the given `anchor`.
+     * @param child a #GtkWidget
+     * @param anchor a #GtkTextChildAnchor in the #GtkTextBuffer for `text_view`
      */
     add_child_at_anchor(child: Gtk.Widget, anchor: Gtk.TextChildAnchor): void
     /**
@@ -37454,6 +40685,10 @@ class View {
      * irrelevant, the child floats above all scrollable areas. But when
      * placing a child in one of the scrollable windows (border windows or
      * text window) it will move with the scrolling as needed.
+     * @param child a #GtkWidget
+     * @param which_window which window the child should appear in
+     * @param xpos X position of child in window coordinates
+     * @param ypos Y position of child in window coordinates
      */
     add_child_in_window(child: Gtk.Widget, which_window: Gtk.TextWindowType, xpos: number, ypos: number): void
     /**
@@ -37465,6 +40700,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     backward_display_line(iter: Gtk.TextIter): boolean
     /**
@@ -37476,6 +40712,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     backward_display_line_start(iter: Gtk.TextIter): boolean
     /**
@@ -37484,6 +40721,9 @@ class View {
      * 
      * Note that you can’t convert coordinates for a nonexisting window (see
      * gtk_text_view_set_border_window_size()).
+     * @param win a #GtkTextWindowType, except %GTK_TEXT_WINDOW_PRIVATE
+     * @param buffer_x buffer x coordinate
+     * @param buffer_y buffer y coordinate
      */
     buffer_to_window_coords(win: Gtk.TextWindowType, buffer_x: number, buffer_y: number): [ /* window_x */ number | null, /* window_y */ number | null ]
     /**
@@ -37495,6 +40735,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     forward_display_line(iter: Gtk.TextIter): boolean
     /**
@@ -37506,6 +40747,7 @@ class View {
      * same. Display lines are divided differently for each view, since
      * they depend on the view’s width; paragraphs are the same in all
      * views, since they depend on the contents of the #GtkTextBuffer.
+     * @param iter a #GtkTextIter
      */
     forward_display_line_end(iter: Gtk.TextIter): boolean
     /**
@@ -37516,6 +40758,7 @@ class View {
     /**
      * Gets the width of the specified border window. See
      * gtk_text_view_set_border_window_size().
+     * @param type window to return size from
      */
     get_border_window_size(type: Gtk.TextWindowType): number
     /**
@@ -37548,6 +40791,7 @@ class View {
      * The rectangle position is in buffer coordinates; use
      * gtk_text_view_buffer_to_window_coords() to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a #GtkTextIter
      */
     get_cursor_locations(iter?: Gtk.TextIter | null): [ /* strong */ Gdk.Rectangle | null, /* weak */ Gdk.Rectangle | null ]
     /**
@@ -37594,6 +40838,8 @@ class View {
      * currently-displayed portion.  If you have coordinates from an
      * event, you have to convert those to buffer coordinates with
      * gtk_text_view_window_to_buffer_coords().
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     get_iter_at_location(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
@@ -37607,6 +40853,8 @@ class View {
      * Note that this is different from gtk_text_view_get_iter_at_location(),
      * which returns cursor locations, i.e. positions between
      * characters.
+     * @param x x position, in buffer coordinates
+     * @param y y position, in buffer coordinates
      */
     get_iter_at_position(x: number, y: number): [ /* returnType */ boolean, /* iter */ Gtk.TextIter, /* trailing */ number | null ]
     /**
@@ -37614,6 +40862,7 @@ class View {
      * The rectangle position is in buffer coordinates; use
      * gtk_text_view_buffer_to_window_coords() to convert these
      * coordinates to coordinates for one of the windows in the text view.
+     * @param iter a #GtkTextIter
      */
     get_iter_location(iter: Gtk.TextIter): /* location */ Gdk.Rectangle
     /**
@@ -37632,12 +40881,14 @@ class View {
      * window coordinates with gtk_text_view_window_to_buffer_coords().
      * If non-%NULL, `line_top` will be filled with the coordinate of the top
      * edge of the line.
+     * @param y a y coordinate
      */
     get_line_at_y(y: number): [ /* target_iter */ Gtk.TextIter, /* line_top */ number ]
     /**
      * Gets the y coordinate of the top of the line containing `iter,`
      * and the height of the line. The coordinate is a buffer coordinate;
      * convert to window coordinates with gtk_text_view_buffer_to_window_coords().
+     * @param iter a #GtkTextIter
      */
     get_line_yrange(iter: Gtk.TextIter): [ /* y */ number, /* height */ number ]
     /**
@@ -37698,6 +40949,7 @@ class View {
      * text buffer. Windows are %NULL and nonexistent if their width or
      * height is 0, and are nonexistent before the widget has been
      * realized.
+     * @param win window to get
      */
     get_window(win: Gtk.TextWindowType): Gdk.Window | null
     /**
@@ -37705,6 +40957,7 @@ class View {
      * 
      * If you connect to an event signal on `text_view,` this function
      * should be called on `event->window` to see which window it was.
+     * @param window a window type
      */
     get_window_type(window: Gdk.Window): Gtk.TextWindowType
     /**
@@ -37744,15 +40997,20 @@ class View {
      * }
      * ```
      * 
+     * @param event the key event
      */
     im_context_filter_keypress(event: Gdk.EventKey): boolean
     /**
      * Updates the position of a child, as for gtk_text_view_add_child_in_window().
+     * @param child child widget already added to the text view
+     * @param xpos new X position in window coordinates
+     * @param ypos new Y position in window coordinates
      */
     move_child(child: Gtk.Widget, xpos: number, ypos: number): void
     /**
      * Moves a mark within the buffer so that it's
      * located within the currently-visible text area.
+     * @param mark a #GtkTextMark
      */
     move_mark_onscreen(mark: Gtk.TextMark): boolean
     /**
@@ -37767,6 +41025,8 @@ class View {
      * between logical and visual order will depend on the direction
      * of the current run, and there may be jumps when the cursor
      * is moved off of the end of a run.
+     * @param iter a #GtkTextIter
+     * @param count number of characters to move (negative moves left,    positive moves right)
      */
     move_visually(iter: Gtk.TextIter, count: number): boolean
     /**
@@ -37794,6 +41054,7 @@ class View {
     /**
      * Scrolls `text_view` the minimum distance such that `mark` is contained
      * within the visible area of the widget.
+     * @param mark a mark in the buffer for `text_view`
      */
     scroll_mark_onscreen(mark: Gtk.TextMark): void
     /**
@@ -37811,6 +41072,11 @@ class View {
      * called before the height computations. To avoid oddness, consider
      * using gtk_text_view_scroll_to_mark() which saves a point to be
      * scrolled to after line validation.
+     * @param iter a #GtkTextIter
+     * @param within_margin margin as a [0.0,0.5) fraction of screen size
+     * @param use_align whether to use alignment arguments (if %FALSE,    just get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scroll_to_iter(iter: Gtk.TextIter, within_margin: number, use_align: boolean, xalign: number, yalign: number): boolean
     /**
@@ -37821,6 +41087,11 @@ class View {
      * get the mark onscreen, possibly not scrolling at all. The effective
      * screen for purposes of this function is reduced by a margin of size
      * `within_margin`.
+     * @param mark a #GtkTextMark
+     * @param within_margin margin as a [0.0,0.5) fraction of screen size
+     * @param use_align whether to use alignment arguments (if %FALSE, just    get the mark onscreen)
+     * @param xalign horizontal alignment of mark within visible area
+     * @param yalign vertical alignment of mark within visible area
      */
     scroll_to_mark(mark: Gtk.TextMark, within_margin: number, use_align: boolean, xalign: number, yalign: number): void
     /**
@@ -37828,6 +41099,7 @@ class View {
      * If `accepts_tab` is %TRUE, a tab character is inserted. If `accepts_tab`
      * is %FALSE the keyboard focus is moved to the next widget in the focus
      * chain.
+     * @param accepts_tab %TRUE if pressing the Tab key should insert a tab    character, %FALSE, if pressing the Tab key should move the    keyboard focus.
      */
     set_accepts_tab(accepts_tab: boolean): void
     /**
@@ -37838,6 +41110,8 @@ class View {
      * function can only be used for the “border windows”, and it won’t
      * work with %GTK_TEXT_WINDOW_WIDGET, %GTK_TEXT_WINDOW_TEXT, or
      * %GTK_TEXT_WINDOW_PRIVATE.
+     * @param type window to affect
+     * @param size width or height of the window
      */
     set_border_window_size(type: Gtk.TextWindowType, size: number): void
     /**
@@ -37845,6 +41119,7 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param bottom_margin bottom margin in pixels
      */
     set_bottom_margin(bottom_margin: number): void
     /**
@@ -37853,6 +41128,7 @@ class View {
      * added to `buffer`. If you owned a reference to `buffer` before passing it
      * to this function, you must remove that reference yourself; #GtkTextView
      * will not “adopt” it.
+     * @param buffer a #GtkTextBuffer
      */
     set_buffer(buffer?: Gtk.TextBuffer | null): void
     /**
@@ -37862,33 +41138,39 @@ class View {
      * 
      * Note that this property may be overridden by the
      * #GtkSettings:gtk-keynave-use-caret settings.
+     * @param setting whether to show the insertion cursor
      */
     set_cursor_visible(setting: boolean): void
     /**
      * Sets the default editability of the #GtkTextView. You can override
      * this default setting with tags in the buffer, using the “editable”
      * attribute of tags.
+     * @param setting whether it’s editable
      */
     set_editable(setting: boolean): void
     /**
      * Sets the default indentation for paragraphs in `text_view`.
      * Tags in the buffer may override the default.
+     * @param indent indentation in pixels
      */
     set_indent(indent: number): void
     /**
      * Sets the #GtkTextView:input-hints property, which
      * allows input methods to fine-tune their behaviour.
+     * @param hints the hints
      */
     set_input_hints(hints: Gtk.InputHints): void
     /**
      * Sets the #GtkTextView:input-purpose property which
      * can be used by on-screen keyboards and other input
      * methods to adjust their behaviour.
+     * @param purpose the purpose
      */
     set_input_purpose(purpose: Gtk.InputPurpose): void
     /**
      * Sets the default justification of text in `text_view`.
      * Tags in the view’s buffer may override the default.
+     * @param justification justification
      */
     set_justification(justification: Gtk.Justification): void
     /**
@@ -37897,33 +41179,39 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param left_margin left margin in pixels
      */
     set_left_margin(left_margin: number): void
     /**
      * Sets the #GtkTextView:monospace property, which
      * indicates that the text view should use monospace
      * fonts.
+     * @param monospace %TRUE to request monospace styling
      */
     set_monospace(monospace: boolean): void
     /**
      * Changes the #GtkTextView overwrite mode.
+     * @param overwrite %TRUE to turn on overwrite mode, %FALSE to turn it off
      */
     set_overwrite(overwrite: boolean): void
     /**
      * Sets the default number of blank pixels above paragraphs in `text_view`.
      * Tags in the buffer for `text_view` may override the defaults.
+     * @param pixels_above_lines pixels above paragraphs
      */
     set_pixels_above_lines(pixels_above_lines: number): void
     /**
      * Sets the default number of pixels of blank space
      * to put below paragraphs in `text_view`. May be overridden
      * by tags applied to `text_view’`s buffer.
+     * @param pixels_below_lines pixels below paragraphs
      */
     set_pixels_below_lines(pixels_below_lines: number): void
     /**
      * Sets the default number of pixels of blank space to leave between
      * display/wrapped lines within a paragraph. May be overridden by
      * tags in `text_view’`s buffer.
+     * @param pixels_inside_wrap default number of pixels between wrapped lines
      */
     set_pixels_inside_wrap(pixels_inside_wrap: number): void
     /**
@@ -37932,11 +41220,13 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param right_margin right margin in pixels
      */
     set_right_margin(right_margin: number): void
     /**
      * Sets the default tab stops for paragraphs in `text_view`.
      * Tags in the buffer may override the default.
+     * @param tabs tabs as a #PangoTabArray
      */
     set_tabs(tabs: Pango.TabArray): void
     /**
@@ -37944,16 +41234,19 @@ class View {
      * 
      * Note that this function is confusingly named.
      * In CSS terms, the value set here is padding.
+     * @param top_margin top margin in pixels
      */
     set_top_margin(top_margin: number): void
     /**
      * Sets the line wrapping for the view.
+     * @param wrap_mode a #GtkWrapMode
      */
     set_wrap_mode(wrap_mode: Gtk.WrapMode): void
     /**
      * Determines whether `iter` is at the start of a display line.
      * See gtk_text_view_forward_display_line() for an explanation of
      * display lines vs. paragraphs.
+     * @param iter a #GtkTextIter
      */
     starts_display_line(iter: Gtk.TextIter): boolean
     /**
@@ -37962,6 +41255,9 @@ class View {
      * 
      * Note that you can’t convert coordinates for a nonexisting window (see
      * gtk_text_view_set_border_window_size()).
+     * @param win a #GtkTextWindowType except %GTK_TEXT_WINDOW_PRIVATE
+     * @param window_x window x coordinate
+     * @param window_y window y coordinate
      */
     window_to_buffer_coords(win: Gtk.TextWindowType, window_x: number, window_y: number): [ /* buffer_x */ number | null, /* buffer_y */ number | null ]
     /* Methods of Gtk-3.0.Gtk.Container */
@@ -37978,11 +41274,15 @@ class View {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     add(widget: Gtk.Widget): void
     check_resize(): void
     /**
      * Gets the value of a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to get
+     * @param value a location to return the value
      */
     child_get_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -37993,6 +41293,8 @@ class View {
      * This is an analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_widget_child_notify().
+     * @param child the child widget
+     * @param child_property the name of a child property installed on     the class of `container`
      */
     child_notify(child: Gtk.Widget, child_property: string): void
     /**
@@ -38001,10 +41303,15 @@ class View {
      * `pspec` on the child.
      * 
      * This is an analogue of g_object_notify_by_pspec() for child properties.
+     * @param child the child widget
+     * @param pspec the #GParamSpec of a child property instealled on     the class of `container`
      */
     child_notify_by_pspec(child: Gtk.Widget, pspec: GObject.ParamSpec): void
     /**
      * Sets a child property for `child` and `container`.
+     * @param child a widget which is a child of `container`
+     * @param property_name the name of the property to set
+     * @param value the value to set the property to
      */
     child_set_property(child: Gtk.Widget, property_name: string, value: any): void
     /**
@@ -38024,6 +41331,7 @@ class View {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param callback a callback
      */
     forall(callback: Gtk.Callback): void
     /**
@@ -38038,6 +41346,7 @@ class View {
      * 
      * Most applications should use gtk_container_foreach(),
      * rather than gtk_container_forall().
+     * @param callback a callback
      */
     foreach(callback: Gtk.Callback): void
     /**
@@ -38077,6 +41386,7 @@ class View {
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -38100,6 +41410,8 @@ class View {
      * In most cases, a container can simply either inherit the
      * #GtkWidget::draw implementation from #GtkContainer, or do some drawing
      * and then chain to the ::draw implementation from #GtkContainer.
+     * @param child a child of `container`
+     * @param cr Cairo context as passed to the container. If you want to use `cr`   in container’s draw function, consider using cairo_save() and   cairo_restore() before calling this function.
      */
     propagate_draw(child: Gtk.Widget, cr: cairo.Context): void
     /**
@@ -38112,6 +41424,7 @@ class View {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     remove(widget: Gtk.Widget): void
     resize_children(): void
@@ -38125,6 +41438,7 @@ class View {
      * the container. To add space to only one side, use a specific
      * #GtkWidget:margin property on the child widget, for example
      * #GtkWidget:margin-top.
+     * @param border_width amount of blank space to leave outside   the container. Valid values are in the range 0-65535 pixels.
      */
     set_border_width(border_width: number): void
     /**
@@ -38135,6 +41449,7 @@ class View {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn’t always packed. The necessary checks are done
      * when the focus chain is actually traversed.
+     * @param focusable_widgets      the new focus chain
      */
     set_focus_chain(focusable_widgets: Gtk.Widget[]): void
     /**
@@ -38146,6 +41461,7 @@ class View {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     set_focus_child(child?: Gtk.Widget | null): void
     /**
@@ -38158,6 +41474,7 @@ class View {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus is   moved among the descendents of `container`
      */
     set_focus_hadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -38170,6 +41487,7 @@ class View {
      * 
      * The adjustments have to be in pixel units and in the same coordinate
      * system as the allocation for immediate children of the container.
+     * @param adjustment an adjustment which should be adjusted when the focus   is moved among the descendents of `container`
      */
     set_focus_vadjustment(adjustment: Gtk.Adjustment): void
     /**
@@ -38177,6 +41495,7 @@ class View {
      * 
      * Containers requesting reallocation redraws get automatically
      * redrawn if any of their children changed allocation.
+     * @param needs_redraws the new value for the container’s `reallocate_redraws` flag
      */
     set_reallocate_redraws(needs_redraws: boolean): void
     /**
@@ -38185,6 +41504,7 @@ class View {
      * The resize mode of a container determines whether a resize request
      * will be passed to the container’s parent, queued for later execution
      * or executed immediately.
+     * @param resize_mode the new resize mode
      */
     set_resize_mode(resize_mode: Gtk.ResizeMode): void
     /**
@@ -38208,17 +41528,25 @@ class View {
      * runtime. If you want to support accelerators that can be changed by the
      * user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
      * gtk_menu_item_set_accel_path() instead.
+     * @param accel_signal widget signal to emit on accelerator activation
+     * @param accel_group accel group for this widget, added to its toplevel
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
+     * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
     add_accelerator(accel_signal: string, accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: Gtk.AccelFlags): void
     /**
      * Adds the device events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_device_events() for details.
+     * @param device a #GdkDevice
+     * @param events an event mask, see #GdkEventMask
      */
     add_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() and the
      * [input handling overview][event-masks] for details.
+     * @param events an event mask, see #GdkEventMask
      */
     add_events(events: number): void
     /**
@@ -38228,6 +41556,7 @@ class View {
      * widget is destroyed, so the caller must make sure to update
      * its internal state at this point as well, by using a connection
      * to the #GtkWidget::destroy signal or a weak notifier.
+     * @param label a #GtkWidget that acts as a mnemonic label for `widget`
      */
     add_mnemonic_label(label: Gtk.Widget): void
     /**
@@ -38251,6 +41580,7 @@ class View {
      * This is a more convenient alternative to connecting directly to the
      * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
      * have to worry about when a #GdkFrameClock is assigned to a widget.
+     * @param callback function to call for updating animations
      */
     add_tick_callback(callback: Gtk.TickCallback): number
     /**
@@ -38261,6 +41591,7 @@ class View {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     can_activate_accel(signal_id: number): boolean
     /**
@@ -38283,6 +41614,7 @@ class View {
      * outside the widget. If returning %TRUE, widgets normally
      * call gtk_widget_grab_focus() to place the focus accordingly;
      * if returning %FALSE, they don’t modify the current focus location.
+     * @param direction direction of focus movement
      */
     child_focus(direction: Gtk.DirectionType): boolean
     /**
@@ -38293,6 +41625,7 @@ class View {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     child_notify(child_property: string): void
     /**
@@ -38312,6 +41645,7 @@ class View {
      * The computed expand value uses either the expand setting explicitly
      * set on the widget itself, or, if none has been explicitly set,
      * the widget may expand if some of its children do.
+     * @param orientation expand direction
      */
     compute_expand(orientation: Gtk.Orientation): boolean
     /**
@@ -38329,6 +41663,7 @@ class View {
      * to re-create it when the widget #PangoContext is replaced.
      * This can be tracked by using the #GtkWidget::screen-changed signal
      * on the widget.
+     * @param text text to set on the layout (can be %NULL)
      */
     create_pango_layout(text?: string | null): Pango.Layout
     /**
@@ -38373,6 +41708,7 @@ class View {
      * as user data. Then when the widget is destroyed, the variable will
      * be set to %NULL. Useful for example to avoid multiple copies
      * of the same dialog.
+     * @param widget_pointer address of a variable that contains `widget`
      */
     destroyed(widget_pointer: Gtk.Widget): /* widget_pointer */ Gtk.Widget
     /**
@@ -38381,11 +41717,16 @@ class View {
      * events to `widget`. This may be used in the
      * #GtkWidget::grab-notify signal to check for specific
      * devices. See gtk_device_grab_add().
+     * @param device a #GdkDevice
      */
     device_is_shadowed(device: Gdk.Device): boolean
     /**
      * This function is equivalent to gtk_drag_begin_with_coordinates(),
      * passing -1, -1 as coordinates.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
      */
     drag_begin(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event?: Gdk.Event | null): Gdk.DragContext
     /**
@@ -38414,12 +41755,22 @@ class View {
      * from the mouse, using gdk_event_copy(), and pass it to this function
      * (remember to free the event with gdk_event_free() when you are done).
      * If you really cannot pass a real event, pass %NULL instead.
+     * @param targets The targets (data formats) in which the    source can provide the data
+     * @param actions A bitmask of the allowed drag actions for this drag
+     * @param button The button the user clicked to start the drag
+     * @param event The event that triggered the start of the drag,    or %NULL if none can be obtained.
+     * @param x The initial x coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
+     * @param y The initial y coordinate to start dragging from, in the coordinate space    of `widget`. If -1 is passed, the coordinates are retrieved from `event` or    the current pointer position
      */
     drag_begin_with_coordinates(targets: Gtk.TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event | null, x: number, y: number): Gdk.DragContext
     /**
      * Checks to see if a mouse drag starting at (`start_x,` `start_y)` and ending
      * at (`current_x,` `current_y)` has passed the GTK+ drag threshold, and thus
      * should trigger the beginning of a drag-and-drop operation.
+     * @param start_x X coordinate of start of drag
+     * @param start_y Y coordinate of start of drag
+     * @param current_x current X coordinate
+     * @param current_y current Y coordinate
      */
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number): boolean
     /**
@@ -38454,6 +41805,8 @@ class View {
      * have different valid targets for different parts of the widget; in
      * that case, they will have to implement a drag_motion handler that
      * passes the correct target list to this function.
+     * @param context drag context
+     * @param target_list list of droppable targets, or %NULL to use    gtk_drag_dest_get_target_list (`widget)`.
      */
     drag_dest_find_target(context: Gdk.DragContext, target_list?: Gtk.TargetList | null): Gdk.Atom
     /**
@@ -38508,16 +41861,23 @@ class View {
      * }
      * ```
      * 
+     * @param flags which types of default drag behavior to use
+     * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this `widget` will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
+     * @param actions a bitmask of possible actions for a drop onto this `widget`.
      */
     drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets this widget as a proxy for drops to another window.
+     * @param proxy_window the window to which to forward drag events
+     * @param protocol the drag protocol which the `proxy_window` accepts   (You can use gdk_drag_get_protocol() to determine this)
+     * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
      */
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void
     /**
      * Sets the target types that this widget can accept from drag-and-drop.
      * The widget must first be made into a drag destination with
      * gtk_drag_dest_set().
+     * @param target_list list of droppable targets, or %NULL for none
      */
     drag_dest_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -38527,6 +41887,7 @@ class View {
      * 
      * This may be used when a widget wants to do generic
      * actions regardless of the targets that the source offers.
+     * @param track_motion whether to accept all targets
      */
     drag_dest_set_track_motion(track_motion: boolean): void
     /**
@@ -38544,6 +41905,9 @@ class View {
      * is called implicitely because the %GTK_DEST_DEFAULT_DROP was set,
      * then the widget will not receive notification of failed
      * drops.
+     * @param context the drag context
+     * @param target the target (form of the data) to retrieve
+     * @param time_ a timestamp for retrieving the data. This will   generally be the time received in a #GtkWidget::drag-motion   or #GtkWidget::drag-drop signal
      */
     drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: number): void
     /**
@@ -38584,33 +41948,41 @@ class View {
     /**
      * Sets up a widget so that GTK+ will start a drag operation when the user
      * clicks and drags on the widget. The widget must have a window.
+     * @param start_button_mask the bitmask of buttons that can start the drag
+     * @param targets the table of targets     that the drag will support, may be %NULL
+     * @param actions the bitmask of possible actions for a drag from this widget
      */
     drag_source_set(start_button_mask: Gdk.ModifierType, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to `icon`. See the docs for #GtkIconTheme for more details.
+     * @param icon A #GIcon
      */
     drag_source_set_icon_gicon(icon: Gio.Icon): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a themed icon. See the docs for #GtkIconTheme for more details.
+     * @param icon_name name of icon to use
      */
     drag_source_set_icon_name(icon_name: string): void
     /**
      * Sets the icon that will be used for drags from a particular widget
      * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
      * release it when it is no longer needed.
+     * @param pixbuf the #GdkPixbuf for the drag icon
      */
     drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Sets the icon that will be used for drags from a particular source
      * to a stock icon.
+     * @param stock_id the ID of the stock icon to use
      */
     drag_source_set_icon_stock(stock_id: string): void
     /**
      * Changes the target types that this widget offers for drag-and-drop.
      * The widget must first be made into a drag source with
      * gtk_drag_source_set().
+     * @param target_list list of draggable targets, or %NULL for none
      */
     drag_source_set_target_list(target_list?: Gtk.TargetList | null): void
     /**
@@ -38640,6 +42012,7 @@ class View {
      * Note that special-purpose widgets may contain special code for
      * rendering to the screen and might appear differently on screen
      * and when rendered using gtk_widget_draw().
+     * @param cr a cairo context to draw to
      */
     draw(cr: cairo.Context): void
     /**
@@ -38669,6 +42042,7 @@ class View {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     event(event: Gdk.Event): boolean
     /**
@@ -38700,6 +42074,7 @@ class View {
      * ancestry.
      * 
      * If no action group was found matching `prefix,` then %NULL is returned.
+     * @param prefix The “prefix” of the action group.
      */
     get_action_group(prefix: string): Gio.ActionGroup | null
     /**
@@ -38762,6 +42137,7 @@ class View {
      * 
      * Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
      * considers `widget` to be an ancestor of itself.
+     * @param widget_type ancestor type
      */
     get_ancestor(widget_type: GObject.Type): Gtk.Widget | null
     /**
@@ -38826,6 +42202,7 @@ class View {
      * be used with `widget`. `widget` must have a #GdkDisplay
      * associated with it, so must be attached to a toplevel
      * window.
+     * @param selection a #GdkAtom which identifies the clipboard             to use. %GDK_SELECTION_CLIPBOARD gives the             default clipboard. Another common value             is %GDK_SELECTION_PRIMARY, which gives             the primary X selection.
      */
     get_clipboard(selection: Gdk.Atom): Gtk.Clipboard
     /**
@@ -38835,11 +42212,13 @@ class View {
     /**
      * Returns whether `device` can interact with `widget` and its
      * children. See gtk_widget_set_device_enabled().
+     * @param device a #GdkDevice
      */
     get_device_enabled(device: Gdk.Device): boolean
     /**
      * Returns the events mask for the widget corresponding to an specific device. These
      * are the events that the widget will receive when `device` operates on it.
+     * @param device a #GdkDevice
      */
     get_device_events(device: Gdk.Device): Gdk.EventMask
     /**
@@ -38993,6 +42372,7 @@ class View {
      * uses for a particular purpose.
      * 
      * See gdk_keymap_get_modifier_mask().
+     * @param intent the use case for the modifier mask
      */
     get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType
     /**
@@ -39080,6 +42460,7 @@ class View {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -39091,6 +42472,7 @@ class View {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -39132,6 +42514,7 @@ class View {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -39262,6 +42645,8 @@ class View {
      * This function is only meant to be called for code which is private to the `widget_type` which
      * declared the child and is meant for language bindings which cannot easily make use
      * of the GObject structure offsets.
+     * @param widget_type The #GType to get a template child for
+     * @param name The “id” of the child defined in the template XML
      */
     get_template_child(widget_type: GObject.Type, name: string): GObject.Object
     /**
@@ -39480,6 +42865,7 @@ class View {
      * Sets an input shape for this widget’s GDK window. This allows for
      * windows which react to mouse click in a nonrectangular region, see
      * gdk_window_input_shape_combine_region() for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     input_shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -39490,6 +42876,8 @@ class View {
      * 
      * If `group` is %NULL, a previously inserted group for `name` is removed
      * from `widget`.
+     * @param name the prefix for actions in `group`
+     * @param group a #GActionGroup, or %NULL
      */
     insert_action_group(name: string, group?: Gio.ActionGroup | null): void
     /**
@@ -39497,11 +42885,13 @@ class View {
      * the intersection in `intersection,` and returns %TRUE if there was
      * an intersection.  `intersection` may be %NULL if you’re only
      * interested in whether there was an intersection.
+     * @param area a rectangle
      */
     intersect(area: Gdk.Rectangle): [ /* returnType */ boolean, /* intersection */ Gdk.Rectangle | null ]
     /**
      * Determines whether `widget` is somewhere inside `ancestor,` possibly with
      * intermediate containers.
+     * @param ancestor another #GtkWidget
      */
     is_ancestor(ancestor: Gtk.Widget): boolean
     /**
@@ -39569,6 +42959,7 @@ class View {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     keynav_failed(direction: Gtk.DirectionType): boolean
     /**
@@ -39605,6 +42996,7 @@ class View {
     map(): void
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     mnemonic_activate(group_cycling: boolean): boolean
     /**
@@ -39623,6 +43015,8 @@ class View {
      * > base color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the base color on that.
+     * @param state the state for which to set the base color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
      */
     modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -39640,6 +43034,8 @@ class View {
      * > background color on their parent; if you want to set the background
      * > of a rectangular area around a label, try placing the label in
      * > a #GtkEventBox widget and setting the background color on that.
+     * @param state the state for which to set the background color
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
      */
     modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -39649,6 +43045,8 @@ class View {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param primary the color to use for primary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_cursor().
+     * @param secondary the color to use for secondary cursor (does     not need to be allocated), or %NULL to undo the effect of     previous calls to of gtk_widget_modify_cursor().
      */
     modify_cursor(primary?: Gdk.Color | null, secondary?: Gdk.Color | null): void
     /**
@@ -39656,6 +43054,8 @@ class View {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the foreground color
+     * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
      */
     modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -39663,6 +43063,7 @@ class View {
      * 
      * All other style values are left untouched.
      * See also gtk_widget_modify_style().
+     * @param font_desc the font description to use, or %NULL     to undo the effect of previous calls to gtk_widget_modify_font()
      */
     modify_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -39684,6 +43085,7 @@ class View {
      * if you first call gtk_widget_modify_style(), subsequent calls
      * to such functions gtk_widget_modify_fg() will have a cumulative
      * effect with the initial modifications.
+     * @param style the #GtkRcStyle-struct holding the style modifications
      */
     modify_style(style: Gtk.RcStyle): void
     /**
@@ -39694,6 +43096,8 @@ class View {
      * base color (see gtk_widget_modify_base()) for widgets such
      * as #GtkEntry and #GtkTextView.
      * See also gtk_widget_modify_style().
+     * @param state the state for which to set the text color
+     * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
      */
     modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void
     /**
@@ -39701,6 +43105,8 @@ class View {
      * 
      * All other style values are left untouched.
      * See gtk_widget_override_color().
+     * @param state the state for which to set the background color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
      */
     override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -39729,6 +43135,8 @@ class View {
      * these cases it is better to fully style such widgets through a
      * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
      * priority.
+     * @param state the state for which to set the color
+     * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
      */
     override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void
     /**
@@ -39739,11 +43147,14 @@ class View {
      * 
      * Note that the underlying properties have the #GdkColor type,
      * so the alpha value in `primary` and `secondary` will be ignored.
+     * @param cursor the color to use for primary cursor (does not need to be     allocated), or %NULL to undo the effect of previous calls to     of gtk_widget_override_cursor().
+     * @param secondary_cursor the color to use for secondary cursor (does not     need to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_override_cursor().
      */
     override_cursor(cursor?: Gdk.RGBA | null, secondary_cursor?: Gdk.RGBA | null): void
     /**
      * Sets the font to use for a widget. All other style values are
      * left untouched. See gtk_widget_override_color().
+     * @param font_desc the font description to use, or %NULL to undo     the effect of previous calls to gtk_widget_override_font()
      */
     override_font(font_desc?: Pango.FontDescription | null): void
     /**
@@ -39752,6 +43163,8 @@ class View {
      * All other style values are left untouched.
      * See gtk_widget_override_color() for overriding the foreground
      * or background color.
+     * @param name the name of the symbolic color to modify
+     * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to gtk_widget_override_symbolic_color()
      */
     override_symbolic_color(name: string, color?: Gdk.RGBA | null): void
     /**
@@ -39805,6 +43218,10 @@ class View {
      * 
      * `width` or `height` may be 0, in this case this function does
      * nothing. Negative values for `width` and `height` are not allowed.
+     * @param x x coordinate of upper-left corner of rectangle to redraw
+     * @param y y coordinate of upper-left corner of rectangle to redraw
+     * @param width width of region to draw
+     * @param height height of region to draw
      */
     queue_draw_area(x: number, y: number, width: number, height: number): void
     /**
@@ -39818,6 +43235,7 @@ class View {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     queue_draw_region(region: cairo.Region): void
     /**
@@ -39863,6 +43281,7 @@ class View {
      * Computes the intersection of a `widget’`s area and `region,` returning
      * the intersection. The result may be empty, use cairo_region_is_empty() to
      * check.
+     * @param region a #cairo_region_t, in the same coordinate system as          `widget->`allocation. That is, relative to `widget->`window          for widgets which return %FALSE from gtk_widget_get_has_window();          relative to the parent window of `widget->`window otherwise.
      */
     region_intersect(region: cairo.Region): cairo.Region
     /**
@@ -39874,11 +43293,15 @@ class View {
      * this up. This is now deprecated and you should use gtk_widget_register_window()
      * instead. Old code will keep working as is, although some new features like
      * transparency might not work perfectly.
+     * @param window a #GdkWindow
      */
     register_window(window: Gdk.Window): void
     /**
      * Removes an accelerator from `widget,` previously installed with
      * gtk_widget_add_accelerator().
+     * @param accel_group accel group for this widget
+     * @param accel_key GDK keyval of the accelerator
+     * @param accel_mods modifier key combination of the accelerator
      */
     remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean
     /**
@@ -39886,11 +43309,13 @@ class View {
      * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
      * must have previously been added to the list with
      * gtk_widget_add_mnemonic_label().
+     * @param label a #GtkWidget that was previously set as a mnemonic label for         `widget` with gtk_widget_add_mnemonic_label().
      */
     remove_mnemonic_label(label: Gtk.Widget): void
     /**
      * Removes a tick callback previously registered with
      * gtk_widget_add_tick_callback().
+     * @param id an id returned by gtk_widget_add_tick_callback()
      */
     remove_tick_callback(id: number): void
     /**
@@ -39905,6 +43330,9 @@ class View {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be
      * freed after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
+     * @param detail render detail to pass to theme engine
      */
     render_icon(stock_id: string, size: number, detail?: string | null): GdkPixbuf.Pixbuf | null
     /**
@@ -39917,11 +43345,14 @@ class View {
      * The pixels in the returned #GdkPixbuf are shared with the rest of
      * the application and should not be modified. The pixbuf should be freed
      * after use with g_object_unref().
+     * @param stock_id a stock ID
+     * @param size a stock size (#GtkIconSize). A size of `(GtkIconSize)-1`     means render at the size of the source and don’t scale (if there are     multiple source sizes, GTK+ picks one of the available sizes).
      */
     render_icon_pixbuf(stock_id: string, size: number): GdkPixbuf.Pixbuf | null
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
+     * @param new_parent a #GtkContainer to move the widget into
      */
     reparent(new_parent: Gtk.Widget): void
     /**
@@ -39950,6 +43381,7 @@ class View {
      * use gdk_window_invalidate_rect() or gdk_window_invalidate_region().
      * To cause the redraw to be done immediately, follow that call
      * with a call to gdk_window_process_updates().
+     * @param event a expose #GdkEvent
      */
     send_expose(event: Gdk.Event): number
     /**
@@ -39978,6 +43410,7 @@ class View {
      *   gdk_event_free (event);
      * ```
      * 
+     * @param event a #GdkEvent of type GDK_FOCUS_CHANGE
      */
     send_focus_change(event: Gdk.Event): boolean
     /**
@@ -40002,6 +43435,8 @@ class View {
      * Note that `accel_path` string will be stored in a #GQuark. Therefore, if you
      * pass a static string, you can save some memory by interning it first with
      * g_intern_static_string().
+     * @param accel_path path used to look up the accelerator
+     * @param accel_group a #GtkAccelGroup.
      */
     set_accel_path(accel_path?: string | null, accel_group?: Gtk.AccelGroup | null): void
     /**
@@ -40014,6 +43449,7 @@ class View {
      * The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
      * allocation inside gtk_widget_size_allocate() to create an adjusted
      * allocation.
+     * @param allocation a pointer to a #GtkAllocation to copy from
      */
     set_allocation(allocation: Gtk.Allocation): void
     /**
@@ -40028,18 +43464,21 @@ class View {
      * is then entirely responsible for drawing the widget background.
      * 
      * Note that the background is still drawn when the widget is mapped.
+     * @param app_paintable %TRUE if the application will paint on the widget
      */
     set_app_paintable(app_paintable: boolean): void
     /**
      * Specifies whether `widget` can be a default widget. See
      * gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param can_default whether or not `widget` can be a default widget.
      */
     set_can_default(can_default: boolean): void
     /**
      * Specifies whether `widget` can own the input focus. See
      * gtk_widget_grab_focus() for actually setting the input focus on a
      * widget.
+     * @param can_focus whether or not `widget` can own the input focus.
      */
     set_can_focus(can_focus: boolean): void
     /**
@@ -40060,6 +43499,7 @@ class View {
      * 
      * This function is only useful for container implementations and
      * never should be called by an application.
+     * @param is_visible if %TRUE, `widget` should be mapped along with its parent.
      */
     set_child_visible(is_visible: boolean): void
     /**
@@ -40073,11 +43513,13 @@ class View {
      * 
      * If this function is not called by `widget` during a ::size-allocate handler,
      * the clip will be set to `widget'`s allocation.
+     * @param clip a pointer to a #GtkAllocation to copy from
      */
     set_clip(clip: Gtk.Allocation): void
     /**
      * Sets a widgets composite name. The widget must be
      * a composite child of its parent; see gtk_widget_push_composite_child().
+     * @param name the name to set
      */
     set_composite_name(name: string): void
     /**
@@ -40087,6 +43529,8 @@ class View {
      * It does so by descending through the #GdkWindow hierarchy
      * and enabling the same mask that is has for core events
      * (i.e. the one that gdk_window_get_events() returns).
+     * @param device a #GdkDevice
+     * @param enabled whether to enable the device
      */
     set_device_enabled(device: Gdk.Device, enabled: boolean): void
     /**
@@ -40101,6 +43545,8 @@ class View {
      * %FALSE from gtk_widget_get_has_window());
      * to get events on those widgets, place them inside a #GtkEventBox
      * and receive events on the event box.
+     * @param device a #GdkDevice
+     * @param events event mask
      */
     set_device_events(device: Gdk.Device, events: Gdk.EventMask): void
     /**
@@ -40116,6 +43562,7 @@ class View {
      * 
      * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
      * set by gtk_widget_set_default_direction() will be used.
+     * @param dir the new direction
      */
     set_direction(dir: Gtk.TextDirection): void
     /**
@@ -40144,6 +43591,7 @@ class View {
      * will cause a separate rendering pass for every widget. This will likely
      * cause rendering problems - in particular related to stacking - and usually
      * increases rendering times significantly.
+     * @param double_buffered %TRUE to double-buffer a widget
      */
     set_double_buffered(double_buffered: boolean): void
     /**
@@ -40158,6 +43606,7 @@ class View {
      * (See gtk_widget_get_has_window()).  To get events on those widgets,
      * place them inside a #GtkEventBox and receive events on the event
      * box.
+     * @param events event mask
      */
     set_events(events: number): void
     /**
@@ -40165,26 +43614,31 @@ class View {
      * Making mouse clicks not grab focus is useful in places like toolbars where
      * you don’t want the keyboard focus removed from the main area of the
      * application.
+     * @param focus_on_click whether the widget should grab focus when clicked with the mouse
      */
     set_focus_on_click(focus_on_click: boolean): void
     /**
      * Sets the font map to use for Pango rendering. When not set, the widget
      * will inherit the font map from its parent.
+     * @param font_map a #PangoFontMap, or %NULL to unset any previously     set font map
      */
     set_font_map(font_map?: Pango.FontMap | null): void
     /**
      * Sets the #cairo_font_options_t used for Pango rendering in this widget.
      * When not set, the default font options for the #GdkScreen will be used.
+     * @param options a #cairo_font_options_t, or %NULL to unset any   previously set default font options.
      */
     set_font_options(options?: cairo.FontOptions | null): void
     /**
      * Sets the horizontal alignment of `widget`.
      * See the #GtkWidget:halign property.
+     * @param align the horizontal alignment
      */
     set_halign(align: Gtk.Align): void
     /**
      * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
      * #GtkWidget:has-tooltip for more information.
+     * @param has_tooltip whether or not `widget` has a tooltip.
      */
     set_has_tooltip(has_tooltip: boolean): void
     /**
@@ -40198,6 +43652,7 @@ class View {
      * 
      * This function should only be called by widget implementations,
      * and they should call it in their init() function.
+     * @param has_window whether or not `widget` has a window.
      */
     set_has_window(has_window: boolean): void
     /**
@@ -40226,6 +43681,7 @@ class View {
      * gtk_widget_set_hexpand() sets the hexpand-set property (see
      * gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
      * value to be used, rather than looking at children and widget state.
+     * @param expand whether to expand
      */
     set_hexpand(expand: boolean): void
     /**
@@ -40244,6 +43700,7 @@ class View {
      * 
      * There are few reasons to use this function, but it’s here
      * for completeness and consistency.
+     * @param set value for hexpand-set property
      */
     set_hexpand_set(set: boolean): void
     /**
@@ -40251,36 +43708,43 @@ class View {
      * 
      * This function should only ever be called in a derived widget's
      * “map” or “unmap” implementation.
+     * @param mapped %TRUE to mark the widget as mapped
      */
     set_mapped(mapped: boolean): void
     /**
      * Sets the bottom margin of `widget`.
      * See the #GtkWidget:margin-bottom property.
+     * @param margin the bottom margin
      */
     set_margin_bottom(margin: number): void
     /**
      * Sets the end margin of `widget`.
      * See the #GtkWidget:margin-end property.
+     * @param margin the end margin
      */
     set_margin_end(margin: number): void
     /**
      * Sets the left margin of `widget`.
      * See the #GtkWidget:margin-left property.
+     * @param margin the left margin
      */
     set_margin_left(margin: number): void
     /**
      * Sets the right margin of `widget`.
      * See the #GtkWidget:margin-right property.
+     * @param margin the right margin
      */
     set_margin_right(margin: number): void
     /**
      * Sets the start margin of `widget`.
      * See the #GtkWidget:margin-start property.
+     * @param margin the start margin
      */
     set_margin_start(margin: number): void
     /**
      * Sets the top margin of `widget`.
      * See the #GtkWidget:margin-top property.
+     * @param margin the top margin
      */
     set_margin_top(margin: number): void
     /**
@@ -40293,6 +43757,7 @@ class View {
      * and represent elements in a selector (period, #, >, *...), so using
      * these will make your widget impossible to match by name. Any combination
      * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
      */
     set_name(name: string): void
     /**
@@ -40301,6 +43766,7 @@ class View {
      * 
      * This is mostly for use in constructing widget hierarchies with externally
      * controlled visibility, see #GtkUIManager.
+     * @param no_show_all the new value for the “no-show-all” property
      */
     set_no_show_all(no_show_all: boolean): void
     /**
@@ -40318,6 +43784,7 @@ class View {
      * 
      * For child widgets it doesn’t work if any affected widget has a native window, or
      * disables double buffering.
+     * @param opacity desired opacity, between 0 and 1
      */
     set_opacity(opacity: number): void
     /**
@@ -40327,6 +43794,7 @@ class View {
      * some details such as updating the state and style of the child
      * to reflect its new location. The opposite function is
      * gtk_widget_unparent().
+     * @param parent parent container
      */
     set_parent(parent: Gtk.Widget): void
     /**
@@ -40338,6 +43806,7 @@ class View {
      * 
      * For #GtkWindow classes, this needs to be called before the
      * window is realized.
+     * @param parent_window the new parent window.
      */
     set_parent_window(parent_window: Gdk.Window): void
     /**
@@ -40347,6 +43816,7 @@ class View {
      * 
      * This function should only ever be called in a derived widget's
      * “realize” or “unrealize” implementation.
+     * @param realized %TRUE to mark the widget as realized
      */
     set_realized(realized: boolean): void
     /**
@@ -40356,6 +43826,7 @@ class View {
      * 
      * See gtk_widget_grab_default() for details about the meaning of
      * “default”.
+     * @param receives_default whether or not `widget` can be a default widget.
      */
     set_receives_default(receives_default: boolean): void
     /**
@@ -40374,6 +43845,7 @@ class View {
      * responsible for invalidating both the old and new allocation of the
      * widget when the widget is moved and responsible for invalidating
      * regions newly when the widget increases size.
+     * @param redraw_on_allocate if %TRUE, the entire widget will be redrawn   when it is allocated to a new size. Otherwise, only the   new portion of the widget will be redrawn.
      */
     set_redraw_on_allocate(redraw_on_allocate: boolean): void
     /**
@@ -40381,6 +43853,7 @@ class View {
      * can interact with it. Insensitive widgets are “grayed out” and the
      * user can’t interact with them. Insensitive widgets are known as
      * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+     * @param sensitive %TRUE to make the widget sensitive
      */
     set_sensitive(sensitive: boolean): void
     /**
@@ -40414,12 +43887,15 @@ class View {
      * #GtkWidget properties margin-left, margin-right, margin-top, and
      * margin-bottom, but it does include pretty much all other padding
      * or border properties set by any subclass of #GtkWidget.
+     * @param width width `widget` should request, or -1 to unset
+     * @param height height `widget` should request, or -1 to unset
      */
     set_size_request(width: number, height: number): void
     /**
      * This function is for use in widget implementations. Sets the state
      * of a widget (insensitive, prelighted, etc.) Usually you should set
      * the state using wrapper functions such as gtk_widget_set_sensitive().
+     * @param state new state for `widget`
      */
     set_state(state: Gtk.StateType): void
     /**
@@ -40436,11 +43912,14 @@ class View {
      * down to all #GtkContainer children by different means than turning on the
      * state flag down the hierarchy, both gtk_widget_get_state_flags() and
      * gtk_widget_is_sensitive() will make use of these.
+     * @param flags State flags to turn on
+     * @param clear Whether to clear state before turning on `flags`
      */
     set_state_flags(flags: Gtk.StateFlags, clear: boolean): void
     /**
      * Used to set the #GtkStyle for a widget (`widget->`style). Since
      * GTK 3, this function does nothing, the passed in style is ignored.
+     * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style?: Gtk.Style | null): void
     /**
@@ -40448,6 +43927,7 @@ class View {
      * `widget` will start receiving multiple, per device enter/leave events. Note
      * that if custom #GdkWindows are created in #GtkWidget::realize,
      * gdk_window_set_support_multidevice() will have to be called manually on them.
+     * @param support_multidevice %TRUE to support input from multiple devices.
      */
     set_support_multidevice(support_multidevice: boolean): void
     /**
@@ -40459,6 +43939,7 @@ class View {
      * 
      * See also the #GtkWidget:tooltip-markup property and
      * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
      */
     set_tooltip_markup(markup?: string | null): void
     /**
@@ -40467,6 +43948,7 @@ class View {
      * handler for the #GtkWidget::query-tooltip signal.
      * 
      * See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
+     * @param text the contents of the tooltip for `widget`
      */
     set_tooltip_text(text?: string | null): void
     /**
@@ -40475,11 +43957,13 @@ class View {
      * hiding `custom_window` at the right moment, to behave likewise as
      * the default tooltip window. If `custom_window` is %NULL, the default
      * tooltip window will be used.
+     * @param custom_window a #GtkWindow, or %NULL
      */
     set_tooltip_window(custom_window?: Gtk.Window | null): void
     /**
      * Sets the vertical alignment of `widget`.
      * See the #GtkWidget:valign property.
+     * @param align the vertical alignment
      */
     set_valign(align: Gtk.Align): void
     /**
@@ -40487,6 +43971,7 @@ class View {
      * space.
      * 
      * See gtk_widget_set_hexpand() for more detail.
+     * @param expand whether to expand
      */
     set_vexpand(expand: boolean): void
     /**
@@ -40494,6 +43979,7 @@ class View {
      * be used.
      * 
      * See gtk_widget_set_hexpand_set() for more detail.
+     * @param set value for vexpand-set property
      */
     set_vexpand_set(set: boolean): void
     /**
@@ -40504,6 +43990,7 @@ class View {
      * This function simply calls gtk_widget_show() or gtk_widget_hide()
      * but is nicer to use when the visibility of the widget depends on
      * some condition.
+     * @param visible whether the widget should be shown or not
      */
     set_visible(visible: boolean): void
     /**
@@ -40514,6 +44001,7 @@ class View {
      * 
      * Setting a new `visual` will not cause `widget` to recreate its windows,
      * so you should call this function before `widget` is realized.
+     * @param visual visual to be used or %NULL to unset a previous one
      */
     set_visual(visual?: Gdk.Visual | null): void
     /**
@@ -40528,12 +44016,14 @@ class View {
      * widget’s init() function.
      * 
      * Note that this function does not add any reference to `window`.
+     * @param window a #GdkWindow
      */
     set_window(window: Gdk.Window): void
     /**
      * Sets a shape for this widget’s GDK window. This allows for
      * transparent windows etc., see gdk_window_shape_combine_region()
      * for more information.
+     * @param region shape to be added, or %NULL to remove an existing shape
      */
     shape_combine_region(region?: cairo.Region | null): void
     /**
@@ -40575,6 +44065,7 @@ class View {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     size_allocate(allocation: Gtk.Allocation): void
     /**
@@ -40591,6 +44082,8 @@ class View {
      * 
      * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
      * baseline argument is ignored and -1 is used instead.
+     * @param allocation position and size to be allocated to `widget`
+     * @param baseline The baseline of the child, or -1
      */
     size_allocate_with_baseline(allocation: Gtk.Allocation, baseline: number): void
     /**
@@ -40625,6 +44118,8 @@ class View {
     style_attach(): void
     /**
      * Gets the value of a style property of `widget`.
+     * @param property_name the name of a style property
+     * @param value location to return the property value
      */
     style_get_property(property_name: string, value: any): void
     /**
@@ -40638,6 +44133,9 @@ class View {
      * relative to `dest_widget’`s allocations. In order to perform this
      * operation, both widgets must be realized, and must share a common
      * toplevel.
+     * @param dest_widget a #GtkWidget
+     * @param src_x X position relative to `src_widget`
+     * @param src_y Y position relative to `src_widget`
      */
     translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [ /* returnType */ boolean, /* dest_x */ number | null, /* dest_y */ number | null ]
     /**
@@ -40667,12 +44165,14 @@ class View {
      * Unregisters a #GdkWindow from the widget that was previously set up with
      * gtk_widget_register_window(). You need to call this when the window is
      * no longer used by the widget, such as when you destroy it.
+     * @param window a #GdkWindow
      */
     unregister_window(window: Gdk.Window): void
     /**
      * This function is for use in widget implementations. Turns off flag
      * values for the current widget state (insensitive, prelighted, etc.).
      * See gtk_widget_set_state_flags().
+     * @param flags State flags to turn off
      */
     unset_state_flags(flags: Gtk.StateFlags): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -40710,6 +44210,10 @@ class View {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -40720,6 +44224,12 @@ class View {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -40743,6 +44253,7 @@ class View {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -40762,11 +44273,14 @@ class View {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -40774,6 +44288,8 @@ class View {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -40791,6 +44307,7 @@ class View {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -40836,6 +44353,7 @@ class View {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -40879,15 +44397,20 @@ class View {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -40928,6 +44451,7 @@ class View {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -40962,12 +44486,16 @@ class View {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gtk-3.0.Gtk.Buildable */
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -40975,24 +44503,39 @@ class View {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -41001,14 +44544,19 @@ class View {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     set_name(name: string): void
     /* Methods of Gtk-3.0.Gtk.Scrollable */
@@ -41030,22 +44578,26 @@ class View {
     get_vscroll_policy(): Gtk.ScrollablePolicy
     /**
      * Sets the horizontal adjustment of the #GtkScrollable.
+     * @param hadjustment a #GtkAdjustment
      */
     set_hadjustment(hadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * horizontal scrolling should start below the minimum width or
      * below the natural width.
+     * @param policy the horizontal #GtkScrollablePolicy
      */
     set_hscroll_policy(policy: Gtk.ScrollablePolicy): void
     /**
      * Sets the vertical adjustment of the #GtkScrollable.
+     * @param vadjustment a #GtkAdjustment
      */
     set_vadjustment(vadjustment?: Gtk.Adjustment | null): void
     /**
      * Sets the #GtkScrollablePolicy to determine whether
      * vertical scrolling should start below the minimum height or
      * below the natural height.
+     * @param policy the vertical #GtkScrollablePolicy
      */
     set_vscroll_policy(policy: Gtk.ScrollablePolicy): void
     /* Virtual methods of GtkSource-4.GtkSource.View */
@@ -41058,6 +44610,9 @@ class View {
     /**
      * Adds a child to `buildable`. `type` is an optional string
      * describing how the child should be added.
+     * @param builder a #GtkBuilder
+     * @param child child to add
+     * @param type kind of child or %NULL
      */
     vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void
     /**
@@ -41065,24 +44620,39 @@ class View {
      * 
      * #GtkBuilder calls this function if a “constructor” has been
      * specified in the UI definition.
+     * @param builder #GtkBuilder used to construct this object
+     * @param name name of child to construct
      */
     vfunc_construct_child(builder: Gtk.Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
+     * @param builder a #GtkBuilder
+     * @param child child object or %NULL for non-child tags
+     * @param tagname the name of the tag
+     * @param data user data created in custom_tag_start
      */
     vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
+     * @param builder #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
+     * @param data user data that will be passed in to parser functions
      */
     vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: object | null): void
     /**
      * This is called for each unknown element under `<child>`.
+     * @param builder a #GtkBuilder used to construct this object
+     * @param child child object or %NULL for non-child tags
+     * @param tagname name of tag
      */
     vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ object | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param childname name of child
      */
     vfunc_get_internal_child(builder: Gtk.Builder, childname: string): GObject.Object
     /**
@@ -41099,14 +44669,19 @@ class View {
      * Note that this will be called once for each time
      * gtk_builder_add_from_file() or gtk_builder_add_from_string()
      * is called on a builder.
+     * @param builder a #GtkBuilder
      */
     vfunc_parser_finished(builder: Gtk.Builder): void
     /**
      * Sets the property name `name` to `value` on the `buildable` object.
+     * @param builder a #GtkBuilder
+     * @param name name of property
+     * @param value value of property
      */
     vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
+     * @param name name to set
      */
     vfunc_set_name(name: string): void
     /**
@@ -41145,6 +44720,7 @@ class View {
      * Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
      * may add intermediate children between the added widget and the
      * container.
+     * @param widget a widget to be placed inside `container`
      */
     vfunc_add(widget: Gtk.Widget): void
     vfunc_check_resize(): void
@@ -41166,12 +44742,15 @@ class View {
      * 
      * Most applications should use gtk_container_foreach(), rather
      * than gtk_container_forall().
+     * @param include_internals 
+     * @param callback a callback
      */
     vfunc_forall(include_internals: boolean, callback: Gtk.Callback): void
     vfunc_get_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
     /**
      * Returns a newly created widget path representing all the widget hierarchy
      * from the toplevel down to and including `child`.
+     * @param child a child of `container`
      */
     vfunc_get_path_for_child(child: Gtk.Widget): Gtk.WidgetPath
     /**
@@ -41184,6 +44763,7 @@ class View {
      * again it’s usually more efficient to simply destroy it directly
      * using gtk_widget_destroy() since this will remove it from the
      * container and help break any circular reference count cycles.
+     * @param widget a current child of `container`
      */
     vfunc_remove(widget: Gtk.Widget): void
     vfunc_set_child_property(child: Gtk.Widget, property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -41196,6 +44776,7 @@ class View {
      * 
      * This is function is mostly meant to be used by widgets. Applications can use
      * gtk_widget_grab_focus() to manually set the focus to a specific widget.
+     * @param child a #GtkWidget, or %NULL
      */
     vfunc_set_focus_child(child?: Gtk.Widget | null): void
     /* Virtual methods of Gtk-3.0.Gtk.Widget */
@@ -41213,6 +44794,7 @@ class View {
      * handler or in a derived widget, then the default check is
      * that the widget must be sensitive, and the widget and all
      * its ancestors mapped.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     vfunc_can_activate_accel(signal_id: number): boolean
     /**
@@ -41223,6 +44805,7 @@ class View {
      * This is the analogue of g_object_notify() for child properties.
      * 
      * Also see gtk_container_child_notify().
+     * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
     vfunc_child_notify(child_property: GObject.ParamSpec): void
     vfunc_composited_changed(): void
@@ -41287,6 +44870,7 @@ class View {
      * it were in the event queue. Don’t synthesize expose events; instead,
      * use gdk_window_invalidate_rect() to invalidate a region of the
      * window.
+     * @param event a #GdkEvent
      */
     vfunc_event(event: Gdk.Event): boolean
     vfunc_focus(direction: Gtk.DirectionType): boolean
@@ -41329,6 +44913,7 @@ class View {
      * and by any #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation, or -1 if none
      */
     vfunc_get_preferred_height_and_baseline_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null, /* minimum_baseline */ number | null, /* natural_baseline */ number | null ]
     /**
@@ -41340,6 +44925,7 @@ class View {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param width the width which is available for allocation
      */
     vfunc_get_preferred_height_for_width(width: number): [ /* minimum_height */ number | null, /* natural_height */ number | null ]
     /**
@@ -41363,6 +44949,7 @@ class View {
      * #GtkSizeGroups that have been applied. That is, the returned request
      * is the one that should be used for layout, not necessarily the one
      * returned by the widget itself.
+     * @param height the height which is available for allocation
      */
     vfunc_get_preferred_width_for_height(height: number): [ /* minimum_width */ number | null, /* natural_width */ number | null ]
     /**
@@ -41426,6 +45013,7 @@ class View {
      * #GtkEntry widgets where the user should be able to navigate the
      * entire row with the cursor keys, as e.g. known from user interfaces
      * that require entering license keys.
+     * @param direction direction of focus movement
      */
     vfunc_keynav_failed(direction: Gtk.DirectionType): boolean
     vfunc_leave_notify_event(event: Gdk.EventCrossing): boolean
@@ -41437,6 +45025,7 @@ class View {
     vfunc_map_event(event: Gdk.EventAny): boolean
     /**
      * Emits the #GtkWidget::mnemonic-activate signal.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     vfunc_mnemonic_activate(group_cycling: boolean): boolean
     vfunc_motion_notify_event(event: Gdk.EventMotion): boolean
@@ -41458,6 +45047,7 @@ class View {
      * Normally you would only use this function in widget
      * implementations. You might also use it to schedule a redraw of a
      * #GtkDrawingArea or some portion thereof.
+     * @param region region to draw
      */
     vfunc_queue_draw_region(region: cairo.Region): void
     /**
@@ -41520,6 +45110,7 @@ class View {
      * 
      * For baseline support in containers you need to use gtk_widget_size_allocate_with_baseline()
      * instead.
+     * @param allocation position and size to be allocated to `widget`
      */
     vfunc_size_allocate(allocation: Gtk.Allocation): void
     vfunc_state_changed(previous_state: Gtk.StateType): void
@@ -41558,18 +45149,21 @@ class View {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
     /* Signals of GtkSource-4.GtkSource.View */
     /**
      * Keybinding signal to change case of the text at the current cursor position.
+     * @param case_type the case to use
      */
     connect(sigName: "change-case", callback: (($obj: View, case_type: ChangeCaseType) => void)): number
     connect_after(sigName: "change-case", callback: (($obj: View, case_type: ChangeCaseType) => void)): number
     emit(sigName: "change-case", case_type: ChangeCaseType): void
     /**
      * Keybinding signal to edit a number at the current cursor position.
+     * @param count the number to add to the number at the current position
      */
     connect(sigName: "change-number", callback: (($obj: View, count: number) => void)): number
     connect_after(sigName: "change-number", callback: (($obj: View, count: number) => void)): number
@@ -41584,6 +45178,8 @@ class View {
      * Emitted when a line mark has been activated (for instance when there
      * was a button press in the line marks gutter). You can use `iter` to
      * determine on which line the activation took place.
+     * @param iter a #GtkTextIter
+     * @param event the #GdkEvent that activated the event
      */
     connect(sigName: "line-mark-activated", callback: (($obj: View, iter: Gtk.TextIter, event: Gdk.Event) => void)): number
     connect_after(sigName: "line-mark-activated", callback: (($obj: View, iter: Gtk.TextIter, event: Gdk.Event) => void)): number
@@ -41593,12 +45189,14 @@ class View {
      * when the user initiates moving a line. The default binding key
      * is Alt+Up/Down arrow. And moves the currently selected lines,
      * or the current line up or down by one line.
+     * @param down %TRUE to move down, %FALSE to move up.
      */
     connect(sigName: "move-lines", callback: (($obj: View, down: boolean) => void)): number
     connect_after(sigName: "move-lines", callback: (($obj: View, down: boolean) => void)): number
     emit(sigName: "move-lines", down: boolean): void
     /**
      * Keybinding signal to move the cursor to the matching bracket.
+     * @param extend_selection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-to-matching-bracket", callback: (($obj: View, extend_selection: boolean) => void)): number
     connect_after(sigName: "move-to-matching-bracket", callback: (($obj: View, extend_selection: boolean) => void)): number
@@ -41608,6 +45206,7 @@ class View {
      * when the user initiates moving a word. The default binding key
      * is Alt+Left/Right Arrow and moves the current selection, or the current
      * word by one word.
+     * @param count the number of words to move over
      */
     connect(sigName: "move-words", callback: (($obj: View, count: number) => void)): number
     connect_after(sigName: "move-words", callback: (($obj: View, count: number) => void)): number
@@ -41636,6 +45235,8 @@ class View {
      * during the GtkTextView::move-cursor action. This can be used to find
      * out whether the cursor was moved by a normal home/end or by a smart
      * home/end.
+     * @param iter a #GtkTextIter
+     * @param count the count
      */
     connect(sigName: "smart-home-end", callback: (($obj: View, iter: Gtk.TextIter, count: number) => void)): number
     connect_after(sigName: "smart-home-end", callback: (($obj: View, iter: Gtk.TextIter, count: number) => void)): number
@@ -41690,6 +45291,8 @@ class View {
      * Delete for deleting a character, Ctrl-Delete for
      * deleting a word and Ctrl-Backspace for deleting a word
      * backwords.
+     * @param type the granularity of the deletion, as a #GtkDeleteType
+     * @param count the number of `type` units to delete
      */
     connect(sigName: "delete-from-cursor", callback: (($obj: View, type: Gtk.DeleteType, count: number) => void)): number
     connect_after(sigName: "delete-from-cursor", callback: (($obj: View, type: Gtk.DeleteType, count: number) => void)): number
@@ -41697,6 +45300,10 @@ class View {
     /**
      * The ::extend-selection signal is emitted when the selection needs to be
      * extended at `location`.
+     * @param granularity the granularity type
+     * @param location the location where to extend the selection
+     * @param start where the selection should start
+     * @param end where the selection should end
      */
     connect(sigName: "extend-selection", callback: (($obj: View, granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => boolean)): number
     connect_after(sigName: "extend-selection", callback: (($obj: View, granularity: Gtk.TextExtendSelection, location: Gtk.TextIter, start: Gtk.TextIter, end: Gtk.TextIter) => boolean)): number
@@ -41708,6 +45315,7 @@ class View {
      * fixed string at the cursor.
      * 
      * This signal has no default bindings.
+     * @param string the string to insert
      */
     connect(sigName: "insert-at-cursor", callback: (($obj: View, string: string) => void)): number
     connect_after(sigName: "insert-at-cursor", callback: (($obj: View, string: string) => void)): number
@@ -41742,6 +45350,9 @@ class View {
      * - Home/End keys move to the ends of the buffer
      * - PageUp/PageDown keys move vertically by pages
      * - Ctrl-PageUp/PageDown keys move horizontally by pages
+     * @param step the granularity of the move, as a #GtkMovementStep
+     * @param count the number of `step` units to move
+     * @param extend_selection %TRUE if the move should extend the selection
      */
     connect(sigName: "move-cursor", callback: (($obj: View, step: Gtk.MovementStep, count: number, extend_selection: boolean) => void)): number
     connect_after(sigName: "move-cursor", callback: (($obj: View, step: Gtk.MovementStep, count: number, extend_selection: boolean) => void)): number
@@ -41754,6 +45365,8 @@ class View {
      * is visible in a containing scrolled window.
      * 
      * There are no default bindings for this signal.
+     * @param step the granularity of the movement, as a #GtkScrollStep
+     * @param count the number of `step` units to move
      */
     connect(sigName: "move-viewport", callback: (($obj: View, step: Gtk.ScrollStep, count: number) => void)): number
     connect_after(sigName: "move-viewport", callback: (($obj: View, step: Gtk.ScrollStep, count: number) => void)): number
@@ -41785,6 +45398,7 @@ class View {
      * The signal handler should not make assumptions about the
      * type of `widget,` but check whether `popup` is a #GtkMenu
      * or #GtkToolbar or another kind of container.
+     * @param popup the container that is being populated
      */
     connect(sigName: "populate-popup", callback: (($obj: View, popup: Gtk.Widget) => void)): number
     connect_after(sigName: "populate-popup", callback: (($obj: View, popup: Gtk.Widget) => void)): number
@@ -41796,6 +45410,7 @@ class View {
      * 
      * This signal is only emitted if the text at the given position
      * is actually editable.
+     * @param preedit the current preedit string
      */
     connect(sigName: "preedit-changed", callback: (($obj: View, preedit: string) => void)): number
     connect_after(sigName: "preedit-changed", callback: (($obj: View, preedit: string) => void)): number
@@ -41808,6 +45423,7 @@ class View {
      * 
      * The default bindings for this signal are Ctrl-a and Ctrl-/
      * for selecting and Shift-Ctrl-a and Ctrl-\ for unselecting.
+     * @param select %TRUE to select, %FALSE to unselect
      */
     connect(sigName: "select-all", callback: (($obj: View, select: boolean) => void)): number
     connect_after(sigName: "select-all", callback: (($obj: View, select: boolean) => void)): number
@@ -41870,6 +45486,7 @@ class View {
      * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-press-event", callback: (($obj: View, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-press-event", callback: (($obj: View, event: Gdk.EventButton) => boolean)): number
@@ -41882,6 +45499,7 @@ class View {
      * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventButton which triggered   this signal.
      */
     connect(sigName: "button-release-event", callback: (($obj: View, event: Gdk.EventButton) => boolean)): number
     connect_after(sigName: "button-release-event", callback: (($obj: View, event: Gdk.EventButton) => boolean)): number
@@ -41892,6 +45510,7 @@ class View {
      * This signal is present to allow applications and derived
      * widgets to override the default #GtkWidget handling
      * for determining whether an accelerator can be activated.
+     * @param signal_id the ID of a signal installed on `widget`
      */
     connect(sigName: "can-activate-accel", callback: (($obj: View, signal_id: number) => boolean)): number
     connect_after(sigName: "can-activate-accel", callback: (($obj: View, signal_id: number) => boolean)): number
@@ -41900,6 +45519,7 @@ class View {
      * The ::child-notify signal is emitted for each
      * [child property][child-properties]  that has
      * changed on an object. The signal's detail holds the property name.
+     * @param child_property the #GParamSpec of the changed child property
      */
     connect(sigName: "child-notify", callback: (($obj: View, child_property: GObject.ParamSpec) => void)): number
     connect_after(sigName: "child-notify", callback: (($obj: View, child_property: GObject.ParamSpec) => void)): number
@@ -41919,6 +45539,7 @@ class View {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventConfigure which triggered   this signal.
      */
     connect(sigName: "configure-event", callback: (($obj: View, event: Gdk.EventConfigure) => boolean)): number
     connect_after(sigName: "configure-event", callback: (($obj: View, event: Gdk.EventConfigure) => boolean)): number
@@ -41927,6 +45548,7 @@ class View {
      * Emitted when a redirected window belonging to `widget` gets drawn into.
      * The region/area members of the event shows what area of the redirected
      * drawable was drawn into.
+     * @param event the #GdkEventExpose event
      */
     connect(sigName: "damage-event", callback: (($obj: View, event: Gdk.EventExpose) => boolean)): number
     connect_after(sigName: "damage-event", callback: (($obj: View, event: Gdk.EventExpose) => boolean)): number
@@ -41937,6 +45559,7 @@ class View {
      * destroys the window. Connecting gtk_widget_hide_on_delete() to
      * this signal will cause the window to be hidden instead, so that
      * it can later be shown again without reconstructing it.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "delete-event", callback: (($obj: View, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "delete-event", callback: (($obj: View, event: Gdk.Event) => boolean)): number
@@ -41960,6 +45583,7 @@ class View {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the event which triggered this signal
      */
     connect(sigName: "destroy-event", callback: (($obj: View, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "destroy-event", callback: (($obj: View, event: Gdk.Event) => boolean)): number
@@ -41967,6 +45591,7 @@ class View {
     /**
      * The ::direction-changed signal is emitted when the text direction
      * of a widget changes.
+     * @param previous_direction the previous text direction of `widget`
      */
     connect(sigName: "direction-changed", callback: (($obj: View, previous_direction: Gtk.TextDirection) => void)): number
     connect_after(sigName: "direction-changed", callback: (($obj: View, previous_direction: Gtk.TextDirection) => void)): number
@@ -41979,6 +45604,7 @@ class View {
      * Note that some widgets set up a drag icon in the default handler of
      * this signal, so you may have to use g_signal_connect_after() to
      * override what the default handler did.
+     * @param context the drag context
      */
     connect(sigName: "drag-begin", callback: (($obj: View, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-begin", callback: (($obj: View, context: Gdk.DragContext) => void)): number
@@ -41988,6 +45614,7 @@ class View {
      * with the action %GDK_ACTION_MOVE is successfully completed. The signal
      * handler is responsible for deleting the data that has been dropped. What
      * "delete" means depends on the context of the drag operation.
+     * @param context the drag context
      */
     connect(sigName: "drag-data-delete", callback: (($obj: View, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-data-delete", callback: (($obj: View, context: Gdk.DragContext) => void)): number
@@ -41998,6 +45625,10 @@ class View {
      * the signal handler to fill `data` with the data in the format which
      * is indicated by `info`. See gtk_selection_data_set() and
      * gtk_selection_data_set_text().
+     * @param context the drag context
+     * @param data the #GtkSelectionData to be filled with the dragged data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was requested
      */
     connect(sigName: "drag-data-get", callback: (($obj: View, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-get", callback: (($obj: View, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -42065,6 +45696,12 @@ class View {
      *  }
      * ```
      * 
+     * @param context the drag context
+     * @param x where the drop happened
+     * @param y where the drop happened
+     * @param data the received data
+     * @param info the info that has been registered with the target in the        #GtkTargetList
+     * @param time the timestamp at which the data was received
      */
     connect(sigName: "drag-data-received", callback: (($obj: View, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
     connect_after(sigName: "drag-data-received", callback: (($obj: View, context: Gdk.DragContext, x: number, y: number, data: Gtk.SelectionData, info: number, time: number) => void)): number
@@ -42080,6 +45717,10 @@ class View {
      * directly or in a #GtkWidget::drag-data-received handler which gets
      * triggered by calling gtk_drag_get_data() to receive the data for one
      * or more of the supported targets.
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-drop", callback: (($obj: View, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-drop", callback: (($obj: View, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -42088,6 +45729,7 @@ class View {
      * The ::drag-end signal is emitted on the drag source when a drag is
      * finished.  A typical reason to connect to this signal is to undo
      * things done in #GtkWidget::drag-begin.
+     * @param context the drag context
      */
     connect(sigName: "drag-end", callback: (($obj: View, context: Gdk.DragContext) => void)): number
     connect_after(sigName: "drag-end", callback: (($obj: View, context: Gdk.DragContext) => void)): number
@@ -42098,6 +45740,8 @@ class View {
      * operation based on the type of error, it returns %TRUE is the failure has
      * been already handled (not showing the default "drag operation failed"
      * animation), otherwise it returns %FALSE.
+     * @param context the drag context
+     * @param result the result of the drag operation
      */
     connect(sigName: "drag-failed", callback: (($obj: View, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
     connect_after(sigName: "drag-failed", callback: (($obj: View, context: Gdk.DragContext, result: Gtk.DragResult) => boolean)): number
@@ -42112,6 +45756,8 @@ class View {
      * Likewise, the #GtkWidget::drag-leave signal is also emitted before the
      * ::drag-drop signal, for instance to allow cleaning up of a preview item
      * created in the #GtkWidget::drag-motion signal handler.
+     * @param context the drag context
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-leave", callback: (($obj: View, context: Gdk.DragContext, time: number) => void)): number
     connect_after(sigName: "drag-leave", callback: (($obj: View, context: Gdk.DragContext, time: number) => void)): number
@@ -42205,6 +45851,10 @@ class View {
      * }
      * ```
      * 
+     * @param context the drag context
+     * @param x the x coordinate of the current cursor position
+     * @param y the y coordinate of the current cursor position
+     * @param time the timestamp of the motion event
      */
     connect(sigName: "drag-motion", callback: (($obj: View, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
     connect_after(sigName: "drag-motion", callback: (($obj: View, context: Gdk.DragContext, x: number, y: number, time: number) => boolean)): number
@@ -42227,6 +45877,7 @@ class View {
      * extents of the clip region with gdk_cairo_get_clip_rectangle(), or they can
      * get a finer-grained representation of the dirty region with
      * cairo_copy_clip_rectangle_list().
+     * @param cr the cairo context to draw to
      */
     connect(sigName: "draw", callback: (($obj: View, cr: cairo.Context) => boolean)): number
     connect_after(sigName: "draw", callback: (($obj: View, cr: cairo.Context) => boolean)): number
@@ -42239,6 +45890,7 @@ class View {
      * to enable the #GDK_ENTER_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "enter-notify-event", callback: (($obj: View, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "enter-notify-event", callback: (($obj: View, event: Gdk.EventCrossing) => boolean)): number
@@ -42249,6 +45901,7 @@ class View {
      * signal that matches the type of event delivered (e.g.
      * #GtkWidget::key-press-event) and finally a generic
      * #GtkWidget::event-after signal.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event", callback: (($obj: View, event: Gdk.Event) => boolean)): number
     connect_after(sigName: "event", callback: (($obj: View, event: Gdk.Event) => boolean)): number
@@ -42257,6 +45910,7 @@ class View {
      * After the emission of the #GtkWidget::event signal and (optionally)
      * the second more specific signal, ::event-after will be emitted
      * regardless of the previous two signals handlers return values.
+     * @param event the #GdkEvent which triggered this signal
      */
     connect(sigName: "event-after", callback: (($obj: View, event: Gdk.Event) => void)): number
     connect_after(sigName: "event-after", callback: (($obj: View, event: Gdk.Event) => void)): number
@@ -42270,6 +45924,7 @@ class View {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered   this signal.
      */
     connect(sigName: "focus-in-event", callback: (($obj: View, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-in-event", callback: (($obj: View, event: Gdk.EventFocus) => boolean)): number
@@ -42280,6 +45935,7 @@ class View {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+     * @param event the #GdkEventFocus which triggered this   signal.
      */
     connect(sigName: "focus-out-event", callback: (($obj: View, event: Gdk.EventFocus) => boolean)): number
     connect_after(sigName: "focus-out-event", callback: (($obj: View, event: Gdk.EventFocus) => boolean)): number
@@ -42291,6 +45947,7 @@ class View {
      * On X11, this happens when the grab window becomes unviewable
      * (i.e. it or one of its ancestors is unmapped), or if the same
      * application grabs the pointer or keyboard again.
+     * @param event the #GdkEventGrabBroken event
      */
     connect(sigName: "grab-broken-event", callback: (($obj: View, event: Gdk.EventGrabBroken) => boolean)): number
     connect_after(sigName: "grab-broken-event", callback: (($obj: View, event: Gdk.EventGrabBroken) => boolean)): number
@@ -42307,6 +45964,7 @@ class View {
      * A widget is shadowed by a gtk_grab_add() when the topmost
      * grab widget in the grab stack of its window group is not
      * its ancestor.
+     * @param was_grabbed %FALSE if the widget becomes shadowed, %TRUE               if it becomes unshadowed
      */
     connect(sigName: "grab-notify", callback: (($obj: View, was_grabbed: boolean) => void)): number
     connect_after(sigName: "grab-notify", callback: (($obj: View, was_grabbed: boolean) => void)): number
@@ -42324,6 +45982,7 @@ class View {
      * “anchored” when its toplevel
      * ancestor is a #GtkWindow. This signal is emitted when
      * a widget changes from un-anchored to anchored or vice-versa.
+     * @param previous_toplevel the previous toplevel ancestor, or %NULL   if the widget was previously unanchored
      */
     connect(sigName: "hierarchy-changed", callback: (($obj: View, previous_toplevel?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "hierarchy-changed", callback: (($obj: View, previous_toplevel?: Gtk.Widget | null) => void)): number
@@ -42336,6 +45995,7 @@ class View {
      * to enable the #GDK_KEY_PRESS_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-press-event", callback: (($obj: View, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-press-event", callback: (($obj: View, event: Gdk.EventKey) => boolean)): number
@@ -42347,6 +46007,7 @@ class View {
      * to enable the #GDK_KEY_RELEASE_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventKey which triggered this signal.
      */
     connect(sigName: "key-release-event", callback: (($obj: View, event: Gdk.EventKey) => boolean)): number
     connect_after(sigName: "key-release-event", callback: (($obj: View, event: Gdk.EventKey) => boolean)): number
@@ -42354,6 +46015,7 @@ class View {
     /**
      * Gets emitted if keyboard navigation fails.
      * See gtk_widget_keynav_failed() for details.
+     * @param direction the direction of movement
      */
     connect(sigName: "keynav-failed", callback: (($obj: View, direction: Gtk.DirectionType) => boolean)): number
     connect_after(sigName: "keynav-failed", callback: (($obj: View, direction: Gtk.DirectionType) => boolean)): number
@@ -42366,6 +46028,7 @@ class View {
      * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventCrossing which triggered   this signal.
      */
     connect(sigName: "leave-notify-event", callback: (($obj: View, event: Gdk.EventCrossing) => boolean)): number
     connect_after(sigName: "leave-notify-event", callback: (($obj: View, event: Gdk.EventCrossing) => boolean)): number
@@ -42391,6 +46054,7 @@ class View {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal.
      */
     connect(sigName: "map-event", callback: (($obj: View, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "map-event", callback: (($obj: View, event: Gdk.EventAny) => boolean)): number
@@ -42398,6 +46062,7 @@ class View {
     /**
      * The default handler for this signal activates `widget` if `group_cycling`
      * is %FALSE, or just makes `widget` grab focus if `group_cycling` is %TRUE.
+     * @param group_cycling %TRUE if there are other widgets with the same mnemonic
      */
     connect(sigName: "mnemonic-activate", callback: (($obj: View, group_cycling: boolean) => boolean)): number
     connect_after(sigName: "mnemonic-activate", callback: (($obj: View, group_cycling: boolean) => boolean)): number
@@ -42410,6 +46075,7 @@ class View {
      * needs to enable the #GDK_POINTER_MOTION_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventMotion which triggered   this signal.
      */
     connect(sigName: "motion-notify-event", callback: (($obj: View, event: Gdk.EventMotion) => boolean)): number
     connect_after(sigName: "motion-notify-event", callback: (($obj: View, event: Gdk.EventMotion) => boolean)): number
@@ -42420,6 +46086,7 @@ class View {
     /**
      * The ::parent-set signal is emitted when a new parent
      * has been set on a widget.
+     * @param old_parent the previous parent, or %NULL if the widget   just got its initial parent.
      */
     connect(sigName: "parent-set", callback: (($obj: View, old_parent?: Gtk.Widget | null) => void)): number
     connect_after(sigName: "parent-set", callback: (($obj: View, old_parent?: Gtk.Widget | null) => void)): number
@@ -42442,6 +46109,7 @@ class View {
      * 
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+     * @param event the #GdkEventProperty which triggered   this signal.
      */
     connect(sigName: "property-notify-event", callback: (($obj: View, event: Gdk.EventProperty) => boolean)): number
     connect_after(sigName: "property-notify-event", callback: (($obj: View, event: Gdk.EventProperty) => boolean)): number
@@ -42451,6 +46119,7 @@ class View {
      * to enable the #GDK_PROXIMITY_IN_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-in-event", callback: (($obj: View, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-in-event", callback: (($obj: View, event: Gdk.EventProximity) => boolean)): number
@@ -42460,6 +46129,7 @@ class View {
      * to enable the #GDK_PROXIMITY_OUT_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventProximity which triggered   this signal.
      */
     connect(sigName: "proximity-out-event", callback: (($obj: View, event: Gdk.EventProximity) => boolean)): number
     connect_after(sigName: "proximity-out-event", callback: (($obj: View, event: Gdk.EventProximity) => boolean)): number
@@ -42477,6 +46147,10 @@ class View {
      * 
      * The signal handler is free to manipulate `tooltip` with the therefore
      * destined function calls.
+     * @param x the x coordinate of the cursor position where the request has     been emitted, relative to `widget'`s left side
+     * @param y the y coordinate of the cursor position where the request has     been emitted, relative to `widget'`s top
+     * @param keyboard_mode %TRUE if the tooltip was triggered using the keyboard
+     * @param tooltip a #GtkTooltip
      */
     connect(sigName: "query-tooltip", callback: (($obj: View, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
     connect_after(sigName: "query-tooltip", callback: (($obj: View, x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean)): number
@@ -42492,6 +46166,7 @@ class View {
     /**
      * The ::screen-changed signal gets emitted when the
      * screen of a widget has changed.
+     * @param previous_screen the previous screen, or %NULL if the   widget was not associated with a screen before
      */
     connect(sigName: "screen-changed", callback: (($obj: View, previous_screen?: Gdk.Screen | null) => void)): number
     connect_after(sigName: "screen-changed", callback: (($obj: View, previous_screen?: Gdk.Screen | null) => void)): number
@@ -42505,6 +46180,7 @@ class View {
      * to enable the #GDK_SCROLL_MASK mask.
      * 
      * This signal will be sent to the grab widget if there is one.
+     * @param event the #GdkEventScroll which triggered   this signal.
      */
     connect(sigName: "scroll-event", callback: (($obj: View, event: Gdk.EventScroll) => boolean)): number
     connect_after(sigName: "scroll-event", callback: (($obj: View, event: Gdk.EventScroll) => boolean)): number
@@ -42512,6 +46188,7 @@ class View {
     /**
      * The ::selection-clear-event signal will be emitted when the
      * the `widget'`s window has lost ownership of a selection.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-clear-event", callback: (($obj: View, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-clear-event", callback: (($obj: View, event: Gdk.EventSelection) => boolean)): number
@@ -42529,6 +46206,7 @@ class View {
      * The ::selection-request-event signal will be emitted when
      * another client requests ownership of the selection owned by
      * the `widget'`s window.
+     * @param event the #GdkEventSelection which triggered   this signal.
      */
     connect(sigName: "selection-request-event", callback: (($obj: View, event: Gdk.EventSelection) => boolean)): number
     connect_after(sigName: "selection-request-event", callback: (($obj: View, event: Gdk.EventSelection) => boolean)): number
@@ -42549,6 +46227,7 @@ class View {
     /**
      * The ::state-changed signal is emitted when the widget state changes.
      * See gtk_widget_get_state().
+     * @param state the previous state
      */
     connect(sigName: "state-changed", callback: (($obj: View, state: Gtk.StateType) => void)): number
     connect_after(sigName: "state-changed", callback: (($obj: View, state: Gtk.StateType) => void)): number
@@ -42556,6 +46235,7 @@ class View {
     /**
      * The ::state-flags-changed signal is emitted when the widget state
      * changes, see gtk_widget_get_state_flags().
+     * @param flags The previous state flags.
      */
     connect(sigName: "state-flags-changed", callback: (($obj: View, flags: Gtk.StateFlags) => void)): number
     connect_after(sigName: "state-flags-changed", callback: (($obj: View, flags: Gtk.StateFlags) => void)): number
@@ -42568,6 +46248,7 @@ class View {
      * Note that this signal is emitted for changes to the deprecated
      * #GtkStyle. To track changes to the #GtkStyleContext associated
      * with a widget, use the #GtkWidget::style-updated signal.
+     * @param previous_style the previous style, or %NULL if the widget   just got its initial style
      */
     connect(sigName: "style-set", callback: (($obj: View, previous_style?: Gtk.Style | null) => void)): number
     connect_after(sigName: "style-set", callback: (($obj: View, previous_style?: Gtk.Style | null) => void)): number
@@ -42604,6 +46285,7 @@ class View {
      * To receive this signal, the #GdkWindow associated to the widget needs
      * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
      * automatically for all new windows.
+     * @param event the #GdkEventAny which triggered this signal
      */
     connect(sigName: "unmap-event", callback: (($obj: View, event: Gdk.EventAny) => boolean)): number
     connect_after(sigName: "unmap-event", callback: (($obj: View, event: Gdk.EventAny) => boolean)): number
@@ -42623,6 +46305,7 @@ class View {
      * 
      * To receive this signal the #GdkWindow associated to the widget needs
      * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+     * @param event the #GdkEventVisibility which   triggered this signal.
      */
     connect(sigName: "visibility-notify-event", callback: (($obj: View, event: Gdk.EventVisibility) => boolean)): number
     connect_after(sigName: "visibility-notify-event", callback: (($obj: View, event: Gdk.EventVisibility) => boolean)): number
@@ -42634,6 +46317,7 @@ class View {
      * To receive this signal the #GdkWindow associated to the widget
      * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
      * this mask automatically for all new windows.
+     * @param event the #GdkEventWindowState which   triggered this signal.
      */
     connect(sigName: "window-state-event", callback: (($obj: View, event: Gdk.EventWindowState) => boolean)): number
     connect_after(sigName: "window-state-event", callback: (($obj: View, event: Gdk.EventWindowState) => boolean)): number
@@ -42667,6 +46351,7 @@ class View {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: View, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: View, pspec: GObject.ParamSpec) => void)): number
@@ -42851,11 +46536,11 @@ class View {
 }
 abstract class BufferClass {
     /* Fields of GtkSource-4.GtkSource.BufferClass */
-    readonly parent_class: Gtk.TextBufferClass
-    readonly undo: (buffer: Buffer) => void
-    readonly redo: (buffer: Buffer) => void
-    readonly bracket_matched: (buffer: Buffer, iter: Gtk.TextIter, state: BracketMatchType) => void
-    readonly padding: object[]
+    parent_class: Gtk.TextBufferClass
+    undo: (buffer: Buffer) => void
+    redo: (buffer: Buffer) => void
+    bracket_matched: (buffer: Buffer, iter: Gtk.TextIter, state: BracketMatchType) => void
+    padding: object[]
     static name: string
 }
 class BufferPrivate {
@@ -42863,22 +46548,22 @@ class BufferPrivate {
 }
 abstract class CompletionClass {
     /* Fields of GtkSource-4.GtkSource.CompletionClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly proposal_activated: (completion: Completion, provider: CompletionProvider, proposal: CompletionProposal) => boolean
-    readonly show: (completion: Completion) => void
-    readonly hide: (completion: Completion) => void
-    readonly populate_context: (completion: Completion, context: CompletionContext) => void
-    readonly move_cursor: (completion: Completion, step: Gtk.ScrollStep, num: number) => void
-    readonly move_page: (completion: Completion, step: Gtk.ScrollStep, num: number) => void
-    readonly activate_proposal: (completion: Completion) => void
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    proposal_activated: (completion: Completion, provider: CompletionProvider, proposal: CompletionProposal) => boolean
+    show: (completion: Completion) => void
+    hide: (completion: Completion) => void
+    populate_context: (completion: Completion, context: CompletionContext) => void
+    move_cursor: (completion: Completion, step: Gtk.ScrollStep, num: number) => void
+    move_page: (completion: Completion, step: Gtk.ScrollStep, num: number) => void
+    activate_proposal: (completion: Completion) => void
+    padding: object[]
     static name: string
 }
 abstract class CompletionContextClass {
     /* Fields of GtkSource-4.GtkSource.CompletionContextClass */
-    readonly parent_class: GObject.InitiallyUnownedClass
-    readonly cancelled: (context: CompletionContext) => void
-    readonly padding: object[]
+    parent_class: GObject.InitiallyUnownedClass
+    cancelled: (context: CompletionContext) => void
+    padding: object[]
     static name: string
 }
 class CompletionContextPrivate {
@@ -42886,8 +46571,8 @@ class CompletionContextPrivate {
 }
 abstract class CompletionInfoClass {
     /* Fields of GtkSource-4.GtkSource.CompletionInfoClass */
-    readonly parent_class: Gtk.WindowClass
-    readonly padding: object[]
+    parent_class: Gtk.WindowClass
+    padding: object[]
     static name: string
 }
 class CompletionInfoPrivate {
@@ -42895,8 +46580,8 @@ class CompletionInfoPrivate {
 }
 abstract class CompletionItemClass {
     /* Fields of GtkSource-4.GtkSource.CompletionItemClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class CompletionItemPrivate {
@@ -42910,17 +46595,17 @@ abstract class CompletionProposalIface {
     /**
      * The parent interface.
      */
-    readonly parent: GObject.TypeInterface
-    readonly get_label: (proposal: CompletionProposal) => string
-    readonly get_markup: (proposal: CompletionProposal) => string
-    readonly get_text: (proposal: CompletionProposal) => string
-    readonly get_icon: (proposal: CompletionProposal) => GdkPixbuf.Pixbuf | null
-    readonly get_icon_name: (proposal: CompletionProposal) => string | null
-    readonly get_gicon: (proposal: CompletionProposal) => Gio.Icon | null
-    readonly get_info: (proposal: CompletionProposal) => string | null
-    readonly hash: (proposal: CompletionProposal) => number
-    readonly equal: (proposal: CompletionProposal, other: CompletionProposal) => boolean
-    readonly changed: (proposal: CompletionProposal) => void
+    parent: GObject.TypeInterface
+    get_label: (proposal: CompletionProposal) => string
+    get_markup: (proposal: CompletionProposal) => string
+    get_text: (proposal: CompletionProposal) => string
+    get_icon: (proposal: CompletionProposal) => GdkPixbuf.Pixbuf | null
+    get_icon_name: (proposal: CompletionProposal) => string | null
+    get_gicon: (proposal: CompletionProposal) => Gio.Icon | null
+    get_info: (proposal: CompletionProposal) => string | null
+    hash: (proposal: CompletionProposal) => number
+    equal: (proposal: CompletionProposal, other: CompletionProposal) => boolean
+    changed: (proposal: CompletionProposal) => void
     static name: string
 }
 abstract class CompletionProviderIface {
@@ -42928,25 +46613,25 @@ abstract class CompletionProviderIface {
     /**
      * The parent interface.
      */
-    readonly g_iface: GObject.TypeInterface
-    readonly get_name: (provider: CompletionProvider) => string
-    readonly get_icon: (provider: CompletionProvider) => GdkPixbuf.Pixbuf | null
-    readonly get_icon_name: (provider: CompletionProvider) => string | null
-    readonly get_gicon: (provider: CompletionProvider) => Gio.Icon | null
-    readonly populate: (provider: CompletionProvider, context: CompletionContext) => void
-    readonly match: (provider: CompletionProvider, context: CompletionContext) => boolean
-    readonly get_activation: (provider: CompletionProvider) => CompletionActivation
-    readonly get_info_widget: (provider: CompletionProvider, proposal: CompletionProposal) => Gtk.Widget | null
-    readonly update_info: (provider: CompletionProvider, proposal: CompletionProposal, info: CompletionInfo) => void
-    readonly get_start_iter: (provider: CompletionProvider, context: CompletionContext, proposal: CompletionProposal) => [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
-    readonly activate_proposal: (provider: CompletionProvider, proposal: CompletionProposal, iter: Gtk.TextIter) => boolean
-    readonly get_interactive_delay: (provider: CompletionProvider) => number
-    readonly get_priority: (provider: CompletionProvider) => number
+    g_iface: GObject.TypeInterface
+    get_name: (provider: CompletionProvider) => string
+    get_icon: (provider: CompletionProvider) => GdkPixbuf.Pixbuf | null
+    get_icon_name: (provider: CompletionProvider) => string | null
+    get_gicon: (provider: CompletionProvider) => Gio.Icon | null
+    populate: (provider: CompletionProvider, context: CompletionContext) => void
+    match: (provider: CompletionProvider, context: CompletionContext) => boolean
+    get_activation: (provider: CompletionProvider) => CompletionActivation
+    get_info_widget: (provider: CompletionProvider, proposal: CompletionProposal) => Gtk.Widget | null
+    update_info: (provider: CompletionProvider, proposal: CompletionProposal, info: CompletionInfo) => void
+    get_start_iter: (provider: CompletionProvider, context: CompletionContext, proposal: CompletionProposal) => [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    activate_proposal: (provider: CompletionProvider, proposal: CompletionProposal, iter: Gtk.TextIter) => boolean
+    get_interactive_delay: (provider: CompletionProvider) => number
+    get_priority: (provider: CompletionProvider) => number
     static name: string
 }
 abstract class CompletionWordsClass {
     /* Fields of GtkSource-4.GtkSource.CompletionWordsClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CompletionWordsPrivate {
@@ -42994,20 +46679,21 @@ class Encoding {
     /**
      * Gets a #GtkSourceEncoding from a character set such as "UTF-8" or
      * "ISO-8859-1".
+     * @param charset a character set.
      */
     static get_from_charset(charset: string): Encoding | null
     static get_utf8(): Encoding
 }
 abstract class FileClass {
     /* Fields of GtkSource-4.GtkSource.FileClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 abstract class FileLoaderClass {
     /* Fields of GtkSource-4.GtkSource.FileLoaderClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class FileLoaderPrivate {
@@ -43018,8 +46704,8 @@ class FilePrivate {
 }
 abstract class FileSaverClass {
     /* Fields of GtkSource-4.GtkSource.FileSaverClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class FileSaverPrivate {
@@ -43027,8 +46713,8 @@ class FileSaverPrivate {
 }
 abstract class GutterClass {
     /* Fields of GtkSource-4.GtkSource.GutterClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class GutterPrivate {
@@ -43036,18 +46722,18 @@ class GutterPrivate {
 }
 abstract class GutterRendererClass {
     /* Fields of GtkSource-4.GtkSource.GutterRendererClass */
-    readonly parent_class: GObject.InitiallyUnownedClass
-    readonly begin: (renderer: GutterRenderer, cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter) => void
-    readonly draw: (renderer: GutterRenderer, cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void
-    readonly end: (renderer: GutterRenderer) => void
-    readonly change_view: (renderer: GutterRenderer, old_view?: Gtk.TextView | null) => void
-    readonly change_buffer: (renderer: GutterRenderer, old_buffer?: Gtk.TextBuffer | null) => void
-    readonly query_activatable: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean
-    readonly activate: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void
-    readonly queue_draw: (renderer: GutterRenderer) => void
-    readonly query_tooltip: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean
-    readonly query_data: (renderer: GutterRenderer, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void
-    readonly padding: object[]
+    parent_class: GObject.InitiallyUnownedClass
+    begin: (renderer: GutterRenderer, cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter) => void
+    draw: (renderer: GutterRenderer, cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void
+    end: (renderer: GutterRenderer) => void
+    change_view: (renderer: GutterRenderer, old_view?: Gtk.TextView | null) => void
+    change_buffer: (renderer: GutterRenderer, old_buffer?: Gtk.TextBuffer | null) => void
+    query_activatable: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean
+    activate: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void
+    queue_draw: (renderer: GutterRenderer) => void
+    query_tooltip: (renderer: GutterRenderer, iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean
+    query_data: (renderer: GutterRenderer, start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void
+    padding: object[]
     static name: string
 }
 abstract class GutterRendererPixbufClass {
@@ -43067,14 +46753,14 @@ class GutterRendererTextPrivate {
 }
 abstract class LanguageClass {
     /* Fields of GtkSource-4.GtkSource.LanguageClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 abstract class LanguageManagerClass {
     /* Fields of GtkSource-4.GtkSource.LanguageManagerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class LanguageManagerPrivate {
@@ -43085,8 +46771,8 @@ class LanguagePrivate {
 }
 abstract class MapClass {
     /* Fields of GtkSource-4.GtkSource.MapClass */
-    readonly parent_class: ViewClass
-    readonly padding: object[]
+    parent_class: ViewClass
+    padding: object[]
     static name: string
 }
 abstract class MarkAttributesClass {
@@ -43097,8 +46783,8 @@ class MarkAttributesPrivate {
 }
 abstract class MarkClass {
     /* Fields of GtkSource-4.GtkSource.MarkClass */
-    readonly parent_class: Gtk.TextMarkClass
-    readonly padding: object[]
+    parent_class: Gtk.TextMarkClass
+    padding: object[]
     static name: string
 }
 class MarkPrivate {
@@ -43106,8 +46792,8 @@ class MarkPrivate {
 }
 abstract class PrintCompositorClass {
     /* Fields of GtkSource-4.GtkSource.PrintCompositorClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class PrintCompositorPrivate {
@@ -43115,8 +46801,8 @@ class PrintCompositorPrivate {
 }
 abstract class RegionClass {
     /* Fields of GtkSource-4.GtkSource.RegionClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class RegionIter {
@@ -43134,8 +46820,8 @@ class RegionIter {
 }
 abstract class SearchContextClass {
     /* Fields of GtkSource-4.GtkSource.SearchContextClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class SearchContextPrivate {
@@ -43143,8 +46829,8 @@ class SearchContextPrivate {
 }
 abstract class SearchSettingsClass {
     /* Fields of GtkSource-4.GtkSource.SearchSettingsClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class SearchSettingsPrivate {
@@ -43152,8 +46838,8 @@ class SearchSettingsPrivate {
 }
 abstract class SpaceDrawerClass {
     /* Fields of GtkSource-4.GtkSource.SpaceDrawerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class SpaceDrawerPrivate {
@@ -43164,34 +46850,34 @@ abstract class StyleClass {
 }
 abstract class StyleSchemeChooserButtonClass {
     /* Fields of GtkSource-4.GtkSource.StyleSchemeChooserButtonClass */
-    readonly parent: Gtk.ButtonClass
-    readonly padding: object[]
+    parent: Gtk.ButtonClass
+    padding: object[]
     static name: string
 }
 abstract class StyleSchemeChooserInterface {
     /* Fields of GtkSource-4.GtkSource.StyleSchemeChooserInterface */
-    readonly base_interface: GObject.TypeInterface
-    readonly get_style_scheme: (chooser: StyleSchemeChooser) => StyleScheme
-    readonly set_style_scheme: (chooser: StyleSchemeChooser, scheme: StyleScheme) => void
-    readonly padding: object[]
+    base_interface: GObject.TypeInterface
+    get_style_scheme: (chooser: StyleSchemeChooser) => StyleScheme
+    set_style_scheme: (chooser: StyleSchemeChooser, scheme: StyleScheme) => void
+    padding: object[]
     static name: string
 }
 abstract class StyleSchemeChooserWidgetClass {
     /* Fields of GtkSource-4.GtkSource.StyleSchemeChooserWidgetClass */
-    readonly parent: Gtk.BinClass
-    readonly padding: object[]
+    parent: Gtk.BinClass
+    padding: object[]
     static name: string
 }
 abstract class StyleSchemeClass {
     /* Fields of GtkSource-4.GtkSource.StyleSchemeClass */
-    readonly base_class: GObject.ObjectClass
-    readonly padding: object[]
+    base_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 abstract class StyleSchemeManagerClass {
     /* Fields of GtkSource-4.GtkSource.StyleSchemeManagerClass */
-    readonly parent_class: GObject.ObjectClass
-    readonly padding: object[]
+    parent_class: GObject.ObjectClass
+    padding: object[]
     static name: string
 }
 class StyleSchemeManagerPrivate {
@@ -43202,33 +46888,33 @@ class StyleSchemePrivate {
 }
 abstract class TagClass {
     /* Fields of GtkSource-4.GtkSource.TagClass */
-    readonly parent_class: Gtk.TextTagClass
-    readonly padding: object[]
+    parent_class: Gtk.TextTagClass
+    padding: object[]
     static name: string
 }
 abstract class UndoManagerIface {
     /* Fields of GtkSource-4.GtkSource.UndoManagerIface */
-    readonly parent: GObject.TypeInterface
-    readonly can_undo: (manager: UndoManager) => boolean
-    readonly can_redo: (manager: UndoManager) => boolean
-    readonly undo: (manager: UndoManager) => void
-    readonly redo: (manager: UndoManager) => void
-    readonly begin_not_undoable_action: (manager: UndoManager) => void
-    readonly end_not_undoable_action: (manager: UndoManager) => void
-    readonly can_undo_changed: (manager: UndoManager) => void
-    readonly can_redo_changed: (manager: UndoManager) => void
+    parent: GObject.TypeInterface
+    can_undo: (manager: UndoManager) => boolean
+    can_redo: (manager: UndoManager) => boolean
+    undo: (manager: UndoManager) => void
+    redo: (manager: UndoManager) => void
+    begin_not_undoable_action: (manager: UndoManager) => void
+    end_not_undoable_action: (manager: UndoManager) => void
+    can_undo_changed: (manager: UndoManager) => void
+    can_redo_changed: (manager: UndoManager) => void
     static name: string
 }
 abstract class ViewClass {
     /* Fields of GtkSource-4.GtkSource.ViewClass */
-    readonly parent_class: Gtk.TextViewClass
-    readonly undo: (view: View) => void
-    readonly redo: (view: View) => void
-    readonly line_mark_activated: (view: View, iter: Gtk.TextIter, event: Gdk.Event) => void
-    readonly show_completion: (view: View) => void
-    readonly move_lines: (view: View, down: boolean) => void
-    readonly move_words: (view: View, step: number) => void
-    readonly padding: object[]
+    parent_class: Gtk.TextViewClass
+    undo: (view: View) => void
+    redo: (view: View) => void
+    line_mark_activated: (view: View, iter: Gtk.TextIter, event: Gdk.Event) => void
+    show_completion: (view: View) => void
+    move_lines: (view: View, down: boolean) => void
+    move_words: (view: View, step: number) => void
+    padding: object[]
     static name: string
 }
 class ViewPrivate {

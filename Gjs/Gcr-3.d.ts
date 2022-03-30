@@ -430,6 +430,7 @@ class Certificate {
      * 
      * The caller should free the returned data using g_free() when
      * it is no longer required.
+     * @param type the type of algorithm for the fingerprint.
      */
     get_fingerprint(type: GLib.ChecksumType): Uint8Array
     /**
@@ -438,6 +439,7 @@ class Certificate {
      * 
      * The caller should free the returned data using g_free() when
      * it is no longer required.
+     * @param type the type of algorithm for the fingerprint.
      */
     get_fingerprint_hex(type: GLib.ChecksumType): string
     /**
@@ -478,6 +480,7 @@ class Certificate {
      * 
      * The string returned should be freed by the caller when no longer
      * required.
+     * @param part a DN type string or OID.
      */
     get_issuer_part(part: string): string | null
     /**
@@ -540,6 +543,7 @@ class Certificate {
      * 
      * The string returned should be freed by the caller when no longer
      * required.
+     * @param part a DN type string or OID.
      */
     get_subject_part(part: string): string | null
     /**
@@ -553,6 +557,7 @@ class Certificate {
      * comparing the relevant subject and issuer fields. No signature check is
      * done. Proper verification of certificates must be done via a crypto
      * library.
+     * @param issuer a possible issuer #GcrCertificate
      */
     is_issuer(issuer: Certificate): boolean
     /**
@@ -565,6 +570,7 @@ class Certificate {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     compare(other?: Comparable | null): number
     /* Virtual methods of Gcr-3.Gcr.Certificate */
@@ -576,6 +582,7 @@ class Certificate {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     vfunc_compare(other?: Comparable | null): number
     static name: string
@@ -587,6 +594,8 @@ class Certificate {
      * 
      * The return value is useful in a stable sort, but has no user logical
      * meaning.
+     * @param first the certificate to compare
+     * @param other the certificate to compare against
      */
     static compare(first?: Comparable | null, other?: Comparable | null): number
 }
@@ -594,16 +603,19 @@ class Collection {
     /* Methods of Gcr-3.Gcr.Collection */
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     contains(object: GObject.Object): boolean
     /**
      * Emit the #GcrCollection::added signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was added
      */
     emit_added(object: GObject.Object): void
     /**
      * Emit the #GcrCollection::removed signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was removed
      */
     emit_removed(object: GObject.Object): void
     /**
@@ -618,6 +630,7 @@ class Collection {
     vfunc_added(object: GObject.Object): void
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     vfunc_contains(object: GObject.Object): boolean
     /**
@@ -632,12 +645,14 @@ class Collection {
     /* Signals of Gcr-3.Gcr.Collection */
     /**
      * This signal is emitted when an object is added to the collection.
+     * @param object object that was added
      */
     connect(sigName: "added", callback: (($obj: Collection, object: GObject.Object) => void)): number
     connect_after(sigName: "added", callback: (($obj: Collection, object: GObject.Object) => void)): number
     emit(sigName: "added", object: GObject.Object): void
     /**
      * This signal is emitted when an object is removed from the collection.
+     * @param object object that was removed
      */
     connect(sigName: "removed", callback: (($obj: Collection, object: GObject.Object) => void)): number
     connect_after(sigName: "removed", callback: (($obj: Collection, object: GObject.Object) => void)): number
@@ -649,12 +664,14 @@ class Comparable {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     compare(other?: Comparable | null): number
     /* Virtual methods of Gcr-3.Gcr.Comparable */
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     vfunc_compare(other?: Comparable | null): number
     static name: string
@@ -663,7 +680,7 @@ interface ImportInteraction_ConstructProps extends Gio.TlsInteraction_ConstructP
 }
 class ImportInteraction {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.ImportInteraction */
     /**
      * Supplement attributes before import. This means prompting the user for
@@ -672,6 +689,8 @@ class ImportInteraction {
      * 
      * This method prompts the user and fills in the attributes. If the user or
      * cancellable cancels the operation the error should be set with %G_IO_ERROR_CANCELLED.
+     * @param builder supplemented attributes
+     * @param cancellable optional cancellable object
      */
     supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -680,6 +699,9 @@ class ImportInteraction {
      * been passed to gcr_import_interaction_supplement_prep().
      * 
      * This method prompts the user and fills in the attributes.
+     * @param builder supplemented attributes
+     * @param cancellable optional cancellable object
+     * @param callback called when the operation completes
      */
     supplement_async(builder: Gck.Builder, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -687,6 +709,7 @@ class ImportInteraction {
      * 
      * If the user or cancellable cancels the operation the error should be set
      * with %G_IO_ERROR_CANCELLED.
+     * @param result the asynchronous result
      */
     supplement_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult
     /**
@@ -697,6 +720,7 @@ class ImportInteraction {
      * 
      * This method does not prompt the user, but rather just prepares the
      * interaction that these are the attributes that are needed.
+     * @param builder attributes to supplement
      */
     supplement_prep(builder: Gck.Builder): void
     /* Methods of Gio-2.0.Gio.TlsInteraction */
@@ -714,6 +738,8 @@ class ImportInteraction {
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
      * not support immediate cancellation.
+     * @param password a #GTlsPassword object
+     * @param cancellable an optional #GCancellable cancellation object
      */
     ask_password(password: Gio.TlsPassword, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -732,6 +758,9 @@ class ImportInteraction {
      * not support immediate cancellation.
      * 
      * Certain implementations may not support immediate cancellation.
+     * @param password a #GTlsPassword object
+     * @param cancellable an optional #GCancellable cancellation object
+     * @param callback will be called when the interaction completes
      */
     ask_password_async(password: Gio.TlsPassword, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -744,6 +773,7 @@ class ImportInteraction {
      * If the interaction is cancelled by the cancellation object, or by the
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code.
+     * @param result the result passed to the callback
      */
     ask_password_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult
     /**
@@ -766,6 +796,8 @@ class ImportInteraction {
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
      * not support immediate cancellation.
+     * @param password a #GTlsPassword object
+     * @param cancellable an optional #GCancellable cancellation object
      */
     invoke_ask_password(password: Gio.TlsPassword, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -789,6 +821,9 @@ class ImportInteraction {
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
      * not support immediate cancellation.
+     * @param connection a #GTlsConnection object
+     * @param flags flags providing more information about the request
+     * @param cancellable an optional #GCancellable cancellation object
      */
     invoke_request_certificate(connection: Gio.TlsConnection, flags: Gio.TlsCertificateRequestFlags, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -808,6 +843,9 @@ class ImportInteraction {
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
      * not support immediate cancellation.
+     * @param connection a #GTlsConnection object
+     * @param flags flags providing more information about the request
+     * @param cancellable an optional #GCancellable cancellation object
      */
     request_certificate(connection: Gio.TlsConnection, flags: Gio.TlsCertificateRequestFlags, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -819,6 +857,10 @@ class ImportInteraction {
      * also choose to provide a certificate from elsewhere. `callback` will be called
      * when the operation completes. Alternatively the user may abort this certificate
      * request, which will usually abort the TLS connection.
+     * @param connection a #GTlsConnection object
+     * @param flags flags providing more information about the request
+     * @param cancellable an optional #GCancellable cancellation object
+     * @param callback will be called when the interaction completes
      */
     request_certificate_async(connection: Gio.TlsConnection, flags: Gio.TlsCertificateRequestFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -832,6 +874,7 @@ class ImportInteraction {
      * If the interaction is cancelled by the cancellation object, or by the
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code.
+     * @param result the result passed to the callback
      */
     request_certificate_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult
     /* Methods of GObject-2.0.GObject.Object */
@@ -869,6 +912,10 @@ class ImportInteraction {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -879,6 +926,12 @@ class ImportInteraction {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -902,6 +955,7 @@ class ImportInteraction {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -921,11 +975,14 @@ class ImportInteraction {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -933,6 +990,8 @@ class ImportInteraction {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -950,6 +1009,7 @@ class ImportInteraction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -995,6 +1055,7 @@ class ImportInteraction {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -1038,15 +1099,20 @@ class ImportInteraction {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -1087,6 +1153,7 @@ class ImportInteraction {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -1121,6 +1188,7 @@ class ImportInteraction {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gcr-3.Gcr.ImportInteraction */
@@ -1131,6 +1199,8 @@ class ImportInteraction {
      * 
      * This method prompts the user and fills in the attributes. If the user or
      * cancellable cancels the operation the error should be set with %G_IO_ERROR_CANCELLED.
+     * @param builder supplemented attributes
+     * @param cancellable optional cancellable object
      */
     vfunc_supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -1139,6 +1209,9 @@ class ImportInteraction {
      * been passed to gcr_import_interaction_supplement_prep().
      * 
      * This method prompts the user and fills in the attributes.
+     * @param builder supplemented attributes
+     * @param cancellable optional cancellable object
+     * @param callback called when the operation completes
      */
     vfunc_supplement_async(builder: Gck.Builder, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1146,6 +1219,7 @@ class ImportInteraction {
      * 
      * If the user or cancellable cancels the operation the error should be set
      * with %G_IO_ERROR_CANCELLED.
+     * @param result the asynchronous result
      */
     vfunc_supplement_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult
     /**
@@ -1156,6 +1230,7 @@ class ImportInteraction {
      * 
      * This method does not prompt the user, but rather just prepares the
      * interaction that these are the attributes that are needed.
+     * @param builder attributes to supplement
      */
     vfunc_supplement_prep(builder: Gck.Builder): void
     /* Virtual methods of Gio-2.0.Gio.TlsInteraction */
@@ -1173,6 +1248,8 @@ class ImportInteraction {
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
      * not support immediate cancellation.
+     * @param password a #GTlsPassword object
+     * @param cancellable an optional #GCancellable cancellation object
      */
     vfunc_ask_password(password: Gio.TlsPassword, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -1191,6 +1268,9 @@ class ImportInteraction {
      * not support immediate cancellation.
      * 
      * Certain implementations may not support immediate cancellation.
+     * @param password a #GTlsPassword object
+     * @param cancellable an optional #GCancellable cancellation object
+     * @param callback will be called when the interaction completes
      */
     vfunc_ask_password_async(password: Gio.TlsPassword, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1203,6 +1283,7 @@ class ImportInteraction {
      * If the interaction is cancelled by the cancellation object, or by the
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code.
+     * @param result the result passed to the callback
      */
     vfunc_ask_password_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult
     /**
@@ -1222,6 +1303,9 @@ class ImportInteraction {
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
      * not support immediate cancellation.
+     * @param connection a #GTlsConnection object
+     * @param flags flags providing more information about the request
+     * @param cancellable an optional #GCancellable cancellation object
      */
     vfunc_request_certificate(connection: Gio.TlsConnection, flags: Gio.TlsCertificateRequestFlags, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult
     /**
@@ -1233,6 +1317,10 @@ class ImportInteraction {
      * also choose to provide a certificate from elsewhere. `callback` will be called
      * when the operation completes. Alternatively the user may abort this certificate
      * request, which will usually abort the TLS connection.
+     * @param connection a #GTlsConnection object
+     * @param flags flags providing more information about the request
+     * @param cancellable an optional #GCancellable cancellation object
+     * @param callback will be called when the interaction completes
      */
     vfunc_request_certificate_async(connection: Gio.TlsConnection, flags: Gio.TlsCertificateRequestFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1246,6 +1334,7 @@ class ImportInteraction {
      * If the interaction is cancelled by the cancellation object, or by the
      * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
      * contains a %G_IO_ERROR_CANCELLED error code.
+     * @param result the result passed to the callback
      */
     vfunc_request_certificate_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -1265,6 +1354,7 @@ class ImportInteraction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -1297,6 +1387,7 @@ class ImportInteraction {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: ImportInteraction, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: ImportInteraction, pspec: GObject.ParamSpec) => void)): number
@@ -1337,15 +1428,19 @@ class Importer {
     /**
      * Import the queued items in the importer. This call will block
      * until the operation completes.
+     * @param cancellable a #GCancellable, or %NULL
      */
     import(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Import the queued items in the importer. This function returns immediately
      * and completes asynchronously.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback called when the operation completes
      */
     import_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to import queued items.
+     * @param result an asynchronous result
      */
     import_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1354,21 +1449,26 @@ class Importer {
      * 
      * If the parsed item is incompatible with the importer, then this will
      * fail and the item will not be queued.
+     * @param parsed a parsed item to import
      */
     queue_for_parsed(parsed: Parsed): boolean
     /**
      * Set the interaction used to prompt the user when needed by this
      * importer.
+     * @param interaction the interaction used by the importer
      */
     set_interaction(interaction: Gio.TlsInteraction): void
     /* Virtual methods of Gcr-3.Gcr.Importer */
     /**
      * Import the queued items in the importer. This function returns immediately
      * and completes asynchronously.
+     * @param cancellable a #GCancellable, or %NULL
+     * @param callback called when the operation completes
      */
     vfunc_import_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to import queued items.
+     * @param result an asynchronous result
      */
     vfunc_import_finish(result: Gio.AsyncResult): boolean
     vfunc_import_sync(cancellable?: Gio.Cancellable | null): boolean
@@ -1378,6 +1478,7 @@ class Importer {
      * 
      * If the parsed item is incompatible with the importer, then this will
      * fail and the item will not be queued.
+     * @param parsed a parsed item to import
      */
     vfunc_queue_for_parsed(parsed: Parsed): boolean
     static name: string
@@ -1386,6 +1487,7 @@ class Importer {
      * Create a set of importers which can import this parsed item.
      * The parsed item is represented by the state of the GcrParser at the
      * time of calling this method.
+     * @param parsed a parser with a parsed item to import
      */
     static create_for_parsed(parsed: Parsed): Importer[]
     /**
@@ -1395,12 +1497,16 @@ class Importer {
      * 
      * If the parsed item is incompatible with an importer, then that the item
      * will not be queued on that importer.
+     * @param importers a set of importers
+     * @param parsed a parsed item
      */
     static queue_and_filter_for_parsed(importers: Importer[], parsed: Parsed): Importer[]
     /**
      * Register an importer to handle parsed items that match the given attributes.
      * 
      * If `attrs` are a floating reference, then it is consumed.
+     * @param importer_type the GType of the importer being registered
+     * @param attrs the attributes that this importer is compatible with
      */
     static register(importer_type: GObject.Type, attrs: Gck.Attributes): void
     /**
@@ -1511,6 +1617,7 @@ class Prompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     confirm(cancellable?: Gio.Cancellable | null): PromptReply
     /**
@@ -1519,6 +1626,8 @@ class Prompt {
      * represent the question correctly.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1527,6 +1636,7 @@ class Prompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     confirm_finish(result: Gio.AsyncResult): PromptReply
     /**
@@ -1541,6 +1651,7 @@ class Prompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     confirm_run(cancellable?: Gio.Cancellable | null): PromptReply
     /**
@@ -1636,6 +1747,7 @@ class Prompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     password(cancellable?: Gio.Cancellable | null): string
     /**
@@ -1643,6 +1755,8 @@ class Prompt {
      * this method to explain which password should be entered.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1654,6 +1768,7 @@ class Prompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     password_finish(result: Gio.AsyncResult): string
     /**
@@ -1670,6 +1785,7 @@ class Prompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     password_run(cancellable?: Gio.Cancellable | null): string
     /**
@@ -1682,6 +1798,7 @@ class Prompt {
      * The caller window indicates to the prompt which window is prompting the
      * user. The prompt may choose to ignore this information or use it in whatever
      * way it sees fit.
+     * @param window_id the window id
      */
     set_caller_window(window_id: string): void
     /**
@@ -1689,12 +1806,14 @@ class Prompt {
      * 
      * This is the button that results in a %GCR_PROMPT_REPLY_CANCEL reply
      * from the prompt.
+     * @param cancel_label the label
      */
     set_cancel_label(cancel_label: string): void
     /**
      * Set whether the additional choice is chosen or not.
      * 
      * The additional choice should be set up using gcr_prompt_set_choice_label().
+     * @param chosen whether chosen
      */
     set_choice_chosen(chosen: boolean): void
     /**
@@ -1707,6 +1826,7 @@ class Prompt {
      * gcr_prompt_set_choice_label() method.
      * 
      * If this is %NULL, then no additional choice is being displayed.
+     * @param choice_label the additional choice or %NULL
      */
     set_choice_label(choice_label?: string | null): void
     /**
@@ -1714,6 +1834,7 @@ class Prompt {
      * 
      * This is the button that results in a %GCR_PROMPT_REPLY_CONTINUE reply
      * from the prompt.
+     * @param continue_label the label
      */
     set_continue_label(continue_label: string): void
     /**
@@ -1722,12 +1843,14 @@ class Prompt {
      * A prompt implementation may choose not to display this detailed description.
      * Use gcr_prompt_set_message() to set a general message containing relevant
      * information.
+     * @param description the detailed description
      */
     set_description(description: string): void
     /**
      * Sets the prompt message for the user.
      * 
      * A prompt implementation should always display this message.
+     * @param message the prompt message
      */
     set_message(message: string): void
     /**
@@ -1736,6 +1859,7 @@ class Prompt {
      * This will cause the prompt implementation to ask the user to confirm the
      * password and/or display other relevant user interface for creating a new
      * password.
+     * @param new_password whether in new password mode or not
      */
     set_password_new(new_password: boolean): void
     /**
@@ -1743,6 +1867,7 @@ class Prompt {
      * 
      * A prompt implementation may choose not to display the prompt title. The
      * prompt message should contain relevant information.
+     * @param title the prompt title
      */
     set_title(title: string): void
     /**
@@ -1752,6 +1877,7 @@ class Prompt {
      * user about a previous 'unsuccessful' prompt.
      * 
      * If this string is %NULL then no warning is displayed.
+     * @param warning the warning or %NULL
      */
     set_warning(warning?: string | null): void
     /* Virtual methods of Gcr-3.Gcr.Prompt */
@@ -1762,6 +1888,8 @@ class Prompt {
      * represent the question correctly.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     vfunc_prompt_confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1770,6 +1898,7 @@ class Prompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     vfunc_prompt_confirm_finish(result: Gio.AsyncResult): PromptReply
     /**
@@ -1777,6 +1906,8 @@ class Prompt {
      * this method to explain which password should be entered.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     vfunc_prompt_password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -1788,6 +1919,7 @@ class Prompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     vfunc_prompt_password_finish(result: Gio.AsyncResult): string
     /* Signals of Gcr-3.Gcr.Prompt */
@@ -1812,7 +1944,7 @@ class CertificateChain {
      */
     readonly length: number
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.CertificateChain */
     /**
      * Add `certificate` to the chain. The order of certificates in the chain are
@@ -1823,6 +1955,7 @@ class CertificateChain {
      * Adding a certificate an already built chain (see
      * gcr_certificate_chain_build()) resets the type of the certificate chain
      * to %GCR_CERTIFICATE_CHAIN_UNKNOWN
+     * @param certificate a #GcrCertificate to add to the chain
      */
     add(certificate: Certificate): void
     /**
@@ -1855,6 +1988,10 @@ class CertificateChain {
      * 
      * This call will block, see gcr_certificate_chain_build_async() for the
      * asynchronous version.
+     * @param purpose the purpose the certificate chain will be used for
+     * @param peer the peer the certificate chain will be used with, or %NULL
+     * @param flags chain completion flags
+     * @param cancellable a #GCancellable or %NULL
      */
     build(purpose: string, peer: string | null, flags: CertificateChainFlags, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1887,11 +2024,17 @@ class CertificateChain {
      * 
      * When the operation is finished, `callback` will be called. You can then call
      * gcr_certificate_chain_build_finish() to get the result of the operation.
+     * @param purpose the purpose the certificate chain will be used for
+     * @param peer the peer the certificate chain will be used with, or %NULL
+     * @param flags chain completion flags
+     * @param cancellable a #GCancellable or %NULL
+     * @param callback this will be called when the operation completes.
      */
     build_async(purpose: string, peer: string | null, flags: CertificateChainFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started by
      * gcr_certificate_chain_build_async().
+     * @param result the #GAsyncResult passed to the callback
      */
     build_finish(result: Gio.AsyncResult): boolean
     /**
@@ -1908,6 +2051,7 @@ class CertificateChain {
     /**
      * Get a certificate in the chain. It is an error to call this function
      * with an invalid index.
+     * @param index index of the certificate to get
      */
     get_certificate(index: number): Certificate
     /**
@@ -1963,6 +2107,10 @@ class CertificateChain {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1973,6 +2121,12 @@ class CertificateChain {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -1996,6 +2150,7 @@ class CertificateChain {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2015,11 +2170,14 @@ class CertificateChain {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2027,6 +2185,8 @@ class CertificateChain {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2044,6 +2204,7 @@ class CertificateChain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2089,6 +2250,7 @@ class CertificateChain {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2132,15 +2294,20 @@ class CertificateChain {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2181,6 +2348,7 @@ class CertificateChain {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2215,6 +2383,7 @@ class CertificateChain {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2234,6 +2403,7 @@ class CertificateChain {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2266,6 +2436,7 @@ class CertificateChain {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CertificateChain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CertificateChain, pspec: GObject.ParamSpec) => void)): number
@@ -2291,14 +2462,20 @@ interface CertificateRequest_ConstructProps extends GObject.Object_ConstructProp
     private_key?: Gck.Object
 }
 class CertificateRequest {
+    /* Properties of Gcr-3.Gcr.CertificateRequest */
+    /**
+     * The private key that this certificate request is for.
+     */
+    readonly private_key: Gck.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.CertificateRequest */
     /**
      * Complete and sign a certificate request, so that it can be encoded
      * and sent to a certificate authority.
      * 
      * This call may block as it signs the request using the private key.
+     * @param cancellable a cancellation object
      */
     complete(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -2306,11 +2483,14 @@ class CertificateRequest {
      * be encoded and sent to a certificate authority.
      * 
      * This call will return immediately and complete later.
+     * @param cancellable a cancellation object
+     * @param callback called when the operation completes
      */
     complete_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to complete and sign a certificate
      * request.
+     * @param result result of the asynchronous operation
      */
     complete_finish(result: Gio.AsyncResult): boolean
     /**
@@ -2322,6 +2502,7 @@ class CertificateRequest {
      * 
      * If `textual` is %TRUE, the output is encoded as text. For PKCS#10 requests
      * this is done using the OpenSSL style PEM encoding.
+     * @param textual whether to encode output as text
      */
     encode(textual: boolean): Uint8Array
     /**
@@ -2334,6 +2515,7 @@ class CertificateRequest {
     get_private_key(): Gck.Object
     /**
      * Set the common name encoded in the certificate request.
+     * @param cn common name to set on the request
      */
     set_cn(cn: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2371,6 +2553,10 @@ class CertificateRequest {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2381,6 +2567,12 @@ class CertificateRequest {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2404,6 +2596,7 @@ class CertificateRequest {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2423,11 +2616,14 @@ class CertificateRequest {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2435,6 +2631,8 @@ class CertificateRequest {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2452,6 +2650,7 @@ class CertificateRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2497,6 +2696,7 @@ class CertificateRequest {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2540,15 +2740,20 @@ class CertificateRequest {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2589,6 +2794,7 @@ class CertificateRequest {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2623,6 +2829,7 @@ class CertificateRequest {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -2642,6 +2849,7 @@ class CertificateRequest {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2674,10 +2882,13 @@ class CertificateRequest {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: CertificateRequest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: CertificateRequest, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::private-key", callback: (($obj: CertificateRequest, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::private-key", callback: (($obj: CertificateRequest, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2689,20 +2900,28 @@ class CertificateRequest {
     /**
      * Check whether [class`CertificateRequest]` is capable of creating a request
      * for the given `private_key`.
+     * @param private_key a private key
+     * @param cancellable cancellation object
      */
     static capable(private_key: Gck.Object, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Asynchronously check whether [class`CertificateRequest]` is capable of
      * creating a request for the given `private_key`.
+     * @param private_key a private key
+     * @param cancellable cancellation object
+     * @param callback will be called when the operation completes
      */
     static capable_async(private_key: Gck.Object, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result for asynchronously check whether [class`CertificateRequest]` is
      * capable of creating a request for the given `private_key`.
+     * @param result asynchronous result
      */
     static capable_finish(result: Gio.AsyncResult): boolean
     /**
      * Create a new certificate request, in the given format for the private key.
+     * @param format the format for the certificate request
+     * @param private_key the private key the the certificate is being requested for
      */
     static prepare(format: CertificateRequestFormat, private_key: Gck.Object): CertificateRequest
     static $gtype: GObject.Type
@@ -2712,8 +2931,10 @@ interface FilterCollection_ConstructProps extends GObject.Object_ConstructProps 
     underlying?: Collection
 }
 class FilterCollection {
+    /* Properties of Gcr-3.Gcr.FilterCollection */
+    readonly underlying: Collection
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.FilterCollection */
     /**
      * Get the collection that is being filtered by this filter collection.
@@ -2733,6 +2954,7 @@ class FilterCollection {
      * filtered collection.
      * 
      * This will refilter the collection.
+     * @param callback function to call for each object
      */
     set_callback(callback: FilterCollectionFunc | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -2770,6 +2992,10 @@ class FilterCollection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2780,6 +3006,12 @@ class FilterCollection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2803,6 +3035,7 @@ class FilterCollection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2822,11 +3055,14 @@ class FilterCollection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2834,6 +3070,8 @@ class FilterCollection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2851,6 +3089,7 @@ class FilterCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2896,6 +3135,7 @@ class FilterCollection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2939,15 +3179,20 @@ class FilterCollection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2988,6 +3233,7 @@ class FilterCollection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3022,21 +3268,25 @@ class FilterCollection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gcr-3.Gcr.Collection */
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     contains(object: GObject.Object): boolean
     /**
      * Emit the #GcrCollection::added signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was added
      */
     emit_added(object: GObject.Object): void
     /**
      * Emit the #GcrCollection::removed signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was removed
      */
     emit_removed(object: GObject.Object): void
     /**
@@ -3051,6 +3301,7 @@ class FilterCollection {
     vfunc_added(object: GObject.Object): void
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     vfunc_contains(object: GObject.Object): boolean
     /**
@@ -3079,6 +3330,7 @@ class FilterCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3111,6 +3363,7 @@ class FilterCollection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: FilterCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: FilterCollection, pspec: GObject.ParamSpec) => void)): number
@@ -3118,16 +3371,20 @@ class FilterCollection {
     /* Signals of Gcr-3.Gcr.Collection */
     /**
      * This signal is emitted when an object is added to the collection.
+     * @param object object that was added
      */
     connect(sigName: "added", callback: (($obj: FilterCollection, object: GObject.Object) => void)): number
     connect_after(sigName: "added", callback: (($obj: FilterCollection, object: GObject.Object) => void)): number
     emit(sigName: "added", object: GObject.Object): void
     /**
      * This signal is emitted when an object is removed from the collection.
+     * @param object object that was removed
      */
     connect(sigName: "removed", callback: (($obj: FilterCollection, object: GObject.Object) => void)): number
     connect_after(sigName: "removed", callback: (($obj: FilterCollection, object: GObject.Object) => void)): number
     emit(sigName: "removed", object: GObject.Object): void
+    connect(sigName: "notify::underlying", callback: (($obj: FilterCollection, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::underlying", callback: (($obj: FilterCollection, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3159,23 +3416,27 @@ class Parser {
      */
     readonly parsed_label: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.Parser */
     /**
      * Add a password to the set of passwords to try when parsing locked or encrypted
      * items. This is usually called from the #GcrParser::authenticate signal.
+     * @param password a password to try
      */
     add_password(password?: string | null): void
     /**
      * Disable parsing of the given format. Use %GCR_FORMAT_ALL to disable all the formats.
+     * @param format The format identifier
      */
     format_disable(format: DataFormat): void
     /**
      * Enable parsing of the given format. Use %GCR_FORMAT_ALL to enable all the formats.
+     * @param format The format identifier
      */
     format_enable(format: DataFormat): void
     /**
      * Check whether the given format is supported by the parser.
+     * @param format The format identifier
      */
     format_supported(format: DataFormat): boolean
     /**
@@ -3221,6 +3482,7 @@ class Parser {
     /**
      * Parse the data. The #GcrParser::parsed and #GcrParser::authenticate signals
      * may fire during the parsing.
+     * @param data the data to parse
      */
     parse_bytes(data: GLib.Bytes): boolean
     /**
@@ -3228,6 +3490,7 @@ class Parser {
      * may fire during the parsing.
      * 
      * A copy of the data will be made. Use gcr_parser_parse_bytes() to avoid this.
+     * @param data the data to parse
      */
     parse_data(data: Uint8Array): boolean
     /**
@@ -3237,6 +3500,8 @@ class Parser {
      * 
      * The #GcrParser::parsed and #GcrParser::authenticate signals
      * may fire during the parsing.
+     * @param input The input stream
+     * @param cancellable An optional cancellation object
      */
     parse_stream(input: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3245,14 +3510,19 @@ class Parser {
      * 
      * The #GcrParser::parsed and #GcrParser::authenticate signals
      * may fire during the parsing.
+     * @param input The input stream
+     * @param cancellable An optional cancellation object
+     * @param callback Called when the operation result is ready.
      */
     parse_stream_async(input: Gio.InputStream, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an operation to parse a stream.
+     * @param result The operation result
      */
     parse_stream_finish(result: Gio.AsyncResult): boolean
     /**
      * Sets the filename of the parser item.
+     * @param filename a string of the filename of the parser item
      */
     set_filename(filename?: string | null): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3290,6 +3560,10 @@ class Parser {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3300,6 +3574,12 @@ class Parser {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3323,6 +3603,7 @@ class Parser {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3342,11 +3623,14 @@ class Parser {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3354,6 +3638,8 @@ class Parser {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3371,6 +3657,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3416,6 +3703,7 @@ class Parser {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3459,15 +3747,20 @@ class Parser {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3508,6 +3801,7 @@ class Parser {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3542,6 +3836,7 @@ class Parser {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gcr-3.Gcr.Parser */
@@ -3564,6 +3859,7 @@ class Parser {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3580,6 +3876,7 @@ class Parser {
      * If %FALSE is returned, then the authentication was not handled. If
      * no handlers return %TRUE then the item is not parsed and an error
      * with the code %GCR_ERROR_CANCELLED will be raised.
+     * @param count the number of times this item has been authenticated
      */
     connect(sigName: "authenticate", callback: (($obj: Parser, count: number) => boolean)): number
     connect_after(sigName: "authenticate", callback: (($obj: Parser, count: number) => boolean)): number
@@ -3622,6 +3919,7 @@ class Parser {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Parser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Parser, pspec: GObject.ParamSpec) => void)): number
@@ -3651,6 +3949,28 @@ interface Pkcs11Certificate_ConstructProps extends Gck.Object_ConstructProps {
     attributes?: Gck.Attributes
 }
 class Pkcs11Certificate {
+    /* Properties of Gcr-3.Gcr.Pkcs11Certificate */
+    /**
+     * Automatically loaded attributes for this certificate.
+     */
+    readonly attributes: Gck.Attributes
+    /* Properties of Gck-1.Gck.Object */
+    /**
+     * The raw PKCS11 handle for this object.
+     */
+    readonly handle: number
+    /**
+     * The GckModule that this object belongs to.
+     */
+    readonly module: Gck.Module
+    /**
+     * The PKCS11 session to make calls on when this object needs to
+     * perform operations on itself.
+     * 
+     * If this is NULL then a new session is opened for each operation,
+     * such as gck_object_get(), gck_object_set() or gck_object_destroy().
+     */
+    readonly session: Gck.Session
     /* Properties of Gcr-3.Gcr.Certificate */
     /**
      * A readable description for this certificate
@@ -3681,9 +4001,9 @@ class Pkcs11Certificate {
      */
     readonly subject: string
     /* Fields of Gck-1.Gck.Object */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.Pkcs11Certificate */
     /**
      * Access the automatically loaded attributes for this certificate.
@@ -3701,6 +4021,8 @@ class Pkcs11Certificate {
      * read from the object.
      * 
      * This may block, use the asynchronous version when this is not desirable
+     * @param attr_types the types of attributes to update
+     * @param cancellable optional cancellation object
      */
     cache_lookup(attr_types: number[], cancellable?: Gio.Cancellable | null): Gck.Attributes
     /**
@@ -3714,31 +4036,40 @@ class Pkcs11Certificate {
      * read from the object.
      * 
      * This will return immediately and complete asynchronously
+     * @param attr_types the types of attributes to update
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     cache_lookup_async(attr_types: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an operation to lookup attributes in the cache or retrieve them
      * from the object if necessary.
+     * @param result the asynchrounous result passed to the callback
      */
     cache_lookup_finish(result: Gio.AsyncResult): Gck.Attributes
     /**
      * Destroy a PKCS#11 object, deleting it from storage or the session.
      * This call may block for an indefinite period.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
      */
     destroy(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Destroy a PKCS#11 object, deleting it from storage or the session.
      * This call will return immediately and complete asynchronously.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @param callback Callback which is called when operation completes.
      */
     destroy_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the status of the operation to destroy a PKCS#11 object, begun with
      * gck_object_destroy_async().
+     * @param result The result of the destory operation passed to the callback.
      */
     destroy_finish(result: Gio.AsyncResult): boolean
     /**
      * Checks equality of two objects. Two GckObject objects can point to the same
      * underlying PKCS#11 object.
+     * @param object2 a pointer to the second #GckObject
      */
     equal(object2: Gck.Object): boolean
     /**
@@ -3748,6 +4079,9 @@ class Pkcs11Certificate {
      * them until gck_object_get_finish() is called.
      * 
      * This call returns immediately and completes asynchronously.
+     * @param attr_types the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
+     * @param callback A callback which is called when the operation completes.
      */
     get_async(attr_types: number[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -3755,18 +4089,25 @@ class Pkcs11Certificate {
      * the returned data has a null terminator.
      * 
      * This call may block for an indefinite period.
+     * @param attr_type The attribute to get data for.
+     * @param cancellable A #GCancellable or %NULL
      */
     get_data(attr_type: number, cancellable?: Gio.Cancellable | null): Uint8Array
     /**
      * Get the data for the specified attribute from the object.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attr_type The attribute to get data for.
+     * @param allocator An allocator with which to allocate memory for the data, or %NULL for default.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     get_data_async(attr_type: number, allocator: Gck.Allocator, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to get attribute data from
      * an object. For convenience the returned data has an extra null terminator,
      * not included in the returned length.
+     * @param result The result passed to the callback.
      */
     get_data_finish(result: Gio.AsyncResult): Uint8Array
     /**
@@ -3774,6 +4115,7 @@ class Pkcs11Certificate {
      * the object.
      * 
      * No extra references are added to the returned attributes pointer.
+     * @param result The result passed to the callback.
      */
     get_finish(result: Gio.AsyncResult): Gck.Attributes
     /**
@@ -3782,6 +4124,8 @@ class Pkcs11Certificate {
      * 
      * No extra references are added to the returned attributes pointer.
      * During this call you may not access the attributes in any way.
+     * @param attr_types the types of the attributes to get
+     * @param cancellable optional cancellation object, or %NULL
      */
     get_full(attr_types: number[], cancellable?: Gio.Cancellable | null): Gck.Attributes
     /**
@@ -3806,6 +4150,8 @@ class Pkcs11Certificate {
      * an attribute which returns a template.
      * 
      * This call may block for an indefinite period.
+     * @param attr_type The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     get_template(attr_type: number, cancellable?: Gio.Cancellable | null): Gck.Attributes
     /**
@@ -3813,11 +4159,15 @@ class Pkcs11Certificate {
      * an attribute which returns a template.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attr_type The template attribute type.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     get_template_async(attr_type: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to get attribute template from
      * an object.
+     * @param result The result passed to the callback.
      */
     get_template_finish(result: Gio.AsyncResult): Gck.Attributes
     /**
@@ -3831,6 +4181,8 @@ class Pkcs11Certificate {
      * Set PKCS#11 attributes on an object. This call may block for an indefinite period.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
      */
     set(attrs: Gck.Attributes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3838,11 +4190,15 @@ class Pkcs11Certificate {
      * immediately and completes asynchronously.
      * 
      * If the `attrs` #GckAttributes is floating, it is consumed.
+     * @param attrs The attributes to set on the object.
+     * @param cancellable Optional cancellable object, or %NULL to ignore.
+     * @param callback Callback which is called when operation completes.
      */
     set_async(attrs: Gck.Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the status of the operation to set attributes on a PKCS#11 object,
      * begun with gck_object_set_async().
+     * @param result The result of the destory operation passed to the callback.
      */
     set_finish(result: Gio.AsyncResult): boolean
     /**
@@ -3852,6 +4208,9 @@ class Pkcs11Certificate {
      * If the `attrs` #GckAttributes is floating, it is consumed.
      * 
      * This call may block for an indefinite period.
+     * @param attr_type The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
      */
     set_template(attr_type: number, attrs: Gck.Attributes, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -3861,11 +4220,16 @@ class Pkcs11Certificate {
      * If the `attrs` #GckAttributes is floating, it is consumed.
      * 
      * This call will return immediately and complete asynchronously.
+     * @param attr_type The attribute template type.
+     * @param attrs The attribute template.
+     * @param cancellable Optional cancellation object, or %NULL.
+     * @param callback Called when the operation completes.
      */
     set_template_async(attr_type: number, attrs: Gck.Attributes, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Get the result of an operation to set attribute template on
      * an object.
+     * @param result The result passed to the callback.
      */
     set_template_finish(result: Gio.AsyncResult): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -3903,6 +4267,10 @@ class Pkcs11Certificate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3913,6 +4281,12 @@ class Pkcs11Certificate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3936,6 +4310,7 @@ class Pkcs11Certificate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3955,11 +4330,14 @@ class Pkcs11Certificate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3967,6 +4345,8 @@ class Pkcs11Certificate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3984,6 +4364,7 @@ class Pkcs11Certificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4029,6 +4410,7 @@ class Pkcs11Certificate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4072,15 +4454,20 @@ class Pkcs11Certificate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4121,6 +4508,7 @@ class Pkcs11Certificate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4155,6 +4543,7 @@ class Pkcs11Certificate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gcr-3.Gcr.Certificate */
@@ -4180,6 +4569,7 @@ class Pkcs11Certificate {
      * 
      * The caller should free the returned data using g_free() when
      * it is no longer required.
+     * @param type the type of algorithm for the fingerprint.
      */
     get_fingerprint(type: GLib.ChecksumType): Uint8Array
     /**
@@ -4188,6 +4578,7 @@ class Pkcs11Certificate {
      * 
      * The caller should free the returned data using g_free() when
      * it is no longer required.
+     * @param type the type of algorithm for the fingerprint.
      */
     get_fingerprint_hex(type: GLib.ChecksumType): string
     /**
@@ -4228,6 +4619,7 @@ class Pkcs11Certificate {
      * 
      * The string returned should be freed by the caller when no longer
      * required.
+     * @param part a DN type string or OID.
      */
     get_issuer_part(part: string): string | null
     /**
@@ -4290,6 +4682,7 @@ class Pkcs11Certificate {
      * 
      * The string returned should be freed by the caller when no longer
      * required.
+     * @param part a DN type string or OID.
      */
     get_subject_part(part: string): string | null
     /**
@@ -4303,6 +4696,7 @@ class Pkcs11Certificate {
      * comparing the relevant subject and issuer fields. No signature check is
      * done. Proper verification of certificates must be done via a crypto
      * library.
+     * @param issuer a possible issuer #GcrCertificate
      */
     is_issuer(issuer: Certificate): boolean
     /**
@@ -4315,6 +4709,7 @@ class Pkcs11Certificate {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     compare(other?: Comparable | null): number
     /* Virtual methods of Gcr-3.Gcr.Pkcs11Certificate */
@@ -4325,6 +4720,7 @@ class Pkcs11Certificate {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     vfunc_compare(other?: Comparable | null): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -4344,6 +4740,7 @@ class Pkcs11Certificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4376,10 +4773,19 @@ class Pkcs11Certificate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::attributes", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::attributes", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::handle", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::handle", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::module", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::module", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::session", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::session", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::description", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::description", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::expiry", callback: (($obj: Pkcs11Certificate, pspec: GObject.ParamSpec) => void)): number
@@ -4412,6 +4818,8 @@ class Pkcs11Certificate {
      * 
      * Will return %NULL if no issuer certificate is found. Use `error` to determine
      * if an error occurred.
+     * @param certificate a #GcrCertificate
+     * @param cancellable a #GCancellable
      */
     static lookup_issuer(certificate: Certificate, cancellable?: Gio.Cancellable | null): Certificate
     /**
@@ -4422,6 +4830,9 @@ class Pkcs11Certificate {
      * When the operation is finished, callback will be called. You can then call
      * gcr_pkcs11_certificate_lookup_issuer_finish() to get the result of the
      * operation.
+     * @param certificate a #GcrCertificate
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the operation completes
      */
     static lookup_issuer_async(certificate: Certificate, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -4430,6 +4841,7 @@ class Pkcs11Certificate {
      * 
      * Will return %NULL if no issuer certificate is found. Use `error` to determine
      * if an error occurred.
+     * @param result the #GAsyncResult passed to the callback
      */
     static lookup_issuer_finish(result: Gio.AsyncResult): Certificate
     /**
@@ -4439,6 +4851,8 @@ class Pkcs11Certificate {
      * 
      * The return value is useful in a stable sort, but has no user logical
      * meaning.
+     * @param first the certificate to compare
+     * @param other the certificate to compare against
      */
     static compare(first?: Comparable | null, other?: Comparable | null): number
     static $gtype: GObject.Type
@@ -4455,8 +4869,17 @@ interface SecretExchange_ConstructProps extends GObject.Object_ConstructProps {
     protocol?: string
 }
 class SecretExchange {
+    /* Properties of Gcr-3.Gcr.SecretExchange */
+    /**
+     * The protocol being used for the exchange.
+     * 
+     * Will be %NULL if no protocol was specified when creating this object,
+     * and either [method`SecretExchange`.begin] or [method`SecretExchange`.receive]
+     * have not been called successfully.
+     */
+    readonly protocol: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.SecretExchange */
     /**
      * Begin the secret exchange. The resulting string should be sent to the other
@@ -4489,6 +4912,7 @@ class SecretExchange {
      * 
      * After this call completes successfully the value returned from
      * gcr_secret_exchange_get_secret() will have changed.
+     * @param exchange the string received
      */
     receive(exchange: string): boolean
     /**
@@ -4498,6 +4922,8 @@ class SecretExchange {
      * [method`SecretExchange`.receive] must have been successfully called at least
      * once on this object. In other words this object must have received data
      * from the other side of the secret exchange, before we can send a secret.
+     * @param secret optionally, a secret to send to the other side
+     * @param secret_len length of `secret,` or -1 if null terminated
      */
     send(secret: string | null, secret_len: number): string
     /* Methods of GObject-2.0.GObject.Object */
@@ -4535,6 +4961,10 @@ class SecretExchange {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4545,6 +4975,12 @@ class SecretExchange {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4568,6 +5004,7 @@ class SecretExchange {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4587,11 +5024,14 @@ class SecretExchange {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4599,6 +5039,8 @@ class SecretExchange {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4616,6 +5058,7 @@ class SecretExchange {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -4661,6 +5104,7 @@ class SecretExchange {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -4704,15 +5148,20 @@ class SecretExchange {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -4753,6 +5202,7 @@ class SecretExchange {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -4787,6 +5237,7 @@ class SecretExchange {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gcr-3.Gcr.SecretExchange */
@@ -4809,6 +5260,7 @@ class SecretExchange {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -4841,10 +5293,13 @@ class SecretExchange {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SecretExchange, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SecretExchange, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::protocol", callback: (($obj: SecretExchange, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::protocol", callback: (($obj: SecretExchange, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4889,7 +5344,7 @@ class SimpleCertificate {
      */
     readonly subject: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GObject-2.0.GObject.Object */
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
@@ -4925,6 +5380,10 @@ class SimpleCertificate {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4935,6 +5394,12 @@ class SimpleCertificate {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4958,6 +5423,7 @@ class SimpleCertificate {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4977,11 +5443,14 @@ class SimpleCertificate {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4989,6 +5458,8 @@ class SimpleCertificate {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5006,6 +5477,7 @@ class SimpleCertificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5051,6 +5523,7 @@ class SimpleCertificate {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5094,15 +5567,20 @@ class SimpleCertificate {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5143,6 +5621,7 @@ class SimpleCertificate {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5177,6 +5656,7 @@ class SimpleCertificate {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gcr-3.Gcr.Certificate */
@@ -5202,6 +5682,7 @@ class SimpleCertificate {
      * 
      * The caller should free the returned data using g_free() when
      * it is no longer required.
+     * @param type the type of algorithm for the fingerprint.
      */
     get_fingerprint(type: GLib.ChecksumType): Uint8Array
     /**
@@ -5210,6 +5691,7 @@ class SimpleCertificate {
      * 
      * The caller should free the returned data using g_free() when
      * it is no longer required.
+     * @param type the type of algorithm for the fingerprint.
      */
     get_fingerprint_hex(type: GLib.ChecksumType): string
     /**
@@ -5250,6 +5732,7 @@ class SimpleCertificate {
      * 
      * The string returned should be freed by the caller when no longer
      * required.
+     * @param part a DN type string or OID.
      */
     get_issuer_part(part: string): string | null
     /**
@@ -5312,6 +5795,7 @@ class SimpleCertificate {
      * 
      * The string returned should be freed by the caller when no longer
      * required.
+     * @param part a DN type string or OID.
      */
     get_subject_part(part: string): string | null
     /**
@@ -5325,6 +5809,7 @@ class SimpleCertificate {
      * comparing the relevant subject and issuer fields. No signature check is
      * done. Proper verification of certificates must be done via a crypto
      * library.
+     * @param issuer a possible issuer #GcrCertificate
      */
     is_issuer(issuer: Certificate): boolean
     /**
@@ -5337,6 +5822,7 @@ class SimpleCertificate {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     compare(other?: Comparable | null): number
     /* Virtual methods of Gcr-3.Gcr.SimpleCertificate */
@@ -5347,6 +5833,7 @@ class SimpleCertificate {
     /**
      * Compare whether two objects represent the same thing. The return value can
      * also be used to sort the objects.
+     * @param other Another comparable object
      */
     vfunc_compare(other?: Comparable | null): number
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -5366,6 +5853,7 @@ class SimpleCertificate {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5398,6 +5886,7 @@ class SimpleCertificate {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SimpleCertificate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SimpleCertificate, pspec: GObject.ParamSpec) => void)): number
@@ -5432,6 +5921,8 @@ class SimpleCertificate {
      * 
      * The return value is useful in a stable sort, but has no user logical
      * meaning.
+     * @param first the certificate to compare
+     * @param other the certificate to compare against
      */
     static compare(first?: Comparable | null, other?: Comparable | null): number
     static $gtype: GObject.Type
@@ -5440,14 +5931,16 @@ interface SimpleCollection_ConstructProps extends GObject.Object_ConstructProps 
 }
 class SimpleCollection {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.SimpleCollection */
     /**
      * Add an object to this collection
+     * @param object The object to add
      */
     add(object: GObject.Object): void
     /**
      * Remove an object from the collection.
+     * @param object The object to remove from the collection
      */
     remove(object: GObject.Object): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5485,6 +5978,10 @@ class SimpleCollection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5495,6 +5992,12 @@ class SimpleCollection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5518,6 +6021,7 @@ class SimpleCollection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5537,11 +6041,14 @@ class SimpleCollection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5549,6 +6056,8 @@ class SimpleCollection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5566,6 +6075,7 @@ class SimpleCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5611,6 +6121,7 @@ class SimpleCollection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5654,15 +6165,20 @@ class SimpleCollection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5703,6 +6219,7 @@ class SimpleCollection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5737,21 +6254,25 @@ class SimpleCollection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gcr-3.Gcr.Collection */
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     contains(object: GObject.Object): boolean
     /**
      * Emit the #GcrCollection::added signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was added
      */
     emit_added(object: GObject.Object): void
     /**
      * Emit the #GcrCollection::removed signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was removed
      */
     emit_removed(object: GObject.Object): void
     /**
@@ -5766,6 +6287,7 @@ class SimpleCollection {
     vfunc_added(object: GObject.Object): void
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     vfunc_contains(object: GObject.Object): boolean
     /**
@@ -5794,6 +6316,7 @@ class SimpleCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5826,6 +6349,7 @@ class SimpleCollection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SimpleCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SimpleCollection, pspec: GObject.ParamSpec) => void)): number
@@ -5833,12 +6357,14 @@ class SimpleCollection {
     /* Signals of Gcr-3.Gcr.Collection */
     /**
      * This signal is emitted when an object is added to the collection.
+     * @param object object that was added
      */
     connect(sigName: "added", callback: (($obj: SimpleCollection, object: GObject.Object) => void)): number
     connect_after(sigName: "added", callback: (($obj: SimpleCollection, object: GObject.Object) => void)): number
     emit(sigName: "added", object: GObject.Object): void
     /**
      * This signal is emitted when an object is removed from the collection.
+     * @param object object that was removed
      */
     connect(sigName: "removed", callback: (($obj: SimpleCollection, object: GObject.Object) => void)): number
     connect_after(sigName: "removed", callback: (($obj: SimpleCollection, object: GObject.Object) => void)): number
@@ -5862,8 +6388,13 @@ interface SshAskpass_ConstructProps extends GObject.Object_ConstructProps {
     interaction?: Gio.TlsInteraction
 }
 class SshAskpass {
+    /* Properties of Gcr-3.Gcr.SshAskpass */
+    /**
+     * The interaction used to prompt for passwords.
+     */
+    readonly interaction: Gio.TlsInteraction
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.SshAskpass */
     /**
      * Get the interaction associated with this object.
@@ -5904,6 +6435,10 @@ class SshAskpass {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5914,6 +6449,12 @@ class SshAskpass {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -5937,6 +6478,7 @@ class SshAskpass {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -5956,11 +6498,14 @@ class SshAskpass {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -5968,6 +6513,8 @@ class SshAskpass {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5985,6 +6532,7 @@ class SshAskpass {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6030,6 +6578,7 @@ class SshAskpass {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6073,15 +6622,20 @@ class SshAskpass {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6122,6 +6676,7 @@ class SshAskpass {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6156,6 +6711,7 @@ class SshAskpass {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -6175,6 +6731,7 @@ class SshAskpass {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -6207,10 +6764,13 @@ class SshAskpass {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SshAskpass, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SshAskpass, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::interaction", callback: (($obj: SshAskpass, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::interaction", callback: (($obj: SshAskpass, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -6223,6 +6783,7 @@ class SshAskpass {
     /**
      * Use this function as a callback setup function passed to g_spawn_sync(),
      * g_spawn_async(), g_spawn_async_with_pipes().
+     * @param askpass a #GcrSshAskpass object
      */
     static child_setup(askpass?: object | null): void
     static $gtype: GObject.Type
@@ -6320,10 +6881,19 @@ interface SystemPrompt_ConstructProps extends GObject.Object_ConstructProps {
 class SystemPrompt {
     /* Properties of Gcr-3.Gcr.SystemPrompt */
     /**
+     * The DBus bus name of the prompter to use for prompting, or %NULL
+     * for the default prompter.
+     */
+    readonly bus_name: string
+    /**
      * The #GcrSecretExchange to use when transferring passwords. A default
      * secret exchange will be used if this is not set.
      */
     secret_exchange: SecretExchange
+    /**
+     * The timeout in seconds to wait when opening the prompt.
+     */
+    readonly timeout_seconds: number
     /* Properties of Gcr-3.Gcr.Prompt */
     /**
      * The string handle of the caller's window.
@@ -6407,7 +6977,7 @@ class SystemPrompt {
      */
     warning: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.SystemPrompt */
     /**
      * Close this prompt. After calling this function, no further prompts will
@@ -6419,6 +6989,7 @@ class SystemPrompt {
      * 
      * Whether or not this function returns %TRUE, the system prompt object is
      * still closed and may not be further used.
+     * @param cancellable an optional cancellation object
      */
     close(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -6427,6 +6998,8 @@ class SystemPrompt {
      * by this function, and you must unreference it once done.
      * 
      * This call returns immediately and completes asynchronously.
+     * @param cancellable an optional cancellation object
+     * @param callback called when the operation completes
      */
     close_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6434,6 +7007,7 @@ class SystemPrompt {
      * 
      * Whether or not this function returns %TRUE, the system prompt object is
      * still closed and may not be further used.
+     * @param result asynchronous operation result
      */
     close_finish(result: Gio.AsyncResult): boolean
     /**
@@ -6475,6 +7049,10 @@ class SystemPrompt {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6485,6 +7063,12 @@ class SystemPrompt {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6508,6 +7092,7 @@ class SystemPrompt {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6527,11 +7112,14 @@ class SystemPrompt {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6539,6 +7127,8 @@ class SystemPrompt {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6556,6 +7146,7 @@ class SystemPrompt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6601,6 +7192,7 @@ class SystemPrompt {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6644,15 +7236,20 @@ class SystemPrompt {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6693,6 +7290,7 @@ class SystemPrompt {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6727,6 +7325,7 @@ class SystemPrompt {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gcr-3.Gcr.Prompt */
@@ -6749,6 +7348,7 @@ class SystemPrompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     confirm(cancellable?: Gio.Cancellable | null): PromptReply
     /**
@@ -6757,6 +7357,8 @@ class SystemPrompt {
      * represent the question correctly.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6765,6 +7367,7 @@ class SystemPrompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     confirm_finish(result: Gio.AsyncResult): PromptReply
     /**
@@ -6779,6 +7382,7 @@ class SystemPrompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     confirm_run(cancellable?: Gio.Cancellable | null): PromptReply
     /**
@@ -6874,6 +7478,7 @@ class SystemPrompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     password(cancellable?: Gio.Cancellable | null): string
     /**
@@ -6881,6 +7486,8 @@ class SystemPrompt {
      * this method to explain which password should be entered.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -6892,6 +7499,7 @@ class SystemPrompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     password_finish(result: Gio.AsyncResult): string
     /**
@@ -6908,6 +7516,7 @@ class SystemPrompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param cancellable optional cancellation object
      */
     password_run(cancellable?: Gio.Cancellable | null): string
     /**
@@ -6920,6 +7529,7 @@ class SystemPrompt {
      * The caller window indicates to the prompt which window is prompting the
      * user. The prompt may choose to ignore this information or use it in whatever
      * way it sees fit.
+     * @param window_id the window id
      */
     set_caller_window(window_id: string): void
     /**
@@ -6927,12 +7537,14 @@ class SystemPrompt {
      * 
      * This is the button that results in a %GCR_PROMPT_REPLY_CANCEL reply
      * from the prompt.
+     * @param cancel_label the label
      */
     set_cancel_label(cancel_label: string): void
     /**
      * Set whether the additional choice is chosen or not.
      * 
      * The additional choice should be set up using gcr_prompt_set_choice_label().
+     * @param chosen whether chosen
      */
     set_choice_chosen(chosen: boolean): void
     /**
@@ -6945,6 +7557,7 @@ class SystemPrompt {
      * gcr_prompt_set_choice_label() method.
      * 
      * If this is %NULL, then no additional choice is being displayed.
+     * @param choice_label the additional choice or %NULL
      */
     set_choice_label(choice_label?: string | null): void
     /**
@@ -6952,6 +7565,7 @@ class SystemPrompt {
      * 
      * This is the button that results in a %GCR_PROMPT_REPLY_CONTINUE reply
      * from the prompt.
+     * @param continue_label the label
      */
     set_continue_label(continue_label: string): void
     /**
@@ -6960,12 +7574,14 @@ class SystemPrompt {
      * A prompt implementation may choose not to display this detailed description.
      * Use gcr_prompt_set_message() to set a general message containing relevant
      * information.
+     * @param description the detailed description
      */
     set_description(description: string): void
     /**
      * Sets the prompt message for the user.
      * 
      * A prompt implementation should always display this message.
+     * @param message the prompt message
      */
     set_message(message: string): void
     /**
@@ -6974,6 +7590,7 @@ class SystemPrompt {
      * This will cause the prompt implementation to ask the user to confirm the
      * password and/or display other relevant user interface for creating a new
      * password.
+     * @param new_password whether in new password mode or not
      */
     set_password_new(new_password: boolean): void
     /**
@@ -6981,6 +7598,7 @@ class SystemPrompt {
      * 
      * A prompt implementation may choose not to display the prompt title. The
      * prompt message should contain relevant information.
+     * @param title the prompt title
      */
     set_title(title: string): void
     /**
@@ -6990,6 +7608,7 @@ class SystemPrompt {
      * user about a previous 'unsuccessful' prompt.
      * 
      * If this string is %NULL then no warning is displayed.
+     * @param warning the warning or %NULL
      */
     set_warning(warning?: string | null): void
     /* Methods of Gio-2.0.Gio.AsyncInitable */
@@ -7030,16 +7649,21 @@ class SystemPrompt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     init_finish(res: Gio.AsyncResult): boolean
     /**
      * Finishes the async construction for the various g_async_initable_new
      * calls, returning the created object or %NULL on error.
+     * @param res the #GAsyncResult from the callback
      */
     new_finish(res: Gio.AsyncResult): GObject.Object
     /* Methods of Gio-2.0.Gio.Initable */
@@ -7082,6 +7706,7 @@ class SystemPrompt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of Gcr-3.Gcr.SystemPrompt */
@@ -7092,6 +7717,8 @@ class SystemPrompt {
      * represent the question correctly.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     vfunc_prompt_confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7100,6 +7727,7 @@ class SystemPrompt {
      * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
      * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
      * an error occurs. Check the `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     vfunc_prompt_confirm_finish(result: Gio.AsyncResult): PromptReply
     /**
@@ -7107,6 +7735,8 @@ class SystemPrompt {
      * this method to explain which password should be entered.
      * 
      * This method will return immediately and complete asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     vfunc_prompt_password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7118,6 +7748,7 @@ class SystemPrompt {
      * 
      * %NULL will be returned if the user cancels or if an error occurs. Check the
      * `error` argument to tell the difference.
+     * @param result asynchronous result passed to callback
      */
     vfunc_prompt_password_finish(result: Gio.AsyncResult): string
     /**
@@ -7157,11 +7788,15 @@ class SystemPrompt {
      * in a thread, so if you want to support asynchronous initialization via
      * threads, just implement the #GAsyncInitable interface without overriding
      * any interface methods.
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_init_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes asynchronous initialization and returns the result.
      * See g_async_initable_init_async().
+     * @param res a #GAsyncResult.
      */
     vfunc_init_finish(res: Gio.AsyncResult): boolean
     /**
@@ -7203,6 +7838,7 @@ class SystemPrompt {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     vfunc_init(cancellable?: Gio.Cancellable | null): boolean
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7222,6 +7858,7 @@ class SystemPrompt {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7254,6 +7891,7 @@ class SystemPrompt {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
@@ -7269,8 +7907,12 @@ class SystemPrompt {
     connect(sigName: "prompt-close", callback: (($obj: SystemPrompt) => void)): number
     connect_after(sigName: "prompt-close", callback: (($obj: SystemPrompt) => void)): number
     emit(sigName: "prompt-close"): void
+    connect(sigName: "notify::bus-name", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::bus-name", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::secret-exchange", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::secret-exchange", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::timeout-seconds", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::timeout-seconds", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::caller-window", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::caller-window", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::cancel-label", callback: (($obj: SystemPrompt, pspec: GObject.ParamSpec) => void)): number
@@ -7311,6 +7953,8 @@ class SystemPrompt {
      * will block indefinitely until the prompt can be opened. If `timeout_seconds`
      * expires, then this function will fail with a %GCR_SYSTEM_PROMPT_IN_PROGRESS
      * error.
+     * @param timeout_seconds the number of seconds to wait to access the prompt, or -1
+     * @param cancellable optional cancellation object
      */
     static open(timeout_seconds: number, cancellable?: Gio.Cancellable | null): SystemPrompt
     /**
@@ -7322,10 +7966,14 @@ class SystemPrompt {
      * will block indefinitely until the prompt can be opened. If `timeout_seconds`
      * expires, then this operation will fail with a %GCR_SYSTEM_PROMPT_IN_PROGRESS
      * error.
+     * @param timeout_seconds the number of seconds to wait to access the prompt, or -1
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static open_async(timeout_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an operation to asynchronously open a system prompt.
+     * @param result the asynchronous result
      */
     static open_finish(result: Gio.AsyncResult): SystemPrompt
     /**
@@ -7338,6 +7986,9 @@ class SystemPrompt {
      * will block indefinitely until the prompt can be opened. If `timeout_seconds`
      * expires, then this function will fail with a %GCR_SYSTEM_PROMPT_IN_PROGRESS
      * error.
+     * @param prompter_name the prompter dbus name
+     * @param timeout_seconds the number of seconds to wait to access the prompt, or -1
+     * @param cancellable optional cancellation object
      */
     static open_for_prompter(prompter_name: string | null, timeout_seconds: number, cancellable?: Gio.Cancellable | null): SystemPrompt
     /**
@@ -7350,6 +8001,10 @@ class SystemPrompt {
      * will block indefinitely until the prompt can be opened. If `timeout_seconds`
      * expires, then this operation will fail with a %GCR_SYSTEM_PROMPT_IN_PROGRESS
      * error.
+     * @param prompter_name the prompter D-Bus name
+     * @param timeout_seconds the number of seconds to wait to access the prompt, or -1
+     * @param cancellable optional cancellation object
+     * @param callback called when the operation completes
      */
     static open_for_prompter_async(prompter_name: string | null, timeout_seconds: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
@@ -7359,12 +8014,21 @@ class SystemPrompt {
      * When the initialization is finished, `callback` will be called. You can
      * then call g_async_initable_new_finish() to get the new object and check
      * for any errors.
+     * @param object_type a #GType supporting #GAsyncInitable.
+     * @param n_parameters the number of parameters in `parameters`
+     * @param parameters the parameters to use to construct the object
+     * @param io_priority the [I/O priority][io-priority] of the operation
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
+     * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
     static newv_async(object_type: GObject.Type, n_parameters: number, parameters: GObject.Parameter, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param object_type a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -7380,11 +8044,16 @@ interface SystemPrompter_ConstructProps extends GObject.Object_ConstructProps {
 class SystemPrompter {
     /* Properties of Gcr-3.Gcr.SystemPrompter */
     /**
+     * The #GType for prompts created by this prompter. This must be a
+     * #GcrPrompt implementation.
+     */
+    readonly prompt_type: GObject.Type
+    /**
      * Whether the prompter is prompting or not.
      */
     readonly prompting: boolean
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.SystemPrompter */
     /**
      * Get the mode for this prompter.
@@ -7409,6 +8078,7 @@ class SystemPrompter {
      * This makes the prompter available for clients to call. The prompter will
      * remain registered until gcr_system_prompter_unregister() is called, or the
      * prompter is unreferenced.
+     * @param connection a DBus connection
      */
     register(connection: Gio.DBusConnection): void
     /**
@@ -7418,6 +8088,7 @@ class SystemPrompter {
      * 
      * If `wait` is set then this function will wait until all prompts have been closed
      * or cancelled. This is usually only used by tests.
+     * @param wait whether to wait for closing prompts
      */
     unregister(wait: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7455,6 +8126,10 @@ class SystemPrompter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7465,6 +8140,12 @@ class SystemPrompter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7488,6 +8169,7 @@ class SystemPrompter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7507,11 +8189,14 @@ class SystemPrompter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7519,6 +8204,8 @@ class SystemPrompter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7536,6 +8223,7 @@ class SystemPrompter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7581,6 +8269,7 @@ class SystemPrompter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -7624,15 +8313,20 @@ class SystemPrompter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -7673,6 +8367,7 @@ class SystemPrompter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -7707,6 +8402,7 @@ class SystemPrompter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GObject-2.0.GObject.Object */
@@ -7726,6 +8422,7 @@ class SystemPrompter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7768,10 +8465,13 @@ class SystemPrompter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: SystemPrompter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: SystemPrompter, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::prompt-type", callback: (($obj: SystemPrompter, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::prompt-type", callback: (($obj: SystemPrompter, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: "notify::prompting", callback: (($obj: SystemPrompter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::prompting", callback: (($obj: SystemPrompter, pspec: GObject.ParamSpec) => void)): number
     connect(sigName: string, callback: any): number
@@ -7789,10 +8489,11 @@ interface UnionCollection_ConstructProps extends GObject.Object_ConstructProps {
 }
 class UnionCollection {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of Gcr-3.Gcr.UnionCollection */
     /**
      * Add objects from this collection to the union
+     * @param collection The collection whose objects to add
      */
     add(collection: Collection): void
     /**
@@ -7801,10 +8502,12 @@ class UnionCollection {
     elements(): Collection[]
     /**
      * Check whether the collection is present in the union.
+     * @param collection the collection to check
      */
     have(collection: Collection): boolean
     /**
      * Remove an object from the collection.
+     * @param collection The collection whose objects to remove
      */
     remove(collection: Collection): void
     /**
@@ -7815,6 +8518,7 @@ class UnionCollection {
     /**
      * Add objects from this collection to the union. Do not add an additional
      * reference to the collection.
+     * @param collection The collection whose objects to add
      */
     take(collection: Collection): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -7852,6 +8556,10 @@ class UnionCollection {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -7862,6 +8570,12 @@ class UnionCollection {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -7885,6 +8599,7 @@ class UnionCollection {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -7904,11 +8619,14 @@ class UnionCollection {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -7916,6 +8634,8 @@ class UnionCollection {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -7933,6 +8653,7 @@ class UnionCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -7978,6 +8699,7 @@ class UnionCollection {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8021,15 +8743,20 @@ class UnionCollection {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8070,6 +8797,7 @@ class UnionCollection {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8104,21 +8832,25 @@ class UnionCollection {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gcr-3.Gcr.Collection */
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     contains(object: GObject.Object): boolean
     /**
      * Emit the #GcrCollection::added signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was added
      */
     emit_added(object: GObject.Object): void
     /**
      * Emit the #GcrCollection::removed signal for the given object. This function
      * is used by implementors of this interface.
+     * @param object The object that was removed
      */
     emit_removed(object: GObject.Object): void
     /**
@@ -8133,6 +8865,7 @@ class UnionCollection {
     vfunc_added(object: GObject.Object): void
     /**
      * Check whether the collection contains an object or not.
+     * @param object object to check
      */
     vfunc_contains(object: GObject.Object): boolean
     /**
@@ -8161,6 +8894,7 @@ class UnionCollection {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8193,6 +8927,7 @@ class UnionCollection {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: UnionCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: UnionCollection, pspec: GObject.ParamSpec) => void)): number
@@ -8200,12 +8935,14 @@ class UnionCollection {
     /* Signals of Gcr-3.Gcr.Collection */
     /**
      * This signal is emitted when an object is added to the collection.
+     * @param object object that was added
      */
     connect(sigName: "added", callback: (($obj: UnionCollection, object: GObject.Object) => void)): number
     connect_after(sigName: "added", callback: (($obj: UnionCollection, object: GObject.Object) => void)): number
     emit(sigName: "added", object: GObject.Object): void
     /**
      * This signal is emitted when an object is removed from the collection.
+     * @param object object that was removed
      */
     connect(sigName: "removed", callback: (($obj: UnionCollection, object: GObject.Object) => void)): number
     connect_after(sigName: "removed", callback: (($obj: UnionCollection, object: GObject.Object) => void)): number
@@ -8226,7 +8963,7 @@ abstract class CertificateChainClass {
     /**
      * The parent class
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class CertificateChainPrivate {
@@ -8237,34 +8974,34 @@ abstract class CertificateIface {
     /**
      * the parent interface type
      */
-    readonly parent: GObject.TypeInterface
-    readonly get_der_data: (self: Certificate) => Uint8Array
+    parent: GObject.TypeInterface
+    get_der_data: (self: Certificate) => Uint8Array
     static name: string
 }
 abstract class CertificateRequestClass {
     /* Fields of Gcr-3.Gcr.CertificateRequestClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class CollectionIface {
     /* Fields of Gcr-3.Gcr.CollectionIface */
-    readonly parent: GObject.TypeInterface
-    readonly added: (self: Collection, object: GObject.Object) => void
-    readonly removed: (self: Collection, object: GObject.Object) => void
-    readonly get_length: (self: Collection) => number
-    readonly get_objects: (self: Collection) => GObject.Object[]
-    readonly contains: (self: Collection, object: GObject.Object) => boolean
+    parent: GObject.TypeInterface
+    added: (self: Collection, object: GObject.Object) => void
+    removed: (self: Collection, object: GObject.Object) => void
+    get_length: (self: Collection) => number
+    get_objects: (self: Collection) => GObject.Object[]
+    contains: (self: Collection, object: GObject.Object) => boolean
     static name: string
 }
 class Column {
     /* Fields of Gcr-3.Gcr.Column */
-    readonly property_name: string
-    readonly property_type: GObject.Type
-    readonly column_type: GObject.Type
-    readonly label: string
-    readonly flags: ColumnFlags
-    readonly transformer: GObject.ValueTransform
-    readonly user_data: object
+    property_name: string
+    property_type: GObject.Type
+    column_type: GObject.Type
+    label: string
+    flags: ColumnFlags
+    transformer: GObject.ValueTransform
+    user_data: object
     static name: string
 }
 abstract class ComparableIface {
@@ -8272,8 +9009,8 @@ abstract class ComparableIface {
     /**
      * type interface
      */
-    readonly parent: GObject.TypeInterface
-    readonly compare: (self: Comparable, other?: Comparable | null) => number
+    parent: GObject.TypeInterface
+    compare: (self: Comparable, other?: Comparable | null) => number
     static name: string
 }
 abstract class FilterCollectionClass {
@@ -8281,7 +9018,7 @@ abstract class FilterCollectionClass {
     /**
      * the parent class
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class FilterCollectionPrivate {
@@ -8292,11 +9029,11 @@ abstract class ImportInteractionIface {
     /**
      * parent interface
      */
-    readonly parent: GObject.TypeInterface
-    readonly supplement_prep: (interaction: ImportInteraction, builder: Gck.Builder) => void
-    readonly supplement: (interaction: ImportInteraction, builder: Gck.Builder, cancellable?: Gio.Cancellable | null) => Gio.TlsInteractionResult
-    readonly supplement_async: (interaction: ImportInteraction, builder: Gck.Builder, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly supplement_finish: (interaction: ImportInteraction, result: Gio.AsyncResult) => Gio.TlsInteractionResult
+    parent: GObject.TypeInterface
+    supplement_prep: (interaction: ImportInteraction, builder: Gck.Builder) => void
+    supplement: (interaction: ImportInteraction, builder: Gck.Builder, cancellable?: Gio.Cancellable | null) => Gio.TlsInteractionResult
+    supplement_async: (interaction: ImportInteraction, builder: Gck.Builder, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    supplement_finish: (interaction: ImportInteraction, result: Gio.AsyncResult) => Gio.TlsInteractionResult
     static name: string
 }
 abstract class ImporterIface {
@@ -8304,11 +9041,11 @@ abstract class ImporterIface {
     /**
      * parent interface
      */
-    readonly parent: GObject.TypeInterface
-    readonly queue_for_parsed: (importer: Importer, parsed: Parsed) => boolean
-    readonly import_sync: (importer: Importer, cancellable?: Gio.Cancellable | null) => boolean
-    readonly import_async: (importer: Importer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly import_finish: (importer: Importer, result: Gio.AsyncResult) => boolean
+    parent: GObject.TypeInterface
+    queue_for_parsed: (importer: Importer, parsed: Parsed) => boolean
+    import_sync: (importer: Importer, cancellable?: Gio.Cancellable | null) => boolean
+    import_async: (importer: Importer, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    import_finish: (importer: Importer, result: Gio.AsyncResult) => boolean
     static name: string
 }
 class Parsed {
@@ -8350,6 +9087,7 @@ class Parsed {
     /* Static methods and pseudo-constructors */
     /**
      * Unreferences a parsed item which was referenced with gcr_parsed_ref()
+     * @param parsed a parsed item
      */
     static unref(parsed?: object | null): void
 }
@@ -8358,9 +9096,9 @@ abstract class ParserClass {
     /**
      * The parent class
      */
-    readonly parent_class: GObject.ObjectClass
-    readonly authenticate: (self: Parser, count: number) => boolean
-    readonly parsed: (self: Parser) => void
+    parent_class: GObject.ObjectClass
+    authenticate: (self: Parser, count: number) => boolean
+    parsed: (self: Parser) => void
     static name: string
 }
 class ParserPrivate {
@@ -8377,18 +9115,18 @@ abstract class PromptIface {
     /**
      * parent interface
      */
-    readonly parent_iface: GObject.TypeInterface
-    readonly prompt_password_async: (prompt: Prompt, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly prompt_password_finish: (prompt: Prompt, result: Gio.AsyncResult) => string
-    readonly prompt_confirm_async: (prompt: Prompt, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly prompt_confirm_finish: (prompt: Prompt, result: Gio.AsyncResult) => PromptReply
-    readonly prompt_close: (prompt: Prompt) => void
+    parent_iface: GObject.TypeInterface
+    prompt_password_async: (prompt: Prompt, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    prompt_password_finish: (prompt: Prompt, result: Gio.AsyncResult) => string
+    prompt_confirm_async: (prompt: Prompt, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    prompt_confirm_finish: (prompt: Prompt, result: Gio.AsyncResult) => PromptReply
+    prompt_close: (prompt: Prompt) => void
     static name: string
 }
 abstract class SecretExchangeClass {
     /* Fields of Gcr-3.Gcr.SecretExchangeClass */
-    readonly generate_exchange_key: (exchange: SecretExchange, scheme: string, public_key: number, n_public_key: number) => boolean
-    readonly derive_transport_key: (exchange: SecretExchange, peer: number, n_peer: number) => boolean
+    generate_exchange_key: (exchange: SecretExchange, scheme: string, public_key: number, n_public_key: number) => boolean
+    derive_transport_key: (exchange: SecretExchange, peer: number, n_peer: number) => boolean
     static name: string
 }
 class SecretExchangePrivate {
@@ -8396,7 +9134,7 @@ class SecretExchangePrivate {
 }
 abstract class SimpleCertificateClass {
     /* Fields of Gcr-3.Gcr.SimpleCertificateClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SimpleCertificatePrivate {
@@ -8404,7 +9142,7 @@ class SimpleCertificatePrivate {
 }
 abstract class SimpleCollectionClass {
     /* Fields of Gcr-3.Gcr.SimpleCollectionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SimpleCollectionPrivate {
@@ -8412,12 +9150,12 @@ class SimpleCollectionPrivate {
 }
 abstract class SshAskpassClass {
     /* Fields of Gcr-3.Gcr.SshAskpassClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 abstract class SystemPromptClass {
     /* Fields of Gcr-3.Gcr.SystemPromptClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SystemPromptPrivate {
@@ -8428,7 +9166,7 @@ abstract class SystemPrompterClass {
     /**
      * parent class
      */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class SystemPrompterPrivate {
@@ -8436,7 +9174,7 @@ class SystemPrompterPrivate {
 }
 abstract class UnionCollectionClass {
     /* Fields of Gcr-3.Gcr.UnionCollectionClass */
-    readonly parent_class: GObject.ObjectClass
+    parent_class: GObject.ObjectClass
     static name: string
 }
 class UnionCollectionPrivate {

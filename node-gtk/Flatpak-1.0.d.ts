@@ -417,10 +417,22 @@ interface BundleRef_ConstructProps extends Ref_ConstructProps {
     file?: Gio.File
 }
 class BundleRef {
+    /* Properties of Flatpak-1.0.Flatpak.BundleRef */
+    /**
+     * The bundle file that this ref refers to.
+     */
+    readonly file: Gio.File
+    /* Properties of Flatpak-1.0.Flatpak.Ref */
+    readonly arch: string
+    readonly branch: string
+    readonly collectionId: string
+    readonly commit: string
+    readonly kind: RefKind
+    readonly name: string
     /* Fields of Flatpak-1.0.Flatpak.Ref */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.BundleRef */
     /**
      * Get the compressed appstream for the app/runtime
@@ -432,6 +444,7 @@ class BundleRef {
     getFile(): Gio.File
     /**
      * Get the icon png data for the app/runtime
+     * @param size 64 or 128
      */
     getIcon(size: number): any
     /**
@@ -515,6 +528,10 @@ class BundleRef {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -525,6 +542,12 @@ class BundleRef {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -548,6 +571,7 @@ class BundleRef {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -567,11 +591,14 @@ class BundleRef {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -579,6 +606,8 @@ class BundleRef {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -596,6 +625,7 @@ class BundleRef {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -641,6 +671,7 @@ class BundleRef {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -684,15 +715,20 @@ class BundleRef {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -733,6 +769,7 @@ class BundleRef {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -767,6 +804,7 @@ class BundleRef {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -798,12 +836,48 @@ class BundleRef {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::file", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::file", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -822,7 +896,7 @@ interface Installation_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Installation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.Installation */
     /**
      * Adds a new `remote` object to the set of remotes. This is similar
@@ -837,6 +911,9 @@ class Installation {
      * remote filter gets reset. This is to allow the setup where there is a
      * default setup of a filtered remote, yet you can still use the standard
      * flatpakref file to get the full contents without getting two remotes.
+     * @param remote the new #FlatpakRemote
+     * @param ifNeeded if %TRUE, only add if it doesn't exists
+     * @param cancellable a #GCancellable
      */
     addRemote(remote: Remote, ifNeeded: boolean, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -849,17 +926,20 @@ class Installation {
      * from taking up disk space. Note that this will not remove the objects
      * referred to by `ref` from the underlying OSTree repo, you should use
      * flatpak_installation_prune_local_repo() to do that.
+     * @param cancellable a #GCancellable
      */
     cleanupLocalRefsSync(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Gets monitor object for the installation. The returned file monitor will
      * emit the #GFileMonitor::changed signal whenever an application or runtime
      * was installed, uninstalled or updated.
+     * @param cancellable a #GCancellable
      */
     createMonitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor
     /**
      * Drops all internal (in-memory) caches. For instance, this may be needed to pick up new or changed
      * remotes configured outside this installation instance.
+     * @param cancellable a #GCancellable
      */
     dropCaches(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -867,14 +947,30 @@ class Installation {
      * 
      * NOTE: Since 0.11.4 this information is accessible in FlatpakRemoteRef, so this
      * function is not very useful anymore.
+     * @param remoteName the name of the remote
+     * @param ref the ref
+     * @param cancellable a #GCancellable
      */
     fetchRemoteMetadataSync(remoteName: string, ref: Ref, cancellable?: Gio.Cancellable | null): any
     /**
      * Gets the current remote branch of a ref in the remote.
+     * @param remoteName the name of the remote
+     * @param kind what this ref contains (an #FlatpakRefKind)
+     * @param name name of the app/runtime to fetch
+     * @param arch which architecture to fetch (default: current architecture)
+     * @param branch which branch to fetch (default: 'master')
+     * @param cancellable a #GCancellable
      */
     fetchRemoteRefSync(remoteName: string, kind: RefKind, name: string, arch?: string | null, branch?: string | null, cancellable?: Gio.Cancellable | null): RemoteRef
     /**
      * Gets the current remote branch of a ref in the remote.
+     * @param remoteName the name of the remote
+     * @param kind what this ref contains (an #FlatpakRefKind)
+     * @param name name of the app/runtime to fetch
+     * @param arch which architecture to fetch (default: current architecture)
+     * @param branch which branch to fetch (default: 'master')
+     * @param flags set of #FlatpakQueryFlags
+     * @param cancellable a #GCancellable
      */
     fetchRemoteRefSyncFull(remoteName: string, kind: RefKind, name: string, arch: string | null, branch: string | null, flags: QueryFlags, cancellable?: Gio.Cancellable | null): RemoteRef
     /**
@@ -888,17 +984,24 @@ class Installation {
      * 
      * NOTE: Since 0.11.4 this information is accessible in FlatpakRemoteRef, so this
      * function is not very useful anymore.
+     * @param remoteName the name of the remote
+     * @param ref the ref
+     * @param cancellable a #GCancellable
      */
     fetchRemoteSizeSync(remoteName: string, ref: Ref, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* downloadSize */ number, /* installedSize */ number ]
     /**
      * Get a global configuration option for the installation, see
      * flatpak_installation_set_config_sync() for supported keys.
+     * @param key the name of the key to get
+     * @param cancellable a #GCancellable
      */
     getConfig(key: string, cancellable?: Gio.Cancellable | null): string
     /**
      * Get the last build of reference `name` that was installed with
      * flatpak_installation_install(), or %NULL if the reference has
      * never been installed locally.
+     * @param name the name of the app
+     * @param cancellable a #GCancellable
      */
     getCurrentInstalledApp(name: string, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
@@ -934,6 +1037,11 @@ class Installation {
     /**
      * Returns information about an installed ref, such as the available builds,
      * its size, location, etc.
+     * @param kind whether this is an app or runtime
+     * @param name name of the app/runtime to fetch
+     * @param arch which architecture to fetch (default: current architecture)
+     * @param branch which branch to fetch (default: "master")
+     * @param cancellable a #GCancellable
      */
     getInstalledRef(kind: RefKind, name: string, arch?: string | null, branch?: string | null, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
@@ -962,6 +1070,8 @@ class Installation {
     getPriority(): number
     /**
      * Looks up a remote by name.
+     * @param name a remote name
+     * @param cancellable a #GCancellable
      */
     getRemoteByName(name: string, cancellable?: Gio.Cancellable | null): Remote
     /**
@@ -982,6 +1092,12 @@ class Installation {
      * be unable to provide information on the installed ref, so
      * FLATPAK_ERROR_ONLY_PULLED will be set and the caller must respond
      * accordingly.
+     * @param remoteName name of the remote to use
+     * @param kind what this ref contains (an #FlatpakRefKind)
+     * @param name name of the app/runtime to fetch
+     * @param arch which architecture to fetch (default: current architecture)
+     * @param branch which branch to fetch (default: 'master')
+     * @param cancellable a #GCancellable
      */
     install(remoteName: string, kind: RefKind, name: string, arch?: string | null, branch?: string | null, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
@@ -991,6 +1107,8 @@ class Installation {
      * 
      * Install an application or runtime from an flatpak bundle file.
      * See flatpak-build-bundle(1) for how to create bundles.
+     * @param file a #GFile that is an flatpak bundle
+     * @param cancellable a #GCancellable
      */
     installBundle(file: Gio.File, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
@@ -1007,6 +1125,14 @@ class Installation {
      * be unable to provide information on the installed ref, so
      * FLATPAK_ERROR_ONLY_PULLED will be set and the caller must respond
      * accordingly.
+     * @param flags set of #FlatpakInstallFlags flag
+     * @param remoteName name of the remote to use
+     * @param kind what this ref contains (an #FlatpakRefKind)
+     * @param name name of the app/runtime to fetch
+     * @param arch which architecture to fetch (default: current architecture)
+     * @param branch which branch to fetch (default: 'master')
+     * @param subpaths A list of subpaths to fetch, or %NULL for everything
+     * @param cancellable a #GCancellable
      */
     installFull(flags: InstallFlags, remoteName: string, kind: RefKind, name: string, arch?: string | null, branch?: string | null, subpaths?: string[] | null, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
@@ -1021,6 +1147,8 @@ class Installation {
      * Note, the #FlatpakRemoteRef will not have the commit field set, or other details, to
      * avoid unnecessary roundtrips. If you need that you have to resolve it
      * explicitly with flatpak_installation_fetch_remote_ref_sync ().
+     * @param refFileData The ref file contents
+     * @param cancellable a #GCancellable
      */
     installRefFile(refFileData: any, cancellable?: Gio.Cancellable | null): RemoteRef
     /**
@@ -1029,6 +1157,11 @@ class Installation {
      * You can use flatpak_installation_get_installed_ref() or
      * flatpak_installation_get_current_installed_app() to find out what builds
      * are available, in order to get a value for `commit`.
+     * @param name name of the app to launch
+     * @param arch which architecture to launch (default: current architecture)
+     * @param branch which branch of the application (default: "master")
+     * @param commit the commit of `branch` to launch
+     * @param cancellable a #GCancellable
      */
     launch(name: string, arch?: string | null, branch?: string | null, commit?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1042,14 +1175,24 @@ class Installation {
      * that can be used to get information about the running instance. You can also use
      * it to wait for the instance to be done with g_child_watch_add() if you pass the
      * #FLATPAK_LAUNCH_FLAGS_DO_NOT_REAP flag.
+     * @param flags set of #FlatpakLaunchFlags
+     * @param name name of the app to launch
+     * @param arch which architecture to launch (default: current architecture)
+     * @param branch which branch of the application (default: "master")
+     * @param commit the commit of `branch` to launch
+     * @param instanceOut return location for a #FlatpakInstance
+     * @param cancellable a #GCancellable
      */
     launchFull(flags: LaunchFlags, name: string, arch?: string | null, branch?: string | null, commit?: string | null, instanceOut?: Instance | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Lists the installed references.
+     * @param cancellable a #GCancellable
      */
     listInstalledRefs(cancellable?: Gio.Cancellable | null): InstalledRef[]
     /**
      * Lists the installed references of a specific kind.
+     * @param kind the kind of installation
+     * @param cancellable a #GCancellable
      */
     listInstalledRefsByKind(kind: RefKind, cancellable?: Gio.Cancellable | null): InstalledRef[]
     /**
@@ -1064,6 +1207,7 @@ class Installation {
      * 
      * In case more than one app needs an update of the same runtime or extension,
      * this function will return all of those apps.
+     * @param cancellable a #GCancellable
      */
     listInstalledRefsForUpdate(cancellable?: Gio.Cancellable | null): InstalledRef[]
     /**
@@ -1077,14 +1221,22 @@ class Installation {
      * at the locally installed refs. This is useful for instance when you're
      * looking for related refs to uninstall, or when you're planning to use
      * FLATPAK_UPDATE_FLAGS_NO_PULL to install previously pulled refs.
+     * @param remoteName the name of the remote
+     * @param ref the ref
+     * @param cancellable a #GCancellable
      */
     listInstalledRelatedRefsSync(remoteName: string, ref: string, cancellable?: Gio.Cancellable | null): RelatedRef[]
     /**
      * Lists all the applications and runtimes in a remote.
+     * @param remoteOrUri the name or URI of the remote
+     * @param cancellable a #GCancellable
      */
     listRemoteRefsSync(remoteOrUri: string, cancellable?: Gio.Cancellable | null): RemoteRef[]
     /**
      * Lists all the applications and runtimes in a remote.
+     * @param remoteOrUri the name or URI of the remote
+     * @param flags set of #FlatpakQueryFlags
+     * @param cancellable a #GCancellable
      */
     listRemoteRefsSyncFull(remoteOrUri: string, flags: QueryFlags, cancellable?: Gio.Cancellable | null): RemoteRef[]
     /**
@@ -1102,11 +1254,15 @@ class Installation {
      * 
      * The commit property of each #FlatpakRelatedRef is not guaranteed to be
      * non-%NULL.
+     * @param remoteName the name of the remote
+     * @param ref the ref
+     * @param cancellable a #GCancellable
      */
     listRemoteRelatedRefsSync(remoteName: string, ref: string, cancellable?: Gio.Cancellable | null): RelatedRef[]
     /**
      * Lists the static remotes, in priority (highest first) order. For same
      * priority, an earlier added remote comes before a later added one.
+     * @param cancellable a #GCancellable
      */
     listRemotes(cancellable?: Gio.Cancellable | null): Remote[]
     /**
@@ -1115,6 +1271,8 @@ class Installation {
      * Since flatpak 1.7 this will never return any types except FLATPAK_REMOTE_TYPE_STATIC.
      * Equivalent functionallity to FLATPAK_REMOTE_TYPE_USB can be had by listing remote refs
      * with FLATPAK_QUERY_FLAGS_ONLY_SIDELOADED.
+     * @param types an array of #FlatpakRemoteType
+     * @param cancellable a #GCancellable
      */
     listRemotesByType(types: RemoteType[], cancellable?: Gio.Cancellable | null): Remote[]
     /**
@@ -1122,19 +1280,26 @@ class Installation {
      * 
      * A reference is used if it is either an application, or an sdk,
      * or the runtime of a used ref, or an extension of a used ref.
+     * @param arch if non-%NULL, the architecture of refs to collect
+     * @param cancellable a #GCancellable
      */
     listUnusedRefs(arch?: string | null, cancellable?: Gio.Cancellable | null): InstalledRef[]
     /**
      * Loads the metadata overrides file for an application.
+     * @param appId an application id
+     * @param cancellable a #GCancellable
      */
     loadAppOverrides(appId: string, cancellable?: Gio.Cancellable | null): string
     /**
      * Saves changes in the `remote` object.
+     * @param remote the modified #FlatpakRemote
+     * @param cancellable a #GCancellable
      */
     modifyRemote(remote: Remote, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Remove all orphaned OSTree objects from the underlying OSTree repo in
      * `self`.
+     * @param cancellable a #GCancellable
      */
     pruneLocalRepo(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1147,10 +1312,15 @@ class Installation {
      * from taking up disk space. Note that this will not remove the objects
      * referred to by `ref` from the underlying OSTree repo, you should use
      * flatpak_installation_prune_local_repo() to do that.
+     * @param remoteName the name of the remote
+     * @param ref the ref
+     * @param cancellable a #GCancellable
      */
     removeLocalRefSync(remoteName: string, ref: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Removes the remote with the given name from the installation.
+     * @param name the name of the remote to remove
+     * @param cancellable a #GCancellable
      */
     removeRemote(name: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1159,6 +1329,7 @@ class Installation {
      * uninstall operations with the %FLATPAK_INSTALL_FLAGS_NO_TRIGGERS,
      * %FLATPAK_UPDATE_FLAGS_NO_TRIGGERS or %FLATPAK_UNINSTALL_FLAGS_NO_TRIGGERS
      * flags set.
+     * @param cancellable a #GCancellable
      */
     runTriggers(cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1167,6 +1338,9 @@ class Installation {
      * list of language codes like `"sv;en;pl"`, or `""` to mean all languages,
      * and `extra-languages`, which is a semicolon-separated list of locale
      * identifiers like `"en;en_DK;zh_HK.big5hkscs;uz_UZ.utf8`cyrillic"``.
+     * @param key the name of the key to set
+     * @param value the new value, or %NULL to unset
+     * @param cancellable a #GCancellable
      */
     setConfigSync(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1175,6 +1349,7 @@ class Installation {
      * directly triggered by a user action.
      * 
      * By default, interaction is allowed.
+     * @param noInteraction Whether to disallow interactive authorization for operations
      */
     setNoInteraction(noInteraction: boolean): void
     /**
@@ -1183,6 +1358,11 @@ class Installation {
      * instead. It has a lot more interesting features.
      * 
      * Uninstall an application or runtime.
+     * @param kind what this ref contains (an #FlatpakRefKind)
+     * @param name name of the app or runtime to uninstall
+     * @param arch architecture of the app or runtime to uninstall; if  %NULL, flatpak_get_default_arch() is assumed
+     * @param branch name of the branch of the app or runtime to uninstall;  if %NULL, `master` is assumed
+     * @param cancellable a #GCancellable
      */
     uninstall(kind: RefKind, name: string, arch?: string | null, branch?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1191,6 +1371,12 @@ class Installation {
      * instead. It has a lot more interesting features.
      * 
      * Uninstall an application or runtime.
+     * @param flags set of #FlatpakUninstallFlags flags
+     * @param kind what this ref contains (an #FlatpakRefKind)
+     * @param name name of the app or runtime to uninstall
+     * @param arch architecture of the app or runtime to uninstall; if  %NULL, flatpak_get_default_arch() is assumed
+     * @param branch name of the branch of the app or runtime to uninstall;  if %NULL, `master` is assumed
+     * @param cancellable a #GCancellable
      */
     uninstallFull(flags: UninstallFlags, kind: RefKind, name: string, arch?: string | null, branch?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1205,15 +1391,29 @@ class Installation {
      * 
      * If no updates could be found on the remote end and the package is
      * already up to date, then %FLATPAK_ERROR_ALREADY_INSTALLED will be thrown.
+     * @param flags set of #FlatpakUpdateFlags flag
+     * @param kind whether this is an app or runtime
+     * @param name name of the app or runtime to update
+     * @param arch architecture of the app or runtime to update (default: current architecture)
+     * @param branch name of the branch of the app or runtime to update (default: master)
+     * @param cancellable a #GCancellable
      */
     update(flags: UpdateFlags, kind: RefKind, name: string, arch?: string | null, branch?: string | null, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
      * Updates the local copy of appstream for `remote_name` for the specified `arch`.
+     * @param remoteName the name of the remote
+     * @param arch Architecture to update, or %NULL for the local machine arch
+     * @param outChanged Set to %TRUE if the contents of the appstream changed, %FALSE if nothing changed
+     * @param cancellable a #GCancellable
      */
     updateAppstreamFullSync(remoteName: string, arch?: string | null, outChanged?: boolean | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Updates the local copy of appstream for `remote_name` for the specified `arch`.
      * If you need progress feedback, use flatpak_installation_update_appstream_full_sync().
+     * @param remoteName the name of the remote
+     * @param arch Architecture to update, or %NULL for the local machine arch
+     * @param outChanged Set to %TRUE if the contents of the appstream changed, %FALSE if nothing changed
+     * @param cancellable a #GCancellable
      */
     updateAppstreamSync(remoteName: string, arch?: string | null, outChanged?: boolean | null, cancellable?: Gio.Cancellable | null): boolean
     /**
@@ -1228,12 +1428,21 @@ class Installation {
      * 
      * If no updates could be found on the remote end and the package is
      * already up to date, then %FLATPAK_ERROR_ALREADY_INSTALLED will be thrown.
+     * @param flags set of #FlatpakUpdateFlags flag
+     * @param kind whether this is an app or runtime
+     * @param name name of the app or runtime to update
+     * @param arch architecture of the app or runtime to update (default: current architecture)
+     * @param branch name of the branch of the app or runtime to update (default: master)
+     * @param subpaths A list of subpaths to fetch, or %NULL for everything
+     * @param cancellable a #GCancellable
      */
     updateFull(flags: UpdateFlags, kind: RefKind, name: string, arch?: string | null, branch?: string | null, subpaths?: string[] | null, cancellable?: Gio.Cancellable | null): InstalledRef
     /**
      * Updates the local configuration of a remote repository by fetching
      * the related information from the summary file in the remote OSTree
      * repository and committing the changes to the local installation.
+     * @param name the name of the remote to update
+     * @param cancellable a #GCancellable
      */
     updateRemoteSync(name: string, cancellable?: Gio.Cancellable | null): boolean
     /* Methods of GObject-2.0.GObject.Object */
@@ -1271,6 +1480,10 @@ class Installation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1281,6 +1494,12 @@ class Installation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1304,6 +1523,7 @@ class Installation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1323,11 +1543,14 @@ class Installation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1335,6 +1558,8 @@ class Installation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1352,6 +1577,7 @@ class Installation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1397,6 +1623,7 @@ class Installation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1440,15 +1667,20 @@ class Installation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1489,6 +1721,7 @@ class Installation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1523,6 +1756,7 @@ class Installation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -1554,6 +1788,7 @@ class Installation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1596,16 +1831,31 @@ interface InstalledRef_ConstructProps extends Ref_ConstructProps {
 }
 class InstalledRef {
     /* Properties of Flatpak-1.0.Flatpak.InstalledRef */
+    readonly appdataContentRating: GLib.HashTable
+    readonly appdataContentRatingType: string
+    readonly appdataLicense: string
+    readonly appdataName: string
+    readonly appdataSummary: string
+    readonly appdataVersion: string
     deployDir: string
+    readonly endOfLife: string
+    readonly endOfLifeRebase: string
     installedSize: number
     isCurrent: boolean
     latestCommit: string
     origin: string
     subpaths: string[]
+    /* Properties of Flatpak-1.0.Flatpak.Ref */
+    readonly arch: string
+    readonly branch: string
+    readonly collectionId: string
+    readonly commit: string
+    readonly kind: RefKind
+    readonly name: string
     /* Fields of Flatpak-1.0.Flatpak.Ref */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.InstalledRef */
     /**
      * Returns the content rating field from the appdata. This is a potentially
@@ -1675,10 +1925,12 @@ class InstalledRef {
     getSubpaths(): string[]
     /**
      * Loads the compressed xml appdata for this ref (if it exists).
+     * @param cancellable a #GCancellable
      */
     loadAppdata(cancellable?: Gio.Cancellable | null): any
     /**
      * Loads the metadata file for this ref.
+     * @param cancellable a #GCancellable
      */
     loadMetadata(cancellable?: Gio.Cancellable | null): any
     /* Methods of Flatpak-1.0.Flatpak.Ref */
@@ -1746,6 +1998,10 @@ class InstalledRef {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -1756,6 +2012,12 @@ class InstalledRef {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -1779,6 +2041,7 @@ class InstalledRef {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -1798,11 +2061,14 @@ class InstalledRef {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -1810,6 +2076,8 @@ class InstalledRef {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1827,6 +2095,7 @@ class InstalledRef {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1872,6 +2141,7 @@ class InstalledRef {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1915,15 +2185,20 @@ class InstalledRef {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1964,6 +2239,7 @@ class InstalledRef {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1998,6 +2274,7 @@ class InstalledRef {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2029,17 +2306,58 @@ class InstalledRef {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::appdata-content-rating", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::appdata-content-rating", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::appdata-content-rating", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::appdata-content-rating", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::appdata-content-rating", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::appdata-content-rating-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::appdata-content-rating-type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::appdata-content-rating-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::appdata-content-rating-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::appdata-content-rating-type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::appdata-license", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::appdata-license", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::appdata-license", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::appdata-license", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::appdata-license", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::appdata-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::appdata-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::appdata-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::appdata-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::appdata-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::appdata-summary", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::appdata-summary", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::appdata-summary", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::appdata-summary", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::appdata-summary", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::appdata-version", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::appdata-version", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::appdata-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::appdata-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::appdata-version", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::deploy-dir", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::deploy-dir", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::deploy-dir", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::deploy-dir", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::deploy-dir", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::end-of-life", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::end-of-life", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::end-of-life", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::end-of-life", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::end-of-life", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::end-of-life-rebase", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::end-of-life-rebase", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::end-of-life-rebase", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::end-of-life-rebase", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::end-of-life-rebase", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: "notify::installed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::installed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify::installed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2065,6 +2383,36 @@ class InstalledRef {
     on(sigName: "notify::subpaths", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::subpaths", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::subpaths", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2081,7 +2429,7 @@ interface Instance_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Instance {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.Instance */
     /**
      * Gets the application ID of the application running in the instance.
@@ -2178,6 +2526,10 @@ class Instance {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2188,6 +2540,12 @@ class Instance {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2211,6 +2569,7 @@ class Instance {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2230,11 +2589,14 @@ class Instance {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2242,6 +2604,8 @@ class Instance {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2259,6 +2623,7 @@ class Instance {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2304,6 +2669,7 @@ class Instance {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2347,15 +2713,20 @@ class Instance {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2396,6 +2767,7 @@ class Instance {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2430,6 +2802,7 @@ class Instance {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2461,6 +2834,7 @@ class Instance {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -2494,8 +2868,15 @@ interface Ref_ConstructProps extends GObject.Object_ConstructProps {
     name?: string
 }
 class Ref {
+    /* Properties of Flatpak-1.0.Flatpak.Ref */
+    readonly arch: string
+    readonly branch: string
+    readonly collectionId: string
+    readonly commit: string
+    readonly kind: RefKind
+    readonly name: string
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.Ref */
     /**
      * Convert an FlatpakRef object into a string representation that
@@ -2561,6 +2942,10 @@ class Ref {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2571,6 +2956,12 @@ class Ref {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2594,6 +2985,7 @@ class Ref {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -2613,11 +3005,14 @@ class Ref {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -2625,6 +3020,8 @@ class Ref {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2642,6 +3039,7 @@ class Ref {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -2687,6 +3085,7 @@ class Ref {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -2730,15 +3129,20 @@ class Ref {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -2779,6 +3183,7 @@ class Ref {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -2813,6 +3218,7 @@ class Ref {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -2844,12 +3250,43 @@ class Ref {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -2864,6 +3301,7 @@ class Ref {
     /**
      * Tries to parse a full ref name and return a #FlatpakRef (without a
      * commit set) or fail if the ref is invalid somehow.
+     * @param ref A string ref name, such as "app/org.test.App/x86_64/master"
      */
     static parse(ref: string): Ref
     static $gtype: GObject.Type
@@ -2876,28 +3314,28 @@ interface RelatedRef_ConstructProps extends Ref_ConstructProps {
     subpaths?: string[]
 }
 class RelatedRef {
+    /* Properties of Flatpak-1.0.Flatpak.RelatedRef */
+    readonly shouldAutoprune: boolean
+    readonly shouldDelete: boolean
+    readonly shouldDownload: boolean
+    readonly subpaths: string[]
+    /* Properties of Flatpak-1.0.Flatpak.Ref */
+    readonly arch: string
+    readonly branch: string
+    readonly collectionId: string
+    readonly commit: string
+    readonly kind: RefKind
+    readonly name: string
     /* Fields of Flatpak-1.0.Flatpak.Ref */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.RelatedRef */
     /**
      * Returns the subpaths that should be installed/updated for the ref.
      * This returns %NULL if all files should be installed.
      */
     getSubpaths(): string[]
-    /**
-     * Returns whether to delete when pruning unused refs.
-     */
-    shouldAutoprune(): boolean
-    /**
-     * Returns whether to auto-delete the ref with the main ref.
-     */
-    shouldDelete(): boolean
-    /**
-     * Returns whether to auto-download the ref with the main ref.
-     */
-    shouldDownload(): boolean
     /* Methods of Flatpak-1.0.Flatpak.Ref */
     /**
      * Convert an FlatpakRef object into a string representation that
@@ -2963,6 +3401,10 @@ class RelatedRef {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2973,6 +3415,12 @@ class RelatedRef {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -2996,6 +3444,7 @@ class RelatedRef {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3015,11 +3464,14 @@ class RelatedRef {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3027,6 +3479,8 @@ class RelatedRef {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3044,6 +3498,7 @@ class RelatedRef {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3089,6 +3544,7 @@ class RelatedRef {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3132,15 +3588,20 @@ class RelatedRef {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3181,6 +3642,7 @@ class RelatedRef {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3215,6 +3677,7 @@ class RelatedRef {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3246,12 +3709,63 @@ class RelatedRef {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::should-autoprune", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::should-autoprune", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::should-autoprune", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::should-autoprune", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::should-autoprune", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::should-delete", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::should-delete", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::should-delete", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::should-delete", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::should-delete", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::should-download", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::should-download", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::should-download", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::should-download", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::should-download", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::subpaths", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::subpaths", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::subpaths", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::subpaths", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::subpaths", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3291,17 +3805,27 @@ class Remote {
      * presented in the UI.
      */
     name: string
+    /**
+     * The type of the remote: whether it comes from static configuration files
+     * (`FLATPAK_REMOTE_TYPE_STATIC)` or has been dynamically found from the local
+     * network or a mounted USB drive (`FLATPAK_REMOTE_TYPE_LAN,`
+     * `FLATPAK_REMOTE_TYPE_USB)`. Dynamic remotes may be added and removed over
+     * time.
+     */
+    readonly type: RemoteType
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.Remote */
     /**
      * Returns the directory where this remote will store locally cached
      * appstream information for the specified `arch`.
+     * @param arch which architecture to fetch (default: current architecture)
      */
     getAppstreamDir(arch?: string | null): Gio.File
     /**
      * Returns the timestamp file that will be updated whenever the appstream information
      * has been updated (or tried to update) for the specified `arch`.
+     * @param arch which architecture to fetch (default: current architecture)
      */
     getAppstreamTimestamp(arch?: string | null): Gio.File
     /**
@@ -3379,6 +3903,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param collectionId The new collection ID, or %NULL to unset
      */
     setCollectionId(collectionId?: string | null): void
     /**
@@ -3387,6 +3912,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param comment The new comment
      */
     setComment(comment: string): void
     /**
@@ -3395,6 +3921,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param defaultBranch The new default_branch
      */
     setDefaultBranch(defaultBranch: string): void
     /**
@@ -3403,6 +3930,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param description The new description
      */
     setDescription(description: string): void
     /**
@@ -3411,6 +3939,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param disabled a bool
      */
     setDisabled(disabled: boolean): void
     /**
@@ -3419,6 +3948,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param filterPath The pathname of the new filter file
      */
     setFilter(filterPath: string): void
     /**
@@ -3427,6 +3957,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param gpgKey a #GBytes with gpg binary key data
      */
     setGpgKey(gpgKey: any): void
     /**
@@ -3435,6 +3966,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param gpgVerify a bool
      */
     setGpgVerify(gpgVerify: boolean): void
     /**
@@ -3443,6 +3975,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param homepage The new homepage
      */
     setHomepage(homepage: string): void
     /**
@@ -3451,6 +3984,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param icon The new homepage
      */
     setIcon(icon: string): void
     /**
@@ -3460,6 +3994,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param mainRef The new main ref
      */
     setMainRef(mainRef: string): void
     /**
@@ -3468,6 +4003,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param nodeps a bool
      */
     setNodeps(nodeps: boolean): void
     /**
@@ -3476,6 +4012,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param noenumerate a bool
      */
     setNoenumerate(noenumerate: boolean): void
     /**
@@ -3484,6 +4021,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param prio a bool
      */
     setPrio(prio: number): void
     /**
@@ -3492,6 +4030,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param title The new title
      */
     setTitle(title: string): void
     /**
@@ -3500,6 +4039,7 @@ class Remote {
      * Note: This is a local modification of this object, you must commit changes
      * using flatpak_installation_modify_remote() for the changes to take
      * effect.
+     * @param url The new url
      */
     setUrl(url: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -3537,6 +4077,10 @@ class Remote {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3547,6 +4091,12 @@ class Remote {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3570,6 +4120,7 @@ class Remote {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -3589,11 +4140,14 @@ class Remote {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -3601,6 +4155,8 @@ class Remote {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3618,6 +4174,7 @@ class Remote {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -3663,6 +4220,7 @@ class Remote {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -3706,15 +4264,20 @@ class Remote {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -3755,6 +4318,7 @@ class Remote {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -3789,6 +4353,7 @@ class Remote {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -3820,6 +4385,7 @@ class Remote {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -3831,6 +4397,11 @@ class Remote {
     on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::type", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::type", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -3856,10 +4427,24 @@ interface RemoteRef_ConstructProps extends Ref_ConstructProps {
     remoteName?: string
 }
 class RemoteRef {
+    /* Properties of Flatpak-1.0.Flatpak.RemoteRef */
+    readonly downloadSize: number
+    readonly endOfLife: string
+    readonly endOfLifeRebase: string
+    readonly installedSize: number
+    readonly metadata: any
+    readonly remoteName: string
+    /* Properties of Flatpak-1.0.Flatpak.Ref */
+    readonly arch: string
+    readonly branch: string
+    readonly collectionId: string
+    readonly commit: string
+    readonly kind: RefKind
+    readonly name: string
     /* Fields of Flatpak-1.0.Flatpak.Ref */
-    readonly parent: GObject.Object
+    parent: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.RemoteRef */
     /**
      * Returns the download size of the ref.
@@ -3952,6 +4537,10 @@ class RemoteRef {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3962,6 +4551,12 @@ class RemoteRef {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -3985,6 +4580,7 @@ class RemoteRef {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4004,11 +4600,14 @@ class RemoteRef {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4016,6 +4615,8 @@ class RemoteRef {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4033,6 +4634,7 @@ class RemoteRef {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4078,6 +4680,7 @@ class RemoteRef {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4121,15 +4724,20 @@ class RemoteRef {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4170,6 +4778,7 @@ class RemoteRef {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4204,6 +4813,7 @@ class RemoteRef {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -4235,12 +4845,73 @@ class RemoteRef {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::download-size", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::download-size", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::download-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::download-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::download-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::end-of-life", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::end-of-life", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::end-of-life", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::end-of-life", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::end-of-life", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::end-of-life-rebase", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::end-of-life-rebase", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::end-of-life-rebase", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::end-of-life-rebase", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::end-of-life-rebase", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::installed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::installed-size", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::installed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::installed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::installed-size", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::metadata", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::metadata", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::metadata", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::metadata", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::metadata", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::remote-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::remote-name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::remote-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::remote-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::remote-name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::arch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::arch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::branch", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::branch", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::collection-id", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::collection-id", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::commit", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::commit", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::kind", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::kind", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::name", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4261,8 +4932,13 @@ interface Transaction_ConstructProps extends GObject.Object_ConstructProps {
     installation?: Installation
 }
 class Transaction {
+    /* Properties of Flatpak-1.0.Flatpak.Transaction */
+    /**
+     * The installation that the transaction operates on.
+     */
+    readonly installation: Installation
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.Transaction */
     /**
      * Cancel an ongoing webflow authentication request. This can be call
@@ -4272,6 +4948,7 @@ class Transaction {
      * 
      * This is useful for example if you're showing an authenticaion
      * window with a browser, but the user closed it before it was finished.
+     * @param id The webflow id, as passed into the webflow-start signal
      */
     abortWebflow(id: number): void
     /**
@@ -4288,6 +4965,7 @@ class Transaction {
      * the transaction works on).
      * 
      * Also see flatpak_transaction_add_default_dependency_sources().
+     * @param installation a #FlatpakInstallation
      */
     addDependencySource(installation: Installation): void
     /**
@@ -4296,14 +4974,20 @@ class Transaction {
      * The `remote` can either be a configured remote of the installation,
      * or a file:// uri pointing at a local repository to install from,
      * in which case an origin remote is created.
+     * @param remote the name of the remote
+     * @param ref the ref
+     * @param subpaths subpaths to install, or the  empty list or %NULL to pull all subpaths
      */
     addInstall(remote: string, ref: string, subpaths?: string[] | null): boolean
     /**
      * Adds installing the given bundle to this transaction.
+     * @param file a #GFile that is an flatpak bundle
+     * @param gpgData GPG key with which to check bundle signatures, or  %NULL to use the key embedded in the bundle (if any)
      */
     addInstallBundle(file: Gio.File, gpgData?: any | null): boolean
     /**
      * Adds installing the given flatpakref to this transaction.
+     * @param flatpakrefData data from a flatpakref file
      */
     addInstallFlatpakref(flatpakrefData: any): boolean
     /**
@@ -4313,6 +4997,10 @@ class Transaction {
      * `previous_ids` will be set up.
      * 
      * See flatpak_transaction_add_install() for a description of `remote`.
+     * @param remote the name of the remote
+     * @param ref the ref
+     * @param subpaths the subpaths to include, or %NULL to install the complete ref
+     * @param previousIds Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
      */
     addRebase(remote: string, ref: string, subpaths?: string | null, previousIds?: string[] | null): boolean
     /**
@@ -4320,18 +5008,27 @@ class Transaction {
      * equivalent to using the sideload-repos directories (see flatpak(1)), but can
      * be done dynamically. Any path added here is used in addition to ones in
      * those directories.
+     * @param path a path to a local flatpak repository
      */
     addSideloadRepo(path: string): void
     /**
      * Adds uninstalling the given ref to this transaction.
+     * @param ref the ref
      */
     addUninstall(ref: string): boolean
     /**
      * Adds updating the given ref to this transaction.
+     * @param ref the ref
+     * @param subpaths subpaths to install; %NULL  to use the current set plus the set of configured languages, or  `{ "", NULL }` to pull all subpaths.
+     * @param commit the commit to update to, or %NULL to use the latest
      */
     addUpdate(ref: string, subpaths?: string[] | null, commit?: string | null): boolean
     /**
      * Finishes (or aborts) an ongoing basic auth request.
+     * @param id The webflow id, as passed into the webflow-start signal
+     * @param user The user name, or %NULL if aborting request
+     * @param password The password
+     * @param options Extra a{sv] variant with options (or %NULL), currently unused.
      */
     completeBasicAuth(id: number, user: string, password: string, options: GLib.Variant): void
     /**
@@ -4378,41 +5075,49 @@ class Transaction {
      * #FlatpakTransaction::operation-error is emitted.
      * 
      * Note that this call blocks until the transaction is done.
+     * @param cancellable a #GCancellable
      */
     run(cancellable?: Gio.Cancellable | null): boolean
     /**
      * Sets the architecture to default to where it is unspecified.
+     * @param arch the arch to make default
      */
     setDefaultArch(arch: string): void
     /**
      * Sets whether the transaction should ignore runtime dependencies
      * when resolving operations for applications.
+     * @param disableDependencies whether to disable runtime dependencies
      */
     setDisableDependencies(disableDependencies: boolean): void
     /**
      * Sets whether the transaction should avoid pruning the local OSTree
      * repository after updating.
+     * @param disablePrune whether to avoid pruning
      */
     setDisablePrune(disablePrune: boolean): void
     /**
      * Sets whether the transaction should avoid adding related refs
      * when resolving operations. Related refs are extensions that are
      * suggested by apps, such as locales.
+     * @param disableRelated whether to avoid adding related refs
      */
     setDisableRelated(disableRelated: boolean): void
     /**
      * Sets whether the transaction should avoid using static
      * deltas when pulling.
+     * @param disableStaticDeltas whether to avoid static deltas
      */
     setDisableStaticDeltas(disableStaticDeltas: boolean): void
     /**
      * Sets whether the transaction should uninstall files even
      * if they're used by a running application.
+     * @param forceUninstall whether to force-uninstall refs
      */
     setForceUninstall(forceUninstall: boolean): void
     /**
      * Sets whether the transaction should download updates, but
      * not deploy them.
+     * @param noDeploy whether to avoid deploying
      */
     setNoDeploy(noDeploy: boolean): void
     /**
@@ -4421,11 +5126,13 @@ class Transaction {
      * directly triggered by a user action.
      * 
      * By default, the setting from the parent #FlatpakInstallation is used.
+     * @param noInteraction Whether to disallow interactive authorization for operations
      */
     setNoInteraction(noInteraction: boolean): void
     /**
      * Sets whether the transaction should operate only on locally
      * available data.
+     * @param noPull whether to avoid pulls
      */
     setNoPull(noPull: boolean): void
     /**
@@ -4441,11 +5148,13 @@ class Transaction {
      * 
      * On wayland is should be wayland:$handle where handle is gotten by
      * using the export call of the xdg-foreign-unstable wayland extension.
+     * @param parentWindow whether to avoid pulls
      */
     setParentWindow(parentWindow: string): void
     /**
      * Sets whether the transaction should uninstall first if a
      * ref is already installed.
+     * @param reinstall whether to reinstall refs
      */
     setReinstall(reinstall: boolean): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -4483,6 +5192,10 @@ class Transaction {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4493,6 +5206,12 @@ class Transaction {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -4516,6 +5235,7 @@ class Transaction {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -4535,11 +5255,14 @@ class Transaction {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -4547,6 +5270,8 @@ class Transaction {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -4564,6 +5289,7 @@ class Transaction {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -4609,6 +5335,7 @@ class Transaction {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -4652,15 +5379,20 @@ class Transaction {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -4701,6 +5433,7 @@ class Transaction {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -4735,6 +5468,7 @@ class Transaction {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -4777,6 +5511,7 @@ class Transaction {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of Flatpak-1.0.Flatpak.Transaction */
@@ -4784,6 +5519,10 @@ class Transaction {
      * The ::add-new-remote signal gets emitted if, as part of the transaction,
      * it is required or recommended that a new remote is added, for the reason
      * described in `reason`.
+     * @param reason A #FlatpakTransactionRemoteReason for this suggestion
+     * @param fromId The id of the app/runtime
+     * @param suggestedRemoteName The suggested remote name
+     * @param url The repo url
      */
     connect(sigName: "add-new-remote", callback: ((reason: TransactionRemoteReason, fromId: string, suggestedRemoteName: string, url: string) => boolean)): number
     on(sigName: "add-new-remote", callback: (reason: TransactionRemoteReason, fromId: string, suggestedRemoteName: string, url: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4801,6 +5540,10 @@ class Transaction {
      * (or don't implement it). This will abort the authentication and likely
      * result in the transaction failing (unless the authentication was somehow
      * optional).
+     * @param remote The remote we're authenticating with
+     * @param realm The url to show
+     * @param options Extra options, currently unused
+     * @param id The id of the operation, can be used to finish it
      */
     connect(sigName: "basic-auth-start", callback: ((remote: string, realm: string, options: GLib.Variant, id: number) => boolean)): number
     on(sigName: "basic-auth-start", callback: (remote: string, realm: string, options: GLib.Variant, id: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4810,6 +5553,9 @@ class Transaction {
     /**
      * The ::choose-remote-for-ref signal gets emitted when a
      * remote needs to be selected during the execution of the transaction.
+     * @param forRef The ref we are installing
+     * @param runtimeRef The ref we are looking for
+     * @param remotes the remotes that has the ref, sorted in prio order
      */
     connect(sigName: "choose-remote-for-ref", callback: ((forRef: string, runtimeRef: string, remotes: string[]) => number)): number
     on(sigName: "choose-remote-for-ref", callback: (forRef: string, runtimeRef: string, remotes: string[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -4819,6 +5565,9 @@ class Transaction {
     /**
      * The ::end-of-lifed signal gets emitted when a ref is found to
      * be marked as end-of-life during the execution of the transaction.
+     * @param ref The ref we are installing
+     * @param reason The eol reason, or %NULL
+     * @param rebase The new name, if rebased, or %NULL
      */
     connect(sigName: "end-of-lifed", callback: ((ref: string, reason: string, rebase: string) => void)): number
     on(sigName: "end-of-lifed", callback: (ref: string, reason: string, rebase: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4831,6 +5580,11 @@ class Transaction {
      * #FlatpakTransaction::end-of-lifed, this signal allows for the
      * transaction to be modified in order to e.g. install the rebased
      * ref.
+     * @param remote The remote for the ref we are processing
+     * @param ref The ref we are processing
+     * @param reason The eol reason, or %NULL
+     * @param rebasedToRef The new name, if rebased, or %NULL
+     * @param previousIds The previous names for the rebased ref (if any), including the one from `ref`
      */
     connect(sigName: "end-of-lifed-with-rebase", callback: ((remote: string, ref: string, reason: string, rebasedToRef: string, previousIds: string[]) => boolean)): number
     on(sigName: "end-of-lifed-with-rebase", callback: (remote: string, ref: string, reason: string, rebasedToRef: string, previousIds: string[]) => void, after?: boolean): NodeJS.EventEmitter
@@ -4847,6 +5601,8 @@ class Transaction {
      * 
      * The default handler does nothing, and if the authenticator is not installed when
      * the signal handler fails the transaction will error out.
+     * @param remote The remote name
+     * @param authenticatorRef The ref for the authenticator
      */
     connect(sigName: "install-authenticator", callback: ((remote: string, authenticatorRef: string) => void)): number
     on(sigName: "install-authenticator", callback: (remote: string, authenticatorRef: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -4856,6 +5612,8 @@ class Transaction {
     /**
      * The ::new-operation signal gets emitted during the execution of
      * the transaction when a new operation is beginning.
+     * @param operation The new #FlatpakTransactionOperation
+     * @param progress A #FlatpakTransactionProgress for `operation`
      */
     connect(sigName: "new-operation", callback: ((operation: TransactionOperation, progress: TransactionProgress) => void)): number
     on(sigName: "new-operation", callback: (operation: TransactionOperation, progress: TransactionProgress) => void, after?: boolean): NodeJS.EventEmitter
@@ -4865,6 +5623,9 @@ class Transaction {
     /**
      * The ::operation-done signal gets emitted during the execution of
      * the transaction when an operation is finished.
+     * @param operation The #FlatpakTransactionOperation which finished
+     * @param commit The commit
+     * @param result A #FlatpakTransactionResult giving details about the result
      */
     connect(sigName: "operation-done", callback: ((operation: TransactionOperation, commit: string, result: TransactionResult) => void)): number
     on(sigName: "operation-done", callback: (operation: TransactionOperation, commit: string, result: TransactionResult) => void, after?: boolean): NodeJS.EventEmitter
@@ -4874,6 +5635,9 @@ class Transaction {
     /**
      * The ::operation-error signal gets emitted when an error occurs during the
      * execution of the transaction.
+     * @param operation The #FlatpakTransactionOperation which failed
+     * @param error A #GError
+     * @param details A #FlatpakTransactionErrorDetails with details about the error
      */
     connect(sigName: "operation-error", callback: ((operation: TransactionOperation, error: GLib.Error, details: TransactionErrorDetails) => boolean)): number
     on(sigName: "operation-error", callback: (operation: TransactionOperation, error: GLib.Error, details: TransactionErrorDetails) => void, after?: boolean): NodeJS.EventEmitter
@@ -4895,6 +5659,8 @@ class Transaction {
      * The ::webflow-done signal gets emitted when the authentication
      * finished the webflow, independent of the reason and results.  If
      * you for were showing a web-browser window it can now be closed.
+     * @param options Extra options, currently unused
+     * @param id The id of the operation
      */
     connect(sigName: "webflow-done", callback: ((options: GLib.Variant, id: number) => void)): number
     on(sigName: "webflow-done", callback: (options: GLib.Variant, id: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4917,6 +5683,10 @@ class Transaction {
      * flatpak_transaction_abort_webflow() to manually abort the authentication.
      * This is useful if the user aborted the authentication operation some way,
      * like e.g. closing the browser window.
+     * @param remote The remote we're authenticating with
+     * @param url The url to show
+     * @param options Extra options, currently unused
+     * @param id The id of the operation, can be used to cancel it
      */
     connect(sigName: "webflow-start", callback: ((remote: string, url: string, options: GLib.Variant, id: number) => boolean)): number
     on(sigName: "webflow-start", callback: (remote: string, url: string, options: GLib.Variant, id: number) => void, after?: boolean): NodeJS.EventEmitter
@@ -4952,12 +5722,18 @@ class Transaction {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::installation", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::installation", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::installation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::installation", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::installation", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -4974,6 +5750,9 @@ class Transaction {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -4982,7 +5761,7 @@ interface TransactionOperation_ConstructProps extends GObject.Object_ConstructPr
 }
 class TransactionOperation {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.TransactionOperation */
     /**
      * Gets the path to the bundle.
@@ -5114,6 +5893,10 @@ class TransactionOperation {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5124,6 +5907,12 @@ class TransactionOperation {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5147,6 +5936,7 @@ class TransactionOperation {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5166,11 +5956,14 @@ class TransactionOperation {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5178,6 +5971,8 @@ class TransactionOperation {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5195,6 +5990,7 @@ class TransactionOperation {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5240,6 +6036,7 @@ class TransactionOperation {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5283,15 +6080,20 @@ class TransactionOperation {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5332,6 +6134,7 @@ class TransactionOperation {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5366,6 +6169,7 @@ class TransactionOperation {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -5397,6 +6201,7 @@ class TransactionOperation {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5419,7 +6224,7 @@ interface TransactionProgress_ConstructProps extends GObject.Object_ConstructPro
 }
 class TransactionProgress {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of Flatpak-1.0.Flatpak.TransactionProgress */
     /**
      * Gets the number of bytes that have been transferred.
@@ -5443,6 +6248,7 @@ class TransactionProgress {
     getStatus(): string
     /**
      * Sets how often progress should be updated.
+     * @param updateInterval the update interval, in milliseconds
      */
     setUpdateFrequency(updateInterval: number): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -5480,6 +6286,10 @@ class TransactionProgress {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -5490,6 +6300,12 @@ class TransactionProgress {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -5513,6 +6329,7 @@ class TransactionProgress {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -5532,11 +6349,14 @@ class TransactionProgress {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -5544,6 +6364,8 @@ class TransactionProgress {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5561,6 +6383,7 @@ class TransactionProgress {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -5606,6 +6429,7 @@ class TransactionProgress {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -5649,15 +6473,20 @@ class TransactionProgress {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -5698,6 +6527,7 @@ class TransactionProgress {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -5732,6 +6562,7 @@ class TransactionProgress {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of Flatpak-1.0.Flatpak.TransactionProgress */
@@ -5772,6 +6603,7 @@ class TransactionProgress {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -5792,71 +6624,71 @@ class TransactionProgress {
 }
 abstract class BundleRefClass {
     /* Fields of Flatpak-1.0.Flatpak.BundleRefClass */
-    readonly parentClass: RefClass
+    parentClass: RefClass
     static name: string
 }
 abstract class InstallationClass {
     /* Fields of Flatpak-1.0.Flatpak.InstallationClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class InstalledRefClass {
     /* Fields of Flatpak-1.0.Flatpak.InstalledRefClass */
-    readonly parentClass: RefClass
+    parentClass: RefClass
     static name: string
 }
 abstract class InstanceClass {
     /* Fields of Flatpak-1.0.Flatpak.InstanceClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class RefClass {
     /* Fields of Flatpak-1.0.Flatpak.RefClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class RelatedRefClass {
     /* Fields of Flatpak-1.0.Flatpak.RelatedRefClass */
-    readonly parentClass: RefClass
+    parentClass: RefClass
     static name: string
 }
 abstract class RemoteClass {
     /* Fields of Flatpak-1.0.Flatpak.RemoteClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class RemoteRefClass {
     /* Fields of Flatpak-1.0.Flatpak.RemoteRefClass */
-    readonly parentClass: RefClass
+    parentClass: RefClass
     static name: string
 }
 abstract class TransactionClass {
     /* Fields of Flatpak-1.0.Flatpak.TransactionClass */
-    readonly parentClass: GObject.ObjectClass
-    readonly newOperation: (transaction: Transaction, operation: TransactionOperation, progress: TransactionProgress) => void
-    readonly operationDone: (transaction: Transaction, operation: TransactionOperation, commit: string, details: TransactionResult) => void
-    readonly operationError: (transaction: Transaction, operation: TransactionOperation, error: GLib.Error, detail: TransactionErrorDetails) => boolean
-    readonly chooseRemoteForRef: (transaction: Transaction, forRef: string, runtimeRef: string, remotes: string) => number
-    readonly endOfLifed: (transaction: Transaction, ref: string, reason: string, rebase: string) => void
-    readonly ready: (transaction: Transaction) => boolean
-    readonly addNewRemote: (transaction: Transaction, reason: TransactionRemoteReason, fromId: string, remoteName: string, url: string) => boolean
-    readonly run: (transaction: Transaction, cancellable?: Gio.Cancellable | null) => boolean
-    readonly endOfLifedWithRebase: (transaction: Transaction, remote: string, ref: string, reason: string, rebasedToRef: string, previousIds: string) => boolean
-    readonly webflowStart: (transaction: Transaction, remote: string, url: string, options: GLib.Variant, id: number) => boolean
-    readonly webflowDone: (transaction: Transaction, options: GLib.Variant, id: number) => void
-    readonly basicAuthStart: (transaction: Transaction, remote: string, realm: string, options: GLib.Variant, id: number) => boolean
-    readonly installAuthenticator: (transaction: Transaction, remote: string, authenticatorRef: string) => void
-    readonly padding: object[]
+    parentClass: GObject.ObjectClass
+    newOperation: (transaction: Transaction, operation: TransactionOperation, progress: TransactionProgress) => void
+    operationDone: (transaction: Transaction, operation: TransactionOperation, commit: string, details: TransactionResult) => void
+    operationError: (transaction: Transaction, operation: TransactionOperation, error: GLib.Error, detail: TransactionErrorDetails) => boolean
+    chooseRemoteForRef: (transaction: Transaction, forRef: string, runtimeRef: string, remotes: string) => number
+    endOfLifed: (transaction: Transaction, ref: string, reason: string, rebase: string) => void
+    ready: (transaction: Transaction) => boolean
+    addNewRemote: (transaction: Transaction, reason: TransactionRemoteReason, fromId: string, remoteName: string, url: string) => boolean
+    run: (transaction: Transaction, cancellable?: Gio.Cancellable | null) => boolean
+    endOfLifedWithRebase: (transaction: Transaction, remote: string, ref: string, reason: string, rebasedToRef: string, previousIds: string) => boolean
+    webflowStart: (transaction: Transaction, remote: string, url: string, options: GLib.Variant, id: number) => boolean
+    webflowDone: (transaction: Transaction, options: GLib.Variant, id: number) => void
+    basicAuthStart: (transaction: Transaction, remote: string, realm: string, options: GLib.Variant, id: number) => boolean
+    installAuthenticator: (transaction: Transaction, remote: string, authenticatorRef: string) => void
+    padding: object[]
     static name: string
 }
 abstract class TransactionOperationClass {
     /* Fields of Flatpak-1.0.Flatpak.TransactionOperationClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 abstract class TransactionProgressClass {
     /* Fields of Flatpak-1.0.Flatpak.TransactionProgressClass */
-    readonly parentClass: GObject.ObjectClass
+    parentClass: GObject.ObjectClass
     static name: string
 }
 }

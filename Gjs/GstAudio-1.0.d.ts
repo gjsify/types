@@ -839,6 +839,12 @@ const AUDIO_CHANNELS_RANGE: string
  */
 const AUDIO_CONVERTER_OPT_DITHER_METHOD: string
 /**
+ * Threshold for the output bit depth at/below which to apply dithering.
+ * 
+ * Default is 20 bit.
+ */
+const AUDIO_CONVERTER_OPT_DITHER_THRESHOLD: string
+/**
  * #GST_TYPE_LIST, The channel mapping matrix.
  * 
  * The matrix coefficients must be between -1 and 1: the number of rows is equal
@@ -1186,111 +1192,111 @@ class AudioAggregator {
     start_time: number
     start_time_selection: GstBase.AggregatorStartTimeSelection
     /* Fields of GstBase-1.0.GstBase.Aggregator */
-    readonly parent: Gst.Element
+    parent: Gst.Element
     /**
      * the aggregator's source pad
      */
-    readonly srcpad: Gst.Pad
+    srcpad: Gst.Pad
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioAggregator */
     set_sink_caps(pad: AudioAggregatorPad, caps: Gst.Caps): void
     /* Methods of GstBase-1.0.GstBase.Aggregator */
@@ -1298,12 +1304,14 @@ class AudioAggregator {
      * This method will push the provided output buffer downstream. If needed,
      * mandatory events such as stream-start, caps, and segment events will be
      * sent before pushing the buffer.
+     * @param buffer the #GstBuffer to push.
      */
     finish_buffer(buffer: Gst.Buffer): Gst.FlowReturn
     /**
      * This method will push the provided output buffer list downstream. If needed,
      * mandatory events such as stream-start, caps, and segment events will be
      * sent before pushing the buffer.
+     * @param bufferlist the #GstBufferList to push.
      */
     finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn
     /**
@@ -1334,6 +1342,7 @@ class AudioAggregator {
      * to produce the next output buffer. This should only be called from
      * a #GstAggregator::samples-selected handler, and can be used to precisely
      * control aggregating parameters for a given set of input samples.
+     * @param pad 
      */
     peek_next_sample(pad: GstBase.AggregatorPad): Gst.Sample | null
     /**
@@ -1348,6 +1357,10 @@ class AudioAggregator {
      * 
      * This function MUST only be called from the #GstAggregatorClass::aggregate()
      * function.
+     * @param pts The presentation timestamp of the next output buffer
+     * @param dts The decoding timestamp of the next output buffer
+     * @param duration The duration of the next output buffer
+     * @param info a #GstStructure containing additional information
      */
     selected_samples(pts: Gst.ClockTime, dts: Gst.ClockTime, duration: Gst.ClockTime, info?: Gst.Structure | null): void
     /**
@@ -1357,16 +1370,20 @@ class AudioAggregator {
      * 
      * #GstAggregator will still wait once on each newly-added pad, making
      * sure upstream has had a fair chance to start up.
+     * @param ignore whether inactive pads should not be waited on
      */
     set_ignore_inactive_pads(ignore: boolean): void
     /**
      * Lets #GstAggregator sub-classes tell the baseclass what their internal
      * latency is. Will also post a LATENCY message on the bus so the pipeline
      * can reconfigure its global latency.
+     * @param min_latency minimum latency
+     * @param max_latency maximum latency
      */
     set_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): void
     /**
      * Sets the caps to be used on the src pad.
+     * @param caps The #GstCaps to set on the src pad.
      */
     set_src_caps(caps: Gst.Caps): void
     /**
@@ -1385,6 +1402,7 @@ class AudioAggregator {
      * 
      * Subclasses MUST call this before gst_aggregator_selected_samples(),
      * if it is used at all.
+     * @param segment 
      */
     update_segment(segment: Gst.Segment): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -1408,6 +1426,7 @@ class AudioAggregator {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -1423,6 +1442,7 @@ class AudioAggregator {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -1430,6 +1450,7 @@ class AudioAggregator {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -1446,6 +1467,7 @@ class AudioAggregator {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -1461,6 +1483,7 @@ class AudioAggregator {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -1470,6 +1493,7 @@ class AudioAggregator {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -1479,6 +1503,7 @@ class AudioAggregator {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -1509,21 +1534,26 @@ class AudioAggregator {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -1549,10 +1579,12 @@ class AudioAggregator {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -1564,6 +1596,7 @@ class AudioAggregator {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -1597,11 +1630,13 @@ class AudioAggregator {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -1646,6 +1681,7 @@ class AudioAggregator {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -1657,6 +1693,8 @@ class AudioAggregator {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -1664,6 +1702,9 @@ class AudioAggregator {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -1671,6 +1712,10 @@ class AudioAggregator {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -1684,6 +1729,10 @@ class AudioAggregator {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -1712,6 +1761,14 @@ class AudioAggregator {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -1719,6 +1776,15 @@ class AudioAggregator {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -1737,6 +1803,7 @@ class AudioAggregator {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -1753,10 +1820,14 @@ class AudioAggregator {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -1768,6 +1839,7 @@ class AudioAggregator {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -1780,6 +1852,7 @@ class AudioAggregator {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -1791,6 +1864,7 @@ class AudioAggregator {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -1810,6 +1884,7 @@ class AudioAggregator {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -1819,6 +1894,9 @@ class AudioAggregator {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -1834,6 +1912,7 @@ class AudioAggregator {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -1842,6 +1921,13 @@ class AudioAggregator {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -1859,6 +1945,9 @@ class AudioAggregator {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -1870,12 +1959,14 @@ class AudioAggregator {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -1883,18 +1974,21 @@ class AudioAggregator {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -1906,6 +2000,7 @@ class AudioAggregator {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -1921,6 +2016,7 @@ class AudioAggregator {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -1937,6 +2033,7 @@ class AudioAggregator {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -1950,12 +2047,16 @@ class AudioAggregator {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -1965,6 +2066,7 @@ class AudioAggregator {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -1972,11 +2074,14 @@ class AudioAggregator {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -1999,6 +2104,10 @@ class AudioAggregator {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -2024,6 +2133,8 @@ class AudioAggregator {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -2033,16 +2144,19 @@ class AudioAggregator {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -2058,17 +2172,21 @@ class AudioAggregator {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -2079,6 +2197,7 @@ class AudioAggregator {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -2086,11 +2205,13 @@ class AudioAggregator {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -2104,6 +2225,7 @@ class AudioAggregator {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -2157,6 +2279,10 @@ class AudioAggregator {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -2167,6 +2293,12 @@ class AudioAggregator {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -2190,6 +2322,7 @@ class AudioAggregator {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -2209,11 +2342,14 @@ class AudioAggregator {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -2221,6 +2357,8 @@ class AudioAggregator {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -2238,6 +2376,7 @@ class AudioAggregator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -2283,6 +2422,7 @@ class AudioAggregator {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -2326,15 +2466,20 @@ class AudioAggregator {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -2375,6 +2520,7 @@ class AudioAggregator {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -2399,6 +2545,7 @@ class AudioAggregator {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioAggregator */
@@ -2412,12 +2559,14 @@ class AudioAggregator {
      * This method will push the provided output buffer downstream. If needed,
      * mandatory events such as stream-start, caps, and segment events will be
      * sent before pushing the buffer.
+     * @param buffer the #GstBuffer to push.
      */
     vfunc_finish_buffer(buffer: Gst.Buffer): Gst.FlowReturn
     /**
      * This method will push the provided output buffer list downstream. If needed,
      * mandatory events such as stream-start, caps, and segment events will be
      * sent before pushing the buffer.
+     * @param bufferlist the #GstBufferList to push.
      */
     vfunc_finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn
     vfunc_fixate_src_caps(caps: Gst.Caps): Gst.Caps
@@ -2435,6 +2584,7 @@ class AudioAggregator {
      * to produce the next output buffer. This should only be called from
      * a #GstAggregator::samples-selected handler, and can be used to precisely
      * control aggregating parameters for a given set of input samples.
+     * @param aggregator_pad 
      */
     vfunc_peek_next_sample(aggregator_pad: GstBase.AggregatorPad): Gst.Sample | null
     vfunc_propose_allocation(pad: GstBase.AggregatorPad, decide_query: Gst.Query, query: Gst.Query): boolean
@@ -2454,6 +2604,7 @@ class AudioAggregator {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -2477,6 +2628,7 @@ class AudioAggregator {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -2497,6 +2649,7 @@ class AudioAggregator {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -2513,6 +2666,7 @@ class AudioAggregator {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -2522,6 +2676,9 @@ class AudioAggregator {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -2533,6 +2690,7 @@ class AudioAggregator {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -2540,18 +2698,21 @@ class AudioAggregator {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -2568,6 +2729,7 @@ class AudioAggregator {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -2590,6 +2752,7 @@ class AudioAggregator {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -2598,6 +2761,11 @@ class AudioAggregator {
      * Signals that the #GstAggregator subclass has selected the next set
      * of input samples it will aggregate. Handlers may call
      * gst_aggregator_peek_next_sample() at that point.
+     * @param segment The #GstSegment the next output buffer is part of
+     * @param pts The presentation timestamp of the next output buffer
+     * @param dts The decoding timestamp of the next output buffer
+     * @param duration The duration of the next output buffer
+     * @param info a #GstStructure containing additional information
      */
     connect(sigName: "samples-selected", callback: (($obj: AudioAggregator, segment: Gst.Segment, pts: number, dts: number, duration: number, info?: Gst.Structure | null) => void)): number
     connect_after(sigName: "samples-selected", callback: (($obj: AudioAggregator, segment: Gst.Segment, pts: number, dts: number, duration: number, info?: Gst.Structure | null) => void)): number
@@ -2617,12 +2785,14 @@ class AudioAggregator {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioAggregator, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioAggregator, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioAggregator, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioAggregator, old_pad: Gst.Pad) => void)): number
@@ -2632,6 +2802,8 @@ class AudioAggregator {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioAggregator, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioAggregator, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -2665,6 +2837,7 @@ class AudioAggregator {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioAggregator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioAggregator, pspec: GObject.ParamSpec) => void)): number
@@ -2723,46 +2896,46 @@ class AudioAggregatorConvertPad {
     offset: number
     template: Gst.PadTemplate
     /* Fields of GstAudio-1.0.GstAudio.AudioAggregatorPad */
-    readonly parent: GstBase.AggregatorPad
+    parent: GstBase.AggregatorPad
     /**
      * The audio info for this pad set from the incoming caps
      */
-    readonly info: AudioInfo
+    info: AudioInfo
     /* Fields of GstBase-1.0.GstBase.AggregatorPad */
     /**
      * last segment received.
      */
-    readonly segment: Gst.Segment
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Pad */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * private data owned by the parent element
      */
-    readonly element_private: object
+    element_private: object
     /**
      * padtemplate for this pad
      */
-    readonly padtemplate: Gst.PadTemplate
+    padtemplate: Gst.PadTemplate
     /**
      * the direction of the pad, cannot change after creating
      *             the pad.
      */
-    readonly direction: Gst.PadDirection
+    direction: Gst.PadDirection
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.AggregatorPad */
     /**
      * Drop the buffer currently queued in `pad`.
@@ -2790,6 +2963,8 @@ class AudioAggregatorConvertPad {
      * pad's activatemodefunc. For use from within pad activation functions only.
      * 
      * If you don't know what this is, you probably don't want to call it.
+     * @param mode the requested activation mode
+     * @param active whether or not the pad should be active.
      */
     activate_mode(mode: Gst.PadMode, active: boolean): boolean
     /**
@@ -2802,11 +2977,14 @@ class AudioAggregatorConvertPad {
      * immediately if the pad is already idle while calling gst_pad_add_probe().
      * In each of the groups, probes are called in the order in which they were
      * added.
+     * @param mask the probe mask
+     * @param callback #GstPadProbeCallback that will be called with notifications of           the pad state
      */
     add_probe(mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): number
     /**
      * Checks if the source pad and the sink pad are compatible so they can be
      * linked.
+     * @param sinkpad the sink #GstPad.
      */
     can_link(sinkpad: Gst.Pad): boolean
     /**
@@ -2825,6 +3003,7 @@ class AudioAggregatorConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to send, return GST_FLOW_ERROR     if not.
      */
     chain(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -2844,6 +3023,7 @@ class AudioAggregatorConvertPad {
      * after calling this function.
      * 
      * MT safe.
+     * @param list the #GstBufferList to send, return GST_FLOW_ERROR     if not.
      */
     chain_list(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -2869,6 +3049,8 @@ class AudioAggregatorConvertPad {
      * Since stream IDs are sorted alphabetically, any numbers in the
      * stream ID should be printed with a fixed number of characters,
      * preceded by 0's, such as by using the format \%03u instead of \%u.
+     * @param parent Parent #GstElement of `pad`
+     * @param stream_id The stream-id
      */
     create_stream_id(parent: Gst.Element, stream_id?: string | null): string
     /**
@@ -2879,6 +3061,8 @@ class AudioAggregatorConvertPad {
      * 
      * The event is sent to all pads internally linked to `pad`. This function
      * takes ownership of `event`.
+     * @param parent the parent of `pad` or %NULL
+     * @param event the #GstEvent to handle.
      */
     event_default(parent: Gst.Object | null, event: Gst.Event): boolean
     /**
@@ -2887,6 +3071,7 @@ class AudioAggregatorConvertPad {
      * function is only called once for each pad.
      * 
      * When `forward` returns %TRUE, no further pads will be processed.
+     * @param forward a #GstPadForwardFunction
      */
     forward(forward: Gst.PadForwardFunction): boolean
     /**
@@ -2968,6 +3153,8 @@ class AudioAggregatorConvertPad {
      * will be unchanged.
      * 
      * This is a lowlevel function. Usually gst_pad_pull_range() is used.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     get_range(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -2978,6 +3165,8 @@ class AudioAggregatorConvertPad {
     /**
      * Returns a new reference of the sticky event of type `event_type`
      * from the event.
+     * @param event_type the #GstEventType that should be retrieved.
+     * @param idx the index of the event
      */
     get_sticky_event(event_type: Gst.EventType, idx: number): Gst.Event | null
     /**
@@ -3044,10 +3233,12 @@ class AudioAggregatorConvertPad {
      * pads inside the parent element with opposite direction.
      * 
      * The caller must free this iterator after use with gst_iterator_free().
+     * @param parent the parent of `pad` or %NULL
      */
     iterate_internal_links_default(parent?: Gst.Object | null): Gst.Iterator | null
     /**
      * Links the source pad and the sink pad.
+     * @param sinkpad the sink #GstPad to link.
      */
     link(sinkpad: Gst.Pad): Gst.PadLinkReturn
     /**
@@ -3060,6 +3251,8 @@ class AudioAggregatorConvertPad {
      * for more information.
      * 
      * MT Safe.
+     * @param sinkpad the sink #GstPad to link.
+     * @param flags the checks to validate when linking
      */
     link_full(sinkpad: Gst.Pad, flags: Gst.PadLinkCheck): Gst.PadLinkReturn
     /**
@@ -3070,6 +3263,7 @@ class AudioAggregatorConvertPad {
      * 
      * If `src` or `sink` pads don't have parent elements or do not share a common
      * ancestor, the link will fail.
+     * @param sink a #GstPad
      */
     link_maybe_ghosting(sink: Gst.Pad): boolean
     /**
@@ -3084,6 +3278,8 @@ class AudioAggregatorConvertPad {
      * Calling gst_pad_link_maybe_ghosting_full() with
      * `flags` == %GST_PAD_LINK_CHECK_DEFAULT is the recommended way of linking
      * pads with safety checks applied.
+     * @param sink a #GstPad
+     * @param flags some #GstPadLinkCheck flags
      */
     link_maybe_ghosting_full(sink: Gst.Pad, flags: Gst.PadLinkCheck): boolean
     /**
@@ -3107,11 +3303,13 @@ class AudioAggregatorConvertPad {
      * 
      * The caller is responsible for both the allocation and deallocation of
      * the query structure.
+     * @param query the #GstQuery to perform.
      */
     peer_query(query: Gst.Query): boolean
     /**
      * Check if the peer of `pad` accepts `caps`. If `pad` has no peer, this function
      * returns %TRUE.
+     * @param caps a #GstCaps to check on the pad
      */
     peer_query_accept_caps(caps: Gst.Caps): boolean
     /**
@@ -3123,19 +3321,25 @@ class AudioAggregatorConvertPad {
      * called on sinkpads `filter` contains the caps accepted by
      * downstream in the preferred order. `filter` might be %NULL but
      * if it is not %NULL the returned caps will be a subset of `filter`.
+     * @param filter a #GstCaps filter, or %NULL.
      */
     peer_query_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries the peer pad of a given sink pad to convert `src_val` in `src_format`
      * to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     peer_query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
      * Queries the peer pad of a given sink pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     peer_query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries the peer of a given sink pad for the stream position.
+     * @param format the #GstFormat requested
      */
     peer_query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -3145,6 +3349,7 @@ class AudioAggregatorConvertPad {
      * This function is useful as a default accept caps query function for an element
      * that can handle any stream format, but requires caps that are acceptable for
      * all opposite pads.
+     * @param query an ACCEPT_CAPS #GstQuery.
      */
     proxy_query_accept_caps(query: Gst.Query): boolean
     /**
@@ -3154,6 +3359,7 @@ class AudioAggregatorConvertPad {
      * This function is useful as a default caps query function for an element
      * that can handle any stream format, but requires all its pads to have
      * the same caps.  Two such elements are tee and adder.
+     * @param query a CAPS #GstQuery.
      */
     proxy_query_caps(query: Gst.Query): boolean
     /**
@@ -3182,6 +3388,8 @@ class AudioAggregatorConvertPad {
      * Note that less than `size` bytes can be returned in `buffer` when, for example,
      * an EOS condition is near or when `buffer` is not large enough to hold `size`
      * bytes. The caller should check the result buffer size to get the result size.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     pull_range(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -3196,6 +3404,7 @@ class AudioAggregatorConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to push returns GST_FLOW_ERROR     if not.
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -3205,6 +3414,7 @@ class AudioAggregatorConvertPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     push_event(event: Gst.Event): boolean
     /**
@@ -3221,6 +3431,7 @@ class AudioAggregatorConvertPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `list`
      * after calling this function.
+     * @param list the #GstBufferList to push returns GST_FLOW_ERROR     if not.
      */
     push_list(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -3234,10 +3445,12 @@ class AudioAggregatorConvertPad {
      * the query structure.
      * 
      * Please also note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery to perform.
      */
     query(query: Gst.Query): boolean
     /**
      * Check if the given pad accepts the caps.
+     * @param caps a #GstCaps to check on the pad
      */
     query_accept_caps(caps: Gst.Caps): boolean
     /**
@@ -3256,10 +3469,14 @@ class AudioAggregatorConvertPad {
      * 
      * Note that this function does not return writable #GstCaps, use
      * gst_caps_make_writable() before modifying the caps.
+     * @param filter suggested #GstCaps, or %NULL
      */
     query_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries a pad to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -3268,20 +3485,25 @@ class AudioAggregatorConvertPad {
      * if there are many possible sink pads that are internally linked to
      * `pad,` only one will be sent the query.
      * Multi-sinkpad elements should implement custom query handlers.
+     * @param parent the parent of `pad` or %NULL
+     * @param query the #GstQuery to handle.
      */
     query_default(parent: Gst.Object | null, query: Gst.Query): boolean
     /**
      * Queries a pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries a pad for the stream position.
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
      * Remove the probe with `id` from `pad`.
      * 
      * MT safe.
+     * @param id the probe id to remove
      */
     remove_probe(id: number): void
     /**
@@ -3305,6 +3527,7 @@ class AudioAggregatorConvertPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     send_event(event: Gst.Event): boolean
     /**
@@ -3313,11 +3536,13 @@ class AudioAggregatorConvertPad {
      * Only makes sense to set on sink pads.
      * 
      * Call this function if your sink pad can start a pull-based task.
+     * @param activate the #GstPadActivateFunction to set.
      */
     set_activate_function_full(activate: Gst.PadActivateFunction): void
     /**
      * Sets the given activate_mode function for the pad. An activate_mode function
      * prepares the element for data passing.
+     * @param activatemode the #GstPadActivateModeFunction to set.
      */
     set_activatemode_function_full(activatemode: Gst.PadActivateModeFunction): void
     /**
@@ -3330,41 +3555,49 @@ class AudioAggregatorConvertPad {
      * 
      * If not `active,` calls gst_pad_activate_mode() with the pad's current mode
      * and a %FALSE argument.
+     * @param active whether or not the pad should be active.
      */
     set_active(active: boolean): boolean
     /**
      * Sets the given chain function for the pad. The chain function is called to
      * process a #GstBuffer input buffer. see #GstPadChainFunction for more details.
+     * @param chain the #GstPadChainFunction to set.
      */
     set_chain_function_full(chain: Gst.PadChainFunction): void
     /**
      * Sets the given chain list function for the pad. The chainlist function is
      * called to process a #GstBufferList input buffer list. See
      * #GstPadChainListFunction for more details.
+     * @param chainlist the #GstPadChainListFunction to set.
      */
     set_chain_list_function_full(chainlist: Gst.PadChainListFunction): void
     /**
      * Set the given private data gpointer on the pad.
      * This function can only be used by the element that owns the pad.
      * No locking is performed in this function.
+     * @param priv The private data to attach to the pad.
      */
     set_element_private(priv?: object | null): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFullFunction to set.
      */
     set_event_full_function_full(event: Gst.PadEventFullFunction): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFunction to set.
      */
     set_event_function_full(event: Gst.PadEventFunction): void
     /**
      * Sets the given getrange function for the pad. The getrange function is
      * called to produce a new #GstBuffer to start the processing pipeline. see
      * #GstPadGetRangeFunction for a description of the getrange function.
+     * @param get the #GstPadGetRangeFunction to set.
      */
     set_getrange_function_full(get: Gst.PadGetRangeFunction): void
     /**
      * Sets the given internal link iterator function for the pad.
+     * @param iterintlink the #GstPadIterIntLinkFunction to set.
      */
     set_iterate_internal_links_function_full(iterintlink: Gst.PadIterIntLinkFunction): void
     /**
@@ -3379,14 +3612,17 @@ class AudioAggregatorConvertPad {
      * 
      * If `link` is installed on a source pad, it should call the #GstPadLinkFunction
      * of the peer sink pad, if present.
+     * @param link the #GstPadLinkFunction to set.
      */
     set_link_function_full(link: Gst.PadLinkFunction): void
     /**
      * Set the offset that will be applied to the running time of `pad`.
+     * @param offset the offset
      */
     set_offset(offset: number): void
     /**
      * Set the given query function for the pad.
+     * @param query the #GstPadQueryFunction to set.
      */
     set_query_function_full(query: Gst.PadQueryFunction): void
     /**
@@ -3396,6 +3632,7 @@ class AudioAggregatorConvertPad {
      * Note that the pad's lock is already held when the unlink
      * function is called, so most pad functions cannot be called
      * from within the callback.
+     * @param unlink the #GstPadUnlinkFunction to set.
      */
     set_unlink_function_full(unlink: Gst.PadUnlinkFunction): void
     /**
@@ -3403,11 +3640,13 @@ class AudioAggregatorConvertPad {
      * is mostly used in pad activation functions to start the dataflow.
      * The #GST_PAD_STREAM_LOCK of `pad` will automatically be acquired
      * before `func` is called.
+     * @param func the task function to call
      */
     start_task(func: Gst.TaskFunction): boolean
     /**
      * Iterates all sticky events on `pad` and calls `foreach_func` for every
      * event. If `foreach_func` returns %FALSE the iteration is immediately stopped.
+     * @param foreach_func the #GstPadStickyEventsForeachFunction that                should be called for every event.
      */
     sticky_events_foreach(foreach_func: Gst.PadStickyEventsForeachFunction): void
     /**
@@ -3424,11 +3663,13 @@ class AudioAggregatorConvertPad {
     stop_task(): boolean
     /**
      * Store the sticky `event` on `pad`
+     * @param event a #GstEvent
      */
     store_sticky_event(event: Gst.Event): Gst.FlowReturn
     /**
      * Unlinks the source pad from the sink pad. Will emit the #GstPad::unlinked
      * signal on both pads.
+     * @param sinkpad the sink #GstPad to unlink.
      */
     unlink(sinkpad: Gst.Pad): boolean
     /**
@@ -3448,6 +3689,7 @@ class AudioAggregatorConvertPad {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -3455,11 +3697,14 @@ class AudioAggregatorConvertPad {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -3482,6 +3727,10 @@ class AudioAggregatorConvertPad {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -3507,6 +3756,8 @@ class AudioAggregatorConvertPad {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -3516,16 +3767,19 @@ class AudioAggregatorConvertPad {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -3541,17 +3795,21 @@ class AudioAggregatorConvertPad {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -3562,6 +3820,7 @@ class AudioAggregatorConvertPad {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -3569,11 +3828,13 @@ class AudioAggregatorConvertPad {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -3587,6 +3848,7 @@ class AudioAggregatorConvertPad {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -3640,6 +3902,10 @@ class AudioAggregatorConvertPad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -3650,6 +3916,12 @@ class AudioAggregatorConvertPad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -3673,6 +3945,7 @@ class AudioAggregatorConvertPad {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -3692,11 +3965,14 @@ class AudioAggregatorConvertPad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -3704,6 +3980,8 @@ class AudioAggregatorConvertPad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -3721,6 +3999,7 @@ class AudioAggregatorConvertPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -3766,6 +4045,7 @@ class AudioAggregatorConvertPad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -3809,15 +4089,20 @@ class AudioAggregatorConvertPad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -3858,6 +4143,7 @@ class AudioAggregatorConvertPad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -3882,6 +4168,7 @@ class AudioAggregatorConvertPad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioAggregatorPad */
@@ -3912,6 +4199,7 @@ class AudioAggregatorConvertPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -3922,12 +4210,14 @@ class AudioAggregatorConvertPad {
     /* Signals of Gst-1.0.Gst.Pad */
     /**
      * Signals that a pad has been linked to the peer pad.
+     * @param peer the peer pad that has been connected
      */
     connect(sigName: "linked", callback: (($obj: AudioAggregatorConvertPad, peer: Gst.Pad) => void)): number
     connect_after(sigName: "linked", callback: (($obj: AudioAggregatorConvertPad, peer: Gst.Pad) => void)): number
     emit(sigName: "linked", peer: Gst.Pad): void
     /**
      * Signals that a pad has been unlinked from the peer pad.
+     * @param peer the peer pad that has been disconnected
      */
     connect(sigName: "unlinked", callback: (($obj: AudioAggregatorConvertPad, peer: Gst.Pad) => void)): number
     connect_after(sigName: "unlinked", callback: (($obj: AudioAggregatorConvertPad, peer: Gst.Pad) => void)): number
@@ -3937,6 +4227,8 @@ class AudioAggregatorConvertPad {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioAggregatorConvertPad, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioAggregatorConvertPad, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -3970,6 +4262,7 @@ class AudioAggregatorConvertPad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
@@ -4021,41 +4314,41 @@ class AudioAggregatorPad {
     offset: number
     template: Gst.PadTemplate
     /* Fields of GstBase-1.0.GstBase.AggregatorPad */
-    readonly parent: Gst.Pad
+    parent: Gst.Pad
     /**
      * last segment received.
      */
-    readonly segment: Gst.Segment
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Pad */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * private data owned by the parent element
      */
-    readonly element_private: object
+    element_private: object
     /**
      * padtemplate for this pad
      */
-    readonly padtemplate: Gst.PadTemplate
+    padtemplate: Gst.PadTemplate
     /**
      * the direction of the pad, cannot change after creating
      *             the pad.
      */
-    readonly direction: Gst.PadDirection
+    direction: Gst.PadDirection
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.AggregatorPad */
     /**
      * Drop the buffer currently queued in `pad`.
@@ -4083,6 +4376,8 @@ class AudioAggregatorPad {
      * pad's activatemodefunc. For use from within pad activation functions only.
      * 
      * If you don't know what this is, you probably don't want to call it.
+     * @param mode the requested activation mode
+     * @param active whether or not the pad should be active.
      */
     activate_mode(mode: Gst.PadMode, active: boolean): boolean
     /**
@@ -4095,11 +4390,14 @@ class AudioAggregatorPad {
      * immediately if the pad is already idle while calling gst_pad_add_probe().
      * In each of the groups, probes are called in the order in which they were
      * added.
+     * @param mask the probe mask
+     * @param callback #GstPadProbeCallback that will be called with notifications of           the pad state
      */
     add_probe(mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): number
     /**
      * Checks if the source pad and the sink pad are compatible so they can be
      * linked.
+     * @param sinkpad the sink #GstPad.
      */
     can_link(sinkpad: Gst.Pad): boolean
     /**
@@ -4118,6 +4416,7 @@ class AudioAggregatorPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to send, return GST_FLOW_ERROR     if not.
      */
     chain(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -4137,6 +4436,7 @@ class AudioAggregatorPad {
      * after calling this function.
      * 
      * MT safe.
+     * @param list the #GstBufferList to send, return GST_FLOW_ERROR     if not.
      */
     chain_list(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -4162,6 +4462,8 @@ class AudioAggregatorPad {
      * Since stream IDs are sorted alphabetically, any numbers in the
      * stream ID should be printed with a fixed number of characters,
      * preceded by 0's, such as by using the format \%03u instead of \%u.
+     * @param parent Parent #GstElement of `pad`
+     * @param stream_id The stream-id
      */
     create_stream_id(parent: Gst.Element, stream_id?: string | null): string
     /**
@@ -4172,6 +4474,8 @@ class AudioAggregatorPad {
      * 
      * The event is sent to all pads internally linked to `pad`. This function
      * takes ownership of `event`.
+     * @param parent the parent of `pad` or %NULL
+     * @param event the #GstEvent to handle.
      */
     event_default(parent: Gst.Object | null, event: Gst.Event): boolean
     /**
@@ -4180,6 +4484,7 @@ class AudioAggregatorPad {
      * function is only called once for each pad.
      * 
      * When `forward` returns %TRUE, no further pads will be processed.
+     * @param forward a #GstPadForwardFunction
      */
     forward(forward: Gst.PadForwardFunction): boolean
     /**
@@ -4261,6 +4566,8 @@ class AudioAggregatorPad {
      * will be unchanged.
      * 
      * This is a lowlevel function. Usually gst_pad_pull_range() is used.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     get_range(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -4271,6 +4578,8 @@ class AudioAggregatorPad {
     /**
      * Returns a new reference of the sticky event of type `event_type`
      * from the event.
+     * @param event_type the #GstEventType that should be retrieved.
+     * @param idx the index of the event
      */
     get_sticky_event(event_type: Gst.EventType, idx: number): Gst.Event | null
     /**
@@ -4337,10 +4646,12 @@ class AudioAggregatorPad {
      * pads inside the parent element with opposite direction.
      * 
      * The caller must free this iterator after use with gst_iterator_free().
+     * @param parent the parent of `pad` or %NULL
      */
     iterate_internal_links_default(parent?: Gst.Object | null): Gst.Iterator | null
     /**
      * Links the source pad and the sink pad.
+     * @param sinkpad the sink #GstPad to link.
      */
     link(sinkpad: Gst.Pad): Gst.PadLinkReturn
     /**
@@ -4353,6 +4664,8 @@ class AudioAggregatorPad {
      * for more information.
      * 
      * MT Safe.
+     * @param sinkpad the sink #GstPad to link.
+     * @param flags the checks to validate when linking
      */
     link_full(sinkpad: Gst.Pad, flags: Gst.PadLinkCheck): Gst.PadLinkReturn
     /**
@@ -4363,6 +4676,7 @@ class AudioAggregatorPad {
      * 
      * If `src` or `sink` pads don't have parent elements or do not share a common
      * ancestor, the link will fail.
+     * @param sink a #GstPad
      */
     link_maybe_ghosting(sink: Gst.Pad): boolean
     /**
@@ -4377,6 +4691,8 @@ class AudioAggregatorPad {
      * Calling gst_pad_link_maybe_ghosting_full() with
      * `flags` == %GST_PAD_LINK_CHECK_DEFAULT is the recommended way of linking
      * pads with safety checks applied.
+     * @param sink a #GstPad
+     * @param flags some #GstPadLinkCheck flags
      */
     link_maybe_ghosting_full(sink: Gst.Pad, flags: Gst.PadLinkCheck): boolean
     /**
@@ -4400,11 +4716,13 @@ class AudioAggregatorPad {
      * 
      * The caller is responsible for both the allocation and deallocation of
      * the query structure.
+     * @param query the #GstQuery to perform.
      */
     peer_query(query: Gst.Query): boolean
     /**
      * Check if the peer of `pad` accepts `caps`. If `pad` has no peer, this function
      * returns %TRUE.
+     * @param caps a #GstCaps to check on the pad
      */
     peer_query_accept_caps(caps: Gst.Caps): boolean
     /**
@@ -4416,19 +4734,25 @@ class AudioAggregatorPad {
      * called on sinkpads `filter` contains the caps accepted by
      * downstream in the preferred order. `filter` might be %NULL but
      * if it is not %NULL the returned caps will be a subset of `filter`.
+     * @param filter a #GstCaps filter, or %NULL.
      */
     peer_query_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries the peer pad of a given sink pad to convert `src_val` in `src_format`
      * to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     peer_query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
      * Queries the peer pad of a given sink pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     peer_query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries the peer of a given sink pad for the stream position.
+     * @param format the #GstFormat requested
      */
     peer_query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -4438,6 +4762,7 @@ class AudioAggregatorPad {
      * This function is useful as a default accept caps query function for an element
      * that can handle any stream format, but requires caps that are acceptable for
      * all opposite pads.
+     * @param query an ACCEPT_CAPS #GstQuery.
      */
     proxy_query_accept_caps(query: Gst.Query): boolean
     /**
@@ -4447,6 +4772,7 @@ class AudioAggregatorPad {
      * This function is useful as a default caps query function for an element
      * that can handle any stream format, but requires all its pads to have
      * the same caps.  Two such elements are tee and adder.
+     * @param query a CAPS #GstQuery.
      */
     proxy_query_caps(query: Gst.Query): boolean
     /**
@@ -4475,6 +4801,8 @@ class AudioAggregatorPad {
      * Note that less than `size` bytes can be returned in `buffer` when, for example,
      * an EOS condition is near or when `buffer` is not large enough to hold `size`
      * bytes. The caller should check the result buffer size to get the result size.
+     * @param offset The start offset of the buffer
+     * @param size The length of the buffer
      */
     pull_range(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buffer */ Gst.Buffer ]
     /**
@@ -4489,6 +4817,7 @@ class AudioAggregatorPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `buffer`
      * after calling this function.
+     * @param buffer the #GstBuffer to push returns GST_FLOW_ERROR     if not.
      */
     push(buffer: Gst.Buffer): Gst.FlowReturn
     /**
@@ -4498,6 +4827,7 @@ class AudioAggregatorPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     push_event(event: Gst.Event): boolean
     /**
@@ -4514,6 +4844,7 @@ class AudioAggregatorPad {
      * 
      * In all cases, success or failure, the caller loses its reference to `list`
      * after calling this function.
+     * @param list the #GstBufferList to push returns GST_FLOW_ERROR     if not.
      */
     push_list(list: Gst.BufferList): Gst.FlowReturn
     /**
@@ -4527,10 +4858,12 @@ class AudioAggregatorPad {
      * the query structure.
      * 
      * Please also note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery to perform.
      */
     query(query: Gst.Query): boolean
     /**
      * Check if the given pad accepts the caps.
+     * @param caps a #GstCaps to check on the pad
      */
     query_accept_caps(caps: Gst.Caps): boolean
     /**
@@ -4549,10 +4882,14 @@ class AudioAggregatorPad {
      * 
      * Note that this function does not return writable #GstCaps, use
      * gst_caps_make_writable() before modifying the caps.
+     * @param filter suggested #GstCaps, or %NULL
      */
     query_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
      * Queries a pad to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -4561,20 +4898,25 @@ class AudioAggregatorPad {
      * if there are many possible sink pads that are internally linked to
      * `pad,` only one will be sent the query.
      * Multi-sinkpad elements should implement custom query handlers.
+     * @param parent the parent of `pad` or %NULL
+     * @param query the #GstQuery to handle.
      */
     query_default(parent: Gst.Object | null, query: Gst.Query): boolean
     /**
      * Queries a pad for the total stream duration.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
      * Queries a pad for the stream position.
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
      * Remove the probe with `id` from `pad`.
      * 
      * MT safe.
+     * @param id the probe id to remove
      */
     remove_probe(id: number): void
     /**
@@ -4598,6 +4940,7 @@ class AudioAggregatorPad {
      * 
      * This function takes ownership of the provided event so you should
      * gst_event_ref() it if you want to reuse the event after this call.
+     * @param event the #GstEvent to send to the pad.
      */
     send_event(event: Gst.Event): boolean
     /**
@@ -4606,11 +4949,13 @@ class AudioAggregatorPad {
      * Only makes sense to set on sink pads.
      * 
      * Call this function if your sink pad can start a pull-based task.
+     * @param activate the #GstPadActivateFunction to set.
      */
     set_activate_function_full(activate: Gst.PadActivateFunction): void
     /**
      * Sets the given activate_mode function for the pad. An activate_mode function
      * prepares the element for data passing.
+     * @param activatemode the #GstPadActivateModeFunction to set.
      */
     set_activatemode_function_full(activatemode: Gst.PadActivateModeFunction): void
     /**
@@ -4623,41 +4968,49 @@ class AudioAggregatorPad {
      * 
      * If not `active,` calls gst_pad_activate_mode() with the pad's current mode
      * and a %FALSE argument.
+     * @param active whether or not the pad should be active.
      */
     set_active(active: boolean): boolean
     /**
      * Sets the given chain function for the pad. The chain function is called to
      * process a #GstBuffer input buffer. see #GstPadChainFunction for more details.
+     * @param chain the #GstPadChainFunction to set.
      */
     set_chain_function_full(chain: Gst.PadChainFunction): void
     /**
      * Sets the given chain list function for the pad. The chainlist function is
      * called to process a #GstBufferList input buffer list. See
      * #GstPadChainListFunction for more details.
+     * @param chainlist the #GstPadChainListFunction to set.
      */
     set_chain_list_function_full(chainlist: Gst.PadChainListFunction): void
     /**
      * Set the given private data gpointer on the pad.
      * This function can only be used by the element that owns the pad.
      * No locking is performed in this function.
+     * @param priv The private data to attach to the pad.
      */
     set_element_private(priv?: object | null): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFullFunction to set.
      */
     set_event_full_function_full(event: Gst.PadEventFullFunction): void
     /**
      * Sets the given event handler for the pad.
+     * @param event the #GstPadEventFunction to set.
      */
     set_event_function_full(event: Gst.PadEventFunction): void
     /**
      * Sets the given getrange function for the pad. The getrange function is
      * called to produce a new #GstBuffer to start the processing pipeline. see
      * #GstPadGetRangeFunction for a description of the getrange function.
+     * @param get the #GstPadGetRangeFunction to set.
      */
     set_getrange_function_full(get: Gst.PadGetRangeFunction): void
     /**
      * Sets the given internal link iterator function for the pad.
+     * @param iterintlink the #GstPadIterIntLinkFunction to set.
      */
     set_iterate_internal_links_function_full(iterintlink: Gst.PadIterIntLinkFunction): void
     /**
@@ -4672,14 +5025,17 @@ class AudioAggregatorPad {
      * 
      * If `link` is installed on a source pad, it should call the #GstPadLinkFunction
      * of the peer sink pad, if present.
+     * @param link the #GstPadLinkFunction to set.
      */
     set_link_function_full(link: Gst.PadLinkFunction): void
     /**
      * Set the offset that will be applied to the running time of `pad`.
+     * @param offset the offset
      */
     set_offset(offset: number): void
     /**
      * Set the given query function for the pad.
+     * @param query the #GstPadQueryFunction to set.
      */
     set_query_function_full(query: Gst.PadQueryFunction): void
     /**
@@ -4689,6 +5045,7 @@ class AudioAggregatorPad {
      * Note that the pad's lock is already held when the unlink
      * function is called, so most pad functions cannot be called
      * from within the callback.
+     * @param unlink the #GstPadUnlinkFunction to set.
      */
     set_unlink_function_full(unlink: Gst.PadUnlinkFunction): void
     /**
@@ -4696,11 +5053,13 @@ class AudioAggregatorPad {
      * is mostly used in pad activation functions to start the dataflow.
      * The #GST_PAD_STREAM_LOCK of `pad` will automatically be acquired
      * before `func` is called.
+     * @param func the task function to call
      */
     start_task(func: Gst.TaskFunction): boolean
     /**
      * Iterates all sticky events on `pad` and calls `foreach_func` for every
      * event. If `foreach_func` returns %FALSE the iteration is immediately stopped.
+     * @param foreach_func the #GstPadStickyEventsForeachFunction that                should be called for every event.
      */
     sticky_events_foreach(foreach_func: Gst.PadStickyEventsForeachFunction): void
     /**
@@ -4717,11 +5076,13 @@ class AudioAggregatorPad {
     stop_task(): boolean
     /**
      * Store the sticky `event` on `pad`
+     * @param event a #GstEvent
      */
     store_sticky_event(event: Gst.Event): Gst.FlowReturn
     /**
      * Unlinks the source pad from the sink pad. Will emit the #GstPad::unlinked
      * signal on both pads.
+     * @param sinkpad the sink #GstPad to unlink.
      */
     unlink(sinkpad: Gst.Pad): boolean
     /**
@@ -4741,6 +5102,7 @@ class AudioAggregatorPad {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -4748,11 +5110,14 @@ class AudioAggregatorPad {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -4775,6 +5140,10 @@ class AudioAggregatorPad {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -4800,6 +5169,8 @@ class AudioAggregatorPad {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -4809,16 +5180,19 @@ class AudioAggregatorPad {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -4834,17 +5208,21 @@ class AudioAggregatorPad {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -4855,6 +5233,7 @@ class AudioAggregatorPad {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -4862,11 +5241,13 @@ class AudioAggregatorPad {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -4880,6 +5261,7 @@ class AudioAggregatorPad {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -4933,6 +5315,10 @@ class AudioAggregatorPad {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -4943,6 +5329,12 @@ class AudioAggregatorPad {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -4966,6 +5358,7 @@ class AudioAggregatorPad {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -4985,11 +5378,14 @@ class AudioAggregatorPad {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -4997,6 +5393,8 @@ class AudioAggregatorPad {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -5014,6 +5412,7 @@ class AudioAggregatorPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -5059,6 +5458,7 @@ class AudioAggregatorPad {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -5102,15 +5502,20 @@ class AudioAggregatorPad {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -5151,6 +5556,7 @@ class AudioAggregatorPad {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -5175,6 +5581,7 @@ class AudioAggregatorPad {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioAggregatorPad */
@@ -5205,6 +5612,7 @@ class AudioAggregatorPad {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -5215,12 +5623,14 @@ class AudioAggregatorPad {
     /* Signals of Gst-1.0.Gst.Pad */
     /**
      * Signals that a pad has been linked to the peer pad.
+     * @param peer the peer pad that has been connected
      */
     connect(sigName: "linked", callback: (($obj: AudioAggregatorPad, peer: Gst.Pad) => void)): number
     connect_after(sigName: "linked", callback: (($obj: AudioAggregatorPad, peer: Gst.Pad) => void)): number
     emit(sigName: "linked", peer: Gst.Pad): void
     /**
      * Signals that a pad has been unlinked from the peer pad.
+     * @param peer the peer pad that has been disconnected
      */
     connect(sigName: "unlinked", callback: (($obj: AudioAggregatorPad, peer: Gst.Pad) => void)): number
     connect_after(sigName: "unlinked", callback: (($obj: AudioAggregatorPad, peer: Gst.Pad) => void)): number
@@ -5230,6 +5640,8 @@ class AudioAggregatorPad {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioAggregatorPad, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioAggregatorPad, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -5263,6 +5675,7 @@ class AudioAggregatorPad {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioAggregatorPad, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioAggregatorPad, pspec: GObject.ParamSpec) => void)): number
@@ -5391,127 +5804,127 @@ class AudioBaseSink {
      */
     ts_offset: number
     /* Fields of GstBase-1.0.GstBase.BaseSink */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly pad_mode: Gst.PadMode
-    readonly offset: number
-    readonly can_activate_push: boolean
-    readonly preroll_lock: GLib.Mutex
-    readonly preroll_cond: GLib.Cond
-    readonly eos: boolean
-    readonly need_preroll: boolean
-    readonly have_preroll: boolean
-    readonly playing_async: boolean
-    readonly have_newsegment: boolean
-    readonly segment: Gst.Segment
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    pad_mode: Gst.PadMode
+    offset: number
+    can_activate_push: boolean
+    preroll_lock: GLib.Mutex
+    preroll_cond: GLib.Cond
+    eos: boolean
+    need_preroll: boolean
+    have_preroll: boolean
+    playing_async: boolean
+    have_newsegment: boolean
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioBaseSink */
     /**
      * Create and return the #GstAudioRingBuffer for `sink`. This function will
@@ -5550,6 +5963,7 @@ class AudioBaseSink {
     report_device_failure(): void
     /**
      * Controls the sink's alignment threshold.
+     * @param alignment_threshold the new alignment threshold in nanoseconds
      */
     set_alignment_threshold(alignment_threshold: Gst.ClockTime): void
     /**
@@ -5561,14 +5975,17 @@ class AudioBaseSink {
      * Setting the callback to NULL causes the sink to
      * behave as if the GST_AUDIO_BASE_SINK_SLAVE_NONE
      * method were used.
+     * @param callback a #GstAudioBaseSinkCustomSlavingCallback
      */
     set_custom_slaving_callback(callback: AudioBaseSinkCustomSlavingCallback): void
     /**
      * Controls how long the sink will wait before creating a discontinuity.
+     * @param discont_wait the new discont wait in nanoseconds
      */
     set_discont_wait(discont_wait: Gst.ClockTime): void
     /**
      * Controls the sink's drift tolerance.
+     * @param drift_tolerance the new drift tolerance in microseconds
      */
     set_drift_tolerance(drift_tolerance: number): void
     /**
@@ -5576,10 +5993,12 @@ class AudioBaseSink {
      * gst_element_provide_clock() will return a clock that reflects the datarate
      * of `sink`. If `provide` is %FALSE, gst_element_provide_clock() will return
      * NULL.
+     * @param provide new state
      */
     set_provide_clock(provide: boolean): void
     /**
      * Controls how clock slaving will be performed in `sink`.
+     * @param method the new slave method
      */
     set_slave_method(method: AudioBaseSinkSlaveMethod): void
     /* Methods of GstBase-1.0.GstBase.BaseSink */
@@ -5590,6 +6009,7 @@ class AudioBaseSink {
      * until the element state is changed.
      * 
      * This function should be called with the PREROLL_LOCK held.
+     * @param obj the mini object that caused the preroll
      */
     do_preroll(obj: Gst.MiniObject): Gst.FlowReturn
     /**
@@ -5691,24 +6111,29 @@ class AudioBaseSink {
      * disabled, the sink will immediately go to PAUSED instead of waiting for a
      * preroll buffer. This feature is useful if the sink does not synchronize
      * against the clock or when it is dealing with sparse streams.
+     * @param enabled the new async value.
      */
     set_async_enabled(enabled: boolean): void
     /**
      * Set the number of bytes that the sink will pull when it is operating in pull
      * mode.
+     * @param blocksize the blocksize in bytes
      */
     set_blocksize(blocksize: number): void
     /**
      * Configure `sink` to drop buffers which are outside the current segment
+     * @param drop_out_of_segment drop buffers outside the segment
      */
     set_drop_out_of_segment(drop_out_of_segment: boolean): void
     /**
      * Configures `sink` to store the last received sample in the last-sample
      * property.
+     * @param enabled the new enable-last-sample value.
      */
     set_last_sample_enabled(enabled: boolean): void
     /**
      * Set the maximum amount of bits per second that the sink will render.
+     * @param max_bitrate the max_bitrate in bits per second
      */
     set_max_bitrate(max_bitrate: number): void
     /**
@@ -5716,6 +6141,7 @@ class AudioBaseSink {
      * used to decide if a buffer should be dropped or not based on the
      * buffer timestamp and the current clock time. A value of -1 means
      * an unlimited time.
+     * @param max_lateness the new max lateness value.
      */
     set_max_lateness(max_lateness: number): void
     /**
@@ -5724,10 +6150,12 @@ class AudioBaseSink {
      * pipelines.
      * 
      * This function is usually called by subclasses.
+     * @param processing_deadline the new processing deadline in nanoseconds.
      */
     set_processing_deadline(processing_deadline: Gst.ClockTime): void
     /**
      * Configures `sink` to send Quality-of-Service events upstream.
+     * @param enabled the new qos value.
      */
     set_qos_enabled(enabled: boolean): void
     /**
@@ -5740,6 +6168,7 @@ class AudioBaseSink {
      * other sinks will adjust their latency to delay the rendering of their media.
      * 
      * This function is usually called by subclasses.
+     * @param delay the new delay
      */
     set_render_delay(delay: Gst.ClockTime): void
     /**
@@ -5748,12 +6177,14 @@ class AudioBaseSink {
      * possible. If `sync` is %TRUE, the timestamps of the incoming
      * buffers will be used to schedule the exact render time of its
      * contents.
+     * @param sync the new sync value.
      */
     set_sync(sync: boolean): void
     /**
      * Set the time that will be inserted between rendered buffers. This
      * can be used to control the maximum buffers per second that the sink
      * will render.
+     * @param throttle the throttle time in nanoseconds
      */
     set_throttle_time(throttle: number): void
     /**
@@ -5761,6 +6192,7 @@ class AudioBaseSink {
      * render buffers earlier than their timestamp. A positive value will delay
      * rendering. This function can be used to fix playback of badly timestamped
      * buffers.
+     * @param offset the new offset
      */
     set_ts_offset(offset: Gst.ClockTimeDiff): void
     /**
@@ -5775,6 +6207,7 @@ class AudioBaseSink {
      * 
      * The `time` argument should be the running_time of when the timeout should happen
      * and will be adjusted with any latency and offset configured in the sink.
+     * @param time the running_time to be reached
      */
     wait(time: Gst.ClockTime): [ /* returnType */ Gst.FlowReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -5793,6 +6226,7 @@ class AudioBaseSink {
      * The `time` argument should be the running_time of when this method should
      * return and is not adjusted with any latency or offset configured in the
      * sink.
+     * @param time the running_time to be reached
      */
     wait_clock(time: Gst.ClockTime): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -5837,6 +6271,7 @@ class AudioBaseSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -5852,6 +6287,7 @@ class AudioBaseSink {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -5859,6 +6295,7 @@ class AudioBaseSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -5875,6 +6312,7 @@ class AudioBaseSink {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -5890,6 +6328,7 @@ class AudioBaseSink {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5899,6 +6338,7 @@ class AudioBaseSink {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5908,6 +6348,7 @@ class AudioBaseSink {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -5938,21 +6379,26 @@ class AudioBaseSink {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -5978,10 +6424,12 @@ class AudioBaseSink {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -5993,6 +6441,7 @@ class AudioBaseSink {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -6026,11 +6475,13 @@ class AudioBaseSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -6075,6 +6526,7 @@ class AudioBaseSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -6086,6 +6538,8 @@ class AudioBaseSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -6093,6 +6547,9 @@ class AudioBaseSink {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -6100,6 +6557,10 @@ class AudioBaseSink {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -6113,6 +6574,10 @@ class AudioBaseSink {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -6141,6 +6606,14 @@ class AudioBaseSink {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -6148,6 +6621,15 @@ class AudioBaseSink {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -6166,6 +6648,7 @@ class AudioBaseSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -6176,10 +6659,14 @@ class AudioBaseSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -6191,6 +6678,7 @@ class AudioBaseSink {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -6203,6 +6691,7 @@ class AudioBaseSink {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -6214,6 +6703,7 @@ class AudioBaseSink {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -6233,6 +6723,7 @@ class AudioBaseSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -6242,6 +6733,9 @@ class AudioBaseSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -6257,6 +6751,7 @@ class AudioBaseSink {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -6265,6 +6760,13 @@ class AudioBaseSink {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -6282,6 +6784,9 @@ class AudioBaseSink {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -6293,12 +6798,14 @@ class AudioBaseSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -6306,18 +6813,21 @@ class AudioBaseSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -6329,6 +6839,7 @@ class AudioBaseSink {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -6344,6 +6855,7 @@ class AudioBaseSink {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -6360,6 +6872,7 @@ class AudioBaseSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -6373,12 +6886,16 @@ class AudioBaseSink {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -6388,6 +6905,7 @@ class AudioBaseSink {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -6395,11 +6913,14 @@ class AudioBaseSink {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -6422,6 +6943,10 @@ class AudioBaseSink {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -6447,6 +6972,8 @@ class AudioBaseSink {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -6456,16 +6983,19 @@ class AudioBaseSink {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -6481,17 +7011,21 @@ class AudioBaseSink {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -6502,6 +7036,7 @@ class AudioBaseSink {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -6509,11 +7044,13 @@ class AudioBaseSink {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -6527,6 +7064,7 @@ class AudioBaseSink {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -6580,6 +7118,10 @@ class AudioBaseSink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -6590,6 +7132,12 @@ class AudioBaseSink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -6613,6 +7161,7 @@ class AudioBaseSink {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -6632,11 +7181,14 @@ class AudioBaseSink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -6644,6 +7196,8 @@ class AudioBaseSink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -6661,6 +7215,7 @@ class AudioBaseSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -6706,6 +7261,7 @@ class AudioBaseSink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -6749,15 +7305,20 @@ class AudioBaseSink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -6798,6 +7359,7 @@ class AudioBaseSink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -6822,6 +7384,7 @@ class AudioBaseSink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioBaseSink */
@@ -6842,14 +7405,23 @@ class AudioBaseSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.BaseSink */
     vfunc_activate_pull(active: boolean): boolean
     vfunc_event(event: Gst.Event): boolean
     vfunc_fixate(caps: Gst.Caps): Gst.Caps
-    vfunc_get_caps(filter: Gst.Caps): Gst.Caps
-    vfunc_get_times(buffer: Gst.Buffer, start: Gst.ClockTime, end: Gst.ClockTime): void
+    /**
+     * Called to get sink pad caps from the subclass.
+     * @param filter 
+     */
+    vfunc_get_caps(filter?: Gst.Caps | null): Gst.Caps
+    /**
+     * Get the start and end times for syncing on this buffer.
+     * @param buffer 
+     */
+    vfunc_get_times(buffer: Gst.Buffer): [ /* start */ Gst.ClockTime, /* end */ Gst.ClockTime ]
     vfunc_prepare(buffer: Gst.Buffer): Gst.FlowReturn
     vfunc_prepare_list(buffer_list: Gst.BufferList): Gst.FlowReturn
     vfunc_preroll(buffer: Gst.Buffer): Gst.FlowReturn
@@ -6864,6 +7436,7 @@ class AudioBaseSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_render(buffer: Gst.Buffer): Gst.FlowReturn
@@ -6880,6 +7453,7 @@ class AudioBaseSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -6903,6 +7477,7 @@ class AudioBaseSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -6923,6 +7498,7 @@ class AudioBaseSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -6939,6 +7515,7 @@ class AudioBaseSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -6948,6 +7525,9 @@ class AudioBaseSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -6959,6 +7539,7 @@ class AudioBaseSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -6966,18 +7547,21 @@ class AudioBaseSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -6994,6 +7578,7 @@ class AudioBaseSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -7016,6 +7601,7 @@ class AudioBaseSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -7034,12 +7620,14 @@ class AudioBaseSink {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioBaseSink, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioBaseSink, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioBaseSink, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioBaseSink, old_pad: Gst.Pad) => void)): number
@@ -7049,6 +7637,8 @@ class AudioBaseSink {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioBaseSink, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioBaseSink, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -7082,6 +7672,7 @@ class AudioBaseSink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioBaseSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioBaseSink, pspec: GObject.ParamSpec) => void)): number
@@ -7161,130 +7752,130 @@ class AudioBaseSrc {
     /* Properties of GstBase-1.0.GstBase.BaseSrc */
     do_timestamp: boolean
     /* Fields of GstBase-1.0.GstBase.PushSrc */
-    readonly parent: GstBase.BaseSrc
+    parent: GstBase.BaseSrc
     /* Fields of GstBase-1.0.GstBase.BaseSrc */
-    readonly element: Gst.Element
-    readonly srcpad: Gst.Pad
-    readonly live_lock: GLib.Mutex
-    readonly live_cond: GLib.Cond
-    readonly is_live: boolean
-    readonly live_running: boolean
-    readonly blocksize: number
-    readonly can_activate_push: boolean
-    readonly random_access: boolean
-    readonly clock_id: Gst.ClockID
-    readonly segment: Gst.Segment
-    readonly need_newsegment: boolean
-    readonly num_buffers: number
-    readonly num_buffers_left: number
-    readonly typefind: boolean
-    readonly running: boolean
-    readonly pending_seek: Gst.Event
-    readonly priv: GstBase.BaseSrcPrivate
+    element: Gst.Element
+    srcpad: Gst.Pad
+    live_lock: GLib.Mutex
+    live_cond: GLib.Cond
+    is_live: boolean
+    live_running: boolean
+    blocksize: number
+    can_activate_push: boolean
+    random_access: boolean
+    clock_id: Gst.ClockID
+    segment: Gst.Segment
+    need_newsegment: boolean
+    num_buffers: number
+    num_buffers_left: number
+    typefind: boolean
+    running: boolean
+    pending_seek: Gst.Event
+    priv: GstBase.BaseSrcPrivate
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioBaseSrc */
     /**
      * Create and return the #GstAudioRingBuffer for `src`. This function will call
@@ -7305,10 +7896,12 @@ class AudioBaseSrc {
      * Controls whether `src` will provide a clock or not. If `provide` is %TRUE,
      * gst_element_provide_clock() will return a clock that reflects the datarate
      * of `src`. If `provide` is %FALSE, gst_element_provide_clock() will return NULL.
+     * @param provide new state
      */
     set_provide_clock(provide: boolean): void
     /**
      * Controls how clock slaving will be performed in `src`.
+     * @param method the new slave method
      */
     set_slave_method(method: AudioBaseSrcSlaveMethod): void
     /* Methods of GstBase-1.0.GstBase.BaseSrc */
@@ -7349,6 +7942,9 @@ class AudioBaseSrc {
      * 
      * The format for the new segment will be the current format of the source, as
      * configured with gst_base_src_set_format()
+     * @param start The new start value for the segment
+     * @param stop Stop value for the new segment
+     * @param time The new time value for the start of the new segment
      */
     new_seamless_segment(start: number, stop: number, time: number): boolean
     /**
@@ -7361,6 +7957,7 @@ class AudioBaseSrc {
      * 
      * The format of `src` must not be %GST_FORMAT_UNDEFINED and the format
      * should be configured via gst_base_src_set_format() before calling this method.
+     * @param segment a pointer to a #GstSegment
      */
     new_segment(segment: Gst.Segment): boolean
     /**
@@ -7377,6 +7974,7 @@ class AudioBaseSrc {
      * close, start, stop, play and pause virtual methods will be executed in a
      * different thread and are thus allowed to perform blocking operations. Any
      * blocking operation should be unblocked with the unlock vmethod.
+     * @param async new async mode
      */
     set_async(async: boolean): void
     /**
@@ -7390,27 +7988,32 @@ class AudioBaseSrc {
      * `automatic_eos` is %TRUE. Since 1.16, if `automatic_eos` is %FALSE an
      * EOS will be pushed only when the #GstBaseSrcClass::create implementation
      * returns %GST_FLOW_EOS.
+     * @param automatic_eos automatic eos
      */
     set_automatic_eos(automatic_eos: boolean): void
     /**
      * Set the number of bytes that `src` will push out with each buffer. When
      * `blocksize` is set to -1, a default length will be used.
+     * @param blocksize the new blocksize in bytes
      */
     set_blocksize(blocksize: number): void
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     set_caps(caps: Gst.Caps): boolean
     /**
      * Configure `src` to automatically timestamp outgoing buffers based on the
      * current running_time of the pipeline. This property is mostly useful for live
      * sources.
+     * @param timestamp enable or disable timestamping
      */
     set_do_timestamp(timestamp: boolean): void
     /**
      * If not `dynamic,` size is only updated when needed, such as when trying to
      * read past current tracked size.  Otherwise, size is checked for upon each
      * read.
+     * @param dynamic new dynamic size mode
      */
     set_dynamic_size(dynamic: boolean): void
     /**
@@ -7421,6 +8024,7 @@ class AudioBaseSrc {
      * operate in pull mode if the #GstBaseSrcClass::is_seekable returns %TRUE.
      * 
      * This function must only be called in states < %GST_STATE_PAUSED.
+     * @param format the format to use
      */
     set_format(format: Gst.Format): void
     /**
@@ -7432,6 +8036,7 @@ class AudioBaseSrc {
      * of a pipeline. To signal this fact to the application and the
      * pipeline, the state change return value of the live source will
      * be GST_STATE_CHANGE_NO_PREROLL.
+     * @param live new live-mode
      */
     set_live(live: boolean): void
     /**
@@ -7439,6 +8044,7 @@ class AudioBaseSrc {
      * start method, it should call gst_base_src_start_complete() when the start
      * operation completes either from the same thread or from an asynchronous
      * helper thread.
+     * @param ret a #GstFlowReturn
      */
     start_complete(ret: Gst.FlowReturn): void
     /**
@@ -7462,6 +8068,7 @@ class AudioBaseSrc {
      * Subclasses must only call this function once per create function call and
      * subclasses must only call this function when the source operates in push
      * mode.
+     * @param buffer_list a #GstBufferList
      */
     submit_buffer_list(buffer_list: Gst.BufferList): void
     /**
@@ -7496,6 +8103,7 @@ class AudioBaseSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -7511,6 +8119,7 @@ class AudioBaseSrc {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -7518,6 +8127,7 @@ class AudioBaseSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -7534,6 +8144,7 @@ class AudioBaseSrc {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -7549,6 +8160,7 @@ class AudioBaseSrc {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -7558,6 +8170,7 @@ class AudioBaseSrc {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -7567,6 +8180,7 @@ class AudioBaseSrc {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -7597,21 +8211,26 @@ class AudioBaseSrc {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -7637,10 +8256,12 @@ class AudioBaseSrc {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -7652,6 +8273,7 @@ class AudioBaseSrc {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -7685,11 +8307,13 @@ class AudioBaseSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -7734,6 +8358,7 @@ class AudioBaseSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -7745,6 +8370,8 @@ class AudioBaseSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -7752,6 +8379,9 @@ class AudioBaseSrc {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -7759,6 +8389,10 @@ class AudioBaseSrc {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -7772,6 +8406,10 @@ class AudioBaseSrc {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -7800,6 +8438,14 @@ class AudioBaseSrc {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -7807,6 +8453,15 @@ class AudioBaseSrc {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -7825,6 +8480,7 @@ class AudioBaseSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -7835,10 +8491,14 @@ class AudioBaseSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -7850,6 +8510,7 @@ class AudioBaseSrc {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -7862,6 +8523,7 @@ class AudioBaseSrc {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -7873,6 +8535,7 @@ class AudioBaseSrc {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -7892,6 +8555,7 @@ class AudioBaseSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -7901,6 +8565,9 @@ class AudioBaseSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -7916,6 +8583,7 @@ class AudioBaseSrc {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -7924,6 +8592,13 @@ class AudioBaseSrc {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -7941,6 +8616,9 @@ class AudioBaseSrc {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -7952,12 +8630,14 @@ class AudioBaseSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -7965,18 +8645,21 @@ class AudioBaseSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -7988,6 +8671,7 @@ class AudioBaseSrc {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -8003,6 +8687,7 @@ class AudioBaseSrc {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -8019,6 +8704,7 @@ class AudioBaseSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -8032,12 +8718,16 @@ class AudioBaseSrc {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -8047,6 +8737,7 @@ class AudioBaseSrc {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -8054,11 +8745,14 @@ class AudioBaseSrc {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -8081,6 +8775,10 @@ class AudioBaseSrc {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -8106,6 +8804,8 @@ class AudioBaseSrc {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -8115,16 +8815,19 @@ class AudioBaseSrc {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -8140,17 +8843,21 @@ class AudioBaseSrc {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -8161,6 +8868,7 @@ class AudioBaseSrc {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -8168,11 +8876,13 @@ class AudioBaseSrc {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -8186,6 +8896,7 @@ class AudioBaseSrc {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -8239,6 +8950,10 @@ class AudioBaseSrc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -8249,6 +8964,12 @@ class AudioBaseSrc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -8272,6 +8993,7 @@ class AudioBaseSrc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -8291,11 +9013,14 @@ class AudioBaseSrc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -8303,6 +9028,8 @@ class AudioBaseSrc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -8320,6 +9047,7 @@ class AudioBaseSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -8365,6 +9093,7 @@ class AudioBaseSrc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -8408,15 +9137,20 @@ class AudioBaseSrc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -8457,6 +9191,7 @@ class AudioBaseSrc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -8481,6 +9216,7 @@ class AudioBaseSrc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioBaseSrc */
@@ -8498,17 +9234,23 @@ class AudioBaseSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -8524,6 +9266,7 @@ class AudioBaseSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.PushSrc */
@@ -8535,17 +9278,23 @@ class AudioBaseSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -8561,17 +9310,23 @@ class AudioBaseSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.BaseSrc */
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_decide_allocation(query: Gst.Query): boolean
@@ -8581,6 +9336,7 @@ class AudioBaseSrc {
     vfunc_fixate(caps: Gst.Caps): Gst.Caps
     /**
      * Called to get the caps to report.
+     * @param filter 
      */
     vfunc_get_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
@@ -8591,6 +9347,7 @@ class AudioBaseSrc {
     /**
      * Given `buffer,` return `start` and `end` time when it should be pushed
      * out. The base class will sync on the clock using these times.
+     * @param buffer 
      */
     vfunc_get_times(buffer: Gst.Buffer): [ /* start */ Gst.ClockTime, /* end */ Gst.ClockTime ]
     vfunc_is_seekable(): boolean
@@ -8615,10 +9372,12 @@ class AudioBaseSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     vfunc_set_caps(caps: Gst.Caps): boolean
     vfunc_start(): boolean
@@ -8631,6 +9390,7 @@ class AudioBaseSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -8654,6 +9414,7 @@ class AudioBaseSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -8674,6 +9435,7 @@ class AudioBaseSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -8690,6 +9452,7 @@ class AudioBaseSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -8699,6 +9462,9 @@ class AudioBaseSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -8710,6 +9476,7 @@ class AudioBaseSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -8717,18 +9484,21 @@ class AudioBaseSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -8745,6 +9515,7 @@ class AudioBaseSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -8767,6 +9538,7 @@ class AudioBaseSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -8785,12 +9557,14 @@ class AudioBaseSrc {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioBaseSrc, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioBaseSrc, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioBaseSrc, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioBaseSrc, old_pad: Gst.Pad) => void)): number
@@ -8800,6 +9574,8 @@ class AudioBaseSrc {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioBaseSrc, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioBaseSrc, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -8833,6 +9609,7 @@ class AudioBaseSrc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioBaseSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioBaseSrc, pspec: GObject.ParamSpec) => void)): number
@@ -8874,136 +9651,137 @@ class AudioCdSrc {
     /* Properties of GstBase-1.0.GstBase.BaseSrc */
     do_timestamp: boolean
     /* Fields of GstBase-1.0.GstBase.PushSrc */
-    readonly parent: GstBase.BaseSrc
+    parent: GstBase.BaseSrc
     /* Fields of GstBase-1.0.GstBase.BaseSrc */
-    readonly element: Gst.Element
-    readonly srcpad: Gst.Pad
-    readonly live_lock: GLib.Mutex
-    readonly live_cond: GLib.Cond
-    readonly is_live: boolean
-    readonly live_running: boolean
-    readonly blocksize: number
-    readonly can_activate_push: boolean
-    readonly random_access: boolean
-    readonly clock_id: Gst.ClockID
-    readonly segment: Gst.Segment
-    readonly need_newsegment: boolean
-    readonly num_buffers: number
-    readonly num_buffers_left: number
-    readonly typefind: boolean
-    readonly running: boolean
-    readonly pending_seek: Gst.Event
-    readonly priv: GstBase.BaseSrcPrivate
+    element: Gst.Element
+    srcpad: Gst.Pad
+    live_lock: GLib.Mutex
+    live_cond: GLib.Cond
+    is_live: boolean
+    live_running: boolean
+    blocksize: number
+    can_activate_push: boolean
+    random_access: boolean
+    clock_id: Gst.ClockID
+    segment: Gst.Segment
+    need_newsegment: boolean
+    num_buffers: number
+    num_buffers_left: number
+    typefind: boolean
+    running: boolean
+    pending_seek: Gst.Event
+    priv: GstBase.BaseSrcPrivate
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioCdSrc */
     /**
      * CDDA sources use this function from their start vfunc to announce the
      * available data and audio tracks to the base source class. The caller
      * should allocate `track` on the stack, the base source will do a shallow
      * copy of the structure (and take ownership of the taglist if there is one).
+     * @param track address of #GstAudioCdSrcTrack to add
      */
     add_track(track: AudioCdSrcTrack): boolean
     /* Methods of GstBase-1.0.GstBase.BaseSrc */
@@ -9044,6 +9822,9 @@ class AudioCdSrc {
      * 
      * The format for the new segment will be the current format of the source, as
      * configured with gst_base_src_set_format()
+     * @param start The new start value for the segment
+     * @param stop Stop value for the new segment
+     * @param time The new time value for the start of the new segment
      */
     new_seamless_segment(start: number, stop: number, time: number): boolean
     /**
@@ -9056,6 +9837,7 @@ class AudioCdSrc {
      * 
      * The format of `src` must not be %GST_FORMAT_UNDEFINED and the format
      * should be configured via gst_base_src_set_format() before calling this method.
+     * @param segment a pointer to a #GstSegment
      */
     new_segment(segment: Gst.Segment): boolean
     /**
@@ -9072,6 +9854,7 @@ class AudioCdSrc {
      * close, start, stop, play and pause virtual methods will be executed in a
      * different thread and are thus allowed to perform blocking operations. Any
      * blocking operation should be unblocked with the unlock vmethod.
+     * @param async new async mode
      */
     set_async(async: boolean): void
     /**
@@ -9085,27 +9868,32 @@ class AudioCdSrc {
      * `automatic_eos` is %TRUE. Since 1.16, if `automatic_eos` is %FALSE an
      * EOS will be pushed only when the #GstBaseSrcClass::create implementation
      * returns %GST_FLOW_EOS.
+     * @param automatic_eos automatic eos
      */
     set_automatic_eos(automatic_eos: boolean): void
     /**
      * Set the number of bytes that `src` will push out with each buffer. When
      * `blocksize` is set to -1, a default length will be used.
+     * @param blocksize the new blocksize in bytes
      */
     set_blocksize(blocksize: number): void
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     set_caps(caps: Gst.Caps): boolean
     /**
      * Configure `src` to automatically timestamp outgoing buffers based on the
      * current running_time of the pipeline. This property is mostly useful for live
      * sources.
+     * @param timestamp enable or disable timestamping
      */
     set_do_timestamp(timestamp: boolean): void
     /**
      * If not `dynamic,` size is only updated when needed, such as when trying to
      * read past current tracked size.  Otherwise, size is checked for upon each
      * read.
+     * @param dynamic new dynamic size mode
      */
     set_dynamic_size(dynamic: boolean): void
     /**
@@ -9116,6 +9904,7 @@ class AudioCdSrc {
      * operate in pull mode if the #GstBaseSrcClass::is_seekable returns %TRUE.
      * 
      * This function must only be called in states < %GST_STATE_PAUSED.
+     * @param format the format to use
      */
     set_format(format: Gst.Format): void
     /**
@@ -9127,6 +9916,7 @@ class AudioCdSrc {
      * of a pipeline. To signal this fact to the application and the
      * pipeline, the state change return value of the live source will
      * be GST_STATE_CHANGE_NO_PREROLL.
+     * @param live new live-mode
      */
     set_live(live: boolean): void
     /**
@@ -9134,6 +9924,7 @@ class AudioCdSrc {
      * start method, it should call gst_base_src_start_complete() when the start
      * operation completes either from the same thread or from an asynchronous
      * helper thread.
+     * @param ret a #GstFlowReturn
      */
     start_complete(ret: Gst.FlowReturn): void
     /**
@@ -9157,6 +9948,7 @@ class AudioCdSrc {
      * Subclasses must only call this function once per create function call and
      * subclasses must only call this function when the source operates in push
      * mode.
+     * @param buffer_list a #GstBufferList
      */
     submit_buffer_list(buffer_list: Gst.BufferList): void
     /**
@@ -9191,6 +9983,7 @@ class AudioCdSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -9206,6 +9999,7 @@ class AudioCdSrc {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -9213,6 +10007,7 @@ class AudioCdSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -9229,6 +10024,7 @@ class AudioCdSrc {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -9244,6 +10040,7 @@ class AudioCdSrc {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -9253,6 +10050,7 @@ class AudioCdSrc {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -9262,6 +10060,7 @@ class AudioCdSrc {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -9292,21 +10091,26 @@ class AudioCdSrc {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -9332,10 +10136,12 @@ class AudioCdSrc {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -9347,6 +10153,7 @@ class AudioCdSrc {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -9380,11 +10187,13 @@ class AudioCdSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -9429,6 +10238,7 @@ class AudioCdSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -9440,6 +10250,8 @@ class AudioCdSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -9447,6 +10259,9 @@ class AudioCdSrc {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -9454,6 +10269,10 @@ class AudioCdSrc {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -9467,6 +10286,10 @@ class AudioCdSrc {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -9495,6 +10318,14 @@ class AudioCdSrc {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -9502,6 +10333,15 @@ class AudioCdSrc {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -9520,6 +10360,7 @@ class AudioCdSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -9536,10 +10377,14 @@ class AudioCdSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -9551,6 +10396,7 @@ class AudioCdSrc {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -9563,6 +10409,7 @@ class AudioCdSrc {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -9574,6 +10421,7 @@ class AudioCdSrc {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -9593,6 +10441,7 @@ class AudioCdSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -9602,6 +10451,9 @@ class AudioCdSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -9617,6 +10469,7 @@ class AudioCdSrc {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -9625,6 +10478,13 @@ class AudioCdSrc {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -9642,6 +10502,9 @@ class AudioCdSrc {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -9653,12 +10516,14 @@ class AudioCdSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -9666,18 +10531,21 @@ class AudioCdSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -9689,6 +10557,7 @@ class AudioCdSrc {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -9704,6 +10573,7 @@ class AudioCdSrc {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -9720,6 +10590,7 @@ class AudioCdSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -9733,12 +10604,16 @@ class AudioCdSrc {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -9748,6 +10623,7 @@ class AudioCdSrc {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -9755,11 +10631,14 @@ class AudioCdSrc {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -9782,6 +10661,10 @@ class AudioCdSrc {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -9807,6 +10690,8 @@ class AudioCdSrc {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -9816,16 +10701,19 @@ class AudioCdSrc {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -9841,17 +10729,21 @@ class AudioCdSrc {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -9862,6 +10754,7 @@ class AudioCdSrc {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -9869,11 +10762,13 @@ class AudioCdSrc {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -9887,6 +10782,7 @@ class AudioCdSrc {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -9940,6 +10836,10 @@ class AudioCdSrc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -9950,6 +10850,12 @@ class AudioCdSrc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -9973,6 +10879,7 @@ class AudioCdSrc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -9992,11 +10899,14 @@ class AudioCdSrc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -10004,6 +10914,8 @@ class AudioCdSrc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -10021,6 +10933,7 @@ class AudioCdSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -10066,6 +10979,7 @@ class AudioCdSrc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -10109,15 +11023,20 @@ class AudioCdSrc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -10158,6 +11077,7 @@ class AudioCdSrc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -10182,6 +11102,7 @@ class AudioCdSrc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gst-1.0.Gst.URIHandler */
@@ -10200,6 +11121,7 @@ class AudioCdSrc {
     get_uri_type(): Gst.URIType
     /**
      * Tries to set the URI of the given handler.
+     * @param uri URI to set
      */
     set_uri(uri: string): boolean
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioCdSrc */
@@ -10212,6 +11134,7 @@ class AudioCdSrc {
     vfunc_get_uri(): string | null
     /**
      * Tries to set the URI of the given handler.
+     * @param uri URI to set
      */
     vfunc_set_uri(uri: string): boolean
     /**
@@ -10222,17 +11145,23 @@ class AudioCdSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -10248,6 +11177,7 @@ class AudioCdSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.PushSrc */
@@ -10259,17 +11189,23 @@ class AudioCdSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -10285,17 +11221,23 @@ class AudioCdSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.BaseSrc */
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_decide_allocation(query: Gst.Query): boolean
@@ -10305,6 +11247,7 @@ class AudioCdSrc {
     vfunc_fixate(caps: Gst.Caps): Gst.Caps
     /**
      * Called to get the caps to report.
+     * @param filter 
      */
     vfunc_get_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
@@ -10315,6 +11258,7 @@ class AudioCdSrc {
     /**
      * Given `buffer,` return `start` and `end` time when it should be pushed
      * out. The base class will sync on the clock using these times.
+     * @param buffer 
      */
     vfunc_get_times(buffer: Gst.Buffer): [ /* start */ Gst.ClockTime, /* end */ Gst.ClockTime ]
     vfunc_is_seekable(): boolean
@@ -10339,10 +11283,12 @@ class AudioCdSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     vfunc_set_caps(caps: Gst.Caps): boolean
     vfunc_start(): boolean
@@ -10355,6 +11301,7 @@ class AudioCdSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -10378,6 +11325,7 @@ class AudioCdSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -10398,6 +11346,7 @@ class AudioCdSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -10414,6 +11363,7 @@ class AudioCdSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -10423,6 +11373,9 @@ class AudioCdSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -10434,6 +11387,7 @@ class AudioCdSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -10441,18 +11395,21 @@ class AudioCdSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -10469,6 +11426,7 @@ class AudioCdSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -10491,6 +11449,7 @@ class AudioCdSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -10509,12 +11468,14 @@ class AudioCdSrc {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioCdSrc, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioCdSrc, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioCdSrc, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioCdSrc, old_pad: Gst.Pad) => void)): number
@@ -10524,6 +11485,8 @@ class AudioCdSrc {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioCdSrc, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioCdSrc, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -10557,6 +11520,7 @@ class AudioCdSrc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioCdSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioCdSrc, pspec: GObject.ParamSpec) => void)): number
@@ -10588,34 +11552,35 @@ class AudioClock {
     window_size: number
     window_threshold: number
     /* Fields of Gst-1.0.Gst.SystemClock */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /* Fields of Gst-1.0.Gst.Clock */
     /**
      * the parent structure
      */
-    readonly object: Gst.Object
+    object: Gst.Object
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioClock */
     /**
      * Adjust `time` with the internal offset of the audio clock.
+     * @param time a #GstClockTime
      */
     adjust(time: Gst.ClockTime): Gst.ClockTime
     /**
@@ -10637,6 +11602,7 @@ class AudioClock {
      * starting from `time`. The clock will update an internal offset to make sure that
      * future calls to internal_time will return an increasing result as required by
      * the #GstClock object.
+     * @param time a #GstClockTime
      */
     reset(time: Gst.ClockTime): void
     /* Methods of Gst-1.0.Gst.Clock */
@@ -10651,6 +11617,8 @@ class AudioClock {
      * means a perfect regression was performed. This value can
      * be used to control the sampling frequency of the master and slave
      * clocks.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     add_observation(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* r_squared */ number ]
     /**
@@ -10660,6 +11628,8 @@ class AudioClock {
      * 
      * The caller can then take the results and call gst_clock_set_calibration()
      * with the values, or some modified version of them.
+     * @param slave a time on the slave
+     * @param master a time on the master
      */
     add_observation_unapplied(slave: Gst.ClockTime, master: Gst.ClockTime): [ /* returnType */ boolean, /* r_squared */ number, /* internal */ Gst.ClockTime | null, /* external */ Gst.ClockTime | null, /* rate_num */ Gst.ClockTime | null, /* rate_denom */ Gst.ClockTime | null ]
     /**
@@ -10669,6 +11639,7 @@ class AudioClock {
      * clock's OBJECT_LOCK held and is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_unadjust_unlocked().
+     * @param internal a clock time
      */
     adjust_unlocked(internal: Gst.ClockTime): Gst.ClockTime
     /**
@@ -10679,6 +11650,11 @@ class AudioClock {
      * increasing result as gst_clock_adjust_unlocked() does.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param internal_target a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     adjust_with_calibration(internal_target: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -10717,16 +11693,22 @@ class AudioClock {
      * Gets an ID from `clock` to trigger a periodic notification.
      * The periodic notifications will start at time `start_time` and
      * will then be fired with the given `interval`.
+     * @param start_time the requested start time
+     * @param interval the requested interval
      */
     new_periodic_id(start_time: Gst.ClockTime, interval: Gst.ClockTime): Gst.ClockID
     /**
      * Gets a #GstClockID from `clock` to trigger a single shot
      * notification at the requested time.
+     * @param time the requested time
      */
     new_single_shot_id(time: Gst.ClockTime): Gst.ClockID
     /**
      * Reinitializes the provided periodic `id` to the provided start time and
      * interval. Does not modify the reference count.
+     * @param id a #GstClockID
+     * @param start_time the requested start time
+     * @param interval the requested interval
      */
     periodic_id_reinit(id: Gst.ClockID, start_time: Gst.ClockTime, interval: Gst.ClockTime): boolean
     /**
@@ -10751,6 +11733,10 @@ class AudioClock {
      * Note that gst_clock_get_time() always returns increasing values so when you
      * move the clock backwards, gst_clock_get_time() will report the previous value
      * until the clock catches up.
+     * @param internal a reference internal time
+     * @param external a reference external time
+     * @param rate_num the numerator of the rate of the clock relative to its            internal time
+     * @param rate_denom the denominator of the rate of the clock
      */
     set_calibration(internal: Gst.ClockTime, external: Gst.ClockTime, rate_num: Gst.ClockTime, rate_denom: Gst.ClockTime): void
     /**
@@ -10764,6 +11750,7 @@ class AudioClock {
      * `master` can be %NULL in which case `clock` will not be slaved anymore. It will
      * however keep reporting its time adjusted with the last configured rate
      * and time offsets.
+     * @param master a master #GstClock
      */
     set_master(master?: Gst.Clock | null): boolean
     /**
@@ -10772,6 +11759,7 @@ class AudioClock {
      * normally no need to change the default resolution of a clock. The resolution
      * of a clock can only be changed if the clock has the
      * #GST_CLOCK_FLAG_CAN_SET_RESOLUTION flag set.
+     * @param resolution The resolution to set
      */
     set_resolution(resolution: Gst.ClockTime): Gst.ClockTime
     /**
@@ -10780,16 +11768,20 @@ class AudioClock {
      * 
      * This function must only be called if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is set on the clock, and is intended to be called by subclasses only.
+     * @param synced if the clock is synced
      */
     set_synced(synced: boolean): void
     /**
      * Sets the amount of time, in nanoseconds, to sample master and slave
      * clocks
+     * @param timeout a timeout
      */
     set_timeout(timeout: Gst.ClockTime): void
     /**
      * Reinitializes the provided single shot `id` to the provided time. Does not
      * modify the reference count.
+     * @param id a #GstClockID
+     * @param time The requested time.
      */
     single_shot_id_reinit(id: Gst.ClockID, time: Gst.ClockTime): boolean
     /**
@@ -10799,6 +11791,7 @@ class AudioClock {
      * is mainly used by clock subclasses.
      * 
      * This function is the reverse of gst_clock_adjust_unlocked().
+     * @param external an external clock time
      */
     unadjust_unlocked(external: Gst.ClockTime): Gst.ClockTime
     /**
@@ -10808,6 +11801,11 @@ class AudioClock {
      * current calibration parameters.
      * 
      * Note: The `clock` parameter is unused and can be NULL
+     * @param external_target a clock time
+     * @param cinternal a reference internal time
+     * @param cexternal a reference external time
+     * @param cnum the numerator of the rate of the clock relative to its        internal time
+     * @param cdenom the denominator of the rate of the clock
      */
     unadjust_with_calibration(external_target: Gst.ClockTime, cinternal: Gst.ClockTime, cexternal: Gst.ClockTime, cnum: Gst.ClockTime, cdenom: Gst.ClockTime): Gst.ClockTime
     /**
@@ -10819,6 +11817,7 @@ class AudioClock {
      * 
      * This returns immediately with %TRUE if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
      * is not set on the clock, or if the clock is already synced.
+     * @param timeout timeout for waiting or %GST_CLOCK_TIME_NONE
      */
     wait_for_sync(timeout: Gst.ClockTime): boolean
     /* Methods of Gst-1.0.Gst.Object */
@@ -10828,6 +11827,7 @@ class AudioClock {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -10835,11 +11835,14 @@ class AudioClock {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -10862,6 +11865,10 @@ class AudioClock {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -10887,6 +11894,8 @@ class AudioClock {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -10896,16 +11905,19 @@ class AudioClock {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -10921,17 +11933,21 @@ class AudioClock {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -10942,6 +11958,7 @@ class AudioClock {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -10949,11 +11966,13 @@ class AudioClock {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -10967,6 +11986,7 @@ class AudioClock {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -11020,6 +12040,10 @@ class AudioClock {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -11030,6 +12054,12 @@ class AudioClock {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -11053,6 +12083,7 @@ class AudioClock {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -11072,11 +12103,14 @@ class AudioClock {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -11084,6 +12118,8 @@ class AudioClock {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -11101,6 +12137,7 @@ class AudioClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -11146,6 +12183,7 @@ class AudioClock {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -11189,15 +12227,20 @@ class AudioClock {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -11238,6 +12281,7 @@ class AudioClock {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -11262,12 +12306,15 @@ class AudioClock {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of Gst-1.0.Gst.Clock */
     /**
      * Change the resolution of the clock. Not all values might
      * be acceptable.
+     * @param old_resolution the previous resolution
+     * @param new_resolution the new resolution
      */
     vfunc_change_resolution(old_resolution: Gst.ClockTime, new_resolution: Gst.ClockTime): Gst.ClockTime
     /**
@@ -11282,15 +12329,18 @@ class AudioClock {
     vfunc_get_resolution(): Gst.ClockTime
     /**
      * Unblock a blocking or async wait operation.
+     * @param entry the entry to unschedule
      */
     vfunc_unschedule(entry: Gst.ClockEntry): void
     /**
      * Perform a blocking wait on the given #GstClockEntry and return
      * the jitter.
+     * @param entry the entry to wait on
      */
     vfunc_wait(entry: Gst.ClockEntry): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
      * Perform an asynchronous wait on the given #GstClockEntry.
+     * @param entry the entry to wait on
      */
     vfunc_wait_async(entry: Gst.ClockEntry): Gst.ClockReturn
     /* Virtual methods of Gst-1.0.Gst.Object */
@@ -11312,6 +12362,7 @@ class AudioClock {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -11323,6 +12374,7 @@ class AudioClock {
      * 
      * This signal will be emitted from an arbitrary thread, most likely not
      * the application's main thread.
+     * @param synced if the clock is synced now
      */
     connect(sigName: "synced", callback: (($obj: AudioClock, synced: boolean) => void)): number
     connect_after(sigName: "synced", callback: (($obj: AudioClock, synced: boolean) => void)): number
@@ -11332,6 +12384,8 @@ class AudioClock {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioClock, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioClock, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -11365,6 +12419,7 @@ class AudioClock {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioClock, pspec: GObject.ParamSpec) => void)): number
@@ -11410,117 +12465,118 @@ class AudioDecoder {
     plc: boolean
     tolerance: number
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioDecoder */
     /**
      * Helper function that allocates a buffer to hold an audio frame
      * for `dec'`s current output format.
+     * @param size size of the buffer
      */
     allocate_output_buffer(size: number): Gst.Buffer
     /**
@@ -11534,6 +12590,8 @@ class AudioDecoder {
      * 
      * Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
      * invalidated by a call to this function.
+     * @param buf decoded data
+     * @param frames number of decoded frames represented by decoded data
      */
     finish_frame(buf: Gst.Buffer | null, frames: number): Gst.FlowReturn
     /**
@@ -11550,6 +12608,7 @@ class AudioDecoder {
      * 
      * Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
      * invalidated by a call to this function.
+     * @param buf decoded data
      */
     finish_subframe(buf?: Gst.Buffer | null): Gst.FlowReturn
     /**
@@ -11600,6 +12659,8 @@ class AudioDecoder {
      * 
      * Note that this is provided for convenience, and the subclass is
      * not required to use this and can still do tag handling on its own.
+     * @param tags a #GstTagList to merge, or NULL
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -11612,6 +12673,8 @@ class AudioDecoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to rate/channels/... combinations supported by downstream
      * elements.
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
@@ -11619,6 +12682,7 @@ class AudioDecoder {
      * pad's caps. Use this function before calling
      * gst_audio_decoder_negotiate(). Setting to %NULL the allocation
      * query will use the caps from the pad.
+     * @param allocation_caps a #GstCaps or %NULL
      */
     set_allocation_caps(allocation_caps?: Gst.Caps | null): void
     /**
@@ -11628,14 +12692,18 @@ class AudioDecoder {
      * real data.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_drainable(enabled: boolean): void
     /**
      * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
      */
     set_estimate_rate(enabled: boolean): void
     /**
      * Sets decoder latency.
+     * @param min minimum latency
+     * @param max maximum latency
      */
     set_latency(min: Gst.ClockTime, max: Gst.ClockTime): void
     /**
@@ -11643,12 +12711,14 @@ class AudioDecoder {
      * warned about, but more than tolerated will lead to fatal error. You can set
      * -1 for never returning fatal errors. Default is set to
      * GST_AUDIO_DECODER_MAX_ERRORS.
+     * @param num max tolerated errors
      */
     set_max_errors(num: number): void
     /**
      * Sets decoder minimum aggregation latency.
      * 
      * MT safe.
+     * @param num new minimum latency
      */
     set_min_latency(num: Gst.ClockTime): void
     /**
@@ -11660,6 +12730,7 @@ class AudioDecoder {
      * or based on the input data.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_needs_format(enabled: boolean): void
     /**
@@ -11667,10 +12738,12 @@ class AudioDecoder {
      * gst_audio_decoder_set_output_format(), but allows subclasses to specify
      * output caps that can't be expressed via #GstAudioInfo e.g. caps that have
      * caps features.
+     * @param caps (fixed) #GstCaps
      */
     set_output_caps(caps: Gst.Caps): boolean
     /**
      * Configure output info on the srcpad of `dec`.
+     * @param info #GstAudioInfo
      */
     set_output_format(info: AudioInfo): boolean
     /**
@@ -11678,16 +12751,19 @@ class AudioDecoder {
      * and codec are capable and allow handling plc.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_plc(enabled: boolean): void
     /**
      * Indicates whether or not subclass handles packet loss concealment (plc).
+     * @param plc new plc state
      */
     set_plc_aware(plc: boolean): void
     /**
      * Configures decoder audio jitter tolerance threshold.
      * 
      * MT safe.
+     * @param tolerance new tolerance
      */
     set_tolerance(tolerance: Gst.ClockTime): void
     /**
@@ -11697,6 +12773,7 @@ class AudioDecoder {
      * By setting this to true it is possible to further customize the default
      * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
      * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
     set_use_default_pad_acceptcaps(use: boolean): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -11720,6 +12797,7 @@ class AudioDecoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -11735,6 +12813,7 @@ class AudioDecoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -11742,6 +12821,7 @@ class AudioDecoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -11758,6 +12838,7 @@ class AudioDecoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -11773,6 +12854,7 @@ class AudioDecoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11782,6 +12864,7 @@ class AudioDecoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11791,6 +12874,7 @@ class AudioDecoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -11821,21 +12905,26 @@ class AudioDecoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -11861,10 +12950,12 @@ class AudioDecoder {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -11876,6 +12967,7 @@ class AudioDecoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -11909,11 +13001,13 @@ class AudioDecoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -11958,6 +13052,7 @@ class AudioDecoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -11969,6 +13064,8 @@ class AudioDecoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -11976,6 +13073,9 @@ class AudioDecoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -11983,6 +13083,10 @@ class AudioDecoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -11996,6 +13100,10 @@ class AudioDecoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -12024,6 +13132,14 @@ class AudioDecoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -12031,6 +13147,15 @@ class AudioDecoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -12049,6 +13174,7 @@ class AudioDecoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -12065,10 +13191,14 @@ class AudioDecoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -12080,6 +13210,7 @@ class AudioDecoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -12092,6 +13223,7 @@ class AudioDecoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -12103,6 +13235,7 @@ class AudioDecoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -12122,6 +13255,7 @@ class AudioDecoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -12131,6 +13265,9 @@ class AudioDecoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -12146,6 +13283,7 @@ class AudioDecoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -12154,6 +13292,13 @@ class AudioDecoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -12171,6 +13316,9 @@ class AudioDecoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -12182,12 +13330,14 @@ class AudioDecoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -12195,18 +13345,21 @@ class AudioDecoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -12218,6 +13371,7 @@ class AudioDecoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -12233,6 +13387,7 @@ class AudioDecoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -12249,6 +13404,7 @@ class AudioDecoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -12262,12 +13418,16 @@ class AudioDecoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -12277,6 +13437,7 @@ class AudioDecoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -12284,11 +13445,14 @@ class AudioDecoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -12311,6 +13475,10 @@ class AudioDecoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -12336,6 +13504,8 @@ class AudioDecoder {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -12345,16 +13515,19 @@ class AudioDecoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -12370,17 +13543,21 @@ class AudioDecoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -12391,6 +13568,7 @@ class AudioDecoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -12398,11 +13576,13 @@ class AudioDecoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -12416,6 +13596,7 @@ class AudioDecoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -12469,6 +13650,10 @@ class AudioDecoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -12479,6 +13664,12 @@ class AudioDecoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -12502,6 +13693,7 @@ class AudioDecoder {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -12521,11 +13713,14 @@ class AudioDecoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -12533,6 +13728,8 @@ class AudioDecoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -12550,6 +13747,7 @@ class AudioDecoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -12595,6 +13793,7 @@ class AudioDecoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -12638,15 +13837,20 @@ class AudioDecoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -12687,6 +13891,7 @@ class AudioDecoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -12711,6 +13916,7 @@ class AudioDecoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioDecoder */
@@ -12726,7 +13932,7 @@ class AudioDecoder {
      */
     vfunc_negotiate(): boolean
     vfunc_open(): boolean
-    vfunc_parse(adapter: GstBase.Adapter, offset: number, length: number): Gst.FlowReturn
+    vfunc_parse(adapter: GstBase.Adapter): [ /* returnType */ Gst.FlowReturn, /* offset */ number, /* length */ number ]
     vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn
     vfunc_propose_allocation(query: Gst.Query): boolean
     vfunc_set_format(caps: Gst.Caps): boolean
@@ -12743,6 +13949,7 @@ class AudioDecoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -12766,6 +13973,7 @@ class AudioDecoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -12786,6 +13994,7 @@ class AudioDecoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -12802,6 +14011,7 @@ class AudioDecoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -12811,6 +14021,9 @@ class AudioDecoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -12822,6 +14035,7 @@ class AudioDecoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -12829,18 +14043,21 @@ class AudioDecoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -12857,6 +14074,7 @@ class AudioDecoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -12879,6 +14097,7 @@ class AudioDecoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -12897,12 +14116,14 @@ class AudioDecoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioDecoder, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioDecoder, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioDecoder, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioDecoder, old_pad: Gst.Pad) => void)): number
@@ -12912,6 +14133,8 @@ class AudioDecoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioDecoder, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioDecoder, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -12945,6 +14168,7 @@ class AudioDecoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioDecoder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioDecoder, pspec: GObject.ParamSpec) => void)): number
@@ -12979,117 +14203,118 @@ class AudioEncoder {
     perfect_timestamp: boolean
     tolerance: number
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioEncoder */
     /**
      * Helper function that allocates a buffer to hold an encoded audio frame
      * for `enc'`s current output format.
+     * @param size size of the buffer
      */
     allocate_output_buffer(size: number): Gst.Buffer
     /**
@@ -13103,6 +14328,8 @@ class AudioEncoder {
      * 
      * Note that samples received in #GstAudioEncoderClass.handle_frame()
      * may be invalidated by a call to this function.
+     * @param buffer encoded data
+     * @param samples number of samples (per channel) represented by encoded data
      */
     finish_frame(buffer: Gst.Buffer | null, samples: number): Gst.FlowReturn
     /**
@@ -13152,6 +14379,8 @@ class AudioEncoder {
      * not required to use this and can still do tag handling on its own.
      * 
      * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
     merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
     /**
@@ -13164,6 +14393,8 @@ class AudioEncoder {
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to channel/rate combinations supported by downstream elements
      * (e.g. muxers).
+     * @param caps initial caps
+     * @param filter filter caps
      */
     proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps
     /**
@@ -13171,6 +14402,7 @@ class AudioEncoder {
      * pad's caps. Use this function before calling
      * gst_audio_encoder_negotiate(). Setting to %NULL the allocation
      * query will use the caps from the pad.
+     * @param allocation_caps a #GstCaps or %NULL
      */
     set_allocation_caps(allocation_caps?: Gst.Caps | null): void
     /**
@@ -13180,6 +14412,7 @@ class AudioEncoder {
      * real data.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_drainable(enabled: boolean): void
     /**
@@ -13188,6 +14421,7 @@ class AudioEncoder {
      * 
      * Note: This value will be reset to 0 every time before
      * #GstAudioEncoderClass.set_format() is called.
+     * @param num number of frames
      */
     set_frame_max(num: number): void
     /**
@@ -13199,6 +14433,7 @@ class AudioEncoder {
      * 
      * Note: This value will be reset to 0 every time before
      * #GstAudioEncoderClass.set_format() is called.
+     * @param num number of samples per frame
      */
     set_frame_samples_max(num: number): void
     /**
@@ -13210,6 +14445,7 @@ class AudioEncoder {
      * 
      * Note: This value will be reset to 0 every time before
      * #GstAudioEncoderClass.set_format() is called.
+     * @param num number of samples per frame
      */
     set_frame_samples_min(num: number): void
     /**
@@ -13219,15 +14455,19 @@ class AudioEncoder {
      * will simply be discarded.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_hard_min(enabled: boolean): void
     set_hard_resync(enabled: boolean): void
     /**
      * Set the codec headers to be sent downstream whenever requested.
+     * @param headers a list of   #GstBuffer containing the codec header
      */
     set_headers(headers: Gst.Buffer[]): void
     /**
      * Sets encoder latency.
+     * @param min minimum latency
+     * @param max maximum latency
      */
     set_latency(min: Gst.ClockTime, max: Gst.ClockTime): void
     /**
@@ -13235,28 +14475,33 @@ class AudioEncoder {
      * 
      * Note: This value will be reset to 0 every time before
      * #GstAudioEncoderClass.set_format() is called.
+     * @param num lookahead
      */
     set_lookahead(num: number): void
     /**
      * Enable or disable encoder granule handling.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_mark_granule(enabled: boolean): void
     /**
      * Configure output caps on the srcpad of `enc`.
+     * @param caps #GstCaps
      */
     set_output_format(caps: Gst.Caps): boolean
     /**
      * Enable or disable encoder perfect output timestamp preference.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_perfect_timestamp(enabled: boolean): void
     /**
      * Configures encoder audio jitter tolerance threshold.
      * 
      * MT safe.
+     * @param tolerance new tolerance
      */
     set_tolerance(tolerance: Gst.ClockTime): void
     /* Methods of Gst-1.0.Gst.Element */
@@ -13280,6 +14525,7 @@ class AudioEncoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -13295,6 +14541,7 @@ class AudioEncoder {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -13302,6 +14549,7 @@ class AudioEncoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -13318,6 +14566,7 @@ class AudioEncoder {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -13333,6 +14582,7 @@ class AudioEncoder {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -13342,6 +14592,7 @@ class AudioEncoder {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -13351,6 +14602,7 @@ class AudioEncoder {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -13381,21 +14633,26 @@ class AudioEncoder {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -13421,10 +14678,12 @@ class AudioEncoder {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -13436,6 +14695,7 @@ class AudioEncoder {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -13469,11 +14729,13 @@ class AudioEncoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -13518,6 +14780,7 @@ class AudioEncoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -13529,6 +14792,8 @@ class AudioEncoder {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -13536,6 +14801,9 @@ class AudioEncoder {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -13543,6 +14811,10 @@ class AudioEncoder {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -13556,6 +14828,10 @@ class AudioEncoder {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -13584,6 +14860,14 @@ class AudioEncoder {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -13591,6 +14875,15 @@ class AudioEncoder {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -13609,6 +14902,7 @@ class AudioEncoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -13625,10 +14919,14 @@ class AudioEncoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -13640,6 +14938,7 @@ class AudioEncoder {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -13652,6 +14951,7 @@ class AudioEncoder {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -13663,6 +14963,7 @@ class AudioEncoder {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -13682,6 +14983,7 @@ class AudioEncoder {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -13691,6 +14993,9 @@ class AudioEncoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -13706,6 +15011,7 @@ class AudioEncoder {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -13714,6 +15020,13 @@ class AudioEncoder {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -13731,6 +15044,9 @@ class AudioEncoder {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -13742,12 +15058,14 @@ class AudioEncoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -13755,18 +15073,21 @@ class AudioEncoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -13778,6 +15099,7 @@ class AudioEncoder {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -13793,6 +15115,7 @@ class AudioEncoder {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -13809,6 +15132,7 @@ class AudioEncoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -13822,12 +15146,16 @@ class AudioEncoder {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -13837,6 +15165,7 @@ class AudioEncoder {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -13844,11 +15173,14 @@ class AudioEncoder {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -13871,6 +15203,10 @@ class AudioEncoder {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -13896,6 +15232,8 @@ class AudioEncoder {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -13905,16 +15243,19 @@ class AudioEncoder {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -13930,17 +15271,21 @@ class AudioEncoder {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -13951,6 +15296,7 @@ class AudioEncoder {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -13958,11 +15304,13 @@ class AudioEncoder {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -13976,6 +15324,7 @@ class AudioEncoder {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -14029,6 +15378,10 @@ class AudioEncoder {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -14039,6 +15392,12 @@ class AudioEncoder {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -14062,6 +15421,7 @@ class AudioEncoder {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -14081,11 +15441,14 @@ class AudioEncoder {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -14093,6 +15456,8 @@ class AudioEncoder {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -14110,6 +15475,7 @@ class AudioEncoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -14155,6 +15521,7 @@ class AudioEncoder {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -14198,15 +15565,20 @@ class AudioEncoder {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -14247,6 +15619,7 @@ class AudioEncoder {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -14271,16 +15644,20 @@ class AudioEncoder {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Methods of Gst-1.0.Gst.Preset */
     /**
      * Delete the given preset.
+     * @param name preset name to remove
      */
     delete_preset(name: string): boolean
     /**
      * Gets the `value` for an existing meta data `tag`. Meta data `tag` names can be
      * something like e.g. "comment". Returned values need to be released when done.
+     * @param name preset name
+     * @param tag meta data item name
      */
     get_meta(name: string, tag: string): [ /* returnType */ boolean, /* value */ string ]
     /**
@@ -14297,22 +15674,29 @@ class AudioEncoder {
     is_editable(): boolean
     /**
      * Load the given preset.
+     * @param name preset name to load
      */
     load_preset(name: string): boolean
     /**
      * Renames a preset. If there is already a preset by the `new_name` it will be
      * overwritten.
+     * @param old_name current preset name
+     * @param new_name new preset name
      */
     rename_preset(old_name: string, new_name: string): boolean
     /**
      * Save the current object settings as a preset under the given name. If there
      * is already a preset by this `name` it will be overwritten.
+     * @param name preset name to save
      */
     save_preset(name: string): boolean
     /**
      * Sets a new `value` for an existing meta data item or adds a new item. Meta
      * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
      * `value` will unset an existing value.
+     * @param name preset name
+     * @param tag meta data item name
+     * @param value new value
      */
     set_meta(name: string, tag: string, value?: string | null): boolean
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioEncoder */
@@ -14340,11 +15724,14 @@ class AudioEncoder {
     vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean
     /**
      * Delete the given preset.
+     * @param name preset name to remove
      */
     vfunc_delete_preset(name: string): boolean
     /**
      * Gets the `value` for an existing meta data `tag`. Meta data `tag` names can be
      * something like e.g. "comment". Returned values need to be released when done.
+     * @param name preset name
+     * @param tag meta data item name
      */
     vfunc_get_meta(name: string, tag: string): [ /* returnType */ boolean, /* value */ string ]
     /**
@@ -14357,22 +15744,29 @@ class AudioEncoder {
     vfunc_get_property_names(): string[]
     /**
      * Load the given preset.
+     * @param name preset name to load
      */
     vfunc_load_preset(name: string): boolean
     /**
      * Renames a preset. If there is already a preset by the `new_name` it will be
      * overwritten.
+     * @param old_name current preset name
+     * @param new_name new preset name
      */
     vfunc_rename_preset(old_name: string, new_name: string): boolean
     /**
      * Save the current object settings as a preset under the given name. If there
      * is already a preset by this `name` it will be overwritten.
+     * @param name preset name to save
      */
     vfunc_save_preset(name: string): boolean
     /**
      * Sets a new `value` for an existing meta data item or adds a new item. Meta
      * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
      * `value` will unset an existing value.
+     * @param name preset name
+     * @param tag meta data item name
+     * @param value new value
      */
     vfunc_set_meta(name: string, tag: string, value?: string | null): boolean
     /* Virtual methods of Gst-1.0.Gst.Element */
@@ -14381,6 +15775,7 @@ class AudioEncoder {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -14404,6 +15799,7 @@ class AudioEncoder {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -14424,6 +15820,7 @@ class AudioEncoder {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -14440,6 +15837,7 @@ class AudioEncoder {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -14449,6 +15847,9 @@ class AudioEncoder {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -14460,6 +15861,7 @@ class AudioEncoder {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -14467,18 +15869,21 @@ class AudioEncoder {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -14495,6 +15900,7 @@ class AudioEncoder {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -14517,6 +15923,7 @@ class AudioEncoder {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -14535,12 +15942,14 @@ class AudioEncoder {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioEncoder, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioEncoder, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioEncoder, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioEncoder, old_pad: Gst.Pad) => void)): number
@@ -14550,6 +15959,8 @@ class AudioEncoder {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioEncoder, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioEncoder, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -14583,6 +15994,7 @@ class AudioEncoder {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioEncoder, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioEncoder, pspec: GObject.ParamSpec) => void)): number
@@ -14612,6 +16024,7 @@ class AudioEncoder {
      * Sets an extra directory as an absolute path that should be considered when
      * looking for presets. Any presets in the application dir will shadow the
      * system presets.
+     * @param app_dir the application specific preset dir
      */
     static set_app_dir(app_dir: string): boolean
     static $gtype: GObject.Type
@@ -14622,120 +16035,120 @@ class AudioFilter {
     /* Properties of GstBase-1.0.GstBase.BaseTransform */
     qos: boolean
     /* Fields of GstBase-1.0.GstBase.BaseTransform */
-    readonly element: Gst.Element
-    readonly sinkpad: Gst.Pad
-    readonly srcpad: Gst.Pad
-    readonly have_segment: boolean
-    readonly segment: Gst.Segment
-    readonly queued_buf: Gst.Buffer
+    element: Gst.Element
+    sinkpad: Gst.Pad
+    srcpad: Gst.Pad
+    have_segment: boolean
+    segment: Gst.Segment
+    queued_buf: Gst.Buffer
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstBase-1.0.GstBase.BaseTransform */
     /**
      * Lets #GstBaseTransform sub-classes know the memory `allocator`
@@ -14795,6 +16208,7 @@ class AudioFilter {
      * unset the flag if the output is no neutral data.
      * 
      * MT safe.
+     * @param gap_aware New state
      */
     set_gap_aware(gap_aware: boolean): void
     /**
@@ -14805,6 +16219,7 @@ class AudioFilter {
      *   * Always %FALSE if ONLY transform function is implemented.
      * 
      * MT safe.
+     * @param in_place Boolean value indicating that we would like to operate on in_place buffers.
      */
     set_in_place(in_place: boolean): void
     /**
@@ -14815,6 +16230,7 @@ class AudioFilter {
      * or transform_ip or generate_output method.
      * 
      * MT safe.
+     * @param passthrough boolean indicating passthrough mode.
      */
     set_passthrough(passthrough: boolean): void
     /**
@@ -14829,12 +16245,14 @@ class AudioFilter {
      * capsfilter.
      * 
      * MT safe.
+     * @param prefer_passthrough New state
      */
     set_prefer_passthrough(prefer_passthrough: boolean): void
     /**
      * Enable or disable QoS handling in the transform.
      * 
      * MT safe.
+     * @param enabled new state
      */
     set_qos_enabled(enabled: boolean): void
     /**
@@ -14843,6 +16261,9 @@ class AudioFilter {
      * when needed.
      * 
      * MT safe.
+     * @param proportion the proportion
+     * @param diff the diff against the clock
+     * @param timestamp the timestamp of the buffer generating the QoS expressed in running_time.
      */
     update_qos(proportion: number, diff: Gst.ClockTimeDiff, timestamp: Gst.ClockTime): void
     /**
@@ -14851,6 +16272,7 @@ class AudioFilter {
      * but found a change in them (or computed new information). This way,
      * they can notify downstream about that change without losing any
      * buffer.
+     * @param updated_caps An updated version of the srcpad caps to be pushed downstream
      */
     update_src_caps(updated_caps: Gst.Caps): boolean
     /* Methods of Gst-1.0.Gst.Element */
@@ -14874,6 +16296,7 @@ class AudioFilter {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -14889,6 +16312,7 @@ class AudioFilter {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -14896,6 +16320,7 @@ class AudioFilter {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -14912,6 +16337,7 @@ class AudioFilter {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -14927,6 +16353,7 @@ class AudioFilter {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -14936,6 +16363,7 @@ class AudioFilter {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -14945,6 +16373,7 @@ class AudioFilter {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -14975,21 +16404,26 @@ class AudioFilter {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -15015,10 +16449,12 @@ class AudioFilter {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -15030,6 +16466,7 @@ class AudioFilter {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -15063,11 +16500,13 @@ class AudioFilter {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -15112,6 +16551,7 @@ class AudioFilter {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -15123,6 +16563,8 @@ class AudioFilter {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -15130,6 +16572,9 @@ class AudioFilter {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -15137,6 +16582,10 @@ class AudioFilter {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -15150,6 +16599,10 @@ class AudioFilter {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -15178,6 +16631,14 @@ class AudioFilter {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -15185,6 +16646,15 @@ class AudioFilter {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -15203,6 +16673,7 @@ class AudioFilter {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -15219,10 +16690,14 @@ class AudioFilter {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -15234,6 +16709,7 @@ class AudioFilter {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -15246,6 +16722,7 @@ class AudioFilter {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -15257,6 +16734,7 @@ class AudioFilter {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -15276,6 +16754,7 @@ class AudioFilter {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -15285,6 +16764,9 @@ class AudioFilter {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -15300,6 +16782,7 @@ class AudioFilter {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -15308,6 +16791,13 @@ class AudioFilter {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -15325,6 +16815,9 @@ class AudioFilter {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -15336,12 +16829,14 @@ class AudioFilter {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -15349,18 +16844,21 @@ class AudioFilter {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -15372,6 +16870,7 @@ class AudioFilter {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -15387,6 +16886,7 @@ class AudioFilter {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -15403,6 +16903,7 @@ class AudioFilter {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -15416,12 +16917,16 @@ class AudioFilter {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -15431,6 +16936,7 @@ class AudioFilter {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -15438,11 +16944,14 @@ class AudioFilter {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -15465,6 +16974,10 @@ class AudioFilter {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -15490,6 +17003,8 @@ class AudioFilter {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -15499,16 +17014,19 @@ class AudioFilter {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -15524,17 +17042,21 @@ class AudioFilter {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -15545,6 +17067,7 @@ class AudioFilter {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -15552,11 +17075,13 @@ class AudioFilter {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -15570,6 +17095,7 @@ class AudioFilter {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -15623,6 +17149,10 @@ class AudioFilter {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -15633,6 +17163,12 @@ class AudioFilter {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -15656,6 +17192,7 @@ class AudioFilter {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -15675,11 +17212,14 @@ class AudioFilter {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -15687,6 +17227,8 @@ class AudioFilter {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -15704,6 +17246,7 @@ class AudioFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -15749,6 +17292,7 @@ class AudioFilter {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -15792,15 +17336,20 @@ class AudioFilter {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -15841,6 +17390,7 @@ class AudioFilter {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -15865,6 +17415,7 @@ class AudioFilter {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioFilter */
@@ -15879,6 +17430,7 @@ class AudioFilter {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.BaseTransform */
@@ -15902,6 +17454,7 @@ class AudioFilter {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean
@@ -15921,6 +17474,7 @@ class AudioFilter {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -15944,6 +17498,7 @@ class AudioFilter {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -15964,6 +17519,7 @@ class AudioFilter {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -15980,6 +17536,7 @@ class AudioFilter {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -15989,6 +17546,9 @@ class AudioFilter {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -16000,6 +17560,7 @@ class AudioFilter {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -16007,18 +17568,21 @@ class AudioFilter {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -16035,6 +17599,7 @@ class AudioFilter {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -16057,6 +17622,7 @@ class AudioFilter {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16075,12 +17641,14 @@ class AudioFilter {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioFilter, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioFilter, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioFilter, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioFilter, old_pad: Gst.Pad) => void)): number
@@ -16090,6 +17658,8 @@ class AudioFilter {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioFilter, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioFilter, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -16123,6 +17693,7 @@ class AudioFilter {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioFilter, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioFilter, pspec: GObject.ParamSpec) => void)): number
@@ -16142,6 +17713,7 @@ class AudioFilter {
      * `allowed_caps` as the caps that can be handled.
      * 
      * This function is usually used from within a GObject class_init function.
+     * @param allowed_caps what formats the filter can handle, as #GstCaps
      */
     static add_pad_templates(klass: AudioFilter | Function | GObject.Type, allowed_caps: Gst.Caps): void
     static $gtype: GObject.Type
@@ -16150,36 +17722,38 @@ interface AudioRingBuffer_ConstructProps extends Gst.Object_ConstructProps {
 }
 class AudioRingBuffer {
     /* Fields of Gst-1.0.Gst.Object */
-    readonly object: GObject.InitiallyUnowned
+    object: GObject.InitiallyUnowned
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioRingBuffer */
     /**
      * Allocate the resources for the ringbuffer. This function fills
      * in the data pointer of the ring buffer with a valid #GstBuffer
      * to which samples can be written.
+     * @param spec the specs of the buffer
      */
     acquire(spec: AudioRingBufferSpec): boolean
     /**
      * Activate `buf` to start or stop pulling data.
      * 
      * MT safe.
+     * @param active the new mode
      */
     activate(active: boolean): boolean
     /**
@@ -16187,6 +17761,7 @@ class AudioRingBuffer {
      * `advance` segments are now processed by the device.
      * 
      * MT safe.
+     * @param advance the number of segments written
      */
     advance(advance: number): void
     /**
@@ -16194,6 +17769,7 @@ class AudioRingBuffer {
      * This function is used by subclasses.
      * 
      * MT safe.
+     * @param segment the segment to clear
      */
     clear(segment: number): void
     /**
@@ -16227,11 +17803,18 @@ class AudioRingBuffer {
      * `accum` value back to this function.
      * 
      * MT safe.
+     * @param sample the sample position of the data
+     * @param data the data to commit
+     * @param out_samples the number of samples to write to the ringbuffer
+     * @param accum accumulator for rate conversion.
      */
-    commit(sample: number, data: Uint8Array, out_samples: number, accum: number): [ /* returnType */ number, /* accum */ number ]
+    commit(sample: number, data: Uint8Array, out_samples: number, accum: number): [ /* returnType */ number, /* sample */ number, /* accum */ number ]
     /**
      * Convert `src_val` in `src_fmt` to the equivalent value in `dest_fmt`. The result
      * will be put in `dest_val`.
+     * @param src_fmt the source format
+     * @param src_val the source value
+     * @param dest_fmt the destination format
      */
     convert(src_fmt: Gst.Format, src_val: number, dest_fmt: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -16272,6 +17855,7 @@ class AudioRingBuffer {
      * the ringbuffer is filled with samples.
      * 
      * MT safe.
+     * @param allowed the new value
      */
     may_start(allowed: boolean): void
     /**
@@ -16299,6 +17883,8 @@ class AudioRingBuffer {
      * although it is recommended.
      * 
      * `timestamp` will return the timestamp associated with the data returned.
+     * @param sample the sample position of the data
+     * @param data where the data should be read
      */
     read(sample: number, data: Uint8Array): [ /* returnType */ number, /* timestamp */ Gst.ClockTime ]
     /**
@@ -16316,17 +17902,20 @@ class AudioRingBuffer {
      * will be called every time a segment has been written to a device.
      * 
      * MT safe.
+     * @param cb the callback to set
      */
     set_callback(cb: AudioRingBufferCallback | null): void
     /**
      * Tell the ringbuffer about the device's channel positions. This must
      * be called in when the ringbuffer is acquired.
+     * @param position the device channel positions
      */
     set_channel_positions(position: AudioChannelPosition[]): void
     /**
      * Set the ringbuffer to flushing mode or normal mode.
      * 
      * MT safe.
+     * @param flushing the new mode
      */
     set_flushing(flushing: boolean): void
     /**
@@ -16338,6 +17927,7 @@ class AudioRingBuffer {
      * This function will also clear the buffer with silence.
      * 
      * MT safe.
+     * @param sample the sample number to set
      */
     set_sample(sample: number): void
     set_timestamp(readseg: number, timestamp: Gst.ClockTime): void
@@ -16356,6 +17946,7 @@ class AudioRingBuffer {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -16363,11 +17954,14 @@ class AudioRingBuffer {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -16390,6 +17984,10 @@ class AudioRingBuffer {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -16415,6 +18013,8 @@ class AudioRingBuffer {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -16424,16 +18024,19 @@ class AudioRingBuffer {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -16449,17 +18052,21 @@ class AudioRingBuffer {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -16470,6 +18077,7 @@ class AudioRingBuffer {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -16477,11 +18085,13 @@ class AudioRingBuffer {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -16495,6 +18105,7 @@ class AudioRingBuffer {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -16548,6 +18159,10 @@ class AudioRingBuffer {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -16558,6 +18173,12 @@ class AudioRingBuffer {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -16581,6 +18202,7 @@ class AudioRingBuffer {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -16600,11 +18222,14 @@ class AudioRingBuffer {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -16612,6 +18237,8 @@ class AudioRingBuffer {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -16629,6 +18256,7 @@ class AudioRingBuffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -16674,6 +18302,7 @@ class AudioRingBuffer {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -16717,15 +18346,20 @@ class AudioRingBuffer {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -16766,6 +18400,7 @@ class AudioRingBuffer {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -16790,6 +18425,7 @@ class AudioRingBuffer {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioRingBuffer */
@@ -16797,12 +18433,14 @@ class AudioRingBuffer {
      * Allocate the resources for the ringbuffer. This function fills
      * in the data pointer of the ring buffer with a valid #GstBuffer
      * to which samples can be written.
+     * @param spec the specs of the buffer
      */
     vfunc_acquire(spec: AudioRingBufferSpec): boolean
     /**
      * Activate `buf` to start or stop pulling data.
      * 
      * MT safe.
+     * @param active the new mode
      */
     vfunc_activate(active: boolean): boolean
     /**
@@ -16836,8 +18474,12 @@ class AudioRingBuffer {
      * `accum` value back to this function.
      * 
      * MT safe.
+     * @param sample the sample position of the data
+     * @param data the data to commit
+     * @param out_samples the number of samples to write to the ringbuffer
+     * @param accum accumulator for rate conversion.
      */
-    vfunc_commit(sample: number, data: Uint8Array, out_samples: number, accum: number): [ /* returnType */ number, /* accum */ number ]
+    vfunc_commit(sample: number, data: Uint8Array, out_samples: number, accum: number): [ /* returnType */ number, /* sample */ number, /* accum */ number ]
     /**
      * Get the number of samples queued in the audio device. This is
      * usually less than the segment size but can be bigger when the
@@ -16893,6 +18535,7 @@ class AudioRingBuffer {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -16901,6 +18544,8 @@ class AudioRingBuffer {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioRingBuffer, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioRingBuffer, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -16934,6 +18579,7 @@ class AudioRingBuffer {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioRingBuffer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioRingBuffer, pspec: GObject.ParamSpec) => void)): number
@@ -16948,14 +18594,18 @@ class AudioRingBuffer {
     /* Static methods and pseudo-constructors */
     /**
      * Print debug info about the buffer sized in `spec` to the debug log.
+     * @param spec the spec to debug
      */
     static debug_spec_buff(spec: AudioRingBufferSpec): void
     /**
      * Print debug info about the parsed caps in `spec` to the debug log.
+     * @param spec the spec to debug
      */
     static debug_spec_caps(spec: AudioRingBufferSpec): void
     /**
      * Parse `caps` into `spec`.
+     * @param spec a spec
+     * @param caps a #GstCaps
      */
     static parse_caps(spec: AudioRingBufferSpec, caps: Gst.Caps): boolean
     static $gtype: GObject.Type
@@ -17046,134 +18696,134 @@ class AudioSink {
      */
     ts_offset: number
     /* Fields of GstAudio-1.0.GstAudio.AudioBaseSink */
-    readonly element: GstBase.BaseSink
-    readonly ringbuffer: AudioRingBuffer
-    readonly buffer_time: number
-    readonly latency_time: number
-    readonly next_sample: number
-    readonly provided_clock: Gst.Clock
-    readonly eos_rendering: boolean
+    element: GstBase.BaseSink
+    ringbuffer: AudioRingBuffer
+    buffer_time: number
+    latency_time: number
+    next_sample: number
+    provided_clock: Gst.Clock
+    eos_rendering: boolean
     /* Fields of GstBase-1.0.GstBase.BaseSink */
-    readonly sinkpad: Gst.Pad
-    readonly pad_mode: Gst.PadMode
-    readonly offset: number
-    readonly can_activate_push: boolean
-    readonly preroll_lock: GLib.Mutex
-    readonly preroll_cond: GLib.Cond
-    readonly eos: boolean
-    readonly need_preroll: boolean
-    readonly have_preroll: boolean
-    readonly playing_async: boolean
-    readonly have_newsegment: boolean
-    readonly segment: Gst.Segment
+    sinkpad: Gst.Pad
+    pad_mode: Gst.PadMode
+    offset: number
+    can_activate_push: boolean
+    preroll_lock: GLib.Mutex
+    preroll_cond: GLib.Cond
+    eos: boolean
+    need_preroll: boolean
+    have_preroll: boolean
+    playing_async: boolean
+    have_newsegment: boolean
+    segment: Gst.Segment
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the clock of the element. This clock is usually provided to the
      * element by the toplevel #GstPipeline.
      */
-    readonly clock: Gst.Clock
+    clock: Gst.Clock
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * this object's parent, weak ref
      */
-    readonly parent: Gst.Object
+    parent: Gst.Object
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioBaseSink */
     /**
      * Create and return the #GstAudioRingBuffer for `sink`. This function will
@@ -17212,6 +18862,7 @@ class AudioSink {
     report_device_failure(): void
     /**
      * Controls the sink's alignment threshold.
+     * @param alignment_threshold the new alignment threshold in nanoseconds
      */
     set_alignment_threshold(alignment_threshold: Gst.ClockTime): void
     /**
@@ -17223,14 +18874,17 @@ class AudioSink {
      * Setting the callback to NULL causes the sink to
      * behave as if the GST_AUDIO_BASE_SINK_SLAVE_NONE
      * method were used.
+     * @param callback a #GstAudioBaseSinkCustomSlavingCallback
      */
     set_custom_slaving_callback(callback: AudioBaseSinkCustomSlavingCallback): void
     /**
      * Controls how long the sink will wait before creating a discontinuity.
+     * @param discont_wait the new discont wait in nanoseconds
      */
     set_discont_wait(discont_wait: Gst.ClockTime): void
     /**
      * Controls the sink's drift tolerance.
+     * @param drift_tolerance the new drift tolerance in microseconds
      */
     set_drift_tolerance(drift_tolerance: number): void
     /**
@@ -17238,10 +18892,12 @@ class AudioSink {
      * gst_element_provide_clock() will return a clock that reflects the datarate
      * of `sink`. If `provide` is %FALSE, gst_element_provide_clock() will return
      * NULL.
+     * @param provide new state
      */
     set_provide_clock(provide: boolean): void
     /**
      * Controls how clock slaving will be performed in `sink`.
+     * @param method the new slave method
      */
     set_slave_method(method: AudioBaseSinkSlaveMethod): void
     /* Methods of GstBase-1.0.GstBase.BaseSink */
@@ -17252,6 +18908,7 @@ class AudioSink {
      * until the element state is changed.
      * 
      * This function should be called with the PREROLL_LOCK held.
+     * @param obj the mini object that caused the preroll
      */
     do_preroll(obj: Gst.MiniObject): Gst.FlowReturn
     /**
@@ -17353,24 +19010,29 @@ class AudioSink {
      * disabled, the sink will immediately go to PAUSED instead of waiting for a
      * preroll buffer. This feature is useful if the sink does not synchronize
      * against the clock or when it is dealing with sparse streams.
+     * @param enabled the new async value.
      */
     set_async_enabled(enabled: boolean): void
     /**
      * Set the number of bytes that the sink will pull when it is operating in pull
      * mode.
+     * @param blocksize the blocksize in bytes
      */
     set_blocksize(blocksize: number): void
     /**
      * Configure `sink` to drop buffers which are outside the current segment
+     * @param drop_out_of_segment drop buffers outside the segment
      */
     set_drop_out_of_segment(drop_out_of_segment: boolean): void
     /**
      * Configures `sink` to store the last received sample in the last-sample
      * property.
+     * @param enabled the new enable-last-sample value.
      */
     set_last_sample_enabled(enabled: boolean): void
     /**
      * Set the maximum amount of bits per second that the sink will render.
+     * @param max_bitrate the max_bitrate in bits per second
      */
     set_max_bitrate(max_bitrate: number): void
     /**
@@ -17378,6 +19040,7 @@ class AudioSink {
      * used to decide if a buffer should be dropped or not based on the
      * buffer timestamp and the current clock time. A value of -1 means
      * an unlimited time.
+     * @param max_lateness the new max lateness value.
      */
     set_max_lateness(max_lateness: number): void
     /**
@@ -17386,10 +19049,12 @@ class AudioSink {
      * pipelines.
      * 
      * This function is usually called by subclasses.
+     * @param processing_deadline the new processing deadline in nanoseconds.
      */
     set_processing_deadline(processing_deadline: Gst.ClockTime): void
     /**
      * Configures `sink` to send Quality-of-Service events upstream.
+     * @param enabled the new qos value.
      */
     set_qos_enabled(enabled: boolean): void
     /**
@@ -17402,6 +19067,7 @@ class AudioSink {
      * other sinks will adjust their latency to delay the rendering of their media.
      * 
      * This function is usually called by subclasses.
+     * @param delay the new delay
      */
     set_render_delay(delay: Gst.ClockTime): void
     /**
@@ -17410,12 +19076,14 @@ class AudioSink {
      * possible. If `sync` is %TRUE, the timestamps of the incoming
      * buffers will be used to schedule the exact render time of its
      * contents.
+     * @param sync the new sync value.
      */
     set_sync(sync: boolean): void
     /**
      * Set the time that will be inserted between rendered buffers. This
      * can be used to control the maximum buffers per second that the sink
      * will render.
+     * @param throttle the throttle time in nanoseconds
      */
     set_throttle_time(throttle: number): void
     /**
@@ -17423,6 +19091,7 @@ class AudioSink {
      * render buffers earlier than their timestamp. A positive value will delay
      * rendering. This function can be used to fix playback of badly timestamped
      * buffers.
+     * @param offset the new offset
      */
     set_ts_offset(offset: Gst.ClockTimeDiff): void
     /**
@@ -17437,6 +19106,7 @@ class AudioSink {
      * 
      * The `time` argument should be the running_time of when the timeout should happen
      * and will be adjusted with any latency and offset configured in the sink.
+     * @param time the running_time to be reached
      */
     wait(time: Gst.ClockTime): [ /* returnType */ Gst.FlowReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -17455,6 +19125,7 @@ class AudioSink {
      * The `time` argument should be the running_time of when this method should
      * return and is not adjusted with any latency or offset configured in the
      * sink.
+     * @param time the running_time to be reached
      */
     wait_clock(time: Gst.ClockTime): [ /* returnType */ Gst.ClockReturn, /* jitter */ Gst.ClockTimeDiff | null ]
     /**
@@ -17499,6 +19170,7 @@ class AudioSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -17514,6 +19186,7 @@ class AudioSink {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -17521,6 +19194,7 @@ class AudioSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -17537,6 +19211,7 @@ class AudioSink {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -17552,6 +19227,7 @@ class AudioSink {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -17561,6 +19237,7 @@ class AudioSink {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -17570,6 +19247,7 @@ class AudioSink {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -17600,21 +19278,26 @@ class AudioSink {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -17640,10 +19323,12 @@ class AudioSink {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -17655,6 +19340,7 @@ class AudioSink {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -17688,11 +19374,13 @@ class AudioSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -17737,6 +19425,7 @@ class AudioSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -17748,6 +19437,8 @@ class AudioSink {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -17755,6 +19446,9 @@ class AudioSink {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -17762,6 +19456,10 @@ class AudioSink {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -17775,6 +19473,10 @@ class AudioSink {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -17803,6 +19505,14 @@ class AudioSink {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -17810,6 +19520,15 @@ class AudioSink {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -17828,6 +19547,7 @@ class AudioSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -17838,10 +19558,14 @@ class AudioSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -17853,6 +19577,7 @@ class AudioSink {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -17865,6 +19590,7 @@ class AudioSink {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -17876,6 +19602,7 @@ class AudioSink {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -17895,6 +19622,7 @@ class AudioSink {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -17904,6 +19632,9 @@ class AudioSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -17919,6 +19650,7 @@ class AudioSink {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -17927,6 +19659,13 @@ class AudioSink {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -17944,6 +19683,9 @@ class AudioSink {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -17955,12 +19697,14 @@ class AudioSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -17968,18 +19712,21 @@ class AudioSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -17991,6 +19738,7 @@ class AudioSink {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -18006,6 +19754,7 @@ class AudioSink {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -18022,6 +19771,7 @@ class AudioSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -18035,12 +19785,16 @@ class AudioSink {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -18050,6 +19804,7 @@ class AudioSink {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -18057,11 +19812,14 @@ class AudioSink {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -18084,6 +19842,10 @@ class AudioSink {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -18109,6 +19871,8 @@ class AudioSink {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -18118,16 +19882,19 @@ class AudioSink {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -18143,17 +19910,21 @@ class AudioSink {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -18164,6 +19935,7 @@ class AudioSink {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -18171,11 +19943,13 @@ class AudioSink {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -18189,6 +19963,7 @@ class AudioSink {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -18242,6 +20017,10 @@ class AudioSink {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -18252,6 +20031,12 @@ class AudioSink {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -18275,6 +20060,7 @@ class AudioSink {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -18294,11 +20080,14 @@ class AudioSink {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -18306,6 +20095,8 @@ class AudioSink {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -18323,6 +20114,7 @@ class AudioSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -18368,6 +20160,7 @@ class AudioSink {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -18411,15 +20204,20 @@ class AudioSink {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -18460,6 +20258,7 @@ class AudioSink {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -18484,6 +20283,7 @@ class AudioSink {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioSink */
@@ -18500,7 +20300,11 @@ class AudioSink {
     /* Function overloads */
     vfunc_stop(): boolean
     vfunc_unprepare(): boolean
-    vfunc_write(data: object | null, length: number): number
+    /**
+     * Write samples to the device.
+     * @param data the sample data
+     */
+    vfunc_write(data: Uint8Array): number
     vfunc_query(query: Gst.Query): boolean
     /* Function overloads */
     /**
@@ -18511,6 +20315,7 @@ class AudioSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioBaseSink */
@@ -18531,14 +20336,23 @@ class AudioSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.BaseSink */
     vfunc_activate_pull(active: boolean): boolean
     vfunc_event(event: Gst.Event): boolean
     vfunc_fixate(caps: Gst.Caps): Gst.Caps
-    vfunc_get_caps(filter: Gst.Caps): Gst.Caps
-    vfunc_get_times(buffer: Gst.Buffer, start: Gst.ClockTime, end: Gst.ClockTime): void
+    /**
+     * Called to get sink pad caps from the subclass.
+     * @param filter 
+     */
+    vfunc_get_caps(filter?: Gst.Caps | null): Gst.Caps
+    /**
+     * Get the start and end times for syncing on this buffer.
+     * @param buffer 
+     */
+    vfunc_get_times(buffer: Gst.Buffer): [ /* start */ Gst.ClockTime, /* end */ Gst.ClockTime ]
     vfunc_prepare(buffer: Gst.Buffer): Gst.FlowReturn
     vfunc_prepare_list(buffer_list: Gst.BufferList): Gst.FlowReturn
     vfunc_preroll(buffer: Gst.Buffer): Gst.FlowReturn
@@ -18553,6 +20367,7 @@ class AudioSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_render(buffer: Gst.Buffer): Gst.FlowReturn
@@ -18569,6 +20384,7 @@ class AudioSink {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -18592,6 +20408,7 @@ class AudioSink {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -18612,6 +20429,7 @@ class AudioSink {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -18628,6 +20446,7 @@ class AudioSink {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -18637,6 +20456,9 @@ class AudioSink {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -18648,6 +20470,7 @@ class AudioSink {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -18655,18 +20478,21 @@ class AudioSink {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -18683,6 +20509,7 @@ class AudioSink {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -18705,6 +20532,7 @@ class AudioSink {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -18723,12 +20551,14 @@ class AudioSink {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioSink, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioSink, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioSink, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioSink, old_pad: Gst.Pad) => void)): number
@@ -18738,6 +20568,8 @@ class AudioSink {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioSink, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioSink, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -18771,6 +20603,7 @@ class AudioSink {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioSink, pspec: GObject.ParamSpec) => void)): number
@@ -18839,131 +20672,131 @@ class AudioSrc {
     /* Properties of GstBase-1.0.GstBase.BaseSrc */
     do_timestamp: boolean
     /* Fields of GstAudio-1.0.GstAudio.AudioBaseSrc */
-    readonly element: GstBase.PushSrc
-    readonly ringbuffer: AudioRingBuffer
-    readonly buffer_time: Gst.ClockTime
-    readonly latency_time: Gst.ClockTime
-    readonly next_sample: number
-    readonly clock: Gst.Clock
+    element: GstBase.PushSrc
+    ringbuffer: AudioRingBuffer
+    buffer_time: Gst.ClockTime
+    latency_time: Gst.ClockTime
+    next_sample: number
+    clock: Gst.Clock
     /* Fields of GstBase-1.0.GstBase.PushSrc */
-    readonly parent: GstBase.BaseSrc
+    parent: GstBase.BaseSrc
     /* Fields of GstBase-1.0.GstBase.BaseSrc */
-    readonly srcpad: Gst.Pad
-    readonly live_lock: GLib.Mutex
-    readonly live_cond: GLib.Cond
-    readonly is_live: boolean
-    readonly live_running: boolean
-    readonly blocksize: number
-    readonly can_activate_push: boolean
-    readonly random_access: boolean
-    readonly clock_id: Gst.ClockID
-    readonly segment: Gst.Segment
-    readonly need_newsegment: boolean
-    readonly num_buffers: number
-    readonly num_buffers_left: number
-    readonly typefind: boolean
-    readonly running: boolean
-    readonly pending_seek: Gst.Event
-    readonly priv: GstBase.BaseSrcPrivate
+    srcpad: Gst.Pad
+    live_lock: GLib.Mutex
+    live_cond: GLib.Cond
+    is_live: boolean
+    live_running: boolean
+    blocksize: number
+    can_activate_push: boolean
+    random_access: boolean
+    clock_id: Gst.ClockID
+    segment: Gst.Segment
+    need_newsegment: boolean
+    num_buffers: number
+    num_buffers_left: number
+    typefind: boolean
+    running: boolean
+    pending_seek: Gst.Event
+    priv: GstBase.BaseSrcPrivate
     /* Fields of Gst-1.0.Gst.Element */
-    readonly object: Gst.Object
+    object: Gst.Object
     /**
      * Used to serialize execution of gst_element_set_state()
      */
-    readonly state_lock: GLib.RecMutex
+    state_lock: GLib.RecMutex
     /**
      * Used to signal completion of a state change
      */
-    readonly state_cond: GLib.Cond
+    state_cond: GLib.Cond
     /**
      * Used to detect concurrent execution of
      * gst_element_set_state() and gst_element_get_state()
      */
-    readonly state_cookie: number
+    state_cookie: number
     /**
      * the target state of an element as set by the application
      */
-    readonly target_state: Gst.State
+    target_state: Gst.State
     /**
      * the current state of an element
      */
-    readonly current_state: Gst.State
+    current_state: Gst.State
     /**
      * the next state of an element, can be #GST_STATE_VOID_PENDING if
      * the element is in the correct state.
      */
-    readonly next_state: Gst.State
+    next_state: Gst.State
     /**
      * the final state the element should go to, can be
      * #GST_STATE_VOID_PENDING if the element is in the correct state
      */
-    readonly pending_state: Gst.State
+    pending_state: Gst.State
     /**
      * the last return value of an element state change
      */
-    readonly last_return: Gst.StateChangeReturn
+    last_return: Gst.StateChangeReturn
     /**
      * the bus of the element. This bus is provided to the element by the
      * parent element or the application. A #GstPipeline has a bus of its own.
      */
-    readonly bus: Gst.Bus
+    bus: Gst.Bus
     /**
      * the time of the clock right before the element is set to
      * PLAYING. Subtracting `base_time` from the current clock time in the PLAYING
      * state will yield the running_time against the clock.
      */
-    readonly base_time: Gst.ClockTimeDiff
+    base_time: Gst.ClockTimeDiff
     /**
      * the running_time of the last PAUSED state
      */
-    readonly start_time: Gst.ClockTime
+    start_time: Gst.ClockTime
     /**
      * number of pads of the element, includes both source and sink pads.
      */
-    readonly numpads: number
+    numpads: number
     /**
      * list of pads
      */
-    readonly pads: Gst.Pad[]
+    pads: Gst.Pad[]
     /**
      * number of source pads of the element.
      */
-    readonly numsrcpads: number
+    numsrcpads: number
     /**
      * list of source pads
      */
-    readonly srcpads: Gst.Pad[]
+    srcpads: Gst.Pad[]
     /**
      * number of sink pads of the element.
      */
-    readonly numsinkpads: number
+    numsinkpads: number
     /**
      * list of sink pads
      */
-    readonly sinkpads: Gst.Pad[]
+    sinkpads: Gst.Pad[]
     /**
      * updated whenever the a pad is added or removed
      */
-    readonly pads_cookie: number
+    pads_cookie: number
     /**
      * list of contexts
      */
-    readonly contexts: Gst.Context[]
+    contexts: Gst.Context[]
     /* Fields of Gst-1.0.Gst.Object */
     /**
      * object LOCK
      */
-    readonly lock: GLib.Mutex
+    lock: GLib.Mutex
     /**
      * The name of the object
      */
-    readonly name: string
+    name: string
     /**
      * flags for this object
      */
-    readonly flags: number
+    flags: number
     /* Fields of GObject-2.0.GObject.InitiallyUnowned */
-    readonly g_type_instance: GObject.TypeInstance
+    g_type_instance: GObject.TypeInstance
     /* Methods of GstAudio-1.0.GstAudio.AudioBaseSrc */
     /**
      * Create and return the #GstAudioRingBuffer for `src`. This function will call
@@ -18984,10 +20817,12 @@ class AudioSrc {
      * Controls whether `src` will provide a clock or not. If `provide` is %TRUE,
      * gst_element_provide_clock() will return a clock that reflects the datarate
      * of `src`. If `provide` is %FALSE, gst_element_provide_clock() will return NULL.
+     * @param provide new state
      */
     set_provide_clock(provide: boolean): void
     /**
      * Controls how clock slaving will be performed in `src`.
+     * @param method the new slave method
      */
     set_slave_method(method: AudioBaseSrcSlaveMethod): void
     /* Methods of GstBase-1.0.GstBase.BaseSrc */
@@ -19028,6 +20863,9 @@ class AudioSrc {
      * 
      * The format for the new segment will be the current format of the source, as
      * configured with gst_base_src_set_format()
+     * @param start The new start value for the segment
+     * @param stop Stop value for the new segment
+     * @param time The new time value for the start of the new segment
      */
     new_seamless_segment(start: number, stop: number, time: number): boolean
     /**
@@ -19040,6 +20878,7 @@ class AudioSrc {
      * 
      * The format of `src` must not be %GST_FORMAT_UNDEFINED and the format
      * should be configured via gst_base_src_set_format() before calling this method.
+     * @param segment a pointer to a #GstSegment
      */
     new_segment(segment: Gst.Segment): boolean
     /**
@@ -19056,6 +20895,7 @@ class AudioSrc {
      * close, start, stop, play and pause virtual methods will be executed in a
      * different thread and are thus allowed to perform blocking operations. Any
      * blocking operation should be unblocked with the unlock vmethod.
+     * @param async new async mode
      */
     set_async(async: boolean): void
     /**
@@ -19069,27 +20909,32 @@ class AudioSrc {
      * `automatic_eos` is %TRUE. Since 1.16, if `automatic_eos` is %FALSE an
      * EOS will be pushed only when the #GstBaseSrcClass::create implementation
      * returns %GST_FLOW_EOS.
+     * @param automatic_eos automatic eos
      */
     set_automatic_eos(automatic_eos: boolean): void
     /**
      * Set the number of bytes that `src` will push out with each buffer. When
      * `blocksize` is set to -1, a default length will be used.
+     * @param blocksize the new blocksize in bytes
      */
     set_blocksize(blocksize: number): void
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     set_caps(caps: Gst.Caps): boolean
     /**
      * Configure `src` to automatically timestamp outgoing buffers based on the
      * current running_time of the pipeline. This property is mostly useful for live
      * sources.
+     * @param timestamp enable or disable timestamping
      */
     set_do_timestamp(timestamp: boolean): void
     /**
      * If not `dynamic,` size is only updated when needed, such as when trying to
      * read past current tracked size.  Otherwise, size is checked for upon each
      * read.
+     * @param dynamic new dynamic size mode
      */
     set_dynamic_size(dynamic: boolean): void
     /**
@@ -19100,6 +20945,7 @@ class AudioSrc {
      * operate in pull mode if the #GstBaseSrcClass::is_seekable returns %TRUE.
      * 
      * This function must only be called in states < %GST_STATE_PAUSED.
+     * @param format the format to use
      */
     set_format(format: Gst.Format): void
     /**
@@ -19111,6 +20957,7 @@ class AudioSrc {
      * of a pipeline. To signal this fact to the application and the
      * pipeline, the state change return value of the live source will
      * be GST_STATE_CHANGE_NO_PREROLL.
+     * @param live new live-mode
      */
     set_live(live: boolean): void
     /**
@@ -19118,6 +20965,7 @@ class AudioSrc {
      * start method, it should call gst_base_src_start_complete() when the start
      * operation completes either from the same thread or from an asynchronous
      * helper thread.
+     * @param ret a #GstFlowReturn
      */
     start_complete(ret: Gst.FlowReturn): void
     /**
@@ -19141,6 +20989,7 @@ class AudioSrc {
      * Subclasses must only call this function once per create function call and
      * subclasses must only call this function when the source operates in push
      * mode.
+     * @param buffer_list a #GstBufferList
      */
     submit_buffer_list(buffer_list: Gst.BufferList): void
     /**
@@ -19175,6 +21024,7 @@ class AudioSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-added signal on the element.
+     * @param pad the #GstPad to add to the element.
      */
     add_pad(pad: Gst.Pad): boolean
     add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number
@@ -19190,6 +21040,7 @@ class AudioSrc {
      * streaming thread to shut down from this very streaming thread.
      * 
      * MT safe.
+     * @param func Function to call asynchronously from another thread
      */
     call_async(func: Gst.ElementCallAsyncFunc): void
     /**
@@ -19197,6 +21048,7 @@ class AudioSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -19213,6 +21065,7 @@ class AudioSrc {
      * or applications.
      * 
      * This function must be called with STATE_LOCK held.
+     * @param ret The previous state return value
      */
     continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn
     /**
@@ -19228,6 +21081,7 @@ class AudioSrc {
      * iterating pads and return early. If new pads are added or pads are removed
      * while pads are being iterated, this will not be taken into account until
      * next time this function is used.
+     * @param func function to call for each pad
      */
     foreach_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -19237,6 +21091,7 @@ class AudioSrc {
      * iterating pads and return early. If new sink pads are added or sink pads
      * are removed while the sink pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each sink pad
      */
     foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -19246,6 +21101,7 @@ class AudioSrc {
      * iterating pads and return early. If new source pads are added or source pads
      * are removed while the source pads are being iterated, this will not be taken
      * into account until next time this function is used.
+     * @param func function to call for each source pad
      */
     foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean
     /**
@@ -19276,21 +21132,26 @@ class AudioSrc {
      * This function will first attempt to find a compatible unlinked ALWAYS pad,
      * and if none can be found, it will request a compatible REQUEST pad by looking
      * at the templates of `element`.
+     * @param pad the #GstPad to find a compatible one for.
+     * @param caps the #GstCaps to use as a filter.
      */
     get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null
     /**
      * Retrieves a pad template from `element` that is compatible with `compattempl`.
      * Pads from compatible templates can be linked together.
+     * @param compattempl the #GstPadTemplate to find a compatible     template for
      */
     get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * 
      * MT safe.
+     * @param context_type a name of a context to retrieve
      */
     get_context(context_type: string): Gst.Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
+     * @param context_type a name of a context to retrieve
      */
     get_context_unlocked(context_type: string): Gst.Context | null
     /**
@@ -19316,10 +21177,12 @@ class AudioSrc {
     get_factory(): Gst.ElementFactory | null
     /**
      * Get metadata with `key` in `klass`.
+     * @param key the key to get
      */
     get_metadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
+     * @param name the name of the #GstPadTemplate to get.
      */
     get_pad_template(name: string): Gst.PadTemplate | null
     /**
@@ -19331,6 +21194,7 @@ class AudioSrc {
      * The name of this function is confusing to people learning GStreamer.
      * gst_element_request_pad_simple() aims at making it more explicit it is
      * a simplified gst_element_request_pad().
+     * @param name the name of the request #GstPad to retrieve.
      */
     get_request_pad(name: string): Gst.Pad | null
     /**
@@ -19364,11 +21228,13 @@ class AudioSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
      * Retrieves a pad from `element` by name. This version only retrieves
      * already-existing (i.e. 'static') pads.
+     * @param name the name of the static #GstPad to retrieve.
      */
     get_static_pad(name: string): Gst.Pad | null
     /**
@@ -19413,6 +21279,7 @@ class AudioSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
      */
     link(dest: Gst.Element): boolean
     /**
@@ -19424,6 +21291,8 @@ class AudioSrc {
      * 
      * Make sure you have added your elements to a bin or pipeline with
      * gst_bin_add() before trying to link them.
+     * @param dest the #GstElement containing the destination pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean
     /**
@@ -19431,6 +21300,9 @@ class AudioSrc {
      * Side effect is that if one of the pads has no parent, it becomes a
      * child of the parent of the other element.  If they have different
      * parents, the link fails.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
      */
     link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean
     /**
@@ -19438,6 +21310,10 @@ class AudioSrc {
      * is that if one of the pads has no parent, it becomes a child of the parent of
      * the other element. If they have different parents, the link fails. If `caps`
      * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
+     * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
      */
     link_pads_filtered(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null, filter?: Gst.Caps | null): boolean
     /**
@@ -19451,6 +21327,10 @@ class AudioSrc {
      * linking pads with safety checks applied.
      * 
      * This is a convenience function for gst_pad_link_full().
+     * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
+     * @param dest the #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
+     * @param flags the #GstPadLinkCheck to be performed when linking pads.
      */
     link_pads_full(srcpadname: string | null, dest: Gst.Element, destpadname: string | null, flags: Gst.PadLinkCheck): boolean
     /**
@@ -19479,6 +21359,14 @@ class AudioSrc {
      * #GST_MESSAGE_INFO.
      * 
      * MT safe.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
      */
     message_full(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
@@ -19486,6 +21374,15 @@ class AudioSrc {
      * 
      * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
      * #GST_MESSAGE_INFO.
+     * @param type the #GstMessageType
+     * @param domain the GStreamer GError domain this message belongs to
+     * @param code the GError code belonging to the domain
+     * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
+     * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+     * @param file the source code file where the error was generated
+     * @param function_ the source code function where the error was generated
+     * @param line the source code line where the error was generated
+     * @param structure optional details structure
      */
     message_full_with_details(type: Gst.MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Gst.Structure): void
     /**
@@ -19504,6 +21401,7 @@ class AudioSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     post_message(message: Gst.Message): boolean
     /**
@@ -19514,10 +21412,14 @@ class AudioSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     query(query: Gst.Query): boolean
     /**
      * Queries an element to convert `src_val` in `src_format` to `dest_format`.
+     * @param src_format a #GstFormat to convert from.
+     * @param src_val a value to convert.
+     * @param dest_format the #GstFormat to convert to.
      */
     query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -19529,6 +21431,7 @@ class AudioSrc {
      * If the duration changes for some reason, you will get a DURATION_CHANGED
      * message on the pipeline bus, in which case you should re-query the duration
      * using this function.
+     * @param format the #GstFormat requested
      */
     query_duration(format: Gst.Format): [ /* returnType */ boolean, /* duration */ number | null ]
     /**
@@ -19541,6 +21444,7 @@ class AudioSrc {
      * 
      * If one repeatedly calls this function one can also create a query and reuse
      * it in gst_element_query().
+     * @param format the #GstFormat requested
      */
     query_position(format: Gst.Format): [ /* returnType */ boolean, /* cur */ number | null ]
     /**
@@ -19552,6 +21456,7 @@ class AudioSrc {
      * followed by gst_object_unref() to free the `pad`.
      * 
      * MT safe.
+     * @param pad the #GstPad to release.
      */
     release_request_pad(pad: Gst.Pad): void
     /**
@@ -19571,6 +21476,7 @@ class AudioSrc {
      * The pad and the element should be unlocked when calling this function.
      * 
      * This function will emit the #GstElement::pad-removed signal on the element.
+     * @param pad the #GstPad to remove from the element.
      */
     remove_pad(pad: Gst.Pad): boolean
     remove_property_notify_watch(watch_id: number): void
@@ -19580,6 +21486,9 @@ class AudioSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -19595,6 +21504,7 @@ class AudioSrc {
      * a better name to gst_element_get_request_pad(). Prior to 1.20, users
      * should use gst_element_get_request_pad() which provides the same
      * functionality.
+     * @param name the name of the request #GstPad to retrieve.
      */
     request_pad_simple(name: string): Gst.Pad | null
     /**
@@ -19603,6 +21513,13 @@ class AudioSrc {
      * gst_element_send_event().
      * 
      * MT safe.
+     * @param rate The new playback rate
+     * @param format The format of the seek values
+     * @param flags The optional seek flags.
+     * @param start_type The type and flags for the new start position
+     * @param start The value of the new start position
+     * @param stop_type The type and flags for the new stop position
+     * @param stop The value of the new stop position
      */
     seek(rate: number, format: Gst.Format, flags: Gst.SeekFlags, start_type: Gst.SeekType, start: number, stop_type: Gst.SeekType, stop: number): boolean
     /**
@@ -19620,6 +21537,9 @@ class AudioSrc {
      * case they will store the seek event and execute it when they are put to
      * PAUSED. If the element supports seek in READY, it will always return %TRUE when
      * it receives the event in the READY state.
+     * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+     * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
+     * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
      */
     seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean
     /**
@@ -19631,12 +21551,14 @@ class AudioSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     send_event(event: Gst.Event): boolean
     /**
      * Set the base time of an element. See gst_element_get_base_time().
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_base_time(time: Gst.ClockTime): void
     /**
@@ -19644,18 +21566,21 @@ class AudioSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     set_context(context: Gst.Context): void
     /**
@@ -19667,6 +21592,7 @@ class AudioSrc {
      * next step proceed to change the child element's state.
      * 
      * MT safe.
+     * @param locked_state %TRUE to lock the element's state
      */
     set_locked_state(locked_state: boolean): boolean
     /**
@@ -19682,6 +21608,7 @@ class AudioSrc {
      * pipelines, and you can also ensure that the pipelines have the same clock.
      * 
      * MT safe.
+     * @param time the base time to set.
      */
     set_start_time(time: Gst.ClockTime): void
     /**
@@ -19698,6 +21625,7 @@ class AudioSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     set_state(state: Gst.State): Gst.StateChangeReturn
     /**
@@ -19711,12 +21639,16 @@ class AudioSrc {
      * 
      * If the link has been made using gst_element_link(), it could have created an
      * requestpad, which has to be released using gst_element_release_request_pad().
+     * @param dest the sink #GstElement to unlink.
      */
     unlink(dest: Gst.Element): void
     /**
      * Unlinks the two named pads of the source and destination elements.
      * 
      * This is a convenience function for gst_pad_unlink().
+     * @param srcpadname the name of the #GstPad in source element.
+     * @param dest a #GstElement containing the destination pad.
+     * @param destpadname the name of the #GstPad in destination element.
      */
     unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void
     /* Methods of Gst-1.0.Gst.Object */
@@ -19726,6 +21658,7 @@ class AudioSrc {
      * 
      * The object's reference count will be incremented, and any floating
      * reference will be removed (see gst_object_ref_sink())
+     * @param binding the #GstControlBinding that should be used
      */
     add_control_binding(binding: Gst.ControlBinding): boolean
     /**
@@ -19733,11 +21666,14 @@ class AudioSrc {
      * and the optional debug string..
      * 
      * The default handler will simply print the error string using g_print.
+     * @param error the GError.
+     * @param debug an additional debug information string, or %NULL
      */
     default_error(error: GLib.Error, debug?: string | null): void
     /**
      * Gets the corresponding #GstControlBinding for the property. This should be
      * unreferenced again after use.
+     * @param property_name name of the property
      */
     get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
@@ -19760,6 +21696,10 @@ class AudioSrc {
      * 
      * This function is useful if one wants to e.g. draw a graph of the control
      * curve or apply a control curve sample by sample.
+     * @param property_name the name of the property to get
+     * @param timestamp the time that should be processed
+     * @param interval the time spacing between subsequent values
+     * @param values array to put control-values in
      */
     get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
@@ -19785,6 +21725,8 @@ class AudioSrc {
     get_path_string(): string
     /**
      * Gets the value for the given controlled property at the requested time.
+     * @param property_name the name of the property to get
+     * @param timestamp the time the control-change should be read from
      */
     get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
@@ -19794,16 +21736,19 @@ class AudioSrc {
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `object` has an ancestor `ancestor` somewhere up in
      * the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
+     * @param ancestor a #GstObject to check as ancestor
      */
     has_as_ancestor(ancestor: Gst.Object): boolean
     /**
      * Check if `parent` is the parent of `object`.
      * E.g. a #GstElement can check if it owns a given #GstPad.
+     * @param parent a #GstObject to check as parent
      */
     has_as_parent(parent: Gst.Object): boolean
     /**
@@ -19819,17 +21764,21 @@ class AudioSrc {
     /**
      * Removes the corresponding #GstControlBinding. If it was the
      * last ref of the binding, it will be disposed.
+     * @param binding the binding
      */
     remove_control_binding(binding: Gst.ControlBinding): boolean
     /**
      * This function is used to disable the control bindings on a property for
      * some time, i.e. gst_object_sync_values() will do nothing for the
      * property.
+     * @param property_name property to disable
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_binding_disabled(property_name: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
+     * @param disabled boolean that specifies whether to disable the controller or not.
      */
     set_control_bindings_disabled(disabled: boolean): void
     /**
@@ -19840,6 +21789,7 @@ class AudioSrc {
      * 
      * The control-rate should not change if the element is in %GST_STATE_PAUSED or
      * %GST_STATE_PLAYING.
+     * @param control_rate the new control-rate in nanoseconds.
      */
     set_control_rate(control_rate: Gst.ClockTime): void
     /**
@@ -19847,11 +21797,13 @@ class AudioSrc {
      * name (if `name` is %NULL).
      * This function makes a copy of the provided name, so the caller
      * retains ownership of the name it sent.
+     * @param name new name of object
      */
     set_name(name?: string | null): boolean
     /**
      * Sets the parent of `object` to `parent`. The object's reference count will
      * be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
+     * @param parent new parent of object
      */
     set_parent(parent: Gst.Object): boolean
     /**
@@ -19865,6 +21817,7 @@ class AudioSrc {
      * 
      * If this function fails, it is most likely the application developers fault.
      * Most probably the control sources are not setup correctly.
+     * @param timestamp the time that should be processed
      */
     sync_values(timestamp: Gst.ClockTime): boolean
     /**
@@ -19918,6 +21871,10 @@ class AudioSrc {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -19928,6 +21885,12 @@ class AudioSrc {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param source_property the property on `source` to bind
+     * @param target the target #GObject
+     * @param target_property the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
     /**
@@ -19951,6 +21914,7 @@ class AudioSrc {
     freeze_notify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     get_data(key: string): object | null
     /**
@@ -19970,11 +21934,14 @@ class AudioSrc {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param property_name the name of the property to get
+     * @param value return location for the property value
      */
     get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     get_qdata(quark: GLib.Quark): object | null
     /**
@@ -19982,6 +21949,8 @@ class AudioSrc {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -19999,6 +21968,7 @@ class AudioSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param property_name the name of a property installed on the class of `object`.
      */
     notify(property_name: string): void
     /**
@@ -20044,6 +22014,7 @@ class AudioSrc {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notify_by_pspec(pspec: GObject.ParamSpec): void
     /**
@@ -20087,15 +22058,20 @@ class AudioSrc {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     set_data(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param property_name the name of the property to set
+     * @param value the value
      */
     set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     steal_data(key: string): object | null
     /**
@@ -20136,6 +22112,7 @@ class AudioSrc {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     steal_qdata(quark: GLib.Quark): object | null
     /**
@@ -20160,6 +22137,7 @@ class AudioSrc {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watch_closure(closure: Function): void
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioSrc */
@@ -20167,7 +22145,11 @@ class AudioSrc {
     vfunc_delay(): number
     vfunc_open(): boolean
     vfunc_prepare(spec: AudioRingBufferSpec): boolean
-    vfunc_read(data: object | null, length: number, timestamp: Gst.ClockTime): number
+    /**
+     * Read samples from the device.
+     * @param data the sample data
+     */
+    vfunc_read(data: Uint8Array): [ /* returnType */ number, /* timestamp */ Gst.ClockTime ]
     vfunc_reset(): void
     vfunc_unprepare(): boolean
     /**
@@ -20178,17 +22160,23 @@ class AudioSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -20204,6 +22192,7 @@ class AudioSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstAudio-1.0.GstAudio.AudioBaseSrc */
@@ -20221,17 +22210,23 @@ class AudioSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -20247,6 +22242,7 @@ class AudioSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.PushSrc */
@@ -20258,17 +22254,23 @@ class AudioSrc {
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer, the default implementation will call alloc if
      * no allocated `buf` is provided and then call fill.
+     * @param buf 
      */
     vfunc_create(buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /* Function overloads */
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn
@@ -20284,17 +22286,23 @@ class AudioSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /* Virtual methods of GstBase-1.0.GstBase.BaseSrc */
     /**
      * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
      * implementation will use the negotiated allocator.
+     * @param offset 
+     * @param size 
      */
     vfunc_alloc(offset: number, size: number): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     /**
      * Ask the subclass to create a buffer with `offset` and `size,` the default
      * implementation will call alloc if no allocated `buf` is provided and then call fill.
+     * @param offset 
+     * @param size 
+     * @param buf 
      */
     vfunc_create(offset: number, size: number, buf: Gst.Buffer): [ /* returnType */ Gst.FlowReturn, /* buf */ Gst.Buffer ]
     vfunc_decide_allocation(query: Gst.Query): boolean
@@ -20304,6 +22312,7 @@ class AudioSrc {
     vfunc_fixate(caps: Gst.Caps): Gst.Caps
     /**
      * Called to get the caps to report.
+     * @param filter 
      */
     vfunc_get_caps(filter?: Gst.Caps | null): Gst.Caps
     /**
@@ -20314,6 +22323,7 @@ class AudioSrc {
     /**
      * Given `buffer,` return `start` and `end` time when it should be pushed
      * out. The base class will sync on the clock using these times.
+     * @param buffer 
      */
     vfunc_get_times(buffer: Gst.Buffer): [ /* start */ Gst.ClockTime, /* end */ Gst.ClockTime ]
     vfunc_is_seekable(): boolean
@@ -20338,10 +22348,12 @@ class AudioSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     /**
      * Set new caps on the basesrc source pad.
+     * @param caps a #GstCaps
      */
     vfunc_set_caps(caps: Gst.Caps): boolean
     vfunc_start(): boolean
@@ -20354,6 +22366,7 @@ class AudioSrc {
      * 
      * This function must be called with STATE_LOCK held and is mainly used
      * internally.
+     * @param transition the requested transition
      */
     vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn
     /**
@@ -20377,6 +22390,7 @@ class AudioSrc {
      * some sink elements might not be able to complete their state change because
      * an element is not producing data to complete the preroll. When setting the
      * element to playing, the preroll will complete and playback will start.
+     * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
      */
     vfunc_get_state(timeout: Gst.ClockTime): [ /* returnType */ Gst.StateChangeReturn, /* state */ Gst.State | null, /* pending */ Gst.State | null ]
     /**
@@ -20397,6 +22411,7 @@ class AudioSrc {
      * Post a message on the element's #GstBus. This function takes ownership of the
      * message; if you want to access the message after this call, you should add an
      * additional reference before calling.
+     * @param message a #GstMessage to post
      */
     vfunc_post_message(message: Gst.Message): boolean
     /**
@@ -20413,6 +22428,7 @@ class AudioSrc {
      * random linked sinkpad of this element.
      * 
      * Please note that some queries might need a running pipeline to work.
+     * @param query the #GstQuery.
      */
     vfunc_query(query: Gst.Query): boolean
     vfunc_release_pad(pad: Gst.Pad): void
@@ -20422,6 +22438,9 @@ class AudioSrc {
      * gst_element_factory_get_static_pad_templates().
      * 
      * The pad should be released with gst_element_release_request_pad().
+     * @param templ a #GstPadTemplate of which we want a pad of.
+     * @param name the name of the request #GstPad to retrieve. Can be %NULL.
+     * @param caps the caps of the pad we want to request. Can be %NULL.
      */
     vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null
     /**
@@ -20433,6 +22452,7 @@ class AudioSrc {
      * gst_event_ref() it if you want to reuse the event after this call.
      * 
      * MT safe.
+     * @param event the #GstEvent to send to the element.
      */
     vfunc_send_event(event: Gst.Event): boolean
     /**
@@ -20440,18 +22460,21 @@ class AudioSrc {
      * For internal use only, unless you're testing elements.
      * 
      * MT safe.
+     * @param bus the #GstBus to set.
      */
     vfunc_set_bus(bus?: Gst.Bus | null): void
     /**
      * Sets the clock for the element. This function increases the
      * refcount on the clock. Any previously set clock on the object
      * is unreffed.
+     * @param clock the #GstClock to set for the element.
      */
     vfunc_set_clock(clock?: Gst.Clock | null): boolean
     /**
      * Sets the context of the element. Increases the refcount of the context.
      * 
      * MT safe.
+     * @param context the #GstContext to set.
      */
     vfunc_set_context(context: Gst.Context): void
     /**
@@ -20468,6 +22491,7 @@ class AudioSrc {
      * 
      * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
      * #GST_STATE_CHANGE_ASYNC.
+     * @param state the element's new #GstState.
      */
     vfunc_set_state(state: Gst.State): Gst.StateChangeReturn
     vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void
@@ -20490,6 +22514,7 @@ class AudioSrc {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
     vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
@@ -20508,12 +22533,14 @@ class AudioSrc {
      * mind that if you add new elements to the pipeline in the signal handler
      * you will need to set them to the desired target state with
      * gst_element_set_state() or gst_element_sync_state_with_parent().
+     * @param new_pad the pad that has been added
      */
     connect(sigName: "pad-added", callback: (($obj: AudioSrc, new_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-added", callback: (($obj: AudioSrc, new_pad: Gst.Pad) => void)): number
     emit(sigName: "pad-added", new_pad: Gst.Pad): void
     /**
      * a #GstPad has been removed from the element
+     * @param old_pad the pad that has been removed
      */
     connect(sigName: "pad-removed", callback: (($obj: AudioSrc, old_pad: Gst.Pad) => void)): number
     connect_after(sigName: "pad-removed", callback: (($obj: AudioSrc, old_pad: Gst.Pad) => void)): number
@@ -20523,6 +22550,8 @@ class AudioSrc {
      * The deep notify signal is used to be notified of property changes. It is
      * typically attached to the toplevel bin to receive notifications from all
      * the elements contained in that bin.
+     * @param prop_object the object that originated the signal
+     * @param prop the property that changed
      */
     connect(sigName: "deep-notify", callback: (($obj: AudioSrc, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
     connect_after(sigName: "deep-notify", callback: (($obj: AudioSrc, prop_object: Gst.Object, prop: GObject.ParamSpec) => void)): number
@@ -20556,6 +22585,7 @@ class AudioSrc {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify", callback: (($obj: AudioSrc, pspec: GObject.ParamSpec) => void)): number
@@ -20581,14 +22611,14 @@ class AudioSrc {
 }
 abstract class AudioAggregatorClass {
     /* Fields of GstAudio-1.0.GstAudio.AudioAggregatorClass */
-    readonly parent_class: GstBase.AggregatorClass
-    readonly create_output_buffer: (aagg: AudioAggregator, num_frames: number) => Gst.Buffer
-    readonly aggregate_one_buffer: (aagg: AudioAggregator, pad: AudioAggregatorPad, inbuf: Gst.Buffer, in_offset: number, outbuf: Gst.Buffer, out_offset: number, num_frames: number) => boolean
+    parent_class: GstBase.AggregatorClass
+    create_output_buffer: (aagg: AudioAggregator, num_frames: number) => Gst.Buffer
+    aggregate_one_buffer: (aagg: AudioAggregator, pad: AudioAggregatorPad, inbuf: Gst.Buffer, in_offset: number, outbuf: Gst.Buffer, out_offset: number, num_frames: number) => boolean
     static name: string
 }
 abstract class AudioAggregatorConvertPadClass {
     /* Fields of GstAudio-1.0.GstAudio.AudioAggregatorConvertPadClass */
-    readonly parent_class: AudioAggregatorPadClass
+    parent_class: AudioAggregatorPadClass
     static name: string
 }
 class AudioAggregatorConvertPadPrivate {
@@ -20596,9 +22626,9 @@ class AudioAggregatorConvertPadPrivate {
 }
 abstract class AudioAggregatorPadClass {
     /* Fields of GstAudio-1.0.GstAudio.AudioAggregatorPadClass */
-    readonly parent_class: GstBase.AggregatorPadClass
-    readonly convert_buffer: (pad: AudioAggregatorPad, in_info: AudioInfo, out_info: AudioInfo, buffer: Gst.Buffer) => Gst.Buffer
-    readonly update_conversion_info: (pad: AudioAggregatorPad) => void
+    parent_class: GstBase.AggregatorPadClass
+    convert_buffer: (pad: AudioAggregatorPad, in_info: AudioInfo, out_info: AudioInfo, buffer: Gst.Buffer) => Gst.Buffer
+    update_conversion_info: (pad: AudioAggregatorPad) => void
     static name: string
 }
 class AudioAggregatorPadPrivate {
@@ -20612,9 +22642,9 @@ abstract class AudioBaseSinkClass {
     /**
      * the parent class.
      */
-    readonly parent_class: GstBase.BaseSinkClass
-    readonly create_ringbuffer: (sink: AudioBaseSink) => AudioRingBuffer
-    readonly payload: (sink: AudioBaseSink, buffer: Gst.Buffer) => Gst.Buffer
+    parent_class: GstBase.BaseSinkClass
+    create_ringbuffer: (sink: AudioBaseSink) => AudioRingBuffer
+    payload: (sink: AudioBaseSink, buffer: Gst.Buffer) => Gst.Buffer
     static name: string
 }
 class AudioBaseSinkPrivate {
@@ -20625,8 +22655,8 @@ abstract class AudioBaseSrcClass {
     /**
      * the parent class.
      */
-    readonly parent_class: GstBase.PushSrcClass
-    readonly create_ringbuffer: (src: AudioBaseSrc) => AudioRingBuffer
+    parent_class: GstBase.PushSrcClass
+    create_ringbuffer: (src: AudioBaseSrc) => AudioRingBuffer
     static name: string
 }
 class AudioBaseSrcPrivate {
@@ -20637,24 +22667,24 @@ class AudioBuffer {
     /**
      * a #GstAudioInfo describing the audio properties of this buffer
      */
-    readonly info: AudioInfo
+    info: AudioInfo
     /**
      * the size of the buffer in samples
      */
-    readonly n_samples: number
+    n_samples: number
     /**
      * the number of planes available
      */
-    readonly n_planes: number
+    n_planes: number
     /**
      * an array of `n_planes` pointers pointing to the start of each
      *   plane in the mapped buffer
      */
-    readonly planes: object
+    planes: object
     /**
      * the mapped buffer
      */
-    readonly buffer: Gst.Buffer
+    buffer: Gst.Buffer
     /* Methods of GstAudio-1.0.GstAudio.AudioBuffer */
     /**
      * Unmaps an audio buffer that was previously mapped with
@@ -20668,6 +22698,10 @@ class AudioBuffer {
      * 
      * After calling this function the caller does not own a reference to
      * `buffer` anymore.
+     * @param buffer The buffer to clip.
+     * @param segment Segment in %GST_FORMAT_TIME or %GST_FORMAT_DEFAULT to which           the buffer should be clipped.
+     * @param rate sample rate.
+     * @param bpf size of one audio frame in bytes. This is the size of one sample * number of channels.
      */
     static clip(buffer: Gst.Buffer, segment: Gst.Segment, rate: number, bpf: number): Gst.Buffer
     /**
@@ -20695,6 +22729,9 @@ class AudioBuffer {
      * 
      * Note: The actual #GstBuffer is not ref'ed, but it is required to stay valid
      * as long as it's mapped.
+     * @param info the audio properties of the buffer
+     * @param gstbuffer the #GstBuffer to be mapped
+     * @param flags the access mode for the memory
      */
     static map(info: AudioInfo, gstbuffer: Gst.Buffer, flags: Gst.MapFlags): [ /* returnType */ boolean, /* buffer */ AudioBuffer ]
     /**
@@ -20702,6 +22739,10 @@ class AudioBuffer {
      * positions `to`. `from` and `to` must contain the same number of
      * positions and the same positions, only in a different order.
      * `buffer` must be writable.
+     * @param buffer The buffer to reorder.
+     * @param format The %GstAudioFormat of the buffer.
+     * @param from The channel positions in the buffer.
+     * @param to The channel positions to convert to.
      */
     static reorder_channels(buffer: Gst.Buffer, format: AudioFormat, from: AudioChannelPosition[], to: AudioChannelPosition[]): boolean
     /**
@@ -20717,6 +22758,10 @@ class AudioBuffer {
      * 
      * After calling this function the caller does not own a reference to
      * `buffer` anymore.
+     * @param buffer The buffer to truncate.
+     * @param bpf size of one audio frame in bytes. This is the size of one sample * number of channels.
+     * @param trim the number of samples to remove from the beginning of the buffer
+     * @param samples the final number of samples that should exist in this buffer or -1 to use all the remaining samples if you are only removing samples from the beginning.
      */
     static truncate(buffer: Gst.Buffer, bpf: number, trim: number, samples: number): Gst.Buffer
 }
@@ -20725,10 +22770,10 @@ abstract class AudioCdSrcClass {
     /**
      * the parent class
      */
-    readonly pushsrc_class: GstBase.PushSrcClass
-    readonly open: (src: AudioCdSrc, device: string) => boolean
-    readonly close: (src: AudioCdSrc) => void
-    readonly read_sector: (src: AudioCdSrc, sector: number) => Gst.Buffer
+    pushsrc_class: GstBase.PushSrcClass
+    open: (src: AudioCdSrc, device: string) => boolean
+    close: (src: AudioCdSrc) => void
+    read_sector: (src: AudioCdSrc, sector: number) => Gst.Buffer
     static name: string
 }
 class AudioCdSrcPrivate {
@@ -20739,23 +22784,23 @@ class AudioCdSrcTrack {
     /**
      * Whether this is an audio track
      */
-    readonly is_audio: boolean
+    is_audio: boolean
     /**
      * Track number in TOC (usually starts from 1, but not always)
      */
-    readonly num: number
+    num: number
     /**
      * The first sector of this track (LBA)
      */
-    readonly start: number
+    start: number
     /**
      * The last sector of this track (LBA)
      */
-    readonly end: number
+    end: number
     /**
      * Track-specific tags (e.g. from cd-text information), or NULL
      */
-    readonly tags: Gst.TagList
+    tags: Gst.TagList
     static name: string
 }
 class AudioChannelMixer {
@@ -20787,6 +22832,9 @@ class AudioChannelMixer {
      * 
      * Perform channel mixing on `in_data` and write the result to `out_data`.
      * `in_data` and `out_data` need to be in `format` and `layout`.
+     * @param in_ input samples
+     * @param out output samples
+     * @param samples number of samples
      */
     samples(in_: object | null, out: object | null, samples: number): void
     static name: string
@@ -20796,26 +22844,26 @@ class AudioClippingMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * GstFormat of `start` and `stop,` GST_FORMAT_DEFAULT is samples
      */
-    readonly format: Gst.Format
+    format: Gst.Format
     /**
      * Amount of audio to clip from start of buffer
      */
-    readonly start: number
+    start: number
     /**
      * Amount of  to clip from end of buffer
      */
-    readonly end: number
+    end: number
     static name: string
     /* Static methods and pseudo-constructors */
     static get_info(): Gst.MetaInfo
 }
 abstract class AudioClockClass {
     /* Fields of GstAudio-1.0.GstAudio.AudioClockClass */
-    readonly parent_class: Gst.SystemClockClass
+    parent_class: Gst.SystemClockClass
     static name: string
 }
 class AudioConverter {
@@ -20824,6 +22872,8 @@ class AudioConverter {
      * Convenience wrapper around gst_audio_converter_samples(), which will
      * perform allocation of the output buffer based on the result from
      * gst_audio_converter_get_out_frames().
+     * @param flags extra #GstAudioConverterFlags
+     * @param in_ input data
      */
     convert(flags: AudioConverterFlags, in_: Uint8Array): [ /* returnType */ boolean, /* out */ Uint8Array ]
     /**
@@ -20837,6 +22887,7 @@ class AudioConverter {
     /**
      * Calculate how many input frames are currently needed by `convert` to produce
      * `out_frames` of output frames.
+     * @param out_frames number of output frames
      */
     get_in_frames(out_frames: number): number
     /**
@@ -20847,6 +22898,7 @@ class AudioConverter {
     /**
      * Calculate how many output frames can be produced when `in_frames` input
      * frames are given to `convert`.
+     * @param in_frames number of input frames
      */
     get_out_frames(in_frames: number): number
     /**
@@ -20876,6 +22928,11 @@ class AudioConverter {
      * input. Use gst_audio_converter_get_out_frames() and
      * gst_audio_converter_get_in_frames() to make sure `in_frames` and `out_frames`
      * are matching and `in` and `out` point to enough memory.
+     * @param flags extra #GstAudioConverterFlags
+     * @param in_ input frames
+     * @param in_frames number of input frames
+     * @param out output frames
+     * @param out_frames number of output frames
      */
     samples(flags: AudioConverterFlags, in_: object | null, in_frames: number, out: object | null, out_frames: number): boolean
     /**
@@ -20898,6 +22955,9 @@ class AudioConverter {
      * 
      * Look at the `GST_AUDIO_CONVERTER_OPT_*` fields to check valid configuration
      * option and values.
+     * @param in_rate input rate
+     * @param out_rate output rate
+     * @param config a #GstStructure or %NULL
      */
     update_config(in_rate: number, out_rate: number, config?: Gst.Structure | null): boolean
     static name: string
@@ -20911,25 +22971,25 @@ abstract class AudioDecoderClass {
     /**
      * The parent class structure
      */
-    readonly element_class: Gst.ElementClass
-    readonly start: (dec: AudioDecoder) => boolean
-    readonly stop: (dec: AudioDecoder) => boolean
-    readonly set_format: (dec: AudioDecoder, caps: Gst.Caps) => boolean
-    readonly parse: (dec: AudioDecoder, adapter: GstBase.Adapter, offset: number, length: number) => Gst.FlowReturn
-    readonly handle_frame: (dec: AudioDecoder, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly flush: (dec: AudioDecoder, hard: boolean) => void
-    readonly pre_push: (dec: AudioDecoder, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly sink_event: (dec: AudioDecoder, event: Gst.Event) => boolean
-    readonly src_event: (dec: AudioDecoder, event: Gst.Event) => boolean
-    readonly open: (dec: AudioDecoder) => boolean
-    readonly close: (dec: AudioDecoder) => boolean
-    readonly negotiate: (dec: AudioDecoder) => boolean
-    readonly decide_allocation: (dec: AudioDecoder, query: Gst.Query) => boolean
-    readonly propose_allocation: (dec: AudioDecoder, query: Gst.Query) => boolean
-    readonly sink_query: (dec: AudioDecoder, query: Gst.Query) => boolean
-    readonly src_query: (dec: AudioDecoder, query: Gst.Query) => boolean
-    readonly getcaps: (dec: AudioDecoder, filter: Gst.Caps) => Gst.Caps
-    readonly transform_meta: (enc: AudioDecoder, outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer) => boolean
+    element_class: Gst.ElementClass
+    start: (dec: AudioDecoder) => boolean
+    stop: (dec: AudioDecoder) => boolean
+    set_format: (dec: AudioDecoder, caps: Gst.Caps) => boolean
+    parse: (dec: AudioDecoder, adapter: GstBase.Adapter) => [ /* returnType */ Gst.FlowReturn, /* offset */ number, /* length */ number ]
+    handle_frame: (dec: AudioDecoder, buffer: Gst.Buffer) => Gst.FlowReturn
+    flush: (dec: AudioDecoder, hard: boolean) => void
+    pre_push: (dec: AudioDecoder, buffer: Gst.Buffer) => Gst.FlowReturn
+    sink_event: (dec: AudioDecoder, event: Gst.Event) => boolean
+    src_event: (dec: AudioDecoder, event: Gst.Event) => boolean
+    open: (dec: AudioDecoder) => boolean
+    close: (dec: AudioDecoder) => boolean
+    negotiate: (dec: AudioDecoder) => boolean
+    decide_allocation: (dec: AudioDecoder, query: Gst.Query) => boolean
+    propose_allocation: (dec: AudioDecoder, query: Gst.Query) => boolean
+    sink_query: (dec: AudioDecoder, query: Gst.Query) => boolean
+    src_query: (dec: AudioDecoder, query: Gst.Query) => boolean
+    getcaps: (dec: AudioDecoder, filter: Gst.Caps) => Gst.Caps
+    transform_meta: (enc: AudioDecoder, outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer) => boolean
     static name: string
 }
 class AudioDecoderPrivate {
@@ -20940,27 +23000,27 @@ class AudioDownmixMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the channel positions of the source
      */
-    readonly from_position: AudioChannelPosition
+    from_position: AudioChannelPosition
     /**
      * the channel positions of the destination
      */
-    readonly to_position: AudioChannelPosition
+    to_position: AudioChannelPosition
     /**
      * the number of channels of the source
      */
-    readonly from_channels: number
+    from_channels: number
     /**
      * the number of channels of the destination
      */
-    readonly to_channels: number
+    to_channels: number
     /**
      * the matrix coefficients.
      */
-    readonly matrix: number
+    matrix: number
     static name: string
     /* Static methods and pseudo-constructors */
     static get_info(): Gst.MetaInfo
@@ -20970,24 +23030,24 @@ abstract class AudioEncoderClass {
     /**
      * The parent class structure
      */
-    readonly element_class: Gst.ElementClass
-    readonly start: (enc: AudioEncoder) => boolean
-    readonly stop: (enc: AudioEncoder) => boolean
-    readonly set_format: (enc: AudioEncoder, info: AudioInfo) => boolean
-    readonly handle_frame: (enc: AudioEncoder, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly flush: (enc: AudioEncoder) => void
-    readonly pre_push: (enc: AudioEncoder, buffer: Gst.Buffer) => Gst.FlowReturn
-    readonly sink_event: (enc: AudioEncoder, event: Gst.Event) => boolean
-    readonly src_event: (enc: AudioEncoder, event: Gst.Event) => boolean
-    readonly getcaps: (enc: AudioEncoder, filter: Gst.Caps) => Gst.Caps
-    readonly open: (enc: AudioEncoder) => boolean
-    readonly close: (enc: AudioEncoder) => boolean
-    readonly negotiate: (enc: AudioEncoder) => boolean
-    readonly decide_allocation: (enc: AudioEncoder, query: Gst.Query) => boolean
-    readonly propose_allocation: (enc: AudioEncoder, query: Gst.Query) => boolean
-    readonly transform_meta: (enc: AudioEncoder, outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer) => boolean
-    readonly sink_query: (encoder: AudioEncoder, query: Gst.Query) => boolean
-    readonly src_query: (encoder: AudioEncoder, query: Gst.Query) => boolean
+    element_class: Gst.ElementClass
+    start: (enc: AudioEncoder) => boolean
+    stop: (enc: AudioEncoder) => boolean
+    set_format: (enc: AudioEncoder, info: AudioInfo) => boolean
+    handle_frame: (enc: AudioEncoder, buffer: Gst.Buffer) => Gst.FlowReturn
+    flush: (enc: AudioEncoder) => void
+    pre_push: (enc: AudioEncoder, buffer: Gst.Buffer) => Gst.FlowReturn
+    sink_event: (enc: AudioEncoder, event: Gst.Event) => boolean
+    src_event: (enc: AudioEncoder, event: Gst.Event) => boolean
+    getcaps: (enc: AudioEncoder, filter: Gst.Caps) => Gst.Caps
+    open: (enc: AudioEncoder) => boolean
+    close: (enc: AudioEncoder) => boolean
+    negotiate: (enc: AudioEncoder) => boolean
+    decide_allocation: (enc: AudioEncoder, query: Gst.Query) => boolean
+    propose_allocation: (enc: AudioEncoder, query: Gst.Query) => boolean
+    transform_meta: (enc: AudioEncoder, outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer) => boolean
+    sink_query: (encoder: AudioEncoder, query: Gst.Query) => boolean
+    src_query: (encoder: AudioEncoder, query: Gst.Query) => boolean
     static name: string
 }
 class AudioEncoderPrivate {
@@ -20998,14 +23058,15 @@ abstract class AudioFilterClass {
     /**
      * parent class
      */
-    readonly basetransformclass: GstBase.BaseTransformClass
-    readonly setup: (filter: AudioFilter, info: AudioInfo) => boolean
+    basetransformclass: GstBase.BaseTransformClass
+    setup: (filter: AudioFilter, info: AudioInfo) => boolean
     /* Methods of GstAudio-1.0.GstAudio.AudioFilterClass */
     /**
      * Convenience function to add pad templates to this element class, with
      * `allowed_caps` as the caps that can be handled.
      * 
      * This function is usually used from within a GObject class_init function.
+     * @param allowed_caps what formats the filter can handle, as #GstCaps
      */
     static add_pad_templates(klass: AudioFilter | Function | GObject.Type, allowed_caps: Gst.Caps): void
     static name: string
@@ -21015,50 +23076,51 @@ class AudioFormatInfo {
     /**
      * #GstAudioFormat
      */
-    readonly format: AudioFormat
+    format: AudioFormat
     /**
      * string representation of the format
      */
-    readonly name: string
+    name: string
     /**
      * user readable description of the format
      */
-    readonly description: string
+    description: string
     /**
      * #GstAudioFormatFlags
      */
-    readonly flags: AudioFormatFlags
+    flags: AudioFormatFlags
     /**
      * the endianness
      */
-    readonly endianness: number
+    endianness: number
     /**
      * amount of bits used for one sample
      */
-    readonly width: number
+    width: number
     /**
      * amount of valid bits in `width`
      */
-    readonly depth: number
+    depth: number
     /**
      * `width/`8 bytes with 1 silent sample
      */
-    readonly silence: Uint8Array
+    silence: Uint8Array
     /**
      * the format of the unpacked samples
      */
-    readonly unpack_format: AudioFormat
+    unpack_format: AudioFormat
     /**
      * function to unpack samples
      */
-    readonly unpack_func: AudioFormatUnpack
+    unpack_func: AudioFormatUnpack
     /**
      * function to pack samples
      */
-    readonly pack_func: AudioFormatPack
+    pack_func: AudioFormatPack
     /* Methods of GstAudio-1.0.GstAudio.AudioFormatInfo */
     /**
      * Fill `length` bytes in `dest` with silence samples for `info`.
+     * @param dest a destination   to fill
      */
     fill_silence(dest: Uint8Array): void
     static name: string
@@ -21068,38 +23130,41 @@ class AudioInfo {
     /**
      * the format info of the audio
      */
-    readonly finfo: AudioFormatInfo
+    finfo: AudioFormatInfo
     /**
      * additional audio flags
      */
-    readonly flags: AudioFlags
+    flags: AudioFlags
     /**
      * audio layout
      */
-    readonly layout: AudioLayout
+    layout: AudioLayout
     /**
      * the audio sample rate
      */
-    readonly rate: number
+    rate: number
     /**
      * the number of channels
      */
-    readonly channels: number
+    channels: number
     /**
      * the number of bytes for one frame, this is the size of one
      *         sample * `channels`
      */
-    readonly bpf: number
+    bpf: number
     /**
      * the positions for each channel
      */
-    readonly position: AudioChannelPosition[]
+    position: AudioChannelPosition[]
     /* Methods of GstAudio-1.0.GstAudio.AudioInfo */
     /**
      * Converts among various #GstFormat types.  This function handles
      * GST_FORMAT_BYTES, GST_FORMAT_TIME, and GST_FORMAT_DEFAULT.  For
      * raw audio, GST_FORMAT_DEFAULT corresponds to audio frames.  This
      * function can be used to handle pad queries of the type GST_QUERY_CONVERT.
+     * @param src_fmt #GstFormat of the `src_val`
+     * @param src_val value to convert
+     * @param dest_fmt #GstFormat of the `dest_val`
      */
     convert(src_fmt: Gst.Format, src_val: number, dest_fmt: Gst.Format): [ /* returnType */ boolean, /* dest_val */ number ]
     /**
@@ -21113,12 +23178,17 @@ class AudioInfo {
     free(): void
     /**
      * Compares two #GstAudioInfo and returns whether they are equal or not
+     * @param other a #GstAudioInfo
      */
     is_equal(other: AudioInfo): boolean
     /**
      * Set the default info for the audio info of `format` and `rate` and `channels`.
      * 
      * Note: This initializes `info` first, no values are preserved.
+     * @param format the format
+     * @param rate the samplerate
+     * @param channels the number of channels
+     * @param position the channel positions
      */
     set_format(format: AudioFormat, rate: number, channels: number, position?: AudioChannelPosition[] | null): void
     /**
@@ -21133,6 +23203,7 @@ class AudioInfo {
     static new_from_caps(caps: Gst.Caps): AudioInfo
     /**
      * Parse `caps` and update `info`.
+     * @param caps a #GstCaps
      */
     static from_caps(caps: Gst.Caps): [ /* returnType */ boolean, /* info */ AudioInfo ]
     /**
@@ -21145,15 +23216,15 @@ class AudioLevelMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the -dBov from 0-127 (127 is silence).
      */
-    readonly level: number
+    level: number
     /**
      * whether the buffer contains voice activity
      */
-    readonly voice_activity: boolean
+    voice_activity: boolean
     static name: string
     /* Static methods and pseudo-constructors */
     /**
@@ -21166,21 +23237,21 @@ class AudioMeta {
     /**
      * parent #GstMeta
      */
-    readonly meta: Gst.Meta
+    meta: Gst.Meta
     /**
      * the audio properties of the buffer
      */
-    readonly info: AudioInfo
+    info: AudioInfo
     /**
      * the number of valid samples in the buffer
      */
-    readonly samples: number
+    samples: number
     /**
      * the offsets (in bytes) where each channel plane starts in the
      *   buffer or %NULL if the buffer has interleaved layout; if not %NULL, this
      *   is guaranteed to be an array of `info`.channels elements
      */
-    readonly offsets: number
+    offsets: number
     static name: string
     /* Static methods and pseudo-constructors */
     static get_info(): Gst.MetaInfo
@@ -21207,6 +23278,9 @@ class AudioQuantize {
      * 
      * `in` and `out` may point to the same memory location, in which case samples will be
      * modified in-place.
+     * @param in_ input samples
+     * @param out output samples
+     * @param samples number of samples
      */
     samples(in_: object | null, out: object | null, samples: number): void
     static name: string
@@ -21220,6 +23294,7 @@ class AudioResampler {
     /**
      * Get the number of input frames that would currently be needed
      * to produce `out_frames` from `resampler`.
+     * @param out_frames number of input frames
      */
     get_in_frames(out_frames: number): number
     /**
@@ -21230,6 +23305,7 @@ class AudioResampler {
     /**
      * Get the number of output frames that would be currently available when
      * `in_frames` are given to `resampler`.
+     * @param in_frames number of input frames
      */
     get_out_frames(in_frames: number): number
     /**
@@ -21248,6 +23324,10 @@ class AudioResampler {
      * input. Use gst_audio_resampler_get_out_frames() and
      * gst_audio_resampler_get_in_frames() to make sure `in_frames` and `out_frames`
      * are matching and `in` and `out` point to enough memory.
+     * @param in_ input samples
+     * @param in_frames number of input frames
+     * @param out output samples
+     * @param out_frames number of output frames
      */
     resample(in_: object | null, in_frames: number, out: object | null, out_frames: number): void
     /**
@@ -21262,6 +23342,9 @@ class AudioResampler {
      * When `in_rate` or `out_rate` is 0, its value is unchanged.
      * 
      * When `options` is %NULL, the previously configured options are reused.
+     * @param in_rate new input rate
+     * @param out_rate new output rate
+     * @param options new options or %NULL
      */
     update(in_rate: number, out_rate: number, options: Gst.Structure): boolean
     static name: string
@@ -21269,6 +23352,11 @@ class AudioResampler {
     /**
      * Set the parameters for resampling from `in_rate` to `out_rate` using `method`
      * for `quality` in `options`.
+     * @param method a #GstAudioResamplerMethod
+     * @param quality the quality
+     * @param in_rate the input rate
+     * @param out_rate the output rate
+     * @param options a #GstStructure
      */
     static options_set_quality(method: AudioResamplerMethod, quality: number, in_rate: number, out_rate: number, options: Gst.Structure): void
 }
@@ -21277,19 +23365,19 @@ abstract class AudioRingBufferClass {
     /**
      * parent class
      */
-    readonly parent_class: Gst.ObjectClass
-    readonly open_device: (buf: AudioRingBuffer) => boolean
-    readonly acquire: (buf: AudioRingBuffer, spec: AudioRingBufferSpec) => boolean
-    readonly release: (buf: AudioRingBuffer) => boolean
-    readonly close_device: (buf: AudioRingBuffer) => boolean
-    readonly start: (buf: AudioRingBuffer) => boolean
-    readonly pause: (buf: AudioRingBuffer) => boolean
-    readonly resume: (buf: AudioRingBuffer) => boolean
-    readonly stop: (buf: AudioRingBuffer) => boolean
-    readonly delay: (buf: AudioRingBuffer) => number
-    readonly activate: (buf: AudioRingBuffer, active: boolean) => boolean
-    readonly commit: (buf: AudioRingBuffer, sample: number, data: Uint8Array, out_samples: number, accum: number) => [ /* returnType */ number, /* accum */ number ]
-    readonly clear_all: (buf: AudioRingBuffer) => void
+    parent_class: Gst.ObjectClass
+    open_device: (buf: AudioRingBuffer) => boolean
+    acquire: (buf: AudioRingBuffer, spec: AudioRingBufferSpec) => boolean
+    release: (buf: AudioRingBuffer) => boolean
+    close_device: (buf: AudioRingBuffer) => boolean
+    start: (buf: AudioRingBuffer) => boolean
+    pause: (buf: AudioRingBuffer) => boolean
+    resume: (buf: AudioRingBuffer) => boolean
+    stop: (buf: AudioRingBuffer) => boolean
+    delay: (buf: AudioRingBuffer) => number
+    activate: (buf: AudioRingBuffer, active: boolean) => boolean
+    commit: (buf: AudioRingBuffer, sample: number, data: Uint8Array, out_samples: number, accum: number) => [ /* returnType */ number, /* sample */ number, /* accum */ number ]
+    clear_all: (buf: AudioRingBuffer) => void
     static name: string
 }
 class AudioRingBufferSpec {
@@ -21297,36 +23385,36 @@ class AudioRingBufferSpec {
     /**
      * The caps that generated the Spec.
      */
-    readonly caps: Gst.Caps
+    caps: Gst.Caps
     /**
      * the sample type
      */
-    readonly type: AudioRingBufferFormatType
+    type: AudioRingBufferFormatType
     /**
      * the #GstAudioInfo
      */
-    readonly info: AudioInfo
+    info: AudioInfo
     /**
      * the latency in microseconds
      */
-    readonly latency_time: number
+    latency_time: number
     /**
      * the total buffer size in microseconds
      */
-    readonly buffer_time: number
+    buffer_time: number
     /**
      * the size of one segment in bytes
      */
-    readonly segsize: number
+    segsize: number
     /**
      * the total number of segments
      */
-    readonly segtotal: number
+    segtotal: number
     /**
      * number of segments queued in the lower level device,
      *  defaults to segtotal
      */
-    readonly seglatency: number
+    seglatency: number
     static name: string
 }
 abstract class AudioSinkClass {
@@ -21334,26 +23422,26 @@ abstract class AudioSinkClass {
     /**
      * the parent class structure.
      */
-    readonly parent_class: AudioBaseSinkClass
-    readonly open: (sink: AudioSink) => boolean
-    readonly prepare: (sink: AudioSink, spec: AudioRingBufferSpec) => boolean
-    readonly unprepare: (sink: AudioSink) => boolean
-    readonly close: (sink: AudioSink) => boolean
-    readonly write: (sink: AudioSink, data: object | null, length: number) => number
-    readonly delay: (sink: AudioSink) => number
-    readonly reset: (sink: AudioSink) => void
-    readonly pause: (sink: AudioSink) => void
-    readonly resume: (sink: AudioSink) => void
-    readonly stop: (sink: AudioSink) => void
+    parent_class: AudioBaseSinkClass
+    open: (sink: AudioSink) => boolean
+    prepare: (sink: AudioSink, spec: AudioRingBufferSpec) => boolean
+    unprepare: (sink: AudioSink) => boolean
+    close: (sink: AudioSink) => boolean
+    write: (sink: AudioSink, data: Uint8Array) => number
+    delay: (sink: AudioSink) => number
+    reset: (sink: AudioSink) => void
+    pause: (sink: AudioSink) => void
+    resume: (sink: AudioSink) => void
+    stop: (sink: AudioSink) => void
     /**
      * class extension structure. Since: 1.18
      */
-    readonly extension: AudioSinkClassExtension
+    extension: AudioSinkClassExtension
     static name: string
 }
 class AudioSinkClassExtension {
     /* Fields of GstAudio-1.0.GstAudio.AudioSinkClassExtension */
-    readonly clear_all: (sink: AudioSink) => void
+    clear_all: (sink: AudioSink) => void
     static name: string
 }
 abstract class AudioSrcClass {
@@ -21361,14 +23449,14 @@ abstract class AudioSrcClass {
     /**
      * the parent class.
      */
-    readonly parent_class: AudioBaseSrcClass
-    readonly open: (src: AudioSrc) => boolean
-    readonly prepare: (src: AudioSrc, spec: AudioRingBufferSpec) => boolean
-    readonly unprepare: (src: AudioSrc) => boolean
-    readonly close: (src: AudioSrc) => boolean
-    readonly read: (src: AudioSrc, data: object | null, length: number, timestamp: Gst.ClockTime) => number
-    readonly delay: (src: AudioSrc) => number
-    readonly reset: (src: AudioSrc) => void
+    parent_class: AudioBaseSrcClass
+    open: (src: AudioSrc) => boolean
+    prepare: (src: AudioSrc, spec: AudioRingBufferSpec) => boolean
+    unprepare: (src: AudioSrc) => boolean
+    close: (src: AudioSrc) => boolean
+    read: (src: AudioSrc, data: Uint8Array) => [ /* returnType */ number, /* timestamp */ Gst.ClockTime ]
+    delay: (src: AudioSrc) => number
+    reset: (src: AudioSrc) => void
     static name: string
 }
 class AudioStreamAlign {
@@ -21425,19 +23513,25 @@ class AudioStreamAlign {
      * function they are only considered discontinuous in reverse playback if the
      * first sample of the previous buffer is discontinuous with the last sample
      * of the current one.
+     * @param discont if this data is considered to be discontinuous
+     * @param timestamp a #GstClockTime of the start of the data
+     * @param n_samples number of samples to process
      */
     process(discont: boolean, timestamp: Gst.ClockTime, n_samples: number): [ /* returnType */ boolean, /* out_timestamp */ Gst.ClockTime, /* out_duration */ Gst.ClockTime, /* out_sample_position */ number ]
     /**
      * Sets `alignment_treshold` as new alignment threshold for the following processing.
+     * @param alignment_threshold a new alignment threshold
      */
     set_alignment_threshold(alignment_threshold: Gst.ClockTime): void
     /**
      * Sets `alignment_treshold` as new discont wait for the following processing.
+     * @param discont_wait a new discont wait
      */
     set_discont_wait(discont_wait: Gst.ClockTime): void
     /**
      * Sets `rate` as new sample rate for the following processing. If the sample
      * rate differs this implicitly marks the next data as discontinuous.
+     * @param rate a new sample rate
      */
     set_rate(rate: number): void
     static name: string
@@ -21448,7 +23542,7 @@ class AudioStreamAlign {
 }
 abstract class StreamVolumeInterface {
     /* Fields of GstAudio-1.0.GstAudio.StreamVolumeInterface */
-    readonly iface: GObject.TypeInterface
+    iface: GObject.TypeInterface
     static name: string
 }
 }

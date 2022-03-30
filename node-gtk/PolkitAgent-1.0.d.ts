@@ -33,7 +33,7 @@ interface Listener_ConstructProps extends GObject.Object_ConstructProps {
 }
 class Listener {
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PolkitAgent-1.0.PolkitAgent.Listener */
     /**
      * Called on a registered authentication agent (see
@@ -53,11 +53,20 @@ class Listener {
      * invoked in the <link
      * linkend="g-main-context-push-thread-default">thread-default main
      * loop</link> of the thread that this method is called from.
+     * @param actionId The action to authenticate for.
+     * @param message The message to present to the user.
+     * @param iconName A themed icon name representing the action or %NULL.
+     * @param details Details describing the action.
+     * @param cookie The cookie for the authentication request.
+     * @param identities A list of #PolkitIdentity objects that the user can choose to authenticate as.
+     * @param cancellable A #GCancellable.
+     * @param callback Function to call when the user is done authenticating.
      */
     initiateAuthentication(actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an authentication request from the PolicyKit daemon, see
      * polkit_agent_listener_initiate_authentication() for details.
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback function passed to polkit_agent_listener_initiate_authentication().
      */
     initiateAuthenticationFinish(res: Gio.AsyncResult): boolean
     /**
@@ -77,11 +86,20 @@ class Listener {
      * `subject`.
      * 
      * Note that the calling thread is blocked until a reply is received.
+     * @param flags A set of flags from the #PolkitAgentRegisterFlags enumeration.
+     * @param subject The subject to become an authentication agent for, typically a #PolkitUnixSession object.
+     * @param objectPath The D-Bus object path to use for the authentication agent or %NULL for the default object path.
+     * @param cancellable A #GCancellable or %NULL.
      */
     register(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string, cancellable?: Gio.Cancellable | null): object | null
     /**
      * Like polkit_agent_listener_register() but takes options to influence registration. See the
      * <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.RegisterAuthenticationAgentWithOptions">RegisterAuthenticationAgentWithOptions()</link> D-Bus method for details.
+     * @param flags A set of flags from the #PolkitAgentRegisterFlags enumeration.
+     * @param subject The subject to become an authentication agent for, typically a #PolkitUnixSession object.
+     * @param objectPath The D-Bus object path to use for the authentication agent or %NULL for the default object path.
+     * @param options A #GVariant with options or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     registerWithOptions(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string, options?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): object | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -119,6 +137,10 @@ class Listener {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -129,6 +151,12 @@ class Listener {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -152,6 +180,7 @@ class Listener {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -171,11 +200,14 @@ class Listener {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -183,6 +215,8 @@ class Listener {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -200,6 +234,7 @@ class Listener {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -245,6 +280,7 @@ class Listener {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -288,15 +324,20 @@ class Listener {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -337,6 +378,7 @@ class Listener {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -371,6 +413,7 @@ class Listener {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of GObject-2.0.GObject.Object */
@@ -402,6 +445,7 @@ class Listener {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -421,6 +465,7 @@ class Listener {
     /* Static methods and pseudo-constructors */
     /**
      * Unregisters `listener`.
+     * @param registrationHandle A handle obtained from polkit_agent_listener_register().
      */
     static unregister(registrationHandle?: object | null): void
     static $gtype: GObject.Type
@@ -437,8 +482,17 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
     identity?: Polkit.Identity
 }
 class Session {
+    /* Properties of PolkitAgent-1.0.PolkitAgent.Session */
+    /**
+     * The cookie obtained from the PolicyKit daemon
+     */
+    readonly cookie: string
+    /**
+     * The identity to authenticate.
+     */
+    readonly identity: Polkit.Identity
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PolkitAgent-1.0.PolkitAgent.Session */
     /**
      * Cancels an authentication session. This will make `session` emit the #PolkitAgentSession::completed
@@ -458,6 +512,7 @@ class Session {
     /**
      * Function for providing response to requests received
      * via the #PolkitAgentSession::request signal.
+     * @param response Response from the user, typically a password.
      */
     response(response: string): void
     /* Methods of GObject-2.0.GObject.Object */
@@ -495,6 +550,10 @@ class Session {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -505,6 +564,12 @@ class Session {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -528,6 +593,7 @@ class Session {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -547,11 +613,14 @@ class Session {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -559,6 +628,8 @@ class Session {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -576,6 +647,7 @@ class Session {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -621,6 +693,7 @@ class Session {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -664,15 +737,20 @@ class Session {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -713,6 +791,7 @@ class Session {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -747,6 +826,7 @@ class Session {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Signals of PolkitAgent-1.0.PolkitAgent.Session */
@@ -756,6 +836,7 @@ class Session {
      * the user successfully authenticated.
      * 
      * Upon receiving this signal, the user should free `session` using g_object_unref().
+     * @param gainedAuthorization %TRUE only if the authorization was successfully obtained.
      */
     connect(sigName: "completed", callback: ((gainedAuthorization: boolean) => void)): number
     on(sigName: "completed", callback: (gainedAuthorization: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -766,6 +847,8 @@ class Session {
      * Emitted when the user is requested to answer a question.
      * 
      * When the response has been collected from the user, call polkit_agent_session_response().
+     * @param request The request to show the user, e.g. "name: " or "password: ".
+     * @param echoOn %TRUE if the response to the request SHOULD be echoed on the           screen, %FALSE if the response MUST NOT be echoed to the screen.
      */
     connect(sigName: "request", callback: ((request: string, echoOn: boolean) => void)): number
     on(sigName: "request", callback: (request: string, echoOn: boolean) => void, after?: boolean): NodeJS.EventEmitter
@@ -774,6 +857,7 @@ class Session {
     emit(sigName: "request", request: string, echoOn: boolean): void
     /**
      * Emitted when there is information related to an error condition to be displayed to the user.
+     * @param text An error string to display to the user.
      */
     connect(sigName: "show-error", callback: ((text: string) => void)): number
     on(sigName: "show-error", callback: (text: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -782,6 +866,7 @@ class Session {
     emit(sigName: "show-error", text: string): void
     /**
      * Emitted when there is information to be displayed to the user.
+     * @param text A string to display to the user.
      */
     connect(sigName: "show-info", callback: ((text: string) => void)): number
     on(sigName: "show-info", callback: (text: string) => void, after?: boolean): NodeJS.EventEmitter
@@ -817,12 +902,23 @@ class Session {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void): NodeJS.EventEmitter
     emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::cookie", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::cookie", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::cookie", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::cookie", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::cookie", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    connect(sigName: "notify::identity", callback: ((pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::identity", callback: ((pspec: GObject.ParamSpec) => void)): number
+    on(sigName: "notify::identity", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    once(sigName: "notify::identity", callback: (...args: any[]) => void): NodeJS.EventEmitter
+    off(sigName: "notify::identity", callback: (...args: any[]) => void): NodeJS.EventEmitter
     connect(sigName: string, callback: any): number
     connect_after(sigName: string, callback: any): number
     emit(sigName: string, ...args: any[]): void
@@ -841,9 +937,9 @@ interface TextListener_ConstructProps extends Listener_ConstructProps {
 }
 class TextListener {
     /* Fields of PolkitAgent-1.0.PolkitAgent.Listener */
-    readonly parentInstance: GObject.Object
+    parentInstance: GObject.Object
     /* Fields of GObject-2.0.GObject.Object */
-    readonly gTypeInstance: GObject.TypeInstance
+    gTypeInstance: GObject.TypeInstance
     /* Methods of PolkitAgent-1.0.PolkitAgent.Listener */
     /**
      * Called on a registered authentication agent (see
@@ -863,11 +959,20 @@ class TextListener {
      * invoked in the <link
      * linkend="g-main-context-push-thread-default">thread-default main
      * loop</link> of the thread that this method is called from.
+     * @param actionId The action to authenticate for.
+     * @param message The message to present to the user.
+     * @param iconName A themed icon name representing the action or %NULL.
+     * @param details Details describing the action.
+     * @param cookie The cookie for the authentication request.
+     * @param identities A list of #PolkitIdentity objects that the user can choose to authenticate as.
+     * @param cancellable A #GCancellable.
+     * @param callback Function to call when the user is done authenticating.
      */
     initiateAuthentication(actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an authentication request from the PolicyKit daemon, see
      * polkit_agent_listener_initiate_authentication() for details.
+     * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback function passed to polkit_agent_listener_initiate_authentication().
      */
     initiateAuthenticationFinish(res: Gio.AsyncResult): boolean
     /**
@@ -887,11 +992,20 @@ class TextListener {
      * `subject`.
      * 
      * Note that the calling thread is blocked until a reply is received.
+     * @param flags A set of flags from the #PolkitAgentRegisterFlags enumeration.
+     * @param subject The subject to become an authentication agent for, typically a #PolkitUnixSession object.
+     * @param objectPath The D-Bus object path to use for the authentication agent or %NULL for the default object path.
+     * @param cancellable A #GCancellable or %NULL.
      */
     register(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string, cancellable?: Gio.Cancellable | null): object | null
     /**
      * Like polkit_agent_listener_register() but takes options to influence registration. See the
      * <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.RegisterAuthenticationAgentWithOptions">RegisterAuthenticationAgentWithOptions()</link> D-Bus method for details.
+     * @param flags A set of flags from the #PolkitAgentRegisterFlags enumeration.
+     * @param subject The subject to become an authentication agent for, typically a #PolkitUnixSession object.
+     * @param objectPath The D-Bus object path to use for the authentication agent or %NULL for the default object path.
+     * @param options A #GVariant with options or %NULL.
+     * @param cancellable A #GCancellable or %NULL.
      */
     registerWithOptions(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string, options?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): object | null
     /* Methods of GObject-2.0.GObject.Object */
@@ -929,6 +1043,10 @@ class TextListener {
      * use g_binding_unbind() instead to be on the safe side.
      * 
      * A #GObject can have multiple bindings.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
      */
     bindProperty(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
     /**
@@ -939,6 +1057,12 @@ class TextListener {
      * This function is the language bindings friendly version of
      * g_object_bind_property_full(), using #GClosures instead of
      * function pointers.
+     * @param sourceProperty the property on `source` to bind
+     * @param target the target #GObject
+     * @param targetProperty the property on `target` to bind
+     * @param flags flags to pass to #GBinding
+     * @param transformTo a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
+     * @param transformFrom a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      */
     bindPropertyFull(sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: Function, transformFrom: Function): GObject.Binding
     /**
@@ -962,6 +1086,7 @@ class TextListener {
     freezeNotify(): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
+     * @param key name of the key for that association
      */
     getData(key: string): object | null
     /**
@@ -981,11 +1106,14 @@ class TextListener {
      * 
      * Note that g_object_get_property() is really intended for language
      * bindings, g_object_get() is much more convenient for C programming.
+     * @param propertyName the name of the property to get
+     * @param value return location for the property value
      */
     getProperty(propertyName: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
+     * @param quark A #GQuark, naming the user data pointer
      */
     getQdata(quark: GLib.Quark): object | null
     /**
@@ -993,6 +1121,8 @@ class TextListener {
      * Obtained properties will be set to `values`. All properties must be valid.
      * Warnings will be emitted and undefined behaviour may result if invalid
      * properties are passed in.
+     * @param names the names of each property to get
+     * @param values the values of each property to get
      */
     getv(names: string[], values: any[]): void
     /**
@@ -1010,6 +1140,7 @@ class TextListener {
      * g_object_freeze_notify(). In this case, the signal emissions are queued
      * and will be emitted (in reverse order) when g_object_thaw_notify() is
      * called.
+     * @param propertyName the name of a property installed on the class of `object`.
      */
     notify(propertyName: string): void
     /**
@@ -1055,6 +1186,7 @@ class TextListener {
      *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
      * ```
      * 
+     * @param pspec the #GParamSpec of a property installed on the class of `object`.
      */
     notifyByPspec(pspec: GObject.ParamSpec): void
     /**
@@ -1098,15 +1230,20 @@ class TextListener {
      * This means a copy of `key` is kept permanently (even after `object` has been
      * finalized) — so it is recommended to only use a small, bounded set of values
      * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     * @param key name of the key
+     * @param data data to associate with that key
      */
     setData(key: string, data?: object | null): void
     /**
      * Sets a property on an object.
+     * @param propertyName the name of the property to set
+     * @param value the value
      */
     setProperty(propertyName: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
+     * @param key name of the key
      */
     stealData(key: string): object | null
     /**
@@ -1147,6 +1284,7 @@ class TextListener {
      * g_object_steal_qdata() would have left the destroy function set,
      * and thus the partial string list would have been freed upon
      * g_object_set_qdata_full().
+     * @param quark A #GQuark, naming the user data pointer
      */
     stealQdata(quark: GLib.Quark): object | null
     /**
@@ -1181,6 +1319,7 @@ class TextListener {
      * reference count is held on `object` during invocation of the
      * `closure`.  Usually, this function will be called on closures that
      * use this `object` as closure data.
+     * @param closure #GClosure to watch
      */
     watchClosure(closure: Function): void
     /* Methods of Gio-2.0.Gio.Initable */
@@ -1223,6 +1362,7 @@ class TextListener {
      * In this pattern, a caller would expect to be able to call g_initable_init()
      * on the result of g_object_new(), regardless of whether it is in fact a new
      * instance.
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     init(cancellable?: Gio.Cancellable | null): boolean
     /* Signals of GObject-2.0.GObject.Object */
@@ -1254,6 +1394,7 @@ class TextListener {
      * It is important to note that you must use
      * [canonical parameter names][canonical-parameter-names] as
      * detail strings for the notify signal.
+     * @param pspec the #GParamSpec of the property which changed.
      */
     connect(sigName: "notify", callback: ((pspec: GObject.ParamSpec) => void)): number
     on(sigName: "notify", callback: (pspec: GObject.ParamSpec) => void, after?: boolean): NodeJS.EventEmitter
@@ -1276,6 +1417,9 @@ class TextListener {
      * Helper function for constructing #GInitable object. This is
      * similar to g_object_newv() but also initializes the object
      * and returns %NULL, setting an error on failure.
+     * @param objectType a #GType supporting #GInitable.
+     * @param parameters the parameters to use to construct the object
+     * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     static newv(objectType: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
     static $gtype: GObject.Type
@@ -1285,9 +1429,9 @@ abstract class ListenerClass {
     /**
      * The parent class.
      */
-    readonly parentClass: GObject.ObjectClass
-    readonly initiateAuthentication: (listener: Listener, actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
-    readonly initiateAuthenticationFinish: (listener: Listener, res: Gio.AsyncResult) => boolean
+    parentClass: GObject.ObjectClass
+    initiateAuthentication: (listener: Listener, actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    initiateAuthenticationFinish: (listener: Listener, res: Gio.AsyncResult) => boolean
     static name: string
 }
 abstract class SessionClass {

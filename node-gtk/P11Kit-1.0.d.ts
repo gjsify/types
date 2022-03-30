@@ -77,6 +77,7 @@ class Pin {
      * The value returned is owned by the P11KitPin and should not be modified.
      * It remains valid as long as a reference to the PIN is held. The PIN value
      * will not contain an extra null-terminator character.
+     * @param length a location to return the value length
      */
     getValue(length: number): number
     /**
@@ -108,6 +109,8 @@ class Uri {
      * %P11_KIT_URI_FOR_ANY
      * 
      * The resulting string should be freed with free().
+     * @param uriType The type of URI that should be produced.
+     * @param string Location to store a newly allocated string.
      */
     format(uriType: UriType, string: string): number
     /**
@@ -123,6 +126,7 @@ class Uri {
     /**
      * Set the 'pin-source' part of the URI. This is used by some applications to
      * lookup a PIN for logging into a PKCS\#11 token.
+     * @param pinSource The new pin-source
      */
     setPinSource(pinSource: string): void
     setPinfile(pinfile: string): void
@@ -132,6 +136,7 @@ class Uri {
      * The unrecognized flag is automatically set to 1 when during parsing any part
      * of the URI is unrecognized. If the unrecognized flag is set to 1, then
      * matching against this URI will always fail.
+     * @param unrecognized The new unregognized flag value
      */
     setUnrecognized(unrecognized: number): void
     static name: string
@@ -141,6 +146,7 @@ class Uri {
      * error codes that can be returned from p11_kit_uri_parse() or
      * p11_kit_uri_format(). As a special case %NULL, will be returned for
      * %P11_KIT_URI_OK.
+     * @param code The error code
      */
     static message(code: number): string
     /**
@@ -155,6 +161,9 @@ class Uri {
      * If the PKCS\#11 URI contains unrecognized URI parts or parts not applicable
      * to the specified context, then the unrecognized flag will be set. This will
      * prevent the URI from matching using the various match functions.
+     * @param string The string to parse
+     * @param uriType The type of URI that is expected
+     * @param uri The blank URI to parse the values into
      */
     static parse(string: string, uriType: UriType, uri: Uri): number
 }
