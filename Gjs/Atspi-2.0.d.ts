@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -1757,6 +1759,7 @@ enum Cache {
  * a commonly used combination which gives the AT complete control over the delivery of matching
  * events.  However, such filters should be used sparingly as they may have a negative impact on
  * system performance.
+ * @bitfield 
  */
 enum KeyListenerSyncType {
     /**
@@ -1878,56 +1881,208 @@ const TEXT_CLIP_TYPE_COUNT: number
  * #AtspiCollection_TreeTraversalType.
  */
 const TREETRAVERSALTYPE_COUNT: number
-function deregister_device_event_listener(listener: DeviceListener, filter?: object | null): boolean
+/**
+ * Removes a device event listener from the registry's listener queue,
+ *            ceasing notification of events of the specified type.
+ * @param listener a pointer to the #AtspiDeviceListener for which            device events are requested.
+ * @param filter Unused parameter.
+ */
+function deregister_device_event_listener(listener: DeviceListener, filter: object | null): boolean
+/**
+ * Removes a keystroke event listener from the registry's listener queue,
+ *            ceasing notification of events with modifiers matching `modmask`.
+ * @param listener a pointer to the #AtspiDeviceListener for which            keystroke events are requested.
+ * @param key_set a pointer to the        #AtspiKeyDefinition array indicating which keystroke events are        requested, or %NULL        to indicate that all keycodes and keyvals for the specified        modifier set are to be included.
+ * @param modmask the key modifier mask for which this listener is to be            'deregistered' (of type #AtspiKeyMaskType).
+ * @param event_types an #AtspiKeyMaskType mask indicating which             types of key events were requested (%ATSPI_KEY_PRESSED, etc.).
+ */
 function deregister_keystroke_listener(listener: DeviceListener, key_set: KeyDefinition[] | null, modmask: KeyMaskType, event_types: KeyEventMask): boolean
+/**
+ * Starts/enters the main event loop for the AT-SPI services.
+ * 
+ * NOTE: This method does not return control; it is exited via a call to
+ * #atspi_event_quit from within an event handler.
+ */
 function event_main(): void
+/**
+ * Quits the last main event loop for the AT-SPI services,
+ * See: #atspi_event_main
+ */
 function event_quit(): void
+/**
+ * Disconnects from #AtspiRegistry instances and releases
+ * any floating resources. Call only once at exit.
+ */
 function exit(): number
+/**
+ * Synthesizes a keyboard event (as if a hardware keyboard event occurred in the
+ * current UI context).
+ * @param keyval a #gint indicating the keycode or keysym or modifier mask of the           key event being synthesized.
+ * @param keystring an (optional) UTF-8 string which, if           `synth_type` is %ATSPI_KEY_STRING, indicates a 'composed'           keyboard input string being synthesized; this type of           keyboard event synthesis does not emulate hardware           keypresses but injects the string as though a composing           input method (such as XIM) were used.
+ * @param synth_type an #AtspiKeySynthType flag indicating whether `keyval`           is to be interpreted as a keysym rather than a keycode           (%ATSPI_KEY_SYM) or a string (%ATSPI_KEY_STRING) or a modifier           mask (%ATSPI_KEY_LOCKMODIFIERS and %ATSPI_KEY_UNLOCKMODIFIERS), or           whether to synthesize %ATSPI_KEY_PRESS,           %ATSPI_KEY_RELEASE, or both (%ATSPI_KEY_PRESSRELEASE).
+ */
 function generate_keyboard_event(keyval: number, keystring: string | null, synth_type: KeySynthType): boolean
+/**
+ * Synthesizes a mouse event at a specific screen coordinate.
+ * Most AT clients should use the #AccessibleAction interface when
+ * tempted to generate mouse events, rather than this method.
+ * Event names: b1p = button 1 press; b2r = button 2 release;
+ *              b3c = button 3 click; b2d = button 2 double-click;
+ *              abs = absolute motion; rel = relative motion.
+ * @param x a #glong indicating the screen x coordinate of the mouse event.
+ * @param y a #glong indicating the screen y coordinate of the mouse event.
+ * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
+ */
 function generate_mouse_event(x: number, y: number, name: string): boolean
+/**
+ * Gets the virtual desktop indicated by index `i`.
+ * NOTE: currently multiple virtual desktops are not implemented;
+ * as a consequence, any `i` value different from 0 will not return a
+ * virtual desktop - instead it will return NULL.
+ * @param i a #gint indicating which of the accessible desktops is to be returned.
+ */
 function get_desktop(i: number): Accessible
+/**
+ * Gets the number of virtual desktops.
+ * NOTE: multiple virtual desktops are not implemented yet; as a
+ * consequence, this function always returns 1.
+ */
 function get_desktop_count(): number
+/**
+ * Gets the list of virtual desktops.  On return, `list` will point
+ *     to a newly-created, NULL terminated array of virtual desktop
+ *     pointers.
+ *     It is the responsibility of the caller to free this array when
+ *     it is no longer needed.
+ * NOTE: currently multiple virtual desktops are not implemented;
+ * this implementation always returns a #Garray with a single
+ * #AtspiAccessible desktop.
+ */
 function get_desktop_list(): Accessible[]
+/**
+ * Connects to the accessibility registry and initializes the SPI.
+ */
 function init(): number
+/**
+ * Indicates whether AT-SPI has been initialized.
+ */
 function is_initialized(): boolean
-function register_device_event_listener(listener: DeviceListener, event_types: DeviceEventMask, filter?: object | null): boolean
+/**
+ * Registers a listener for device events, for instance button events.
+ * @param listener a pointer to the #AtspiDeviceListener which requests             the events.
+ * @param event_types an #AtspiDeviceEventMask mask indicating which             types of key events are requested (%ATSPI_KEY_PRESSED, etc.).
+ * @param filter Unused parameter.
+ */
+function register_device_event_listener(listener: DeviceListener, event_types: DeviceEventMask, filter: object | null): boolean
+/**
+ * Registers a listener for keystroke events, either pre-emptively for
+ *             all windows (%ATSPI_KEYLISTENER_ALL_WINDOWS),
+ *             non-preemptively (%ATSPI_KEYLISTENER_NOSYNC), or
+ *             pre-emptively at the toolkit level (%ATSPI_KEYLISTENER_CANCONSUME).
+ *             If ALL_WINDOWS or CANCONSUME are used, the event is consumed
+ *             upon receipt if one of `listener'`s callbacks returns %TRUE
+ *             (other sync_type values may be available in the future).
+ * @param listener a pointer to the #AtspiDeviceListener for which             keystroke events are requested.
+ * @param key_set a pointer to the        #AtspiKeyDefinition array indicating which keystroke events are        requested, or NULL        to indicate that all keycodes and keyvals for the specified        modifier set are to be included.
+ * @param modmask an #AtspiKeyMaskType mask indicating which             key event modifiers must be set in combination with `keys,`             events will only be reported for key events for which all             modifiers in `modmask` are set.  If you wish to listen for             events with multiple modifier combinations, you must call             #atspi_register_keystroke_listener once for each             combination.
+ * @param event_types an #AtspiKeyMaskType mask indicating which             types of key events are requested (%ATSPI_KEY_PRESSED etc.).
+ * @param sync_type an #AtspiKeyListenerSyncType parameter indicating             the behavior of the notification/listener transaction.
+ */
 function register_keystroke_listener(listener: DeviceListener, key_set: KeyDefinition[] | null, modmask: KeyMaskType, event_types: KeyEventMask, sync_type: KeyListenerSyncType): boolean
+/**
+ * Gets a localizable string that indicates the name of an #AtspiRole.
+ * <em>DEPRECATED.</em>
+ * @param role an #AtspiRole object to query.
+ */
 function role_get_name(role: Role): string
+/**
+ * Sets the main loop context that AT-SPI should assume is in use when
+ * setting an idle callback.
+ * This function should be called by application-side implementors (ie,
+ * at-spi2-atk) when it is desirable to re-enter the main loop.
+ * @param cnx The #GMainContext to use.
+ */
 function set_main_context(cnx: GLib.MainContext): void
+/**
+ * Sets the reference window that will be used when atspi_generate_mouse_event
+ * is called. Coordinates will be assumed to be relative to this window. This
+ * is needed because, due to Wayland's security model, it is not currently
+ * possible to retrieve global coordinates.
+ * If NULL is passed, then AT-SPI will use the window that has focus at the
+ * time that atspi_generate_mouse_event is called.
+ * @param accessible the #AtspiAccessible corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
+ */
 function set_reference_window(accessible: Accessible): void
+/**
+ * Set the timeout used for method calls. If this is not set explicitly,
+ * a default of 0.8 ms is used.
+ * Note that at-spi2-registryd currently uses a timeout of 3 seconds when
+ * sending a keyboard event notification. This means that, if an AT makes
+ * a call in response to the keyboard notification and the application
+ * being called does not respond before the timeout is reached,
+ * at-spi2-registryd will time out on the keyboard event notification and
+ * pass the key onto the application (ie, reply to indicate that the key
+ * was not consumed), so this may make it undesirable to set a timeout
+ * larger than 3 seconds.
+ * 
+ * By default, the normal timeout is set to 800 ms, and the application startup
+ * timeout is set to 15 seconds.
+ * @param val The timeout value, in milliseconds, or -1 to disable the timeout.
+ * @param startup_time The amount of time, in milliseconds, to allow to pass before enforcing timeouts on an application. Can be used to prevent timeout exceptions if an application is likely to block for an extended period of time on initialization. -1 can be passed to disable this behavior.
+ */
 function set_timeout(val: number, startup_time: number): void
 /**
  * A callback function prototype via which clients receive device event notifications.
+ * @callback 
+ * @param stroke The #AtspiDeviceEvent for which notification is          being received.
  */
 interface DeviceListenerCB {
     (stroke: DeviceEvent): boolean
 }
 /**
  * Similar to #AtspiDeviceListenerCB, but with no user data.
+ * @callback 
+ * @param stroke The #AtspiDeviceEvent for which notification is          being received.
  */
 interface DeviceListenerSimpleCB {
     (stroke: DeviceEvent): boolean
 }
 /**
  * A function prototype for callbacks via which clients are notified of AT-SPI events.
+ * @callback 
+ * @param event The event for which notification is sent.
  */
 interface EventListenerCB {
     (event: Event): void
 }
 /**
  * Like #AtspiEventlistenerCB, but with no user_data.
+ * @callback 
+ * @param event The event for which notification is sent.
  */
 interface EventListenerSimpleCB {
     (event: Event): void
 }
 /**
  * A callback that will be invoked when a key is pressed.
+ * @callback 
+ * @param device the device.
+ * @param pressed TRUE if the key is being pressed, FALSE if being released.
+ * @param keycode the hardware code for the key.
+ * @param keysym the keysym for the key.
+ * @param modifiers a bitflag indicating which key modifiers are active.
+ * @param keystring the text corresponding to the keypress.
  */
 interface KeyCallback {
     (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void
 }
-class Action {
-    /* Methods of Atspi-2.0.Atspi.Action */
+interface Action_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Action {
+
+    // Owm methods of Atspi-2.0.Atspi.Action
+
     /**
      * Invoke the action indicated by #index.
      * @param i an integer specifying which action to invoke.
@@ -1980,10 +2135,35 @@ class Action {
      * @param i an integer indicating which action to query.
      */
     get_action_name(i: number): string
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Action
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Collection {
-    /* Methods of Atspi-2.0.Atspi.Collection */
+
+class Action extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Action
+
+    static name: string
+    static $gtype: GObject.GType<Action>
+
+    // Constructors of Atspi-2.0.Atspi.Action
+
+    constructor(config?: Action_ConstructProps) 
+    _init(config?: Action_ConstructProps): void
+}
+
+interface Collection_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Collection {
+
+    // Owm methods of Atspi-2.0.Atspi.Collection
+
     get_active_descendant(): Accessible
     /**
      * Gets all #AtspiAccessible objects from the `collection` matching a given
@@ -2022,10 +2202,35 @@ class Collection {
      * @param test 
      */
     is_ancestor_of(test: Accessible): boolean
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Collection
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Component {
-    /* Methods of Atspi-2.0.Atspi.Component */
+
+class Collection extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Collection
+
+    static name: string
+    static $gtype: GObject.GType<Collection>
+
+    // Constructors of Atspi-2.0.Atspi.Collection
+
+    constructor(config?: Collection_ConstructProps) 
+    _init(config?: Collection_ConstructProps): void
+}
+
+interface Component_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Component {
+
+    // Owm methods of Atspi-2.0.Atspi.Component
+
     /**
      * Queries whether a given #AtspiComponent contains a particular point.
      * @param x a #gint specifying the x coordinate in question.
@@ -2115,10 +2320,35 @@ class Component {
      * @param height the height to which the component should be resized.
      */
     set_size(width: number, height: number): boolean
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Component
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Document {
-    /* Methods of Atspi-2.0.Atspi.Document */
+
+class Component extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Component
+
+    static name: string
+    static $gtype: GObject.GType<Component>
+
+    // Constructors of Atspi-2.0.Atspi.Component
+
+    constructor(config?: Component_ConstructProps) 
+    _init(config?: Component_ConstructProps): void
+}
+
+interface Document_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Document {
+
+    // Owm methods of Atspi-2.0.Atspi.Document
+
     /**
      * Gets the value of a single attribute, if specified for the document as a whole.
      * @param attribute a string indicating the name of a specific attribute.
@@ -2142,10 +2372,35 @@ class Document {
      * Gets the page count of an #AccessibleDocument object.
      */
     get_page_count(): number
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Document
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class EditableText {
-    /* Methods of Atspi-2.0.Atspi.EditableText */
+
+class Document extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Document
+
+    static name: string
+    static $gtype: GObject.GType<Document>
+
+    // Constructors of Atspi-2.0.Atspi.Document
+
+    constructor(config?: Document_ConstructProps) 
+    _init(config?: Document_ConstructProps): void
+}
+
+interface EditableText_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface EditableText {
+
+    // Owm methods of Atspi-2.0.Atspi.EditableText
+
     /**
      * Copies text from an #AtspiEditableText object into the system clipboard.
      * 
@@ -2195,10 +2450,35 @@ class EditableText {
      * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the #AtspiEditableText object.
      */
     set_text_contents(new_contents: string): boolean
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.EditableText
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Hypertext {
-    /* Methods of Atspi-2.0.Atspi.Hypertext */
+
+class EditableText extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.EditableText
+
+    static name: string
+    static $gtype: GObject.GType<EditableText>
+
+    // Constructors of Atspi-2.0.Atspi.EditableText
+
+    constructor(config?: EditableText_ConstructProps) 
+    _init(config?: EditableText_ConstructProps): void
+}
+
+interface Hypertext_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Hypertext {
+
+    // Owm methods of Atspi-2.0.Atspi.Hypertext
+
     /**
      * Gets the #AtspiHyperlink object at a specified index.
      * @param link_index a (zero-index) #gint indicating which hyperlink to query.
@@ -2215,10 +2495,35 @@ class Hypertext {
      * #AtspiHypertext implementor has.
      */
     get_n_links(): number
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Hypertext
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Image {
-    /* Methods of Atspi-2.0.Atspi.Image */
+
+class Hypertext extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Hypertext
+
+    static name: string
+    static $gtype: GObject.GType<Hypertext>
+
+    // Constructors of Atspi-2.0.Atspi.Hypertext
+
+    constructor(config?: Hypertext_ConstructProps) 
+    _init(config?: Hypertext_ConstructProps): void
+}
+
+interface Image_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Image {
+
+    // Owm methods of Atspi-2.0.Atspi.Image
+
     /**
      * Gets the description of the image displayed in an #AtspiImage object.
      */
@@ -2249,10 +2554,35 @@ class Image {
      * STATE_VISIBLE and STATE_SHOWING.
      */
     get_image_size(): Point
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Image
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Selection {
-    /* Methods of Atspi-2.0.Atspi.Selection */
+
+class Image extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Image
+
+    static name: string
+    static $gtype: GObject.GType<Image>
+
+    // Constructors of Atspi-2.0.Atspi.Image
+
+    constructor(config?: Image_ConstructProps) 
+    _init(config?: Image_ConstructProps): void
+}
+
+interface Selection_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Selection {
+
+    // Owm methods of Atspi-2.0.Atspi.Selection
+
     /**
      * Clears the current selection, removing all selected children from the
      *       specified #AtspiSelection implementor's selection list.
@@ -2313,10 +2643,35 @@ class Selection {
      * @param child_index a #gint indicating which child of the #Accessible              is to be selected.
      */
     select_child(child_index: number): boolean
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Selection
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Table {
-    /* Methods of Atspi-2.0.Atspi.Table */
+
+class Selection extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Selection
+
+    static name: string
+    static $gtype: GObject.GType<Selection>
+
+    // Constructors of Atspi-2.0.Atspi.Selection
+
+    constructor(config?: Selection_ConstructProps) 
+    _init(config?: Selection_ConstructProps): void
+}
+
+interface Table_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Table {
+
+    // Owm methods of Atspi-2.0.Atspi.Table
+
     /**
      * Selects the specified column, adding it to the current column selection.
      * Not all tables support column selection.
@@ -2503,10 +2858,35 @@ class Table {
      * @param row the zero-indexed number of the row being de-selected.
      */
     remove_row_selection(row: number): boolean
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Table
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class TableCell {
-    /* Methods of Atspi-2.0.Atspi.TableCell */
+
+class Table extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Table
+
+    static name: string
+    static $gtype: GObject.GType<Table>
+
+    // Constructors of Atspi-2.0.Atspi.Table
+
+    constructor(config?: Table_ConstructProps) 
+    _init(config?: Table_ConstructProps): void
+}
+
+interface TableCell_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface TableCell {
+
+    // Owm methods of Atspi-2.0.Atspi.TableCell
+
     /**
      * Returns the column headers as an array of cell accessibles.
      */
@@ -2542,10 +2922,35 @@ class TableCell {
      * Returns a reference to the accessible of the containing table.
      */
     get_table(): Accessible
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.TableCell
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Text {
-    /* Methods of Atspi-2.0.Atspi.Text */
+
+class TableCell extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.TableCell
+
+    static name: string
+    static $gtype: GObject.GType<TableCell>
+
+    // Constructors of Atspi-2.0.Atspi.TableCell
+
+    constructor(config?: TableCell_ConstructProps) 
+    _init(config?: TableCell_ConstructProps): void
+}
+
+interface Text_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Text {
+
+    // Owm methods of Atspi-2.0.Atspi.Text
+
     /**
      * Selects some text (adds a text selection) in an #AtspiText object.
      * @param start_offset the starting offset of the desired new selection.
@@ -2741,10 +3146,35 @@ class Text {
      * @param end_offset a #gint indicating the desired new offset of the first character             after the selection.
      */
     set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
-    static name: string
+
+    // Class property signals of Atspi-2.0.Atspi.Text
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
 }
-class Value {
-    /* Methods of Atspi-2.0.Atspi.Value */
+
+class Text extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Text
+
+    static name: string
+    static $gtype: GObject.GType<Text>
+
+    // Constructors of Atspi-2.0.Atspi.Text
+
+    constructor(config?: Text_ConstructProps) 
+    _init(config?: Text_ConstructProps): void
+}
+
+interface Value_ConstructProps extends GObject.Object_ConstructProps {
+}
+
+interface Value {
+
+    // Owm methods of Atspi-2.0.Atspi.Value
+
     /**
      * Gets the current value for an #AtspiValue.
      */
@@ -2766,18 +3196,63 @@ class Value {
      * @param new_value a #gdouble value which is the desired new value of the object.
      */
     set_current_value(new_value: number): boolean
+
+    // Class property signals of Atspi-2.0.Atspi.Value
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+class Value extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Value
+
     static name: string
+    static $gtype: GObject.GType<Value>
+
+    // Constructors of Atspi-2.0.Atspi.Value
+
+    constructor(config?: Value_ConstructProps) 
+    _init(config?: Value_ConstructProps): void
 }
-interface Accessible_ConstructProps extends Object_ConstructProps {
+
+interface Accessible_ConstructProps extends Action_ConstructProps, Collection_ConstructProps, Component_ConstructProps, Document_ConstructProps, EditableText_ConstructProps, Hypertext_ConstructProps, Image_ConstructProps, Selection_ConstructProps, Table_ConstructProps, TableCell_ConstructProps, Text_ConstructProps, Value_ConstructProps, Object_ConstructProps {
 }
-class Accessible {
-    /* Fields of Atspi-2.0.Atspi.Object */
-    parent: GObject.Object
-    app: Application
-    path: string
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.Accessible */
+
+/**
+ * Signal callback interface for `mode-changed`
+ */
+interface Accessible_ModeChangedSignalCallback {
+    ($obj: Accessible, arg1: number, why: string): void
+}
+
+/**
+ * Signal callback interface for `region-changed`
+ */
+interface Accessible_RegionChangedSignalCallback {
+    ($obj: Accessible, arg1: number, arg2: number): void
+}
+
+interface Accessible extends Action, Collection, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value {
+
+    // Own fields of Atspi-2.0.Atspi.Accessible
+
+    parent: Object
+    accessible_parent: Accessible
+    children: object[]
+    role: Role
+    interfaces: number
+    name: string
+    description: string
+    states: StateSet
+    attributes: GLib.HashTable
+    cached_properties: number
+    priv: AccessiblePrivate
+
+    // Owm methods of Atspi-2.0.Atspi.Accessible
+
     /**
      * Clears the cached information for the given accessible and all of its
      * descendants.
@@ -2955,1608 +3430,96 @@ class Accessible {
      * @param mask An #AtspiCache specifying a bit mask of the types of data to cache.
      */
     set_cache_mask(mask: Cache): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of Atspi-2.0.Atspi.Action */
-    /**
-     * Invoke the action indicated by #index.
-     * @param i an integer specifying which action to invoke.
-     */
-    do_action(i: number): boolean
-    /**
-     * Get the description of '`i-th'` action invocable on an
-     *      object implementing #AtspiAction.
-     * @param i an integer indicating which action to query.
-     */
-    get_action_description(i: number): string
-    /**
-     * Get the keybindings for the `i-th` action invocable on an
-     *      object implementing #AtspiAction, if any are defined.
-     *      The keybindings string format is as follows:
-     *        there are multiple parts to a keybinding string (typically 3).
-     *        They are delimited with ";".  The first is the action's
-     *        keybinding which is usable if the object implementing the action
-     *        is currently posted to the screen, e.g. if a menu is posted
-     *        then these keybindings for the corresponding menu-items are
-     *        available.  The second keybinding substring is the full key sequence
-     *        necessary to post the action's widget and activate it, e.g. for
-     *        a menu item such as "File->Open" it would both post the menu and
-     *        activate the item.  Thus the second keybinding string is available
-     *        during the lifetime of the containing toplevel window as a whole,
-     *        whereas the first keybinding string only works while the object
-     *        implementing AtkAction is posted.  The third (and optional)
-     *        keybinding string is the "keyboard shortcut" which invokes the
-     *        action without posting any menus.
-     *        Meta-keys are indicated by the conventional strings
-     *        "&lt;Control&gt;", "&lt;Alt&gt;", "&lt;Shift&gt;", "&lt;Mod2&gt;",
-     *        etc. (we use the same string as gtk_accelerator_name() in
-     *        gtk+-2.X.
-     * @param i an integer indicating which action to query.
-     */
-    get_key_binding(i: number): string
-    /**
-     * Get the name of the '`i-th'` action invocable on an
-     *      object implementing #AtspiAction.
-     * @param i an integer indicating which action to query.
-     */
-    get_localized_name(i: number): string
-    /**
-     * Get the number of actions invokable on an #AtspiAction implementor.
-     */
-    get_n_actions(): number
-    /**
-     * Get the name of the '`i-th'` action invocable on an
-     *      object implementing #AtspiAction.
-     * @param i an integer indicating which action to query.
-     */
-    get_action_name(i: number): string
-    /* Methods of Atspi-2.0.Atspi.Collection */
-    get_active_descendant(): Accessible
-    /**
-     * Gets all #AtspiAccessible objects from the `collection` matching a given
-     * `rule`.
-     * @param rule An #AtspiMatchRule describing the match criteria.
-     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
-     * @param count The maximum number of results to return, or 0 for no limit.
-     * @param traverse Not supported.
-     */
-    get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[]
-    /**
-     * Gets all #AtspiAccessible objects from the `collection,` before
-     * `current_object,` matching a given `rule`.
-     * @param current_object Upon reaching this object, searching should stop.
-     * @param rule An #AtspiMatchRule describing the match criteria.
-     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
-     * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
-     * @param count The maximum number of results to return, or 0 for no limit.
-     * @param traverse Not supported.
-     */
-    get_matches_from(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: number, traverse: boolean): Accessible[]
-    /**
-     * Gets all #AtspiAccessible objects from the `collection,` after
-     * `current_object,` matching a given `rule`.
-     * @param current_object The object at which to start searching.
-     * @param rule An #AtspiMatchRule describing the match criteria.
-     * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
-     * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
-     * @param limit_scope If #TRUE, only descendants of `current_object'`s parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed `current_object` in a flattened          hierarchy.
-     * @param count The maximum number of results to return, or 0 for no limit.
-     * @param traverse Not supported.
-     */
-    get_matches_to(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: boolean, count: number, traverse: boolean): Accessible[]
-    /**
-     * Not yet implemented.
-     * @param test 
-     */
-    is_ancestor_of(test: Accessible): boolean
-    /* Methods of Atspi-2.0.Atspi.Component */
-    /**
-     * Queries whether a given #AtspiComponent contains a particular point.
-     * @param x a #gint specifying the x coordinate in question.
-     * @param y a #gint specifying the y coordinate in question.
-     * @param ctype the desired coordinate system of the point (`x,` `y)`         (e.g. CSPI_COORD_TYPE_WINDOW, CSPI_COORD_TYPE_SCREEN).
-     */
-    contains(x: number, y: number, ctype: CoordType): boolean
-    /**
-     * Gets the accessible child at a given coordinate within an #AtspiComponent.
-     * @param x a #gint specifying the x coordinate of the point in question.
-     * @param y a #gint specifying the y coordinate of the point in question.
-     * @param ctype the coordinate system of the point (`x,` `y)`         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null
-    /**
-     * Gets the opacity/alpha value of a component, if alpha blending is in use.
-     */
-    get_alpha(): number
-    /**
-     * Gets the bounding box of the specified #AtspiComponent.
-     * The returned values are meaningful only if the Component has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    get_extents(ctype: CoordType): Rect
-    /**
-     * Queries which layer the component is painted into, to help determine its
-     *      visibility in terms of stacking order.
-     */
-    get_layer(): ComponentLayer
-    /**
-     * Queries the z stacking order of a component which is in the MDI or window
-     *       layer. (Bigger z-order numbers mean nearer the top)
-     */
-    get_mdi_z_order(): number
-    /**
-     * Gets the minimum x and y coordinates of the specified #AtspiComponent.
-     * The returned values are meaningful only if the Component has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    get_position(ctype: CoordType): Point
-    /**
-     * Gets the size of the specified #AtspiComponent.
-     * The returned values are meaningful only if the Component has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     */
-    get_size(): Point
-    /**
-     * Attempts to set the keyboard input focus to the specified
-     *         #AtspiComponent.
-     */
-    grab_focus(): boolean
-    /**
-     * Scrolls whatever container of the #AtspiComponent object so it becomes
-     * visible on the screen.
-     * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
-     */
-    scroll_to(type: ScrollType): boolean
-    /**
-     * Scrolls whatever container of the #AtspiComponent object so it becomes
-     * visible on the screen at a given position.
-     * @param coords a #AtspiCoordType indicating whether the coordinates are relative to          the screen, to the window, or to the parent object.
-     * @param x the x coordinate of the point to reach
-     * @param y the y coordinate of the point to reach
-     */
-    scroll_to_point(coords: CoordType, x: number, y: number): boolean
-    /**
-     * Moves and resizes the specified component.
-     * @param x the new vertical position to which the component should be moved.
-     * @param y the new horizontal position to which the component should be moved.
-     * @param width the width to which the component should be resized.
-     * @param height the height to which the component should be resized.
-     * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean
-    /**
-     * Moves the component to the specified position.
-     * @param x the new vertical position to which the component should be moved.
-     * @param y the new horizontal position to which the component should be moved.
-     * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    set_position(x: number, y: number, ctype: CoordType): boolean
-    /**
-     * Resizes the specified component to the given coordinates.
-     * @param width the width to which the component should be resized.
-     * @param height the height to which the component should be resized.
-     */
-    set_size(width: number, height: number): boolean
-    /* Methods of Atspi-2.0.Atspi.Document */
-    /**
-     * Gets the value of a single attribute, if specified for the document as a whole.
-     * @param attribute a string indicating the name of a specific attribute.
-     */
-    get_document_attribute_value(attribute: string): string
-    /**
-     * Gets all constant attributes for the document as a whole. For attributes
-     * that change within the document content, see `atspi_text_get_attribute_run` instead.
-     */
-    get_document_attributes(): GLib.HashTable
-    /**
-     * Gets the current page number of an #AccessibleDocument object.
-     */
-    get_current_page_number(): number
-    /**
-     * Gets the locale associated with the document's content,
-     * e.g. the locale for LOCALE_TYPE_MESSAGES.
-     */
-    get_locale(): string
-    /**
-     * Gets the page count of an #AccessibleDocument object.
-     */
-    get_page_count(): number
-    /* Methods of Atspi-2.0.Atspi.EditableText */
-    /**
-     * Copies text from an #AtspiEditableText object into the system clipboard.
-     * 
-     * see: #atspi_editable_text_paste_text
-     * @param start_pos a #gint indicating the starting character offset       of the text to copy.
-     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be copied.
-     */
-    copy_text(start_pos: number, end_pos: number): boolean
-    /**
-     * Deletes text from an #AtspiEditableText object, copying the
-     *       excised portion into the system clipboard.
-     * 
-     * see: #atspi_editable_text_paste_text
-     * @param start_pos a #gint indicating the starting character offset       of the text to cut.
-     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be cut.
-     */
-    cut_text(start_pos: number, end_pos: number): boolean
-    /**
-     * Deletes text from an #AtspiEditableText object, without copying the
-     *       excised portion into the system clipboard.
-     * 
-     * see: #atspi_editable_text_cut_text
-     * @param start_pos a #gint indicating the starting character offset       of the text to delete.
-     * @param end_pos a #gint indicating the offset of the first character       past the end of the text section to be deleted.
-     */
-    delete_text(start_pos: number, end_pos: number): boolean
-    /**
-     * Inserts text into an #AtspiEditableText object.
-     * As with all character offsets, the specified `position` may not be the
-     * same as the resulting byte offset, since the text is in a
-     * variable-width encoding.
-     * @param position a #gint indicating the character offset at which to insert       the new text.
-     * @param text a string representing the text to insert, in UTF-8 encoding.
-     * @param length the number of characters of text to insert, in bytes. If the byte count of text is less than or equal to length, the entire contents of text will be inserted.
-     */
-    insert_text(position: number, text: string, length: number): boolean
-    /**
-     * Inserts text from the system clipboard into an #AtspiEditableText object.
-     * As with all character offsets, the specified `position` may not be the
-     *       same as the resulting byte offset, since the text is in a
-     *       variable-width encoding.
-     * @param position a #gint indicating the character offset at which to insert       the new text.
-     */
-    paste_text(position: number): boolean
-    /**
-     * Replace the entire text contents of an #AtspiEditableText object.
-     * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the #AtspiEditableText object.
-     */
-    set_text_contents(new_contents: string): boolean
-    /* Methods of Atspi-2.0.Atspi.Hypertext */
-    /**
-     * Gets the #AtspiHyperlink object at a specified index.
-     * @param link_index a (zero-index) #gint indicating which hyperlink to query.
-     */
-    get_link(link_index: number): Hyperlink | null
-    /**
-     * Gets the index of the #AtspiHyperlink object at a specified
-     *        character offset.
-     * @param character_offset a #gint specifying the character offset to query.
-     */
-    get_link_index(character_offset: number): number
-    /**
-     * Gets the total number of #AtspiHyperlink objects that an
-     * #AtspiHypertext implementor has.
-     */
-    get_n_links(): number
-    /* Methods of Atspi-2.0.Atspi.Image */
-    /**
-     * Gets the description of the image displayed in an #AtspiImage object.
-     */
-    get_image_description(): string
-    /**
-     * Gets the bounding box of the image displayed in a
-     *         specified #AtspiImage implementor.
-     * The returned values are meaningful only if the Image has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    get_image_extents(ctype: CoordType): Rect
-    /**
-     * Gets the locale associated with an image and its textual representation.
-     */
-    get_image_locale(): string
-    /**
-     * Gets the minimum x and y coordinates of the image displayed in a
-     *         specified #AtspiImage implementor.
-     * The returned values are meaningful only if the Image has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
-     */
-    get_image_position(ctype: CoordType): Point
-    /**
-     * Gets the size of the image displayed in a specified #AtspiImage object.
-     * The returned values are meaningful only if the Image has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     */
-    get_image_size(): Point
-    /* Methods of Atspi-2.0.Atspi.Selection */
-    /**
-     * Clears the current selection, removing all selected children from the
-     *       specified #AtspiSelection implementor's selection list.
-     */
-    clear_selection(): boolean
-    /**
-     * Deselects a specific child of an #AtspiSelection.
-     *          Note that `child_index` is the index of the child
-     *          in the parent container.
-     * 
-     * See #atspi_selection_deselect_selected_child
-     * @param child_index a #gint indicating which of the children              of the #AtspiAccessible is to be de-selected.
-     */
-    deselect_child(child_index: number): boolean
-    /**
-     * Removes a child from the selected children list of an #AtspiSelection.
-     *          Note that `child_index` is the index in the selected-children list,
-     *          not the index in the parent container.  `selectedChildIndex` in this
-     *          method, and `child_index` in #atspi_selection_select_child
-     *          are asymmetric.
-     * @param selected_child_index a #gint indicating which of the selected children              of the #Accessible is to be selected.
-     */
-    deselect_selected_child(selected_child_index: number): boolean
-    /**
-     * Gets the number of children of an #AtspiSelection implementor which are
-     *        currently selected.
-     */
-    get_n_selected_children(): number
-    /**
-     * Gets the i-th selected #AtspiAccessible child of an #AtspiSelection.
-     *      Note that `selected_child_index` refers to the index in the list
-     *      of 'selected'
-     *      children and generally differs from that used in
-     *      #atspi_accessible_get_child_at_index or returned by
-     *      #atspi_accessible_get_index_in_parent.
-     *      `selected_child_index` must lie between 0
-     *      and #atspi_selection_get_n_selected_children - 1, inclusive.
-     * @param selected_child_index a #gint indicating which of the selected      children is specified.
-     */
-    get_selected_child(selected_child_index: number): Accessible
-    /**
-     * Determines whether a particular child of an #AtspiSelection implementor
-     *        is currently selected.  Note that `child_index` is the index into the
-     *        standard #AtspiAccessible container's list of children.
-     * @param child_index an index into the #AtspiSelection's list of children.
-     */
-    is_child_selected(child_index: number): boolean
-    /**
-     * Attempts to select all of the children of an #AtspiSelection implementor.
-     * Not all #AtspiSelection implementors support this operation.
-     */
-    select_all(): boolean
-    /**
-     * Adds a child to the selected children list of an #AtspiSelection.
-     *         For #AtspiSelection implementors that only allow
-     *         single selections, this may replace the (single) current
-     *         selection.
-     * @param child_index a #gint indicating which child of the #Accessible              is to be selected.
-     */
-    select_child(child_index: number): boolean
-    /* Methods of Atspi-2.0.Atspi.Table */
-    /**
-     * Selects the specified column, adding it to the current column selection.
-     * Not all tables support column selection.
-     * @param column the zero-indexed column number of the column being selected.
-     */
-    add_column_selection(column: number): boolean
-    /**
-     * Selects the specified row, adding it to the current row selection.
-     * Not all tables support row selection.
-     * @param row the zero-indexed row number of the row being selected.
-     */
-    add_row_selection(row: number): boolean
-    /**
-     * Gets the table cell at the specified row and column indices.
-     * To get the accessible object at a particular (x, y) screen
-     * coordinate, use #atspi_component_get_accessible_at_point.
-     * @param row the specified table row, zero-indexed.
-     * @param column the specified table column, zero-indexed.
-     */
-    get_accessible_at(row: number, column: number): Accessible
-    /**
-     * Gets an accessible representation of the caption for an #AtspiTable.
-     */
-    get_caption(): Accessible
-    /**
-     * Gets the table column index occupied by the child at a particular 1-D
-     * child index.
-     * 
-     * `see` #atspi_table_get_index_at, #atspi_table_get_row_at_index
-     * @param index the specified child index, zero-indexed.
-     */
-    get_column_at_index(index: number): number
-    /**
-     * Gets a text description of a particular table column.  This differs from
-     * #atspi_table_get_column_header, which returns an #Accessible.
-     * @param column the specified table column, zero-indexed.
-     */
-    get_column_description(column: number): string
-    /**
-     * Gets the number of columns spanned by the table cell at the specific
-     * row and column (some tables can have cells which span multiple
-     * rows and/or columns).
-     * The returned values are meaningful only if the Table has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param row the specified table row, zero-indexed.
-     * @param column the specified table column, zero-indexed.
-     */
-    get_column_extent_at(row: number, column: number): number
-    /**
-     * Gets the header associated with a table column, if available.
-     * This differs from #atspi_table_get_column_description, which
-     * returns a string.
-     * @param column the specified table column, zero-indexed.
-     */
-    get_column_header(column: number): Accessible
-    /**
-     * Gets the 1-D child index corresponding to the specified 2-D row and
-     * column indices. To get the accessible object at a particular (x, y) screen
-     * coordinate, use #atspi_component_get_accessible_at_point.
-     * 
-     * `see` #atspi_table_get_row_at_index, #atspi_table_get_column_at_index
-     * @param row the specified table row, zero-indexed.
-     * @param column the specified table column, zero-indexed.
-     */
-    get_index_at(row: number, column: number): number
-    /**
-     * Gets the number of columns in an #AtspiTable,
-     *        exclusive of any columns that are programmatically hidden, but inclusive
-     *        of columns that may be outside of the current scrolling window or viewport.
-     */
-    get_n_columns(): number
-    /**
-     * Gets the number of rows in an #AtspiTable,
-     *        exclusive of any rows that are programmatically hidden, but inclusive
-     *        of rows that may be outside of the current scrolling window or viewport.
-     */
-    get_n_rows(): number
-    /**
-     * Queries a table to find out how many columns are currently selected.
-     * Not all tables support column selection.
-     */
-    get_n_selected_columns(): number
-    /**
-     * Query a table to find out how many rows are currently selected.
-     * Not all tables support row selection.
-     */
-    get_n_selected_rows(): number
-    /**
-     * Gets the table row index occupied by the child at a particular 1-D
-     * child index.
-     * 
-     * `see` #atspi_table_get_index_at, #atspi_table_get_column_at_index
-     * @param index the specified child index, zero-indexed.
-     */
-    get_row_at_index(index: number): number
-    /**
-     * Given a child index, determines the row and column indices and
-     * extents, and whether the cell is currently selected.  If
-     * the child at index is not a cell (for instance, if it is
-     * a summary, caption, etc.), #FALSE is returned.
-     * The returned values are meaningful only if the Table has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * 
-     * Example:
-     * If the #AtspiTable child at index '6' extends across columns 5 and 6 of
-     * row 2 of an #AtspiTable instance, and is currently selected, then
-     * 
-     * retval = atspi_table_get_row_column_extents_at_index (table, 6,
-     *                                             row, col,
-     *                                             row_extents,
-     *                                             col_extents,
-     *                                             is_selected);
-     * 
-     * will return #TRUE, and after the call
-     * row, col, row_extents, col_extents,
-     * and is_selected will contain 2, 5, 1, 2, and
-     * #TRUE, respectively.
-     * @param index the index of the #AtspiTable child whose row/column extents are requested.
-     */
-    get_row_column_extents_at_index(index: number): [ /* returnType */ boolean, /* row */ number, /* col */ number, /* row_extents */ number, /* col_extents */ number, /* is_selected */ boolean ]
-    /**
-     * Gets a text description of a particular table row.  This differs from
-     * #atspi_table_get_row_header, which returns an #AtspiAccessible.
-     * @param row the specified table row, zero-indexed.
-     */
-    get_row_description(row: number): string
-    /**
-     * Gets the number of rows spanned by the table cell at the specific row
-     * and column. (some tables can have cells which span multiple rows
-     * and/or columns).
-     * The returned values are meaningful only if the Table has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param row the specified table row, zero-indexed.
-     * @param column the specified table column, zero-indexed.
-     */
-    get_row_extent_at(row: number, column: number): number
-    /**
-     * Gets the header associated with a table row, if available. This differs from
-     * #atspi_table_get_row_description, which returns a string.
-     * @param row the specified table row, zero-indexed.
-     */
-    get_row_header(row: number): Accessible
-    /**
-     * Queries a table for a list of indices of columns which are currently
-     * selected.
-     */
-    get_selected_columns(): number[]
-    /**
-     * Queries a table for a list of indices of rows which are currently selected.
-     */
-    get_selected_rows(): number[]
-    /**
-     * Gets an accessible object which summarizes the contents of an #AtspiTable.
-     */
-    get_summary(): Accessible
-    /**
-     * Determines whether specified table column is selected.
-     * Not all tables support column selection.
-     * @param column the zero-indexed column number of the column being queried.
-     */
-    is_column_selected(column: number): boolean
-    /**
-     * Determines whether a table row is selected.  Not all tables support
-     * row selection.
-     * @param row the zero-indexed row number of the row being queried.
-     */
-    is_row_selected(row: number): boolean
-    /**
-     * Determines whether the cell at a specific row and column is selected.
-     * @param row the zero-indexed row of the cell being queried.
-     * @param column the zero-indexed column of the cell being queried.
-     */
-    is_selected(row: number, column: number): boolean
-    /**
-     * De-selects the specified column, removing it from the current column
-     * selection.
-     * Not all tables support column selection.
-     * @param column the zero-indexed column number of the column being de-selected.
-     */
-    remove_column_selection(column: number): boolean
-    /**
-     * De-selects the specified row, removing it from the current row selection.
-     * Not all tables support row selection.
-     * @param row the zero-indexed number of the row being de-selected.
-     */
-    remove_row_selection(row: number): boolean
-    /* Methods of Atspi-2.0.Atspi.TableCell */
-    /**
-     * Returns the column headers as an array of cell accessibles.
-     */
-    get_column_header_cells(): Accessible[]
-    get_column_index(): number
-    /**
-     * Returns the number of columns occupied by this cell accessible.
-     * The returned values are meaningful only if the table cell has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     */
-    get_column_span(): number
-    /**
-     * Retrieves the tabular position of this cell.
-     */
-    get_position(): [ /* returnType */ number, /* row */ number, /* column */ number ]
-    /**
-     * Gets the row and column indexes and extents of this cell accessible.
-     * The returned values are meaningful only if the table cell has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     */
-    get_row_column_span(): [ /* row */ number, /* column */ number, /* row_span */ number, /* column_span */ number ]
-    /**
-     * Returns the row headers as an array of cell accessibles.
-     */
-    get_row_header_cells(): Accessible[]
-    /**
-     * Returns the number of rows occupied by this cell accessible.
-     * The returned values are meaningful only if the table cell has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     */
-    get_row_span(): number
-    /**
-     * Returns a reference to the accessible of the containing table.
-     */
-    get_table(): Accessible
-    /* Methods of Atspi-2.0.Atspi.Text */
-    /**
-     * Selects some text (adds a text selection) in an #AtspiText object.
-     * @param start_offset the starting offset of the desired new selection.
-     * @param end_offset the offset of the first character after the new selection.
-     */
-    add_selection(start_offset: number, end_offset: number): boolean
-    /**
-     * Gets a set of attributes applied to a range of text from an #AtspiText object, optionally
-     * including its 'default' attributes.
-     * @param offset a #gint indicating the offset from which the attribute        search is based.
-     * @param include_defaults a #bool that, when set as #FALSE, indicates the call should only return those attributes which are explicitly set on the current attribute run, omitting any attributes which are inherited from the default values.
-     */
-    get_attribute_run(offset: number, include_defaults: boolean): [ /* returnType */ GLib.HashTable, /* start_offset */ number, /* end_offset */ number ]
-    /**
-     * Gets the value of a named attribute at a given offset.
-     * @param offset The character offset at which to query the attribute.
-     * @param attribute_name The attribute to query.
-     */
-    get_text_attribute_value(offset: number, attribute_name: string): string | null
-    /**
-     * Gets the attributes applied to a range of text from an #AtspiText
-     * object. The text attributes correspond to CSS attributes
-     * where possible.
-     * <em>DEPRECATED</em>
-     * @param offset a #gint indicating the offset from which the attribute        search is based.
-     */
-    get_text_attributes(offset: number): [ /* returnType */ GLib.HashTable, /* start_offset */ number, /* end_offset */ number ]
-    /**
-     * Gets the ranges of text from an #AtspiText object which lie within the
-     *          bounds defined by (`x,` `y)` and (`x+``width,` `y+``height)`.
-     * @param x the 'starting' x coordinate of the bounding box.
-     * @param y the 'starting' y coordinate of the bounding box.
-     * @param width the x extent of the bounding box.
-     * @param height the y extent of the bounding box.
-     * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
-     * @param clipTypeX an #AtspiTextClipType indicating how to treat characters that        intersect the bounding box's x extents.
-     * @param clipTypeY an #AtspiTextClipType indicating how to treat characters that        intersect the bounding box's y extents.
-     */
-    get_bounded_ranges(x: number, y: number, width: number, height: number, type: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType): TextRange[]
-    /**
-     * Gets the current offset of the text caret in an #AtspiText object.
-     */
-    get_caret_offset(): number
-    /**
-     * Gets the character at a given offset for an #AtspiText object.
-     * @param offset a #gint indicating the text offset where the desired          character is located.
-     */
-    get_character_at_offset(offset: number): number
-    /**
-     * Gets the character count of an #AccessibleText object.
-     */
-    get_character_count(): number
-    /**
-     * Gets a bounding box containing the glyph representing
-     *        the character at a particular text offset.
-     * The returned values are meaningful only if the Text has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param offset a #gint indicating the offset of the text character for        whom boundary information is requested.
-     * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
-     */
-    get_character_extents(offset: number, type: CoordType): Rect
-    /**
-     * Gets the default attributes applied to an #AtspiText
-     * object. The text attributes correspond to CSS attributes
-     * where possible. The combination of this attribute set and
-     * the attributes reported by #atspi_text_get_attributes
-     * describes the entire set of text attributes over a range.
-     */
-    get_default_attributes(): GLib.HashTable
-    /**
-     * Gets the number of active non-contiguous selections for an
-     *          #AtspiText object.
-     */
-    get_n_selections(): number
-    /**
-     * Gets the character offset into the text at a given point.
-     * @param x the x coordinate of the point to be queried.
-     * @param y the y coordinate of the point to be queried.
-     * @param type an #AtspiCoordType indicating the coordinate system in which       the values should be returned.
-     */
-    get_offset_at_point(x: number, y: number, type: CoordType): number
-    /**
-     * Gets the bounding box for text within a range in an  #AtspiText object.
-     * The returned values are meaningful only if the Text has both
-     * STATE_VISIBLE and STATE_SHOWING.
-     * @param start_offset a #gint indicating the offset of the first text character for        whom boundary information is requested.
-     * @param end_offset a #gint indicating the offset of the text character        after the last character for whom boundary information is requested.
-     * @param type an #AtspiCoordType indicating the coordinate system to use        for the returned values.
-     */
-    get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect
-    /**
-     * Gets the bounds of the `selection_num-th` active text selection for an
-     *         #AtspiText object.
-     * @param selection_num a #gint indicating which selection to query.
-     */
-    get_selection(selection_num: number): Range
-    /**
-     * Gets a portion of the text exposed through an #AtspiText according to a given `offset`
-     * and a specific `granularity,` along with the start and end offsets defining the
-     * boundaries of such a portion of text.
-     * 
-     * If `granularity` is ATSPI_TEXT_GRANULARITY_CHAR the character at the
-     * offset is returned.
-     * 
-     * If `granularity` is ATSPI_TEXT_GRANULARITY_WORD the returned string
-     * is from the word start at or before the offset to the word start after
-     * the offset.
-     * 
-     * The returned string will contain the word at the offset if the offset
-     * is inside a word and will contain the word before the offset if the
-     * offset is not inside a word.
-     * 
-     * If `granularity` is ATSPI_TEXT_GRANULARITY_SENTENCE the returned string
-     * is from the sentence start at or before the offset to the sentence
-     * start after the offset.
-     * 
-     * The returned string will contain the sentence at the offset if the offset
-     * is inside a sentence and will contain the sentence before the offset
-     * if the offset is not inside a sentence.
-     * 
-     * If `granularity` is ATSPI_TEXT_GRANULARITY_LINE the returned string
-     * is from the line start at or before the offset to the line
-     * start after the offset.
-     * 
-     * If `granularity` is ATSPI_TEXT_GRANULARITY_PARAGRAPH the returned string
-     * is from the start of the paragraph at or before the offset to the start
-     * of the following paragraph after the offset.
-     * @param offset position
-     * @param granularity An #AtspiTextGranularity
-     */
-    get_string_at_offset(offset: number, granularity: TextGranularity): TextRange
-    /**
-     * Gets a range of text from an #AtspiText object.  The number of bytes
-     *          in the returned string may exceed either end_offset or start_offset, since
-     *          UTF-8 is a variable-width encoding.
-     * @param start_offset a #gint indicating the start of the desired text range.
-     * @param end_offset a #gint indicating the first character past the desired range.
-     */
-    get_text(start_offset: number, end_offset: number): string
-    /**
-     * Gets delimited text from an #AtspiText object which follows a given
-     *          text offset.
-     * @param offset a #gint indicating the offset from which the delimiter        search is based.
-     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
-     */
-    get_text_after_offset(offset: number, type: TextBoundaryType): TextRange
-    /**
-     * Gets delimited text from an #AtspiText object which includes a given
-     *          text offset.
-     * @param offset a #gint indicating the offset from which the delimiter        search is based.
-     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
-     */
-    get_text_at_offset(offset: number, type: TextBoundaryType): TextRange
-    /**
-     * Gets delimited text from an #AtspiText object which precedes a given
-     *          text offset.
-     * @param offset a #gint indicating the offset from which the delimiter        search is based.
-     * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
-     */
-    get_text_before_offset(offset: number, type: TextBoundaryType): TextRange
-    /**
-     * De-selects a text selection.
-     * @param selection_num a #gint indicating which text selection to remove.
-     */
-    remove_selection(selection_num: number): boolean
-    /**
-     * Scrolls whatever container of the #AtspiText text range so it becomes
-     * visible on the screen.
-     * @param start_offset a #gint indicating the start of the desired text range.
-     * @param end_offset a #gint indicating the first character past the desired range.
-     * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
-     */
-    scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean
-    /**
-     * Scrolls whatever container of the #AtspiText text range so it becomes
-     * visible on the screen at a given position.
-     * @param start_offset a #gint indicating the start of the desired text range.
-     * @param end_offset a #gint indicating the first character past the desired range.
-     * @param coords a #AtspiCoordType indicating whether the coordinates are relative to          the screen, to the window, or to the parent object.
-     * @param x the x coordinate of the point to reach
-     * @param y the y coordinate of the point to reach
-     */
-    scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean
-    /**
-     * Moves the text caret to a given position.
-     * @param new_offset the offset to which the text caret is to be moved.
-     */
-    set_caret_offset(new_offset: number): boolean
-    /**
-     * Changes the bounds of an existing #AtspiText text selection.
-     * @param selection_num a zero-offset index indicating which text selection to modify.
-     * @param start_offset a #gint indicating the new starting offset for the selection.
-     * @param end_offset a #gint indicating the desired new offset of the first character             after the selection.
-     */
-    set_selection(selection_num: number, start_offset: number, end_offset: number): boolean
-    /* Methods of Atspi-2.0.Atspi.Value */
-    /**
-     * Gets the current value for an #AtspiValue.
-     */
-    get_current_value(): number
-    /**
-     * Gets the maximum allowed value for an #AtspiValue.
-     */
-    get_maximum_value(): number
-    /**
-     * Gets the minimum increment by which an #AtspiValue can be adjusted.
-     */
-    get_minimum_increment(): number
-    /**
-     * Gets the minimum allowed value for an #AtspiValue.
-     */
-    get_minimum_value(): number
-    /**
-     * Sets the current value of an #AtspiValue.
-     * @param new_value a #gdouble value which is the desired new value of the object.
-     */
-    set_current_value(new_value: number): boolean
-    /* Virtual methods of Atspi-2.0.Atspi.Accessible */
+
+    // Conflicting methods
+
+    get_position(...args: any[]): any
+
+    // Own virtual methods of Atspi-2.0.Atspi.Accessible
+
     vfunc_mode_changed(enabled: boolean): void
     vfunc_region_changed(current_offset: number, last_offset: number): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Atspi-2.0.Atspi.Accessible */
-    /**
-     * The signal "mode-changed" is emitted by a screen reader to indicate
-     * that its mode has changed. This signal supports the following details:
-     * focus-tracking
-     * flat-review
-     * mouse-review
-     * say-all
-     * caret-tracking
-     * @param arg1 a boolean specifying whether the mode is being toggled on or off.
-     * @param why an optional string explaining why the mode changed.
-     */
-    connect(sigName: "mode-changed", callback: (($obj: Accessible, arg1: number, why: string) => void)): number
-    connect_after(sigName: "mode-changed", callback: (($obj: Accessible, arg1: number, why: string) => void)): number
-    emit(sigName: "mode-changed", arg1: number, why: string): void
-    /**
-     * The signal "region-changed" is emitted by a screen reader to indicate
-     * that it is now reading or tracking a new object, or, a new piece of
-     * text within an object. This allows a magnifier to gain the information
-     * needed to highlight the object that the screen reader is reading.
-     * @param arg1 an integer specifying the current offset of the text being read,        if the object is textual.
-     * @param arg2 an integer specifying the ending offset of the text being read,        if the object is textual.
-     */
-    connect(sigName: "region-changed", callback: (($obj: Accessible, arg1: number, arg2: number) => void)): number
-    connect_after(sigName: "region-changed", callback: (($obj: Accessible, arg1: number, arg2: number) => void)): number
-    emit(sigName: "region-changed", arg1: number, arg2: number): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Accessible, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Atspi-2.0.Atspi.Accessible
+
+    connect(sigName: "mode-changed", callback: Accessible_ModeChangedSignalCallback): number
+    connect_after(sigName: "mode-changed", callback: Accessible_ModeChangedSignalCallback): number
+    emit(sigName: "mode-changed", arg1: number, why: string, ...args: any[]): void
+    connect(sigName: "region-changed", callback: Accessible_RegionChangedSignalCallback): number
+    connect_after(sigName: "region-changed", callback: Accessible_RegionChangedSignalCallback): number
+    emit(sigName: "region-changed", arg1: number, arg2: number, ...args: any[]): void
+
+    // Class property signals of Atspi-2.0.Atspi.Accessible
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Accessible_ConstructProps)
-    _init (config?: Accessible_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class Accessible extends Object {
+
+    // Own properties of Atspi-2.0.Atspi.Accessible
+
+    static name: string
+    static $gtype: GObject.GType<Accessible>
+
+    // Constructors of Atspi-2.0.Atspi.Accessible
+
+    constructor(config?: Accessible_ConstructProps) 
+    _init(config?: Accessible_ConstructProps): void
+}
+
 interface Application_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Application {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Application, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Application, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface Application {
+
+    // Own fields of Atspi-2.0.Atspi.Application
+
+    parent: GObject.Object
+    hash: GLib.HashTable
+    bus_name: string
+    bus: DBus.Connection
+    root: object
+    cache: Cache
+    toolkit_name: string
+    toolkit_version: string
+    atspi_version: string
+    time_added: object
+
+    // Class property signals of Atspi-2.0.Atspi.Application
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Application_ConstructProps)
-    _init (config?: Application_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class Application extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Application
+
+    static name: string
+    static $gtype: GObject.GType<Application>
+
+    // Constructors of Atspi-2.0.Atspi.Application
+
+    constructor(config?: Application_ConstructProps) 
+    _init(config?: Application_ConstructProps): void
+}
+
 interface Device_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Device {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.Device */
+
+interface Device {
+
+    // Own fields of Atspi-2.0.Atspi.Device
+
+    parent: GObject.Object
+
+    // Owm methods of Atspi-2.0.Atspi.Device
+
     add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number
     /**
      * Add a callback that will receive a notification whenever a key is
@@ -4610,325 +3573,14 @@ class Device {
      * @param keycode the keycode to unmap.
      */
     unmap_modifier(keycode: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Atspi-2.0.Atspi.Device */
+
+    // Own virtual methods of Atspi-2.0.Atspi.Device
+
     vfunc_add_key_grab(kd: KeyDefinition): void
     /**
      * Returns the locked modifiers (ie, num lock, caps lock) associated with this
      * keyboard.
+     * @virtual 
      */
     vfunc_get_locked_modifiers(): number
     /**
@@ -4936,6 +3588,7 @@ class Device {
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
+     * @virtual 
      * @param keycode the keycode to map.
      */
     vfunc_get_modifier(keycode: number): number
@@ -4943,6 +3596,7 @@ class Device {
      * Attempts to grab the entire keyboard. This should only be done
      * temporarily, as it may conflict with other applications that also want to
      * grab the keyboard.
+     * @virtual 
      */
     vfunc_grab_keyboard(): boolean
     /**
@@ -4954,585 +3608,120 @@ class Device {
      * have yet been mapped using this device, then it will look for a modifier
      * that is not currently being used. If no unused modifier can be found,
      * then it will use the first modifier by default.
+     * @virtual 
      * @param keycode the keycode to map.
      */
     vfunc_map_modifier(keycode: number): number
     /**
      * Removes the key grab specified by `id`.
+     * @virtual 
      * @param id the identifier of the grab to be removed.
      */
     vfunc_remove_key_grab(id: number): void
     /**
      * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
+     * @virtual 
      */
     vfunc_ungrab_keyboard(): void
     /**
      * Removes a mapped modifier from the given keycode.
+     * @virtual 
      * @param keycode the keycode to unmap.
      */
     vfunc_unmap_modifier(keycode: number): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Device, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Atspi-2.0.Atspi.Device
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Device_ConstructProps)
-    _init (config?: Device_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Device
-    static $gtype: GObject.Type
 }
+
+class Device extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Device
+
+    static name: string
+    static $gtype: GObject.GType<Device>
+
+    // Constructors of Atspi-2.0.Atspi.Device
+
+    constructor(config?: Device_ConstructProps) 
+    /**
+     * Creates a new #AtspiDevice with a specified callback function.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #AtspiDevice with a specified callback function.
+     * @constructor 
+     */
+    static new(): Device
+    _init(config?: Device_ConstructProps): void
+}
+
 interface DeviceLegacy_ConstructProps extends Device_ConstructProps {
 }
-class DeviceLegacy {
-    /* Fields of Atspi-2.0.Atspi.Device */
-    parent: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.Device */
-    add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number
-    /**
-     * Add a callback that will receive a notification whenever a key is
-     * pressed or released.
-     */
-    add_key_watcher(): void
-    get_grab_by_id(id: number): KeyDefinition
-    /**
-     * Returns the locked modifiers (ie, num lock, caps lock) associated with this
-     * keyboard.
-     */
-    get_locked_modifiers(): number
-    /**
-     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
-     * mapping. This function should be used when the intention is to query a
-     * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-     * rather than to add key grabs.
-     * @param keycode the keycode to map.
-     */
-    get_modifier(keycode: number): number
-    /**
-     * Attempts to grab the entire keyboard. This should only be done
-     * temporarily, as it may conflict with other applications that also want to
-     * grab the keyboard.
-     */
-    grab_keyboard(): boolean
-    /**
-     * Maps the specified key code to a modifier so that it can be used in
-     * conjunction with other keys to create a key grab. If the given keycode is
-     * already mapped, then this function will return the modifier that is
-     * currently mapped to the keycode, without doing anything else. Otherwise,
-     * it will use the last modifier that AT-SPI used to map a key. If no keys
-     * have yet been mapped using this device, then it will look for a modifier
-     * that is not currently being used. If no unused modifier can be found,
-     * then it will use the first modifier by default.
-     * @param keycode the keycode to map.
-     */
-    map_modifier(keycode: number): number
-    notify_key(pressed: boolean, keycode: number, keysym: number, state: number, text: string): boolean
-    /**
-     * Removes the key grab specified by `id`.
-     * @param id the identifier of the grab to be removed.
-     */
-    remove_key_grab(id: number): void
-    /**
-     * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
-     */
-    ungrab_keyboard(): void
-    /**
-     * Removes a mapped modifier from the given keycode.
-     * @param keycode the keycode to unmap.
-     */
-    unmap_modifier(keycode: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Atspi-2.0.Atspi.Device */
-    vfunc_add_key_grab(kd: KeyDefinition): void
-    /**
-     * Returns the locked modifiers (ie, num lock, caps lock) associated with this
-     * keyboard.
-     */
-    vfunc_get_locked_modifiers(): number
-    /**
-     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
-     * mapping. This function should be used when the intention is to query a
-     * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-     * rather than to add key grabs.
-     * @param keycode the keycode to map.
-     */
-    vfunc_get_modifier(keycode: number): number
-    /**
-     * Attempts to grab the entire keyboard. This should only be done
-     * temporarily, as it may conflict with other applications that also want to
-     * grab the keyboard.
-     */
-    vfunc_grab_keyboard(): boolean
-    /**
-     * Maps the specified key code to a modifier so that it can be used in
-     * conjunction with other keys to create a key grab. If the given keycode is
-     * already mapped, then this function will return the modifier that is
-     * currently mapped to the keycode, without doing anything else. Otherwise,
-     * it will use the last modifier that AT-SPI used to map a key. If no keys
-     * have yet been mapped using this device, then it will look for a modifier
-     * that is not currently being used. If no unused modifier can be found,
-     * then it will use the first modifier by default.
-     * @param keycode the keycode to map.
-     */
-    vfunc_map_modifier(keycode: number): number
-    /**
-     * Removes the key grab specified by `id`.
-     * @param id the identifier of the grab to be removed.
-     */
-    vfunc_remove_key_grab(id: number): void
-    /**
-     * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
-     */
-    vfunc_ungrab_keyboard(): void
-    /**
-     * Removes a mapped modifier from the given keycode.
-     * @param keycode the keycode to unmap.
-     */
-    vfunc_unmap_modifier(keycode: number): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DeviceLegacy, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DeviceLegacy, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface DeviceLegacy {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceLegacy
+
+    parent: Device
+
+    // Class property signals of Atspi-2.0.Atspi.DeviceLegacy
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: DeviceLegacy_ConstructProps)
-    _init (config?: DeviceLegacy_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): DeviceLegacy
-    /* Function overloads */
-    static new(): DeviceLegacy
-    static $gtype: GObject.Type
 }
+
+class DeviceLegacy extends Device {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceLegacy
+
+    static name: string
+    static $gtype: GObject.GType<DeviceLegacy>
+
+    // Constructors of Atspi-2.0.Atspi.DeviceLegacy
+
+    constructor(config?: DeviceLegacy_ConstructProps) 
+    /**
+     * Creates a new #AtspiDeviceLegacy.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #AtspiDeviceLegacy.
+     * @constructor 
+     */
+    static new(): DeviceLegacy
+
+    // Overloads of new
+
+    /**
+     * Creates a new #AtspiDevice with a specified callback function.
+     * @constructor 
+     */
+    static new(): Device
+    _init(config?: DeviceLegacy_ConstructProps): void
+}
+
 interface DeviceListener_ConstructProps extends GObject.Object_ConstructProps {
 }
-class DeviceListener {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.DeviceListener */
+
+interface DeviceListener {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceListener
+
+    parent: GObject.Object
+    id: number
+    callbacks: object[]
+
+    // Owm methods of Atspi-2.0.Atspi.DeviceListener
+
     /**
      * Adds an in-process callback function to an existing #AtspiDeviceListener.
      * @param callback an #AtspiDeviceListenerCB function pointer.
@@ -5544,884 +3733,106 @@ class DeviceListener {
      * @param callback an #AtspiDeviceListenerCB function pointer.
      */
     remove_callback(callback: DeviceListenerCB): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Atspi-2.0.Atspi.DeviceListener */
+
+    // Own virtual methods of Atspi-2.0.Atspi.DeviceListener
+
     vfunc_device_event(event: DeviceEvent): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DeviceListener, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DeviceListener, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Atspi-2.0.Atspi.DeviceListener
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: DeviceListener_ConstructProps)
-    _init (config?: DeviceListener_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(callback: DeviceListenerCB): DeviceListener
-    static $gtype: GObject.Type
 }
+
+class DeviceListener extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceListener
+
+    static name: string
+    static $gtype: GObject.GType<DeviceListener>
+
+    // Constructors of Atspi-2.0.Atspi.DeviceListener
+
+    constructor(config?: DeviceListener_ConstructProps) 
+    /**
+     * Creates a new #AtspiDeviceListener with a specified callback function.
+     * @constructor 
+     * @param callback an #AtspiDeviceListenerCB callback function,            or NULL.
+     */
+    constructor(callback: DeviceListenerCB) 
+    /**
+     * Creates a new #AtspiDeviceListener with a specified callback function.
+     * @constructor 
+     * @param callback an #AtspiDeviceListenerCB callback function,            or NULL.
+     */
+    static new(callback: DeviceListenerCB): DeviceListener
+    _init(config?: DeviceListener_ConstructProps): void
+}
+
 interface DeviceX11_ConstructProps extends Device_ConstructProps {
 }
-class DeviceX11 {
-    /* Fields of Atspi-2.0.Atspi.Device */
-    parent: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.Device */
-    add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number
-    /**
-     * Add a callback that will receive a notification whenever a key is
-     * pressed or released.
-     */
-    add_key_watcher(): void
-    get_grab_by_id(id: number): KeyDefinition
-    /**
-     * Returns the locked modifiers (ie, num lock, caps lock) associated with this
-     * keyboard.
-     */
-    get_locked_modifiers(): number
-    /**
-     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
-     * mapping. This function should be used when the intention is to query a
-     * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-     * rather than to add key grabs.
-     * @param keycode the keycode to map.
-     */
-    get_modifier(keycode: number): number
-    /**
-     * Attempts to grab the entire keyboard. This should only be done
-     * temporarily, as it may conflict with other applications that also want to
-     * grab the keyboard.
-     */
-    grab_keyboard(): boolean
-    /**
-     * Maps the specified key code to a modifier so that it can be used in
-     * conjunction with other keys to create a key grab. If the given keycode is
-     * already mapped, then this function will return the modifier that is
-     * currently mapped to the keycode, without doing anything else. Otherwise,
-     * it will use the last modifier that AT-SPI used to map a key. If no keys
-     * have yet been mapped using this device, then it will look for a modifier
-     * that is not currently being used. If no unused modifier can be found,
-     * then it will use the first modifier by default.
-     * @param keycode the keycode to map.
-     */
-    map_modifier(keycode: number): number
-    notify_key(pressed: boolean, keycode: number, keysym: number, state: number, text: string): boolean
-    /**
-     * Removes the key grab specified by `id`.
-     * @param id the identifier of the grab to be removed.
-     */
-    remove_key_grab(id: number): void
-    /**
-     * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
-     */
-    ungrab_keyboard(): void
-    /**
-     * Removes a mapped modifier from the given keycode.
-     * @param keycode the keycode to unmap.
-     */
-    unmap_modifier(keycode: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Atspi-2.0.Atspi.Device */
-    vfunc_add_key_grab(kd: KeyDefinition): void
-    /**
-     * Returns the locked modifiers (ie, num lock, caps lock) associated with this
-     * keyboard.
-     */
-    vfunc_get_locked_modifiers(): number
-    /**
-     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
-     * mapping. This function should be used when the intention is to query a
-     * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-     * rather than to add key grabs.
-     * @param keycode the keycode to map.
-     */
-    vfunc_get_modifier(keycode: number): number
-    /**
-     * Attempts to grab the entire keyboard. This should only be done
-     * temporarily, as it may conflict with other applications that also want to
-     * grab the keyboard.
-     */
-    vfunc_grab_keyboard(): boolean
-    /**
-     * Maps the specified key code to a modifier so that it can be used in
-     * conjunction with other keys to create a key grab. If the given keycode is
-     * already mapped, then this function will return the modifier that is
-     * currently mapped to the keycode, without doing anything else. Otherwise,
-     * it will use the last modifier that AT-SPI used to map a key. If no keys
-     * have yet been mapped using this device, then it will look for a modifier
-     * that is not currently being used. If no unused modifier can be found,
-     * then it will use the first modifier by default.
-     * @param keycode the keycode to map.
-     */
-    vfunc_map_modifier(keycode: number): number
-    /**
-     * Removes the key grab specified by `id`.
-     * @param id the identifier of the grab to be removed.
-     */
-    vfunc_remove_key_grab(id: number): void
-    /**
-     * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
-     */
-    vfunc_ungrab_keyboard(): void
-    /**
-     * Removes a mapped modifier from the given keycode.
-     * @param keycode the keycode to unmap.
-     */
-    vfunc_unmap_modifier(keycode: number): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DeviceX11, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DeviceX11, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface DeviceX11 {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceX11
+
+    parent: Device
+
+    // Class property signals of Atspi-2.0.Atspi.DeviceX11
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: DeviceX11_ConstructProps)
-    _init (config?: DeviceX11_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): DeviceX11
-    /* Function overloads */
-    static new(): DeviceX11
-    static $gtype: GObject.Type
 }
+
+class DeviceX11 extends Device {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceX11
+
+    static name: string
+    static $gtype: GObject.GType<DeviceX11>
+
+    // Constructors of Atspi-2.0.Atspi.DeviceX11
+
+    constructor(config?: DeviceX11_ConstructProps) 
+    /**
+     * Creates a new #AtspiDeviceX11.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #AtspiDeviceX11.
+     * @constructor 
+     */
+    static new(): DeviceX11
+
+    // Overloads of new
+
+    /**
+     * Creates a new #AtspiDevice with a specified callback function.
+     * @constructor 
+     */
+    static new(): Device
+    _init(config?: DeviceX11_ConstructProps): void
+}
+
 interface EventListener_ConstructProps extends GObject.Object_ConstructProps {
 }
-class EventListener {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.EventListener */
+
+interface EventListener {
+
+    // Own fields of Atspi-2.0.Atspi.EventListener
+
+    parent: GObject.Object
+    callback: EventListenerCB
+    user_data: object
+    cb_destroyed: GLib.DestroyNotify
+
+    // Owm methods of Atspi-2.0.Atspi.EventListener
+
     /**
      * Deregisters an #AtspiEventListener from the registry, for a specific
      *             event type.
@@ -6519,385 +3930,39 @@ class EventListener {
      * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format and legal event types.
      * @param properties a list of             properties that should be sent along with the event. The             properties are valued for the duration of the event callback.k             TODO: Document.
      */
-    register_full(event_type: string, properties?: string[] | null): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: EventListener, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: EventListener, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    register_full(event_type: string, properties: string[] | null): boolean
+
+    // Class property signals of Atspi-2.0.Atspi.EventListener
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class EventListener extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.EventListener
+
     static name: string
-    constructor (config?: EventListener_ConstructProps)
-    _init (config?: EventListener_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<EventListener>
+
+    // Constructors of Atspi-2.0.Atspi.EventListener
+
+    constructor(config?: EventListener_ConstructProps) 
+    /**
+     * Creates a new #AtspiEventListener associated with a specified `callback`.
+     * @constructor 
+     * @param callback An #AtspiEventListenerCB to be called when an event is fired.
+     */
+    constructor(callback: EventListenerCB) 
+    /**
+     * Creates a new #AtspiEventListener associated with a specified `callback`.
+     * @constructor 
+     * @param callback An #AtspiEventListenerCB to be called when an event is fired.
+     */
     static new(callback: EventListenerCB): EventListener
+    _init(config?: EventListener_ConstructProps): void
     /**
      * Deregisters an #AtspiEventListenerCB from the registry, for a specific
      *             event type.
@@ -6912,18 +3977,19 @@ class EventListener {
      */
     static register_from_callback(callback: EventListenerCB, event_type: string): boolean
     static register_from_callback_full(event_type: string, properties: string[]): boolean
-    static $gtype: GObject.Type
 }
+
 interface Hyperlink_ConstructProps extends Object_ConstructProps {
 }
-class Hyperlink {
-    /* Fields of Atspi-2.0.Atspi.Object */
-    parent: GObject.Object
-    app: Application
-    path: string
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.Hyperlink */
+
+interface Hyperlink {
+
+    // Own fields of Atspi-2.0.Atspi.Hyperlink
+
+    parent: Object
+
+    // Owm methods of Atspi-2.0.Atspi.Hyperlink
+
     /**
      * Gets the ending character offset of the text range associated with
      *       an #AtspiHyperlink, in its originating #AtspiHypertext.
@@ -6964,1158 +4030,142 @@ class Hyperlink {
      *          originating hypertext object.
      */
     is_valid(): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Hyperlink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Hyperlink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Atspi-2.0.Atspi.Hyperlink
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Hyperlink_ConstructProps)
-    _init (config?: Hyperlink_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class Hyperlink extends Object {
+
+    // Own properties of Atspi-2.0.Atspi.Hyperlink
+
+    static name: string
+    static $gtype: GObject.GType<Hyperlink>
+
+    // Constructors of Atspi-2.0.Atspi.Hyperlink
+
+    constructor(config?: Hyperlink_ConstructProps) 
+    _init(config?: Hyperlink_ConstructProps): void
+}
+
 interface MatchRule_ConstructProps extends GObject.Object_ConstructProps {
 }
-class MatchRule {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: MatchRule, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: MatchRule, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface MatchRule {
+
+    // Own fields of Atspi-2.0.Atspi.MatchRule
+
+    parent: GObject.Object
+    states: StateSet
+    statematchtype: CollectionMatchType
+    attributes: GLib.HashTable
+    attributematchtype: CollectionMatchType
+    interfaces: object[]
+    interfacematchtype: CollectionMatchType
+    roles: number[]
+    rolematchtype: CollectionMatchType
+    invert: boolean
+
+    // Class property signals of Atspi-2.0.Atspi.MatchRule
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: MatchRule_ConstructProps)
-    _init (config?: MatchRule_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(states: StateSet, statematchtype: CollectionMatchType, attributes: GLib.HashTable, attributematchtype: CollectionMatchType, roles: Role[], rolematchtype: CollectionMatchType, interfaces: string[], interfacematchtype: CollectionMatchType, invert: boolean): MatchRule
-    static $gtype: GObject.Type
 }
+
+class MatchRule extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.MatchRule
+
+    static name: string
+    static $gtype: GObject.GType<MatchRule>
+
+    // Constructors of Atspi-2.0.Atspi.MatchRule
+
+    constructor(config?: MatchRule_ConstructProps) 
+    /**
+     * Creates a new #AtspiMatchRule with specified `states,` `attributes,`
+     * `interfaces,` and `roles`.
+     * @constructor 
+     * @param states An #AtspiStateSet specifying the states to match or NULL if none.
+     * @param statematchtype An #AtspiCollectionMatchType specifying how to interpret          `states`.
+     * @param attributes A #GHashTable specifying          attributes to match. To specify multiple attribute values,          separate each value with a :: If an attribute value contains a :,          then it can be escaped by preceding it with a \. A backslash can          likewise be escaped by inserting a double backslash.
+     * @param attributematchtype An #AtspiCollectionMatchType specifying how to          interpret `attributes`.
+     * @param roles A #GArray of roles to match, or NULL if          not applicable.
+     * @param rolematchtype An #AtspiCollectionMatchType specifying how to          interpret `roles`.
+     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by their DBus names (org.a11y.Atspi.Accessible,          org.a11y.Atspi.Component, etc).
+     * @param interfacematchtype An #AtspiCollectionMatchType specifying how to          interpret `interfaces`.
+     * @param invert if #TRUE, the match rule should be denied (inverted); if #FALSE,          it should not. For example, if the match rule defines that a match is          an object of ROLE_HEADING which has STATE_FOCUSABLE and a click action,          inverting it would match all objects that are not of ROLE_HEADING,          focusable and clickable at the same time.
+     */
+    constructor(states: StateSet, statematchtype: CollectionMatchType, attributes: GLib.HashTable, attributematchtype: CollectionMatchType, roles: Role[], rolematchtype: CollectionMatchType, interfaces: string[], interfacematchtype: CollectionMatchType, invert: boolean) 
+    /**
+     * Creates a new #AtspiMatchRule with specified `states,` `attributes,`
+     * `interfaces,` and `roles`.
+     * @constructor 
+     * @param states An #AtspiStateSet specifying the states to match or NULL if none.
+     * @param statematchtype An #AtspiCollectionMatchType specifying how to interpret          `states`.
+     * @param attributes A #GHashTable specifying          attributes to match. To specify multiple attribute values,          separate each value with a :: If an attribute value contains a :,          then it can be escaped by preceding it with a \. A backslash can          likewise be escaped by inserting a double backslash.
+     * @param attributematchtype An #AtspiCollectionMatchType specifying how to          interpret `attributes`.
+     * @param roles A #GArray of roles to match, or NULL if          not applicable.
+     * @param rolematchtype An #AtspiCollectionMatchType specifying how to          interpret `roles`.
+     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by their DBus names (org.a11y.Atspi.Accessible,          org.a11y.Atspi.Component, etc).
+     * @param interfacematchtype An #AtspiCollectionMatchType specifying how to          interpret `interfaces`.
+     * @param invert if #TRUE, the match rule should be denied (inverted); if #FALSE,          it should not. For example, if the match rule defines that a match is          an object of ROLE_HEADING which has STATE_FOCUSABLE and a click action,          inverting it would match all objects that are not of ROLE_HEADING,          focusable and clickable at the same time.
+     */
+    static new(states: StateSet, statematchtype: CollectionMatchType, attributes: GLib.HashTable, attributematchtype: CollectionMatchType, roles: Role[], rolematchtype: CollectionMatchType, interfaces: string[], interfacematchtype: CollectionMatchType, invert: boolean): MatchRule
+    _init(config?: MatchRule_ConstructProps): void
+}
+
 interface Object_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Object {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Object, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface Object {
+
+    // Own fields of Atspi-2.0.Atspi.Object
+
+    parent: GObject.Object
+    app: Application
+    path: string
+
+    // Class property signals of Atspi-2.0.Atspi.Object
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Object_ConstructProps)
-    _init (config?: Object_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class Object extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Object
+
+    static name: string
+    static $gtype: GObject.GType<Object>
+
+    // Constructors of Atspi-2.0.Atspi.Object
+
+    constructor(config?: Object_ConstructProps) 
+    _init(config?: Object_ConstructProps): void
+}
+
 interface Relation_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Relation {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.Relation */
+
+interface Relation {
+
+    // Own fields of Atspi-2.0.Atspi.Relation
+
+    parent: GObject.Object
+    relation_type: RelationType
+    targets: object[]
+
+    // Owm methods of Atspi-2.0.Atspi.Relation
+
     /**
      * Gets the number of objects which this relationship has as its
      *       target objects (the subject is the #AtspiAccessible from which this
@@ -8131,390 +4181,41 @@ class Relation {
      * @param i a (zero-index) #gint indicating which (of possibly several) target is requested.
      */
     get_target(i: number): Accessible
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Relation, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Relation, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Atspi-2.0.Atspi.Relation
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Relation_ConstructProps)
-    _init (config?: Relation_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class Relation extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.Relation
+
+    static name: string
+    static $gtype: GObject.GType<Relation>
+
+    // Constructors of Atspi-2.0.Atspi.Relation
+
+    constructor(config?: Relation_ConstructProps) 
+    _init(config?: Relation_ConstructProps): void
+}
+
 interface StateSet_ConstructProps extends GObject.Object_ConstructProps {
 }
-class StateSet {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Atspi-2.0.Atspi.StateSet */
+
+interface StateSet {
+
+    // Own fields of Atspi-2.0.Atspi.StateSet
+
+    parent: GObject.Object
+    accessible: object
+    states: number
+
+    // Owm methods of Atspi-2.0.Atspi.StateSet
+
     /**
      * Adds a particular #AtspiState to an #AtspiStateSet (i.e. sets the
      *       given state to #TRUE in the stateset).
@@ -8560,403 +4261,84 @@ class StateSet {
      * @param enabled if #TRUE, `name` should be enabled in the `set` in question;          otherwise, it should be disabled.
      */
     set_by_name(name: string, enabled: boolean): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: StateSet, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: StateSet, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Atspi-2.0.Atspi.StateSet
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: StateSet_ConstructProps)
-    _init (config?: StateSet_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(states: StateType[]): StateSet
-    static $gtype: GObject.Type
 }
-abstract class AccessibleClass {
-    /* Fields of Atspi-2.0.Atspi.AccessibleClass */
+
+class StateSet extends GObject.Object {
+
+    // Own properties of Atspi-2.0.Atspi.StateSet
+
+    static name: string
+    static $gtype: GObject.GType<StateSet>
+
+    // Constructors of Atspi-2.0.Atspi.StateSet
+
+    constructor(config?: StateSet_ConstructProps) 
+    /**
+     * Generates an #AtspiStateSet with the given `states`.
+     * @constructor 
+     * @param states An array of states with which the          method initializes the state set.
+     */
+    constructor(states: StateType[]) 
+    /**
+     * Generates an #AtspiStateSet with the given `states`.
+     * @constructor 
+     * @param states An array of states with which the          method initializes the state set.
+     */
+    static new(states: StateType[]): StateSet
+    _init(config?: StateSet_ConstructProps): void
+}
+
+interface AccessibleClass {
+
+    // Own fields of Atspi-2.0.Atspi.AccessibleClass
+
     parent_class: ObjectClass
     region_changed: (accessible: Accessible, current_offset: number, last_offset: number) => void
     mode_changed: (accessible: Accessible, enabled: boolean) => void
+}
+
+abstract class AccessibleClass {
+
+    // Own properties of Atspi-2.0.Atspi.AccessibleClass
+
     static name: string
 }
+
+interface AccessiblePrivate {
+}
+
 class AccessiblePrivate {
+
+    // Own properties of Atspi-2.0.Atspi.AccessiblePrivate
+
     static name: string
 }
-abstract class ApplicationClass {
-    /* Fields of Atspi-2.0.Atspi.ApplicationClass */
+
+interface ApplicationClass {
+
+    // Own fields of Atspi-2.0.Atspi.ApplicationClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class ApplicationClass {
+
+    // Own properties of Atspi-2.0.Atspi.ApplicationClass
+
     static name: string
 }
-abstract class DeviceClass {
-    /* Fields of Atspi-2.0.Atspi.DeviceClass */
+
+interface DeviceClass {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceClass
+
     parent_class: GObject.ObjectClass
     add_key_grab: (device: Device, kd: KeyDefinition) => void
     remove_key_grab: (device: Device, id: number) => void
@@ -8966,10 +4348,19 @@ abstract class DeviceClass {
     grab_keyboard: (device: Device) => boolean
     ungrab_keyboard: (device: Device) => void
     get_locked_modifiers: (device: Device) => number
+}
+
+abstract class DeviceClass {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceClass
+
     static name: string
 }
-class DeviceEvent {
-    /* Fields of Atspi-2.0.Atspi.DeviceEvent */
+
+interface DeviceEvent {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceEvent
+
     type: EventType
     id: number
     hw_code: number
@@ -8977,34 +4368,78 @@ class DeviceEvent {
     timestamp: number
     event_string: string
     is_text: boolean
+}
+
+class DeviceEvent {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceEvent
+
     static name: string
 }
-abstract class DeviceLegacyClass {
-    /* Fields of Atspi-2.0.Atspi.DeviceLegacyClass */
+
+interface DeviceLegacyClass {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceLegacyClass
+
     parent_class: DeviceClass
+}
+
+abstract class DeviceLegacyClass {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceLegacyClass
+
     static name: string
 }
-abstract class DeviceListenerClass {
-    /* Fields of Atspi-2.0.Atspi.DeviceListenerClass */
+
+interface DeviceListenerClass {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceListenerClass
+
     parent_class: GObject.ObjectClass
     device_event: (listener: DeviceListener, event: DeviceEvent) => boolean
+}
+
+abstract class DeviceListenerClass {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceListenerClass
+
     static name: string
 }
-abstract class DeviceX11Class {
-    /* Fields of Atspi-2.0.Atspi.DeviceX11Class */
+
+interface DeviceX11Class {
+
+    // Own fields of Atspi-2.0.Atspi.DeviceX11Class
+
     parent_class: DeviceClass
+}
+
+abstract class DeviceX11Class {
+
+    // Own properties of Atspi-2.0.Atspi.DeviceX11Class
+
     static name: string
 }
-class Event {
-    /* Fields of Atspi-2.0.Atspi.Event */
+
+interface Event {
+
+    // Own fields of Atspi-2.0.Atspi.Event
+
     type: string
     source: Accessible
     detail1: number
     detail2: number
     any_data: any
     sender: Accessible
+}
+
+class Event {
+
+    // Own properties of Atspi-2.0.Atspi.Event
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Atspi-2.0.Atspi.Event
+
     /**
      * Starts/enters the main event loop for the AT-SPI services.
      * 
@@ -9018,95 +4453,224 @@ class Event {
      */
     static quit(): void
 }
-abstract class EventListenerClass {
-    /* Fields of Atspi-2.0.Atspi.EventListenerClass */
+
+interface EventListenerClass {
+
+    // Own fields of Atspi-2.0.Atspi.EventListenerClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class EventListenerClass {
+
+    // Own properties of Atspi-2.0.Atspi.EventListenerClass
+
     static name: string
 }
-class EventListenerMode {
-    /* Fields of Atspi-2.0.Atspi.EventListenerMode */
+
+interface EventListenerMode {
+
+    // Own fields of Atspi-2.0.Atspi.EventListenerMode
+
     synchronous: boolean
     preemptive: boolean
     global: boolean
+}
+
+class EventListenerMode {
+
+    // Own properties of Atspi-2.0.Atspi.EventListenerMode
+
     static name: string
 }
-abstract class HyperlinkClass {
-    /* Fields of Atspi-2.0.Atspi.HyperlinkClass */
+
+interface HyperlinkClass {
+
+    // Own fields of Atspi-2.0.Atspi.HyperlinkClass
+
     parent_class: ObjectClass
+}
+
+abstract class HyperlinkClass {
+
+    // Own properties of Atspi-2.0.Atspi.HyperlinkClass
+
     static name: string
 }
-class KeyDefinition {
-    /* Fields of Atspi-2.0.Atspi.KeyDefinition */
+
+interface KeyDefinition {
+
+    // Own fields of Atspi-2.0.Atspi.KeyDefinition
+
     keycode: number
     keysym: number
     keystring: string
     modifiers: number
+}
+
+class KeyDefinition {
+
+    // Own properties of Atspi-2.0.Atspi.KeyDefinition
+
     static name: string
 }
-class KeySet {
-    /* Fields of Atspi-2.0.Atspi.KeySet */
+
+interface KeySet {
+
+    // Own fields of Atspi-2.0.Atspi.KeySet
+
     keysyms: number
     keycodes: number
     keystrings: string
     len: number
+}
+
+/**
+ * Structure containing identifying information about a set of keycode or
+ *        keysyms.
+ * @record 
+ */
+class KeySet {
+
+    // Own properties of Atspi-2.0.Atspi.KeySet
+
     static name: string
 }
+
+interface MatchRuleClass {
+
+    // Own fields of Atspi-2.0.Atspi.MatchRuleClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class MatchRuleClass {
-    /* Fields of Atspi-2.0.Atspi.MatchRuleClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Atspi-2.0.Atspi.MatchRuleClass
+
     static name: string
 }
+
+interface ObjectClass {
+
+    // Own fields of Atspi-2.0.Atspi.ObjectClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class ObjectClass {
-    /* Fields of Atspi-2.0.Atspi.ObjectClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Atspi-2.0.Atspi.ObjectClass
+
     static name: string
 }
-class Point {
-    /* Fields of Atspi-2.0.Atspi.Point */
+
+interface Point {
+
+    // Own fields of Atspi-2.0.Atspi.Point
+
     x: number
     y: number
-    /* Methods of Atspi-2.0.Atspi.Point */
+
+    // Owm methods of Atspi-2.0.Atspi.Point
+
     copy(): Point
+}
+
+class Point {
+
+    // Own properties of Atspi-2.0.Atspi.Point
+
     static name: string
 }
-class Range {
-    /* Fields of Atspi-2.0.Atspi.Range */
+
+interface Range {
+
+    // Own fields of Atspi-2.0.Atspi.Range
+
     start_offset: number
     end_offset: number
-    /* Methods of Atspi-2.0.Atspi.Range */
+
+    // Owm methods of Atspi-2.0.Atspi.Range
+
     /**
      * Gets a copy of an #AtspiRange object.
      */
     copy(): Range
+}
+
+class Range {
+
+    // Own properties of Atspi-2.0.Atspi.Range
+
     static name: string
 }
-class Rect {
-    /* Fields of Atspi-2.0.Atspi.Rect */
+
+interface Rect {
+
+    // Own fields of Atspi-2.0.Atspi.Rect
+
     x: number
     y: number
     width: number
     height: number
-    /* Methods of Atspi-2.0.Atspi.Rect */
+
+    // Owm methods of Atspi-2.0.Atspi.Rect
+
     copy(): Rect
+}
+
+class Rect {
+
+    // Own properties of Atspi-2.0.Atspi.Rect
+
     static name: string
 }
+
+interface RelationClass {
+
+    // Own fields of Atspi-2.0.Atspi.RelationClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class RelationClass {
-    /* Fields of Atspi-2.0.Atspi.RelationClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Atspi-2.0.Atspi.RelationClass
+
     static name: string
 }
+
+interface StateSetClass {
+
+    // Own fields of Atspi-2.0.Atspi.StateSetClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class StateSetClass {
-    /* Fields of Atspi-2.0.Atspi.StateSetClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Atspi-2.0.Atspi.StateSetClass
+
     static name: string
 }
-class TextRange {
-    /* Fields of Atspi-2.0.Atspi.TextRange */
+
+interface TextRange {
+
+    // Own fields of Atspi-2.0.Atspi.TextRange
+
     start_offset: number
     end_offset: number
     content: string
+}
+
+class TextRange {
+
+    // Own properties of Atspi-2.0.Atspi.TextRange
+
     static name: string
 }
+
     type ControllerEventMask = number
     type DeviceEventMask = number
     type KeyEventMask = number

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -24,6 +26,7 @@ export namespace GdkPixdata {
  * and `GDK_PIXDATA_DUMP_MACROS` are mutually exclusive, as are
  * `GDK_PIXBUF_DUMP_GTYPES` and `GDK_PIXBUF_DUMP_CTYPES`. The remaining
  * elements are optional flags that can be freely added.
+ * @bitfield 
  */
 enum PixdataDumpType {
     /**
@@ -73,6 +76,7 @@ enum PixdataDumpType {
  * An enumeration containing three sets of flags for a #GdkPixdata struct:
  * one for the used colorspace, one for the width of the samples and one
  * for the encoding of the pixel data.
+ * @bitfield 
  */
 enum PixdataType {
     /**
@@ -121,42 +125,62 @@ const PIXBUF_MAGIC_NUMBER: number
  * The length of a #GdkPixdata structure without the `pixel_data` pointer.
  */
 const PIXDATA_HEADER_LENGTH: number
+/**
+ * Converts a `GdkPixdata` to a `GdkPixbuf`.
+ * 
+ * If `copy_pixels` is `TRUE` or if the pixel data is run-length-encoded,
+ * the pixel data is copied into newly-allocated memory; otherwise it is
+ * reused.
+ * @param pixdata a #GdkPixdata to convert into a `GdkPixbuf`.
+ * @param copy_pixels whether to copy raw pixel data; run-length encoded   pixel data is always copied.
+ */
 function pixbuf_from_pixdata(pixdata: Pixdata, copy_pixels: boolean): GdkPixbuf.Pixbuf
-class Pixdata {
-    /* Fields of GdkPixdata-2.0.GdkPixdata.Pixdata */
+interface Pixdata {
+
+    // Own fields of GdkPixdata-2.0.GdkPixdata.Pixdata
+
     /**
      * magic number. A valid `GdkPixdata` structure must have
      *   `GDK_PIXBUF_MAGIC_NUMBER` here
+     * @field 
      */
     magic: number
     /**
      * less than 1 to disable length checks, otherwise
      *   `GDK_PIXDATA_HEADER_LENGTH` plus the length of `pixel_data`
+     * @field 
      */
     length: number
     /**
      * information about colorspace, sample width and
      *   encoding, in a `GdkPixdataType`
+     * @field 
      */
     pixdata_type: number
     /**
      * Distance in bytes between rows
+     * @field 
      */
     rowstride: number
     /**
      * Width of the image in pixels
+     * @field 
      */
     width: number
     /**
      * Height of the image in pixels
+     * @field 
      */
     height: number
     /**
      * `width` x `height`
      *   pixels, encoded according to `pixdata_type` and `rowstride`
+     * @field 
      */
     pixel_data: Uint8Array
-    /* Methods of GdkPixdata-2.0.GdkPixdata.Pixdata */
+
+    // Owm methods of GdkPixdata-2.0.GdkPixdata.Pixdata
+
     /**
      * Deserializes (reconstruct) a #GdkPixdata structure from a byte stream.
      * 
@@ -189,7 +213,26 @@ class Pixdata {
      * @param dump_type the kind of C source to be generated
      */
     to_csource(name: string, dump_type: PixdataDumpType): GLib.String
+}
+
+/**
+ * A pixel buffer suitable for serialization and streaming.
+ * 
+ * Using `GdkPixdata`, images can be compiled into an application,
+ * making it unnecessary to refer to external image files at runtime.
+ * 
+ * `GdkPixbuf` includes a utility named `gdk-pixbuf-csource`, which
+ * can be used to convert image files into `GdkPixdata` structures suitable
+ * for inclusion in C sources. To convert the `GdkPixdata` structures back
+ * into a `GdkPixbuf`, use `gdk_pixbuf_from_pixdata()`.
+ * @record 
+ */
+class Pixdata {
+
+    // Own properties of GdkPixdata-2.0.GdkPixdata.Pixdata
+
     static name: string
 }
+
 }
 export default GdkPixdata;

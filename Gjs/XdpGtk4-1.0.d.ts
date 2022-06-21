@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,6 +28,10 @@ import type GModule from './GModule-2.0';
 
 export namespace XdpGtk4 {
 
+/**
+ * Creates a new [struct`Parent]` from `window`.
+ * @param window a [class`Gtk`.Window]
+ */
 function parent_new_gtk(window: Gtk.Window): Xdp.Parent
 }
 export default XdpGtk4;

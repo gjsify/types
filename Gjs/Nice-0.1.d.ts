@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -344,6 +346,7 @@ enum RelayType {
  * These are options that can be passed to nice_agent_new_full(). They set
  * various properties on the agent. Not including them sets the property to
  * the other value.
+ * @bitfield 
  */
 enum AgentOption {
     /**
@@ -395,29 +398,86 @@ const CANDIDATE_MAX_LOCAL_ADDRESSES: number
  * The maximum number of turns servers.
  */
 const CANDIDATE_MAX_TURN_SERVERS: number
+/**
+ * Useful for debugging functions, just returns a static string with the
+ * candidate transport.
+ * @param transport a #NiceCandidateTransport
+ */
 function candidate_transport_to_string(transport: CandidateTransport): string
+/**
+ * Useful for debugging functions, just returns a static string with the
+ * candidate type.
+ * @param type a #NiceCandidateType
+ */
 function candidate_type_to_string(type: CandidateType): string
+/**
+ * Returns a string representation of the state, generally to use in debug
+ * messages.
+ * @param state a #NiceComponentState
+ */
 function component_state_to_string(state: ComponentState): string
+/**
+ * Disables libnice debug output to the terminal
+ * @param with_stun Also disable stun debugging messages
+ */
 function debug_disable(with_stun: boolean): void
+/**
+ * Enables libnice debug output to the terminal. Note that the
+ * `G_MESSAGES_DEBUG` and `NICE_DEBUG` environment variables must be set to the
+ * set of logging domains to print, in order for any output to be printed. Set
+ * them to `all` to print all debugging messages, or any of the following
+ * domains:
+ * - `libnice-stun`
+ * - `libnice-tests`
+ * - `libnice-socket`
+ * - `libnice`
+ * - `libnice-pseudotcp`
+ * - `libnice-pseudotcp-verbose`
+ * @param with_stun Also enable STUN debugging messages
+ */
 function debug_enable(with_stun: boolean): void
+/**
+ * Retrieves the IP address of an interface by its name. If this fails, %NULL
+ * is returned.
+ * @param interface_name name of local interface
+ */
 function interfaces_get_ip_for_interface(interface_name: string): string | null
+/**
+ * Get the list of local interfaces
+ */
 function interfaces_get_local_interfaces(): string[]
+/**
+ * Get a list of local ipv4 interface addresses
+ * @param include_loopback Include any loopback devices
+ */
 function interfaces_get_local_ips(include_loopback: boolean): string[]
+/**
+ * Sets the debug level to enable/disable normal/verbose debug messages.
+ * @param level The level of debug to set
+ */
 function pseudo_tcp_set_debug_level(level: PseudoTcpDebugLevel): void
 /**
  * Callback function when data is received on a component
+ * @callback 
+ * @param agent The #NiceAgent Object
+ * @param stream_id The id of the stream
+ * @param component_id The id of the component of the stream        which received the data
+ * @param len The length of the data
+ * @param buf The buffer containing the data received
  */
 interface AgentRecvFunc {
     (agent: Agent, stream_id: number, component_id: number, len: number, buf: string): void
 }
 interface Agent_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Nice-0.1.Nice.Agent */
+
+    // Own constructor properties of Nice-0.1.Nice.Agent
+
     /**
      * The Nice agent can work in various compatibility modes depending on
      * what the application/peer needs.
      * <para> See also: #NiceCompatibility</para>
      */
-    compatibility?: number
+    compatibility?: number | null
     /**
      * Whether to perform periodic consent freshness checks as specified in
      * RFC 7675.  When %TRUE, the agent will periodically send binding requests
@@ -428,21 +488,21 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * Setting this property to %TRUE implies that 'keepalive-conncheck' should
      * be %TRUE as well.
      */
-    consent_freshness?: boolean
+    consent_freshness?: boolean | null
     /**
      * Whether the agent has the controlling role. This property should
      * be modified before gathering candidates, any modification occuring
      * later will be hold until ICE is restarted.
      */
-    controlling_mode?: boolean
+    controlling_mode?: boolean | null
     /**
      * Force all traffic to go through a relay for added privacy, this
      * allows hiding the local IP address. When this is enabled, so
      * local candidates are available before relay servers have been set
      * with nice_agent_set_relay_info().
      */
-    force_relay?: boolean
-    full_mode?: boolean
+    force_relay?: boolean | null
+    full_mode?: boolean | null
     /**
      * Whether the agent should use ICE-TCP when gathering candidates.
      * If the option is disabled, no TCP candidates will be generated. If the
@@ -464,14 +524,14 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      *    </para>
      * </note>
      */
-    ice_tcp?: boolean
+    ice_tcp?: boolean | null
     /**
      * Whether to perform Trickle ICE as per draft-ietf-ice-trickle-ice-21.
      * When %TRUE, the agent will postpone changing a component state to
      * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
      * has been called with the ID of the component's stream.
      */
-    ice_trickle?: boolean
+    ice_trickle?: boolean | null
     /**
      * Whether the agent should use ICE-UDP when gathering candidates.
      * If the option is disabled, no UDP candidates will be generated. If the
@@ -486,7 +546,7 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * If #NiceAgent:ice-tcp is set to %FALSE, then this property cannot be set
      * to %FALSE as well.
      */
-    ice_udp?: boolean
+    ice_udp?: boolean | null
     /**
      * A final timeout in msec, launched when the agent becomes idle,
      * before stopping its activity.
@@ -516,7 +576,7 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * slow down the behaviour of the agent when the peer agent works
      * in a timely manner.
      */
-    idle_timeout?: number
+    idle_timeout?: number | null
     /**
      * Use binding requests as keepalives instead of binding
      * indications. This means that the keepalives may time out which
@@ -530,38 +590,38 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * 
      * This is always enabled if the 'consent-freshness' property is %TRUE
      */
-    keepalive_conncheck?: boolean
+    keepalive_conncheck?: boolean | null
     /**
      * A GLib main context is needed for all timeouts used by libnice.
      * This is a property being set by the nice_agent_new() call.
      */
-    main_context?: object
-    max_connectivity_checks?: number
+    main_context?: object | null
+    max_connectivity_checks?: number | null
     /**
      * The proxy server IP used to bypass a proxy firewall
      */
-    proxy_ip?: string
+    proxy_ip?: string | null
     /**
      * The password used to authenticate with the proxy
      */
-    proxy_password?: string
+    proxy_password?: string | null
     /**
      * The proxy server port used to bypass a proxy firewall
      */
-    proxy_port?: number
+    proxy_port?: number | null
     /**
      * The type of proxy set in the proxy-ip property
      */
-    proxy_type?: number
+    proxy_type?: number | null
     /**
      * The username used to authenticate with the proxy
      */
-    proxy_username?: string
+    proxy_username?: string | null
     /**
      * Whether the agent is providing a reliable transport of messages (through
      * ICE-TCP or PseudoTCP over ICE-UDP)
      */
-    reliable?: boolean
+    reliable?: boolean | null
     /**
      * The initial timeout (msecs) of the STUN binding requests
      * used in the gathering stage, to find our local candidates.
@@ -572,7 +632,7 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * divided by two instead (RFC 5389 indicates that a customisable
      * multiplier 'Rm' to 'RTO' should be used).
      */
-    stun_initial_timeout?: number
+    stun_initial_timeout?: number | null
     /**
      * The maximum number of retransmissions of the STUN binding requests
      * used in the gathering stage, to find our local candidates, and used
@@ -584,15 +644,15 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * to the READY state, and on the time needed to complete the GATHERING
      * state.
      */
-    stun_max_retransmissions?: number
-    stun_pacing_timer?: number
+    stun_max_retransmissions?: number | null
+    stun_pacing_timer?: number | null
     /**
      * The initial timeout of the STUN binding requests used
      * for a reliable timer.
      */
-    stun_reliable_timeout?: number
-    stun_server?: string
-    stun_server_port?: number
+    stun_reliable_timeout?: number | null
+    stun_server?: string | null
+    stun_server_port?: number | null
     /**
      * Support RENOMINATION STUN attribute proposed here:
      * https://tools.ietf.org/html/draft-thatcher-ice-renomination-00 As
@@ -600,20 +660,100 @@ interface Agent_ConstructProps extends GObject.Object_ConstructProps {
      * candidate's address, corresponding candidates pair gets
      * selected. This is specific to Google Chrome/libWebRTC.
      */
-    support_renomination?: boolean
+    support_renomination?: boolean | null
     /**
      * Whether the agent should use UPnP to open a port in the router and
      * get the external IP
      */
-    upnp?: boolean
+    upnp?: boolean | null
     /**
      * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
      * finish before signaling the #NiceAgent::candidate-gathering-done signal
      */
-    upnp_timeout?: number
+    upnp_timeout?: number | null
 }
-class Agent {
-    /* Properties of Nice-0.1.Nice.Agent */
+
+/**
+ * Signal callback interface for `candidate-gathering-done`
+ */
+interface Agent_CandidateGatheringDoneSignalCallback {
+    ($obj: Agent, stream_id: number): void
+}
+
+/**
+ * Signal callback interface for `component-state-changed`
+ */
+interface Agent_ComponentStateChangedSignalCallback {
+    ($obj: Agent, stream_id: number, component_id: number, state: number): void
+}
+
+/**
+ * Signal callback interface for `initial-binding-request-received`
+ */
+interface Agent_InitialBindingRequestReceivedSignalCallback {
+    ($obj: Agent, stream_id: number): void
+}
+
+/**
+ * Signal callback interface for `new-candidate`
+ */
+interface Agent_NewCandidateSignalCallback {
+    ($obj: Agent, stream_id: number, component_id: number, foundation: string): void
+}
+
+/**
+ * Signal callback interface for `new-candidate-full`
+ */
+interface Agent_NewCandidateFullSignalCallback {
+    ($obj: Agent, candidate: Candidate): void
+}
+
+/**
+ * Signal callback interface for `new-remote-candidate`
+ */
+interface Agent_NewRemoteCandidateSignalCallback {
+    ($obj: Agent, stream_id: number, component_id: number, foundation: string): void
+}
+
+/**
+ * Signal callback interface for `new-remote-candidate-full`
+ */
+interface Agent_NewRemoteCandidateFullSignalCallback {
+    ($obj: Agent, candidate: Candidate): void
+}
+
+/**
+ * Signal callback interface for `new-selected-pair`
+ */
+interface Agent_NewSelectedPairSignalCallback {
+    ($obj: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string): void
+}
+
+/**
+ * Signal callback interface for `new-selected-pair-full`
+ */
+interface Agent_NewSelectedPairFullSignalCallback {
+    ($obj: Agent, stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate): void
+}
+
+/**
+ * Signal callback interface for `reliable-transport-writable`
+ */
+interface Agent_ReliableTransportWritableSignalCallback {
+    ($obj: Agent, stream_id: number, component_id: number): void
+}
+
+/**
+ * Signal callback interface for `streams-removed`
+ */
+interface Agent_StreamsRemovedSignalCallback {
+    ($obj: Agent, stream_ids: number[]): void
+}
+
+interface Agent {
+
+    // Own properties of Nice-0.1.Nice.Agent
+
     /**
      * This property defines whether receive/send over a TCP or pseudo-TCP, in
      * reliable mode, are considered as packetized or as bytestream.
@@ -835,9 +975,9 @@ class Agent {
      * finish before signaling the #NiceAgent::candidate-gathering-done signal
      */
     upnp_timeout: number
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Nice-0.1.Nice.Agent */
+
+    // Owm methods of Nice-0.1.Nice.Agent
+
     /**
      * Add a local address from which to derive local host candidates for
      * candidate gathering.
@@ -867,7 +1007,7 @@ class Agent {
      * ports aren't left behind on TURN server but properly removed.
      * @param callback A callback that will be called when the closing is  complete
      */
-    close_async(callback?: Gio.AsyncReadyCallback | null): void
+    close_async(callback: Gio.AsyncReadyCallback | null): void
     /**
      * Notifies the agent that consent to receive has been revoked.  This will
      * cause the component to fail with 403 'Forbidden' all incoming STUN binding
@@ -1146,7 +1286,7 @@ class Agent {
      * @param component_id the ID of the component to receive on
      * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
-    recv(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buf */ Uint8Array ]
+    recv(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [ /* returnType */ number, /* buf */ Uint8Array ]
     /**
      * Block on receiving data from the given stream/component combination on
      * `agent,` returning only once exactly `n_messages` messages have been received
@@ -1185,7 +1325,7 @@ class Agent {
      * @param component_id the ID of the component to receive on
      * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
-    recv_messages(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* messages */ InputMessage[] ]
+    recv_messages(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [ /* returnType */ number, /* messages */ InputMessage[] ]
     /**
      * Try to receive data from the given stream/component combination on `agent,`
      * without blocking. If receiving data would block, -1 is returned and
@@ -1216,14 +1356,14 @@ class Agent {
      * @param component_id the ID of the component to receive on
      * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
-    recv_messages_nonblocking(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* messages */ InputMessage[] ]
+    recv_messages_nonblocking(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [ /* returnType */ number, /* messages */ InputMessage[] ]
     /**
      * A single-message version of nice_agent_recv_messages_nonblocking().
      * @param stream_id the ID of the stream to receive on
      * @param component_id the ID of the component to receive on
      * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
      */
-    recv_nonblocking(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buf */ Uint8Array ]
+    recv_nonblocking(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [ /* returnType */ number, /* buf */ Uint8Array ]
     /**
      * Remove and free a previously created data stream from `agent`. If any I/O
      * streams have been created using nice_agent_get_io_stream(), they should be
@@ -1320,7 +1460,7 @@ class Agent {
      * @param messages array of messages to send, of at least `n_messages` entries in length
      * @param cancellable a #GCancellable to cancel the operation from another thread, or %NULL
      */
-    send_messages_nonblocking(stream_id: number, component_id: number, messages: OutputMessage[], cancellable?: Gio.Cancellable | null): number
+    send_messages_nonblocking(stream_id: number, component_id: number, messages: OutputMessage[], cancellable: Gio.Cancellable | null): number
     /**
      * Sets the local credentials for stream `stream_id`.
      * 
@@ -1476,583 +1616,201 @@ class Agent {
      * @param tos The ToS to set
      */
     set_stream_tos(stream_id: number, tos: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Nice-0.1.Nice.Agent */
-    /**
-     * This signal is fired whenever a stream has finished gathering its
-     * candidates after a call to nice_agent_gather_candidates()
-     * @param stream_id The ID of the stream
-     */
-    connect(sigName: "candidate-gathering-done", callback: (($obj: Agent, stream_id: number) => void)): number
-    connect_after(sigName: "candidate-gathering-done", callback: (($obj: Agent, stream_id: number) => void)): number
-    emit(sigName: "candidate-gathering-done", stream_id: number): void
-    /**
-     * This signal is fired whenever a component’s state changes. There are many
-     * valid state transitions.
-     * 
-     * ![State transition diagram](states.png)
-     * @param stream_id The ID of the stream
-     * @param component_id The ID of the component
-     * @param state The new #NiceComponentState of the component
-     */
-    connect(sigName: "component-state-changed", callback: (($obj: Agent, stream_id: number, component_id: number, state: number) => void)): number
-    connect_after(sigName: "component-state-changed", callback: (($obj: Agent, stream_id: number, component_id: number, state: number) => void)): number
-    emit(sigName: "component-state-changed", stream_id: number, component_id: number, state: number): void
-    /**
-     * This signal is fired when we received our first binding request from
-     * the peer.
-     * @param stream_id The ID of the stream
-     */
-    connect(sigName: "initial-binding-request-received", callback: (($obj: Agent, stream_id: number) => void)): number
-    connect_after(sigName: "initial-binding-request-received", callback: (($obj: Agent, stream_id: number) => void)): number
-    emit(sigName: "initial-binding-request-received", stream_id: number): void
-    /**
-     * This signal is fired when the agent discovers a new local candidate.
-     * When this signal is emitted, a matching #NiceAgent::new-candidate-full is
-     * also emitted with the candidate.
-     * 
-     * See also: #NiceAgent::candidate-gathering-done,
-     * #NiceAgent::new-candidate-full
-     * @param stream_id The ID of the stream
-     * @param component_id The ID of the component
-     * @param foundation The foundation of the new candidate
-     */
-    connect(sigName: "new-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
-    connect_after(sigName: "new-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
-    emit(sigName: "new-candidate", stream_id: number, component_id: number, foundation: string): void
-    /**
-     * This signal is fired when the agent discovers a new local candidate.
-     * When this signal is emitted, a matching #NiceAgent::new-candidate is
-     * also emitted with the candidate's foundation.
-     * 
-     * See also: #NiceAgent::candidate-gathering-done,
-     * #NiceAgent::new-candidate
-     * @param candidate The new #NiceCandidate
-     */
-    connect(sigName: "new-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
-    connect_after(sigName: "new-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
-    emit(sigName: "new-candidate-full", candidate: Candidate): void
-    /**
-     * This signal is fired when the agent discovers a new remote
-     * candidate.  This can happen with peer reflexive candidates.  When
-     * this signal is emitted, a matching
-     * #NiceAgent::new-remote-candidate-full is also emitted with the
-     * candidate.
-     * 
-     * See also: #NiceAgent::new-remote-candidate-full
-     * @param stream_id The ID of the stream
-     * @param component_id The ID of the component
-     * @param foundation The foundation of the new candidate
-     */
-    connect(sigName: "new-remote-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
-    connect_after(sigName: "new-remote-candidate", callback: (($obj: Agent, stream_id: number, component_id: number, foundation: string) => void)): number
-    emit(sigName: "new-remote-candidate", stream_id: number, component_id: number, foundation: string): void
-    /**
-     * This signal is fired when the agent discovers a new remote candidate.
-     * This can happen with peer reflexive candidates.
-     * When this signal is emitted, a matching #NiceAgent::new-remote-candidate is
-     * also emitted with the candidate's foundation.
-     * 
-     * See also: #NiceAgent::new-remote-candidate
-     * @param candidate The new #NiceCandidate
-     */
-    connect(sigName: "new-remote-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
-    connect_after(sigName: "new-remote-candidate-full", callback: (($obj: Agent, candidate: Candidate) => void)): number
-    emit(sigName: "new-remote-candidate-full", candidate: Candidate): void
-    /**
-     * This signal is fired once a candidate pair is selected for data
-     * transfer for a stream's component This is emitted along with
-     * #NiceAgent::new-selected-pair-full which has the whole candidate,
-     * the Foundation of a Candidate is not a unique identifier.
-     * 
-     * See also: #NiceAgent::new-selected-pair-full
-     * @param stream_id The ID of the stream
-     * @param component_id The ID of the component
-     * @param lfoundation The local foundation of the selected candidate pair
-     * @param rfoundation The remote foundation of the selected candidate pair
-     */
-    connect(sigName: "new-selected-pair", callback: (($obj: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string) => void)): number
-    connect_after(sigName: "new-selected-pair", callback: (($obj: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string) => void)): number
-    emit(sigName: "new-selected-pair", stream_id: number, component_id: number, lfoundation: string, rfoundation: string): void
-    /**
-     * This signal is fired once a candidate pair is selected for data
-     * transfer for a stream's component. This is emitted along with
-     * #NiceAgent::new-selected-pair.
-     * 
-     * See also: #NiceAgent::new-selected-pair
-     * @param stream_id The ID of the stream
-     * @param component_id The ID of the component
-     * @param lcandidate The local #NiceCandidate of the selected candidate pair
-     * @param rcandidate The remote #NiceCandidate of the selected candidate pair
-     */
-    connect(sigName: "new-selected-pair-full", callback: (($obj: Agent, stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate) => void)): number
-    connect_after(sigName: "new-selected-pair-full", callback: (($obj: Agent, stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate) => void)): number
-    emit(sigName: "new-selected-pair-full", stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate): void
-    /**
-     * This signal is fired on the reliable #NiceAgent when the underlying reliable
-     * transport becomes writable.
-     * This signal is only emitted when the nice_agent_send() function returns less
-     * bytes than requested to send (or -1) and once when the connection
-     * is established.
-     * @param stream_id The ID of the stream
-     * @param component_id The ID of the component
-     */
-    connect(sigName: "reliable-transport-writable", callback: (($obj: Agent, stream_id: number, component_id: number) => void)): number
-    connect_after(sigName: "reliable-transport-writable", callback: (($obj: Agent, stream_id: number, component_id: number) => void)): number
-    emit(sigName: "reliable-transport-writable", stream_id: number, component_id: number): void
-    /**
-     * This signal is fired whenever one or more streams are removed from the
-     * `agent`.
-     * @param stream_ids An array of unsigned integer stream IDs, ending with a 0 ID
-     */
-    connect(sigName: "streams-removed", callback: (($obj: Agent, stream_ids: number[]) => void)): number
-    connect_after(sigName: "streams-removed", callback: (($obj: Agent, stream_ids: number[]) => void)): number
-    emit(sigName: "streams-removed", stream_ids: number[]): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Nice-0.1.Nice.Agent
+
+    connect(sigName: "candidate-gathering-done", callback: Agent_CandidateGatheringDoneSignalCallback): number
+    connect_after(sigName: "candidate-gathering-done", callback: Agent_CandidateGatheringDoneSignalCallback): number
+    emit(sigName: "candidate-gathering-done", stream_id: number, ...args: any[]): void
+    connect(sigName: "component-state-changed", callback: Agent_ComponentStateChangedSignalCallback): number
+    connect_after(sigName: "component-state-changed", callback: Agent_ComponentStateChangedSignalCallback): number
+    emit(sigName: "component-state-changed", stream_id: number, component_id: number, state: number, ...args: any[]): void
+    connect(sigName: "initial-binding-request-received", callback: Agent_InitialBindingRequestReceivedSignalCallback): number
+    connect_after(sigName: "initial-binding-request-received", callback: Agent_InitialBindingRequestReceivedSignalCallback): number
+    emit(sigName: "initial-binding-request-received", stream_id: number, ...args: any[]): void
+    connect(sigName: "new-candidate", callback: Agent_NewCandidateSignalCallback): number
+    connect_after(sigName: "new-candidate", callback: Agent_NewCandidateSignalCallback): number
+    emit(sigName: "new-candidate", stream_id: number, component_id: number, foundation: string, ...args: any[]): void
+    connect(sigName: "new-candidate-full", callback: Agent_NewCandidateFullSignalCallback): number
+    connect_after(sigName: "new-candidate-full", callback: Agent_NewCandidateFullSignalCallback): number
+    emit(sigName: "new-candidate-full", candidate: Candidate, ...args: any[]): void
+    connect(sigName: "new-remote-candidate", callback: Agent_NewRemoteCandidateSignalCallback): number
+    connect_after(sigName: "new-remote-candidate", callback: Agent_NewRemoteCandidateSignalCallback): number
+    emit(sigName: "new-remote-candidate", stream_id: number, component_id: number, foundation: string, ...args: any[]): void
+    connect(sigName: "new-remote-candidate-full", callback: Agent_NewRemoteCandidateFullSignalCallback): number
+    connect_after(sigName: "new-remote-candidate-full", callback: Agent_NewRemoteCandidateFullSignalCallback): number
+    emit(sigName: "new-remote-candidate-full", candidate: Candidate, ...args: any[]): void
+    connect(sigName: "new-selected-pair", callback: Agent_NewSelectedPairSignalCallback): number
+    connect_after(sigName: "new-selected-pair", callback: Agent_NewSelectedPairSignalCallback): number
+    emit(sigName: "new-selected-pair", stream_id: number, component_id: number, lfoundation: string, rfoundation: string, ...args: any[]): void
+    connect(sigName: "new-selected-pair-full", callback: Agent_NewSelectedPairFullSignalCallback): number
+    connect_after(sigName: "new-selected-pair-full", callback: Agent_NewSelectedPairFullSignalCallback): number
+    emit(sigName: "new-selected-pair-full", stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate, ...args: any[]): void
+    connect(sigName: "reliable-transport-writable", callback: Agent_ReliableTransportWritableSignalCallback): number
+    connect_after(sigName: "reliable-transport-writable", callback: Agent_ReliableTransportWritableSignalCallback): number
+    emit(sigName: "reliable-transport-writable", stream_id: number, component_id: number, ...args: any[]): void
+    connect(sigName: "streams-removed", callback: Agent_StreamsRemovedSignalCallback): number
+    connect_after(sigName: "streams-removed", callback: Agent_StreamsRemovedSignalCallback): number
+    emit(sigName: "streams-removed", stream_ids: number[], ...args: any[]): void
+
+    // Class property signals of Nice-0.1.Nice.Agent
+
     connect(sigName: "notify::bytestream-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::bytestream-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::bytestream-tcp", ...args: any[]): void
     connect(sigName: "notify::compatibility", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::compatibility", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::compatibility", ...args: any[]): void
     connect(sigName: "notify::consent-freshness", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::consent-freshness", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::consent-freshness", ...args: any[]): void
     connect(sigName: "notify::controlling-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::controlling-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::controlling-mode", ...args: any[]): void
     connect(sigName: "notify::force-relay", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::force-relay", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::force-relay", ...args: any[]): void
     connect(sigName: "notify::full-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::full-mode", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::full-mode", ...args: any[]): void
     connect(sigName: "notify::ice-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ice-tcp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::ice-tcp", ...args: any[]): void
     connect(sigName: "notify::ice-trickle", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ice-trickle", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::ice-trickle", ...args: any[]): void
     connect(sigName: "notify::ice-udp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ice-udp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::ice-udp", ...args: any[]): void
     connect(sigName: "notify::idle-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::idle-timeout", ...args: any[]): void
     connect(sigName: "notify::keepalive-conncheck", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::keepalive-conncheck", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::keepalive-conncheck", ...args: any[]): void
     connect(sigName: "notify::main-context", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::main-context", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::main-context", ...args: any[]): void
     connect(sigName: "notify::max-connectivity-checks", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-connectivity-checks", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-connectivity-checks", ...args: any[]): void
     connect(sigName: "notify::proxy-ip", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-ip", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-ip", ...args: any[]): void
     connect(sigName: "notify::proxy-password", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-password", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-password", ...args: any[]): void
     connect(sigName: "notify::proxy-port", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-port", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-port", ...args: any[]): void
     connect(sigName: "notify::proxy-type", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-type", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-type", ...args: any[]): void
     connect(sigName: "notify::proxy-username", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-username", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-username", ...args: any[]): void
     connect(sigName: "notify::reliable", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reliable", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::reliable", ...args: any[]): void
     connect(sigName: "notify::stun-initial-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-initial-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stun-initial-timeout", ...args: any[]): void
     connect(sigName: "notify::stun-max-retransmissions", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-max-retransmissions", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stun-max-retransmissions", ...args: any[]): void
     connect(sigName: "notify::stun-pacing-timer", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-pacing-timer", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stun-pacing-timer", ...args: any[]): void
     connect(sigName: "notify::stun-reliable-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-reliable-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stun-reliable-timeout", ...args: any[]): void
     connect(sigName: "notify::stun-server", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-server", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stun-server", ...args: any[]): void
     connect(sigName: "notify::stun-server-port", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::stun-server-port", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::stun-server-port", ...args: any[]): void
     connect(sigName: "notify::support-renomination", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::support-renomination", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::support-renomination", ...args: any[]): void
     connect(sigName: "notify::upnp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upnp", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::upnp", ...args: any[]): void
     connect(sigName: "notify::upnp-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::upnp-timeout", callback: (($obj: Agent, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::upnp-timeout", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Agent_ConstructProps)
-    _init (config?: Agent_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(ctx: GLib.MainContext, compat: Compatibility): Agent
-    static new_full(ctx: GLib.MainContext, compat: Compatibility, flags: AgentOption): Agent
-    static new_reliable(ctx: GLib.MainContext, compat: Compatibility): Agent
-    static $gtype: GObject.Type
 }
+
+/**
+ * The #NiceAgent is the main GObject of the libnice library and represents
+ * the ICE agent.
+ * @class 
+ */
+class Agent extends GObject.Object {
+
+    // Own properties of Nice-0.1.Nice.Agent
+
+    static name: string
+    static $gtype: GObject.GType<Agent>
+
+    // Constructors of Nice-0.1.Nice.Agent
+
+    constructor(config?: Agent_ConstructProps) 
+    /**
+     * Create a new #NiceAgent.
+     * The returned object must be freed with g_object_unref()
+     * @constructor 
+     * @param ctx The Glib Mainloop Context to use for timers
+     * @param compat The compatibility mode of the agent
+     */
+    constructor(ctx: GLib.MainContext, compat: Compatibility) 
+    /**
+     * Create a new #NiceAgent.
+     * The returned object must be freed with g_object_unref()
+     * @constructor 
+     * @param ctx The Glib Mainloop Context to use for timers
+     * @param compat The compatibility mode of the agent
+     */
+    static new(ctx: GLib.MainContext, compat: Compatibility): Agent
+    /**
+     * Create a new #NiceAgent with parameters that must be be defined at
+     * construction time.
+     * The returned object must be freed with g_object_unref()
+     * <para> See also: #NiceNominationMode and #NiceAgentOption</para>
+     * @constructor 
+     * @param ctx The Glib Mainloop Context to use for timers
+     * @param compat The compatibility mode of the agent
+     * @param flags Flags to set the properties
+     */
+    static new_full(ctx: GLib.MainContext, compat: Compatibility, flags: AgentOption): Agent
+    /**
+     * Create a new #NiceAgent in reliable mode. If the connectivity is established
+     * through ICE-UDP, then a #PseudoTcpSocket will be transparently used to
+     * ensure reliability of the messages.
+     * The returned object must be freed with g_object_unref()
+     * <para> See also: #NiceAgent::reliable-transport-writable </para>
+     * @constructor 
+     * @param ctx The Glib Mainloop Context to use for timers
+     * @param compat The compatibility mode of the agent
+     */
+    static new_reliable(ctx: GLib.MainContext, compat: Compatibility): Agent
+    _init(config?: Agent_ConstructProps): void
+}
+
 interface PseudoTcpSocket_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Nice-0.1.Nice.PseudoTcpSocket */
-    ack_delay?: number
-    callbacks?: object
-    conversation?: number
-    no_delay?: boolean
-    rcv_buf?: number
-    snd_buf?: number
+
+    // Own constructor properties of Nice-0.1.Nice.PseudoTcpSocket
+
+    ack_delay?: number | null
+    callbacks?: object | null
+    conversation?: number | null
+    no_delay?: boolean | null
+    rcv_buf?: number | null
+    snd_buf?: number | null
     /**
      * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
      * this socket. The extension is only compatible with other libnice pseudo-TCP
@@ -2063,10 +1821,13 @@ interface PseudoTcpSocket_ConstructProps extends GObject.Object_ConstructProps {
      * 
      * Support is enabled by default.
      */
-    support_fin_ack?: boolean
+    support_fin_ack?: boolean | null
 }
-class PseudoTcpSocket {
-    /* Properties of Nice-0.1.Nice.PseudoTcpSocket */
+
+interface PseudoTcpSocket {
+
+    // Own properties of Nice-0.1.Nice.PseudoTcpSocket
+
     ack_delay: number
     callbacks: object
     readonly conversation: number
@@ -2085,9 +1846,9 @@ class PseudoTcpSocket {
      * Support is enabled by default.
      */
     readonly support_fin_ack: boolean
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Nice-0.1.Nice.PseudoTcpSocket */
+
+    // Owm methods of Nice-0.1.Nice.PseudoTcpSocket
+
     /**
      * Returns if there is space in the send buffer to send any data.
      */
@@ -2122,7 +1883,7 @@ class PseudoTcpSocket {
      * The connection will only be successful after the
      * %PseudoTcpCallbacks:PseudoTcpOpened callback is called
      */
-    connect(): boolean
+    // TODO fix conflict: connect(): boolean
     /**
      * Gets the number of bytes of data in the buffer that can be read without
      * receiving more packets from the network.
@@ -2250,409 +2011,101 @@ class PseudoTcpSocket {
      * @param how The directions of the connection to shut down.
      */
     shutdown(how: PseudoTcpShutdown): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Nice-0.1.Nice.PseudoTcpSocket
+
     connect(sigName: "notify::ack-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::ack-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::ack-delay", ...args: any[]): void
     connect(sigName: "notify::callbacks", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::callbacks", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::callbacks", ...args: any[]): void
     connect(sigName: "notify::conversation", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::conversation", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::conversation", ...args: any[]): void
     connect(sigName: "notify::no-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::no-delay", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::no-delay", ...args: any[]): void
     connect(sigName: "notify::rcv-buf", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::rcv-buf", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::rcv-buf", ...args: any[]): void
     connect(sigName: "notify::snd-buf", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::snd-buf", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::snd-buf", ...args: any[]): void
     connect(sigName: "notify::state", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::state", ...args: any[]): void
     connect(sigName: "notify::support-fin-ack", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::support-fin-ack", callback: (($obj: PseudoTcpSocket, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::support-fin-ack", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: PseudoTcpSocket_ConstructProps)
-    _init (config?: PseudoTcpSocket_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(conversation: number, callbacks: PseudoTcpCallbacks): PseudoTcpSocket
-    static $gtype: GObject.Type
 }
-class Address {
-    /* Methods of Nice-0.1.Nice.Address */
+
+/**
+ * The #PseudoTcpSocket is the GObject implementing the Pseudo TCP Socket
+ * @class 
+ */
+class PseudoTcpSocket extends GObject.Object {
+
+    // Own properties of Nice-0.1.Nice.PseudoTcpSocket
+
+    static name: string
+    static $gtype: GObject.GType<PseudoTcpSocket>
+
+    // Constructors of Nice-0.1.Nice.PseudoTcpSocket
+
+    constructor(config?: PseudoTcpSocket_ConstructProps) 
+    /**
+     * Creates a new #PseudoTcpSocket for the specified conversation
+     * 
+     *  <note>
+     *    <para>
+     *      The `callbacks` must be non-NULL, in order to get notified of packets the
+     *      socket needs to send.
+     *    </para>
+     *    <para>
+     *      If the `callbacks` structure was dynamicly allocated, it can be freed
+     *      after the call `pseudo_tcp_socket_new`
+     *    </para>
+     *  </note>
+     * @constructor 
+     * @param conversation The conversation id for the socket.
+     * @param callbacks A pointer to the #PseudoTcpCallbacks structure for getting notified of the #PseudoTcpSocket events.
+     */
+    constructor(conversation: number, callbacks: PseudoTcpCallbacks) 
+    /**
+     * Creates a new #PseudoTcpSocket for the specified conversation
+     * 
+     *  <note>
+     *    <para>
+     *      The `callbacks` must be non-NULL, in order to get notified of packets the
+     *      socket needs to send.
+     *    </para>
+     *    <para>
+     *      If the `callbacks` structure was dynamicly allocated, it can be freed
+     *      after the call `pseudo_tcp_socket_new`
+     *    </para>
+     *  </note>
+     * @constructor 
+     * @param conversation The conversation id for the socket.
+     * @param callbacks A pointer to the #PseudoTcpCallbacks structure for getting notified of the #PseudoTcpSocket events.
+     */
+    static new(conversation: number, callbacks: PseudoTcpCallbacks): PseudoTcpSocket
+    _init(config?: PseudoTcpSocket_ConstructProps): void
+}
+
+interface Address {
+
+    // Owm methods of Nice-0.1.Nice.Address
+
     /**
      * Fills the sockaddr structure `sin` with the address contained in `addr`
      * @param sin The sockaddr to fill
      */
-    copy_to_sockaddr(sin?: object | null): void
+    copy_to_sockaddr(sin: object | null): void
     /**
      * Compares two #NiceAddress structures to see if they contain the same address
      * and the same port.
@@ -2693,7 +2146,7 @@ class Address {
      * Sets an IPv4 or IPv6 address from the sockaddr structure `sin`
      * @param sin The sockaddr to set
      */
-    set_from_sockaddr(sin?: object | null): void
+    set_from_sockaddr(sin: object | null): void
     /**
      * Sets an IPv4 or IPv6 address from the string `str`
      * @param str The string to set
@@ -2733,58 +2186,92 @@ class Address {
      * @param dst The string to fill
      */
     to_string(dst: string): void
+}
+
+/**
+ * The #NiceAddress structure that represents an IPv4 or IPv6 address.
+ * @record 
+ */
+class Address {
+
+    // Own properties of Nice-0.1.Nice.Address
+
     static name: string
 }
-abstract class AgentClass {
-    /* Fields of Nice-0.1.Nice.AgentClass */
+
+interface AgentClass {
+
+    // Own fields of Nice-0.1.Nice.AgentClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class AgentClass {
+
+    // Own properties of Nice-0.1.Nice.AgentClass
+
     static name: string
 }
-class Candidate {
-    /* Fields of Nice-0.1.Nice.Candidate */
+
+interface Candidate {
+
+    // Own fields of Nice-0.1.Nice.Candidate
+
     /**
      * The type of candidate
+     * @field 
      */
     type: CandidateType
     /**
      * The transport being used for the candidate
+     * @field 
      */
     transport: CandidateTransport
     /**
      * The #NiceAddress of the candidate
+     * @field 
      */
     addr: Address
     /**
      * The #NiceAddress of the base address used by the candidate
+     * @field 
      */
     base_addr: Address
     /**
      * The priority of the candidate <emphasis> see note </emphasis>
+     * @field 
      */
     priority: number
     /**
      * The ID of the stream to which belongs the candidate
+     * @field 
      */
     stream_id: number
     /**
      * The ID of the component to which belongs the candidate
+     * @field 
      */
     component_id: number
     /**
      * The foundation of the candidate
+     * @field 
      */
     foundation: number[]
     /**
      * The candidate-specific username to use (overrides the one set
      * by nice_agent_set_local_credentials() or nice_agent_set_remote_credentials())
+     * @field 
      */
     username: string
     /**
      * The candidate-specific password to use (overrides the one set
      * by nice_agent_set_local_credentials() or nice_agent_set_remote_credentials())
+     * @field 
      */
     password: string
-    /* Methods of Nice-0.1.Nice.Candidate */
+
+    // Owm methods of Nice-0.1.Nice.Candidate
+
     /**
      * Makes a copy of a #NiceCandidate
      */
@@ -2799,10 +2286,39 @@ class Candidate {
      * Frees a #NiceCandidate
      */
     free(): void
+}
+
+/**
+ * A structure to represent an ICE candidate
+ *  <note>
+ *    <para>
+ *    The `priority` is an integer as specified in the ICE draft 19. If you are
+ *    using the MSN or the GOOGLE compatibility mode (which are based on ICE
+ *    draft 6, which uses a floating point qvalue as priority), then the `priority`
+ *    value will represent the qvalue multiplied by 1000.
+ *    </para>
+ *  </note>
+ * @record 
+ */
+class Candidate {
+
+    // Own properties of Nice-0.1.Nice.Candidate
+
     static name: string
-    static new(type: CandidateType): Candidate
-    constructor(type: CandidateType)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Nice-0.1.Nice.Candidate
+
+    /**
+     * Creates a new candidate. Must be freed with nice_candidate_free()
+     * @constructor 
+     * @param type The #NiceCandidateType of the candidate to create
+     */
+    constructor(type: CandidateType) 
+    /**
+     * Creates a new candidate. Must be freed with nice_candidate_free()
+     * @constructor 
+     * @param type The #NiceCandidateType of the candidate to create
+     */
     static new(type: CandidateType): Candidate
     /**
      * Useful for debugging functions, just returns a static string with the
@@ -2817,47 +2333,107 @@ class Candidate {
      */
     static type_to_string(type: CandidateType): string
 }
-class InputMessage {
-    /* Fields of Nice-0.1.Nice.InputMessage */
+
+interface InputMessage {
+
+    // Own fields of Nice-0.1.Nice.InputMessage
+
     /**
      * unowned array of #GInputVector buffers to
      * store data in for this message
+     * @field 
      */
     buffers: Gio.InputVector[]
     /**
      * number of #GInputVectors in `buffers,` or -1 to indicate `buffers`
      * is %NULL-terminated
+     * @field 
      */
     n_buffers: number
     /**
      * return location to store the address of the peer who
      * transmitted the message, or %NULL
+     * @field 
      */
     from: Address
     /**
      * total number of valid bytes contiguously stored in `buffers`
+     * @field 
      */
     length: number
+}
+
+/**
+ * Represents a single message received off the network. For reliable
+ * connections, this is essentially just an array of buffers (specifically,
+ * `from` can be ignored). for non-reliable connections, it represents a single
+ * packet as received from the OS.
+ * 
+ * `n_buffers` may be -1 to indicate that `buffers` is terminated by a
+ * #GInputVector with a %NULL buffer pointer.
+ * 
+ * By providing arrays of #NiceInputMessages to functions like
+ * nice_agent_recv_messages(), multiple messages may be received with a single
+ * call, which is more efficient than making multiple calls in a loop. In this
+ * manner, nice_agent_recv_messages() is analogous to recvmmsg(); and
+ * #NiceInputMessage to struct mmsghdr.
+ * @record 
+ */
+class InputMessage {
+
+    // Own properties of Nice-0.1.Nice.InputMessage
+
     static name: string
 }
-class OutputMessage {
-    /* Fields of Nice-0.1.Nice.OutputMessage */
+
+interface OutputMessage {
+
+    // Own fields of Nice-0.1.Nice.OutputMessage
+
     /**
      * unowned array of #GOutputVector buffers
      * which contain data to transmit for this message
+     * @field 
      */
     buffers: Gio.OutputVector[]
     /**
      * number of #GOutputVectors in `buffers,` or -1 to indicate `buffers`
      * is %NULL-terminated
+     * @field 
      */
     n_buffers: number
+}
+
+/**
+ * Represents a single message to transmit on the network. For
+ * reliable connections, this is essentially just an array of
+ * buffer. for non-reliable connections, it represents a single packet
+ * to send to the OS.
+ * 
+ * `n_buffers` may be -1 to indicate that `buffers` is terminated by a
+ * #GOutputVector with a %NULL buffer pointer.
+ * 
+ * By providing arrays of #NiceOutputMessages to functions like
+ * nice_agent_send_messages_nonblocking(), multiple messages may be transmitted
+ * with a single call, which is more efficient than making multiple calls in a
+ * loop. In this manner, nice_agent_send_messages_nonblocking() is analogous to
+ * sendmmsg(); and #NiceOutputMessage to struct mmsghdr.
+ * @record 
+ */
+class OutputMessage {
+
+    // Own properties of Nice-0.1.Nice.OutputMessage
+
     static name: string
 }
-class PseudoTcpCallbacks {
-    /* Fields of Nice-0.1.Nice.PseudoTcpCallbacks */
+
+interface PseudoTcpCallbacks {
+
+    // Own fields of Nice-0.1.Nice.PseudoTcpCallbacks
+
     /**
      * A user defined pointer to be passed to the callbacks
+     * @field 
      */
     user_data: object
     PseudoTcpOpened: (tcp: PseudoTcpSocket, data: object) => void
@@ -2865,10 +2441,30 @@ class PseudoTcpCallbacks {
     PseudoTcpWritable: (tcp: PseudoTcpSocket, data: object) => void
     PseudoTcpClosed: (tcp: PseudoTcpSocket, error: number, data: object) => void
     WritePacket: (tcp: PseudoTcpSocket, buffer: string, len: number, data: object) => PseudoTcpWriteResult
+}
+
+/**
+ * A structure containing callbacks functions that will be called by the
+ * #PseudoTcpSocket when some events happen.
+ * <para> See also: #PseudoTcpWriteResult </para>
+ * @record 
+ */
+class PseudoTcpCallbacks {
+
+    // Own properties of Nice-0.1.Nice.PseudoTcpCallbacks
+
     static name: string
 }
+
+interface PseudoTcpSocketClass {
+}
+
 abstract class PseudoTcpSocketClass {
+
+    // Own properties of Nice-0.1.Nice.PseudoTcpSocketClass
+
     static name: string
 }
+
 }
 export default Nice;

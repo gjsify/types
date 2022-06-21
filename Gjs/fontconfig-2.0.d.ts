@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,11 +16,25 @@ import type GObject from './GObject-2.0';
 export namespace fontconfig {
 
 function init(): void
+interface Pattern {
+}
+
 class Pattern {
+
+    // Own properties of fontconfig-2.0.fontconfig.Pattern
+
     static name: string
 }
+
+interface CharSet {
+}
+
 class CharSet {
+
+    // Own properties of fontconfig-2.0.fontconfig.CharSet
+
     static name: string
 }
+
 }
 export default fontconfig;

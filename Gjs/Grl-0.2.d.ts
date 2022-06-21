@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -221,6 +223,7 @@ enum MediaType {
 }
 /**
  * Resolution flags
+ * @bitfield 
  */
 enum ResolutionFlags {
     /**
@@ -243,6 +246,7 @@ enum ResolutionFlags {
 /**
  * Bitwise flags which reflect the kind of operations that a
  * #GrlSource supports.
+ * @bitfield 
  */
 enum SupportedOps {
     /**
@@ -293,6 +297,7 @@ enum SupportedOps {
 }
 /**
  * Type of media to allow.
+ * @bitfield 
  */
 enum TypeFilter {
     /**
@@ -318,6 +323,7 @@ enum TypeFilter {
 }
 /**
  * Flags for writing operations.
+ * @bitfield 
  */
 enum WriteFlags {
     /**
@@ -418,42 +424,185 @@ const PLUGIN_SITE: string
 const PLUGIN_VERSION: string
 const SOURCE_REMAINING_UNKNOWN: number
 function date_time_from_iso8601(date: string): GLib.DateTime
+/**
+ * Deinitializes the Grilo library.
+ * 
+ * Call this function after finalizing using Grilo, in order to free and clean
+ * up all the resources created.
+ */
 function deinit(): void
 function g_value_dup(value: any): any
 function g_value_free(value: any): void
 function g_value_hashtable_new(): GLib.HashTable
 function g_value_hashtable_new_direct(): GLib.HashTable
-function g_value_new(g_type: GObject.Type): any
-function init(argv?: string[] | null): /* argv */ string[] | null
+function g_value_new(g_type: GObject.GType): any
+/**
+ * Initializes the Grilo library
+ * @param argv list of arguments
+ */
+function init(argv: string[] | null): /* argv */ string[] | null
+/**
+ * Returns a #GOptionGroup with Grilo's argument specifications.
+ * 
+ * This function is useful if you want to integrate Grilo with other
+ * libraries that use the GOption commandline parser
+ * (see g_option_context_add_group() ).
+ */
 function init_get_option_group(): GLib.OptionGroup
+/**
+ * Configure a set of log domains. The default configuration is to display
+ * warning and error messages only for all the log domains.
+ * 
+ * The configuration string follows the following grammar:
+ * 
+ * |[
+ *   config-list: config | config ',' config-list
+ *   config: domain ':' level
+ *   domain: '*' | [a-zA-Z0-9]+
+ *   level: '*' | '-' | named-level | num-level
+ *   named-level: "none" | "error" | "warning" | "message" | "info" | "debug"
+ *   num-level: [0-5]
+ * ```
+ * 
+ * 
+ * examples:
+ * <itemizedlist>
+ *   <listitem><para>"*:*": maximum verbosity for all the log domains</para>
+ *   </listitem>
+ *   <listitem><para>"*:-": don't print any message</para></listitem>
+ *   <listitem><para>"media-source:debug,metadata-source:debug": prints debug,
+ *   info, message warning and error messages for the media-source and
+ *   metadata-source log domains</para></listitem>
+ * </itemizedlist>
+ * 
+ * <note>It's possible to override the log configuration at runtime by
+ * defining the GRL_DEBUG environment variable to a configuration string
+ * as described above</note>
+ * @param config A string describing the wanted log configuration
+ */
 function log_configure(config: string): void
-function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: Function, return_value: any, n_param_values: number, param_values: any, invocation_hint?: object | null, marshal_data?: object | null): void
+function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.TClosure, return_value: any, n_param_values: number, param_values: any, invocation_hint: object | null, marshal_data: object | null): void
+/**
+ * Retrieves the description associated with the key
+ * @param key key to look up
+ */
 function metadata_key_get_desc(key: KeyID): string
+/**
+ * Retrieves the name associated with the key
+ * @param key key to look up
+ */
 function metadata_key_get_name(key: KeyID): string
-function metadata_key_get_type(key: KeyID): GObject.Type
+/**
+ * Retrieves the expected type for values associated with this key
+ * @param key key to look up
+ */
+function metadata_key_get_type(key: KeyID): GObject.GType
 function metadata_key_setup_system_keys(registry: Registry): void
+/**
+ * Goes though all available media sources until it finds one capable of
+ * constructing a GrlMedia object representing the media resource exposed
+ * by `uri`.
+ * 
+ * This method is asynchronous.
+ * @param uri A URI that can be used to identify a media resource
+ * @param keys List of metadata keys we want to obtain.
+ * @param options options wanted for that operation
+ * @param callback the user defined callback
+ */
 function multiple_get_media_from_uri(uri: string, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): void
+/**
+ * Search for `text` in all the sources specified in `sources`.
+ * 
+ * If `text` is `NULL` then NULL-text searchs will be used for each searchable
+ * plugin (see #grl_source_search for more details).
+ * 
+ * This method is asynchronous.
+ * @param sources  a #GList of #GrlSource<!-- -->s to search from (%NULL for all searchable sources)
+ * @param text the text to search for
+ * @param keys the #GList of #GrlKeyID to retrieve
+ * @param options options wanted for that operation
+ * @param callback the user defined callback
+ */
 function multiple_search(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
+/**
+ * Search for `text` in all the sources specified in `sources`.
+ * 
+ * This method is synchronous.
+ * @param sources  a #GList of #GrlSource<!-- -->s where to search from (%NULL for all available sources with search capability)
+ * @param text the text to search for
+ * @param keys the #GList of #GrlKeyID to retrieve
+ * @param options options wanted for that operation
+ */
 function multiple_search_sync(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions): Media[]
+/**
+ * Cancel an operation.
+ * @param operation_id the identifier of a running operation
+ */
 function operation_cancel(operation_id: number): void
 function operation_generate_id(): number
+/**
+ * Obtains the previously attached data
+ * @param operation_id the identifier of a running operation
+ */
 function operation_get_data(operation_id: number): object | null
 function operation_init(): void
 function operation_remove(operation_id: number): void
-function operation_set_data(operation_id: number, user_data?: object | null): void
-function operation_set_data_full(operation_id: number, user_data?: object | null, destroy_func?: GLib.DestroyNotify | null): void
+/**
+ * Attach a pointer to the specific operation.
+ * @param operation_id the identifier of a running operation
+ * @param user_data the data to attach
+ */
+function operation_set_data(operation_id: number, user_data: object | null): void
+/**
+ * Attach a pointer to the specific operation.
+ * 
+ * Note that the `destroy_func` callback is not called if `user_data` is %NULL.
+ * @param operation_id the identifier of a running operation
+ * @param user_data the data to attach
+ * @param destroy_func function to release `user_data` when the operation terminates
+ */
+function operation_set_data_full(operation_id: number, user_data: object | null, destroy_func: GLib.DestroyNotify | null): void
 function operation_set_private_data(operation_id: number, private_data: object | null, cancel_cb: OperationCancelCb): void
+/**
+ * Grilo browsing implements a paging mechanism through `skip` and `count` values.
+ * 
+ * But there are some services (like Jamendo or Flickr) where paging is done
+ * through a page number and page size: user request all elements in a page,
+ * specifying in most cases what is the page size.
+ * 
+ * This function is a helper for this task, computing from `skip` and `count` what
+ * is the optimal value of page size (limited by `max_page_size)`, which page
+ * should the user request, and where requested data start inside the page.
+ * 
+ * By optimal we mean that it computes those values so only one page is required
+ * to satisfy the data, using the smallest page size. If user is limiting page
+ * size, then more requests to services might be needed. But still page size
+ * will be an optimal value.
+ * 
+ * If `page_size` is `NULL,` then page size will be `max_page_size`. If the later
+ * is also 0, then page size will be #G_MAXUINT.
+ * @param skip number of elements to skip
+ * @param count number of elements to retrieve
+ * @param max_page_size maximum value for page size (0 for unlimited size)
+ * @param page_size optimal page size
+ * @param page_number page which contain the first element to retrieve (starting at 1)
+ * @param internal_offset in the `page_number,` offset where first element can be found (starting at 0)
+ */
 function paging_translate(skip: number, count: number, max_page_size: number, page_size: number, page_number: number, internal_offset: number): void
 function range_value_hashtable_insert(hash_table: GLib.HashTable, key: object | null, min: any, max: any): void
 function range_value_hashtable_new(): GLib.HashTable
 interface OperationCancelCb {
-    (data?: object | null): void
+    (data: object | null): void
 }
 /**
  * Prototype for the callback passed to grl_source_remove()
+ * @callback 
+ * @param source a source
+ * @param media a data transfer object
+ * @param error possible #GError generated at processing
  */
 interface SourceRemoveCb {
-    (source: Source, media: Media, error?: GLib.Error | null): void
+    (source: Source, media: Media, error: GLib.Error | null): void
 }
 /**
  * Prototype for the callback passed to grl_source_resolve(). If the URI did
@@ -462,28 +611,49 @@ interface SourceRemoveCb {
  * 
  * If `media` is non-%NULL, ownership of it is transferred to the callback, and
  * it must be freed afterwards using g_object_unref().
+ * @callback 
+ * @param source a source
+ * @param operation_id operation identifier
+ * @param media a data transfer object
+ * @param error possible #GError generated at processing
  */
 interface SourceResolveCb {
-    (source: Source, operation_id: number, media: Media, error?: GLib.Error | null): void
+    (source: Source, operation_id: number, media: Media, error: GLib.Error | null): void
 }
 /**
  * Prototype for the callback passed to the media sources' methods
+ * @callback 
+ * @param source a source
+ * @param operation_id operation identifier
+ * @param media a data transfer object
+ * @param remaining the number of remaining #GrlMedia to process, or GRL_SOURCE_REMAINING_UNKNOWN if it is unknown
+ * @param error possible #GError generated at processing
  */
 interface SourceResultCb {
-    (source: Source, operation_id: number, media: Media | null, remaining: number, error?: GLib.Error | null): void
+    (source: Source, operation_id: number, media: Media | null, remaining: number, error: GLib.Error | null): void
 }
 /**
  * Prototype for the callback passed to grl_source_store_foo functions
+ * @callback 
+ * @param source a source
+ * @param media a #GrlMedia transfer object
+ * @param failed_keys #GList of keys that could not be updated, if any
+ * @param error possible #GError generated
  */
 interface SourceStoreCb {
-    (source: Source, media: Media, failed_keys: KeyID[], error?: GLib.Error | null): void
+    (source: Source, media: Media, failed_keys: KeyID[], error: GLib.Error | null): void
 }
 interface Caps_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Caps {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Caps */
+
+interface Caps {
+
+    // Own fields of Grl-0.2.Grl.Caps
+
+    parent: GObject.Object
+
+    // Owm methods of Grl-0.2.Grl.Caps
+
     get_key_filter(): KeyID[]
     get_key_range_filter(): KeyID[]
     get_type_filter(): TypeFilter
@@ -510,392 +680,51 @@ class Caps {
      * @param value the value corresponding to `key` to test against `caps`
      */
     test_option(key: string, value: any): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Caps, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Caps, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Grl-0.2.Grl.Caps
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Caps_ConstructProps)
-    _init (config?: Caps_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Caps
-    static $gtype: GObject.Type
 }
+
+class Caps extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.Caps
+
+    static name: string
+    static $gtype: GObject.GType<Caps>
+
+    // Constructors of Grl-0.2.Grl.Caps
+
+    constructor(config?: Caps_ConstructProps) 
+    /**
+     * Creates a new caps object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new caps object.
+     * @constructor 
+     */
+    static new(): Caps
+    _init(config?: Caps_ConstructProps): void
+}
+
 interface Config_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Config {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Config */
+
+interface Config {
+
+    // Own fields of Grl-0.2.Grl.Config
+
+    parent: GObject.Object
+    priv: ConfigPrivate
+    _grl_reserved: object[]
+
+    // Owm methods of Grl-0.2.Grl.Config
+
     get_api_key(): string
     get_api_key_blob(size: number): number
     get_api_secret(): string
@@ -907,7 +736,7 @@ class Config {
      * @param param a binary type parameter
      * @param size place for size of value
      */
-    get_binary(param: string, size?: number | null): number
+    get_binary(param: string, size: number | null): number
     get_boolean(param: string): boolean
     get_float(param: string): number
     get_int(param: string): number
@@ -1001,392 +830,61 @@ class Config {
      * @param username the username
      */
     set_username(username: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Config, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Grl-0.2.Grl.Config
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Config_ConstructProps)
-    _init (config?: Config_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(plugin: string, source?: string | null): Config
-    static $gtype: GObject.Type
 }
+
+class Config extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.Config
+
+    static name: string
+    static $gtype: GObject.GType<Config>
+
+    // Constructors of Grl-0.2.Grl.Config
+
+    constructor(config?: Config_ConstructProps) 
+    /**
+     * Creates a new data config object that will be associated with a plugin
+     * (if `source` is NULL), or a specific source spawned from a plugin (if
+     * `source` is not NULL). The latter may be useful for plugins
+     * spawning various sources, each one needing a different configuration.
+     * @constructor 
+     * @param plugin plugin id for this configuration
+     * @param source source id for this configuration
+     */
+    constructor(plugin: string, source: string | null) 
+    /**
+     * Creates a new data config object that will be associated with a plugin
+     * (if `source` is NULL), or a specific source spawned from a plugin (if
+     * `source` is not NULL). The latter may be useful for plugins
+     * spawning various sources, each one needing a different configuration.
+     * @constructor 
+     * @param plugin plugin id for this configuration
+     * @param source source id for this configuration
+     */
+    static new(plugin: string, source: string | null): Config
+    _init(config?: Config_ConstructProps): void
+}
+
 interface Data_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Data {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Data */
+
+interface Data {
+
+    // Own fields of Grl-0.2.Grl.Data
+
+    parent: GObject.Object
+    priv: DataPrivate
+    _grl_reserved: object[]
+
+    // Owm methods of Grl-0.2.Grl.Data
+
     /**
      * Appends a new binary value for `key` in `data`.
      * @param key key to append
@@ -1399,7 +897,7 @@ class Data {
      * @param key key to append
      * @param boxed the new value
      */
-    add_boxed(key: KeyID, boxed?: object | null): void
+    add_boxed(key: KeyID, boxed: object | null): void
     /**
      * Appends a new float value for `key` in `data`.
      * @param key key to append
@@ -1575,7 +1073,7 @@ class Data {
      * @param key key to change or add
      * @param boxed the new value
      */
-    set_boxed(key: KeyID, boxed?: object | null): void
+    set_boxed(key: KeyID, boxed: object | null): void
     /**
      * Sets the first float value associated with `key` in `data`. If `key` already has
      * a first value old value is replaced by the new one.
@@ -1613,396 +1111,49 @@ class Data {
      * @param strvalue the new value
      */
     set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Data, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Data, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Grl-0.2.Grl.Data
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Data_ConstructProps)
-    _init (config?: Data_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Data
-    static $gtype: GObject.Type
 }
+
+class Data extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.Data
+
+    static name: string
+    static $gtype: GObject.GType<Data>
+
+    // Constructors of Grl-0.2.Grl.Data
+
+    constructor(config?: Data_ConstructProps) 
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    static new(): Data
+    _init(config?: Data_ConstructProps): void
+}
+
 interface Media_ConstructProps extends Data_ConstructProps {
 }
-class Media {
-    /* Fields of Grl-0.2.Grl.Data */
-    parent: GObject.Object
-    priv: DataPrivate
-    _grl_reserved: object[]
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Media */
+
+interface Media {
+
+    // Own fields of Grl-0.2.Grl.Media
+
+    parent: Data
+
+    // Owm methods of Grl-0.2.Grl.Media
+
     /**
      * Adds a new author to `media`.
      * @param author an author for `media`
@@ -2046,7 +1197,7 @@ class Media {
      * @param url a media's URL
      * @param mime th `url` mime type
      */
-    add_url_data(url: string, mime: string): void
+    add_url_data(url: string, mime?: string): void
     get_author(): string
     get_author_nth(index: number): string
     /**
@@ -2277,632 +1428,63 @@ class Media {
      * @param url the media's URL
      * @param mime the `url` mime type
      */
-    set_url_data(url: string, mime: string): void
-    /* Methods of Grl-0.2.Grl.Data */
-    /**
-     * Appends a new binary value for `key` in `data`.
-     * @param key key to append
-     * @param buf the buffer containing the new value
-     * @param size size of buffer
-     */
-    add_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Appends a new boxed value for `key` in `data`.
-     * @param key key to append
-     * @param boxed the new value
-     */
-    add_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Appends a new float value for `key` in `data`.
-     * @param key key to append
-     * @param floatvalue the new value
-     */
-    add_float(key: KeyID, floatvalue: number): void
-    /**
-     * Appends a new int value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int(key: KeyID, intvalue: number): void
-    /**
-     * Appends a new int64 value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int64(key: KeyID, intvalue: number): void
-    /**
-     * Adds a new set of values into `data`.
-     * 
-     * All keys in `prop` must be related among them.
-     * 
-     * `data` will take the ownership of `relkeys,` so do not modify it.
-     * @param relkeys a set of related properties with their values
-     */
-    add_related_keys(relkeys: RelatedKeys): void
-    /**
-     * Appends a new string value for `key` in `data`.
-     * @param key key to append
-     * @param strvalue the new value
-     */
-    add_string(key: KeyID, strvalue: string): void
-    /**
-     * Makes a deep copy of `data` and all its contents.
-     */
-    dup(): Data
-    /**
-     * Get the first value from `data` associated with `key`.
-     * @param key key to look up.
-     */
-    get(key: KeyID): any
-    /**
-     * Returns the first binary value associated with `key` from `data`. If `key` has
-     * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_binary(key: KeyID): [ /* returnType */ number, /* size */ number ]
-    get_boolean(key: KeyID): boolean
-    /**
-     * Returns the first boxed value associated with `key` from `data`. If `key` has
-     * no first value, that value is not of a boxed type, or `key` is not in `data,`
-     * then %NULL is returned.
-     * @param key key to use
-     */
-    get_boxed(key: KeyID): object | null
-    /**
-     * Returns the first float value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gfloat, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_float(key: KeyID): number
-    /**
-     * Returns the first int value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int(key: KeyID): number
-    /**
-     * Returns the first int64 value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int64(key: KeyID): number
-    /**
-     * Returns a list with keys contained in `data`.
-     */
-    get_keys(): KeyID[]
-    /**
-     * Returns a set containing the values for `key` and related keys at position
-     * `index` from `data`.
-     * 
-     * If user changes any of the values in the related keys, the changes will
-     * become permanent.
-     * @param key a metadata key
-     * @param index element to retrieve, starting at 0
-     */
-    get_related_keys(key: KeyID, index: number): RelatedKeys
-    /**
-     * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key(key: KeyID): any[]
-    /**
-     * Returns all non-%NULL values for `key` from `data`. `key` must have been
-     * registered as a string-type key. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key_string(key: KeyID): string[]
-    /**
-     * Returns the first string value associated with `key` from `data`. If `key` has
-     * no first value, or value is not string, or `key` is not in `data,` then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_string(key: KeyID): string
-    /**
-     * Checks if `key` is in `data`.
-     * @param key key to search
-     */
-    has_key(key: KeyID): boolean
-    /**
-     * Returns how many values `key` or related keys have in `data:` if `key` has no
-     * value, but a related key has, then it is counted as positive.
-     * 
-     * As example, let's think in three related keys, K1, K2 and K3, and then thinks
-     * we have added several values for those keys, as:
-     * 
-     *   (V10, V20, V30),, (V11, NULL, V31), (V12, NULL, V32)
-     * 
-     * Therefore, when invoking grl_data_length (data, K2) it will return 3:
-     * considering K2 and the related keys (K1 and K3), there are 3 values.
-     * @param key a metadata key
-     */
-    length(key: KeyID): number
-    /**
-     * Removes the first value for `key` from `data`. If there are other keys related
-     * to `key` their values will also be removed from `data`.
-     * @param key key to remove
-     */
-    remove(key: KeyID): void
-    /**
-     * Removes the value at position `index` for `key` from `data`. If there are other
-     * keys related to `key,` their values at position `index` will also be removed
-     * from `data`.
-     * @param key a metadata key
-     * @param index index of key to be removed, starting at 0
-     */
-    remove_nth(key: KeyID, index: number): void
-    /**
-     * Sets the first value associated with `key` in `data`. If key already has a
-     * value old value is freed and the new one is set.
-     * 
-     * Also, checks that `value` is compliant with `key` specification, modifying it
-     * accordingly. For instance, if `key` requires a number between 0 and 10, but
-     * `value` is outside this range, it will be adapted accordingly.
-     * @param key key to change or add
-     * @param value the new value
-     */
-    set(key: KeyID, value: any): void
-    /**
-     * Sets the first binary value associated with `key` in `data`. If `key` already
-     * has a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param buf buffer holding the data
-     * @param size size of the buffer
-     */
-    set_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Sets the first boolean value associated with `key` in `data`. If `key` already
-     * has a first value, old value is replaced by the new one.
-     * @param key key to change or add
-     * @param boolvalue the new value
-     */
-    set_boolean(key: KeyID, boolvalue: boolean): void
-    /**
-     * Sets the first boxed value associated with `key` in `data`. If `key` already
-     * has a value, the old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param boxed the new value
-     */
-    set_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Sets the first float value associated with `key` in `data`. If `key` already has
-     * a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param floatvalue the new value
-     */
-    set_float(key: KeyID, floatvalue: number): void
-    /**
-     * Sets the first int value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int(key: KeyID, intvalue: number): void
-    /**
-     * Sets the first int64 value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int64(key: KeyID, intvalue: number): void
-    /**
-     * Updates the values at position `index` in `data` with values in `relkeys`.
-     * 
-     * `data` will take ownership of `relkeys,` so do not free it after invoking this
-     * function.
-     * @param relkeys a set of related keys
-     * @param index position to be updated, starting at 0
-     */
-    set_related_keys(relkeys: RelatedKeys, index: number): void
-    /**
-     * Sets the first string value associated with `key` in `data`. If `key` already
-     * has a value old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param strvalue the new value
-     */
-    set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Media, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Media, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    set_url_data(url: string, mime?: string): void
+
+    // Class property signals of Grl-0.2.Grl.Media
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class Media extends Data {
+
+    // Own properties of Grl-0.2.Grl.Media
+
     static name: string
-    constructor (config?: Media_ConstructProps)
-    _init (config?: Media_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Media>
+
+    // Constructors of Grl-0.2.Grl.Media
+
+    constructor(config?: Media_ConstructProps) 
+    /**
+     * Creates a new data media object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new data media object.
+     * @constructor 
+     */
     static new(): Media
-    /* Function overloads */
-    static new(): Media
+
+    // Overloads of new
+
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    static new(): Data
+    _init(config?: Media_ConstructProps): void
     /**
      * Unserializes a GrlMedia.
      * @param serial a serialized media
      */
     static unserialize(serial: string): Media
-    static $gtype: GObject.Type
 }
+
 interface MediaAudio_ConstructProps extends Media_ConstructProps {
 }
-class MediaAudio {
-    /* Fields of Grl-0.2.Grl.Media */
-    parent: Data
-    /* Fields of Grl-0.2.Grl.Data */
-    priv: DataPrivate
-    _grl_reserved: object[]
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.MediaAudio */
+
+interface MediaAudio {
+
+    // Own fields of Grl-0.2.Grl.MediaAudio
+
+    parent: Media
+
+    // Owm methods of Grl-0.2.Grl.MediaAudio
+
     /**
      * Adds a new artist to `audio`.
      * @param artist an audio's artist
@@ -2930,7 +1512,18 @@ class MediaAudio {
      * @param mime the `url` mime-type
      * @param bitrate the `url` bitrate, or -1 to ignore
      */
-    add_url_data(url: string, mime: string, bitrate: number): void
+    add_url_data(url: string, mime?: string, bitrate?: number): void
+
+    // Overloads of add_url_data
+
+    /**
+     * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
+     */
+    add_url_data(url: string, mime?: string): void
+    add_url_data(...args: any[]): any
+    add_url_data(args_or_url: any[] | string, mime?: string): void | any
     get_album(): string
     get_artist(): string
     get_artist_nth(index: number): string
@@ -2946,7 +1539,19 @@ class MediaAudio {
     get_mb_track_id(): string
     get_track_number(): number
     get_url_data(): [ /* returnType */ string, /* mime */ string, /* bitrate */ number ]
+
+    // Overloads of get_url_data
+
+    get_url_data(): [ /* returnType */ string, /* mime */ string ]
+    get_url_data(...args: any[]): any
+    get_url_data(...args: any[]): [ /* returnType */ string | any, /* mime */ string ]
     get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string, /* bitrate */ number ]
+
+    // Overloads of get_url_data_nth
+
+    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
+    get_url_data_nth(...args: any[]): any
+    get_url_data_nth(args_or_index: any[] | number): [ /* returnType */ string | any, /* mime */ string ]
     /**
      * Set the album of the audio
      * @param album the audio's album
@@ -3003,903 +1608,74 @@ class MediaAudio {
      * @param mime the `url` mime-type
      * @param bitrate the `url` bitrate, or -1 to ignore
      */
-    set_url_data(url: string, mime: string, bitrate: number): void
-    /* Methods of Grl-0.2.Grl.Media */
-    /**
-     * Adds a new author to `media`.
-     * @param author an author for `media`
-     */
-    add_author(author: string): void
-    /**
-     * Adds a new external player to `media`.
-     * @param player an external player for `media`
-     */
-    add_external_player(player: string): void
-    /**
-     * Adds a new external url to `media`.
-     * @param url an external url for `media`
-     */
-    add_external_url(url: string): void
-    /**
-     * Adds the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    add_keyword(keyword: string): void
-    /**
-     * Adds regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    add_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a thumbnail for `media`
-     */
-    add_thumbnail(thumbnail: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a buffer containing the thumbnail for `media`
-     * @param size size of buffer
-     */
-    add_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Adds a new media's URL with its mime-type.
-     * @param url a media's URL
-     * @param mime th `url` mime type
-     */
-    add_url_data(url: string, mime: string): void
-    get_author(): string
-    get_author_nth(index: number): string
-    /**
-     * Returns the media's first age certificate.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_get_region_data_nth() to
-     * get other age certificates.
-     */
-    get_certificate(): string
-    get_creation_date(): GLib.DateTime
-    get_description(): string
-    get_duration(): number
-    get_external_url(): string
-    get_external_url_nth(index: number): string
-    get_favourite(): boolean
-    get_id(): string
-    get_keyword(): string
-    get_keyword_nth(index: number): string
-    get_last_played(): string
-    get_last_position(): number
-    get_license(): string
-    get_mime(): string
-    get_modification_date(): GLib.DateTime
-    get_play_count(): number
-    get_player(): string
-    get_player_nth(index: number): string
-    get_publication_date(): GLib.DateTime
-    get_rating(): number
-    get_region(): string
-    /**
-     * Returns the media's age certificate and publication date for the first region.
-     * This should usually be the media's most relevant region.
-     * Use grl_media_get_region_data_nth() to get the age certificate and
-     * publication date for other regions.
-     */
-    get_region_data(): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    /**
-     * Returns the media's age certificate and publication date for one region.
-     * Use grl_data_length() with GRL_METADATA_KEY_REGION to discover
-     * how many regions are available. For instance:
-     * <informalexample>
-     * <programlisting role="C"><![CDATA[
-     * guint count = grl_data_length (GRL_DATA (media), GRL_METADATA_KEY_REGION);
-     * guint i;
-     * for (i = 0; i < count; ++i) {
-     *   const GDateTime* publication_date = NULL;
-     *   const gchar* certificate = NULL;
-     *   const gchar* region =
-     *     grl_media_get_region_data_nth (media, i,
-     *       &publication_date, &certificate);
-     *   ...
-     * }
-     * ]]></programlisting>
-     * </informalexample>
-     * @param index element to retrieve
-     */
-    get_region_data_nth(index: number): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    get_site(): string
-    get_size(): number
-    get_source(): string
-    get_start_time(): number
-    get_studio(): string
-    get_thumbnail(): string
-    get_thumbnail_binary(size: number): number
-    get_thumbnail_binary_nth(size: number, index: number): number
-    get_thumbnail_nth(index: number): string
-    get_title(): string
-    get_url(): string
-    get_url_data(): [ /* returnType */ string, /* mime */ string ]
-    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
-    /**
-     * Serializes a GrlMedia into a string. It does a basic serialization.
-     * 
-     * See grl_media_serialize_extended() to get more serialization approaches.
-     */
-    serialize(): string
-    /**
-     * Set the media's author
-     * @param author the media's author
-     */
-    set_author(author: string): void
-    /**
-     * Set the media's first age certification.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_set_region_data() to
-     * set other age certificates.
-     * @param certificate The age certificate of the media
-     */
-    set_certificate(certificate: string): void
-    /**
-     * Set the creation_date of the media
-     * @param creation_date date when media was created
-     */
-    set_creation_date(creation_date: GLib.DateTime): void
-    /**
-     * Set the media's description
-     * @param description the description
-     */
-    set_description(description: string): void
-    /**
-     * Set the media's duration
-     * @param duration the duration in seconds
-     */
-    set_duration(duration: number): void
-    /**
-     * Set the location of a player for the media (usually a flash player)
-     * @param player location of an external player for this media
-     */
-    set_external_player(player: string): void
-    /**
-     * Set an external location where users can play the media
-     * @param url external location where this media can be played.
-     */
-    set_external_url(url: string): void
-    /**
-     * Set if the media is favourite or not
-     * @param favourite whether the item is favourite or not
-     */
-    set_favourite(favourite: boolean): void
-    /**
-     * Set the media identifier
-     * @param id the identifier of the media
-     */
-    set_id(id: string): void
-    /**
-     * Sets the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    set_keyword(keyword: string): void
-    /**
-     * Set the media last played date
-     * @param last_played date when the media was last played
-     */
-    set_last_played(last_played: string): void
-    /**
-     * Set the media last played position
-     * @param last_position second at which the media playback was interrupted
-     */
-    set_last_position(last_position: number): void
-    /**
-     * Set the media license
-     * @param license The license of the media
-     */
-    set_license(license: string): void
-    /**
-     * Set the media's mime-type
-     * @param mime the mime type
-     */
-    set_mime(mime: string): void
-    /**
-     * Set the modification date of the media
-     * @param modification_date date when the media was last modified
-     */
-    set_modification_date(modification_date: GLib.DateTime): void
-    /**
-     * Set the media play count
-     * @param play_count the play count
-     */
-    set_play_count(play_count: number): void
-    /**
-     * Set the publication date of `media`.
-     * @param date the date
-     */
-    set_publication_date(date: GLib.DateTime): void
-    /**
-     * This method receives a rating and its scale and normalizes it on a scale
-     * from 0...5 to match the usual five-star rating.
-     * @param rating a rating value
-     * @param max maximum rating value
-     */
-    set_rating(rating: number, max: number): void
-    /**
-     * Sets the `region` where `media` was published.
-     * @param region the region's ISO-3166-1 code
-     */
-    set_region(region: string): void
-    /**
-     * Sets regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    set_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Set the media's site. A site is a website about the media such as a
-     * studio's promotional website for a movie.
-     * @param site the site
-     */
-    set_site(site: string): void
-    /**
-     * Set the size of the media
-     * @param size the size in bytes
-     */
-    set_size(size: number): void
-    /**
-     * Set the media's source
-     * @param source the source
-     */
-    set_source(source: string): void
-    /**
-     * Set the media studio
-     * @param studio The studio the media is from
-     */
-    set_studio(studio: string): void
-    /**
-     * Set the media's thumbnail URL
-     * @param thumbnail the thumbnail URL
-     */
-    set_thumbnail(thumbnail: string): void
-    /**
-     * Set the media's binary thumbnail
-     * @param thumbnail thumbnail buffer
-     * @param size thumbnail buffer size
-     */
-    set_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Set the media's title
-     * @param title the title
-     */
-    set_title(title: string): void
-    /**
-     * Set the media's URL
-     * @param url the media's URL
-     */
-    set_url(url: string): void
+    set_url_data(url: string, mime?: string, bitrate?: number): void
+
+    // Overloads of set_url_data
+
     /**
      * Set the media's URL and its mime-type.
      * @param url the media's URL
      * @param mime the `url` mime type
      */
-    set_url_data(url: string, mime: string): void
-    /* Methods of Grl-0.2.Grl.Data */
-    /**
-     * Appends a new binary value for `key` in `data`.
-     * @param key key to append
-     * @param buf the buffer containing the new value
-     * @param size size of buffer
-     */
-    add_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Appends a new boxed value for `key` in `data`.
-     * @param key key to append
-     * @param boxed the new value
-     */
-    add_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Appends a new float value for `key` in `data`.
-     * @param key key to append
-     * @param floatvalue the new value
-     */
-    add_float(key: KeyID, floatvalue: number): void
-    /**
-     * Appends a new int value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int(key: KeyID, intvalue: number): void
-    /**
-     * Appends a new int64 value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int64(key: KeyID, intvalue: number): void
-    /**
-     * Adds a new set of values into `data`.
-     * 
-     * All keys in `prop` must be related among them.
-     * 
-     * `data` will take the ownership of `relkeys,` so do not modify it.
-     * @param relkeys a set of related properties with their values
-     */
-    add_related_keys(relkeys: RelatedKeys): void
-    /**
-     * Appends a new string value for `key` in `data`.
-     * @param key key to append
-     * @param strvalue the new value
-     */
-    add_string(key: KeyID, strvalue: string): void
-    /**
-     * Makes a deep copy of `data` and all its contents.
-     */
-    dup(): Data
-    /**
-     * Get the first value from `data` associated with `key`.
-     * @param key key to look up.
-     */
-    get(key: KeyID): any
-    /**
-     * Returns the first binary value associated with `key` from `data`. If `key` has
-     * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_binary(key: KeyID): [ /* returnType */ number, /* size */ number ]
-    get_boolean(key: KeyID): boolean
-    /**
-     * Returns the first boxed value associated with `key` from `data`. If `key` has
-     * no first value, that value is not of a boxed type, or `key` is not in `data,`
-     * then %NULL is returned.
-     * @param key key to use
-     */
-    get_boxed(key: KeyID): object | null
-    /**
-     * Returns the first float value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gfloat, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_float(key: KeyID): number
-    /**
-     * Returns the first int value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int(key: KeyID): number
-    /**
-     * Returns the first int64 value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int64(key: KeyID): number
-    /**
-     * Returns a list with keys contained in `data`.
-     */
-    get_keys(): KeyID[]
-    /**
-     * Returns a set containing the values for `key` and related keys at position
-     * `index` from `data`.
-     * 
-     * If user changes any of the values in the related keys, the changes will
-     * become permanent.
-     * @param key a metadata key
-     * @param index element to retrieve, starting at 0
-     */
-    get_related_keys(key: KeyID, index: number): RelatedKeys
-    /**
-     * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key(key: KeyID): any[]
-    /**
-     * Returns all non-%NULL values for `key` from `data`. `key` must have been
-     * registered as a string-type key. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key_string(key: KeyID): string[]
-    /**
-     * Returns the first string value associated with `key` from `data`. If `key` has
-     * no first value, or value is not string, or `key` is not in `data,` then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_string(key: KeyID): string
-    /**
-     * Checks if `key` is in `data`.
-     * @param key key to search
-     */
-    has_key(key: KeyID): boolean
-    /**
-     * Returns how many values `key` or related keys have in `data:` if `key` has no
-     * value, but a related key has, then it is counted as positive.
-     * 
-     * As example, let's think in three related keys, K1, K2 and K3, and then thinks
-     * we have added several values for those keys, as:
-     * 
-     *   (V10, V20, V30),, (V11, NULL, V31), (V12, NULL, V32)
-     * 
-     * Therefore, when invoking grl_data_length (data, K2) it will return 3:
-     * considering K2 and the related keys (K1 and K3), there are 3 values.
-     * @param key a metadata key
-     */
-    length(key: KeyID): number
-    /**
-     * Removes the first value for `key` from `data`. If there are other keys related
-     * to `key` their values will also be removed from `data`.
-     * @param key key to remove
-     */
-    remove(key: KeyID): void
-    /**
-     * Removes the value at position `index` for `key` from `data`. If there are other
-     * keys related to `key,` their values at position `index` will also be removed
-     * from `data`.
-     * @param key a metadata key
-     * @param index index of key to be removed, starting at 0
-     */
-    remove_nth(key: KeyID, index: number): void
-    /**
-     * Sets the first value associated with `key` in `data`. If key already has a
-     * value old value is freed and the new one is set.
-     * 
-     * Also, checks that `value` is compliant with `key` specification, modifying it
-     * accordingly. For instance, if `key` requires a number between 0 and 10, but
-     * `value` is outside this range, it will be adapted accordingly.
-     * @param key key to change or add
-     * @param value the new value
-     */
-    set(key: KeyID, value: any): void
-    /**
-     * Sets the first binary value associated with `key` in `data`. If `key` already
-     * has a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param buf buffer holding the data
-     * @param size size of the buffer
-     */
-    set_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Sets the first boolean value associated with `key` in `data`. If `key` already
-     * has a first value, old value is replaced by the new one.
-     * @param key key to change or add
-     * @param boolvalue the new value
-     */
-    set_boolean(key: KeyID, boolvalue: boolean): void
-    /**
-     * Sets the first boxed value associated with `key` in `data`. If `key` already
-     * has a value, the old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param boxed the new value
-     */
-    set_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Sets the first float value associated with `key` in `data`. If `key` already has
-     * a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param floatvalue the new value
-     */
-    set_float(key: KeyID, floatvalue: number): void
-    /**
-     * Sets the first int value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int(key: KeyID, intvalue: number): void
-    /**
-     * Sets the first int64 value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int64(key: KeyID, intvalue: number): void
-    /**
-     * Updates the values at position `index` in `data` with values in `relkeys`.
-     * 
-     * `data` will take ownership of `relkeys,` so do not free it after invoking this
-     * function.
-     * @param relkeys a set of related keys
-     * @param index position to be updated, starting at 0
-     */
-    set_related_keys(relkeys: RelatedKeys, index: number): void
-    /**
-     * Sets the first string value associated with `key` in `data`. If `key` already
-     * has a value old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param strvalue the new value
-     */
-    set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: MediaAudio, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: MediaAudio, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    set_url_data(url: string, mime?: string): void
+    set_url_data(...args: any[]): any
+    set_url_data(args_or_url: any[] | string, mime?: string): void | any
+
+    // Class property signals of Grl-0.2.Grl.MediaAudio
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: MediaAudio_ConstructProps)
-    _init (config?: MediaAudio_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): MediaAudio
-    /* Function overloads */
-    static new(): MediaAudio
-    static $gtype: GObject.Type
 }
+
+class MediaAudio extends Media {
+
+    // Own properties of Grl-0.2.Grl.MediaAudio
+
+    static name: string
+    static $gtype: GObject.GType<MediaAudio>
+
+    // Constructors of Grl-0.2.Grl.MediaAudio
+
+    constructor(config?: MediaAudio_ConstructProps) 
+    /**
+     * Creates a new data audio object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new data audio object.
+     * @constructor 
+     */
+    static new(): MediaAudio
+
+    // Overloads of new
+
+    /**
+     * Creates a new data media object.
+     * @constructor 
+     */
+    static new(): Media
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    static new(): Data
+    _init(config?: MediaAudio_ConstructProps): void
+}
+
 interface MediaBox_ConstructProps extends Media_ConstructProps {
 }
-class MediaBox {
-    /* Fields of Grl-0.2.Grl.Media */
-    parent: Data
-    /* Fields of Grl-0.2.Grl.Data */
-    priv: DataPrivate
-    _grl_reserved: object[]
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.MediaBox */
+
+interface MediaBox {
+
+    // Own fields of Grl-0.2.Grl.MediaBox
+
+    parent: Media
+
+    // Owm methods of Grl-0.2.Grl.MediaBox
+
     /**
      * Number of children of this box.
      */
@@ -3910,902 +1686,62 @@ class MediaBox {
      * @param childcount number of children
      */
     set_childcount(childcount: number): void
-    /* Methods of Grl-0.2.Grl.Media */
-    /**
-     * Adds a new author to `media`.
-     * @param author an author for `media`
-     */
-    add_author(author: string): void
-    /**
-     * Adds a new external player to `media`.
-     * @param player an external player for `media`
-     */
-    add_external_player(player: string): void
-    /**
-     * Adds a new external url to `media`.
-     * @param url an external url for `media`
-     */
-    add_external_url(url: string): void
-    /**
-     * Adds the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    add_keyword(keyword: string): void
-    /**
-     * Adds regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    add_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a thumbnail for `media`
-     */
-    add_thumbnail(thumbnail: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a buffer containing the thumbnail for `media`
-     * @param size size of buffer
-     */
-    add_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Adds a new media's URL with its mime-type.
-     * @param url a media's URL
-     * @param mime th `url` mime type
-     */
-    add_url_data(url: string, mime: string): void
-    get_author(): string
-    get_author_nth(index: number): string
-    /**
-     * Returns the media's first age certificate.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_get_region_data_nth() to
-     * get other age certificates.
-     */
-    get_certificate(): string
-    get_creation_date(): GLib.DateTime
-    get_description(): string
-    get_duration(): number
-    get_external_url(): string
-    get_external_url_nth(index: number): string
-    get_favourite(): boolean
-    get_id(): string
-    get_keyword(): string
-    get_keyword_nth(index: number): string
-    get_last_played(): string
-    get_last_position(): number
-    get_license(): string
-    get_mime(): string
-    get_modification_date(): GLib.DateTime
-    get_play_count(): number
-    get_player(): string
-    get_player_nth(index: number): string
-    get_publication_date(): GLib.DateTime
-    get_rating(): number
-    get_region(): string
-    /**
-     * Returns the media's age certificate and publication date for the first region.
-     * This should usually be the media's most relevant region.
-     * Use grl_media_get_region_data_nth() to get the age certificate and
-     * publication date for other regions.
-     */
-    get_region_data(): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    /**
-     * Returns the media's age certificate and publication date for one region.
-     * Use grl_data_length() with GRL_METADATA_KEY_REGION to discover
-     * how many regions are available. For instance:
-     * <informalexample>
-     * <programlisting role="C"><![CDATA[
-     * guint count = grl_data_length (GRL_DATA (media), GRL_METADATA_KEY_REGION);
-     * guint i;
-     * for (i = 0; i < count; ++i) {
-     *   const GDateTime* publication_date = NULL;
-     *   const gchar* certificate = NULL;
-     *   const gchar* region =
-     *     grl_media_get_region_data_nth (media, i,
-     *       &publication_date, &certificate);
-     *   ...
-     * }
-     * ]]></programlisting>
-     * </informalexample>
-     * @param index element to retrieve
-     */
-    get_region_data_nth(index: number): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    get_site(): string
-    get_size(): number
-    get_source(): string
-    get_start_time(): number
-    get_studio(): string
-    get_thumbnail(): string
-    get_thumbnail_binary(size: number): number
-    get_thumbnail_binary_nth(size: number, index: number): number
-    get_thumbnail_nth(index: number): string
-    get_title(): string
-    get_url(): string
-    get_url_data(): [ /* returnType */ string, /* mime */ string ]
-    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
-    /**
-     * Serializes a GrlMedia into a string. It does a basic serialization.
-     * 
-     * See grl_media_serialize_extended() to get more serialization approaches.
-     */
-    serialize(): string
-    /**
-     * Set the media's author
-     * @param author the media's author
-     */
-    set_author(author: string): void
-    /**
-     * Set the media's first age certification.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_set_region_data() to
-     * set other age certificates.
-     * @param certificate The age certificate of the media
-     */
-    set_certificate(certificate: string): void
-    /**
-     * Set the creation_date of the media
-     * @param creation_date date when media was created
-     */
-    set_creation_date(creation_date: GLib.DateTime): void
-    /**
-     * Set the media's description
-     * @param description the description
-     */
-    set_description(description: string): void
-    /**
-     * Set the media's duration
-     * @param duration the duration in seconds
-     */
-    set_duration(duration: number): void
-    /**
-     * Set the location of a player for the media (usually a flash player)
-     * @param player location of an external player for this media
-     */
-    set_external_player(player: string): void
-    /**
-     * Set an external location where users can play the media
-     * @param url external location where this media can be played.
-     */
-    set_external_url(url: string): void
-    /**
-     * Set if the media is favourite or not
-     * @param favourite whether the item is favourite or not
-     */
-    set_favourite(favourite: boolean): void
-    /**
-     * Set the media identifier
-     * @param id the identifier of the media
-     */
-    set_id(id: string): void
-    /**
-     * Sets the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    set_keyword(keyword: string): void
-    /**
-     * Set the media last played date
-     * @param last_played date when the media was last played
-     */
-    set_last_played(last_played: string): void
-    /**
-     * Set the media last played position
-     * @param last_position second at which the media playback was interrupted
-     */
-    set_last_position(last_position: number): void
-    /**
-     * Set the media license
-     * @param license The license of the media
-     */
-    set_license(license: string): void
-    /**
-     * Set the media's mime-type
-     * @param mime the mime type
-     */
-    set_mime(mime: string): void
-    /**
-     * Set the modification date of the media
-     * @param modification_date date when the media was last modified
-     */
-    set_modification_date(modification_date: GLib.DateTime): void
-    /**
-     * Set the media play count
-     * @param play_count the play count
-     */
-    set_play_count(play_count: number): void
-    /**
-     * Set the publication date of `media`.
-     * @param date the date
-     */
-    set_publication_date(date: GLib.DateTime): void
-    /**
-     * This method receives a rating and its scale and normalizes it on a scale
-     * from 0...5 to match the usual five-star rating.
-     * @param rating a rating value
-     * @param max maximum rating value
-     */
-    set_rating(rating: number, max: number): void
-    /**
-     * Sets the `region` where `media` was published.
-     * @param region the region's ISO-3166-1 code
-     */
-    set_region(region: string): void
-    /**
-     * Sets regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    set_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Set the media's site. A site is a website about the media such as a
-     * studio's promotional website for a movie.
-     * @param site the site
-     */
-    set_site(site: string): void
-    /**
-     * Set the size of the media
-     * @param size the size in bytes
-     */
-    set_size(size: number): void
-    /**
-     * Set the media's source
-     * @param source the source
-     */
-    set_source(source: string): void
-    /**
-     * Set the media studio
-     * @param studio The studio the media is from
-     */
-    set_studio(studio: string): void
-    /**
-     * Set the media's thumbnail URL
-     * @param thumbnail the thumbnail URL
-     */
-    set_thumbnail(thumbnail: string): void
-    /**
-     * Set the media's binary thumbnail
-     * @param thumbnail thumbnail buffer
-     * @param size thumbnail buffer size
-     */
-    set_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Set the media's title
-     * @param title the title
-     */
-    set_title(title: string): void
-    /**
-     * Set the media's URL
-     * @param url the media's URL
-     */
-    set_url(url: string): void
-    /**
-     * Set the media's URL and its mime-type.
-     * @param url the media's URL
-     * @param mime the `url` mime type
-     */
-    set_url_data(url: string, mime: string): void
-    /* Methods of Grl-0.2.Grl.Data */
-    /**
-     * Appends a new binary value for `key` in `data`.
-     * @param key key to append
-     * @param buf the buffer containing the new value
-     * @param size size of buffer
-     */
-    add_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Appends a new boxed value for `key` in `data`.
-     * @param key key to append
-     * @param boxed the new value
-     */
-    add_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Appends a new float value for `key` in `data`.
-     * @param key key to append
-     * @param floatvalue the new value
-     */
-    add_float(key: KeyID, floatvalue: number): void
-    /**
-     * Appends a new int value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int(key: KeyID, intvalue: number): void
-    /**
-     * Appends a new int64 value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int64(key: KeyID, intvalue: number): void
-    /**
-     * Adds a new set of values into `data`.
-     * 
-     * All keys in `prop` must be related among them.
-     * 
-     * `data` will take the ownership of `relkeys,` so do not modify it.
-     * @param relkeys a set of related properties with their values
-     */
-    add_related_keys(relkeys: RelatedKeys): void
-    /**
-     * Appends a new string value for `key` in `data`.
-     * @param key key to append
-     * @param strvalue the new value
-     */
-    add_string(key: KeyID, strvalue: string): void
-    /**
-     * Makes a deep copy of `data` and all its contents.
-     */
-    dup(): Data
-    /**
-     * Get the first value from `data` associated with `key`.
-     * @param key key to look up.
-     */
-    get(key: KeyID): any
-    /**
-     * Returns the first binary value associated with `key` from `data`. If `key` has
-     * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_binary(key: KeyID): [ /* returnType */ number, /* size */ number ]
-    get_boolean(key: KeyID): boolean
-    /**
-     * Returns the first boxed value associated with `key` from `data`. If `key` has
-     * no first value, that value is not of a boxed type, or `key` is not in `data,`
-     * then %NULL is returned.
-     * @param key key to use
-     */
-    get_boxed(key: KeyID): object | null
-    /**
-     * Returns the first float value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gfloat, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_float(key: KeyID): number
-    /**
-     * Returns the first int value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int(key: KeyID): number
-    /**
-     * Returns the first int64 value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int64(key: KeyID): number
-    /**
-     * Returns a list with keys contained in `data`.
-     */
-    get_keys(): KeyID[]
-    /**
-     * Returns a set containing the values for `key` and related keys at position
-     * `index` from `data`.
-     * 
-     * If user changes any of the values in the related keys, the changes will
-     * become permanent.
-     * @param key a metadata key
-     * @param index element to retrieve, starting at 0
-     */
-    get_related_keys(key: KeyID, index: number): RelatedKeys
-    /**
-     * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key(key: KeyID): any[]
-    /**
-     * Returns all non-%NULL values for `key` from `data`. `key` must have been
-     * registered as a string-type key. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key_string(key: KeyID): string[]
-    /**
-     * Returns the first string value associated with `key` from `data`. If `key` has
-     * no first value, or value is not string, or `key` is not in `data,` then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_string(key: KeyID): string
-    /**
-     * Checks if `key` is in `data`.
-     * @param key key to search
-     */
-    has_key(key: KeyID): boolean
-    /**
-     * Returns how many values `key` or related keys have in `data:` if `key` has no
-     * value, but a related key has, then it is counted as positive.
-     * 
-     * As example, let's think in three related keys, K1, K2 and K3, and then thinks
-     * we have added several values for those keys, as:
-     * 
-     *   (V10, V20, V30),, (V11, NULL, V31), (V12, NULL, V32)
-     * 
-     * Therefore, when invoking grl_data_length (data, K2) it will return 3:
-     * considering K2 and the related keys (K1 and K3), there are 3 values.
-     * @param key a metadata key
-     */
-    length(key: KeyID): number
-    /**
-     * Removes the first value for `key` from `data`. If there are other keys related
-     * to `key` their values will also be removed from `data`.
-     * @param key key to remove
-     */
-    remove(key: KeyID): void
-    /**
-     * Removes the value at position `index` for `key` from `data`. If there are other
-     * keys related to `key,` their values at position `index` will also be removed
-     * from `data`.
-     * @param key a metadata key
-     * @param index index of key to be removed, starting at 0
-     */
-    remove_nth(key: KeyID, index: number): void
-    /**
-     * Sets the first value associated with `key` in `data`. If key already has a
-     * value old value is freed and the new one is set.
-     * 
-     * Also, checks that `value` is compliant with `key` specification, modifying it
-     * accordingly. For instance, if `key` requires a number between 0 and 10, but
-     * `value` is outside this range, it will be adapted accordingly.
-     * @param key key to change or add
-     * @param value the new value
-     */
-    set(key: KeyID, value: any): void
-    /**
-     * Sets the first binary value associated with `key` in `data`. If `key` already
-     * has a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param buf buffer holding the data
-     * @param size size of the buffer
-     */
-    set_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Sets the first boolean value associated with `key` in `data`. If `key` already
-     * has a first value, old value is replaced by the new one.
-     * @param key key to change or add
-     * @param boolvalue the new value
-     */
-    set_boolean(key: KeyID, boolvalue: boolean): void
-    /**
-     * Sets the first boxed value associated with `key` in `data`. If `key` already
-     * has a value, the old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param boxed the new value
-     */
-    set_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Sets the first float value associated with `key` in `data`. If `key` already has
-     * a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param floatvalue the new value
-     */
-    set_float(key: KeyID, floatvalue: number): void
-    /**
-     * Sets the first int value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int(key: KeyID, intvalue: number): void
-    /**
-     * Sets the first int64 value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int64(key: KeyID, intvalue: number): void
-    /**
-     * Updates the values at position `index` in `data` with values in `relkeys`.
-     * 
-     * `data` will take ownership of `relkeys,` so do not free it after invoking this
-     * function.
-     * @param relkeys a set of related keys
-     * @param index position to be updated, starting at 0
-     */
-    set_related_keys(relkeys: RelatedKeys, index: number): void
-    /**
-     * Sets the first string value associated with `key` in `data`. If `key` already
-     * has a value old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param strvalue the new value
-     */
-    set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: MediaBox, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: MediaBox, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Grl-0.2.Grl.MediaBox
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: MediaBox_ConstructProps)
-    _init (config?: MediaBox_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): MediaBox
-    /* Function overloads */
-    static new(): MediaBox
-    static $gtype: GObject.Type
 }
+
+class MediaBox extends Media {
+
+    // Own properties of Grl-0.2.Grl.MediaBox
+
+    static name: string
+    static $gtype: GObject.GType<MediaBox>
+
+    // Constructors of Grl-0.2.Grl.MediaBox
+
+    constructor(config?: MediaBox_ConstructProps) 
+    /**
+     * Creates a new data box object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new data box object.
+     * @constructor 
+     */
+    static new(): MediaBox
+
+    // Overloads of new
+
+    /**
+     * Creates a new data media object.
+     * @constructor 
+     */
+    static new(): Media
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    static new(): Data
+    _init(config?: MediaBox_ConstructProps): void
+}
+
 interface MediaImage_ConstructProps extends Media_ConstructProps {
 }
-class MediaImage {
-    /* Fields of Grl-0.2.Grl.Media */
-    parent: Data
-    /* Fields of Grl-0.2.Grl.Data */
-    priv: DataPrivate
-    _grl_reserved: object[]
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.MediaImage */
+
+interface MediaImage {
+
+    // Own fields of Grl-0.2.Grl.MediaImage
+
+    parent: Media
+
+    // Owm methods of Grl-0.2.Grl.MediaImage
+
     /**
      * Sets all the keys related with the URL of a media resource and adds it to
      * `image` (useful for resources with more than one URL).
@@ -4814,15 +1750,38 @@ class MediaImage {
      * @param width image width, or -1 to ignore
      * @param height image height, or -1 to ignore
      */
-    add_url_data(url: string, mime: string, width: number, height: number): void
+    add_url_data(url: string, mime?: string, width?: number, height?: number): void
+
+    // Overloads of add_url_data
+
+    /**
+     * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
+     */
+    add_url_data(url: string, mime?: string): void
+    add_url_data(...args: any[]): any
+    add_url_data(args_or_url: any[] | string, mime?: string): void | any
     get_camera_model(): string
     get_exposure_time(): number
     get_flash_used(): string
     get_height(): number
     get_iso_speed(): number
     get_orientation(): number
-    get_url_data(width: number, height: number): [ /* returnType */ string, /* mime */ string ]
-    get_url_data_nth(index: number, width: number, height: number): [ /* returnType */ string, /* mime */ string ]
+    get_url_data(width?: number, height?: number): [ /* returnType */ string, /* mime */ string ]
+
+    // Overloads of get_url_data
+
+    get_url_data(): [ /* returnType */ string, /* mime */ string ]
+    get_url_data(...args: any[]): any
+    get_url_data(...args: any[]): [ /* returnType */ string | any, /* mime */ string ]
+    get_url_data_nth(index: number, width?: number, height?: number): [ /* returnType */ string, /* mime */ string ]
+
+    // Overloads of get_url_data_nth
+
+    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
+    get_url_data_nth(...args: any[]): any
+    get_url_data_nth(args_or_index: any[] | number): [ /* returnType */ string | any, /* mime */ string ]
     get_width(): number
     set_camera_model(camera_model: string): void
     set_exposure_time(exposure_time: number): void
@@ -4847,7 +1806,17 @@ class MediaImage {
      * @param width the image's width
      * @param height the image's height
      */
-    set_size(width: number, height: number): void
+    set_size(width: number, height?: number): void
+
+    // Overloads of set_size
+
+    /**
+     * Set the size of the media
+     * @param size the size in bytes
+     */
+    set_size(size: number): void
+    set_size(...args: any[]): any
+    set_size(args_or_size: any[] | number): void | any
     /**
      * Sets all the keys related with the URL of an image resource in one go.
      * @param url the image's url
@@ -4855,908 +1824,79 @@ class MediaImage {
      * @param width image width, or -1 to ignore
      * @param height image height, or -1 to ignore
      */
-    set_url_data(url: string, mime: string, width: number, height: number): void
-    /**
-     * Set the width of the image
-     * @param width the image's width
-     */
-    set_width(width: number): void
-    /* Methods of Grl-0.2.Grl.Media */
-    /**
-     * Adds a new author to `media`.
-     * @param author an author for `media`
-     */
-    add_author(author: string): void
-    /**
-     * Adds a new external player to `media`.
-     * @param player an external player for `media`
-     */
-    add_external_player(player: string): void
-    /**
-     * Adds a new external url to `media`.
-     * @param url an external url for `media`
-     */
-    add_external_url(url: string): void
-    /**
-     * Adds the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    add_keyword(keyword: string): void
-    /**
-     * Adds regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    add_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a thumbnail for `media`
-     */
-    add_thumbnail(thumbnail: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a buffer containing the thumbnail for `media`
-     * @param size size of buffer
-     */
-    add_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Adds a new media's URL with its mime-type.
-     * @param url a media's URL
-     * @param mime th `url` mime type
-     */
-    add_url_data(url: string, mime: string): void
-    get_author(): string
-    get_author_nth(index: number): string
-    /**
-     * Returns the media's first age certificate.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_get_region_data_nth() to
-     * get other age certificates.
-     */
-    get_certificate(): string
-    get_creation_date(): GLib.DateTime
-    get_description(): string
-    get_duration(): number
-    get_external_url(): string
-    get_external_url_nth(index: number): string
-    get_favourite(): boolean
-    get_id(): string
-    get_keyword(): string
-    get_keyword_nth(index: number): string
-    get_last_played(): string
-    get_last_position(): number
-    get_license(): string
-    get_mime(): string
-    get_modification_date(): GLib.DateTime
-    get_play_count(): number
-    get_player(): string
-    get_player_nth(index: number): string
-    get_publication_date(): GLib.DateTime
-    get_rating(): number
-    get_region(): string
-    /**
-     * Returns the media's age certificate and publication date for the first region.
-     * This should usually be the media's most relevant region.
-     * Use grl_media_get_region_data_nth() to get the age certificate and
-     * publication date for other regions.
-     */
-    get_region_data(): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    /**
-     * Returns the media's age certificate and publication date for one region.
-     * Use grl_data_length() with GRL_METADATA_KEY_REGION to discover
-     * how many regions are available. For instance:
-     * <informalexample>
-     * <programlisting role="C"><![CDATA[
-     * guint count = grl_data_length (GRL_DATA (media), GRL_METADATA_KEY_REGION);
-     * guint i;
-     * for (i = 0; i < count; ++i) {
-     *   const GDateTime* publication_date = NULL;
-     *   const gchar* certificate = NULL;
-     *   const gchar* region =
-     *     grl_media_get_region_data_nth (media, i,
-     *       &publication_date, &certificate);
-     *   ...
-     * }
-     * ]]></programlisting>
-     * </informalexample>
-     * @param index element to retrieve
-     */
-    get_region_data_nth(index: number): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    get_site(): string
-    get_size(): number
-    get_source(): string
-    get_start_time(): number
-    get_studio(): string
-    get_thumbnail(): string
-    get_thumbnail_binary(size: number): number
-    get_thumbnail_binary_nth(size: number, index: number): number
-    get_thumbnail_nth(index: number): string
-    get_title(): string
-    get_url(): string
-    get_url_data(): [ /* returnType */ string, /* mime */ string ]
-    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
-    /**
-     * Serializes a GrlMedia into a string. It does a basic serialization.
-     * 
-     * See grl_media_serialize_extended() to get more serialization approaches.
-     */
-    serialize(): string
-    /**
-     * Set the media's author
-     * @param author the media's author
-     */
-    set_author(author: string): void
-    /**
-     * Set the media's first age certification.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_set_region_data() to
-     * set other age certificates.
-     * @param certificate The age certificate of the media
-     */
-    set_certificate(certificate: string): void
-    /**
-     * Set the creation_date of the media
-     * @param creation_date date when media was created
-     */
-    set_creation_date(creation_date: GLib.DateTime): void
-    /**
-     * Set the media's description
-     * @param description the description
-     */
-    set_description(description: string): void
-    /**
-     * Set the media's duration
-     * @param duration the duration in seconds
-     */
-    set_duration(duration: number): void
-    /**
-     * Set the location of a player for the media (usually a flash player)
-     * @param player location of an external player for this media
-     */
-    set_external_player(player: string): void
-    /**
-     * Set an external location where users can play the media
-     * @param url external location where this media can be played.
-     */
-    set_external_url(url: string): void
-    /**
-     * Set if the media is favourite or not
-     * @param favourite whether the item is favourite or not
-     */
-    set_favourite(favourite: boolean): void
-    /**
-     * Set the media identifier
-     * @param id the identifier of the media
-     */
-    set_id(id: string): void
-    /**
-     * Sets the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    set_keyword(keyword: string): void
-    /**
-     * Set the media last played date
-     * @param last_played date when the media was last played
-     */
-    set_last_played(last_played: string): void
-    /**
-     * Set the media last played position
-     * @param last_position second at which the media playback was interrupted
-     */
-    set_last_position(last_position: number): void
-    /**
-     * Set the media license
-     * @param license The license of the media
-     */
-    set_license(license: string): void
-    /**
-     * Set the media's mime-type
-     * @param mime the mime type
-     */
-    set_mime(mime: string): void
-    /**
-     * Set the modification date of the media
-     * @param modification_date date when the media was last modified
-     */
-    set_modification_date(modification_date: GLib.DateTime): void
-    /**
-     * Set the media play count
-     * @param play_count the play count
-     */
-    set_play_count(play_count: number): void
-    /**
-     * Set the publication date of `media`.
-     * @param date the date
-     */
-    set_publication_date(date: GLib.DateTime): void
-    /**
-     * This method receives a rating and its scale and normalizes it on a scale
-     * from 0...5 to match the usual five-star rating.
-     * @param rating a rating value
-     * @param max maximum rating value
-     */
-    set_rating(rating: number, max: number): void
-    /**
-     * Sets the `region` where `media` was published.
-     * @param region the region's ISO-3166-1 code
-     */
-    set_region(region: string): void
-    /**
-     * Sets regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    set_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Set the media's site. A site is a website about the media such as a
-     * studio's promotional website for a movie.
-     * @param site the site
-     */
-    set_site(site: string): void
-    /**
-     * Set the size of the media
-     * @param size the size in bytes
-     */
-    set_size(size: number): void
-    /**
-     * Set the media's source
-     * @param source the source
-     */
-    set_source(source: string): void
-    /**
-     * Set the media studio
-     * @param studio The studio the media is from
-     */
-    set_studio(studio: string): void
-    /**
-     * Set the media's thumbnail URL
-     * @param thumbnail the thumbnail URL
-     */
-    set_thumbnail(thumbnail: string): void
-    /**
-     * Set the media's binary thumbnail
-     * @param thumbnail thumbnail buffer
-     * @param size thumbnail buffer size
-     */
-    set_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Set the media's title
-     * @param title the title
-     */
-    set_title(title: string): void
-    /**
-     * Set the media's URL
-     * @param url the media's URL
-     */
-    set_url(url: string): void
+    set_url_data(url: string, mime?: string, width?: number, height?: number): void
+
+    // Overloads of set_url_data
+
     /**
      * Set the media's URL and its mime-type.
      * @param url the media's URL
      * @param mime the `url` mime type
      */
-    set_url_data(url: string, mime: string): void
-    /* Methods of Grl-0.2.Grl.Data */
+    set_url_data(url: string, mime?: string): void
+    set_url_data(...args: any[]): any
+    set_url_data(args_or_url: any[] | string, mime?: string): void | any
     /**
-     * Appends a new binary value for `key` in `data`.
-     * @param key key to append
-     * @param buf the buffer containing the new value
-     * @param size size of buffer
+     * Set the width of the image
+     * @param width the image's width
      */
-    add_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Appends a new boxed value for `key` in `data`.
-     * @param key key to append
-     * @param boxed the new value
-     */
-    add_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Appends a new float value for `key` in `data`.
-     * @param key key to append
-     * @param floatvalue the new value
-     */
-    add_float(key: KeyID, floatvalue: number): void
-    /**
-     * Appends a new int value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int(key: KeyID, intvalue: number): void
-    /**
-     * Appends a new int64 value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int64(key: KeyID, intvalue: number): void
-    /**
-     * Adds a new set of values into `data`.
-     * 
-     * All keys in `prop` must be related among them.
-     * 
-     * `data` will take the ownership of `relkeys,` so do not modify it.
-     * @param relkeys a set of related properties with their values
-     */
-    add_related_keys(relkeys: RelatedKeys): void
-    /**
-     * Appends a new string value for `key` in `data`.
-     * @param key key to append
-     * @param strvalue the new value
-     */
-    add_string(key: KeyID, strvalue: string): void
-    /**
-     * Makes a deep copy of `data` and all its contents.
-     */
-    dup(): Data
-    /**
-     * Get the first value from `data` associated with `key`.
-     * @param key key to look up.
-     */
-    get(key: KeyID): any
-    /**
-     * Returns the first binary value associated with `key` from `data`. If `key` has
-     * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_binary(key: KeyID): [ /* returnType */ number, /* size */ number ]
-    get_boolean(key: KeyID): boolean
-    /**
-     * Returns the first boxed value associated with `key` from `data`. If `key` has
-     * no first value, that value is not of a boxed type, or `key` is not in `data,`
-     * then %NULL is returned.
-     * @param key key to use
-     */
-    get_boxed(key: KeyID): object | null
-    /**
-     * Returns the first float value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gfloat, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_float(key: KeyID): number
-    /**
-     * Returns the first int value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int(key: KeyID): number
-    /**
-     * Returns the first int64 value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int64(key: KeyID): number
-    /**
-     * Returns a list with keys contained in `data`.
-     */
-    get_keys(): KeyID[]
-    /**
-     * Returns a set containing the values for `key` and related keys at position
-     * `index` from `data`.
-     * 
-     * If user changes any of the values in the related keys, the changes will
-     * become permanent.
-     * @param key a metadata key
-     * @param index element to retrieve, starting at 0
-     */
-    get_related_keys(key: KeyID, index: number): RelatedKeys
-    /**
-     * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key(key: KeyID): any[]
-    /**
-     * Returns all non-%NULL values for `key` from `data`. `key` must have been
-     * registered as a string-type key. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key_string(key: KeyID): string[]
-    /**
-     * Returns the first string value associated with `key` from `data`. If `key` has
-     * no first value, or value is not string, or `key` is not in `data,` then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_string(key: KeyID): string
-    /**
-     * Checks if `key` is in `data`.
-     * @param key key to search
-     */
-    has_key(key: KeyID): boolean
-    /**
-     * Returns how many values `key` or related keys have in `data:` if `key` has no
-     * value, but a related key has, then it is counted as positive.
-     * 
-     * As example, let's think in three related keys, K1, K2 and K3, and then thinks
-     * we have added several values for those keys, as:
-     * 
-     *   (V10, V20, V30),, (V11, NULL, V31), (V12, NULL, V32)
-     * 
-     * Therefore, when invoking grl_data_length (data, K2) it will return 3:
-     * considering K2 and the related keys (K1 and K3), there are 3 values.
-     * @param key a metadata key
-     */
-    length(key: KeyID): number
-    /**
-     * Removes the first value for `key` from `data`. If there are other keys related
-     * to `key` their values will also be removed from `data`.
-     * @param key key to remove
-     */
-    remove(key: KeyID): void
-    /**
-     * Removes the value at position `index` for `key` from `data`. If there are other
-     * keys related to `key,` their values at position `index` will also be removed
-     * from `data`.
-     * @param key a metadata key
-     * @param index index of key to be removed, starting at 0
-     */
-    remove_nth(key: KeyID, index: number): void
-    /**
-     * Sets the first value associated with `key` in `data`. If key already has a
-     * value old value is freed and the new one is set.
-     * 
-     * Also, checks that `value` is compliant with `key` specification, modifying it
-     * accordingly. For instance, if `key` requires a number between 0 and 10, but
-     * `value` is outside this range, it will be adapted accordingly.
-     * @param key key to change or add
-     * @param value the new value
-     */
-    set(key: KeyID, value: any): void
-    /**
-     * Sets the first binary value associated with `key` in `data`. If `key` already
-     * has a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param buf buffer holding the data
-     * @param size size of the buffer
-     */
-    set_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Sets the first boolean value associated with `key` in `data`. If `key` already
-     * has a first value, old value is replaced by the new one.
-     * @param key key to change or add
-     * @param boolvalue the new value
-     */
-    set_boolean(key: KeyID, boolvalue: boolean): void
-    /**
-     * Sets the first boxed value associated with `key` in `data`. If `key` already
-     * has a value, the old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param boxed the new value
-     */
-    set_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Sets the first float value associated with `key` in `data`. If `key` already has
-     * a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param floatvalue the new value
-     */
-    set_float(key: KeyID, floatvalue: number): void
-    /**
-     * Sets the first int value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int(key: KeyID, intvalue: number): void
-    /**
-     * Sets the first int64 value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int64(key: KeyID, intvalue: number): void
-    /**
-     * Updates the values at position `index` in `data` with values in `relkeys`.
-     * 
-     * `data` will take ownership of `relkeys,` so do not free it after invoking this
-     * function.
-     * @param relkeys a set of related keys
-     * @param index position to be updated, starting at 0
-     */
-    set_related_keys(relkeys: RelatedKeys, index: number): void
-    /**
-     * Sets the first string value associated with `key` in `data`. If `key` already
-     * has a value old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param strvalue the new value
-     */
-    set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: MediaImage, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: MediaImage, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    set_width(width: number): void
+
+    // Class property signals of Grl-0.2.Grl.MediaImage
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: MediaImage_ConstructProps)
-    _init (config?: MediaImage_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): MediaImage
-    /* Function overloads */
-    static new(): MediaImage
-    static $gtype: GObject.Type
 }
+
+class MediaImage extends Media {
+
+    // Own properties of Grl-0.2.Grl.MediaImage
+
+    static name: string
+    static $gtype: GObject.GType<MediaImage>
+
+    // Constructors of Grl-0.2.Grl.MediaImage
+
+    constructor(config?: MediaImage_ConstructProps) 
+    /**
+     * Creates a new data image object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new data image object.
+     * @constructor 
+     */
+    static new(): MediaImage
+
+    // Overloads of new
+
+    /**
+     * Creates a new data media object.
+     * @constructor 
+     */
+    static new(): Media
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    static new(): Data
+    _init(config?: MediaImage_ConstructProps): void
+}
+
 interface MediaVideo_ConstructProps extends Media_ConstructProps {
 }
-class MediaVideo {
-    /* Fields of Grl-0.2.Grl.Media */
-    parent: Data
-    /* Fields of Grl-0.2.Grl.Data */
-    priv: DataPrivate
-    _grl_reserved: object[]
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.MediaVideo */
+
+interface MediaVideo {
+
+    // Own fields of Grl-0.2.Grl.MediaVideo
+
+    parent: Media
+
+    // Owm methods of Grl-0.2.Grl.MediaVideo
+
     /**
      * Adds the director of the movie.
      * @param director director of the movie
@@ -5781,7 +1921,18 @@ class MediaVideo {
      * @param width video width, or -1 to ignore
      * @param height video height, or -1 to ignore
      */
-    add_url_data(url: string, mime: string, framerate: number, width: number, height: number): void
+    add_url_data(url: string, mime?: string, framerate?: number, width?: number, height?: number): void
+
+    // Overloads of add_url_data
+
+    /**
+     * Adds a new media's URL with its mime-type.
+     * @param url a media's URL
+     * @param mime th `url` mime type
+     */
+    add_url_data(url: string, mime?: string): void
+    add_url_data(...args: any[]): any
+    add_url_data(args_or_url: any[] | string, mime?: string): void | any
     get_director(): string
     get_director_nth(index: number): string
     get_episode(): number
@@ -5795,8 +1946,20 @@ class MediaVideo {
     get_producer_nth(index: number): string
     get_season(): number
     get_show(): string
-    get_url_data(framerate: number, width: number, height: number): [ /* returnType */ string, /* mime */ string ]
-    get_url_data_nth(index: number, framerate: number, width: number, height: number): [ /* returnType */ string, /* mime */ string ]
+    get_url_data(framerate?: number, width?: number, height?: number): [ /* returnType */ string, /* mime */ string ]
+
+    // Overloads of get_url_data
+
+    get_url_data(): [ /* returnType */ string, /* mime */ string ]
+    get_url_data(...args: any[]): any
+    get_url_data(...args: any[]): [ /* returnType */ string | any, /* mime */ string ]
+    get_url_data_nth(index: number, framerate?: number, width?: number, height?: number): [ /* returnType */ string, /* mime */ string ]
+
+    // Overloads of get_url_data_nth
+
+    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
+    get_url_data_nth(...args: any[]): any
+    get_url_data_nth(args_or_index: any[] | number): [ /* returnType */ string | any, /* mime */ string ]
     get_width(): number
     /**
      * Sets the director of the movie.
@@ -5853,7 +2016,17 @@ class MediaVideo {
      * @param width the video's width
      * @param height the video's height
      */
-    set_size(width: number, height: number): void
+    set_size(width: number, height?: number): void
+
+    // Overloads of set_size
+
+    /**
+     * Set the size of the media
+     * @param size the size in bytes
+     */
+    set_size(size: number): void
+    set_size(...args: any[]): any
+    set_size(args_or_size: any[] | number): void | any
     /**
      * Sets all the keys related with the URL of a video resource in one go.
      * @param url the video's url
@@ -5862,903 +2035,79 @@ class MediaVideo {
      * @param width video width, or -1 to ignore
      * @param height video height, or -1 to ignore
      */
-    set_url_data(url: string, mime: string, framerate: number, width: number, height: number): void
-    /**
-     * Set the width of the video
-     * @param width the video's width
-     */
-    set_width(width: number): void
-    /* Methods of Grl-0.2.Grl.Media */
-    /**
-     * Adds a new author to `media`.
-     * @param author an author for `media`
-     */
-    add_author(author: string): void
-    /**
-     * Adds a new external player to `media`.
-     * @param player an external player for `media`
-     */
-    add_external_player(player: string): void
-    /**
-     * Adds a new external url to `media`.
-     * @param url an external url for `media`
-     */
-    add_external_url(url: string): void
-    /**
-     * Adds the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    add_keyword(keyword: string): void
-    /**
-     * Adds regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    add_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a thumbnail for `media`
-     */
-    add_thumbnail(thumbnail: string): void
-    /**
-     * Adds a new thumbnail to `media`.
-     * @param thumbnail a buffer containing the thumbnail for `media`
-     * @param size size of buffer
-     */
-    add_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Adds a new media's URL with its mime-type.
-     * @param url a media's URL
-     * @param mime th `url` mime type
-     */
-    add_url_data(url: string, mime: string): void
-    get_author(): string
-    get_author_nth(index: number): string
-    /**
-     * Returns the media's first age certificate.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_get_region_data_nth() to
-     * get other age certificates.
-     */
-    get_certificate(): string
-    get_creation_date(): GLib.DateTime
-    get_description(): string
-    get_duration(): number
-    get_external_url(): string
-    get_external_url_nth(index: number): string
-    get_favourite(): boolean
-    get_id(): string
-    get_keyword(): string
-    get_keyword_nth(index: number): string
-    get_last_played(): string
-    get_last_position(): number
-    get_license(): string
-    get_mime(): string
-    get_modification_date(): GLib.DateTime
-    get_play_count(): number
-    get_player(): string
-    get_player_nth(index: number): string
-    get_publication_date(): GLib.DateTime
-    get_rating(): number
-    get_region(): string
-    /**
-     * Returns the media's age certificate and publication date for the first region.
-     * This should usually be the media's most relevant region.
-     * Use grl_media_get_region_data_nth() to get the age certificate and
-     * publication date for other regions.
-     */
-    get_region_data(): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    /**
-     * Returns the media's age certificate and publication date for one region.
-     * Use grl_data_length() with GRL_METADATA_KEY_REGION to discover
-     * how many regions are available. For instance:
-     * <informalexample>
-     * <programlisting role="C"><![CDATA[
-     * guint count = grl_data_length (GRL_DATA (media), GRL_METADATA_KEY_REGION);
-     * guint i;
-     * for (i = 0; i < count; ++i) {
-     *   const GDateTime* publication_date = NULL;
-     *   const gchar* certificate = NULL;
-     *   const gchar* region =
-     *     grl_media_get_region_data_nth (media, i,
-     *       &publication_date, &certificate);
-     *   ...
-     * }
-     * ]]></programlisting>
-     * </informalexample>
-     * @param index element to retrieve
-     */
-    get_region_data_nth(index: number): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
-    get_site(): string
-    get_size(): number
-    get_source(): string
-    get_start_time(): number
-    get_studio(): string
-    get_thumbnail(): string
-    get_thumbnail_binary(size: number): number
-    get_thumbnail_binary_nth(size: number, index: number): number
-    get_thumbnail_nth(index: number): string
-    get_title(): string
-    get_url(): string
-    get_url_data(): [ /* returnType */ string, /* mime */ string ]
-    get_url_data_nth(index: number): [ /* returnType */ string, /* mime */ string ]
-    /**
-     * Serializes a GrlMedia into a string. It does a basic serialization.
-     * 
-     * See grl_media_serialize_extended() to get more serialization approaches.
-     */
-    serialize(): string
-    /**
-     * Set the media's author
-     * @param author the media's author
-     */
-    set_author(author: string): void
-    /**
-     * Set the media's first age certification.
-     * This should usually be the media's most relevant
-     * age certificate. Use grl_media_set_region_data() to
-     * set other age certificates.
-     * @param certificate The age certificate of the media
-     */
-    set_certificate(certificate: string): void
-    /**
-     * Set the creation_date of the media
-     * @param creation_date date when media was created
-     */
-    set_creation_date(creation_date: GLib.DateTime): void
-    /**
-     * Set the media's description
-     * @param description the description
-     */
-    set_description(description: string): void
-    /**
-     * Set the media's duration
-     * @param duration the duration in seconds
-     */
-    set_duration(duration: number): void
-    /**
-     * Set the location of a player for the media (usually a flash player)
-     * @param player location of an external player for this media
-     */
-    set_external_player(player: string): void
-    /**
-     * Set an external location where users can play the media
-     * @param url external location where this media can be played.
-     */
-    set_external_url(url: string): void
-    /**
-     * Set if the media is favourite or not
-     * @param favourite whether the item is favourite or not
-     */
-    set_favourite(favourite: boolean): void
-    /**
-     * Set the media identifier
-     * @param id the identifier of the media
-     */
-    set_id(id: string): void
-    /**
-     * Sets the keyword describing the `media`.
-     * @param keyword a keyword describing the media
-     */
-    set_keyword(keyword: string): void
-    /**
-     * Set the media last played date
-     * @param last_played date when the media was last played
-     */
-    set_last_played(last_played: string): void
-    /**
-     * Set the media last played position
-     * @param last_position second at which the media playback was interrupted
-     */
-    set_last_position(last_position: number): void
-    /**
-     * Set the media license
-     * @param license The license of the media
-     */
-    set_license(license: string): void
-    /**
-     * Set the media's mime-type
-     * @param mime the mime type
-     */
-    set_mime(mime: string): void
-    /**
-     * Set the modification date of the media
-     * @param modification_date date when the media was last modified
-     */
-    set_modification_date(modification_date: GLib.DateTime): void
-    /**
-     * Set the media play count
-     * @param play_count the play count
-     */
-    set_play_count(play_count: number): void
-    /**
-     * Set the publication date of `media`.
-     * @param date the date
-     */
-    set_publication_date(date: GLib.DateTime): void
-    /**
-     * This method receives a rating and its scale and normalizes it on a scale
-     * from 0...5 to match the usual five-star rating.
-     * @param rating a rating value
-     * @param max maximum rating value
-     */
-    set_rating(rating: number, max: number): void
-    /**
-     * Sets the `region` where `media` was published.
-     * @param region the region's ISO-3166-1 code
-     */
-    set_region(region: string): void
-    /**
-     * Sets regional publication and certification information for `region`.
-     * @param region the region's ISO-3166-1 code
-     * @param publication_date the publication date
-     * @param certificate the age certification
-     */
-    set_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
-    /**
-     * Set the media's site. A site is a website about the media such as a
-     * studio's promotional website for a movie.
-     * @param site the site
-     */
-    set_site(site: string): void
-    /**
-     * Set the size of the media
-     * @param size the size in bytes
-     */
-    set_size(size: number): void
-    /**
-     * Set the media's source
-     * @param source the source
-     */
-    set_source(source: string): void
-    /**
-     * Set the media studio
-     * @param studio The studio the media is from
-     */
-    set_studio(studio: string): void
-    /**
-     * Set the media's thumbnail URL
-     * @param thumbnail the thumbnail URL
-     */
-    set_thumbnail(thumbnail: string): void
-    /**
-     * Set the media's binary thumbnail
-     * @param thumbnail thumbnail buffer
-     * @param size thumbnail buffer size
-     */
-    set_thumbnail_binary(thumbnail: number, size: number): void
-    /**
-     * Set the media's title
-     * @param title the title
-     */
-    set_title(title: string): void
-    /**
-     * Set the media's URL
-     * @param url the media's URL
-     */
-    set_url(url: string): void
+    set_url_data(url: string, mime?: string, framerate?: number, width?: number, height?: number): void
+
+    // Overloads of set_url_data
+
     /**
      * Set the media's URL and its mime-type.
      * @param url the media's URL
      * @param mime the `url` mime type
      */
-    set_url_data(url: string, mime: string): void
-    /* Methods of Grl-0.2.Grl.Data */
+    set_url_data(url: string, mime?: string): void
+    set_url_data(...args: any[]): any
+    set_url_data(args_or_url: any[] | string, mime?: string): void | any
     /**
-     * Appends a new binary value for `key` in `data`.
-     * @param key key to append
-     * @param buf the buffer containing the new value
-     * @param size size of buffer
+     * Set the width of the video
+     * @param width the video's width
      */
-    add_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Appends a new boxed value for `key` in `data`.
-     * @param key key to append
-     * @param boxed the new value
-     */
-    add_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Appends a new float value for `key` in `data`.
-     * @param key key to append
-     * @param floatvalue the new value
-     */
-    add_float(key: KeyID, floatvalue: number): void
-    /**
-     * Appends a new int value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int(key: KeyID, intvalue: number): void
-    /**
-     * Appends a new int64 value for `key` in `data`.
-     * @param key key to append
-     * @param intvalue the new value
-     */
-    add_int64(key: KeyID, intvalue: number): void
-    /**
-     * Adds a new set of values into `data`.
-     * 
-     * All keys in `prop` must be related among them.
-     * 
-     * `data` will take the ownership of `relkeys,` so do not modify it.
-     * @param relkeys a set of related properties with their values
-     */
-    add_related_keys(relkeys: RelatedKeys): void
-    /**
-     * Appends a new string value for `key` in `data`.
-     * @param key key to append
-     * @param strvalue the new value
-     */
-    add_string(key: KeyID, strvalue: string): void
-    /**
-     * Makes a deep copy of `data` and all its contents.
-     */
-    dup(): Data
-    /**
-     * Get the first value from `data` associated with `key`.
-     * @param key key to look up.
-     */
-    get(key: KeyID): any
-    /**
-     * Returns the first binary value associated with `key` from `data`. If `key` has
-     * no first value, or value is not a gfloat, or `key` is not in data, then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_binary(key: KeyID): [ /* returnType */ number, /* size */ number ]
-    get_boolean(key: KeyID): boolean
-    /**
-     * Returns the first boxed value associated with `key` from `data`. If `key` has
-     * no first value, that value is not of a boxed type, or `key` is not in `data,`
-     * then %NULL is returned.
-     * @param key key to use
-     */
-    get_boxed(key: KeyID): object | null
-    /**
-     * Returns the first float value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gfloat, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_float(key: KeyID): number
-    /**
-     * Returns the first int value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int(key: KeyID): number
-    /**
-     * Returns the first int64 value associated with `key` from `data`. If `key` has no
-     * first value, or value is not a gint, or `key` is not in data, then 0 is
-     * returned.
-     * @param key key to use
-     */
-    get_int64(key: KeyID): number
-    /**
-     * Returns a list with keys contained in `data`.
-     */
-    get_keys(): KeyID[]
-    /**
-     * Returns a set containing the values for `key` and related keys at position
-     * `index` from `data`.
-     * 
-     * If user changes any of the values in the related keys, the changes will
-     * become permanent.
-     * @param key a metadata key
-     * @param index element to retrieve, starting at 0
-     */
-    get_related_keys(key: KeyID, index: number): RelatedKeys
-    /**
-     * Returns all non-%NULL values for `key` from `data`. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key(key: KeyID): any[]
-    /**
-     * Returns all non-%NULL values for `key` from `data`. `key` must have been
-     * registered as a string-type key. This ignores related keys.
-     * @param key a metadata key
-     */
-    get_single_values_for_key_string(key: KeyID): string[]
-    /**
-     * Returns the first string value associated with `key` from `data`. If `key` has
-     * no first value, or value is not string, or `key` is not in `data,` then %NULL
-     * is returned.
-     * @param key key to use
-     */
-    get_string(key: KeyID): string
-    /**
-     * Checks if `key` is in `data`.
-     * @param key key to search
-     */
-    has_key(key: KeyID): boolean
-    /**
-     * Returns how many values `key` or related keys have in `data:` if `key` has no
-     * value, but a related key has, then it is counted as positive.
-     * 
-     * As example, let's think in three related keys, K1, K2 and K3, and then thinks
-     * we have added several values for those keys, as:
-     * 
-     *   (V10, V20, V30),, (V11, NULL, V31), (V12, NULL, V32)
-     * 
-     * Therefore, when invoking grl_data_length (data, K2) it will return 3:
-     * considering K2 and the related keys (K1 and K3), there are 3 values.
-     * @param key a metadata key
-     */
-    length(key: KeyID): number
-    /**
-     * Removes the first value for `key` from `data`. If there are other keys related
-     * to `key` their values will also be removed from `data`.
-     * @param key key to remove
-     */
-    remove(key: KeyID): void
-    /**
-     * Removes the value at position `index` for `key` from `data`. If there are other
-     * keys related to `key,` their values at position `index` will also be removed
-     * from `data`.
-     * @param key a metadata key
-     * @param index index of key to be removed, starting at 0
-     */
-    remove_nth(key: KeyID, index: number): void
-    /**
-     * Sets the first value associated with `key` in `data`. If key already has a
-     * value old value is freed and the new one is set.
-     * 
-     * Also, checks that `value` is compliant with `key` specification, modifying it
-     * accordingly. For instance, if `key` requires a number between 0 and 10, but
-     * `value` is outside this range, it will be adapted accordingly.
-     * @param key key to change or add
-     * @param value the new value
-     */
-    set(key: KeyID, value: any): void
-    /**
-     * Sets the first binary value associated with `key` in `data`. If `key` already
-     * has a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param buf buffer holding the data
-     * @param size size of the buffer
-     */
-    set_binary(key: KeyID, buf: number, size: number): void
-    /**
-     * Sets the first boolean value associated with `key` in `data`. If `key` already
-     * has a first value, old value is replaced by the new one.
-     * @param key key to change or add
-     * @param boolvalue the new value
-     */
-    set_boolean(key: KeyID, boolvalue: boolean): void
-    /**
-     * Sets the first boxed value associated with `key` in `data`. If `key` already
-     * has a value, the old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param boxed the new value
-     */
-    set_boxed(key: KeyID, boxed?: object | null): void
-    /**
-     * Sets the first float value associated with `key` in `data`. If `key` already has
-     * a first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param floatvalue the new value
-     */
-    set_float(key: KeyID, floatvalue: number): void
-    /**
-     * Sets the first int value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int(key: KeyID, intvalue: number): void
-    /**
-     * Sets the first int64 value associated with `key` in `data`. If `key` already has a
-     * first value old value is replaced by the new one.
-     * @param key key to change or add
-     * @param intvalue the new value
-     */
-    set_int64(key: KeyID, intvalue: number): void
-    /**
-     * Updates the values at position `index` in `data` with values in `relkeys`.
-     * 
-     * `data` will take ownership of `relkeys,` so do not free it after invoking this
-     * function.
-     * @param relkeys a set of related keys
-     * @param index position to be updated, starting at 0
-     */
-    set_related_keys(relkeys: RelatedKeys, index: number): void
-    /**
-     * Sets the first string value associated with `key` in `data`. If `key` already
-     * has a value old value is freed and the new one is set.
-     * @param key key to change or add
-     * @param strvalue the new value
-     */
-    set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: MediaVideo, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: MediaVideo, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    set_width(width: number): void
+
+    // Class property signals of Grl-0.2.Grl.MediaVideo
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: MediaVideo_ConstructProps)
-    _init (config?: MediaVideo_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): MediaVideo
-    /* Function overloads */
-    static new(): MediaVideo
-    static $gtype: GObject.Type
 }
+
+class MediaVideo extends Media {
+
+    // Own properties of Grl-0.2.Grl.MediaVideo
+
+    static name: string
+    static $gtype: GObject.GType<MediaVideo>
+
+    // Constructors of Grl-0.2.Grl.MediaVideo
+
+    constructor(config?: MediaVideo_ConstructProps) 
+    /**
+     * Creates a new data video object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new data video object.
+     * @constructor 
+     */
+    static new(): MediaVideo
+
+    // Overloads of new
+
+    /**
+     * Creates a new data media object.
+     * @constructor 
+     */
+    static new(): Media
+    /**
+     * Creates a new data object.
+     * @constructor 
+     */
+    static new(): Data
+    _init(config?: MediaVideo_ConstructProps): void
+}
+
 interface OperationOptions_ConstructProps extends GObject.Object_ConstructProps {
 }
-class OperationOptions {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.OperationOptions */
+
+interface OperationOptions {
+
+    // Own fields of Grl-0.2.Grl.OperationOptions
+
+    parent: GObject.Object
+
+    // Owm methods of Grl-0.2.Grl.OperationOptions
+
     copy(): OperationOptions
     /**
      * Get the count option, that is, the number of elements to retrieve in an
@@ -6773,7 +2122,7 @@ class OperationOptions {
      * `max_value`. If some of the values has no limit, it will set a %NULL.
      * @param key a #GrlKeyID
      */
-    get_key_range_filter(key: KeyID): [ /* min_value */ any | null, /* max_value */ any | null ]
+    get_key_range_filter(key: KeyID): [ /* min_value */ any, /* max_value */ any ]
     get_key_range_filter_list(): KeyID[]
     get_resolution_flags(): ResolutionFlags
     /**
@@ -6825,7 +2174,7 @@ class OperationOptions {
      * @param min_value minimum value for range
      * @param max_value maximum value for range
      */
-    set_key_range_filter_value(key: KeyID, min_value?: any | null, max_value?: any | null): boolean
+    set_key_range_filter_value(key: KeyID, min_value: any | null, max_value: any | null): boolean
     /**
      * Set the resolution flags for an operation. Will only succeed if `flags` obey
      * to the inherent capabilities of `options`.
@@ -6845,397 +2194,58 @@ class OperationOptions {
      * @param filter the type of media to get
      */
     set_type_filter(filter: TypeFilter): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: OperationOptions, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: OperationOptions, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Grl-0.2.Grl.OperationOptions
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: OperationOptions_ConstructProps)
-    _init (config?: OperationOptions_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(caps?: Caps | null): OperationOptions
-    static $gtype: GObject.Type
 }
+
+class OperationOptions extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.OperationOptions
+
+    static name: string
+    static $gtype: GObject.GType<OperationOptions>
+
+    // Constructors of Grl-0.2.Grl.OperationOptions
+
+    constructor(config?: OperationOptions_ConstructProps) 
+    /**
+     * Creates a new GrlOperationOptions object.
+     * @constructor 
+     * @param caps caps that options will have to match. If %NULL, all options will be accepted.
+     */
+    constructor(caps: Caps | null) 
+    /**
+     * Creates a new GrlOperationOptions object.
+     * @constructor 
+     * @param caps caps that options will have to match. If %NULL, all options will be accepted.
+     */
+    static new(caps: Caps | null): OperationOptions
+    _init(config?: OperationOptions_ConstructProps): void
+}
+
 interface Plugin_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Plugin {
-    /* Properties of Grl-0.2.Grl.Plugin */
+
+interface Plugin {
+
+    // Own properties of Grl-0.2.Grl.Plugin
+
     /**
      * `TRUE` if plugin is loaded.
      */
     readonly loaded: boolean
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Plugin */
+
+    // Own fields of Grl-0.2.Grl.Plugin
+
+    parent: GObject.Object
+
+    // Owm methods of Grl-0.2.Grl.Plugin
+
     /**
      * Get the author of the plugin
      */
@@ -7291,398 +2301,69 @@ class Plugin {
     set_filename(filename: string): void
     set_id(id: string): void
     set_info(key: string, value: string): void
-    set_load_func(load_function?: object | null): void
+    set_load_func(load_function: object | null): void
     set_module(module: GModule.Module): void
     set_optional_info(info: GLib.HashTable): void
-    set_register_keys_func(register_keys_function?: object | null): void
-    set_unload_func(unload_function?: object | null): void
+    set_register_keys_func(register_keys_function: object | null): void
+    set_unload_func(unload_function: object | null): void
     unload(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Grl-0.2.Grl.Plugin
+
     connect(sigName: "notify::loaded", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::loaded", callback: (($obj: Plugin, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::loaded", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Plugin_ConstructProps)
-    _init (config?: Plugin_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class Plugin extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.Plugin
+
+    static name: string
+    static $gtype: GObject.GType<Plugin>
+
+    // Constructors of Grl-0.2.Grl.Plugin
+
+    constructor(config?: Plugin_ConstructProps) 
+    _init(config?: Plugin_ConstructProps): void
+}
+
 interface Registry_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Registry {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Registry */
+
+/**
+ * Signal callback interface for `metadata-key-added`
+ */
+interface Registry_MetadataKeyAddedSignalCallback {
+    ($obj: Registry, key: string): void
+}
+
+/**
+ * Signal callback interface for `source-added`
+ */
+interface Registry_SourceAddedSignalCallback {
+    ($obj: Registry, source: Source): void
+}
+
+/**
+ * Signal callback interface for `source-removed`
+ */
+interface Registry_SourceRemovedSignalCallback {
+    ($obj: Registry, source: Source): void
+}
+
+interface Registry {
+
+    // Own fields of Grl-0.2.Grl.Registry
+
+    parent: GObject.Object
+
+    // Owm methods of Grl-0.2.Grl.Registry
+
     /**
      * Add a configuration for a plugin/source.
      * @param config a configuration set
@@ -7785,7 +2466,7 @@ class Registry {
      * Returns `key` expected value type.
      * @param key a metadata key
      */
-    lookup_metadata_key_type(key: KeyID): GObject.Type
+    lookup_metadata_key_type(key: KeyID): GObject.GType
     /**
      * This function will search and retrieve a plugin given its identifier.
      * @param plugin_id the id of a plugin
@@ -7843,419 +2524,57 @@ class Registry {
      * @param source the source to unregister
      */
     unregister_source(source: Source): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Grl-0.2.Grl.Registry */
-    /**
-     * Signals that a new metadata key has been registered.
-     * @param key the name of the new key added
-     */
-    connect(sigName: "metadata-key-added", callback: (($obj: Registry, key: string) => void)): number
-    connect_after(sigName: "metadata-key-added", callback: (($obj: Registry, key: string) => void)): number
-    emit(sigName: "metadata-key-added", key: string): void
-    /**
-     * Signals that a source has been added to the registry.
-     * @param source the source that has been added
-     */
-    connect(sigName: "source-added", callback: (($obj: Registry, source: Source) => void)): number
-    connect_after(sigName: "source-added", callback: (($obj: Registry, source: Source) => void)): number
-    emit(sigName: "source-added", source: Source): void
-    /**
-     * Signals that a source has been removed from the registry.
-     * @param source the source that has been removed
-     */
-    connect(sigName: "source-removed", callback: (($obj: Registry, source: Source) => void)): number
-    connect_after(sigName: "source-removed", callback: (($obj: Registry, source: Source) => void)): number
-    emit(sigName: "source-removed", source: Source): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Registry, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Registry, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Grl-0.2.Grl.Registry
+
+    connect(sigName: "metadata-key-added", callback: Registry_MetadataKeyAddedSignalCallback): number
+    connect_after(sigName: "metadata-key-added", callback: Registry_MetadataKeyAddedSignalCallback): number
+    emit(sigName: "metadata-key-added", key: string, ...args: any[]): void
+    connect(sigName: "source-added", callback: Registry_SourceAddedSignalCallback): number
+    connect_after(sigName: "source-added", callback: Registry_SourceAddedSignalCallback): number
+    emit(sigName: "source-added", source: Source, ...args: any[]): void
+    connect(sigName: "source-removed", callback: Registry_SourceRemovedSignalCallback): number
+    connect_after(sigName: "source-removed", callback: Registry_SourceRemovedSignalCallback): number
+    emit(sigName: "source-removed", source: Source, ...args: any[]): void
+
+    // Class property signals of Grl-0.2.Grl.Registry
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class Registry extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.Registry
+
     static name: string
-    constructor (config?: Registry_ConstructProps)
-    _init (config?: Registry_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Registry>
+
+    // Constructors of Grl-0.2.Grl.Registry
+
+    constructor(config?: Registry_ConstructProps) 
+    _init(config?: Registry_ConstructProps): void
     /**
      * As the registry is designed to work as a singleton, this
      * method is in charge of creating the only instance or
      * returned it if it is already in memory.
      */
     static get_default(): Registry
-    static $gtype: GObject.Type
 }
+
 interface RelatedKeys_ConstructProps extends GObject.Object_ConstructProps {
 }
-class RelatedKeys {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.RelatedKeys */
+
+interface RelatedKeys {
+
+    // Own fields of Grl-0.2.Grl.RelatedKeys
+
+    parent: GObject.Object
+
+    // Owm methods of Grl-0.2.Grl.RelatedKeys
+
     /**
      * Makes a deep copy of `relkeys` and its contents.
      */
@@ -8356,7 +2675,7 @@ class RelatedKeys {
      * @param key key to change or add
      * @param boxed the new value
      */
-    set_boxed(key: KeyID, boxed?: object | null): void
+    set_boxed(key: KeyID, boxed: object | null): void
     /**
      * Sets the value associated with `key` into `relkeys`. `key` must have been
      * registered as a float-type key. Old value is replaced by the new one.
@@ -8385,417 +2704,73 @@ class RelatedKeys {
      * @param strvalue the new value
      */
     set_string(key: KeyID, strvalue: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: RelatedKeys, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: RelatedKeys, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Grl-0.2.Grl.RelatedKeys
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: RelatedKeys_ConstructProps)
-    _init (config?: RelatedKeys_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): RelatedKeys
-    static $gtype: GObject.Type
 }
+
+class RelatedKeys extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.RelatedKeys
+
+    static name: string
+    static $gtype: GObject.GType<RelatedKeys>
+
+    // Constructors of Grl-0.2.Grl.RelatedKeys
+
+    constructor(config?: RelatedKeys_ConstructProps) 
+    /**
+     * Creates a new #GrlRelatedKeys instance that can be used to store related
+     * keys and their values.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #GrlRelatedKeys instance that can be used to store related
+     * keys and their values.
+     * @constructor 
+     */
+    static new(): RelatedKeys
+    _init(config?: RelatedKeys_ConstructProps): void
+}
+
 interface Source_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Grl-0.2.Grl.Source */
+
+    // Own constructor properties of Grl-0.2.Grl.Source
+
     /**
      * Transparently split queries with count requests
      * bigger than a certain threshold into smaller queries.
      */
-    auto_split_threshold?: number
+    auto_split_threshold?: number | null
     /**
      * Plugin the source belongs to
      */
-    plugin?: Plugin
+    plugin?: Plugin | null
     /**
      * Source rank
      */
-    rank?: number
+    rank?: number | null
     /**
      * A description of the source
      */
-    source_desc?: string
+    source_desc?: string | null
     /**
      * #GIcon representing the source
      */
-    source_icon?: Gio.Icon
+    source_icon?: Gio.Icon | null
     /**
      * The identifier of the source.
      */
-    source_id?: string
+    source_id?: string | null
     /**
      * The name of the source.
      */
-    source_name?: string
+    source_name?: string | null
     /**
      * A string array of tags relevant this source.
      * 
@@ -8853,14 +2828,24 @@ interface Source_ConstructProps extends GObject.Object_ConstructProps {
      *   disable those by default, so that privacy is respected by default, and no
      *   data is leaked unintentionally.
      */
-    source_tags?: string[]
+    source_tags?: string[] | null
     /**
      * List of supported media types by this source.
      */
-    supported_media?: MediaType
+    supported_media?: MediaType | null
 }
-class Source {
-    /* Properties of Grl-0.2.Grl.Source */
+
+/**
+ * Signal callback interface for `content-changed`
+ */
+interface Source_ContentChangedSignalCallback {
+    ($obj: Source, changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void
+}
+
+interface Source {
+
+    // Own properties of Grl-0.2.Grl.Source
+
     /**
      * Transparently split queries with count requests
      * bigger than a certain threshold into smaller queries.
@@ -8952,9 +2937,13 @@ class Source {
      * List of supported media types by this source.
      */
     supported_media: MediaType
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Grl-0.2.Grl.Source */
+
+    // Own fields of Grl-0.2.Grl.Source
+
+    parent: GObject.Object
+
+    // Owm methods of Grl-0.2.Grl.Source
+
     /**
      * Browse from media elements through an available list.
      * 
@@ -9267,325 +3256,14 @@ class Source {
      * to provide new values for these keys that will be stored permanently.
      */
     writable_keys(): KeyID[]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Grl-0.2.Grl.Source */
+
+    // Own virtual methods of Grl-0.2.Grl.Source
+
     vfunc_browse(bs: SourceBrowseSpec): void
     vfunc_cancel(operation_id: number): void
     /**
      * Get the capabilities of `source` for `operation`.
+     * @virtual 
      * @param operation a supported operation. Even though the type allows to specify several operations, only one should be provided here.
      */
     vfunc_get_caps(operation: SupportedOps): Caps
@@ -9599,6 +3277,7 @@ class Source {
      * GrlKeyID that would be needed.
      * 
      * This function is synchronous and should not block.
+     * @virtual 
      * @param media a media on which we want more metadata
      * @param key_id the key corresponding to a metadata we might want
      * @param missing_keys an optional originally empty list
@@ -9609,12 +3288,14 @@ class Source {
      * Starts emitting ::content-changed signals when `source` discovers changes in
      * the content. This instructs `source` to setup the machinery needed to be aware
      * of changes in the content.
+     * @virtual 
      */
     vfunc_notify_change_start(): boolean
     /**
      * This will drop emission of ::content-changed signals from `source`. When this
      * is done `source` should stop the machinery required for it to track changes in
      * the content.
+     * @virtual 
      */
     vfunc_notify_change_stop(): boolean
     vfunc_query(qs: SourceQuerySpec): void
@@ -9625,6 +3306,7 @@ class Source {
      * Similar to grl_source_supported_keys(), but these keys
      * are marked as slow because of the amount of traffic/processing needed
      * to fetch them.
+     * @virtual 
      */
     vfunc_slow_keys(): KeyID[]
     vfunc_store(ss: SourceStoreSpec): void
@@ -9632,12 +3314,14 @@ class Source {
     /**
      * Get a list of #GrlKeyID, which describe a metadata types that this
      * source can fetch and store.
+     * @virtual 
      */
     vfunc_supported_keys(): KeyID[]
     vfunc_supported_operations(): SupportedOps
     /**
      * Tests whether `source` can instantiate a #GrlMedia object representing
      * the media resource exposed at `uri`.
+     * @virtual 
      * @param uri A URI that can be used to identify a media resource
      */
     vfunc_test_media_from_uri(uri: string): boolean
@@ -9645,303 +3329,527 @@ class Source {
      * Similar to grl_source_supported_keys(), but these keys
      * are marked as writable, meaning the source allows the client
      * to provide new values for these keys that will be stored permanently.
+     * @virtual 
      */
     vfunc_writable_keys(): KeyID[]
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Grl-0.2.Grl.Source */
-    /**
-     * Signals that the content in the source has changed. `changed_medias` is the
-     * list of elements that have changed. Usually these medias are of type
-     * #GrlMediaBox, meaning that the content of that box has changed.
-     * 
-     * If `location_unknown` is `TRUE` it means the source cannot establish where the
-     * change happened: could be either in the box, in any child, or in any other
-     * descendant of the box in the hierarchy.
-     * 
-     * Both `change_type` and `location_unknown` are applied to all elements in the
-     * list.
-     * 
-     * For the cases where the source can only signal that a change happened, but
-     * not where, it would use a list with the the root box (`NULL` id) and set
-     * location_unknown as `TRUE`.
-     * @param changed_medias a #GPtrArray with the medias that changed or a common ancestor of them of type #GrlMediaBox.
-     * @param change_type the kind of change that ocurred
-     * @param location_unknown `TRUE` if the change happened in `media` itself or in one of its direct children (when `media` is a #GrlMediaBox). `FALSE` otherwise
-     */
-    connect(sigName: "content-changed", callback: (($obj: Source, changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean) => void)): number
-    connect_after(sigName: "content-changed", callback: (($obj: Source, changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean) => void)): number
-    emit(sigName: "content-changed", changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Grl-0.2.Grl.Source
+
+    connect(sigName: "content-changed", callback: Source_ContentChangedSignalCallback): number
+    connect_after(sigName: "content-changed", callback: Source_ContentChangedSignalCallback): number
+    emit(sigName: "content-changed", changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean, ...args: any[]): void
+
+    // Class property signals of Grl-0.2.Grl.Source
+
     connect(sigName: "notify::auto-split-threshold", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::auto-split-threshold", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::auto-split-threshold", ...args: any[]): void
     connect(sigName: "notify::plugin", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::plugin", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::plugin", ...args: any[]): void
     connect(sigName: "notify::rank", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::rank", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::rank", ...args: any[]): void
     connect(sigName: "notify::source-desc", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source-desc", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source-desc", ...args: any[]): void
     connect(sigName: "notify::source-icon", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source-icon", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source-icon", ...args: any[]): void
     connect(sigName: "notify::source-id", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source-id", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source-id", ...args: any[]): void
     connect(sigName: "notify::source-name", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source-name", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source-name", ...args: any[]): void
     connect(sigName: "notify::source-tags", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source-tags", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source-tags", ...args: any[]): void
     connect(sigName: "notify::supported-media", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::supported-media", callback: (($obj: Source, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::supported-media", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Source_ConstructProps)
-    _init (config?: Source_ConstructProps): void
-    static $gtype: GObject.Type
 }
-abstract class CapsClass {
-    /* Fields of Grl-0.2.Grl.CapsClass */
+
+class Source extends GObject.Object {
+
+    // Own properties of Grl-0.2.Grl.Source
+
+    static name: string
+    static $gtype: GObject.GType<Source>
+
+    // Constructors of Grl-0.2.Grl.Source
+
+    constructor(config?: Source_ConstructProps) 
+    _init(config?: Source_ConstructProps): void
+}
+
+interface CapsClass {
+
+    // Own fields of Grl-0.2.Grl.CapsClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent: GObject.ObjectClass
+}
+
+/**
+ * Grilo Capabilities class.
+ * @record 
+ */
+abstract class CapsClass {
+
+    // Own properties of Grl-0.2.Grl.CapsClass
+
     static name: string
 }
+
+interface CapsPrivate {
+}
+
 class CapsPrivate {
+
+    // Own properties of Grl-0.2.Grl.CapsPrivate
+
     static name: string
 }
+
+interface ConfigClass {
+
+    // Own fields of Grl-0.2.Grl.ConfigClass
+
+    /**
+     * the parent class structure
+     * @field 
+     */
+    parent_class: GObject.ObjectClass
+}
+
+/**
+ * Grilo Config Class
+ * @record 
+ */
 abstract class ConfigClass {
-    /* Fields of Grl-0.2.Grl.ConfigClass */
-    /**
-     * the parent class structure
-     */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Grl-0.2.Grl.ConfigClass
+
     static name: string
 }
+
+interface ConfigPrivate {
+}
+
 class ConfigPrivate {
+
+    // Own properties of Grl-0.2.Grl.ConfigPrivate
+
     static name: string
 }
-abstract class DataClass {
-    /* Fields of Grl-0.2.Grl.DataClass */
+
+interface DataClass {
+
+    // Own fields of Grl-0.2.Grl.DataClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent_class: GObject.ObjectClass
+}
+
+/**
+ * Grilo Data class
+ * @record 
+ */
+abstract class DataClass {
+
+    // Own properties of Grl-0.2.Grl.DataClass
+
     static name: string
 }
+
+interface DataPrivate {
+}
+
 class DataPrivate {
+
+    // Own properties of Grl-0.2.Grl.DataPrivate
+
     static name: string
 }
-class LogDomain {
-    /* Methods of Grl-0.2.Grl.LogDomain */
+
+interface LogDomain {
+
+    // Owm methods of Grl-0.2.Grl.LogDomain
+
     /**
      * Releases `domain`.
      */
     free(): void
+}
+
+class LogDomain {
+
+    // Own properties of Grl-0.2.Grl.LogDomain
+
     static name: string
 }
+
+interface MediaAudioClass {
+
+    // Own fields of Grl-0.2.Grl.MediaAudioClass
+
+    /**
+     * the parent class structure
+     * @field 
+     */
+    parent_class: MediaClass
+}
+
+/**
+ * Grilo Media audio Class
+ * @record 
+ */
 abstract class MediaAudioClass {
-    /* Fields of Grl-0.2.Grl.MediaAudioClass */
-    /**
-     * the parent class structure
-     */
-    parent_class: MediaClass
+
+    // Own properties of Grl-0.2.Grl.MediaAudioClass
+
     static name: string
 }
+
+interface MediaBoxClass {
+
+    // Own fields of Grl-0.2.Grl.MediaBoxClass
+
+    /**
+     * the parent class structure
+     * @field 
+     */
+    parent_class: MediaClass
+}
+
+/**
+ * Grilo Media box Class
+ * @record 
+ */
 abstract class MediaBoxClass {
-    /* Fields of Grl-0.2.Grl.MediaBoxClass */
-    /**
-     * the parent class structure
-     */
-    parent_class: MediaClass
+
+    // Own properties of Grl-0.2.Grl.MediaBoxClass
+
     static name: string
 }
-abstract class MediaClass {
-    /* Fields of Grl-0.2.Grl.MediaClass */
+
+interface MediaClass {
+
+    // Own fields of Grl-0.2.Grl.MediaClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent_class: DataClass
+}
+
+/**
+ * Grilo Media Class
+ * @record 
+ */
+abstract class MediaClass {
+
+    // Own properties of Grl-0.2.Grl.MediaClass
+
     static name: string
 }
+
+interface MediaImageClass {
+
+    // Own fields of Grl-0.2.Grl.MediaImageClass
+
+    /**
+     * the parent class structure
+     * @field 
+     */
+    parent_class: MediaClass
+}
+
+/**
+ * Grilo Media image Class
+ * @record 
+ */
 abstract class MediaImageClass {
-    /* Fields of Grl-0.2.Grl.MediaImageClass */
-    /**
-     * the parent class structure
-     */
-    parent_class: MediaClass
+
+    // Own properties of Grl-0.2.Grl.MediaImageClass
+
     static name: string
 }
+
+interface MediaVideoClass {
+
+    // Own fields of Grl-0.2.Grl.MediaVideoClass
+
+    /**
+     * the parent class structure
+     * @field 
+     */
+    parent_class: MediaClass
+}
+
+/**
+ * Grilo Media video Class
+ * @record 
+ */
 abstract class MediaVideoClass {
-    /* Fields of Grl-0.2.Grl.MediaVideoClass */
-    /**
-     * the parent class structure
-     */
-    parent_class: MediaClass
+
+    // Own properties of Grl-0.2.Grl.MediaVideoClass
+
     static name: string
 }
-abstract class OperationOptionsClass {
-    /* Fields of Grl-0.2.Grl.OperationOptionsClass */
+
+interface OperationOptionsClass {
+
+    // Own fields of Grl-0.2.Grl.OperationOptionsClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent: GObject.ObjectClass
+}
+
+/**
+ * Grilo Operation Options class.
+ * @record 
+ */
+abstract class OperationOptionsClass {
+
+    // Own properties of Grl-0.2.Grl.OperationOptionsClass
+
     static name: string
 }
+
+interface OperationOptionsPrivate {
+}
+
 class OperationOptionsPrivate {
+
+    // Own properties of Grl-0.2.Grl.OperationOptionsPrivate
+
     static name: string
 }
-abstract class PluginClass {
-    /* Fields of Grl-0.2.Grl.PluginClass */
+
+interface PluginClass {
+
+    // Own fields of Grl-0.2.Grl.PluginClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent_class: GObject.ObjectClass
+}
+
+abstract class PluginClass {
+
+    // Own properties of Grl-0.2.Grl.PluginClass
+
     static name: string
 }
-class PluginDescriptor {
-    /* Fields of Grl-0.2.Grl.PluginDescriptor */
+
+interface PluginDescriptor {
+
+    // Own fields of Grl-0.2.Grl.PluginDescriptor
+
     /**
      * the module identifier
+     * @field 
      */
     plugin_id: string
     plugin_deinit: (plugin: Plugin) => void
     /**
      * the #GModule instance.
+     * @field 
      */
     module: GModule.Module
     plugin_register_keys: (registry: Registry, plugin: Plugin) => void
+}
+
+/**
+ * This structure is used for the module loader
+ * @record 
+ */
+class PluginDescriptor {
+
+    // Own properties of Grl-0.2.Grl.PluginDescriptor
+
     static name: string
 }
+
+interface PluginPrivate {
+}
+
 class PluginPrivate {
+
+    // Own properties of Grl-0.2.Grl.PluginPrivate
+
     static name: string
 }
-class RangeValue {
-    /* Fields of Grl-0.2.Grl.RangeValue */
+
+interface RangeValue {
+
+    // Own fields of Grl-0.2.Grl.RangeValue
+
     min: any
     max: any
-    /* Methods of Grl-0.2.Grl.RangeValue */
+
+    // Owm methods of Grl-0.2.Grl.RangeValue
+
     dup(): RangeValue
     free(): void
+}
+
+class RangeValue {
+
+    // Own properties of Grl-0.2.Grl.RangeValue
+
     static name: string
-    static new(min: any, max: any): RangeValue
-    constructor(min: any, max: any)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Grl-0.2.Grl.RangeValue
+
+    constructor(min: any, max: any) 
     static new(min: any, max: any): RangeValue
     static hashtable_insert(hash_table: GLib.HashTable, key: object | null, min: any, max: any): void
     static hashtable_new(): GLib.HashTable
 }
+
+interface RegistryClass {
+
+    // Own fields of Grl-0.2.Grl.RegistryClass
+
+    /**
+     * the parent class structure
+     * @field 
+     */
+    parent_class: GObject.ObjectClass
+}
+
+/**
+ * Grilo Registry class. Dynamic loader of plugins.
+ * @record 
+ */
 abstract class RegistryClass {
-    /* Fields of Grl-0.2.Grl.RegistryClass */
-    /**
-     * the parent class structure
-     */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Grl-0.2.Grl.RegistryClass
+
     static name: string
 }
+
+interface RegistryPrivate {
+}
+
 class RegistryPrivate {
+
+    // Own properties of Grl-0.2.Grl.RegistryPrivate
+
     static name: string
 }
-abstract class RelatedKeysClass {
-    /* Fields of Grl-0.2.Grl.RelatedKeysClass */
+
+interface RelatedKeysClass {
+
+    // Own fields of Grl-0.2.Grl.RelatedKeysClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent_class: GObject.ObjectClass
+}
+
+/**
+ * Grilo Data Multivalued class
+ * @record 
+ */
+abstract class RelatedKeysClass {
+
+    // Own properties of Grl-0.2.Grl.RelatedKeysClass
+
     static name: string
 }
+
+interface RelatedKeysPrivate {
+}
+
 class RelatedKeysPrivate {
+
+    // Own properties of Grl-0.2.Grl.RelatedKeysPrivate
+
     static name: string
 }
-class SourceBrowseSpec {
-    /* Fields of Grl-0.2.Grl.SourceBrowseSpec */
+
+interface SourceBrowseSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceBrowseSpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * operation identifier
+     * @field 
      */
     operation_id: number
     /**
      * a container of data transfer objects
+     * @field 
      */
     container: Media
     /**
      * the #GList of #GrlKeyID<!-- -->s to request
+     * @field 
      */
     keys: object[]
     /**
      * options wanted for that operation
+     * @field 
      */
     options: OperationOptions
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceResultCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * browse vmethod.
+ * @record 
+ */
+class SourceBrowseSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceBrowseSpec
+
     static name: string
 }
-abstract class SourceClass {
-    /* Fields of Grl-0.2.Grl.SourceClass */
+
+interface SourceClass {
+
+    // Own fields of Grl-0.2.Grl.SourceClass
+
     /**
      * the parent class structure
+     * @field 
      */
     parent_class: GObject.ObjectClass
     supported_operations: (source: Source) => SupportedOps
@@ -9962,219 +3870,381 @@ abstract class SourceClass {
     cancel: (source: Source, operation_id: number) => void
     notify_change_start: (source: Source) => boolean
     notify_change_stop: (source: Source) => boolean
+}
+
+/**
+ * Grilo Source class. Override the vmethods to implement the
+ * element functionality.
+ * @record 
+ */
+abstract class SourceClass {
+
+    // Own properties of Grl-0.2.Grl.SourceClass
+
     static name: string
 }
-class SourceMediaFromUriSpec {
-    /* Fields of Grl-0.2.Grl.SourceMediaFromUriSpec */
+
+interface SourceMediaFromUriSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceMediaFromUriSpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * operation identifier
+     * @field 
      */
     operation_id: number
     /**
      * A URI that can be used to identify a media resource
+     * @field 
      */
     uri: string
     /**
      * Metadata keys to resolve
+     * @field 
      */
     keys: object[]
     /**
      * options wanted for that operation
+     * @field 
      */
     options: OperationOptions
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceResolveCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * media_from_uri vmethod.
+ * @record 
+ */
+class SourceMediaFromUriSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceMediaFromUriSpec
+
     static name: string
 }
+
+interface SourcePrivate {
+}
+
 class SourcePrivate {
+
+    // Own properties of Grl-0.2.Grl.SourcePrivate
+
     static name: string
 }
-class SourceQuerySpec {
-    /* Fields of Grl-0.2.Grl.SourceQuerySpec */
+
+interface SourceQuerySpec {
+
+    // Own fields of Grl-0.2.Grl.SourceQuerySpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * operation identifier
+     * @field 
      */
     operation_id: number
     /**
      * the query to process
+     * @field 
      */
     query: string
     /**
      * the #GList of #GrlKeyID<!-- -->s to request
+     * @field 
      */
     keys: object[]
     /**
      * options wanted for that operation
+     * @field 
      */
     options: OperationOptions
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceResultCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * query vmethod.
+ * @record 
+ */
+class SourceQuerySpec {
+
+    // Own properties of Grl-0.2.Grl.SourceQuerySpec
+
     static name: string
 }
-class SourceRemoveSpec {
-    /* Fields of Grl-0.2.Grl.SourceRemoveSpec */
+
+interface SourceRemoveSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceRemoveSpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * media identifier to remove
+     * @field 
      */
     media_id: string
     /**
      * a data transfer object
+     * @field 
      */
     media: Media
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceRemoveCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * store vmethod.
+ * @record 
+ */
+class SourceRemoveSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceRemoveSpec
+
     static name: string
 }
-class SourceResolveSpec {
-    /* Fields of Grl-0.2.Grl.SourceResolveSpec */
+
+interface SourceResolveSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceResolveSpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * operation identifier
+     * @field 
      */
     operation_id: number
     /**
      * a data transfer object
+     * @field 
      */
     media: Media
     /**
      * the #GList of #GrlKeyID<!-- -->s to request
+     * @field 
      */
     keys: object[]
     /**
      * options wanted for that operation
+     * @field 
      */
     options: OperationOptions
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceResolveCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * resolve vmethod.
+ * @record 
+ */
+class SourceResolveSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceResolveSpec
+
     static name: string
 }
-class SourceSearchSpec {
-    /* Fields of Grl-0.2.Grl.SourceSearchSpec */
+
+interface SourceSearchSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceSearchSpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * operation identifier
+     * @field 
      */
     operation_id: number
     /**
      * the text to search
+     * @field 
      */
     text: string
     /**
      * the #GList of #GrlKeyID<!-- -->s to request
+     * @field 
      */
     keys: object[]
     /**
      * options wanted for that operation
+     * @field 
      */
     options: OperationOptions
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceResultCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * search vmethod.
+ * @record 
+ */
+class SourceSearchSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceSearchSpec
+
     static name: string
 }
-class SourceStoreMetadataSpec {
-    /* Fields of Grl-0.2.Grl.SourceStoreMetadataSpec */
+
+interface SourceStoreMetadataSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceStoreMetadataSpec
+
     /**
      * a source
+     * @field 
      */
     source: Source
     /**
      * a #GrlMedia transfer object
+     * @field 
      */
     media: Media
     /**
      * List of keys to be stored/updated.
+     * @field 
      */
     keys: object[]
     /**
      * Flags to control specific bahviors of the set metadata operation.
+     * @field 
      */
     flags: WriteFlags
     /**
      * the callback passed to grl_source_store_metadata()
+     * @field 
      */
     callback: SourceStoreCb
     /**
      * user data passed to grl_source_store_metadata()
+     * @field 
      */
     user_data: object
     /**
      * for internal use of the framework only.
+     * @field 
      */
     failed_keys: object[]
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * store_metadata vmethod.
+ * @record 
+ */
+class SourceStoreMetadataSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceStoreMetadataSpec
+
     static name: string
 }
-class SourceStoreSpec {
-    /* Fields of Grl-0.2.Grl.SourceStoreSpec */
+
+interface SourceStoreSpec {
+
+    // Own fields of Grl-0.2.Grl.SourceStoreSpec
+
     /**
      * a media source
+     * @field 
      */
     source: Source
     /**
      * a parent to store the data transfer objects
+     * @field 
      */
     parent: MediaBox
     /**
      * a data transfer object
+     * @field 
      */
     media: Media
     /**
      * the user defined callback
+     * @field 
      */
     callback: SourceStoreCb
     /**
      * the user data to pass in the callback
+     * @field 
      */
     user_data: object
+}
+
+/**
+ * Data transport structure used internally by the plugins which support
+ * store vmethod.
+ * @record 
+ */
+class SourceStoreSpec {
+
+    // Own properties of Grl-0.2.Grl.SourceStoreSpec
+
     static name: string
 }
+
     type KeyID = number
 }
 export default Grl;

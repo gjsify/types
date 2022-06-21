@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,36 +16,106 @@ import type GObject from './GObject-2.0';
 export namespace xlib {
 
 function open_display(): void
+interface Display {
+}
+
 class Display {
+
+    // Own properties of xlib-2.0.xlib.Display
+
     static name: string
 }
+
+interface Screen {
+}
+
 class Screen {
+
+    // Own properties of xlib-2.0.xlib.Screen
+
     static name: string
 }
+
+interface Visual {
+}
+
 class Visual {
+
+    // Own properties of xlib-2.0.xlib.Visual
+
     static name: string
 }
+
+interface XConfigureEvent {
+}
+
 class XConfigureEvent {
+
+    // Own properties of xlib-2.0.xlib.XConfigureEvent
+
     static name: string
 }
+
+interface XImage {
+}
+
 class XImage {
+
+    // Own properties of xlib-2.0.xlib.XImage
+
     static name: string
 }
+
+interface XFontStruct {
+}
+
 class XFontStruct {
+
+    // Own properties of xlib-2.0.xlib.XFontStruct
+
     static name: string
 }
+
+interface XTrapezoid {
+}
+
 class XTrapezoid {
+
+    // Own properties of xlib-2.0.xlib.XTrapezoid
+
     static name: string
 }
+
+interface XVisualInfo {
+}
+
 class XVisualInfo {
+
+    // Own properties of xlib-2.0.xlib.XVisualInfo
+
     static name: string
 }
+
+interface XWindowAttributes {
+}
+
 class XWindowAttributes {
+
+    // Own properties of xlib-2.0.xlib.XWindowAttributes
+
     static name: string
 }
+
+interface XEvent {
+}
+
 class XEvent {
+
+    // Own properties of xlib-2.0.xlib.XEvent
+
     static name: string
 }
+
     type Atom = number
     type Colormap = number
     type Cursor = number

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -537,6 +539,7 @@ enum VCardFormat {
 }
 /**
  * Flags that control the behaviour of an #EBookClientView.
+ * @bitfield 
  */
 enum BookClientViewFlags {
     /**
@@ -552,6 +555,7 @@ enum BookClientViewFlags {
 }
 /**
  * Defines the behaviour of e_book_client_cursor_step().
+ * @bitfield 
  */
 enum BookCursorStepFlags {
     /**
@@ -568,6 +572,7 @@ enum BookCursorStepFlags {
  * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
  * is the default behavior (and it is used when no other conflict resolution flag is set).
  * The flags can be ignored when the operation or the backend don't support it.
+ * @bitfield 
  */
 enum BookOperationFlags {
     /**
@@ -710,179 +715,326 @@ const VCARD_21_VALID_PARAMETERS: string
  * FIXME: Document me!
  */
 const VCARD_21_VALID_PROPERTIES: string
-function address_western_parse(in_address?: string | null): AddressWestern | null
-function book_client_error_create(code: BookClientError, custom_msg?: string | null): GLib.Error
+/**
+ * Parses a string representing a mailing address into a
+ * structure of type #EAddressWestern.
+ * @param in_address a string representing a mailing address
+ */
+function address_western_parse(in_address: string | null): AddressWestern | null
+function book_client_error_create(code: BookClientError, custom_msg: string | null): GLib.Error
 function book_client_error_quark(): GLib.Quark
+/**
+ * Get localized human readable description of the given error code.
+ * @param code an #EBookClientError code
+ */
 function book_client_error_to_string(code: BookClientError): string
+/**
+ * Create a new #EBookQuery which is the logical AND of the queries in #qs.
+ * @param nqs the number of queries to AND
+ * @param qs pointer to an array of #EBookQuery items
+ * @param unref if %TRUE, the new query takes ownership of the existing queries
+ */
 function book_query_and(nqs: number, qs: BookQuery, unref: boolean): BookQuery
+/**
+ * Creates a new #EBookQuery which tests if any field contains `value`.
+ * @param value a value
+ */
 function book_query_any_field_contains(value: string): BookQuery
+/**
+ * Creates a new #EBookQuery which tests if the field `field` exists.
+ * @param field an #EContactField
+ */
 function book_query_field_exists(field: ContactField): BookQuery
+/**
+ * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+ * @param field an #EContactField to test
+ * @param test the test to apply
+ * @param value the value to test for
+ */
 function book_query_field_test(field: ContactField, test: BookQueryTest, value: string): BookQuery
+/**
+ * Parse `query_string` and return a new #EBookQuery representing it.
+ * @param query_string the query
+ */
 function book_query_from_string(query_string: string): BookQuery
+/**
+ * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
+ * @param nqs the number of queries to OR
+ * @param qs pointer to an array of #EBookQuery items
+ * @param unref if %TRUE, the new query takes ownership of the existing queries
+ */
 function book_query_or(nqs: number, qs: BookQuery, unref: boolean): BookQuery
+/**
+ * Creates a new #EBookQuery which tests if the field `field` exists. `field`
+ * should be a vCard field name, such as #EVC_FN or #EVC_X_MSN.
+ * @param field a field name
+ */
 function book_query_vcard_field_exists(field: string): BookQuery
+/**
+ * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+ * @param field a EVCard field name to test
+ * @param test the test to apply
+ * @param value the value to test for
+ */
 function book_query_vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery
+/**
+ * Encodes the #EConflictResolution into the bit-or of #EBookOperationFlags.
+ * The returned value can be bit-or-ed with other #EBookOperationFlags values.
+ * @param conflict_resolution an #EConflictResolution
+ */
 function book_util_conflict_resolution_to_operation_flags(conflict_resolution: EDataServer.ConflictResolution): number
+/**
+ * Parses the `email_address` and calls `func` for each found address.
+ * The first parameter of the `func` is the name, the second parameter
+ * of the `func` is the email, the third parameters of the `func` is
+ * the `user_data`. The `func` returns %TRUE, to continue processing.
+ * @param email_address one or more email addresses as string
+ * @param func a function to call for each email `user_data` (closure func): user data passed to `func`
+ */
 function book_util_foreach_address(email_address: string, func: GLib.HRFunc): void
+/**
+ * Decodes the #EConflictResolution from the bit-or of #EBookOperationFlags.
+ * @param flags bit-or of #EBookOperationFlags
+ */
 function book_util_operation_flags_to_conflict_resolution(flags: number): EDataServer.ConflictResolution
+/**
+ * Copies a list of allocated strings, specifically
+ * for the #EContactAttrList boxed type used for multi valued
+ * contact fields.
+ * @param list A #GList of strings
+ */
 function contact_attr_list_copy(list: string[]): string[]
+/**
+ * Frees a list of allocated strings, specifically
+ * for the #EContactAttrList boxed type used for multi valued
+ * contact fields.
+ * @param list A #GList of strings
+ */
 function contact_attr_list_free(list: string[]): void
+/**
+ * Creates a new #EContactDate based on `str`.
+ * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
+ */
 function contact_date_from_string(str: string): ContactDate
+/**
+ * Creates a new #EContactName based on the parsed `name_str`.
+ * @param name_str a string representing a contact's full name
+ */
 function contact_name_from_string(name_str: string): ContactName
+/**
+ * Parses `full_name` and returns an #ENameWestern struct filled with
+ * the component parts of the name.
+ * @param full_name A string containing a western name.
+ */
 function name_western_parse(full_name: string): NameWestern
+/**
+ * Compares two phone numbers.
+ * @param first_number the first EPhoneNumber to compare
+ * @param second_number the second EPhoneNumber to compare
+ */
 function phone_number_compare_strings(first_number: string, second_number: string): PhoneNumberMatch
-function phone_number_compare_strings_with_region(first_number: string, second_number: string, region_code?: string | null): PhoneNumberMatch
+/**
+ * Compares two phone numbers within the context of `region_code`.
+ * @param first_number the first EPhoneNumber to compare
+ * @param second_number the second EPhoneNumber to compare
+ * @param region_code a two-letter country code, or %NULL
+ */
+function phone_number_compare_strings_with_region(first_number: string, second_number: string, region_code: string | null): PhoneNumberMatch
 function phone_number_error_quark(): GLib.Quark
-function phone_number_from_string(phone_number: string, region_code?: string | null): PhoneNumber
-function phone_number_get_country_code_for_region(region_code?: string | null): number
+/**
+ * Parses the string passed in `phone_number`. Note that no validation is
+ * performed whether the recognized phone number is valid for a particular
+ * region.
+ * 
+ * The two-letter country code passed in `region_code` only is used if the
+ * `phone_number` is not written in international format. The application's
+ * default region as returned by e_phone_number_get_default_region() is used
+ * if `region_code` is %NULL.
+ * 
+ * If the number is guaranteed to start with a '+' followed by the country
+ * calling code, then "ZZ" can be passed for `region_code`.
+ * @param phone_number the phone number to parse
+ * @param region_code a two-letter country code, or %NULL
+ */
+function phone_number_from_string(phone_number: string, region_code: string | null): PhoneNumber
+/**
+ * Retrieves the preferred country calling code for `region_code,`
+ * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
+ * 
+ * If %NULL is passed for `region_code` the default region as returned by
+ * e_phone_number_get_default_region() is used.
+ * @param region_code a two-letter country code, a locale name, or %NULL
+ */
+function phone_number_get_country_code_for_region(region_code: string | null): number
+/**
+ * Retrieves the current two-letter country code that's used by default for
+ * parsing phone numbers in e_phone_number_from_string(). It can be useful
+ * to store this number before parsing a bigger number of phone numbers.
+ * 
+ * The result of this functions depends on the current setup of the
+ * %LC_ADDRESS category: If that category provides a reasonable value
+ * for %_NL_ADDRESS_COUNTRY_AB2 this value is returned. Otherwise the
+ * locale name configured for %LC_ADDRESS is parsed.
+ */
 function phone_number_get_default_region(): string
+/**
+ * Checks if phone number support is available. It is recommended to call this
+ * function before using any of the phone-utils functions to ensure that the
+ * required functionality is available, and to pick alternative mechanisms if
+ * needed.
+ */
 function phone_number_is_supported(): boolean
 interface Contact_ConstructProps extends VCard_ConstructProps {
-    /* Constructor properties of EBookContacts-1.2.EBookContacts.Contact */
-    Rev?: string
-    address?: any
-    address_home?: ContactAddress
-    address_label_home?: string
-    address_label_other?: string
-    address_label_work?: string
-    address_other?: ContactAddress
-    address_work?: ContactAddress
-    anniversary?: ContactDate
-    assistant?: string
-    assistant_phone?: string
-    birth_date?: ContactDate
-    blog_url?: string
-    book_uid?: string
-    business_fax?: string
-    business_phone?: string
-    business_phone_2?: string
-    callback_phone?: string
-    caluri?: string
-    car_phone?: string
-    categories?: string
-    category_list?: object
-    company_phone?: string
-    email?: any
-    email_1?: string
-    email_2?: string
-    email_3?: string
-    email_4?: string
-    family_name?: string
-    fburl?: string
-    file_as?: string
-    full_name?: string
-    geo?: ContactGeo
-    given_name?: string
-    home_fax?: string
-    home_phone?: string
-    home_phone_2?: string
-    homepage_url?: string
-    icscalendar?: string
-    id?: string
-    im_aim?: any
-    im_aim_home_1?: string
-    im_aim_home_2?: string
-    im_aim_home_3?: string
-    im_aim_work_1?: string
-    im_aim_work_2?: string
-    im_aim_work_3?: string
-    im_gadugadu?: any
-    im_gadugadu_home_1?: string
-    im_gadugadu_home_2?: string
-    im_gadugadu_home_3?: string
-    im_gadugadu_work_1?: string
-    im_gadugadu_work_2?: string
-    im_gadugadu_work_3?: string
-    im_google_talk?: any
-    im_google_talk_home_1?: string
-    im_google_talk_home_2?: string
-    im_google_talk_home_3?: string
-    im_google_talk_work_1?: string
-    im_google_talk_work_2?: string
-    im_google_talk_work_3?: string
-    im_groupwise?: any
-    im_groupwise_home_1?: string
-    im_groupwise_home_2?: string
-    im_groupwise_home_3?: string
-    im_groupwise_work_1?: string
-    im_groupwise_work_2?: string
-    im_groupwise_work_3?: string
-    im_icq?: any
-    im_icq_home_1?: string
-    im_icq_home_2?: string
-    im_icq_home_3?: string
-    im_icq_work_1?: string
-    im_icq_work_2?: string
-    im_icq_work_3?: string
-    im_jabber?: any
-    im_jabber_home_1?: string
-    im_jabber_home_2?: string
-    im_jabber_home_3?: string
-    im_jabber_work_1?: string
-    im_jabber_work_2?: string
-    im_jabber_work_3?: string
-    im_matrix?: any
-    im_matrix_home_1?: string
-    im_matrix_home_2?: string
-    im_matrix_home_3?: string
-    im_matrix_work_1?: string
-    im_matrix_work_2?: string
-    im_matrix_work_3?: string
-    im_msn?: any
-    im_msn_home_1?: string
-    im_msn_home_2?: string
-    im_msn_home_3?: string
-    im_msn_work_1?: string
-    im_msn_work_2?: string
-    im_msn_work_3?: string
-    im_skype?: any
-    im_skype_home_1?: string
-    im_skype_home_2?: string
-    im_skype_home_3?: string
-    im_skype_work_1?: string
-    im_skype_work_2?: string
-    im_skype_work_3?: string
-    im_twitter?: any
-    im_yahoo?: any
-    im_yahoo_home_1?: string
-    im_yahoo_home_2?: string
-    im_yahoo_home_3?: string
-    im_yahoo_work_1?: string
-    im_yahoo_work_2?: string
-    im_yahoo_work_3?: string
-    isdn_phone?: string
-    list?: boolean
-    list_show_addresses?: boolean
-    logo?: ContactPhoto
-    mailer?: string
-    manager?: string
-    mobile_phone?: string
-    name?: ContactName
-    nickname?: string
-    note?: string
-    office?: string
-    org?: string
-    org_unit?: string
-    other_fax?: string
-    other_phone?: string
-    pager?: string
-    pgpCert?: ContactCert
-    phone?: any
-    photo?: ContactPhoto
-    primary_phone?: string
-    radio?: string
-    role?: string
-    sip?: any
-    spouse?: string
-    telex?: string
-    title?: string
-    tty?: string
-    video_url?: string
-    wants_html?: boolean
-    x509Cert?: ContactCert
+
+    // Own constructor properties of EBookContacts-1.2.EBookContacts.Contact
+
+    Rev?: string | null
+    address?: any | null
+    address_home?: ContactAddress | null
+    address_label_home?: string | null
+    address_label_other?: string | null
+    address_label_work?: string | null
+    address_other?: ContactAddress | null
+    address_work?: ContactAddress | null
+    anniversary?: ContactDate | null
+    assistant?: string | null
+    assistant_phone?: string | null
+    birth_date?: ContactDate | null
+    blog_url?: string | null
+    book_uid?: string | null
+    business_fax?: string | null
+    business_phone?: string | null
+    business_phone_2?: string | null
+    callback_phone?: string | null
+    caluri?: string | null
+    car_phone?: string | null
+    categories?: string | null
+    category_list?: object | null
+    company_phone?: string | null
+    email?: any | null
+    email_1?: string | null
+    email_2?: string | null
+    email_3?: string | null
+    email_4?: string | null
+    family_name?: string | null
+    fburl?: string | null
+    file_as?: string | null
+    full_name?: string | null
+    geo?: ContactGeo | null
+    given_name?: string | null
+    home_fax?: string | null
+    home_phone?: string | null
+    home_phone_2?: string | null
+    homepage_url?: string | null
+    icscalendar?: string | null
+    id?: string | null
+    im_aim?: any | null
+    im_aim_home_1?: string | null
+    im_aim_home_2?: string | null
+    im_aim_home_3?: string | null
+    im_aim_work_1?: string | null
+    im_aim_work_2?: string | null
+    im_aim_work_3?: string | null
+    im_gadugadu?: any | null
+    im_gadugadu_home_1?: string | null
+    im_gadugadu_home_2?: string | null
+    im_gadugadu_home_3?: string | null
+    im_gadugadu_work_1?: string | null
+    im_gadugadu_work_2?: string | null
+    im_gadugadu_work_3?: string | null
+    im_google_talk?: any | null
+    im_google_talk_home_1?: string | null
+    im_google_talk_home_2?: string | null
+    im_google_talk_home_3?: string | null
+    im_google_talk_work_1?: string | null
+    im_google_talk_work_2?: string | null
+    im_google_talk_work_3?: string | null
+    im_groupwise?: any | null
+    im_groupwise_home_1?: string | null
+    im_groupwise_home_2?: string | null
+    im_groupwise_home_3?: string | null
+    im_groupwise_work_1?: string | null
+    im_groupwise_work_2?: string | null
+    im_groupwise_work_3?: string | null
+    im_icq?: any | null
+    im_icq_home_1?: string | null
+    im_icq_home_2?: string | null
+    im_icq_home_3?: string | null
+    im_icq_work_1?: string | null
+    im_icq_work_2?: string | null
+    im_icq_work_3?: string | null
+    im_jabber?: any | null
+    im_jabber_home_1?: string | null
+    im_jabber_home_2?: string | null
+    im_jabber_home_3?: string | null
+    im_jabber_work_1?: string | null
+    im_jabber_work_2?: string | null
+    im_jabber_work_3?: string | null
+    im_matrix?: any | null
+    im_matrix_home_1?: string | null
+    im_matrix_home_2?: string | null
+    im_matrix_home_3?: string | null
+    im_matrix_work_1?: string | null
+    im_matrix_work_2?: string | null
+    im_matrix_work_3?: string | null
+    im_msn?: any | null
+    im_msn_home_1?: string | null
+    im_msn_home_2?: string | null
+    im_msn_home_3?: string | null
+    im_msn_work_1?: string | null
+    im_msn_work_2?: string | null
+    im_msn_work_3?: string | null
+    im_skype?: any | null
+    im_skype_home_1?: string | null
+    im_skype_home_2?: string | null
+    im_skype_home_3?: string | null
+    im_skype_work_1?: string | null
+    im_skype_work_2?: string | null
+    im_skype_work_3?: string | null
+    im_twitter?: any | null
+    im_yahoo?: any | null
+    im_yahoo_home_1?: string | null
+    im_yahoo_home_2?: string | null
+    im_yahoo_home_3?: string | null
+    im_yahoo_work_1?: string | null
+    im_yahoo_work_2?: string | null
+    im_yahoo_work_3?: string | null
+    isdn_phone?: string | null
+    list?: boolean | null
+    list_show_addresses?: boolean | null
+    logo?: ContactPhoto | null
+    mailer?: string | null
+    manager?: string | null
+    mobile_phone?: string | null
+    name?: ContactName | null
+    nickname?: string | null
+    note?: string | null
+    office?: string | null
+    org?: string | null
+    org_unit?: string | null
+    other_fax?: string | null
+    other_phone?: string | null
+    pager?: string | null
+    pgpCert?: ContactCert | null
+    phone?: any | null
+    photo?: ContactPhoto | null
+    primary_phone?: string | null
+    radio?: string | null
+    role?: string | null
+    sip?: any | null
+    spouse?: string | null
+    telex?: string | null
+    title?: string | null
+    tty?: string | null
+    video_url?: string | null
+    wants_html?: boolean | null
+    x509Cert?: ContactCert | null
 }
-class Contact {
-    /* Properties of EBookContacts-1.2.EBookContacts.Contact */
+
+interface Contact {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.Contact
+
     Rev: string
     address: any
     address_home: ContactAddress
@@ -1025,11 +1177,13 @@ class Contact {
     video_url: string
     wants_html: boolean
     x509Cert: ContactCert
-    /* Fields of EBookContacts-1.2.EBookContacts.VCard */
-    parent: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EBookContacts-1.2.EBookContacts.Contact */
+
+    // Own fields of EBookContacts-1.2.EBookContacts.Contact
+
+    parent: VCard
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.Contact
+
     /**
      * Creates a copy of `contact`.
      */
@@ -1043,7 +1197,17 @@ class Contact {
      * Gets a list of the vcard attributes for `contact'`s `field_id`.
      * @param field_id an #EContactField
      */
-    get_attributes(field_id: ContactField): VCardAttribute[]
+    get_attributes(field_id?: ContactField): VCardAttribute[]
+
+    // Overloads of get_attributes
+
+    /**
+     * Gets the list of all attributes from `evcard`. The list and its
+     * contents are owned by `evcard,` and must not be freed.
+     */
+    get_attributes(): VCardAttribute[]
+    get_attributes(...args: any[]): any
+    get_attributes(...args: any[]): VCardAttribute[] | any
     /**
      * Gets a list of the vcard attributes for `contact'`s `field_ids`.
      * @param field_ids an array of #EContactField
@@ -1067,7 +1231,7 @@ class Contact {
      * @param field_id an #EContactField
      * @param value a value whose type depends on the `field_id`
      */
-    set(field_id: ContactField, value?: object | null): void
+    set(field_id: ContactField, value: object | null): void
     /**
      * Sets the vcard attributes for `contact'`s `field_id`.
      * Attributes are added to the contact in the same order as they are in `attributes`.
@@ -1075,795 +1239,483 @@ class Contact {
      * @param attributes a #GList of pointers to #EVCardAttribute
      */
     set_attributes(field_id: ContactField, attributes: VCardAttribute[]): void
-    /* Methods of EBookContacts-1.2.EBookContacts.VCard */
-    /**
-     * Prepends `attr` to `evc`. This takes ownership of `attr`.
-     * @param attr an #EVCardAttribute to add
-     */
-    add_attribute(attr: VCardAttribute): void
-    /**
-     * Prepends `attr` to `evcard,` setting it to `value`. This takes ownership of
-     * `attr`.
-     * 
-     * This is a convenience wrapper around e_vcard_attribute_add_value() and
-     * e_vcard_add_attribute().
-     * @param attr an #EVCardAttribute to add
-     * @param value a value to assign to the attribute
-     */
-    add_attribute_with_value(attr: VCardAttribute, value: string): void
-    /**
-     * Appends `attr` to `evc` to the end of a list of attributes. This takes
-     * ownership of `attr`.
-     * @param attr an #EVCardAttribute to append
-     */
-    append_attribute(attr: VCardAttribute): void
-    /**
-     * Appends `attr` to `evcard,` setting it to `value`. This takes ownership of
-     * `attr`.
-     * 
-     * This is a convenience wrapper around e_vcard_attribute_add_value() and
-     * e_vcard_append_attribute().
-     * @param attr an #EVCardAttribute to append
-     * @param value a value to assign to the attribute
-     */
-    append_attribute_with_value(attr: VCardAttribute, value: string): void
-    /**
-     * Constructs the existing #EVCard, `evc,` setting its vCard data to `str`.
-     * 
-     * This modifies `evc`.
-     * @param str a vCard string
-     */
-    construct(str: string): void
-    /**
-     * Similar to e_vcard_construct_with_uid(), but can also
-     * be used with an `str` that is not %NULL terminated.
-     * @param str a vCard string
-     * @param len length of `str,` or -1 if `str` is %NULL terminated
-     * @param uid a unique ID string
-     */
-    construct_full(str: string, len: number, uid?: string | null): void
-    /**
-     * Constructs the existing #EVCard, `evc,` setting its vCard data to `str,` and
-     * adding a new UID attribute with the value given in `uid` (if `uid` is
-     * non-%NULL).
-     * 
-     * This modifies `evc`.
-     * @param str a vCard string
-     * @param uid a unique ID string
-     */
-    construct_with_uid(str: string, uid?: string | null): void
-    /**
-     * Prints a dump of `evc'`s structure to stdout. Used for
-     * debugging.
-     */
-    dump_structure(): void
-    /**
-     * Get the attribute `name` from `evc`.  The #EVCardAttribute is owned by
-     * `evcard` and should not be freed. If the attribute does not exist, %NULL is
-     * returned.
-     * 
-     * <note><para>This will only return the <emphasis>first</emphasis> attribute
-     * with the given `name`. To get other attributes of that name (for example,
-     * other <code>TEL</code> attributes if a contact has multiple telephone
-     * numbers), use e_vcard_get_attributes() and iterate over the list searching
-     * for matching attributes.</para>
-     * <para>This method iterates over all attributes in the #EVCard, so should not
-     * be called often. If extracting a large number of attributes from a vCard, it
-     * is more efficient to iterate once over the list returned by
-     * e_vcard_get_attributes().</para></note>
-     * @param name the name of the attribute to get
-     */
-    get_attribute(name: string): VCardAttribute | null
-    /**
-     * Similar to e_vcard_get_attribute() but this method will not attempt to
-     * parse the vCard if it is not already parsed.
-     * @param name the name of the attribute to get
-     */
-    get_attribute_if_parsed(name: string): VCardAttribute | null
-    /**
-     * Gets the list of all attributes from `evcard`. The list and its
-     * contents are owned by `evcard,` and must not be freed.
-     */
-    get_attributes(): VCardAttribute[]
-    /**
-     * Check if the `evc` has been parsed already, as #EVCard implements lazy parsing
-     * of its vCard data. Used for debugging.
-     */
-    is_parsed(): boolean
-    /**
-     * Removes `attr` from `evc` and frees it. This takes ownership of `attr`.
-     * @param attr an #EVCardAttribute to remove
-     */
-    remove_attribute(attr: VCardAttribute): void
-    /**
-     * Removes all the attributes with group name and attribute name equal to the
-     * passed in values. If `attr_group` is %NULL or an empty string,
-     * it removes all the attributes with passed in name irrespective of
-     * their group names.
-     * @param attr_group group name of attributes to be removed
-     * @param attr_name name of the arributes to be removed
-     */
-    remove_attributes(attr_group: string | null, attr_name: string): void
-    /**
-     * Exports `evc` to a string representation, specified
-     * by the `format` argument.
-     * @param format the format to export to
-     */
-    to_string(format: VCardFormat): string
-    util_dup_x_attribute(x_name: string): string | null
-    /**
-     * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
-     * removes it from `vcard,` when `value` is %NULL.
-     * @param x_name the attribute name, which starts with "X-"
-     * @param value the value to set, or %NULL to unset
-     */
-    util_set_x_attribute(x_name: string, value?: string | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.Contact
+
     connect(sigName: "notify::Rev", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::Rev", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::Rev", ...args: any[]): void
     connect(sigName: "notify::address", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address", ...args: any[]): void
     connect(sigName: "notify::address-home", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address-home", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address-home", ...args: any[]): void
     connect(sigName: "notify::address-label-home", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address-label-home", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address-label-home", ...args: any[]): void
     connect(sigName: "notify::address-label-other", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address-label-other", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address-label-other", ...args: any[]): void
     connect(sigName: "notify::address-label-work", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address-label-work", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address-label-work", ...args: any[]): void
     connect(sigName: "notify::address-other", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address-other", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address-other", ...args: any[]): void
     connect(sigName: "notify::address-work", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address-work", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address-work", ...args: any[]): void
     connect(sigName: "notify::anniversary", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::anniversary", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::anniversary", ...args: any[]): void
     connect(sigName: "notify::assistant", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::assistant", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::assistant", ...args: any[]): void
     connect(sigName: "notify::assistant-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::assistant-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::assistant-phone", ...args: any[]): void
     connect(sigName: "notify::birth-date", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::birth-date", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::birth-date", ...args: any[]): void
     connect(sigName: "notify::blog-url", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::blog-url", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::blog-url", ...args: any[]): void
     connect(sigName: "notify::book-uid", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::book-uid", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::book-uid", ...args: any[]): void
     connect(sigName: "notify::business-fax", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::business-fax", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::business-fax", ...args: any[]): void
     connect(sigName: "notify::business-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::business-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::business-phone", ...args: any[]): void
     connect(sigName: "notify::business-phone-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::business-phone-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::business-phone-2", ...args: any[]): void
     connect(sigName: "notify::callback-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::callback-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::callback-phone", ...args: any[]): void
     connect(sigName: "notify::caluri", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::caluri", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::caluri", ...args: any[]): void
     connect(sigName: "notify::car-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::car-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::car-phone", ...args: any[]): void
     connect(sigName: "notify::categories", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::categories", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::categories", ...args: any[]): void
     connect(sigName: "notify::category-list", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::category-list", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::category-list", ...args: any[]): void
     connect(sigName: "notify::company-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::company-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::company-phone", ...args: any[]): void
     connect(sigName: "notify::email", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::email", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::email", ...args: any[]): void
     connect(sigName: "notify::email-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::email-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::email-1", ...args: any[]): void
     connect(sigName: "notify::email-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::email-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::email-2", ...args: any[]): void
     connect(sigName: "notify::email-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::email-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::email-3", ...args: any[]): void
     connect(sigName: "notify::email-4", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::email-4", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::email-4", ...args: any[]): void
     connect(sigName: "notify::family-name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::family-name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::family-name", ...args: any[]): void
     connect(sigName: "notify::fburl", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::fburl", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::fburl", ...args: any[]): void
     connect(sigName: "notify::file-as", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::file-as", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::file-as", ...args: any[]): void
     connect(sigName: "notify::full-name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::full-name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::full-name", ...args: any[]): void
     connect(sigName: "notify::geo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::geo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::geo", ...args: any[]): void
     connect(sigName: "notify::given-name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::given-name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::given-name", ...args: any[]): void
     connect(sigName: "notify::home-fax", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::home-fax", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::home-fax", ...args: any[]): void
     connect(sigName: "notify::home-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::home-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::home-phone", ...args: any[]): void
     connect(sigName: "notify::home-phone-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::home-phone-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::home-phone-2", ...args: any[]): void
     connect(sigName: "notify::homepage-url", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::homepage-url", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::homepage-url", ...args: any[]): void
     connect(sigName: "notify::icscalendar", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::icscalendar", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::icscalendar", ...args: any[]): void
     connect(sigName: "notify::id", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::id", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::id", ...args: any[]): void
     connect(sigName: "notify::im-aim", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim", ...args: any[]): void
     connect(sigName: "notify::im-aim-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim-home-1", ...args: any[]): void
     connect(sigName: "notify::im-aim-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim-home-2", ...args: any[]): void
     connect(sigName: "notify::im-aim-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim-home-3", ...args: any[]): void
     connect(sigName: "notify::im-aim-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim-work-1", ...args: any[]): void
     connect(sigName: "notify::im-aim-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim-work-2", ...args: any[]): void
     connect(sigName: "notify::im-aim-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-aim-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-aim-work-3", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu-home-1", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu-home-2", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu-home-3", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu-work-1", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu-work-2", ...args: any[]): void
     connect(sigName: "notify::im-gadugadu-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-gadugadu-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-gadugadu-work-3", ...args: any[]): void
     connect(sigName: "notify::im-google-talk", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk", ...args: any[]): void
     connect(sigName: "notify::im-google-talk-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk-home-1", ...args: any[]): void
     connect(sigName: "notify::im-google-talk-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk-home-2", ...args: any[]): void
     connect(sigName: "notify::im-google-talk-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk-home-3", ...args: any[]): void
     connect(sigName: "notify::im-google-talk-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk-work-1", ...args: any[]): void
     connect(sigName: "notify::im-google-talk-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk-work-2", ...args: any[]): void
     connect(sigName: "notify::im-google-talk-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-google-talk-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-google-talk-work-3", ...args: any[]): void
     connect(sigName: "notify::im-groupwise", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise", ...args: any[]): void
     connect(sigName: "notify::im-groupwise-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise-home-1", ...args: any[]): void
     connect(sigName: "notify::im-groupwise-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise-home-2", ...args: any[]): void
     connect(sigName: "notify::im-groupwise-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise-home-3", ...args: any[]): void
     connect(sigName: "notify::im-groupwise-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise-work-1", ...args: any[]): void
     connect(sigName: "notify::im-groupwise-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise-work-2", ...args: any[]): void
     connect(sigName: "notify::im-groupwise-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-groupwise-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-groupwise-work-3", ...args: any[]): void
     connect(sigName: "notify::im-icq", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq", ...args: any[]): void
     connect(sigName: "notify::im-icq-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq-home-1", ...args: any[]): void
     connect(sigName: "notify::im-icq-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq-home-2", ...args: any[]): void
     connect(sigName: "notify::im-icq-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq-home-3", ...args: any[]): void
     connect(sigName: "notify::im-icq-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq-work-1", ...args: any[]): void
     connect(sigName: "notify::im-icq-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq-work-2", ...args: any[]): void
     connect(sigName: "notify::im-icq-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-icq-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-icq-work-3", ...args: any[]): void
     connect(sigName: "notify::im-jabber", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber", ...args: any[]): void
     connect(sigName: "notify::im-jabber-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber-home-1", ...args: any[]): void
     connect(sigName: "notify::im-jabber-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber-home-2", ...args: any[]): void
     connect(sigName: "notify::im-jabber-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber-home-3", ...args: any[]): void
     connect(sigName: "notify::im-jabber-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber-work-1", ...args: any[]): void
     connect(sigName: "notify::im-jabber-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber-work-2", ...args: any[]): void
     connect(sigName: "notify::im-jabber-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-jabber-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-jabber-work-3", ...args: any[]): void
     connect(sigName: "notify::im-matrix", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix", ...args: any[]): void
     connect(sigName: "notify::im-matrix-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix-home-1", ...args: any[]): void
     connect(sigName: "notify::im-matrix-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix-home-2", ...args: any[]): void
     connect(sigName: "notify::im-matrix-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix-home-3", ...args: any[]): void
     connect(sigName: "notify::im-matrix-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix-work-1", ...args: any[]): void
     connect(sigName: "notify::im-matrix-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix-work-2", ...args: any[]): void
     connect(sigName: "notify::im-matrix-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-matrix-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-matrix-work-3", ...args: any[]): void
     connect(sigName: "notify::im-msn", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn", ...args: any[]): void
     connect(sigName: "notify::im-msn-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn-home-1", ...args: any[]): void
     connect(sigName: "notify::im-msn-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn-home-2", ...args: any[]): void
     connect(sigName: "notify::im-msn-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn-home-3", ...args: any[]): void
     connect(sigName: "notify::im-msn-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn-work-1", ...args: any[]): void
     connect(sigName: "notify::im-msn-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn-work-2", ...args: any[]): void
     connect(sigName: "notify::im-msn-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-msn-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-msn-work-3", ...args: any[]): void
     connect(sigName: "notify::im-skype", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype", ...args: any[]): void
     connect(sigName: "notify::im-skype-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype-home-1", ...args: any[]): void
     connect(sigName: "notify::im-skype-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype-home-2", ...args: any[]): void
     connect(sigName: "notify::im-skype-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype-home-3", ...args: any[]): void
     connect(sigName: "notify::im-skype-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype-work-1", ...args: any[]): void
     connect(sigName: "notify::im-skype-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype-work-2", ...args: any[]): void
     connect(sigName: "notify::im-skype-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-skype-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-skype-work-3", ...args: any[]): void
     connect(sigName: "notify::im-twitter", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-twitter", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-twitter", ...args: any[]): void
     connect(sigName: "notify::im-yahoo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo", ...args: any[]): void
     connect(sigName: "notify::im-yahoo-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo-home-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo-home-1", ...args: any[]): void
     connect(sigName: "notify::im-yahoo-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo-home-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo-home-2", ...args: any[]): void
     connect(sigName: "notify::im-yahoo-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo-home-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo-home-3", ...args: any[]): void
     connect(sigName: "notify::im-yahoo-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo-work-1", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo-work-1", ...args: any[]): void
     connect(sigName: "notify::im-yahoo-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo-work-2", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo-work-2", ...args: any[]): void
     connect(sigName: "notify::im-yahoo-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::im-yahoo-work-3", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::im-yahoo-work-3", ...args: any[]): void
     connect(sigName: "notify::isdn-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::isdn-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::isdn-phone", ...args: any[]): void
     connect(sigName: "notify::list", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::list", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::list", ...args: any[]): void
     connect(sigName: "notify::list-show-addresses", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::list-show-addresses", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::list-show-addresses", ...args: any[]): void
     connect(sigName: "notify::logo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::logo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::logo", ...args: any[]): void
     connect(sigName: "notify::mailer", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mailer", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::mailer", ...args: any[]): void
     connect(sigName: "notify::manager", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::manager", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::manager", ...args: any[]): void
     connect(sigName: "notify::mobile-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::mobile-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::mobile-phone", ...args: any[]): void
     connect(sigName: "notify::name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name", ...args: any[]): void
     connect(sigName: "notify::name-or-org", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::name-or-org", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::name-or-org", ...args: any[]): void
     connect(sigName: "notify::nickname", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::nickname", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::nickname", ...args: any[]): void
     connect(sigName: "notify::note", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::note", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::note", ...args: any[]): void
     connect(sigName: "notify::office", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::office", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::office", ...args: any[]): void
     connect(sigName: "notify::org", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::org", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::org", ...args: any[]): void
     connect(sigName: "notify::org-unit", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::org-unit", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::org-unit", ...args: any[]): void
     connect(sigName: "notify::other-fax", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::other-fax", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::other-fax", ...args: any[]): void
     connect(sigName: "notify::other-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::other-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::other-phone", ...args: any[]): void
     connect(sigName: "notify::pager", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pager", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pager", ...args: any[]): void
     connect(sigName: "notify::pgpCert", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::pgpCert", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::pgpCert", ...args: any[]): void
     connect(sigName: "notify::phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::phone", ...args: any[]): void
     connect(sigName: "notify::photo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::photo", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::photo", ...args: any[]): void
     connect(sigName: "notify::primary-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::primary-phone", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::primary-phone", ...args: any[]): void
     connect(sigName: "notify::radio", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::radio", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::radio", ...args: any[]): void
     connect(sigName: "notify::role", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::role", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::role", ...args: any[]): void
     connect(sigName: "notify::sip", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sip", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::sip", ...args: any[]): void
     connect(sigName: "notify::spouse", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::spouse", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::spouse", ...args: any[]): void
     connect(sigName: "notify::telex", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::telex", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::telex", ...args: any[]): void
     connect(sigName: "notify::title", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::title", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::title", ...args: any[]): void
     connect(sigName: "notify::tty", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tty", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tty", ...args: any[]): void
     connect(sigName: "notify::video-url", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::video-url", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::video-url", ...args: any[]): void
     connect(sigName: "notify::wants-html", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::wants-html", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::wants-html", ...args: any[]): void
     connect(sigName: "notify::x509Cert", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::x509Cert", callback: (($obj: Contact, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::x509Cert", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class Contact extends VCard {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.Contact
+
     static name: string
-    constructor (config?: Contact_ConstructProps)
-    _init (config?: Contact_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Contact>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.Contact
+
+    constructor(config?: Contact_ConstructProps) 
+    /**
+     * Creates a new, blank #EContact.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new, blank #EContact.
+     * @constructor 
+     */
     static new(): Contact
-    /* Function overloads */
-    static new(): Contact
+
+    // Overloads of new
+
+    /**
+     * Creates a new, blank #EVCard.
+     * @constructor 
+     */
+    static new(): VCard
+    /**
+     * Creates a new #EContact based on a vcard.
+     * @constructor 
+     * @param vcard a string representing a vcard
+     */
     static new_from_vcard(vcard: string): Contact
+    /**
+     * Creates a new #EContact based on a vcard and a predefined UID.
+     * @constructor 
+     * @param vcard a string representing a vcard
+     * @param uid a contact UID
+     */
     static new_from_vcard_with_uid(vcard: string, uid: string): Contact
+    _init(config?: Contact_ConstructProps): void
     /**
      * Gets the #EContactField corresponding to the `field_name`.
      * @param field_name a string representing a contact field
@@ -1890,7 +1742,7 @@ class Contact {
      * what kind of value can be passed to e_contact_set().
      * @param field_id an #EContactField
      */
-    static field_type(field_id: ContactField): GObject.Type
+    static field_type(field_id: ContactField): GObject.GType
     /**
      * Gets a human-readable, translated string representation
      * of `field_id`.
@@ -1902,22 +1754,25 @@ class Contact {
      * @param field_id an #EContactField
      */
     static vcard_attribute(field_id: ContactField): string
-    static $gtype: GObject.Type
 }
+
 interface SourceBackendSummarySetup_ConstructProps extends EDataServer.SourceExtension_ConstructProps {
-    /* Constructor properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
-    indexed_fields?: string
-    summary_fields?: string
+
+    // Own constructor properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    indexed_fields?: string | null
+    summary_fields?: string | null
 }
-class SourceBackendSummarySetup {
-    /* Properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
+
+interface SourceBackendSummarySetup {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
     indexed_fields: string
     summary_fields: string
-    /* Properties of EDataServer-1.2.EDataServer.SourceExtension */
-    readonly source: EDataServer.Source
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
     /**
      * Fetches the #EContactFields configured to be indexed, with thier respective #EBookIndexTypes.
      */
@@ -1960,421 +1815,53 @@ class SourceBackendSummarySetup {
      * @param n_fields The number of #EContactFields in `fields`
      */
     set_summary_fieldsv(fields: ContactField, n_fields: number): void
-    /* Methods of EDataServer-1.2.EDataServer.SourceExtension */
-    /**
-     * Returns the #ESource instance to which `extension` belongs.
-     * 
-     * Note this function is not thread-safe.  The returned #ESource could
-     * be finalized by another thread while the caller is still using it.
-     */
-    get_source(): EDataServer.Source
-    /**
-     * Acquires a property lock, thus no other thread can change properties
-     * of the `extension` until the lock is released.
-     */
-    property_lock(): void
-    /**
-     * Releases a property lock, previously acquired with e_source_extension_property_lock(),
-     * thus other threads can change properties of the `extension`.
-     */
-    property_unlock(): void
-    /**
-     * Returns the #ESource instance to which the `extension` belongs.
-     * 
-     * The returned #ESource is referenced for thread-safety.  Unreference
-     * the #ESource with g_object_unref() when finished with it.
-     */
-    ref_source(): EDataServer.Source
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
     connect(sigName: "notify::indexed-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::indexed-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::indexed-fields", ...args: any[]): void
     connect(sigName: "notify::summary-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::summary-fields", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::summary-fields", ...args: any[]): void
     connect(sigName: "notify::source", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source", callback: (($obj: SourceBackendSummarySetup, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::source", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: SourceBackendSummarySetup_ConstructProps)
-    _init (config?: SourceBackendSummarySetup_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class SourceBackendSummarySetup extends EDataServer.SourceExtension {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    static name: string
+    static $gtype: GObject.GType<SourceBackendSummarySetup>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
+
+    constructor(config?: SourceBackendSummarySetup_ConstructProps) 
+    _init(config?: SourceBackendSummarySetup_ConstructProps): void
+}
+
 interface VCard_ConstructProps extends GObject.Object_ConstructProps {
 }
-class VCard {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EBookContacts-1.2.EBookContacts.VCard */
+
+interface VCard {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.VCard
+
+    parent: GObject.Object
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.VCard
+
     /**
      * Prepends `attr` to `evc`. This takes ownership of `attr`.
      * @param attr an #EVCardAttribute to add
@@ -2420,7 +1907,7 @@ class VCard {
      * @param len length of `str,` or -1 if `str` is %NULL terminated
      * @param uid a unique ID string
      */
-    construct_full(str: string, len: number, uid?: string | null): void
+    construct_full(str: string, len: number, uid: string | null): void
     /**
      * Constructs the existing #EVCard, `evc,` setting its vCard data to `str,` and
      * adding a new UID attribute with the value given in `uid` (if `uid` is
@@ -2430,7 +1917,7 @@ class VCard {
      * @param str a vCard string
      * @param uid a unique ID string
      */
-    construct_with_uid(str: string, uid?: string | null): void
+    construct_with_uid(str: string, uid: string | null): void
     /**
      * Prints a dump of `evc'`s structure to stdout. Used for
      * debugging.
@@ -2496,386 +1983,44 @@ class VCard {
      * @param x_name the attribute name, which starts with "X-"
      * @param value the value to set, or %NULL to unset
      */
-    util_set_x_attribute(x_name: string, value?: string | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: VCard, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: VCard, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    util_set_x_attribute(x_name: string, value: string | null): void
+
+    // Class property signals of EBookContacts-1.2.EBookContacts.VCard
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class VCard extends GObject.Object {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCard
+
     static name: string
-    constructor (config?: VCard_ConstructProps)
-    _init (config?: VCard_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<VCard>
+
+    // Constructors of EBookContacts-1.2.EBookContacts.VCard
+
+    constructor(config?: VCard_ConstructProps) 
+    /**
+     * Creates a new, blank #EVCard.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new, blank #EVCard.
+     * @constructor 
+     */
     static new(): VCard
+    /**
+     * Creates a new #EVCard from the passed-in string
+     * representation.
+     * @constructor 
+     * @param str a string representation of the vcard to create
+     */
     static new_from_string(str: string): VCard
+    _init(config?: VCard_ConstructProps): void
     /**
      * Escapes a string according to RFC2426, section 5.
      * @param s the string to escape
@@ -2886,39 +2031,50 @@ class VCard {
      * @param s the string to unescape
      */
     static unescape_string(s: string): string
-    static $gtype: GObject.Type
 }
-class AddressWestern {
-    /* Fields of EBookContacts-1.2.EBookContacts.AddressWestern */
+
+interface AddressWestern {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.AddressWestern
+
     /**
      * PO Box.
+     * @field 
      */
     po_box: string
     /**
      * TODO, we're not sure what this is.
+     * @field 
      */
     extended: string
     /**
      * Street name
+     * @field 
      */
     street: string
     /**
      * City or town
+     * @field 
      */
     locality: string
     /**
      * State or province
+     * @field 
      */
     region: string
     /**
      * Postal Code
+     * @field 
      */
     postal_code: string
     /**
      * Country
+     * @field 
      */
     country: string
-    /* Methods of EBookContacts-1.2.EBookContacts.AddressWestern */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.AddressWestern
+
     /**
      * Creates a copy of `eaw`.
      */
@@ -2927,29 +2083,59 @@ class AddressWestern {
      * Frees `eaw` and its contents.
      */
     free(): void
+}
+
+/**
+ * Western address structure.
+ * @record 
+ */
+class AddressWestern {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.AddressWestern
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.AddressWestern
+
     /**
      * Parses a string representing a mailing address into a
      * structure of type #EAddressWestern.
      * @param in_address a string representing a mailing address
      */
-    static parse(in_address?: string | null): AddressWestern | null
+    static parse(in_address: string | null): AddressWestern | null
 }
-class BookChange {
-    /* Fields of EBookContacts-1.2.EBookContacts.BookChange */
+
+interface BookChange {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.BookChange
+
     /**
      * The #EBookChangeType
+     * @field 
      */
     change_type: BookChangeType
     /**
      * The #EContact which changed
+     * @field 
      */
     contact: Contact
+}
+
+/**
+ * This is a part of the deprecated #EBook API.
+ * @record 
+ */
+class BookChange {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookChange
+
     static name: string
 }
-class BookQuery {
-    /* Methods of EBookContacts-1.2.EBookContacts.BookQuery */
+
+interface BookQuery {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.BookQuery
+
     /**
      * Creates a copy of `q`.
      */
@@ -2972,8 +2158,16 @@ class BookQuery {
      * will be freed and any child queries will have e_book_query_unref() called.
      */
     unref(): void
+}
+
+class BookQuery {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.BookQuery
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.BookQuery
+
     /**
      * Create a new #EBookQuery which is the logical AND of the queries in #qs.
      * @param nqs the number of queries to AND
@@ -3024,8 +2218,11 @@ class BookQuery {
      */
     static vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery
 }
-class ContactAddress {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactAddress */
+
+interface ContactAddress {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactAddress
+
     address_format: string
     po: string
     ext: string
@@ -3034,43 +2231,94 @@ class ContactAddress {
     region: string
     code: string
     country: string
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactAddress */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactAddress
+
     /**
      * Frees the `address` struct and its contents.
      */
     free(): void
+}
+
+class ContactAddress {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactAddress
+
     static name: string
-    static new(): ContactAddress
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactAddress
+
+    /**
+     * Creates a new #EContactAddress struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactAddress struct.
+     * @constructor 
+     */
     static new(): ContactAddress
 }
-class ContactCert {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactCert */
+
+interface ContactCert {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactCert
+
     length: number
     data: string
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactCert */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactCert
+
     /**
      * Frees the `cert` struct and its contents.
      */
     free(): void
+}
+
+class ContactCert {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactCert
+
     static name: string
-    static new(): ContactCert
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactCert
+
+    /**
+     * Creates an #EContactCert struct with all values set to 0.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates an #EContactCert struct with all values set to 0.
+     * @constructor 
+     */
     static new(): ContactCert
 }
-abstract class ContactClass {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactClass */
+
+interface ContactClass {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactClass
+
     parent_class: VCardClass
+}
+
+abstract class ContactClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactClass
+
     static name: string
 }
-class ContactDate {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactDate */
+
+interface ContactDate {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactDate
+
     year: number
     month: number
     day: number
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactDate */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactDate
+
     /**
      * Checks if `dt1` and `dt2` are the same date.
      * @param dt2 an #EContactDate
@@ -3085,10 +2333,25 @@ class ContactDate {
      * on the values of `dt`.
      */
     to_string(): string
+}
+
+class ContactDate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactDate
+
     static name: string
-    static new(): ContactDate
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactDate
+
+    /**
+     * Creates a new #EContactDate struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactDate struct.
+     * @constructor 
+     */
     static new(): ContactDate
     /**
      * Creates a new #EContactDate based on `str`.
@@ -3096,35 +2359,62 @@ class ContactDate {
      */
     static from_string(str: string): ContactDate
 }
-class ContactGeo {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactGeo */
+
+interface ContactGeo {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactGeo
+
     /**
      * latitude
+     * @field 
      */
     latitude: number
     /**
      * longitude
+     * @field 
      */
     longitude: number
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactGeo */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactGeo
+
     /**
      * Frees the `geo` struct and its contents.
      */
     free(): void
+}
+
+class ContactGeo {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactGeo
+
     static name: string
-    static new(): ContactGeo
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactGeo
+
+    /**
+     * Creates an #EContactGeo struct with all coordinates set to 0.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates an #EContactGeo struct with all coordinates set to 0.
+     * @constructor 
+     */
     static new(): ContactGeo
 }
-class ContactName {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactName */
+
+interface ContactName {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactName
+
     family: string
     given: string
     additional: string
     prefixes: string
     suffixes: string
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactName */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactName
+
     /**
      * Creates a copy of `n`.
      */
@@ -3137,10 +2427,25 @@ class ContactName {
      * Generates a string representation of `name`.
      */
     to_string(): string
+}
+
+class ContactName {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactName
+
     static name: string
-    static new(): ContactName
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactName
+
+    /**
+     * Creates a new #EContactName struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactName struct.
+     * @constructor 
+     */
     static new(): ContactName
     /**
      * Creates a new #EContactName based on the parsed `name_str`.
@@ -3148,10 +2453,15 @@ class ContactName {
      */
     static from_string(name_str: string): ContactName
 }
-class ContactPhoto {
-    /* Fields of EBookContacts-1.2.EBookContacts.ContactPhoto */
+
+interface ContactPhoto {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.ContactPhoto
+
     type: ContactPhotoType
-    /* Methods of EBookContacts-1.2.EBookContacts.ContactPhoto */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.ContactPhoto
+
     /**
      * Creates a copy of `photo`.
      */
@@ -3187,17 +2497,42 @@ class ContactPhoto {
      * @param uri the `photo'`s URI
      */
     set_uri(uri: string): void
+}
+
+class ContactPhoto {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactPhoto
+
     static name: string
-    static new(): ContactPhoto
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.ContactPhoto
+
+    /**
+     * Creates a new #EContactPhoto struct.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EContactPhoto struct.
+     * @constructor 
+     */
     static new(): ContactPhoto
 }
+
+interface ContactPrivate {
+}
+
 class ContactPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.ContactPrivate
+
     static name: string
 }
-class NameWestern {
-    /* Fields of EBookContacts-1.2.EBookContacts.NameWestern */
+
+interface NameWestern {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.NameWestern
+
     prefix: string
     first: string
     middle: string
@@ -3205,7 +2540,9 @@ class NameWestern {
     last: string
     suffix: string
     full: string
-    /* Methods of EBookContacts-1.2.EBookContacts.NameWestern */
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.NameWestern
+
     /**
      * Creates a copy of `w`.
      */
@@ -3214,8 +2551,16 @@ class NameWestern {
      * Frees the `w` struct and its contents.
      */
     free(): void
+}
+
+class NameWestern {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.NameWestern
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.NameWestern
+
     /**
      * Parses `full_name` and returns an #ENameWestern struct filled with
      * the component parts of the name.
@@ -3223,8 +2568,11 @@ class NameWestern {
      */
     static parse(full_name: string): NameWestern
 }
-class PhoneNumber {
-    /* Methods of EBookContacts-1.2.EBookContacts.PhoneNumber */
+
+interface PhoneNumber {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.PhoneNumber
+
     /**
      * Compares two phone numbers.
      * @param second_number the second EPhoneNumber to compare
@@ -3244,7 +2592,7 @@ class PhoneNumber {
      * function would return one and assing E_PHONE_NUMBER_COUNTRY_FROM_FQTN to `source`.
      * @param source an optional location for storing the phone number's origin, or %NULL
      */
-    get_country_code(source?: PhoneNumberCountrySource | null): number
+    get_country_code(source: PhoneNumberCountrySource | null): number
     /**
      * Queries the national portion of `phone_number` without any call-out
      * prefixes. For instance when parsing "+1-617-5423789" this function would
@@ -3256,8 +2604,21 @@ class PhoneNumber {
      * @param format the phone number format to apply
      */
     to_string(format: PhoneNumberFormat): string
+}
+
+/**
+ * This opaque type describes a parsed phone number. It can be copied using
+ * e_phone_number_copy(). To release it call e_phone_number_free().
+ * @record 
+ */
+class PhoneNumber {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.PhoneNumber
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.PhoneNumber
+
     /**
      * Compares two phone numbers.
      * @param first_number the first EPhoneNumber to compare
@@ -3270,7 +2631,7 @@ class PhoneNumber {
      * @param second_number the second EPhoneNumber to compare
      * @param region_code a two-letter country code, or %NULL
      */
-    static compare_strings_with_region(first_number: string, second_number: string, region_code?: string | null): PhoneNumberMatch
+    static compare_strings_with_region(first_number: string, second_number: string, region_code: string | null): PhoneNumberMatch
     static error_quark(): GLib.Quark
     /**
      * Parses the string passed in `phone_number`. Note that no validation is
@@ -3287,7 +2648,7 @@ class PhoneNumber {
      * @param phone_number the phone number to parse
      * @param region_code a two-letter country code, or %NULL
      */
-    static from_string(phone_number: string, region_code?: string | null): PhoneNumber
+    static from_string(phone_number: string, region_code: string | null): PhoneNumber
     /**
      * Retrieves the preferred country calling code for `region_code,`
      * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
@@ -3296,7 +2657,7 @@ class PhoneNumber {
      * e_phone_number_get_default_region() is used.
      * @param region_code a two-letter country code, a locale name, or %NULL
      */
-    static get_country_code_for_region(region_code?: string | null): number
+    static get_country_code_for_region(region_code: string | null): number
     /**
      * Retrieves the current two-letter country code that's used by default for
      * parsing phone numbers in e_phone_number_from_string(). It can be useful
@@ -3316,16 +2677,35 @@ class PhoneNumber {
      */
     static is_supported(): boolean
 }
-abstract class SourceBackendSummarySetupClass {
-    /* Fields of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass */
+
+interface SourceBackendSummarySetupClass {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass
+
     parent_class: EDataServer.SourceBackendClass
+}
+
+abstract class SourceBackendSummarySetupClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupClass
+
     static name: string
 }
+
+interface SourceBackendSummarySetupPrivate {
+}
+
 class SourceBackendSummarySetupPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetupPrivate
+
     static name: string
 }
-class VCardAttribute {
-    /* Methods of EBookContacts-1.2.EBookContacts.VCardAttribute */
+
+interface VCardAttribute {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.VCardAttribute
+
     /**
      * Prepends `param` to `attr'`s list of parameters. This takes ownership of
      * `param` (and all its values).
@@ -3489,14 +2869,40 @@ class VCardAttribute {
      * Removes and frees all values from `attr`.
      */
     remove_values(): void
+}
+
+class VCardAttribute {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardAttribute
+
     static name: string
-    static new(attr_group: string | null, attr_name: string): VCardAttribute
-    constructor(attr_group: string | null, attr_name: string)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.VCardAttribute
+
+    /**
+     * Creates a new #EVCardAttribute with the specified group and
+     * attribute names. The `attr_group` may be %NULL or the empty string if no
+     * group is needed.
+     * @constructor 
+     * @param attr_group a group name
+     * @param attr_name an attribute name
+     */
+    constructor(attr_group: string | null, attr_name: string) 
+    /**
+     * Creates a new #EVCardAttribute with the specified group and
+     * attribute names. The `attr_group` may be %NULL or the empty string if no
+     * group is needed.
+     * @constructor 
+     * @param attr_group a group name
+     * @param attr_name an attribute name
+     */
     static new(attr_group: string | null, attr_name: string): VCardAttribute
 }
-class VCardAttributeParam {
-    /* Methods of EBookContacts-1.2.EBookContacts.VCardAttributeParam */
+
+interface VCardAttributeParam {
+
+    // Owm methods of EBookContacts-1.2.EBookContacts.VCardAttributeParam
+
     /**
      * Appends `value` to `param'`s list of values.
      * @param value a string value to add
@@ -3538,19 +2944,53 @@ class VCardAttributeParam {
      * Removes and frees all values from `param`.
      */
     remove_values(): void
+}
+
+class VCardAttributeParam {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardAttributeParam
+
     static name: string
-    static new(name: string): VCardAttributeParam
-    constructor(name: string)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EBookContacts-1.2.EBookContacts.VCardAttributeParam
+
+    /**
+     * Creates a new parameter named `name`.
+     * @constructor 
+     * @param name the name of the new parameter
+     */
+    constructor(name: string) 
+    /**
+     * Creates a new parameter named `name`.
+     * @constructor 
+     * @param name the name of the new parameter
+     */
     static new(name: string): VCardAttributeParam
 }
-abstract class VCardClass {
-    /* Fields of EBookContacts-1.2.EBookContacts.VCardClass */
+
+interface VCardClass {
+
+    // Own fields of EBookContacts-1.2.EBookContacts.VCardClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class VCardClass {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardClass
+
     static name: string
 }
+
+interface VCardPrivate {
+}
+
 class VCardPrivate {
+
+    // Own properties of EBookContacts-1.2.EBookContacts.VCardPrivate
+
     static name: string
 }
+
 }
 export default EBookContacts;

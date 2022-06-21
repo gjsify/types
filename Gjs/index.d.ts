@@ -5,1115 +5,608 @@
  * If you found a bug fix it in ts-for-gir itself or create a bug report on https://github.com/sammydre/ts-for-gjs
  */
 
-import type * as Gjs from "./Gjs";
-  
-      import type Accounts10 from "./Accounts-1.0";
-    
-  
-      import type AccountsService10 from "./AccountsService-1.0";
-    
-  
-      import type Adw1 from "./Adw-1";
-    
-  
-      import type Amtk4 from "./Amtk-4";
-    
-  
-      import type Amtk5 from "./Amtk-5";
-    
-  
-      import type Anjuta30 from "./Anjuta-3.0";
-    
-  
-      import type Anthy9000 from "./Anthy-9000";
-    
-  
-      import type AppStream10 from "./AppStream-1.0";
-    
-  
-      import type AppStreamBuilder10 from "./AppStreamBuilder-1.0";
-    
-  
-      import type AppStreamGlib10 from "./AppStreamGlib-1.0";
-    
-  
-      import type Arrow10 from "./Arrow-1.0";
-    
-  
-      import type ArrowDataset10 from "./ArrowDataset-1.0";
-    
-  
-      import type ArrowFlight10 from "./ArrowFlight-1.0";
-    
-  
-      import type Atk10 from "./Atk-1.0";
-    
-  
-      import type Atspi20 from "./Atspi-2.0";
-    
-  
-      import type Babl01 from "./Babl-0.1";
-    
-  
-      import type Bamf3 from "./Bamf-3";
-    
-  
-      import type Builder10 from "./Builder-1.0";
-    
-  
-      import type Bump01 from "./Bump-0.1";
-    
-  
-      import type Cally10 from "./Cally-1.0";
-    
-  
-      import type Camel12 from "./Camel-1.2";
-    
-  
-      import type Caribou10 from "./Caribou-1.0";
-    
-  
-      import type Champlain012 from "./Champlain-0.12";
-    
-  
-      import type Cheese30 from "./Cheese-3.0";
-    
-  
-      import type Clutter10 from "./Clutter-1.0";
-    
-  
-      import type ClutterGdk10 from "./ClutterGdk-1.0";
-    
-  
-      import type ClutterGst10 from "./ClutterGst-1.0";
-    
-  
-      import type ClutterGst20 from "./ClutterGst-2.0";
-    
-  
-      import type ClutterGst30 from "./ClutterGst-3.0";
-    
-  
-      import type ClutterX1110 from "./ClutterX11-1.0";
-    
-  
-      import type Cogl10 from "./Cogl-1.0";
-    
-  
-      import type Cogl20 from "./Cogl-2.0";
-    
-  
-      import type CoglGst20 from "./CoglGst-2.0";
-    
-  
-      import type CoglPango10 from "./CoglPango-1.0";
-    
-  
-      import type CoglPango20 from "./CoglPango-2.0";
-    
-  
-      import type ColorHug10 from "./ColorHug-1.0";
-    
-  
-      import type Colord10 from "./Colord-1.0";
-    
-  
-      import type ColordGtk10 from "./ColordGtk-1.0";
-    
-  
-      import type DBus10 from "./DBus-1.0";
-    
-  
-      import type DBusGLib10 from "./DBusGLib-1.0";
-    
-  
-      import type DMAP30 from "./DMAP-3.0";
-    
-  
-      import type Dazzle10 from "./Dazzle-1.0";
-    
-  
-      import type Dbusmenu04 from "./Dbusmenu-0.4";
-    
-  
-      import type DbusmenuGtk04 from "./DbusmenuGtk-0.4";
-    
-  
-      import type DbusmenuGtk304 from "./DbusmenuGtk3-0.4";
-    
-  
-      import type Dee10 from "./Dee-1.0";
-    
-  
-      import type Devhelp30 from "./Devhelp-3.0";
-    
-  
-      import type EBackend12 from "./EBackend-1.2";
-    
-  
-      import type EBook12 from "./EBook-1.2";
-    
-  
-      import type EBookContacts12 from "./EBookContacts-1.2";
-    
-  
-      import type ECal20 from "./ECal-2.0";
-    
-  
-      import type ECalendar12 from "./ECalendar-1.2";
-    
-  
-      import type EDataBook12 from "./EDataBook-1.2";
-    
-  
-      import type EDataCal20 from "./EDataCal-2.0";
-    
-  
-      import type EDataServer12 from "./EDataServer-1.2";
-    
-  
-      import type EDataServerUI12 from "./EDataServerUI-1.2";
-    
-  
-      import type Egg10 from "./Egg-1.0";
-    
-  
-      import type Eog30 from "./Eog-3.0";
-    
-  
-      import type Epc10 from "./Epc-1.0";
-    
-  
-      import type EpcUi10 from "./EpcUi-1.0";
-    
-  
-      import type EvinceDocument30 from "./EvinceDocument-3.0";
-    
-  
-      import type EvinceView30 from "./EvinceView-3.0";
-    
-  
-      import type Farstream01 from "./Farstream-0.1";
-    
-  
-      import type Farstream02 from "./Farstream-0.2";
-    
-  
-      import type Flatpak10 from "./Flatpak-1.0";
-    
-  
-      import type Folks06 from "./Folks-0.6";
-    
-  
-      import type Folks07 from "./Folks-0.7";
-    
-  
-      import type FolksDummy06 from "./FolksDummy-0.6";
-    
-  
-      import type FolksDummy07 from "./FolksDummy-0.7";
-    
-  
-      import type FolksEds06 from "./FolksEds-0.6";
-    
-  
-      import type FolksEds07 from "./FolksEds-0.7";
-    
-  
-      import type FolksLibsocialweb06 from "./FolksLibsocialweb-0.6";
-    
-  
-      import type FolksTelepathy06 from "./FolksTelepathy-0.6";
-    
-  
-      import type FolksTelepathy07 from "./FolksTelepathy-0.7";
-    
-  
-      import type Fwupd20 from "./Fwupd-2.0";
-    
-  
-      import type GCab10 from "./GCab-1.0";
-    
-  
-      import type GCalc1 from "./GCalc-1";
-    
-  
-      import type GCalc2 from "./GCalc-2";
-    
-  
-      import type GConf20 from "./GConf-2.0";
-    
-  
-      import type GData00 from "./GData-0.0";
-    
-  
-      import type GDesktopEnums30 from "./GDesktopEnums-3.0";
-    
-  
-      import type GES10 from "./GES-1.0";
-    
-  
-      import type GExiv2010 from "./GExiv2-0.10";
-    
-  
-      import type GFBGraph02 from "./GFBGraph-0.2";
-    
-  
-      import type GFBGraph03 from "./GFBGraph-0.3";
-    
-  
-      import type GIRepository20 from "./GIRepository-2.0";
-    
-  
-      import type GL10 from "./GL-1.0";
-    
-  
-      import type GLib20 from "./GLib-2.0";
-    
-  
-      import type GMenu30 from "./GMenu-3.0";
-    
-  
-      import type GMime30 from "./GMime-3.0";
-    
-  
-      import type GModule20 from "./GModule-2.0";
-    
-  
-      import type GObject20 from "./GObject-2.0";
-    
-  
-      import type GSSDP10 from "./GSSDP-1.0";
-    
-  
-      import type GSSDP12 from "./GSSDP-1.2";
-    
-  
-      import type GSignond10 from "./GSignond-1.0";
-    
-  
-      import type GSound10 from "./GSound-1.0";
-    
-  
-      import type GSystem10 from "./GSystem-1.0";
-    
-  
-      import type GTop20 from "./GTop-2.0";
-    
-  
-      import type GUPnP10 from "./GUPnP-1.0";
-    
-  
-      import type GUPnP12 from "./GUPnP-1.2";
-    
-  
-      import type GUPnPAV10 from "./GUPnPAV-1.0";
-    
-  
-      import type GUPnPDLNA10 from "./GUPnPDLNA-1.0";
-    
-  
-      import type GUPnPDLNA20 from "./GUPnPDLNA-2.0";
-    
-  
-      import type GUPnPDLNAGst20 from "./GUPnPDLNAGst-2.0";
-    
-  
-      import type GUPnPIgd10 from "./GUPnPIgd-1.0";
-    
-  
-      import type GUdev10 from "./GUdev-1.0";
-    
-  
-      import type GUsb10 from "./GUsb-1.0";
-    
-  
-      import type GVnc10 from "./GVnc-1.0";
-    
-  
-      import type GVncPulse10 from "./GVncPulse-1.0";
-    
-  
-      import type GWeather30 from "./GWeather-3.0";
-    
-  
-      import type GWeather40 from "./GWeather-4.0";
-    
-  
-      import type GXPS01 from "./GXPS-0.1";
-    
-  
-      import type GXml014 from "./GXml-0.14";
-    
-  
-      import type GXml016 from "./GXml-0.16";
-    
-  
-      import type GXml018 from "./GXml-0.18";
-    
-  
-      import type GXml020 from "./GXml-0.20";
-    
-  
-      import type Gandiva10 from "./Gandiva-1.0";
-    
-  
-      import type Gck1 from "./Gck-1";
-    
-  
-      import type Gcr3 from "./Gcr-3";
-    
-  
-      import type GcrUi3 from "./GcrUi-3";
-    
-  
-      import type Gd10 from "./Gd-1.0";
-    
-  
-      import type Gda50 from "./Gda-5.0";
-    
-  
-      import type Gda60 from "./Gda-6.0";
-    
-  
-      import type Gdaui50 from "./Gdaui-5.0";
-    
-  
-      import type Gdaui60 from "./Gdaui-6.0";
-    
-  
-      import type Gdk20 from "./Gdk-2.0";
-    
-  
-      import type Gdk30 from "./Gdk-3.0";
-    
-  
-      import type Gdk40 from "./Gdk-4.0";
-    
-  
-      import type GdkPixbuf20 from "./GdkPixbuf-2.0";
-    
-  
-      import type GdkPixdata20 from "./GdkPixdata-2.0";
-    
-  
-      import type GdkWayland40 from "./GdkWayland-4.0";
-    
-  
-      import type GdkX1120 from "./GdkX11-2.0";
-    
-  
-      import type GdkX1130 from "./GdkX11-3.0";
-    
-  
-      import type GdkX1140 from "./GdkX11-4.0";
-    
-  
-      import type Gdl3 from "./Gdl-3";
-    
-  
-      import type Gdm10 from "./Gdm-1.0";
-    
-  
-      import type Gedit30 from "./Gedit-3.0";
-    
-  
-      import type Gee08 from "./Gee-0.8";
-    
-  
-      import type Gee10 from "./Gee-1.0";
-    
-  
-      import type Gegl03 from "./Gegl-0.3";
-    
-  
-      import type Gegl04 from "./Gegl-0.4";
-    
-  
-      import type GeglGtk301 from "./GeglGtk3-0.1";
-    
-  
-      import type Geoclue20 from "./Geoclue-2.0";
-    
-  
-      import type GeocodeGlib10 from "./GeocodeGlib-1.0";
-    
-  
-      import type Gepub05 from "./Gepub-0.5";
-    
-  
-      import type Ggit10 from "./Ggit-1.0";
-    
-  
-      import type Gio20 from "./Gio-2.0";
-    
-  
-      import type Gitg10 from "./Gitg-1.0";
-    
-  
-      import type GitgExt10 from "./GitgExt-1.0";
-    
-  
-      import type GjsDBus10 from "./GjsDBus-1.0";
-    
-  
-      import type Gkbd30 from "./Gkbd-3.0";
-    
-  
-      import type Gladeui20 from "./Gladeui-2.0";
-    
-  
-      import type GnomeAutoar01 from "./GnomeAutoar-0.1";
-    
-  
-      import type GnomeAutoarGtk01 from "./GnomeAutoarGtk-0.1";
-    
-  
-      import type GnomeBG40 from "./GnomeBG-4.0";
-    
-  
-      import type GnomeBluetooth10 from "./GnomeBluetooth-1.0";
-    
-  
-      import type GnomeDesktop30 from "./GnomeDesktop-3.0";
-    
-  
-      import type GnomeDesktop40 from "./GnomeDesktop-4.0";
-    
-  
-      import type GnomeKeyring10 from "./GnomeKeyring-1.0";
-    
-  
-      import type GnomeMaps10 from "./GnomeMaps-1.0";
-    
-  
-      import type GnomeRR40 from "./GnomeRR-4.0";
-    
-  
-      import type GoVirt10 from "./GoVirt-1.0";
-    
-  
-      import type Goa10 from "./Goa-1.0";
-    
-  
-      import type GooCanvas20 from "./GooCanvas-2.0";
-    
-  
-      import type GooCanvas30 from "./GooCanvas-3.0";
-    
-  
-      import type Gpseq10 from "./Gpseq-1.0";
-    
-  
-      import type Granite10 from "./Granite-1.0";
-    
-  
-      import type Granite70 from "./Granite-7.0";
-    
-  
-      import type Graphene10 from "./Graphene-1.0";
-    
-  
-      import type Grl01 from "./Grl-0.1";
-    
-  
-      import type Grl02 from "./Grl-0.2";
-    
-  
-      import type Grl03 from "./Grl-0.3";
-    
-  
-      import type GrlNet01 from "./GrlNet-0.1";
-    
-  
-      import type GrlNet02 from "./GrlNet-0.2";
-    
-  
-      import type GrlNet03 from "./GrlNet-0.3";
-    
-  
-      import type GrlPls02 from "./GrlPls-0.2";
-    
-  
-      import type GrlPls03 from "./GrlPls-0.3";
-    
-  
-      import type Grss07 from "./Grss-0.7";
-    
-  
-      import type Gsf1 from "./Gsf-1";
-    
-  
-      import type Gsk40 from "./Gsk-4.0";
-    
-  
-      import type Gspell1 from "./Gspell-1";
-    
-  
-      import type Gst10 from "./Gst-1.0";
-    
-  
-      import type GstAllocators10 from "./GstAllocators-1.0";
-    
-  
-      import type GstApp10 from "./GstApp-1.0";
-    
-  
-      import type GstAudio10 from "./GstAudio-1.0";
-    
-  
-      import type GstBadAllocators10 from "./GstBadAllocators-1.0";
-    
-  
-      import type GstBadAudio10 from "./GstBadAudio-1.0";
-    
-  
-      import type GstBase10 from "./GstBase-1.0";
-    
-  
-      import type GstCheck10 from "./GstCheck-1.0";
-    
-  
-      import type GstCodecs10 from "./GstCodecs-1.0";
-    
-  
-      import type GstController10 from "./GstController-1.0";
-    
-  
-      import type GstFft10 from "./GstFft-1.0";
-    
-  
-      import type GstGL10 from "./GstGL-1.0";
-    
-  
-      import type GstGLEGL10 from "./GstGLEGL-1.0";
-    
-  
-      import type GstGLWayland10 from "./GstGLWayland-1.0";
-    
-  
-      import type GstGLX1110 from "./GstGLX11-1.0";
-    
-  
-      import type GstInsertBin10 from "./GstInsertBin-1.0";
-    
-  
-      import type GstMpegts10 from "./GstMpegts-1.0";
-    
-  
-      import type GstNet10 from "./GstNet-1.0";
-    
-  
-      import type GstPbutils10 from "./GstPbutils-1.0";
-    
-  
-      import type GstPlay10 from "./GstPlay-1.0";
-    
-  
-      import type GstPlayer10 from "./GstPlayer-1.0";
-    
-  
-      import type GstRiff10 from "./GstRiff-1.0";
-    
-  
-      import type GstRtp10 from "./GstRtp-1.0";
-    
-  
-      import type GstRtsp10 from "./GstRtsp-1.0";
-    
-  
-      import type GstRtspServer10 from "./GstRtspServer-1.0";
-    
-  
-      import type GstSdp10 from "./GstSdp-1.0";
-    
-  
-      import type GstTag10 from "./GstTag-1.0";
-    
-  
-      import type GstTranscoder10 from "./GstTranscoder-1.0";
-    
-  
-      import type GstVideo10 from "./GstVideo-1.0";
-    
-  
-      import type GstVulkan10 from "./GstVulkan-1.0";
-    
-  
-      import type GstWebRTC10 from "./GstWebRTC-1.0";
-    
-  
-      import type Gtef2 from "./Gtef-2";
-    
-  
-      import type Gtk20 from "./Gtk-2.0";
-    
-  
-      import type Gtk30 from "./Gtk-3.0";
-    
-  
-      import type Gtk40 from "./Gtk-4.0";
-    
-  
-      import type GtkChamplain012 from "./GtkChamplain-0.12";
-    
-  
-      import type GtkClutter10 from "./GtkClutter-1.0";
-    
-  
-      import type GtkSource30 from "./GtkSource-3.0";
-    
-  
-      import type GtkSource4 from "./GtkSource-4";
-    
-  
-      import type GtkSource5 from "./GtkSource-5";
-    
-  
-      import type GtkVnc20 from "./GtkVnc-2.0";
-    
-  
-      import type Gucharmap290 from "./Gucharmap-2.90";
-    
-  
-      import type Guestfs10 from "./Guestfs-1.0";
-    
-  
-      import type Gxps10 from "./Gxps-1.0";
-    
-  
-      import type Handy00 from "./Handy-0.0";
-    
-  
-      import type Handy1 from "./Handy-1";
-    
-  
-      import type HarfBuzz00 from "./HarfBuzz-0.0";
-    
-  
-      import type IAnjuta30 from "./IAnjuta-3.0";
-    
-  
-      import type IBus10 from "./IBus-1.0";
-    
-  
-      import type ICal30 from "./ICal-3.0";
-    
-  
-      import type ICalGLib30 from "./ICalGLib-3.0";
-    
-  
-      import type Ide10 from "./Ide-1.0";
-    
-  
-      import type JSCore30 from "./JSCore-3.0";
-    
-  
-      import type JavaScriptCore40 from "./JavaScriptCore-4.0";
-    
-  
-      import type JavaScriptCore41 from "./JavaScriptCore-4.1";
-    
-  
-      import type JavaScriptCore50 from "./JavaScriptCore-5.0";
-    
-  
-      import type Json10 from "./Json-1.0";
-    
-  
-      import type Jsonrpc10 from "./Jsonrpc-1.0";
-    
-  
-      import type Libmsi10 from "./Libmsi-1.0";
-    
-  
-      import type Libosinfo10 from "./Libosinfo-1.0";
-    
-  
-      import type LibvirtGConfig10 from "./LibvirtGConfig-1.0";
-    
-  
-      import type LibvirtGLib10 from "./LibvirtGLib-1.0";
-    
-  
-      import type LibvirtGObject10 from "./LibvirtGObject-1.0";
-    
-  
-      import type Manette02 from "./Manette-0.2";
-    
-  
-      import type Mash02 from "./Mash-0.2";
-    
-  
-      import type Mbim10 from "./Mbim-1.0";
-    
-  
-      import type MediaArt10 from "./MediaArt-1.0";
-    
-  
-      import type MediaArt20 from "./MediaArt-2.0";
-    
-  
-      import type ModemManager10 from "./ModemManager-1.0";
-    
-  
-      import type Mx10 from "./Mx-1.0";
-    
-  
-      import type Mx20 from "./Mx-2.0";
-    
-  
-      import type MxGtk10 from "./MxGtk-1.0";
-    
-  
-      import type NM10 from "./NM-1.0";
-    
-  
-      import type NMA10 from "./NMA-1.0";
-    
-  
-      import type NMClient10 from "./NMClient-1.0";
-    
-  
-      import type NMGtk10 from "./NMGtk-1.0";
-    
-  
-      import type Nautilus30 from "./Nautilus-3.0";
-    
-  
-      import type NetworkManager10 from "./NetworkManager-1.0";
-    
-  
-      import type Nice01 from "./Nice-0.1";
-    
-  
-      import type Notify07 from "./Notify-0.7";
-    
-  
-      import type OSTree10 from "./OSTree-1.0";
-    
-  
-      import type P11Kit10 from "./P11Kit-1.0";
-    
-  
-      import type PackageKitGlib10 from "./PackageKitGlib-1.0";
-    
-  
-      import type PackageKitPlugin10 from "./PackageKitPlugin-1.0";
-    
-  
-      import type PanelApplet40 from "./PanelApplet-4.0";
-    
-  
-      import type Pango10 from "./Pango-1.0";
-    
-  
-      import type PangoCairo10 from "./PangoCairo-1.0";
-    
-  
-      import type PangoFT210 from "./PangoFT2-1.0";
-    
-  
-      import type PangoFc10 from "./PangoFc-1.0";
-    
-  
-      import type PangoOT10 from "./PangoOT-1.0";
-    
-  
-      import type PangoXft10 from "./PangoXft-1.0";
-    
-  
-      import type Parquet10 from "./Parquet-1.0";
-    
-  
-      import type Peas10 from "./Peas-1.0";
-    
-  
-      import type PeasGtk10 from "./PeasGtk-1.0";
-    
-  
-      import type Plasma10 from "./Plasma-1.0";
-    
-  
-      import type Pnl10 from "./Pnl-1.0";
-    
-  
-      import type Polkit10 from "./Polkit-1.0";
-    
-  
-      import type PolkitAgent10 from "./PolkitAgent-1.0";
-    
-  
-      import type Poppler018 from "./Poppler-0.18";
-    
-  
-      import type Qmi10 from "./Qmi-1.0";
-    
-  
-      import type Rest07 from "./Rest-0.7";
-    
-  
-      import type Rest10 from "./Rest-1.0";
-    
-  
-      import type RestExtras07 from "./RestExtras-0.7";
-    
-  
-      import type RestExtras10 from "./RestExtras-1.0";
-    
-  
-      import type Retro014 from "./Retro-0.14";
-    
-  
-      import type Retro1 from "./Retro-1";
-    
-  
-      import type Retro2 from "./Retro-2";
-    
-  
-      import type Rsvg20 from "./Rsvg-2.0";
-    
-  
-      import type RygelCore26 from "./RygelCore-2.6";
-    
-  
-      import type RygelRenderer26 from "./RygelRenderer-2.6";
-    
-  
-      import type RygelRendererGst26 from "./RygelRendererGst-2.6";
-    
-  
-      import type RygelServer26 from "./RygelServer-2.6";
-    
-  
-      import type Secret1 from "./Secret-1";
-    
-  
-      import type SecretUnstable0 from "./SecretUnstable-0";
-    
-  
-      import type Shumate10 from "./Shumate-1.0";
-    
-  
-      import type Signon20 from "./Signon-2.0";
-    
-  
-      import type Snapd1 from "./Snapd-1";
-    
-  
-      import type Soup24 from "./Soup-2.4";
-    
-  
-      import type Soup30 from "./Soup-3.0";
-    
-  
-      import type SoupGNOME24 from "./SoupGNOME-2.4";
-    
-  
-      import type SpiceClientGLib20 from "./SpiceClientGLib-2.0";
-    
-  
-      import type SpiceClientGtk30 from "./SpiceClientGtk-3.0";
-    
-  
-      import type Sushi10 from "./Sushi-1.0";
-    
-  
-      import type TelepathyFarstream06 from "./TelepathyFarstream-0.6";
-    
-  
-      import type TelepathyGLib012 from "./TelepathyGLib-0.12";
-    
-  
-      import type TelepathyLogger02 from "./TelepathyLogger-0.2";
-    
-  
-      import type Template10 from "./Template-1.0";
-    
-  
-      import type Tepl4 from "./Tepl-4";
-    
-  
-      import type Tepl5 from "./Tepl-5";
-    
-  
-      import type Tepl6 from "./Tepl-6";
-    
-  
-      import type TimezoneMap10 from "./TimezoneMap-1.0";
-    
-  
-      import type Totem10 from "./Totem-1.0";
-    
-  
-      import type TotemPlParser10 from "./TotemPlParser-1.0";
-    
-  
-      import type Tracker10 from "./Tracker-1.0";
-    
-  
-      import type Tracker20 from "./Tracker-2.0";
-    
-  
-      import type Tracker30 from "./Tracker-3.0";
-    
-  
-      import type TrackerControl10 from "./TrackerControl-1.0";
-    
-  
-      import type TrackerControl20 from "./TrackerControl-2.0";
-    
-  
-      import type TrackerMiner10 from "./TrackerMiner-1.0";
-    
-  
-      import type TrackerMiner20 from "./TrackerMiner-2.0";
-    
-  
-      import type UDisks20 from "./UDisks-2.0";
-    
-  
-      import type UPowerGlib10 from "./UPowerGlib-1.0";
-    
-  
-      import type Uhm00 from "./Uhm-0.0";
-    
-  
-      import type Unique30 from "./Unique-3.0";
-    
-  
-      import type Unity60 from "./Unity-6.0";
-    
-  
-      import type Unity70 from "./Unity-7.0";
-    
-  
-      import type UnityExtras70 from "./UnityExtras-7.0";
-    
-  
-      import type Vda1 from "./Vda-1";
-    
-  
-      import type Vgda1 from "./Vgda-1";
-    
-  
-      import type Vgpg1 from "./Vgpg-1";
-    
-  
-      import type Vgsl1 from "./Vgsl-1";
-    
-  
-      import type Vips80 from "./Vips-8.0";
-    
-  
-      import type Vpg1 from "./Vpg-1";
-    
-  
-      import type Vsqlite1 from "./Vsqlite-1";
-    
-  
-      import type Vte291 from "./Vte-2.91";
-    
-  
-      import type Vulkan10 from "./Vulkan-1.0";
-    
-  
-      import type WebKit240 from "./WebKit2-4.0";
-    
-  
-      import type WebKit241 from "./WebKit2-4.1";
-    
-  
-      import type WebKit250 from "./WebKit2-5.0";
-    
-  
-      import type WebKit2WebExtension40 from "./WebKit2WebExtension-4.0";
-    
-  
-      import type WebKit2WebExtension41 from "./WebKit2WebExtension-4.1";
-    
-  
-      import type WebKit2WebExtension50 from "./WebKit2WebExtension-5.0";
-    
-  
-      import type Wnck30 from "./Wnck-3.0";
-    
-  
-      import type Xdp10 from "./Xdp-1.0";
-    
-  
-      import type XdpGtk310 from "./XdpGtk3-1.0";
-    
-  
-      import type XdpGtk410 from "./XdpGtk4-1.0";
-    
-  
-      import type Xkl10 from "./Xkl-1.0";
-    
-  
-      import type Zeitgeist20 from "./Zeitgeist-2.0";
-    
-  
-      import type Zpj00 from "./Zpj-0.0";
-    
-  
-      import type Cairo10 from "./cairo-1.0";
-    
-  
-      import type Fontconfig20 from "./fontconfig-2.0";
-    
-  
-      import type Freetype220 from "./freetype2-2.0";
-    
-  
-      import type GSignon10 from "./gSignon-1.0";
-    
-  
-      import type Libxml220 from "./libxml2-2.0";
-    
-  
-      import type Win3210 from "./win32-1.0";
-    
-  
-      import type Xfixes40 from "./xfixes-4.0";
-    
-  
-      import type Xft20 from "./xft-2.0";
-    
-  
-      import type Xlib20 from "./xlib-2.0";
-    
-  
-      import type Xrandr13 from "./xrandr-1.3";
-    
-  
-      import type Gst010 from "./Gst-0.10";
-    
-  
-      import type GstBase010 from "./GstBase-0.10";
-    
-  
-      import type GstInterfaces010 from "./GstInterfaces-0.10";
-    
-  
-      import type GstPbutils010 from "./GstPbutils-0.10";
-    
-  
-      import type GstTag010 from "./GstTag-0.10";
-    
-  
-      import type GstVideo010 from "./GstVideo-0.10";
-    
-  
-      import type SocialWebClient025 from "./SocialWebClient-0.25";
-    
+import type * as Gjs from './Gjs'
+import type Accounts10 from "./Accounts-1.0";
+import type AccountsService10 from "./AccountsService-1.0";
+import type Adw1 from "./Adw-1";
+import type Amtk4 from "./Amtk-4";
+import type Amtk5 from "./Amtk-5";
+import type Anjuta30 from "./Anjuta-3.0";
+import type Anthy9000 from "./Anthy-9000";
+import type AppStream10 from "./AppStream-1.0";
+import type AppStreamBuilder10 from "./AppStreamBuilder-1.0";
+import type AppStreamGlib10 from "./AppStreamGlib-1.0";
+import type Arrow10 from "./Arrow-1.0";
+import type ArrowDataset10 from "./ArrowDataset-1.0";
+import type ArrowFlight10 from "./ArrowFlight-1.0";
+import type Atk10 from "./Atk-1.0";
+import type Atspi20 from "./Atspi-2.0";
+import type Babl01 from "./Babl-0.1";
+import type Bamf3 from "./Bamf-3";
+import type Builder10 from "./Builder-1.0";
+import type Bump01 from "./Bump-0.1";
+import type Cally10 from "./Cally-1.0";
+import type Camel12 from "./Camel-1.2";
+import type Caribou10 from "./Caribou-1.0";
+import type Champlain012 from "./Champlain-0.12";
+import type Cheese30 from "./Cheese-3.0";
+import type Clutter10 from "./Clutter-1.0";
+import type ClutterGdk10 from "./ClutterGdk-1.0";
+import type ClutterGst10 from "./ClutterGst-1.0";
+import type ClutterGst20 from "./ClutterGst-2.0";
+import type ClutterGst30 from "./ClutterGst-3.0";
+import type ClutterX1110 from "./ClutterX11-1.0";
+import type Cogl10 from "./Cogl-1.0";
+import type Cogl20 from "./Cogl-2.0";
+import type CoglGst20 from "./CoglGst-2.0";
+import type CoglPango10 from "./CoglPango-1.0";
+import type CoglPango20 from "./CoglPango-2.0";
+import type ColorHug10 from "./ColorHug-1.0";
+import type Colord10 from "./Colord-1.0";
+import type ColordGtk10 from "./ColordGtk-1.0";
+import type DBus10 from "./DBus-1.0";
+import type DBusGLib10 from "./DBusGLib-1.0";
+import type DMAP30 from "./DMAP-3.0";
+import type Dazzle10 from "./Dazzle-1.0";
+import type Dbusmenu04 from "./Dbusmenu-0.4";
+import type DbusmenuGtk04 from "./DbusmenuGtk-0.4";
+import type DbusmenuGtk304 from "./DbusmenuGtk3-0.4";
+import type Dee10 from "./Dee-1.0";
+import type Devhelp30 from "./Devhelp-3.0";
+import type EBackend12 from "./EBackend-1.2";
+import type EBook12 from "./EBook-1.2";
+import type EBookContacts12 from "./EBookContacts-1.2";
+import type ECal20 from "./ECal-2.0";
+import type ECalendar12 from "./ECalendar-1.2";
+import type EDataBook12 from "./EDataBook-1.2";
+import type EDataCal20 from "./EDataCal-2.0";
+import type EDataServer12 from "./EDataServer-1.2";
+import type EDataServerUI12 from "./EDataServerUI-1.2";
+import type Egg10 from "./Egg-1.0";
+import type Eog30 from "./Eog-3.0";
+import type Epc10 from "./Epc-1.0";
+import type EpcUi10 from "./EpcUi-1.0";
+import type EvinceDocument30 from "./EvinceDocument-3.0";
+import type EvinceView30 from "./EvinceView-3.0";
+import type Farstream01 from "./Farstream-0.1";
+import type Farstream02 from "./Farstream-0.2";
+import type Flatpak10 from "./Flatpak-1.0";
+import type Folks06 from "./Folks-0.6";
+import type Folks07 from "./Folks-0.7";
+import type FolksDummy06 from "./FolksDummy-0.6";
+import type FolksDummy07 from "./FolksDummy-0.7";
+import type FolksEds06 from "./FolksEds-0.6";
+import type FolksEds07 from "./FolksEds-0.7";
+import type FolksLibsocialweb06 from "./FolksLibsocialweb-0.6";
+import type FolksTelepathy06 from "./FolksTelepathy-0.6";
+import type FolksTelepathy07 from "./FolksTelepathy-0.7";
+import type Fwupd20 from "./Fwupd-2.0";
+import type GCab10 from "./GCab-1.0";
+import type GCalc1 from "./GCalc-1";
+import type GCalc2 from "./GCalc-2";
+import type GConf20 from "./GConf-2.0";
+import type GData00 from "./GData-0.0";
+import type GDesktopEnums30 from "./GDesktopEnums-3.0";
+import type GES10 from "./GES-1.0";
+import type GExiv2010 from "./GExiv2-0.10";
+import type GFBGraph02 from "./GFBGraph-0.2";
+import type GFBGraph03 from "./GFBGraph-0.3";
+import type GIRepository20 from "./GIRepository-2.0";
+import type GL10 from "./GL-1.0";
+import type GLib20 from "./GLib-2.0";
+import type GMenu30 from "./GMenu-3.0";
+import type GMime30 from "./GMime-3.0";
+import type GModule20 from "./GModule-2.0";
+import type GObject20 from "./GObject-2.0";
+import type GSSDP10 from "./GSSDP-1.0";
+import type GSSDP12 from "./GSSDP-1.2";
+import type GSignond10 from "./GSignond-1.0";
+import type GSound10 from "./GSound-1.0";
+import type GSystem10 from "./GSystem-1.0";
+import type GTop20 from "./GTop-2.0";
+import type GUPnP10 from "./GUPnP-1.0";
+import type GUPnP12 from "./GUPnP-1.2";
+import type GUPnPAV10 from "./GUPnPAV-1.0";
+import type GUPnPDLNA10 from "./GUPnPDLNA-1.0";
+import type GUPnPDLNA20 from "./GUPnPDLNA-2.0";
+import type GUPnPDLNAGst20 from "./GUPnPDLNAGst-2.0";
+import type GUPnPIgd10 from "./GUPnPIgd-1.0";
+import type GUdev10 from "./GUdev-1.0";
+import type GUsb10 from "./GUsb-1.0";
+import type GVnc10 from "./GVnc-1.0";
+import type GVncPulse10 from "./GVncPulse-1.0";
+import type GWeather30 from "./GWeather-3.0";
+import type GWeather40 from "./GWeather-4.0";
+import type GXPS01 from "./GXPS-0.1";
+import type GXml014 from "./GXml-0.14";
+import type GXml016 from "./GXml-0.16";
+import type GXml018 from "./GXml-0.18";
+import type GXml020 from "./GXml-0.20";
+import type Gandiva10 from "./Gandiva-1.0";
+import type Gck1 from "./Gck-1";
+import type Gcr3 from "./Gcr-3";
+import type GcrUi3 from "./GcrUi-3";
+import type Gd10 from "./Gd-1.0";
+import type Gda50 from "./Gda-5.0";
+import type Gda60 from "./Gda-6.0";
+import type Gdaui50 from "./Gdaui-5.0";
+import type Gdaui60 from "./Gdaui-6.0";
+import type Gdk20 from "./Gdk-2.0";
+import type Gdk30 from "./Gdk-3.0";
+import type Gdk40 from "./Gdk-4.0";
+import type GdkPixbuf20 from "./GdkPixbuf-2.0";
+import type GdkPixdata20 from "./GdkPixdata-2.0";
+import type GdkWayland40 from "./GdkWayland-4.0";
+import type GdkX1120 from "./GdkX11-2.0";
+import type GdkX1130 from "./GdkX11-3.0";
+import type GdkX1140 from "./GdkX11-4.0";
+import type Gdl3 from "./Gdl-3";
+import type Gdm10 from "./Gdm-1.0";
+import type Gedit30 from "./Gedit-3.0";
+import type Gee08 from "./Gee-0.8";
+import type Gee10 from "./Gee-1.0";
+import type Gegl03 from "./Gegl-0.3";
+import type Gegl04 from "./Gegl-0.4";
+import type GeglGtk301 from "./GeglGtk3-0.1";
+import type Geoclue20 from "./Geoclue-2.0";
+import type GeocodeGlib10 from "./GeocodeGlib-1.0";
+import type Gepub05 from "./Gepub-0.5";
+import type Ggit10 from "./Ggit-1.0";
+import type Gio20 from "./Gio-2.0";
+import type Gitg10 from "./Gitg-1.0";
+import type GitgExt10 from "./GitgExt-1.0";
+import type GjsDBus10 from "./GjsDBus-1.0";
+import type Gkbd30 from "./Gkbd-3.0";
+import type Gladeui20 from "./Gladeui-2.0";
+import type GnomeAutoar01 from "./GnomeAutoar-0.1";
+import type GnomeAutoarGtk01 from "./GnomeAutoarGtk-0.1";
+import type GnomeBG40 from "./GnomeBG-4.0";
+import type GnomeBluetooth10 from "./GnomeBluetooth-1.0";
+import type GnomeDesktop30 from "./GnomeDesktop-3.0";
+import type GnomeDesktop40 from "./GnomeDesktop-4.0";
+import type GnomeKeyring10 from "./GnomeKeyring-1.0";
+import type GnomeMaps10 from "./GnomeMaps-1.0";
+import type GnomeRR40 from "./GnomeRR-4.0";
+import type GoVirt10 from "./GoVirt-1.0";
+import type Goa10 from "./Goa-1.0";
+import type GooCanvas20 from "./GooCanvas-2.0";
+import type GooCanvas30 from "./GooCanvas-3.0";
+import type Gpseq10 from "./Gpseq-1.0";
+import type Granite10 from "./Granite-1.0";
+import type Granite70 from "./Granite-7.0";
+import type Graphene10 from "./Graphene-1.0";
+import type Grl01 from "./Grl-0.1";
+import type Grl02 from "./Grl-0.2";
+import type Grl03 from "./Grl-0.3";
+import type GrlNet01 from "./GrlNet-0.1";
+import type GrlNet02 from "./GrlNet-0.2";
+import type GrlNet03 from "./GrlNet-0.3";
+import type GrlPls02 from "./GrlPls-0.2";
+import type GrlPls03 from "./GrlPls-0.3";
+import type Grss07 from "./Grss-0.7";
+import type Gsf1 from "./Gsf-1";
+import type Gsk40 from "./Gsk-4.0";
+import type Gspell1 from "./Gspell-1";
+import type Gst10 from "./Gst-1.0";
+import type GstAllocators10 from "./GstAllocators-1.0";
+import type GstApp10 from "./GstApp-1.0";
+import type GstAudio10 from "./GstAudio-1.0";
+import type GstBadAllocators10 from "./GstBadAllocators-1.0";
+import type GstBadAudio10 from "./GstBadAudio-1.0";
+import type GstBase10 from "./GstBase-1.0";
+import type GstCheck10 from "./GstCheck-1.0";
+import type GstCodecs10 from "./GstCodecs-1.0";
+import type GstController10 from "./GstController-1.0";
+import type GstFft10 from "./GstFft-1.0";
+import type GstGL10 from "./GstGL-1.0";
+import type GstGLEGL10 from "./GstGLEGL-1.0";
+import type GstGLWayland10 from "./GstGLWayland-1.0";
+import type GstGLX1110 from "./GstGLX11-1.0";
+import type GstInsertBin10 from "./GstInsertBin-1.0";
+import type GstMpegts10 from "./GstMpegts-1.0";
+import type GstNet10 from "./GstNet-1.0";
+import type GstPbutils10 from "./GstPbutils-1.0";
+import type GstPlay10 from "./GstPlay-1.0";
+import type GstPlayer10 from "./GstPlayer-1.0";
+import type GstRiff10 from "./GstRiff-1.0";
+import type GstRtp10 from "./GstRtp-1.0";
+import type GstRtsp10 from "./GstRtsp-1.0";
+import type GstRtspServer10 from "./GstRtspServer-1.0";
+import type GstSdp10 from "./GstSdp-1.0";
+import type GstTag10 from "./GstTag-1.0";
+import type GstTranscoder10 from "./GstTranscoder-1.0";
+import type GstVideo10 from "./GstVideo-1.0";
+import type GstVulkan10 from "./GstVulkan-1.0";
+import type GstWebRTC10 from "./GstWebRTC-1.0";
+import type Gtef2 from "./Gtef-2";
+import type Gtk20 from "./Gtk-2.0";
+import type Gtk30 from "./Gtk-3.0";
+import type Gtk40 from "./Gtk-4.0";
+import type GtkChamplain012 from "./GtkChamplain-0.12";
+import type GtkClutter10 from "./GtkClutter-1.0";
+import type GtkSource30 from "./GtkSource-3.0";
+import type GtkSource4 from "./GtkSource-4";
+import type GtkSource5 from "./GtkSource-5";
+import type GtkVnc20 from "./GtkVnc-2.0";
+import type Gucharmap290 from "./Gucharmap-2.90";
+import type Guestfs10 from "./Guestfs-1.0";
+import type Gxps10 from "./Gxps-1.0";
+import type Handy00 from "./Handy-0.0";
+import type Handy1 from "./Handy-1";
+import type HarfBuzz00 from "./HarfBuzz-0.0";
+import type IAnjuta30 from "./IAnjuta-3.0";
+import type IBus10 from "./IBus-1.0";
+import type ICal30 from "./ICal-3.0";
+import type ICalGLib30 from "./ICalGLib-3.0";
+import type Ide10 from "./Ide-1.0";
+import type JSCore30 from "./JSCore-3.0";
+import type JavaScriptCore40 from "./JavaScriptCore-4.0";
+import type JavaScriptCore41 from "./JavaScriptCore-4.1";
+import type JavaScriptCore50 from "./JavaScriptCore-5.0";
+import type Json10 from "./Json-1.0";
+import type Jsonrpc10 from "./Jsonrpc-1.0";
+import type Libmsi10 from "./Libmsi-1.0";
+import type Libosinfo10 from "./Libosinfo-1.0";
+import type LibvirtGConfig10 from "./LibvirtGConfig-1.0";
+import type LibvirtGLib10 from "./LibvirtGLib-1.0";
+import type LibvirtGObject10 from "./LibvirtGObject-1.0";
+import type Manette02 from "./Manette-0.2";
+import type Mash02 from "./Mash-0.2";
+import type Mbim10 from "./Mbim-1.0";
+import type MediaArt10 from "./MediaArt-1.0";
+import type MediaArt20 from "./MediaArt-2.0";
+import type ModemManager10 from "./ModemManager-1.0";
+import type Mx10 from "./Mx-1.0";
+import type Mx20 from "./Mx-2.0";
+import type MxGtk10 from "./MxGtk-1.0";
+import type NM10 from "./NM-1.0";
+import type NMA10 from "./NMA-1.0";
+import type NMClient10 from "./NMClient-1.0";
+import type NMGtk10 from "./NMGtk-1.0";
+import type Nautilus30 from "./Nautilus-3.0";
+import type NetworkManager10 from "./NetworkManager-1.0";
+import type Nice01 from "./Nice-0.1";
+import type Notify07 from "./Notify-0.7";
+import type OSTree10 from "./OSTree-1.0";
+import type P11Kit10 from "./P11Kit-1.0";
+import type PackageKitGlib10 from "./PackageKitGlib-1.0";
+import type PackageKitPlugin10 from "./PackageKitPlugin-1.0";
+import type PanelApplet40 from "./PanelApplet-4.0";
+import type Pango10 from "./Pango-1.0";
+import type PangoCairo10 from "./PangoCairo-1.0";
+import type PangoFT210 from "./PangoFT2-1.0";
+import type PangoFc10 from "./PangoFc-1.0";
+import type PangoOT10 from "./PangoOT-1.0";
+import type PangoXft10 from "./PangoXft-1.0";
+import type Parquet10 from "./Parquet-1.0";
+import type Peas10 from "./Peas-1.0";
+import type PeasGtk10 from "./PeasGtk-1.0";
+import type Plasma10 from "./Plasma-1.0";
+import type Pnl10 from "./Pnl-1.0";
+import type Polkit10 from "./Polkit-1.0";
+import type PolkitAgent10 from "./PolkitAgent-1.0";
+import type Poppler018 from "./Poppler-0.18";
+import type Qmi10 from "./Qmi-1.0";
+import type Rest07 from "./Rest-0.7";
+import type Rest10 from "./Rest-1.0";
+import type RestExtras07 from "./RestExtras-0.7";
+import type RestExtras10 from "./RestExtras-1.0";
+import type Retro014 from "./Retro-0.14";
+import type Retro1 from "./Retro-1";
+import type Retro2 from "./Retro-2";
+import type Rsvg20 from "./Rsvg-2.0";
+import type RygelCore26 from "./RygelCore-2.6";
+import type RygelRenderer26 from "./RygelRenderer-2.6";
+import type RygelRendererGst26 from "./RygelRendererGst-2.6";
+import type RygelServer26 from "./RygelServer-2.6";
+import type Secret1 from "./Secret-1";
+import type SecretUnstable0 from "./SecretUnstable-0";
+import type Shumate10 from "./Shumate-1.0";
+import type Signon20 from "./Signon-2.0";
+import type Snapd1 from "./Snapd-1";
+import type Soup24 from "./Soup-2.4";
+import type Soup30 from "./Soup-3.0";
+import type SoupGNOME24 from "./SoupGNOME-2.4";
+import type SpiceClientGLib20 from "./SpiceClientGLib-2.0";
+import type SpiceClientGtk30 from "./SpiceClientGtk-3.0";
+import type Sushi10 from "./Sushi-1.0";
+import type TelepathyFarstream06 from "./TelepathyFarstream-0.6";
+import type TelepathyGLib012 from "./TelepathyGLib-0.12";
+import type TelepathyLogger02 from "./TelepathyLogger-0.2";
+import type Template10 from "./Template-1.0";
+import type Tepl4 from "./Tepl-4";
+import type Tepl5 from "./Tepl-5";
+import type Tepl6 from "./Tepl-6";
+import type TimezoneMap10 from "./TimezoneMap-1.0";
+import type Totem10 from "./Totem-1.0";
+import type TotemPlParser10 from "./TotemPlParser-1.0";
+import type Tracker10 from "./Tracker-1.0";
+import type Tracker20 from "./Tracker-2.0";
+import type Tracker30 from "./Tracker-3.0";
+import type TrackerControl10 from "./TrackerControl-1.0";
+import type TrackerControl20 from "./TrackerControl-2.0";
+import type TrackerMiner10 from "./TrackerMiner-1.0";
+import type TrackerMiner20 from "./TrackerMiner-2.0";
+import type UDisks20 from "./UDisks-2.0";
+import type UPowerGlib10 from "./UPowerGlib-1.0";
+import type Uhm00 from "./Uhm-0.0";
+import type Unique30 from "./Unique-3.0";
+import type Unity60 from "./Unity-6.0";
+import type Unity70 from "./Unity-7.0";
+import type UnityExtras70 from "./UnityExtras-7.0";
+import type Vda1 from "./Vda-1";
+import type Vgda1 from "./Vgda-1";
+import type Vgpg1 from "./Vgpg-1";
+import type Vgsl1 from "./Vgsl-1";
+import type Vips80 from "./Vips-8.0";
+import type Vpg1 from "./Vpg-1";
+import type Vsqlite1 from "./Vsqlite-1";
+import type Vte291 from "./Vte-2.91";
+import type Vulkan10 from "./Vulkan-1.0";
+import type WebKit240 from "./WebKit2-4.0";
+import type WebKit241 from "./WebKit2-4.1";
+import type WebKit250 from "./WebKit2-5.0";
+import type WebKit2WebExtension40 from "./WebKit2WebExtension-4.0";
+import type WebKit2WebExtension41 from "./WebKit2WebExtension-4.1";
+import type WebKit2WebExtension50 from "./WebKit2WebExtension-5.0";
+import type Wnck30 from "./Wnck-3.0";
+import type Xdp10 from "./Xdp-1.0";
+import type XdpGtk310 from "./XdpGtk3-1.0";
+import type XdpGtk410 from "./XdpGtk4-1.0";
+import type Xkl10 from "./Xkl-1.0";
+import type Zeitgeist20 from "./Zeitgeist-2.0";
+import type Zpj00 from "./Zpj-0.0";
+import type Cairo10 from "./cairo-1.0";
+import type Fontconfig20 from "./fontconfig-2.0";
+import type Freetype220 from "./freetype2-2.0";
+import type GSignon10 from "./gSignon-1.0";
+import type Libxml220 from "./libxml2-2.0";
+import type Win3210 from "./win32-1.0";
+import type Xfixes40 from "./xfixes-4.0";
+import type Xft20 from "./xft-2.0";
+import type Xlib20 from "./xlib-2.0";
+import type Xrandr13 from "./xrandr-1.3";
+import type ArrowCUDA10 from "./ArrowCUDA-1.0";
+import type Gst010 from "./Gst-0.10";
+import type GstAudio010 from "./GstAudio-0.10";
+import type GstBase010 from "./GstBase-0.10";
+import type GstInterfaces010 from "./GstInterfaces-0.10";
+import type GstPbutils010 from "./GstPbutils-0.10";
+import type GstTag010 from "./GstTag-0.10";
+import type GstVideo010 from "./GstVideo-0.10";
+import type SocialWebClient025 from "./SocialWebClient-0.25";
 
+// See also https://github.com/microsoft/TypeScript/blob/main/lib/lib.dom.d.ts
 declare global {
-    function print(...args: any[]): void;
+    function print(...args: any[]): void
     function printerr(...args: any[]): void
     function log(message?: string): void
     function logError(exception: any, message?: string): void
+
+    interface Console {
+        /**
+         * Logs a critical message if the condition is not truthy.
+         * {@see console.error()} for additional information.
+         *
+         * @param condition a boolean condition which, if false, causes
+         *   the log to print
+         * @param data formatting substitutions, if applicable
+         * @returns
+         */
+        assert(condition: boolean, ...data: any[]): void
+
+        /**
+         * Resets grouping and clears the terminal on systems supporting ANSI
+         * terminal control sequences.
+         *
+         * In file-based stdout or systems which do not support clearing,
+         * console.clear() has no visual effect.
+         *
+         */
+        clear(): void
+
+        /**
+         * Logs a message with severity equal to {@see GLib.LogLevelFlags.DEBUG}.
+         *
+         * @param  {...any} data formatting substitutions, if applicable
+         */
+        debug(...data: any[]): void
+
+        /**
+         * Logs a message with severity equal to {@see GLib.LogLevelFlags.CRITICAL}.
+         * Does not use {@see GLib.LogLevelFlags.ERROR} to avoid asserting and
+         * forcibly shutting down the application.
+         *
+         * @param data formatting substitutions, if applicable
+         */
+        error(...data: any[]): void
+
+        /**
+         * Logs a message with severity equal to {@see GLib.LogLevelFlags.INFO}.
+         *
+         * @param data formatting substitutions, if applicable
+         */
+        info(...data: any[]): void
+
+        /**
+         * Logs a message with severity equal to {@see GLib.LogLevelFlags.MESSAGE}.
+         *
+         * @param data formatting substitutions, if applicable
+         */
+        log(...data: any[]): void
+
+        // 1.1.7 table(tabularData, properties)
+        table(tabularData: any, _properties: never): void
+
+        /**
+         * @param data formatting substitutions, if applicable
+         */
+        trace(...data: any[]): void
+
+        /**
+         * @param data formatting substitutions, if applicable
+         */
+        warn(...data: any[]): void
+
+        /**
+         * @param item an item to format generically
+         * @param [options] any additional options for the formatter. Unused
+         *   in our implementation.
+         */
+        dir(item: object, options: never): void
+
+        /**
+         * @param data formatting substitutions, if applicable
+         */
+        dirxml(...data: any[]): void
+
+        // 1.2 Counting functions
+        // https://console.spec.whatwg.org/#counting
+
+        /**
+         * Logs how many times console.count(label) has been called with a given
+         * label.
+         * {@see console.countReset()} for resetting a count.
+         *
+         * @param label unique identifier for this action
+         */
+        count(label: string): void
+
+        /**
+         * @param label the unique label to reset the count for
+         */
+        countReset(label: string): void
+
+        // 1.3 Grouping functions
+        // https://console.spec.whatwg.org/#grouping
+
+        /**
+         * @param data formatting substitutions, if applicable
+         */
+        group(...data: any[]): void
+
+        /**
+         * Alias for console.group()
+         *
+         * @param  {...any} data formatting substitutions, if applicable
+         */
+        groupCollapsed(...data: any[]): void
+
+        /**
+         */
+        groupEnd(): void
+
+        // 1.4 Timing functions
+        // https://console.spec.whatwg.org/#timing
+
+        /**
+         * @param label unique identifier for this action, pass to
+         *   console.timeEnd() to complete
+         */
+        time(label: string): void
+
+        /**
+         * Logs the time since the last call to console.time(label) where label is
+         * the same.
+         *
+         * @param label unique identifier for this action, pass to
+         *   console.timeEnd() to complete
+         * @param data string substitutions, if applicable
+         */
+        timeLog(label: string, ...data: any[]): void
+
+        /**
+         * Logs the time since the last call to console.time(label) and completes
+         * the action.
+         * Call console.time(label) again to re-measure.
+         *
+         * @param label unique identifier for this action
+         */
+        timeEnd(label: string): void
+
+        // Non-standard functions which are de-facto standards.
+        // Similar to Node, we define these as no-ops for now.
+
+        /**
+         * @deprecated Not implemented in GJS
+         *
+         * @param _label unique identifier for this action, pass to
+         *   console.profileEnd to complete
+         */
+        profile(_label: string): void
+
+        /**
+         * @deprecated Not implemented in GJS
+         *
+         * @param _label unique identifier for this action
+         */
+        profileEnd(_label: string): void
+
+        /**
+         * @deprecated Not implemented in GJS
+         *
+         * @param _label unique identifier for this action
+         */
+        timeStamp(_label: string): void
+
+        // GJS-specific extensions for integrating with GLib structured logging
+
+        /**
+         * @param logDomain the GLib log domain this Console should print
+         *   with. Defaults to 'Gjs-Console'.
+         */
+        setLogDomain(logDomain: string): void
+
+        logDomain: string
+    }
+
+    // TODO: Conflicts with lib.dom.d.ts
+    // const console: Console;
+
+    interface BooleanConstructor {
+        $gtype: GObject20.GType<boolean>
+    }
+
+    interface NumberConstructor {
+        $gtype: GObject20.GType<number>
+    }
+
+    interface StringConstructor {
+        $gtype: GObject20.GType<string>
+    }
+
     const ARGV: string[]
+
+    // Timers
+    // See https://gitlab.gnome.org/GNOME/gjs/-/blob/master/modules/esm/_timers.js
+
+    /**
+     * @version Gjs 1.71.1
+     * @param callback a callback function
+     * @param delay the duration in milliseconds to wait before running callback
+     * @param args arguments to pass to callback
+     */
+    function setTimeout(callback: (...args: any[]) => any, delay: number, ...args: any[]): GLib20.Source
+
+    /**
+     * @version Gjs 1.71.1
+     * @param callback a callback function
+     * @param delay the duration in milliseconds to wait between calling callback
+     * @param args arguments to pass to callback
+     */
+    function setInterval(callback: (...args: any[]) => any, delay: number, ...args: any[]): GLib20.Source
+
+    /**
+     * @version Gjs 1.71.1
+     * @param timeout the timeout to clear
+     */
+    function clearTimeout(timeout: GLib20.Source): void
+
+    /**
+     * @version Gjs 1.71.1
+     * @param timeout the timeout to clear
+     */
+    function clearInterval(timeout: GLib20.Source): void
 
     const imports: typeof Gjs & {
         gi: {
@@ -1341,6 +834,8 @@ declare global {
             GstAllocators:              typeof GstAllocators10
             GstApp:              typeof GstApp10
             GstAudio:              typeof GstAudio10
+                |
+              typeof GstAudio010
             GstBadAllocators:              typeof GstBadAllocators10
             GstBadAudio:              typeof GstBadAudio10
             GstBase:              typeof GstBase10
@@ -1548,6 +1043,7 @@ declare global {
             xft:              typeof Xft20
             xlib:              typeof Xlib20
             xrandr:              typeof Xrandr13
+            ArrowCUDA:              typeof ArrowCUDA10
             GstInterfaces:              typeof GstInterfaces010
             SocialWebClient:              typeof SocialWebClient025
         }
@@ -1776,6 +1272,8 @@ declare global {
             GstAllocators:              '1.0'
             GstApp:              '1.0'
             GstAudio:              '1.0'
+                |
+              '0.10'
             GstBadAllocators:              '1.0'
             GstBadAudio:              '1.0'
             GstBase:              '1.0'
@@ -1983,12 +1481,17 @@ declare global {
             xft:              '2.0'
             xlib:              '2.0'
             xrandr:              '1.3'
+            ArrowCUDA:              '1.0'
             GstInterfaces:              '0.10'
             SocialWebClient:              '0.25'
         }
-        searchPath: string[];
+        lang: typeof Gjs.Lang
+        system: typeof Gjs.System
+        package: typeof Gjs.Package
+        mainloop: typeof Gjs.Mainloop
+        searchPath: string[]
     }
 }
 
-export { imports }
-export default imports
+export const _imports: typeof imports
+export default _imports

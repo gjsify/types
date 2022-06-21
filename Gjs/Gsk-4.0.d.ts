@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -363,20 +365,60 @@ enum TransformCategory {
     IDENTITY,
 }
 function serialization_error_quark(): GLib.Quark
+/**
+ * Parses the given `string` into a transform and puts it in
+ * `out_transform`.
+ * 
+ * Strings printed via [method`Gsk`.Transform.to_string]
+ * can be read in again successfully using this function.
+ * 
+ * If `string` does not describe a valid transform, %FALSE is
+ * returned and %NULL is put in `out_transform`.
+ * @param string the string to parse
+ */
 function transform_parse(string: string): [ /* returnType */ boolean, /* out_transform */ Transform ]
+/**
+ * Retrieves the `GskRenderNode` stored inside the given `value`, and acquires
+ * a reference to it.
+ * @param value a [struct`GObject`.Value] initialized with type `GSK_TYPE_RENDER_NODE`
+ */
 function value_dup_render_node(value: any): RenderNode | null
+/**
+ * Retrieves the `GskRenderNode` stored inside the given `value`.
+ * @param value a `GValue` initialized with type `GSK_TYPE_RENDER_NODE`
+ */
 function value_get_render_node(value: any): RenderNode | null
+/**
+ * Stores the given `GskRenderNode` inside `value`.
+ * 
+ * The [struct`GObject`.Value] will acquire a reference to the `node`.
+ * @param value a [struct`GObject`.Value] initialized with type `GSK_TYPE_RENDER_NODE`
+ * @param node a `GskRenderNode`
+ */
 function value_set_render_node(value: any, node: RenderNode): void
-function value_take_render_node(value: any, node?: RenderNode | null): void
+/**
+ * Stores the given `GskRenderNode` inside `value`.
+ * 
+ * This function transfers the ownership of the `node` to the `GValue`.
+ * @param value a [struct`GObject`.Value] initialized with type `GSK_TYPE_RENDER_NODE`
+ * @param node a `GskRenderNode`
+ */
+function value_take_render_node(value: any, node: RenderNode | null): void
 /**
  * Type of callback that is called when an error occurs
  * during node deserialization.
+ * @callback 
+ * @param start start of the error location
+ * @param end end of the error location
+ * @param error the error
  */
 interface ParseErrorFunc {
     (start: ParseLocation, end: ParseLocation, error: GLib.Error): void
 }
-class BlendNode {
-    /* Methods of Gsk-4.0.Gsk.BlendNode */
+interface BlendNode {
+
+    // Owm methods of Gsk-4.0.Gsk.BlendNode
+
     /**
      * Retrieves the blend mode used by `node`.
      */
@@ -389,71 +431,44 @@ class BlendNode {
      * Retrieves the top `GskRenderNode` child of the `node`.
      */
     get_top_child(): RenderNode
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node applying a blending function between its two child nodes.
+ * @class 
+ */
+class BlendNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.BlendNode
+
     static name: string
-    static new(bottom: RenderNode, top: RenderNode, blend_mode: BlendMode): BlendNode
-    constructor(bottom: RenderNode, top: RenderNode, blend_mode: BlendMode)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.BlendNode
+
+    /**
+     * Creates a `GskRenderNode` that will use `blend_mode` to blend the `top`
+     * node onto the `bottom` node.
+     * @constructor 
+     * @param bottom The bottom node to be drawn
+     * @param top The node to be blended onto the `bottom` node
+     * @param blend_mode The blend mode to use
+     */
+    constructor(bottom: RenderNode, top: RenderNode, blend_mode: BlendMode) 
+    /**
+     * Creates a `GskRenderNode` that will use `blend_mode` to blend the `top`
+     * node onto the `bottom` node.
+     * @constructor 
+     * @param bottom The bottom node to be drawn
+     * @param top The node to be blended onto the `bottom` node
+     * @param blend_mode The blend mode to use
+     */
     static new(bottom: RenderNode, top: RenderNode, blend_mode: BlendMode): BlendNode
 }
-class BlurNode {
-    /* Methods of Gsk-4.0.Gsk.BlurNode */
+
+interface BlurNode {
+
+    // Owm methods of Gsk-4.0.Gsk.BlurNode
+
     /**
      * Retrieves the child `GskRenderNode` of the blur `node`.
      */
@@ -462,71 +477,40 @@ class BlurNode {
      * Retrieves the blur radius of the `node`.
      */
     get_radius(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node applying a blur effect to its single child.
+ * @class 
+ */
+class BlurNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.BlurNode
+
     static name: string
-    static new(child: RenderNode, radius: number): BlurNode
-    constructor(child: RenderNode, radius: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.BlurNode
+
+    /**
+     * Creates a render node that blurs the child.
+     * @constructor 
+     * @param child the child node to blur
+     * @param radius the blur radius. Must be positive
+     */
+    constructor(child: RenderNode, radius: number) 
+    /**
+     * Creates a render node that blurs the child.
+     * @constructor 
+     * @param child the child node to blur
+     * @param radius the blur radius. Must be positive
+     */
     static new(child: RenderNode, radius: number): BlurNode
 }
-class BorderNode {
-    /* Methods of Gsk-4.0.Gsk.BorderNode */
+
+interface BorderNode {
+
+    // Owm methods of Gsk-4.0.Gsk.BorderNode
+
     /**
      * Retrieves the colors of the border.
      */
@@ -539,526 +523,104 @@ class BorderNode {
      * Retrieves the stroke widths of the border.
      */
     get_widths(): number[]
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a border.
+ * @class 
+ */
+class BorderNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.BorderNode
+
     static name: string
-    static new(outline: RoundedRect, border_width: number[], border_color: Gdk.RGBA[]): BorderNode
-    constructor(outline: RoundedRect, border_width: number[], border_color: Gdk.RGBA[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.BorderNode
+
+    /**
+     * Creates a `GskRenderNode` that will stroke a border rectangle inside the
+     * given `outline`.
+     * 
+     * The 4 sides of the border can have different widths and colors.
+     * @constructor 
+     * @param outline a `GskRoundedRect` describing the outline of the border
+     * @param border_width the stroke width of the border on     the top, right, bottom and left side respectively.
+     * @param border_color the color used on the top, right,     bottom and left side.
+     */
+    constructor(outline: RoundedRect, border_width: number[], border_color: Gdk.RGBA[]) 
+    /**
+     * Creates a `GskRenderNode` that will stroke a border rectangle inside the
+     * given `outline`.
+     * 
+     * The 4 sides of the border can have different widths and colors.
+     * @constructor 
+     * @param outline a `GskRoundedRect` describing the outline of the border
+     * @param border_width the stroke width of the border on     the top, right, bottom and left side respectively.
+     * @param border_color the color used on the top, right,     bottom and left side.
+     */
     static new(outline: RoundedRect, border_width: number[], border_color: Gdk.RGBA[]): BorderNode
 }
+
 interface BroadwayRenderer_ConstructProps extends Renderer_ConstructProps {
 }
-class BroadwayRenderer {
-    /* Properties of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Whether the renderer has been associated with a surface or draw context.
-     */
-    readonly realized: boolean
-    /**
-     * The surface associated with renderer.
-     */
-    readonly surface: Gdk.Surface
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Retrieves the `GdkSurface` set using gsk_enderer_realize().
-     * 
-     * If the renderer has not been realized yet, %NULL will be returned.
-     */
-    get_surface(): Gdk.Surface | null
-    /**
-     * Checks whether the `renderer` is realized or not.
-     */
-    is_realized(): boolean
-    /**
-     * Creates the resources needed by the `renderer` to render the scene
-     * graph.
-     * 
-     * Since GTK 4.6, the surface may be `NULL`, which allows using
-     * renderers without having to create a surface.
-     * 
-     * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
-     * destroying the renderer.
-     * @param surface the `GdkSurface` renderer will be used on
-     */
-    realize(surface?: Gdk.Surface | null): boolean
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances
-     * to the renderer's surface,  ensuring that the given `region` gets redrawn.
-     * 
-     * If the renderer has no associated surface, this function does nothing.
-     * 
-     * Renderers must ensure that changes of the contents given by the `root`
-     * node as well as the area given by `region` are redrawn. They are however
-     * free to not redraw any pixel outside of `region` if they can guarantee that
-     * it didn't change.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * @param root a `GskRenderNode`
-     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
-     */
-    render(root: RenderNode, region?: cairo.Region | null): void
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances,
-     * to a `GdkTexture`.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * 
-     * If you want to apply any transformations to `root,` you should put it into a
-     * transform node and pass that node instead.
-     * @param root a `GskRenderNode`
-     * @param viewport the section to draw or %NULL to use `root'`s bounds
-     */
-    render_texture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
-    /**
-     * Releases all the resources created by gsk_renderer_realize().
-     */
-    unrealize(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: BroadwayRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: BroadwayRenderer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface BroadwayRenderer {
+
+    // Class property signals of Gsk-4.0.Gsk.BroadwayRenderer
+
     connect(sigName: "notify::realized", callback: (($obj: BroadwayRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realized", callback: (($obj: BroadwayRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realized", ...args: any[]): void
     connect(sigName: "notify::surface", callback: (($obj: BroadwayRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::surface", callback: (($obj: BroadwayRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::surface", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: BroadwayRenderer_ConstructProps)
-    _init (config?: BroadwayRenderer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): BroadwayRenderer
-    static $gtype: GObject.Type
 }
-class CairoNode {
-    /* Methods of Gsk-4.0.Gsk.CairoNode */
+
+class BroadwayRenderer extends Renderer {
+
+    // Own properties of Gsk-4.0.Gsk.BroadwayRenderer
+
+    static name: string
+    static $gtype: GObject.GType<BroadwayRenderer>
+
+    // Constructors of Gsk-4.0.Gsk.BroadwayRenderer
+
+    constructor(config?: BroadwayRenderer_ConstructProps) 
+    /**
+     * Creates a new Broadway renderer.
+     * 
+     * The Broadway renderer is the default renderer for the broadway backend.
+     * It will only work with broadway surfaces, otherwise it will fail the
+     * call to gsk_renderer_realize().
+     * 
+     * This function is only available when GTK was compiled with Broadway
+     * support.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new Broadway renderer.
+     * 
+     * The Broadway renderer is the default renderer for the broadway backend.
+     * It will only work with broadway surfaces, otherwise it will fail the
+     * call to gsk_renderer_realize().
+     * 
+     * This function is only available when GTK was compiled with Broadway
+     * support.
+     * @constructor 
+     */
+    static new(): BroadwayRenderer
+    _init(config?: BroadwayRenderer_ConstructProps): void
+}
+
+interface CairoNode {
+
+    // Owm methods of Gsk-4.0.Gsk.CairoNode
+
     /**
      * Creates a Cairo context for drawing using the surface associated
      * to the render node.
@@ -1071,526 +633,107 @@ class CairoNode {
      * Retrieves the Cairo surface used by the render node.
      */
     get_surface(): cairo.Surface
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a Cairo surface.
+ * @class 
+ */
+class CairoNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.CairoNode
+
     static name: string
-    static new(bounds: Graphene.Rect): CairoNode
-    constructor(bounds: Graphene.Rect)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.CairoNode
+
+    /**
+     * Creates a `GskRenderNode` that will render a cairo surface
+     * into the area given by `bounds`.
+     * 
+     * You can draw to the cairo surface using [method`Gsk`.CairoNode.get_draw_context].
+     * @constructor 
+     * @param bounds the rectangle to render to
+     */
+    constructor(bounds: Graphene.Rect) 
+    /**
+     * Creates a `GskRenderNode` that will render a cairo surface
+     * into the area given by `bounds`.
+     * 
+     * You can draw to the cairo surface using [method`Gsk`.CairoNode.get_draw_context].
+     * @constructor 
+     * @param bounds the rectangle to render to
+     */
     static new(bounds: Graphene.Rect): CairoNode
 }
+
 interface CairoRenderer_ConstructProps extends Renderer_ConstructProps {
 }
-class CairoRenderer {
-    /* Properties of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Whether the renderer has been associated with a surface or draw context.
-     */
-    readonly realized: boolean
-    /**
-     * The surface associated with renderer.
-     */
-    readonly surface: Gdk.Surface
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Retrieves the `GdkSurface` set using gsk_enderer_realize().
-     * 
-     * If the renderer has not been realized yet, %NULL will be returned.
-     */
-    get_surface(): Gdk.Surface | null
-    /**
-     * Checks whether the `renderer` is realized or not.
-     */
-    is_realized(): boolean
-    /**
-     * Creates the resources needed by the `renderer` to render the scene
-     * graph.
-     * 
-     * Since GTK 4.6, the surface may be `NULL`, which allows using
-     * renderers without having to create a surface.
-     * 
-     * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
-     * destroying the renderer.
-     * @param surface the `GdkSurface` renderer will be used on
-     */
-    realize(surface?: Gdk.Surface | null): boolean
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances
-     * to the renderer's surface,  ensuring that the given `region` gets redrawn.
-     * 
-     * If the renderer has no associated surface, this function does nothing.
-     * 
-     * Renderers must ensure that changes of the contents given by the `root`
-     * node as well as the area given by `region` are redrawn. They are however
-     * free to not redraw any pixel outside of `region` if they can guarantee that
-     * it didn't change.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * @param root a `GskRenderNode`
-     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
-     */
-    render(root: RenderNode, region?: cairo.Region | null): void
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances,
-     * to a `GdkTexture`.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * 
-     * If you want to apply any transformations to `root,` you should put it into a
-     * transform node and pass that node instead.
-     * @param root a `GskRenderNode`
-     * @param viewport the section to draw or %NULL to use `root'`s bounds
-     */
-    render_texture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
-    /**
-     * Releases all the resources created by gsk_renderer_realize().
-     */
-    unrealize(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CairoRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CairoRenderer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface CairoRenderer {
+
+    // Class property signals of Gsk-4.0.Gsk.CairoRenderer
+
     connect(sigName: "notify::realized", callback: (($obj: CairoRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realized", callback: (($obj: CairoRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realized", ...args: any[]): void
     connect(sigName: "notify::surface", callback: (($obj: CairoRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::surface", callback: (($obj: CairoRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::surface", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: CairoRenderer_ConstructProps)
-    _init (config?: CairoRenderer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): CairoRenderer
-    static $gtype: GObject.Type
 }
-class ClipNode {
-    /* Methods of Gsk-4.0.Gsk.ClipNode */
+
+/**
+ * A GSK renderer that is using cairo.
+ * 
+ * Since it is using cairo, this renderer cannot support
+ * 3D transformations.
+ * @class 
+ */
+class CairoRenderer extends Renderer {
+
+    // Own properties of Gsk-4.0.Gsk.CairoRenderer
+
+    static name: string
+    static $gtype: GObject.GType<CairoRenderer>
+
+    // Constructors of Gsk-4.0.Gsk.CairoRenderer
+
+    constructor(config?: CairoRenderer_ConstructProps) 
+    /**
+     * Creates a new Cairo renderer.
+     * 
+     * The Cairo renderer is the fallback renderer drawing in ways similar
+     * to how GTK 3 drew its content. Its primary use is as comparison tool.
+     * 
+     * The Cairo renderer is incomplete. It cannot render 3D transformed
+     * content and will instead render an error marker. Its usage should be
+     * avoided.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new Cairo renderer.
+     * 
+     * The Cairo renderer is the fallback renderer drawing in ways similar
+     * to how GTK 3 drew its content. Its primary use is as comparison tool.
+     * 
+     * The Cairo renderer is incomplete. It cannot render 3D transformed
+     * content and will instead render an error marker. Its usage should be
+     * avoided.
+     * @constructor 
+     */
+    static new(): CairoRenderer
+    _init(config?: CairoRenderer_ConstructProps): void
+}
+
+interface ClipNode {
+
+    // Owm methods of Gsk-4.0.Gsk.ClipNode
+
     /**
      * Gets the child node that is getting clipped by the given `node`.
      */
@@ -1599,71 +742,42 @@ class ClipNode {
      * Retrieves the clip rectangle for `node`.
      */
     get_clip(): Graphene.Rect
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node applying a rectangular clip to its single child node.
+ * @class 
+ */
+class ClipNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.ClipNode
+
     static name: string
-    static new(child: RenderNode, clip: Graphene.Rect): ClipNode
-    constructor(child: RenderNode, clip: Graphene.Rect)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.ClipNode
+
+    /**
+     * Creates a `GskRenderNode` that will clip the `child` to the area
+     * given by `clip`.
+     * @constructor 
+     * @param child The node to draw
+     * @param clip The clip to apply
+     */
+    constructor(child: RenderNode, clip: Graphene.Rect) 
+    /**
+     * Creates a `GskRenderNode` that will clip the `child` to the area
+     * given by `clip`.
+     * @constructor 
+     * @param child The node to draw
+     * @param clip The clip to apply
+     */
     static new(child: RenderNode, clip: Graphene.Rect): ClipNode
 }
-class ColorMatrixNode {
-    /* Methods of Gsk-4.0.Gsk.ColorMatrixNode */
+
+interface ColorMatrixNode {
+
+    // Owm methods of Gsk-4.0.Gsk.ColorMatrixNode
+
     /**
      * Gets the child node that is getting its colors modified by the given `node`.
      */
@@ -1676,140 +790,96 @@ class ColorMatrixNode {
      * Retrieves the color offset used by the `node`.
      */
     get_color_offset(): Graphene.Vec4
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node controlling the color matrix of its single child node.
+ * @class 
+ */
+class ColorMatrixNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.ColorMatrixNode
+
     static name: string
-    static new(child: RenderNode, color_matrix: Graphene.Matrix, color_offset: Graphene.Vec4): ColorMatrixNode
-    constructor(child: RenderNode, color_matrix: Graphene.Matrix, color_offset: Graphene.Vec4)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.ColorMatrixNode
+
+    /**
+     * Creates a `GskRenderNode` that will drawn the `child` with
+     * `color_matrix`.
+     * 
+     * In particular, the node will transform the operation
+     * 
+     *     pixel = color_matrix * pixel + color_offset
+     * 
+     * for every pixel.
+     * @constructor 
+     * @param child The node to draw
+     * @param color_matrix The matrix to apply
+     * @param color_offset Values to add to the color
+     */
+    constructor(child: RenderNode, color_matrix: Graphene.Matrix, color_offset: Graphene.Vec4) 
+    /**
+     * Creates a `GskRenderNode` that will drawn the `child` with
+     * `color_matrix`.
+     * 
+     * In particular, the node will transform the operation
+     * 
+     *     pixel = color_matrix * pixel + color_offset
+     * 
+     * for every pixel.
+     * @constructor 
+     * @param child The node to draw
+     * @param color_matrix The matrix to apply
+     * @param color_offset Values to add to the color
+     */
     static new(child: RenderNode, color_matrix: Graphene.Matrix, color_offset: Graphene.Vec4): ColorMatrixNode
 }
-class ColorNode {
-    /* Methods of Gsk-4.0.Gsk.ColorNode */
+
+interface ColorNode {
+
+    // Owm methods of Gsk-4.0.Gsk.ColorNode
+
     /**
      * Retrieves the color of the given `node`.
      */
     get_color(): Gdk.RGBA
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a solid color.
+ * @class 
+ */
+class ColorNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.ColorNode
+
     static name: string
-    static new(rgba: Gdk.RGBA, bounds: Graphene.Rect): ColorNode
-    constructor(rgba: Gdk.RGBA, bounds: Graphene.Rect)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.ColorNode
+
+    /**
+     * Creates a `GskRenderNode` that will render the color specified by `rgba` into
+     * the area given by `bounds`.
+     * @constructor 
+     * @param rgba a `GdkRGBA` specifying a color
+     * @param bounds the rectangle to render the color into
+     */
+    constructor(rgba: Gdk.RGBA, bounds: Graphene.Rect) 
+    /**
+     * Creates a `GskRenderNode` that will render the color specified by `rgba` into
+     * the area given by `bounds`.
+     * @constructor 
+     * @param rgba a `GdkRGBA` specifying a color
+     * @param bounds the rectangle to render the color into
+     */
     static new(rgba: Gdk.RGBA, bounds: Graphene.Rect): ColorNode
 }
-class ConicGradientNode {
-    /* Methods of Gsk-4.0.Gsk.ConicGradientNode */
+
+interface ConicGradientNode {
+
+    // Owm methods of Gsk-4.0.Gsk.ConicGradientNode
+
     /**
      * Retrieves the angle for the gradient in radians, normalized in [0, 2 * PI].
      * 
@@ -1835,71 +905,52 @@ class ConicGradientNode {
      * Retrieves the rotation for the gradient in degrees.
      */
     get_rotation(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a conic gradient.
+ * @class 
+ */
+class ConicGradientNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.ConicGradientNode
+
     static name: string
-    static new(bounds: Graphene.Rect, center: Graphene.Point, rotation: number, color_stops: ColorStop[]): ConicGradientNode
-    constructor(bounds: Graphene.Rect, center: Graphene.Point, rotation: number, color_stops: ColorStop[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.ConicGradientNode
+
+    /**
+     * Creates a `GskRenderNode` that draws a conic gradient.
+     * 
+     * The conic gradient
+     * starts around `center` in the direction of `rotation`. A rotation of 0 means
+     * that the gradient points up. Color stops are then added clockwise.
+     * @constructor 
+     * @param bounds the bounds of the node
+     * @param center the center of the gradient
+     * @param rotation the rotation of the gradient in degrees
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
+    constructor(bounds: Graphene.Rect, center: Graphene.Point, rotation: number, color_stops: ColorStop[]) 
+    /**
+     * Creates a `GskRenderNode` that draws a conic gradient.
+     * 
+     * The conic gradient
+     * starts around `center` in the direction of `rotation`. A rotation of 0 means
+     * that the gradient points up. Color stops are then added clockwise.
+     * @constructor 
+     * @param bounds the bounds of the node
+     * @param center the center of the gradient
+     * @param rotation the rotation of the gradient in degrees
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
     static new(bounds: Graphene.Rect, center: Graphene.Point, rotation: number, color_stops: ColorStop[]): ConicGradientNode
 }
-class ContainerNode {
-    /* Methods of Gsk-4.0.Gsk.ContainerNode */
+
+interface ContainerNode {
+
+    // Owm methods of Gsk-4.0.Gsk.ContainerNode
+
     /**
      * Gets one of the children of `container`.
      * @param idx the position of the child to get
@@ -1909,71 +960,42 @@ class ContainerNode {
      * Retrieves the number of direct children of `node`.
      */
     get_n_children(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node that can contain other render nodes.
+ * @class 
+ */
+class ContainerNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.ContainerNode
+
     static name: string
-    static new(children: RenderNode[]): ContainerNode
-    constructor(children: RenderNode[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.ContainerNode
+
+    /**
+     * Creates a new `GskRenderNode` instance for holding the given `children`.
+     * 
+     * The new node will acquire a reference to each of the children.
+     * @constructor 
+     * @param children The children of the node
+     */
+    constructor(children: RenderNode[]) 
+    /**
+     * Creates a new `GskRenderNode` instance for holding the given `children`.
+     * 
+     * The new node will acquire a reference to each of the children.
+     * @constructor 
+     * @param children The children of the node
+     */
     static new(children: RenderNode[]): ContainerNode
 }
-class CrossFadeNode {
-    /* Methods of Gsk-4.0.Gsk.CrossFadeNode */
+
+interface CrossFadeNode {
+
+    // Owm methods of Gsk-4.0.Gsk.CrossFadeNode
+
     /**
      * Retrieves the child `GskRenderNode` at the end of the cross-fade.
      */
@@ -1986,71 +1008,42 @@ class CrossFadeNode {
      * Retrieves the child `GskRenderNode` at the beginning of the cross-fade.
      */
     get_start_child(): RenderNode
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node cross fading between two child nodes.
+ * @class 
+ */
+class CrossFadeNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.CrossFadeNode
+
     static name: string
-    static new(start: RenderNode, end: RenderNode, progress: number): CrossFadeNode
-    constructor(start: RenderNode, end: RenderNode, progress: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.CrossFadeNode
+
+    /**
+     * Creates a `GskRenderNode` that will do a cross-fade between `start` and `end`.
+     * @constructor 
+     * @param start The start node to be drawn
+     * @param end The node to be cross_fadeed onto the `start` node
+     * @param progress How far the fade has progressed from start to end. The value will     be clamped to the range [0 ... 1]
+     */
+    constructor(start: RenderNode, end: RenderNode, progress: number) 
+    /**
+     * Creates a `GskRenderNode` that will do a cross-fade between `start` and `end`.
+     * @constructor 
+     * @param start The start node to be drawn
+     * @param end The node to be cross_fadeed onto the `start` node
+     * @param progress How far the fade has progressed from start to end. The value will     be clamped to the range [0 ... 1]
+     */
     static new(start: RenderNode, end: RenderNode, progress: number): CrossFadeNode
 }
-class DebugNode {
-    /* Methods of Gsk-4.0.Gsk.DebugNode */
+
+interface DebugNode {
+
+    // Owm methods of Gsk-4.0.Gsk.DebugNode
+
     /**
      * Gets the child node that is getting drawn by the given `node`.
      */
@@ -2059,537 +1052,103 @@ class DebugNode {
      * Gets the debug message that was set on this node
      */
     get_message(): string
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node that emits a debugging message when drawing its
+ * child node.
+ * @class 
+ */
+class DebugNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.DebugNode
+
     static name: string
-    static new(child: RenderNode, message: string): DebugNode
-    constructor(child: RenderNode, message: string)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.DebugNode
+
+    /**
+     * Creates a `GskRenderNode` that will add debug information about
+     * the given `child`.
+     * 
+     * Adding this node has no visual effect.
+     * @constructor 
+     * @param child The child to add debug info for
+     * @param message The debug message
+     */
+    constructor(child: RenderNode, message: string) 
+    /**
+     * Creates a `GskRenderNode` that will add debug information about
+     * the given `child`.
+     * 
+     * Adding this node has no visual effect.
+     * @constructor 
+     * @param child The child to add debug info for
+     * @param message The debug message
+     */
     static new(child: RenderNode, message: string): DebugNode
 }
+
 interface GLRenderer_ConstructProps extends Renderer_ConstructProps {
 }
-class GLRenderer {
-    /* Properties of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Whether the renderer has been associated with a surface or draw context.
-     */
-    readonly realized: boolean
-    /**
-     * The surface associated with renderer.
-     */
-    readonly surface: Gdk.Surface
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Retrieves the `GdkSurface` set using gsk_enderer_realize().
-     * 
-     * If the renderer has not been realized yet, %NULL will be returned.
-     */
-    get_surface(): Gdk.Surface | null
-    /**
-     * Checks whether the `renderer` is realized or not.
-     */
-    is_realized(): boolean
-    /**
-     * Creates the resources needed by the `renderer` to render the scene
-     * graph.
-     * 
-     * Since GTK 4.6, the surface may be `NULL`, which allows using
-     * renderers without having to create a surface.
-     * 
-     * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
-     * destroying the renderer.
-     * @param surface the `GdkSurface` renderer will be used on
-     */
-    realize(surface?: Gdk.Surface | null): boolean
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances
-     * to the renderer's surface,  ensuring that the given `region` gets redrawn.
-     * 
-     * If the renderer has no associated surface, this function does nothing.
-     * 
-     * Renderers must ensure that changes of the contents given by the `root`
-     * node as well as the area given by `region` are redrawn. They are however
-     * free to not redraw any pixel outside of `region` if they can guarantee that
-     * it didn't change.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * @param root a `GskRenderNode`
-     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
-     */
-    render(root: RenderNode, region?: cairo.Region | null): void
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances,
-     * to a `GdkTexture`.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * 
-     * If you want to apply any transformations to `root,` you should put it into a
-     * transform node and pass that node instead.
-     * @param root a `GskRenderNode`
-     * @param viewport the section to draw or %NULL to use `root'`s bounds
-     */
-    render_texture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
-    /**
-     * Releases all the resources created by gsk_renderer_realize().
-     */
-    unrealize(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: GLRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: GLRenderer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface GLRenderer {
+
+    // Class property signals of Gsk-4.0.Gsk.GLRenderer
+
     connect(sigName: "notify::realized", callback: (($obj: GLRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realized", callback: (($obj: GLRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realized", ...args: any[]): void
     connect(sigName: "notify::surface", callback: (($obj: GLRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::surface", callback: (($obj: GLRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::surface", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: GLRenderer_ConstructProps)
-    _init (config?: GLRenderer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): GLRenderer
-    static $gtype: GObject.Type
 }
+
+class GLRenderer extends Renderer {
+
+    // Own properties of Gsk-4.0.Gsk.GLRenderer
+
+    static name: string
+    static $gtype: GObject.GType<GLRenderer>
+
+    // Constructors of Gsk-4.0.Gsk.GLRenderer
+
+    constructor(config?: GLRenderer_ConstructProps) 
+    /**
+     * Creates a new `GskRenderer` using the new OpenGL renderer.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new `GskRenderer` using the new OpenGL renderer.
+     * @constructor 
+     */
+    static new(): GLRenderer
+    _init(config?: GLRenderer_ConstructProps): void
+}
+
 interface GLShader_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Gsk-4.0.Gsk.GLShader */
+
+    // Own constructor properties of Gsk-4.0.Gsk.GLShader
+
     /**
      * Resource containing the source code for the shader.
      * 
      * If the shader source is not coming from a resource, this
      * will be %NULL.
      */
-    resource?: string
-    source?: GLib.Bytes
+    resource?: string | null
+    source?: GLib.Bytes | null
 }
-class GLShader {
-    /* Properties of Gsk-4.0.Gsk.GLShader */
+
+interface GLShader {
+
+    // Own properties of Gsk-4.0.Gsk.GLShader
+
     /**
      * Resource containing the source code for the shader.
      * 
@@ -2598,9 +1157,9 @@ class GLShader {
      */
     readonly resource: string
     readonly source: GLib.Bytes
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Gsk-4.0.Gsk.GLShader */
+
+    // Owm methods of Gsk-4.0.Gsk.GLShader
+
     /**
      * Tries to compile the `shader` for the given `renderer`.
      * 
@@ -2722,393 +1281,166 @@ class GLShader {
      * @param idx index of the uniform
      */
     get_uniform_type(idx: number): GLUniformType
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: GLShader, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: GLShader, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Gsk-4.0.Gsk.GLShader
+
     connect(sigName: "notify::resource", callback: (($obj: GLShader, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::resource", callback: (($obj: GLShader, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::resource", ...args: any[]): void
     connect(sigName: "notify::source", callback: (($obj: GLShader, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source", callback: (($obj: GLShader, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::source", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: GLShader_ConstructProps)
-    _init (config?: GLShader_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new_from_bytes(sourcecode: GLib.Bytes): GLShader
-    static new_from_resource(resource_path: string): GLShader
-    static $gtype: GObject.Type
 }
-class GLShaderNode {
-    /* Methods of Gsk-4.0.Gsk.GLShaderNode */
+
+/**
+ * A `GskGLShader` is a snippet of GLSL that is meant to run in the
+ * fragment shader of the rendering pipeline.
+ * 
+ * A fragment shader gets the coordinates being rendered as input and
+ * produces the pixel values for that particular pixel. Additionally,
+ * the shader can declare a set of other input arguments, called
+ * uniforms (as they are uniform over all the calls to your shader in
+ * each instance of use). A shader can also receive up to 4
+ * textures that it can use as input when producing the pixel data.
+ * 
+ * `GskGLShader` is usually used with gtk_snapshot_push_gl_shader()
+ * to produce a [class`Gsk`.GLShaderNode] in the rendering hierarchy,
+ * and then its input textures are constructed by rendering the child
+ * nodes to textures before rendering the shader node itself. (You can
+ * pass texture nodes as children if you want to directly use a texture
+ * as input).
+ * 
+ * The actual shader code is GLSL code that gets combined with
+ * some other code into the fragment shader. Since the exact
+ * capabilities of the GPU driver differs between different OpenGL
+ * drivers and hardware, GTK adds some defines that you can use
+ * to ensure your GLSL code runs on as many drivers as it can.
+ * 
+ * If the OpenGL driver is GLES, then the shader language version
+ * is set to 100, and GSK_GLES will be defined in the shader.
+ * 
+ * Otherwise, if the OpenGL driver does not support the 3.2 core profile,
+ * then the shader will run with language version 110 for GL2 and 130 for GL3,
+ * and GSK_LEGACY will be defined in the shader.
+ * 
+ * If the OpenGL driver supports the 3.2 code profile, it will be used,
+ * the shader language version is set to 150, and GSK_GL3 will be defined
+ * in the shader.
+ * 
+ * The main function the shader must implement is:
+ * 
+ * ```glsl
+ *  void mainImage(out vec4 fragColor,
+ *                 in vec2 fragCoord,
+ *                 in vec2 resolution,
+ *                 in vec2 uv)
+ * ```
+ * 
+ * Where the input `fragCoord` is the coordinate of the pixel we're
+ * currently rendering, relative to the boundary rectangle that was
+ * specified in the `GskGLShaderNode`, and `resolution` is the width and
+ * height of that rectangle. This is in the typical GTK coordinate
+ * system with the origin in the top left. `uv` contains the u and v
+ * coordinates that can be used to index a texture at the
+ * corresponding point. These coordinates are in the [0..1]x[0..1]
+ * region, with 0, 0 being in the lower left corder (which is typical
+ * for OpenGL).
+ * 
+ * The output `fragColor` should be a RGBA color (with
+ * premultiplied alpha) that will be used as the output for the
+ * specified pixel location. Note that this output will be
+ * automatically clipped to the clip region of the glshader node.
+ * 
+ * In addition to the function arguments the shader can define
+ * up to 4 uniforms for textures which must be called u_textureN
+ * (i.e. u_texture1 to u_texture4) as well as any custom uniforms
+ * you want of types int, uint, bool, float, vec2, vec3 or vec4.
+ * 
+ * All textures sources contain premultiplied alpha colors, but if some
+ * there are outer sources of colors there is a gsk_premultiply() helper
+ * to compute premultiplication when needed.
+ * 
+ * Note that GTK parses the uniform declarations, so each uniform has to
+ * be on a line by itself with no other code, like so:
+ * 
+ * ```glsl
+ * uniform float u_time;
+ * uniform vec3 u_color;
+ * uniform sampler2D u_texture1;
+ * uniform sampler2D u_texture2;
+ * ```
+ * 
+ * GTK uses the "gsk" namespace in the symbols it uses in the
+ * shader, so your code should not use any symbols with the prefix gsk
+ * or GSK. There are some helper functions declared that you can use:
+ * 
+ * ```glsl
+ * vec4 GskTexture(sampler2D sampler, vec2 texCoords);
+ * ```
+ * 
+ * This samples a texture (e.g. u_texture1) at the specified
+ * coordinates, and containes some helper ifdefs to ensure that
+ * it works on all OpenGL versions.
+ * 
+ * You can compile the shader yourself using [method`Gsk`.GLShader.compile],
+ * otherwise the GSK renderer will do it when it handling the glshader
+ * node. If errors occurs, the returned `error` will include the glsl
+ * sources, so you can see what GSK was passing to the compiler. You
+ * can also set GSK_DEBUG=shaders in the environment to see the sources
+ * and other relevant information about all shaders that GSK is handling.
+ * 
+ * # An example shader
+ * 
+ * ```glsl
+ * uniform float position;
+ * uniform sampler2D u_texture1;
+ * uniform sampler2D u_texture2;
+ * 
+ * void mainImage(out vec4 fragColor,
+ *                in vec2 fragCoord,
+ *                in vec2 resolution,
+ *                in vec2 uv) {
+ *   vec4 source1 = GskTexture(u_texture1, uv);
+ *   vec4 source2 = GskTexture(u_texture2, uv);
+ * 
+ *   fragColor = position * source1 + (1.0 - position) * source2;
+ * }
+ * ```
+ * @class 
+ */
+class GLShader extends GObject.Object {
+
+    // Own properties of Gsk-4.0.Gsk.GLShader
+
+    static name: string
+    static $gtype: GObject.GType<GLShader>
+
+    // Constructors of Gsk-4.0.Gsk.GLShader
+
+    constructor(config?: GLShader_ConstructProps) 
+    /**
+     * Creates a `GskGLShader` that will render pixels using the specified code.
+     * @constructor 
+     * @param sourcecode GLSL sourcecode for the shader, as a `GBytes`
+     */
+    static new_from_bytes(sourcecode: GLib.Bytes): GLShader
+    /**
+     * Creates a `GskGLShader` that will render pixels using the specified code.
+     * @constructor 
+     * @param resource_path path to a resource that contains the GLSL sourcecode for     the shader
+     */
+    static new_from_resource(resource_path: string): GLShader
+    _init(config?: GLShader_ConstructProps): void
+}
+
+interface GLShaderNode {
+
+    // Owm methods of Gsk-4.0.Gsk.GLShaderNode
+
     /**
      * Gets args for the node.
      */
@@ -3126,71 +1458,76 @@ class GLShaderNode {
      * Gets shader code for the node.
      */
     get_shader(): GLShader
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node using a GL shader when drawing its children nodes.
+ * @class 
+ */
+class GLShaderNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.GLShaderNode
+
     static name: string
-    static new(shader: GLShader, bounds: Graphene.Rect, args: GLib.Bytes, children: RenderNode[] | null): GLShaderNode
-    constructor(shader: GLShader, bounds: Graphene.Rect, args: GLib.Bytes, children: RenderNode[] | null)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.GLShaderNode
+
+    /**
+     * Creates a `GskRenderNode` that will render the given `shader` into the
+     * area given by `bounds`.
+     * 
+     * The `args` is a block of data to use for uniform input, as per types and
+     * offsets defined by the `shader`. Normally this is generated by
+     * [method`Gsk`.GLShader.format_args] or [struct`Gsk`.ShaderArgsBuilder].
+     * 
+     * See [class`Gsk`.GLShader] for details about how the shader should be written.
+     * 
+     * All the children will be rendered into textures (if they aren't already
+     * `GskTextureNodes`, which will be used directly). These textures will be
+     * sent as input to the shader.
+     * 
+     * If the renderer doesn't support GL shaders, or if there is any problem
+     * when compiling the shader, then the node will draw pink. You should use
+     * [method`Gsk`.GLShader.compile] to ensure the `shader` will work for the
+     * renderer before using it.
+     * @constructor 
+     * @param shader the `GskGLShader`
+     * @param bounds the rectangle to render the shader into
+     * @param args Arguments for the uniforms
+     * @param children array of child nodes,   these will be rendered to textures and used as input.
+     */
+    constructor(shader: GLShader, bounds: Graphene.Rect, args: GLib.Bytes, children: RenderNode[] | null) 
+    /**
+     * Creates a `GskRenderNode` that will render the given `shader` into the
+     * area given by `bounds`.
+     * 
+     * The `args` is a block of data to use for uniform input, as per types and
+     * offsets defined by the `shader`. Normally this is generated by
+     * [method`Gsk`.GLShader.format_args] or [struct`Gsk`.ShaderArgsBuilder].
+     * 
+     * See [class`Gsk`.GLShader] for details about how the shader should be written.
+     * 
+     * All the children will be rendered into textures (if they aren't already
+     * `GskTextureNodes`, which will be used directly). These textures will be
+     * sent as input to the shader.
+     * 
+     * If the renderer doesn't support GL shaders, or if there is any problem
+     * when compiling the shader, then the node will draw pink. You should use
+     * [method`Gsk`.GLShader.compile] to ensure the `shader` will work for the
+     * renderer before using it.
+     * @constructor 
+     * @param shader the `GskGLShader`
+     * @param bounds the rectangle to render the shader into
+     * @param args Arguments for the uniforms
+     * @param children array of child nodes,   these will be rendered to textures and used as input.
+     */
     static new(shader: GLShader, bounds: Graphene.Rect, args: GLib.Bytes, children: RenderNode[] | null): GLShaderNode
 }
-class InsetShadowNode {
-    /* Methods of Gsk-4.0.Gsk.InsetShadowNode */
+
+interface InsetShadowNode {
+
+    // Owm methods of Gsk-4.0.Gsk.InsetShadowNode
+
     /**
      * Retrieves the blur radius to apply to the shadow.
      */
@@ -3215,71 +1552,50 @@ class InsetShadowNode {
      * Retrieves how much the shadow spreads inwards.
      */
     get_spread(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for an inset shadow.
+ * @class 
+ */
+class InsetShadowNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.InsetShadowNode
+
     static name: string
-    static new(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number): InsetShadowNode
-    constructor(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.InsetShadowNode
+
+    /**
+     * Creates a `GskRenderNode` that will render an inset shadow
+     * into the box given by `outline`.
+     * @constructor 
+     * @param outline outline of the region containing the shadow
+     * @param color color of the shadow
+     * @param dx horizontal offset of shadow
+     * @param dy vertical offset of shadow
+     * @param spread how far the shadow spreads towards the inside
+     * @param blur_radius how much blur to apply to the shadow
+     */
+    constructor(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number) 
+    /**
+     * Creates a `GskRenderNode` that will render an inset shadow
+     * into the box given by `outline`.
+     * @constructor 
+     * @param outline outline of the region containing the shadow
+     * @param color color of the shadow
+     * @param dx horizontal offset of shadow
+     * @param dy vertical offset of shadow
+     * @param spread how far the shadow spreads towards the inside
+     * @param blur_radius how much blur to apply to the shadow
+     */
     static new(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number): InsetShadowNode
 }
-class LinearGradientNode {
-    /* Methods of Gsk-4.0.Gsk.LinearGradientNode */
+
+interface LinearGradientNode {
+
+    // Owm methods of Gsk-4.0.Gsk.LinearGradientNode
+
     /**
      * Retrieves the color stops in the gradient.
      */
@@ -3296,526 +1612,88 @@ class LinearGradientNode {
      * Retrieves the initial point of the linear gradient.
      */
     get_start(): Graphene.Point
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a linear gradient.
+ * @class 
+ */
+class LinearGradientNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.LinearGradientNode
+
     static name: string
-    static new(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[]): LinearGradientNode
-    constructor(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.LinearGradientNode
+
+    /**
+     * Creates a `GskRenderNode` that will create a linear gradient from the given
+     * points and color stops, and render that into the area given by `bounds`.
+     * @constructor 
+     * @param bounds the rectangle to render the linear gradient into
+     * @param start the point at which the linear gradient will begin
+     * @param end the point at which the linear gradient will finish
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
+    constructor(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[]) 
+    /**
+     * Creates a `GskRenderNode` that will create a linear gradient from the given
+     * points and color stops, and render that into the area given by `bounds`.
+     * @constructor 
+     * @param bounds the rectangle to render the linear gradient into
+     * @param start the point at which the linear gradient will begin
+     * @param end the point at which the linear gradient will finish
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
     static new(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[]): LinearGradientNode
 }
+
 interface NglRenderer_ConstructProps extends Renderer_ConstructProps {
 }
-class NglRenderer {
-    /* Properties of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Whether the renderer has been associated with a surface or draw context.
-     */
-    readonly realized: boolean
-    /**
-     * The surface associated with renderer.
-     */
-    readonly surface: Gdk.Surface
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Gsk-4.0.Gsk.Renderer */
-    /**
-     * Retrieves the `GdkSurface` set using gsk_enderer_realize().
-     * 
-     * If the renderer has not been realized yet, %NULL will be returned.
-     */
-    get_surface(): Gdk.Surface | null
-    /**
-     * Checks whether the `renderer` is realized or not.
-     */
-    is_realized(): boolean
-    /**
-     * Creates the resources needed by the `renderer` to render the scene
-     * graph.
-     * 
-     * Since GTK 4.6, the surface may be `NULL`, which allows using
-     * renderers without having to create a surface.
-     * 
-     * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize] before
-     * destroying the renderer.
-     * @param surface the `GdkSurface` renderer will be used on
-     */
-    realize(surface?: Gdk.Surface | null): boolean
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances
-     * to the renderer's surface,  ensuring that the given `region` gets redrawn.
-     * 
-     * If the renderer has no associated surface, this function does nothing.
-     * 
-     * Renderers must ensure that changes of the contents given by the `root`
-     * node as well as the area given by `region` are redrawn. They are however
-     * free to not redraw any pixel outside of `region` if they can guarantee that
-     * it didn't change.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * @param root a `GskRenderNode`
-     * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
-     */
-    render(root: RenderNode, region?: cairo.Region | null): void
-    /**
-     * Renders the scene graph, described by a tree of `GskRenderNode` instances,
-     * to a `GdkTexture`.
-     * 
-     * The `renderer` will acquire a reference on the `GskRenderNode` tree while
-     * the rendering is in progress.
-     * 
-     * If you want to apply any transformations to `root,` you should put it into a
-     * transform node and pass that node instead.
-     * @param root a `GskRenderNode`
-     * @param viewport the section to draw or %NULL to use `root'`s bounds
-     */
-    render_texture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
-    /**
-     * Releases all the resources created by gsk_renderer_realize().
-     */
-    unrealize(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: NglRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: NglRenderer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface NglRenderer {
+
+    // Class property signals of Gsk-4.0.Gsk.NglRenderer
+
     connect(sigName: "notify::realized", callback: (($obj: NglRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realized", callback: (($obj: NglRenderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realized", ...args: any[]): void
     connect(sigName: "notify::surface", callback: (($obj: NglRenderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::surface", callback: (($obj: NglRenderer, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::surface", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: NglRenderer_ConstructProps)
-    _init (config?: NglRenderer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): NglRenderer
-    static $gtype: GObject.Type
 }
-class OpacityNode {
-    /* Methods of Gsk-4.0.Gsk.OpacityNode */
+
+class NglRenderer extends Renderer {
+
+    // Own properties of Gsk-4.0.Gsk.NglRenderer
+
+    static name: string
+    static $gtype: GObject.GType<NglRenderer>
+
+    // Constructors of Gsk-4.0.Gsk.NglRenderer
+
+    constructor(config?: NglRenderer_ConstructProps) 
+    /**
+     * Same as gsk_gl_renderer_new().
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Same as gsk_gl_renderer_new().
+     * @constructor 
+     */
+    static new(): NglRenderer
+    _init(config?: NglRenderer_ConstructProps): void
+}
+
+interface OpacityNode {
+
+    // Owm methods of Gsk-4.0.Gsk.OpacityNode
+
     /**
      * Gets the child node that is getting opacityed by the given `node`.
      */
@@ -3824,71 +1702,42 @@ class OpacityNode {
      * Gets the transparency factor for an opacity node.
      */
     get_opacity(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node controlling the opacity of its single child node.
+ * @class 
+ */
+class OpacityNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.OpacityNode
+
     static name: string
-    static new(child: RenderNode, opacity: number): OpacityNode
-    constructor(child: RenderNode, opacity: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.OpacityNode
+
+    /**
+     * Creates a `GskRenderNode` that will drawn the `child` with reduced
+     * `opacity`.
+     * @constructor 
+     * @param child The node to draw
+     * @param opacity The opacity to apply
+     */
+    constructor(child: RenderNode, opacity: number) 
+    /**
+     * Creates a `GskRenderNode` that will drawn the `child` with reduced
+     * `opacity`.
+     * @constructor 
+     * @param child The node to draw
+     * @param opacity The opacity to apply
+     */
     static new(child: RenderNode, opacity: number): OpacityNode
 }
-class OutsetShadowNode {
-    /* Methods of Gsk-4.0.Gsk.OutsetShadowNode */
+
+interface OutsetShadowNode {
+
+    // Owm methods of Gsk-4.0.Gsk.OutsetShadowNode
+
     /**
      * Retrieves the blur radius of the shadow.
      */
@@ -3913,71 +1762,50 @@ class OutsetShadowNode {
      * Retrieves how much the shadow spreads outwards.
      */
     get_spread(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for an outset shadow.
+ * @class 
+ */
+class OutsetShadowNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.OutsetShadowNode
+
     static name: string
-    static new(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number): OutsetShadowNode
-    constructor(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.OutsetShadowNode
+
+    /**
+     * Creates a `GskRenderNode` that will render an outset shadow
+     * around the box given by `outline`.
+     * @constructor 
+     * @param outline outline of the region surrounded by shadow
+     * @param color color of the shadow
+     * @param dx horizontal offset of shadow
+     * @param dy vertical offset of shadow
+     * @param spread how far the shadow spreads towards the inside
+     * @param blur_radius how much blur to apply to the shadow
+     */
+    constructor(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number) 
+    /**
+     * Creates a `GskRenderNode` that will render an outset shadow
+     * around the box given by `outline`.
+     * @constructor 
+     * @param outline outline of the region surrounded by shadow
+     * @param color color of the shadow
+     * @param dx horizontal offset of shadow
+     * @param dy vertical offset of shadow
+     * @param spread how far the shadow spreads towards the inside
+     * @param blur_radius how much blur to apply to the shadow
+     */
     static new(outline: RoundedRect, color: Gdk.RGBA, dx: number, dy: number, spread: number, blur_radius: number): OutsetShadowNode
 }
-class RadialGradientNode {
-    /* Methods of Gsk-4.0.Gsk.RadialGradientNode */
+
+interface RadialGradientNode {
+
+    // Owm methods of Gsk-4.0.Gsk.RadialGradientNode
+
     /**
      * Retrieves the center pointer for the gradient.
      */
@@ -4006,71 +1834,58 @@ class RadialGradientNode {
      * Retrieves the vertical radius for the gradient.
      */
     get_vradius(): number
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a radial gradient.
+ * @class 
+ */
+class RadialGradientNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.RadialGradientNode
+
     static name: string
-    static new(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[]): RadialGradientNode
-    constructor(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.RadialGradientNode
+
+    /**
+     * Creates a `GskRenderNode` that draws a radial gradient.
+     * 
+     * The radial gradient
+     * starts around `center`. The size of the gradient is dictated by `hradius`
+     * in horizontal orientation and by `vradius` in vertial orientation.
+     * @constructor 
+     * @param bounds the bounds of the node
+     * @param center the center of the gradient
+     * @param hradius the horizontal radius
+     * @param vradius the vertical radius
+     * @param start a percentage >= 0 that defines the start of the gradient around `center`
+     * @param end a percentage >= 0 that defines the end of the gradient around `center`
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
+    constructor(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[]) 
+    /**
+     * Creates a `GskRenderNode` that draws a radial gradient.
+     * 
+     * The radial gradient
+     * starts around `center`. The size of the gradient is dictated by `hradius`
+     * in horizontal orientation and by `vradius` in vertial orientation.
+     * @constructor 
+     * @param bounds the bounds of the node
+     * @param center the center of the gradient
+     * @param hradius the horizontal radius
+     * @param vradius the vertical radius
+     * @param start a percentage >= 0 that defines the start of the gradient around `center`
+     * @param end a percentage >= 0 that defines the end of the gradient around `center`
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
     static new(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[]): RadialGradientNode
 }
-class RenderNode {
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
+
+interface RenderNode {
+
+    // Owm methods of Gsk-4.0.Gsk.RenderNode
+
     /**
      * Draw the contents of `node` to the given cairo context.
      * 
@@ -4127,8 +1942,32 @@ class RenderNode {
      * @param filename the file to save it to.
      */
     write_to_file(filename: string): boolean
+}
+
+/**
+ * `GskRenderNode` is the basic block in a scene graph to be
+ * rendered using [class`Gsk`.Renderer].
+ * 
+ * Each node has a parent, except the top-level node; each node may have
+ * children nodes.
+ * 
+ * Each node has an associated drawing surface, which has the size of
+ * the rectangle set when creating it.
+ * 
+ * Render nodes are meant to be transient; once they have been associated
+ * to a [class`Gsk`.Renderer] it's safe to release any reference you have on
+ * them. All [class`Gsk`.RenderNode]s are immutable, you can only specify their
+ * properties during construction.
+ * @class 
+ */
+class RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.RenderNode
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.RenderNode
+
     /**
      * Loads data previously created via [method`Gsk`.RenderNode.serialize].
      * 
@@ -4137,10 +1976,14 @@ class RenderNode {
      */
     static deserialize(bytes: GLib.Bytes): RenderNode | null
 }
+
 interface Renderer_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Renderer {
-    /* Properties of Gsk-4.0.Gsk.Renderer */
+
+interface Renderer {
+
+    // Own properties of Gsk-4.0.Gsk.Renderer
+
     /**
      * Whether the renderer has been associated with a surface or draw context.
      */
@@ -4149,9 +1992,9 @@ class Renderer {
      * The surface associated with renderer.
      */
     readonly surface: Gdk.Surface
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Gsk-4.0.Gsk.Renderer */
+
+    // Owm methods of Gsk-4.0.Gsk.Renderer
+
     /**
      * Retrieves the `GdkSurface` set using gsk_enderer_realize().
      * 
@@ -4173,7 +2016,7 @@ class Renderer {
      * destroying the renderer.
      * @param surface the `GdkSurface` renderer will be used on
      */
-    realize(surface?: Gdk.Surface | null): boolean
+    realize(surface: Gdk.Surface | null): boolean
     /**
      * Renders the scene graph, described by a tree of `GskRenderNode` instances
      * to the renderer's surface,  ensuring that the given `region` gets redrawn.
@@ -4190,7 +2033,7 @@ class Renderer {
      * @param root a `GskRenderNode`
      * @param region the `cairo_region_t` that must be redrawn or %NULL   for the whole window
      */
-    render(root: RenderNode, region?: cairo.Region | null): void
+    render(root: RenderNode, region: cairo.Region | null): void
     /**
      * Renders the scene graph, described by a tree of `GskRenderNode` instances,
      * to a `GdkTexture`.
@@ -4203,397 +2046,69 @@ class Renderer {
      * @param root a `GskRenderNode`
      * @param viewport the section to draw or %NULL to use `root'`s bounds
      */
-    render_texture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture
+    render_texture(root: RenderNode, viewport: Graphene.Rect | null): Gdk.Texture
     /**
      * Releases all the resources created by gsk_renderer_realize().
      */
     unrealize(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Gsk-4.0.Gsk.Renderer
+
     connect(sigName: "notify::realized", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realized", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realized", ...args: any[]): void
     connect(sigName: "notify::surface", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::surface", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::surface", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Renderer_ConstructProps)
-    _init (config?: Renderer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new_for_surface(surface: Gdk.Surface): Renderer
-    static $gtype: GObject.Type
 }
-class RepeatNode {
-    /* Methods of Gsk-4.0.Gsk.RepeatNode */
+
+/**
+ * `GskRenderer` is a class that renders a scene graph defined via a
+ * tree of [class`Gsk`.RenderNode] instances.
+ * 
+ * Typically you will use a `GskRenderer` instance to repeatedly call
+ * [method`Gsk`.Renderer.render] to update the contents of its associated
+ * [class`Gdk`.Surface].
+ * 
+ * It is necessary to realize a `GskRenderer` instance using
+ * [method`Gsk`.Renderer.realize] before calling [method`Gsk`.Renderer.render],
+ * in order to create the appropriate windowing system resources needed
+ * to render the scene.
+ * @class 
+ */
+class Renderer extends GObject.Object {
+
+    // Own properties of Gsk-4.0.Gsk.Renderer
+
+    static name: string
+    static $gtype: GObject.GType<Renderer>
+
+    // Constructors of Gsk-4.0.Gsk.Renderer
+
+    constructor(config?: Renderer_ConstructProps) 
+    /**
+     * Creates an appropriate `GskRenderer` instance for the given `surface`.
+     * 
+     * If the `GSK_RENDERER` environment variable is set, GSK will
+     * try that renderer first, before trying the backend-specific
+     * default. The ultimate fallback is the cairo renderer.
+     * 
+     * The renderer will be realized before it is returned.
+     * @constructor 
+     * @param surface a `GdkSurface`
+     */
+    static new_for_surface(surface: Gdk.Surface): Renderer
+    _init(config?: Renderer_ConstructProps): void
+}
+
+interface RepeatNode {
+
+    // Owm methods of Gsk-4.0.Gsk.RepeatNode
+
     /**
      * Retrieves the child of `node`.
      */
@@ -4602,199 +2117,132 @@ class RepeatNode {
      * Retrieves the bounding rectangle of the child of `node`.
      */
     get_child_bounds(): Graphene.Rect
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
-    static name: string
-    static new(bounds: Graphene.Rect, child: RenderNode, child_bounds?: Graphene.Rect | null): RepeatNode
-    constructor(bounds: Graphene.Rect, child: RenderNode, child_bounds?: Graphene.Rect | null)
-    /* Static methods and pseudo-constructors */
-    static new(bounds: Graphene.Rect, child: RenderNode, child_bounds?: Graphene.Rect | null): RepeatNode
 }
-class RepeatingLinearGradientNode {
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+
+/**
+ * A render node repeating its single child node.
+ * @class 
+ */
+class RepeatNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.RepeatNode
+
     static name: string
-    static new(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[]): RepeatingLinearGradientNode
-    constructor(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.RepeatNode
+
+    /**
+     * Creates a `GskRenderNode` that will repeat the drawing of `child` across
+     * the given `bounds`.
+     * @constructor 
+     * @param bounds The bounds of the area to be painted
+     * @param child The child to repeat
+     * @param child_bounds The area of the child to repeat or %NULL to     use the child's bounds
+     */
+    constructor(bounds: Graphene.Rect, child: RenderNode, child_bounds: Graphene.Rect | null) 
+    /**
+     * Creates a `GskRenderNode` that will repeat the drawing of `child` across
+     * the given `bounds`.
+     * @constructor 
+     * @param bounds The bounds of the area to be painted
+     * @param child The child to repeat
+     * @param child_bounds The area of the child to repeat or %NULL to     use the child's bounds
+     */
+    static new(bounds: Graphene.Rect, child: RenderNode, child_bounds: Graphene.Rect | null): RepeatNode
+}
+
+interface RepeatingLinearGradientNode {
+}
+
+/**
+ * A render node for a repeating linear gradient.
+ * @class 
+ */
+class RepeatingLinearGradientNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.RepeatingLinearGradientNode
+
+    static name: string
+
+    // Constructors of Gsk-4.0.Gsk.RepeatingLinearGradientNode
+
+    /**
+     * Creates a `GskRenderNode` that will create a repeating linear gradient
+     * from the given points and color stops, and render that into the area
+     * given by `bounds`.
+     * @constructor 
+     * @param bounds the rectangle to render the linear gradient into
+     * @param start the point at which the linear gradient will begin
+     * @param end the point at which the linear gradient will finish
+     * @param color_stops a pointer to an array of `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
+    constructor(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[]) 
+    /**
+     * Creates a `GskRenderNode` that will create a repeating linear gradient
+     * from the given points and color stops, and render that into the area
+     * given by `bounds`.
+     * @constructor 
+     * @param bounds the rectangle to render the linear gradient into
+     * @param start the point at which the linear gradient will begin
+     * @param end the point at which the linear gradient will finish
+     * @param color_stops a pointer to an array of `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
     static new(bounds: Graphene.Rect, start: Graphene.Point, end: Graphene.Point, color_stops: ColorStop[]): RepeatingLinearGradientNode
 }
-class RepeatingRadialGradientNode {
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+
+interface RepeatingRadialGradientNode {
+}
+
+/**
+ * A render node for a repeating radial gradient.
+ * @class 
+ */
+class RepeatingRadialGradientNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.RepeatingRadialGradientNode
+
     static name: string
-    static new(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[]): RepeatingRadialGradientNode
-    constructor(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.RepeatingRadialGradientNode
+
+    /**
+     * Creates a `GskRenderNode` that draws a repeating radial gradient.
+     * 
+     * The radial gradient starts around `center`. The size of the gradient
+     * is dictated by `hradius` in horizontal orientation and by `vradius`
+     * in vertial orientation.
+     * @constructor 
+     * @param bounds the bounds of the node
+     * @param center the center of the gradient
+     * @param hradius the horizontal radius
+     * @param vradius the vertical radius
+     * @param start a percentage >= 0 that defines the start of the gradient around `center`
+     * @param end a percentage >= 0 that defines the end of the gradient around `center`
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
+    constructor(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[]) 
+    /**
+     * Creates a `GskRenderNode` that draws a repeating radial gradient.
+     * 
+     * The radial gradient starts around `center`. The size of the gradient
+     * is dictated by `hradius` in horizontal orientation and by `vradius`
+     * in vertial orientation.
+     * @constructor 
+     * @param bounds the bounds of the node
+     * @param center the center of the gradient
+     * @param hradius the horizontal radius
+     * @param vradius the vertical radius
+     * @param start a percentage >= 0 that defines the start of the gradient around `center`
+     * @param end a percentage >= 0 that defines the end of the gradient around `center`
+     * @param color_stops a pointer to an array of   `GskColorStop` defining the gradient. The offsets of all color stops   must be increasing. The first stop's offset must be >= 0 and the last   stop's offset must be <= 1.
+     */
     static new(bounds: Graphene.Rect, center: Graphene.Point, hradius: number, vradius: number, start: number, end: number, color_stops: ColorStop[]): RepeatingRadialGradientNode
 }
-class RoundedClipNode {
-    /* Methods of Gsk-4.0.Gsk.RoundedClipNode */
+
+interface RoundedClipNode {
+
+    // Owm methods of Gsk-4.0.Gsk.RoundedClipNode
+
     /**
      * Gets the child node that is getting clipped by the given `node`.
      */
@@ -4803,71 +2251,42 @@ class RoundedClipNode {
      * Retrieves the rounded rectangle used to clip the contents of the `node`.
      */
     get_clip(): RoundedRect
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node applying a rounded rectangle clip to its single child.
+ * @class 
+ */
+class RoundedClipNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.RoundedClipNode
+
     static name: string
-    static new(child: RenderNode, clip: RoundedRect): RoundedClipNode
-    constructor(child: RenderNode, clip: RoundedRect)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.RoundedClipNode
+
+    /**
+     * Creates a `GskRenderNode` that will clip the `child` to the area
+     * given by `clip`.
+     * @constructor 
+     * @param child The node to draw
+     * @param clip The clip to apply
+     */
+    constructor(child: RenderNode, clip: RoundedRect) 
+    /**
+     * Creates a `GskRenderNode` that will clip the `child` to the area
+     * given by `clip`.
+     * @constructor 
+     * @param child The node to draw
+     * @param clip The clip to apply
+     */
     static new(child: RenderNode, clip: RoundedRect): RoundedClipNode
 }
-class ShadowNode {
-    /* Methods of Gsk-4.0.Gsk.ShadowNode */
+
+interface ShadowNode {
+
+    // Owm methods of Gsk-4.0.Gsk.ShadowNode
+
     /**
      * Retrieves the child `GskRenderNode` of the shadow `node`.
      */
@@ -4881,71 +2300,42 @@ class ShadowNode {
      * @param i the given index
      */
     get_shadow(i: number): Shadow
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node drawing one or more shadows behind its single child node.
+ * @class 
+ */
+class ShadowNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.ShadowNode
+
     static name: string
-    static new(child: RenderNode, shadows: Shadow[]): ShadowNode
-    constructor(child: RenderNode, shadows: Shadow[])
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.ShadowNode
+
+    /**
+     * Creates a `GskRenderNode` that will draw a `child` with the given
+     * `shadows` below it.
+     * @constructor 
+     * @param child The node to draw
+     * @param shadows The shadows to apply
+     */
+    constructor(child: RenderNode, shadows: Shadow[]) 
+    /**
+     * Creates a `GskRenderNode` that will draw a `child` with the given
+     * `shadows` below it.
+     * @constructor 
+     * @param child The node to draw
+     * @param shadows The shadows to apply
+     */
     static new(child: RenderNode, shadows: Shadow[]): ShadowNode
 }
-class TextNode {
-    /* Methods of Gsk-4.0.Gsk.TextNode */
+
+interface TextNode {
+
+    // Owm methods of Gsk-4.0.Gsk.TextNode
+
     /**
      * Retrieves the color used by the text `node`.
      */
@@ -4970,140 +2360,90 @@ class TextNode {
      * Checks whether the text `node` has color glyphs.
      */
     has_color_glyphs(): boolean
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node drawing a set of glyphs.
+ * @class 
+ */
+class TextNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.TextNode
+
     static name: string
-    static new(font: Pango.Font, glyphs: Pango.GlyphString, color: Gdk.RGBA, offset: Graphene.Point): TextNode
-    constructor(font: Pango.Font, glyphs: Pango.GlyphString, color: Gdk.RGBA, offset: Graphene.Point)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.TextNode
+
+    /**
+     * Creates a render node that renders the given glyphs.
+     * 
+     * Note that `color` may not be used if the font contains
+     * color glyphs.
+     * @constructor 
+     * @param font the `PangoFont` containing the glyphs
+     * @param glyphs the `PangoGlyphString` to render
+     * @param color the foreground color to render with
+     * @param offset offset of the baseline
+     */
+    constructor(font: Pango.Font, glyphs: Pango.GlyphString, color: Gdk.RGBA, offset: Graphene.Point) 
+    /**
+     * Creates a render node that renders the given glyphs.
+     * 
+     * Note that `color` may not be used if the font contains
+     * color glyphs.
+     * @constructor 
+     * @param font the `PangoFont` containing the glyphs
+     * @param glyphs the `PangoGlyphString` to render
+     * @param color the foreground color to render with
+     * @param offset offset of the baseline
+     */
     static new(font: Pango.Font, glyphs: Pango.GlyphString, color: Gdk.RGBA, offset: Graphene.Point): TextNode
 }
-class TextureNode {
-    /* Methods of Gsk-4.0.Gsk.TextureNode */
+
+interface TextureNode {
+
+    // Owm methods of Gsk-4.0.Gsk.TextureNode
+
     /**
      * Retrieves the `GdkTexture` used when creating this `GskRenderNode`.
      */
     get_texture(): Gdk.Texture
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node for a `GdkTexture`.
+ * @class 
+ */
+class TextureNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.TextureNode
+
     static name: string
-    static new(texture: Gdk.Texture, bounds: Graphene.Rect): TextureNode
-    constructor(texture: Gdk.Texture, bounds: Graphene.Rect)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.TextureNode
+
+    /**
+     * Creates a `GskRenderNode` that will render the given
+     * `texture` into the area given by `bounds`.
+     * @constructor 
+     * @param texture the `GdkTexture`
+     * @param bounds the rectangle to render the texture into
+     */
+    constructor(texture: Gdk.Texture, bounds: Graphene.Rect) 
+    /**
+     * Creates a `GskRenderNode` that will render the given
+     * `texture` into the area given by `bounds`.
+     * @constructor 
+     * @param texture the `GdkTexture`
+     * @param bounds the rectangle to render the texture into
+     */
     static new(texture: Gdk.Texture, bounds: Graphene.Rect): TextureNode
 }
-class TransformNode {
-    /* Methods of Gsk-4.0.Gsk.TransformNode */
+
+interface TransformNode {
+
+    // Owm methods of Gsk-4.0.Gsk.TransformNode
+
     /**
      * Gets the child node that is getting transformed by the given `node`.
      */
@@ -5112,133 +2452,178 @@ class TransformNode {
      * Retrieves the `GskTransform` used by the `node`.
      */
     get_transform(): Transform
-    /* Methods of Gsk-4.0.Gsk.RenderNode */
-    /**
-     * Draw the contents of `node` to the given cairo context.
-     * 
-     * Typically, you'll use this function to implement fallback rendering
-     * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-     * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
-     * 
-     * For advanced nodes that cannot be supported using Cairo, in particular
-     * for nodes doing 3D operations, this function may fail.
-     * @param cr cairo context to draw to
-     */
-    draw(cr: cairo.Context): void
-    /**
-     * Retrieves the boundaries of the `node`.
-     * 
-     * The node will not draw outside of its boundaries.
-     */
-    get_bounds(): /* bounds */ Graphene.Rect
-    /**
-     * Returns the type of the `node`.
-     */
-    get_node_type(): RenderNodeType
-    /**
-     * Acquires a reference on the given `GskRenderNode`.
-     */
-    ref(): RenderNode
-    /**
-     * Serializes the `node` for later deserialization via
-     * gsk_render_node_deserialize(). No guarantees are made about the format
-     * used other than that the same version of GTK will be able to deserialize
-     * the result of a call to gsk_render_node_serialize() and
-     * gsk_render_node_deserialize() will correctly reject files it cannot open
-     * that were created with previous versions of GTK.
-     * 
-     * The intended use of this functions is testing, benchmarking and debugging.
-     * The format is not meant as a permanent storage format.
-     */
-    serialize(): GLib.Bytes
-    /**
-     * Releases a reference on the given `GskRenderNode`.
-     * 
-     * If the reference was the last, the resources associated to the `node` are
-     * freed.
-     */
-    unref(): void
-    /**
-     * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-     * followed by [func`GLib`.file_set_contents].
-     * 
-     * See those two functions for details on the arguments.
-     * 
-     * It is mostly intended for use inside a debugger to quickly dump a render
-     * node to a file for later inspection.
-     * @param filename the file to save it to.
-     */
-    write_to_file(filename: string): boolean
+}
+
+/**
+ * A render node applying a `GskTransform` to its single child node.
+ * @class 
+ */
+class TransformNode extends RenderNode {
+
+    // Own properties of Gsk-4.0.Gsk.TransformNode
+
     static name: string
-    static new(child: RenderNode, transform: Transform): TransformNode
-    constructor(child: RenderNode, transform: Transform)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.TransformNode
+
+    /**
+     * Creates a `GskRenderNode` that will transform the given `child`
+     * with the given `transform`.
+     * @constructor 
+     * @param child The node to transform
+     * @param transform The transform to apply
+     */
+    constructor(child: RenderNode, transform: Transform) 
+    /**
+     * Creates a `GskRenderNode` that will transform the given `child`
+     * with the given `transform`.
+     * @constructor 
+     * @param child The node to transform
+     * @param transform The transform to apply
+     */
     static new(child: RenderNode, transform: Transform): TransformNode
 }
+
+interface BroadwayRendererClass {
+}
+
 abstract class BroadwayRendererClass {
+
+    // Own properties of Gsk-4.0.Gsk.BroadwayRendererClass
+
     static name: string
 }
+
+interface CairoRendererClass {
+}
+
 abstract class CairoRendererClass {
+
+    // Own properties of Gsk-4.0.Gsk.CairoRendererClass
+
     static name: string
 }
-class ColorStop {
-    /* Fields of Gsk-4.0.Gsk.ColorStop */
+
+interface ColorStop {
+
+    // Own fields of Gsk-4.0.Gsk.ColorStop
+
     /**
      * the offset of the color stop
+     * @field 
      */
     offset: number
     /**
      * the color at the given offset
+     * @field 
      */
     color: Gdk.RGBA
+}
+
+/**
+ * A color stop in a gradient node.
+ * @record 
+ */
+class ColorStop {
+
+    // Own properties of Gsk-4.0.Gsk.ColorStop
+
     static name: string
 }
+
+interface GLRendererClass {
+}
+
 abstract class GLRendererClass {
+
+    // Own properties of Gsk-4.0.Gsk.GLRendererClass
+
     static name: string
 }
-abstract class GLShaderClass {
-    /* Fields of Gsk-4.0.Gsk.GLShaderClass */
+
+interface GLShaderClass {
+
+    // Own fields of Gsk-4.0.Gsk.GLShaderClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class GLShaderClass {
+
+    // Own properties of Gsk-4.0.Gsk.GLShaderClass
+
     static name: string
 }
-class ParseLocation {
-    /* Fields of Gsk-4.0.Gsk.ParseLocation */
+
+interface ParseLocation {
+
+    // Own fields of Gsk-4.0.Gsk.ParseLocation
+
     /**
      * the offset of the location in the parse buffer, as bytes
+     * @field 
      */
     bytes: number
     /**
      * the offset of the location in the parse buffer, as characters
+     * @field 
      */
     chars: number
     /**
      * the line of the location in the parse buffer
+     * @field 
      */
     lines: number
     /**
      * the position in the line, as bytes
+     * @field 
      */
     line_bytes: number
     /**
      * the position in the line, as characters
+     * @field 
      */
     line_chars: number
+}
+
+/**
+ * A location in a parse buffer.
+ * @record 
+ */
+class ParseLocation {
+
+    // Own properties of Gsk-4.0.Gsk.ParseLocation
+
     static name: string
 }
+
+interface RendererClass {
+}
+
 abstract class RendererClass {
+
+    // Own properties of Gsk-4.0.Gsk.RendererClass
+
     static name: string
 }
-class RoundedRect {
-    /* Fields of Gsk-4.0.Gsk.RoundedRect */
+
+interface RoundedRect {
+
+    // Own fields of Gsk-4.0.Gsk.RoundedRect
+
     /**
      * the bounds of the rectangle
+     * @field 
      */
     bounds: Graphene.Rect
     /**
      * the size of the 4 rounded corners
+     * @field 
      */
     corner: Graphene.Size[]
-    /* Methods of Gsk-4.0.Gsk.RoundedRect */
+
+    // Owm methods of Gsk-4.0.Gsk.RoundedRect
+
     /**
      * Checks if the given `point` is inside the rounded rectangle.
      * @param point the point to check
@@ -5320,10 +2705,35 @@ class RoundedRect {
      * @param left How far to move the left side to the right
      */
     shrink(top: number, right: number, bottom: number, left: number): RoundedRect
+}
+
+/**
+ * A rectangular region with rounded corners.
+ * 
+ * Application code should normalize rectangles using
+ * [method`Gsk`.RoundedRect.normalize]; this function will ensure that
+ * the bounds of the rectangle are normalized and ensure that the corner
+ * values are positive and the corners do not overlap.
+ * 
+ * All functions taking a `GskRoundedRect` as an argument will internally
+ * operate on a normalized copy; all functions returning a `GskRoundedRect`
+ * will always return a normalized one.
+ * 
+ * The algorithm used for normalizing corner sizes is described in
+ * [the CSS specification](https://drafts.csswg.org/css-backgrounds-3/#border-radius).
+ * @record 
+ */
+class RoundedRect {
+
+    // Own properties of Gsk-4.0.Gsk.RoundedRect
+
     static name: string
 }
-class ShaderArgsBuilder {
-    /* Methods of Gsk-4.0.Gsk.ShaderArgsBuilder */
+
+interface ShaderArgsBuilder {
+
+    // Owm methods of Gsk-4.0.Gsk.ShaderArgsBuilder
+
     /**
      * Increases the reference count of a `GskShaderArgsBuilder` by one.
      */
@@ -5404,39 +2814,84 @@ class ShaderArgsBuilder {
      * If the resulting reference count is zero, frees the builder.
      */
     unref(): void
-    static name: string
-    static new(shader: GLShader, initial_values?: GLib.Bytes | null): ShaderArgsBuilder
-    constructor(shader: GLShader, initial_values?: GLib.Bytes | null)
-    /* Static methods and pseudo-constructors */
-    static new(shader: GLShader, initial_values?: GLib.Bytes | null): ShaderArgsBuilder
 }
-class Shadow {
-    /* Fields of Gsk-4.0.Gsk.Shadow */
+
+/**
+ * An object to build the uniforms data for a `GskGLShader`.
+ * @record 
+ */
+class ShaderArgsBuilder {
+
+    // Own properties of Gsk-4.0.Gsk.ShaderArgsBuilder
+
+    static name: string
+
+    // Constructors of Gsk-4.0.Gsk.ShaderArgsBuilder
+
+    /**
+     * Allocates a builder that can be used to construct a new uniform data
+     * chunk.
+     * @constructor 
+     * @param shader a `GskGLShader`
+     * @param initial_values optional `GBytes` with initial values
+     */
+    constructor(shader: GLShader, initial_values: GLib.Bytes | null) 
+    /**
+     * Allocates a builder that can be used to construct a new uniform data
+     * chunk.
+     * @constructor 
+     * @param shader a `GskGLShader`
+     * @param initial_values optional `GBytes` with initial values
+     */
+    static new(shader: GLShader, initial_values: GLib.Bytes | null): ShaderArgsBuilder
+}
+
+interface Shadow {
+
+    // Own fields of Gsk-4.0.Gsk.Shadow
+
     /**
      * the color of the shadow
+     * @field 
      */
     color: Gdk.RGBA
     /**
      * the horizontal offset of the shadow
+     * @field 
      */
     dx: number
     /**
      * the vertical offset of the shadow
+     * @field 
      */
     dy: number
     /**
      * the radius of the shadow
+     * @field 
      */
     radius: number
+}
+
+/**
+ * The shadow parameters in a shadow node.
+ * @record 
+ */
+class Shadow {
+
+    // Own properties of Gsk-4.0.Gsk.Shadow
+
     static name: string
 }
-class Transform {
-    /* Methods of Gsk-4.0.Gsk.Transform */
+
+interface Transform {
+
+    // Owm methods of Gsk-4.0.Gsk.Transform
+
     /**
      * Checks two transforms for equality.
      * @param second the second transform
      */
-    equal(second?: Transform | null): boolean
+    equal(second: Transform | null): boolean
     /**
      * Returns the category this transform belongs to.
      */
@@ -5601,7 +3056,7 @@ class Transform {
      * Applies all the operations from `other` to `next`.
      * @param other Transform to apply
      */
-    transform(other?: Transform | null): Transform | null
+    transform(other: Transform | null): Transform | null
     /**
      * Transforms a `graphene_rect_t` using the given transform `self`.
      * 
@@ -5631,10 +3086,29 @@ class Transform {
      * freed.
      */
     unref(): void
+}
+
+/**
+ * `GskTransform` is an object to describe transform matrices.
+ * 
+ * Unlike `graphene_matrix_t`, `GskTransform` retains the steps in how
+ * a transform was constructed, and allows inspecting them. It is modeled
+ * after the way CSS describes transforms.
+ * 
+ * `GskTransform` objects are immutable and cannot be changed after creation.
+ * This means code can safely expose them as properties of objects without
+ * having to worry about others changing them.
+ * @record 
+ */
+class Transform {
+
+    // Own properties of Gsk-4.0.Gsk.Transform
+
     static name: string
-    static new(): Transform
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Gsk-4.0.Gsk.Transform
+
+    constructor() 
     static new(): Transform
     /**
      * Parses the given `string` into a transform and puts it in
@@ -5649,5 +3123,6 @@ class Transform {
      */
     static parse(string: string): [ /* returnType */ boolean, /* out_transform */ Transform ]
 }
+
 }
 export default Gsk;

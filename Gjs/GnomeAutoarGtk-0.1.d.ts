@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +27,42 @@ import type GnomeAutoar from './GnomeAutoar-0.1';
 
 export namespace GnomeAutoarGtk {
 
+/**
+ * Gets the selected archive format of the widget created by
+ * autoar_gtk_chooser_advanced_new().
+ * @param advanced a #GtkGrid returned by autoar_gtk_chooser_advanced_new()
+ * @param format the place to store the #AutoarFormat selected by the user
+ * @param filter the place to store the #AutoarFilter selected by the user
+ */
 function chooser_advanced_get(advanced: Gtk.Widget, format: number, filter: number): boolean
+/**
+ * Create a #GtkGrid with two lists. One list shows all available formats,
+ * and the other list shows all available filters.
+ * @param default_format an #AutoarFormat
+ * @param default_filter an #AutoarFilter
+ */
 function chooser_advanced_new(default_format: GnomeAutoar.Format, default_filter: GnomeAutoar.Filter): Gtk.Widget
+/**
+ * Gets the selected archive format of the widget created by
+ * autoar_gtk_chooser_simple_new().
+ * @param simple a #GtkComboBox returned by autoar_gtk_chooser_simple_new()
+ * @param format the place to store the #AutoarFormat selected by the user
+ * @param filter the place to store the #AutoarFilter selected by the user
+ */
 function chooser_simple_get(simple: Gtk.Widget, format: number, filter: number): boolean
+/**
+ * Create a #GtkComboBox with a list of common archive format. There is also
+ * an option called "Other format…", which will use
+ * autoar_gtk_chooser_advanced_new() and
+ * autoar_gtk_chooser_advanced_get() to select less common archive
+ * format. Arguments `default_format` and `default_filter` are the default archive
+ * format selected on the returned widget. You may want to get the preferred
+ * format of users using autoar_pref_get_default_format() and
+ * autoar_pref_get_default_filter(), or just set them to 1 to select
+ * the default archive format.
+ * @param default_format an #AutoarFormat
+ * @param default_filter an #AutoarFilter
+ */
 function chooser_simple_new(default_format: GnomeAutoar.Format, default_filter: GnomeAutoar.Filter): Gtk.Widget
 }
 export default GnomeAutoarGtk;

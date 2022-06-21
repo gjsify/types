@@ -15577,6 +15577,7 @@ const inheritanceTable: { [key: string]: string[] } = {
 ],
     'GstAudio.AudioClock': [
     'Gst.SystemClock',
+    'Gst.SystemClock',
     'Gst.Clock',
     'Gst.Object',
     'GObject.InitiallyUnowned',
@@ -15597,6 +15598,7 @@ const inheritanceTable: { [key: string]: string[] } = {
 ],
     'GstAudio.AudioFilter': [
     'GstBase.BaseTransform',
+    'GstBase.BaseTransform',
     'Gst.Element',
     'Gst.Object',
     'GObject.InitiallyUnowned',
@@ -15609,6 +15611,7 @@ const inheritanceTable: { [key: string]: string[] } = {
 ],
     'GstAudio.AudioSink': [
     'GstAudio.AudioBaseSink',
+    'GstAudio.BaseAudioSink',
     'GstBase.BaseSink',
     'Gst.Element',
     'Gst.Object',
@@ -15617,6 +15620,7 @@ const inheritanceTable: { [key: string]: string[] } = {
 ],
     'GstAudio.AudioSrc': [
     'GstAudio.AudioBaseSrc',
+    'GstAudio.BaseAudioSrc',
     'GstBase.PushSrc',
     'GstBase.BaseSrc',
     'Gst.Element',
@@ -30819,6 +30823,39 @@ const inheritanceTable: { [key: string]: string[] } = {
     'gSignon.Identity': [
     'GObject.Object',
 ],
+    'ArrowCUDA.Buffer': [
+    'Arrow.Buffer',
+    'GObject.Object',
+],
+    'ArrowCUDA.BufferInputStream': [
+    'Arrow.BufferInputStream',
+    'Arrow.File',
+    'Arrow.Readable',
+    'Arrow.SeekableInputStream',
+    'Arrow.InputStream',
+    'Gio.InputStream',
+    'GObject.Object',
+],
+    'ArrowCUDA.BufferOutputStream': [
+    'Arrow.OutputStream',
+    'Arrow.File',
+    'Arrow.Writable',
+    'GObject.Object',
+],
+    'ArrowCUDA.Context': [
+    'GObject.Object',
+],
+    'ArrowCUDA.DeviceManager': [
+    'GObject.Object',
+],
+    'ArrowCUDA.HostBuffer': [
+    'Arrow.MutableBuffer',
+    'Arrow.Buffer',
+    'GObject.Object',
+],
+    'ArrowCUDA.IPCMemoryHandle': [
+    'GObject.Object',
+],
     'Gst.Adapter': [
     'GObject.Object',
 ],
@@ -30885,6 +30922,26 @@ const inheritanceTable: { [key: string]: string[] } = {
     'Gst.MiniObject',
 ],
     'Gst.XML': [
+    'Gst.Object',
+    'GObject.InitiallyUnowned',
+    'GObject.Object',
+],
+    'GstAudio.BaseAudioSink': [
+    'GstBase.BaseSink',
+    'Gst.Element',
+    'Gst.Object',
+    'GObject.InitiallyUnowned',
+    'GObject.Object',
+],
+    'GstAudio.BaseAudioSrc': [
+    'GstBase.PushSrc',
+    'GstBase.BaseSrc',
+    'Gst.Element',
+    'Gst.Object',
+    'GObject.InitiallyUnowned',
+    'GObject.Object',
+],
+    'GstAudio.RingBuffer': [
     'Gst.Object',
     'GObject.InitiallyUnowned',
     'GObject.Object',

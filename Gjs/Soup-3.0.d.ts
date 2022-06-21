@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -765,6 +767,7 @@ enum Cacheability {
 }
 /**
  * Represents the parsed value of the "Expect" header.
+ * @bitfield 
  */
 enum Expectation {
     /**
@@ -779,6 +782,7 @@ enum Expectation {
 /**
  * Various flags that can be set on a #SoupMessage to alter its
  * behavior.
+ * @bitfield 
  */
 enum MessageFlags {
     /**
@@ -824,6 +828,7 @@ enum MessageFlags {
  * soup_server_listen_local(), not plain soup_server_listen() (which
  * simply listens on whatever kind of socket you give it). And you
  * cannot specify both of them in a single call.
+ * @bitfield 
  */
 enum ServerListenOptions {
     /**
@@ -912,49 +917,449 @@ const MINOR_VERSION: number
  * using functions deprecated in later releases will not).
  */
 const VERSION_MIN_REQUIRED: number
+/**
+ * Like SOUP_CHECK_VERSION, but the check for soup_check_version is
+ * at runtime instead of compile time. This is useful for compiling
+ * against older versions of libsoup, but using features from newer
+ * versions.
+ * @param major the major version to check
+ * @param minor the minor version to check
+ * @param micro the micro version to check
+ */
 function check_version(major: number, minor: number, micro: number): boolean
-function cookie_parse(header: string, origin?: GLib.Uri | null): Cookie | null
+/**
+ * Parses `header` and returns a #SoupCookie. (If `header` contains
+ * multiple cookies, only the first one will be parsed.)
+ * 
+ * If `header` does not have "path" or "domain" attributes, they will
+ * be defaulted from `origin`. If `origin` is %NULL, path will default
+ * to "/", but domain will be left as %NULL. Note that this is not a
+ * valid state for a #SoupCookie, and you will need to fill in some
+ * appropriate string for the domain if you want to actually make use
+ * of the cookie.
+ * @param header a cookie string (eg, the value of a Set-Cookie header)
+ * @param origin origin of the cookie, or %NULL
+ */
+function cookie_parse(header: string, origin: GLib.Uri | null): Cookie | null
+/**
+ * Parses `msg'`s Cookie request header and returns a #GSList of
+ * #SoupCookie<!-- -->s. As the "Cookie" header, unlike "Set-Cookie",
+ * only contains cookie names and values, none of the other
+ * #SoupCookie fields will be filled in. (Thus, you can't generally
+ * pass a cookie returned from this method directly to
+ * soup_cookies_to_response().)
+ * @param msg a #SoupMessage containing a "Cookie" request header
+ */
 function cookies_from_request(msg: Message): Cookie[]
+/**
+ * Parses `msg'`s Set-Cookie response headers and returns a #GSList of
+ * #SoupCookie<!-- -->s. Cookies that do not specify "path" or
+ * "domain" attributes will have their values defaulted from `msg`.
+ * @param msg a #SoupMessage containing a "Set-Cookie" response header
+ */
 function cookies_from_response(msg: Message): Cookie[]
+/**
+ * Serializes a #GSList of #SoupCookie into a string suitable for
+ * setting as the value of the "Cookie" header.
+ * @param cookies a #GSList of #SoupCookie
+ */
 function cookies_to_cookie_header(cookies: Cookie[]): string
+/**
+ * Adds the name and value of each cookie in `cookies` to `msg'`s
+ * "Cookie" request. (If `msg` already has a "Cookie" request header,
+ * these cookies will be appended to the cookies already present. Be
+ * careful that you do not append the same cookies twice, eg, when
+ * requeuing a message.)
+ * @param cookies a #GSList of #SoupCookie
+ * @param msg a #SoupMessage
+ */
 function cookies_to_request(cookies: Cookie[], msg: Message): void
+/**
+ * Appends a "Set-Cookie" response header to `msg` for each cookie in
+ * `cookies`. (This is in addition to any other "Set-Cookie" headers
+ * `msg` may already have.)
+ * @param cookies a #GSList of #SoupCookie
+ * @param msg a #SoupMessage
+ */
 function cookies_to_response(cookies: Cookie[], msg: Message): void
+/**
+ * Parses `date_string` and tries to extract a date from it. This
+ * recognizes all of the "HTTP-date" formats from RFC 2616, RFC 2822
+ * dates, and reasonable approximations thereof. (Eg, it is lenient about
+ * whitespace, leading "0"s, etc.)
+ * @param date_string The date as a string
+ */
 function date_time_new_from_http_string(date_string: string): GLib.DateTime | null
+/**
+ * Converts `date` to a string in the format described by `format`.
+ * @param date a #GDateTime
+ * @param format the format to generate the date in
+ */
 function date_time_to_string(date: GLib.DateTime, format: DateFormat): string
+/**
+ * Decodes `form,` which is an urlencoded dataset as defined in the
+ * HTML 4.01 spec.
+ * @param encoded_form data of type "application/x-www-form-urlencoded"
+ */
 function form_decode(encoded_form: string): GLib.HashTable
-function form_decode_multipart(multipart: Multipart, file_control_name?: string | null): [ /* returnType */ GLib.HashTable | null, /* filename */ string | null, /* content_type */ string | null, /* file */ GLib.Bytes | null ]
+/**
+ * Decodes the "multipart/form-data" request in `multipart;` this is a
+ * convenience method for the case when you have a single file upload
+ * control in a form. (Or when you don't have any file upload
+ * controls, but are still using "multipart/form-data" anyway.) Pass
+ * the name of the file upload control in `file_control_name,` and
+ * soup_form_decode_multipart() will extract the uploaded file data
+ * into `filename,` `content_type,` and `file`. All of the other form
+ * control data will be returned (as strings, as with
+ * soup_form_decode()) in the returned #GHashTable.
+ * 
+ * You may pass %NULL for `filename,` `content_type` and/or `file` if you do not
+ * care about those fields. soup_form_decode_multipart() may also
+ * return %NULL in those fields if the client did not provide that
+ * information. You must free the returned filename and content-type
+ * with g_free(), and the returned file data with g_bytes_unref().
+ * 
+ * If you have a form with more than one file upload control, you will
+ * need to decode it manually, using soup_multipart_new_from_message()
+ * and soup_multipart_get_part().
+ * @param multipart a #SoupMultipart
+ * @param file_control_name the name of the HTML file upload control, or %NULL
+ */
+function form_decode_multipart(multipart: Multipart, file_control_name: string | null): [ /* returnType */ GLib.HashTable | null, /* filename */ string, /* content_type */ string, /* file */ GLib.Bytes ]
+/**
+ * Encodes `form_data_set` into a value of type
+ * "application/x-www-form-urlencoded", as defined in the HTML 4.01
+ * spec. Unlike soup_form_encode_hash(), this preserves the ordering
+ * of the form elements, which may be required in some situations.
+ * @param form_data_set a datalist containing name/value pairs
+ */
 function form_encode_datalist(form_data_set: GLib.Data): string
+/**
+ * Encodes `form_data_set` into a value of type
+ * "application/x-www-form-urlencoded", as defined in the HTML 4.01
+ * spec.
+ * 
+ * Note that the HTML spec states that "The control names/values are
+ * listed in the order they appear in the document." Since this method
+ * takes a hash table, it cannot enforce that; if you care about the
+ * ordering of the form fields, use soup_form_encode_datalist().
+ * @param form_data_set a hash table containing name/value pairs (as strings)
+ */
 function form_encode_hash(form_data_set: GLib.HashTable): string
+/**
+ * Returns the major version number of the libsoup library.
+ * (e.g. in libsoup version 2.42.0 this is 2.)
+ * 
+ * This function is in the library, so it represents the libsoup library
+ * your code is running against. Contrast with the #SOUP_MAJOR_VERSION
+ * macro, which represents the major version of the libsoup headers you
+ * have included when compiling your code.
+ */
 function get_major_version(): number
+/**
+ * Returns the micro version number of the libsoup library.
+ * (e.g. in libsoup version 2.42.0 this is 0.)
+ * 
+ * This function is in the library, so it represents the libsoup library
+ * your code is running against. Contrast with the #SOUP_MICRO_VERSION
+ * macro, which represents the micro version of the libsoup headers you
+ * have included when compiling your code.
+ */
 function get_micro_version(): number
+/**
+ * Returns the minor version number of the libsoup library.
+ * (e.g. in libsoup version 2.42.0 this is 42.)
+ * 
+ * This function is in the library, so it represents the libsoup library
+ * your code is running against. Contrast with the #SOUP_MINOR_VERSION
+ * macro, which represents the minor version of the libsoup headers you
+ * have included when compiling your code.
+ */
 function get_minor_version(): number
+/**
+ * Parses `header` to see if it contains the token `token` (matched
+ * case-insensitively). Note that this can't be used with lists
+ * that have qvalues.
+ * @param header An HTTP header suitable for parsing with soup_header_parse_list()
+ * @param token a token
+ */
 function header_contains(header: string, token: string): boolean
+/**
+ * Frees `param_list`.
+ * @param param_list a #GHashTable returned from soup_header_parse_param_list() or soup_header_parse_semi_param_list()
+ */
 function header_free_param_list(param_list: GLib.HashTable): void
+/**
+ * Appends something like <literal>`name=``value<`/literal> to `string,`
+ * taking care to quote `value` if needed, and if so, to escape any
+ * quotes or backslashes in `value`.
+ * 
+ * Alternatively, if `value` is a non-ASCII UTF-8 string, it will be
+ * appended using RFC5987 syntax. Although in theory this is supposed
+ * to work anywhere in HTTP that uses this style of parameter, in
+ * reality, it can only be used portably with the Content-Disposition
+ * "filename" parameter.
+ * 
+ * If `value` is %NULL, this will just append `name` to `string`.
+ * @param string a #GString being used to construct an HTTP header value
+ * @param name a parameter name
+ * @param value a parameter value, or %NULL
+ */
 function header_g_string_append_param(string: GLib.String, name: string, value: string): void
+/**
+ * Appends something like <literal>`name=`"`value"`</literal> to
+ * `string,` taking care to escape any quotes or backslashes in `value`.
+ * 
+ * If `value` is (non-ASCII) UTF-8, this will instead use RFC 5987
+ * encoding, just like soup_header_g_string_append_param().
+ * @param string a #GString being used to construct an HTTP header value
+ * @param name a parameter name
+ * @param value a parameter value
+ */
 function header_g_string_append_param_quoted(string: GLib.String, name: string, value: string): void
+/**
+ * Parses a header whose content is described by RFC2616 as
+ * "#something", where "something" does not itself contain commas,
+ * except as part of quoted-strings.
+ * @param header a header value
+ */
 function header_parse_list(header: string): string[]
+/**
+ * Parses a header which is a comma-delimited list of something like:
+ * <literal>token [ "=" ( token | quoted-string ) ]</literal>.
+ * 
+ * Tokens that don't have an associated value will still be added to
+ * the resulting hash table, but with a %NULL value.
+ * 
+ * This also handles RFC5987 encoding (which in HTTP is mostly used
+ * for giving UTF8-encoded filenames in the Content-Disposition
+ * header).
+ * @param header a header value
+ */
 function header_parse_param_list(header: string): GLib.HashTable
+/**
+ * A strict version of soup_header_parse_param_list()
+ * that bails out if there are duplicate parameters.
+ * Note that this function will treat RFC5987-encoded
+ * parameters as duplicated if an ASCII version is also
+ * present. For header fields that might contain
+ * RFC5987-encoded parameters, use
+ * soup_header_parse_param_list() instead.
+ * @param header a header value
+ */
 function header_parse_param_list_strict(header: string): GLib.HashTable | null
-function header_parse_quality_list(header: string): [ /* returnType */ string[], /* unacceptable */ string[] | null ]
+/**
+ * Parses a header whose content is a list of items with optional
+ * "qvalue"s (eg, Accept, Accept-Charset, Accept-Encoding,
+ * Accept-Language, TE).
+ * 
+ * If `unacceptable` is not %NULL, then on return, it will contain the
+ * items with qvalue 0. Either way, those items will be removed from
+ * the main list.
+ * @param header a header value
+ */
+function header_parse_quality_list(header: string): [ /* returnType */ string[], /* unacceptable */ string[] ]
+/**
+ * Parses a header which is a semicolon-delimited list of something
+ * like: <literal>token [ "=" ( token | quoted-string ) ]</literal>.
+ * 
+ * Tokens that don't have an associated value will still be added to
+ * the resulting hash table, but with a %NULL value.
+ * 
+ * This also handles RFC5987 encoding (which in HTTP is mostly used
+ * for giving UTF8-encoded filenames in the Content-Disposition
+ * header).
+ * @param header a header value
+ */
 function header_parse_semi_param_list(header: string): GLib.HashTable
+/**
+ * A strict version of soup_header_parse_semi_param_list()
+ * that bails out if there are duplicate parameters.
+ * Note that this function will treat RFC5987-encoded
+ * parameters as duplicated if an ASCII version is also
+ * present. For header fields that might contain
+ * RFC5987-encoded parameters, use
+ * soup_header_parse_semi_param_list() instead.
+ * @param header a header value
+ */
 function header_parse_semi_param_list_strict(header: string): GLib.HashTable | null
+/**
+ * Parses the headers of an HTTP request or response in `str` and
+ * stores the results in `dest`. Beware that `dest` may be modified even
+ * on failure.
+ * 
+ * This is a low-level method; normally you would use
+ * soup_headers_parse_request() or soup_headers_parse_response().
+ * @param str the header string (including the Request-Line or Status-Line,   but not the trailing blank line)
+ * @param len length of `str`
+ * @param dest #SoupMessageHeaders to store the header values in
+ */
 function headers_parse(str: string, len: number, dest: MessageHeaders): boolean
-function headers_parse_request(str: string, len: number, req_headers: MessageHeaders): [ /* returnType */ number, /* req_method */ string | null, /* req_path */ string | null, /* ver */ HTTPVersion | null ]
-function headers_parse_response(str: string, len: number, headers: MessageHeaders): [ /* returnType */ boolean, /* ver */ HTTPVersion | null, /* status_code */ number | null, /* reason_phrase */ string | null ]
-function headers_parse_status_line(status_line: string): [ /* returnType */ boolean, /* ver */ HTTPVersion | null, /* status_code */ number | null, /* reason_phrase */ string | null ]
+/**
+ * Parses the headers of an HTTP request in `str` and stores the
+ * results in `req_method,` `req_path,` `ver,` and `req_headers`.
+ * 
+ * Beware that `req_headers` may be modified even on failure.
+ * @param str the headers (up to, but not including, the trailing blank line)
+ * @param len length of `str`
+ * @param req_headers #SoupMessageHeaders to store the header values in
+ */
+function headers_parse_request(str: string, len: number, req_headers: MessageHeaders): [ /* returnType */ number, /* req_method */ string, /* req_path */ string, /* ver */ HTTPVersion ]
+/**
+ * Parses the headers of an HTTP response in `str` and stores the
+ * results in `ver,` `status_code,` `reason_phrase,` and `headers`.
+ * 
+ * Beware that `headers` may be modified even on failure.
+ * @param str the headers (up to, but not including, the trailing blank line)
+ * @param len length of `str`
+ * @param headers #SoupMessageHeaders to store the header values in
+ */
+function headers_parse_response(str: string, len: number, headers: MessageHeaders): [ /* returnType */ boolean, /* ver */ HTTPVersion, /* status_code */ number, /* reason_phrase */ string ]
+/**
+ * Parses the HTTP Status-Line string in `status_line` into `ver,`
+ * `status_code,` and `reason_phrase`. `status_line` must be terminated by
+ * either "\0" or "\r\n".
+ * @param status_line an HTTP Status-Line
+ */
+function headers_parse_status_line(status_line: string): [ /* returnType */ boolean, /* ver */ HTTPVersion, /* status_code */ number, /* reason_phrase */ string ]
+/**
+ * Initializes `iter` for iterating `hdrs`.
+ * @param hdrs a %SoupMessageHeaders
+ */
 function message_headers_iter_init(hdrs: MessageHeaders): /* iter */ MessageHeadersIter
 function session_error_quark(): GLib.Quark
+/**
+ * Looks up the stock HTTP description of `status_code`.
+ * 
+ * <emphasis>There is no reason for you to ever use this
+ * function.</emphasis> If you wanted the textual description for the
+ * #SoupMessage:status_code of a given #SoupMessage, you should just
+ * look at the message's #SoupMessage:reason_phrase. However, you
+ * should only do that for use in debugging messages; HTTP reason
+ * phrases are not localized, and are not generally very descriptive
+ * anyway, and so they should never be presented to the user directly.
+ * Instead, you should create you own error messages based on the
+ * status code, and on what you were trying to do.
+ * @param status_code an HTTP status code
+ */
 function status_get_phrase(status_code: number): string
+/**
+ * Looks whether the `domain` passed as argument is a public domain
+ * suffix (.org, .com, .co.uk, etc) or not.
+ * 
+ * Prior to libsoup 2.46, this function required that `domain` be in
+ * UTF-8 if it was an IDN. From 2.46 on, the name can be in either
+ * UTF-8 or ASCII format.
+ * @param domain a domain name
+ */
 function tld_domain_is_public_suffix(domain: string): boolean
 function tld_error_quark(): GLib.Quark
+/**
+ * Finds the base domain for a given `hostname`. The base domain is
+ * composed by the top level domain (such as .org, .com, .co.uk, etc)
+ * plus the second level domain, for example for myhost.mydomain.com
+ * it will return mydomain.com.
+ * 
+ * Note that %NULL will be returned for private URLs (those not ending
+ * with any well known TLD) because choosing a base domain for them
+ * would be totally arbitrary.
+ * 
+ * Prior to libsoup 2.46, this function required that `hostname` be in
+ * UTF-8 if it was an IDN. From 2.46 on, the name can be in either
+ * UTF-8 or ASCII format (and the return value will be in the same
+ * format).
+ * @param hostname a hostname
+ */
 function tld_get_base_domain(hostname: string): string
+/**
+ * Decodes the given data URI and returns its contents and `content_type`.
+ * @param uri a data URI, in string form
+ */
 function uri_decode_data_uri(uri: string): [ /* returnType */ GLib.Bytes, /* content_type */ string | null ]
+/**
+ * Tests whether or not `uri1` and `uri2` are equal in all parts
+ * @param uri1 a #GUri
+ * @param uri2 another #GUri
+ */
 function uri_equal(uri1: GLib.Uri, uri2: GLib.Uri): boolean
-function websocket_client_prepare_handshake(msg: Message, origin?: string | null, protocols?: string[] | null, supported_extensions?: GObject.TypeClass[] | null): void
-function websocket_client_verify_handshake(msg: Message, supported_extensions?: GObject.TypeClass[] | null): [ /* returnType */ boolean, /* accepted_extensions */ WebsocketExtension[] | null ]
+/**
+ * Adds the necessary headers to `msg` to request a WebSocket
+ * handshake including supported WebSocket extensions.
+ * The message body and non-WebSocket-related headers are
+ * not modified.
+ * 
+ * This is a low-level function; if you use
+ * soup_session_websocket_connect_async() to create a WebSocket
+ * connection, it will call this for you.
+ * @param msg a #SoupMessage
+ * @param origin the "Origin" header to set
+ * @param protocols list of   protocols to offer
+ * @param supported_extensions list   of supported extension types
+ */
+function websocket_client_prepare_handshake(msg: Message, origin: string | null, protocols: string[] | null, supported_extensions: GObject.TypeClass[] | null): void
+/**
+ * Looks at the response status code and headers in `msg` and
+ * determines if they contain a valid WebSocket handshake response
+ * (given the handshake request in `msg'`s request headers).
+ * 
+ * If `supported_extensions` is non-%NULL, extensions included in the
+ * response "Sec-WebSocket-Extensions" are verified too. Accepted
+ * extensions are returned in `accepted_extensions` parameter if non-%NULL.
+ * 
+ * This is a low-level function; if you use
+ * soup_session_websocket_connect_async() to create a WebSocket
+ * connection, it will call this for you.
+ * @param msg #SoupMessage containing both client and server sides of a   WebSocket handshake
+ * @param supported_extensions list   of supported extension types
+ */
+function websocket_client_verify_handshake(msg: Message, supported_extensions: GObject.TypeClass[] | null): [ /* returnType */ boolean, /* accepted_extensions */ WebsocketExtension[] ]
 function websocket_error_quark(): GLib.Quark
-function websocket_server_check_handshake(msg: ServerMessage, origin?: string | null, protocols?: string[] | null, supported_extensions?: GObject.TypeClass[] | null): boolean
-function websocket_server_process_handshake(msg: ServerMessage, expected_origin?: string | null, protocols?: string[] | null, supported_extensions?: GObject.TypeClass[] | null): [ /* returnType */ boolean, /* accepted_extensions */ WebsocketExtension[] | null ]
+/**
+ * Examines the method and request headers in `msg` and determines
+ * whether `msg` contains a valid handshake request.
+ * 
+ * If `origin` is non-%NULL, then only requests containing a matching
+ * "Origin" header will be accepted. If `protocols` is non-%NULL, then
+ * only requests containing a compatible "Sec-WebSocket-Protocols"
+ * header will be accepted. If `supported_extensions` is non-%NULL, then
+ * only requests containing valid supported extensions in
+ * "Sec-WebSocket-Extensions" header will be accepted.
+ * 
+ * Normally soup_websocket_server_process_handshake()
+ * will take care of this for you, and if you use
+ * soup_server_add_websocket_handler() to handle accepting WebSocket
+ * connections, it will call that for you. However, this function may
+ * be useful if you need to perform more complicated validation; eg,
+ * accepting multiple different Origins, or handling different protocols
+ * depending on the path.
+ * @param msg #SoupServerMessage containing the client side of a WebSocket handshake
+ * @param origin expected Origin header
+ * @param protocols allowed WebSocket   protocols.
+ * @param supported_extensions list   of supported extension types
+ */
+function websocket_server_check_handshake(msg: ServerMessage, origin: string | null, protocols: string[] | null, supported_extensions: GObject.TypeClass[] | null): boolean
+/**
+ * Examines the method and request headers in `msg` and (assuming `msg`
+ * contains a valid handshake request), fills in the handshake
+ * response.
+ * 
+ * If `expected_origin` is non-%NULL, then only requests containing a matching
+ * "Origin" header will be accepted. If `protocols` is non-%NULL, then
+ * only requests containing a compatible "Sec-WebSocket-Protocols"
+ * header will be accepted. If `supported_extensions` is non-%NULL, then
+ * only requests containing valid supported extensions in
+ * "Sec-WebSocket-Extensions" header will be accepted. The accepted extensions
+ * will be returned in `accepted_extensions` parameter if non-%NULL.
+ * 
+ * This is a low-level function; if you use
+ * soup_server_add_websocket_handler() to handle accepting WebSocket
+ * connections, it will call this for you.
+ * @param msg #SoupServerMessage containing the client side of a WebSocket handshake
+ * @param expected_origin expected Origin header
+ * @param protocols allowed WebSocket   protocols.
+ * @param supported_extensions list   of supported extension types
+ */
+function websocket_server_process_handshake(msg: ServerMessage, expected_origin: string | null, protocols: string[] | null, supported_extensions: GObject.TypeClass[] | null): [ /* returnType */ boolean, /* accepted_extensions */ WebsocketExtension[] ]
 /**
  * Callback used by #SoupAuthDomainBasic for authentication purposes.
  * The application should verify that `username` and `password` and valid
@@ -970,6 +1375,11 @@ function websocket_server_process_handshake(msg: ServerMessage, expected_origin?
  * compromising any site with a cleartext (or easily-cracked) password
  * database may give attackers access to other more-interesting sites
  * as well.
+ * @callback 
+ * @param domain the domain
+ * @param msg the message being authenticated
+ * @param username the username provided by the client
+ * @param password the password provided by the client
  */
 interface AuthDomainBasicAuthCallback {
     (domain: AuthDomainBasic, msg: ServerMessage, username: string, password: string): boolean
@@ -979,6 +1389,10 @@ interface AuthDomainBasicAuthCallback {
  * The application should look up `username` in its password database,
  * and return the corresponding encoded password (see
  * soup_auth_domain_digest_encode_password()).
+ * @callback 
+ * @param domain the domain
+ * @param msg the message being authenticated
+ * @param username the username provided by the client
  */
 interface AuthDomainDigestAuthCallback {
     (domain: AuthDomainDigest, msg: ServerMessage, username: string): string | null
@@ -986,6 +1400,9 @@ interface AuthDomainDigestAuthCallback {
 /**
  * The prototype for a #SoupAuthDomain filter; see
  * soup_auth_domain_set_filter() for details.
+ * @callback 
+ * @param domain a #SoupAuthDomain
+ * @param msg a #SoupServerMessage
  */
 interface AuthDomainFilter {
     (domain: AuthDomain, msg: ServerMessage): boolean
@@ -1007,6 +1424,10 @@ interface AuthDomainFilter {
  * servers might be compromised as well. For many of the cases where
  * #SoupServer is used, this is not really relevant, but it may still
  * be worth considering.
+ * @callback 
+ * @param domain a #SoupAuthDomain
+ * @param msg the #SoupServerMessage being authenticated
+ * @param username the username from `msg`
  */
 interface AuthDomainGenericAuthCallback {
     (domain: AuthDomain, msg: ServerMessage, username: string): boolean
@@ -1016,6 +1437,9 @@ interface AuthDomainGenericAuthCallback {
  * invoked for each request or response, and should analyze it and
  * return a #SoupLoggerLogLevel value indicating how much of the
  * message to log.
+ * @callback 
+ * @param logger the #SoupLogger
+ * @param msg the message being logged
  */
 interface LoggerFilter {
     (logger: Logger, msg: Message): LoggerLogLevel
@@ -1034,12 +1458,20 @@ interface LoggerFilter {
  * <informalexample><programlisting>
  * printf ("%c %s\n", direction, data);
  * </programlisting></informalexample>
+ * @callback 
+ * @param logger the #SoupLogger
+ * @param level the level of the information being printed.
+ * @param direction a single-character prefix to `data`
+ * @param data data to print
  */
 interface LoggerPrinter {
     (logger: Logger, level: LoggerLogLevel, direction: number, data: string): void
 }
 /**
  * The callback passed to soup_message_headers_foreach().
+ * @callback 
+ * @param name the header name
+ * @param value the header value
  */
 interface MessageHeadersForeachFunc {
     (name: string, value: string): void
@@ -1066,9 +1498,14 @@ interface MessageHeadersForeachFunc {
  * 
  * See soup_server_add_handler() and soup_server_add_early_handler()
  * for details of what handlers can/should do.
+ * @callback 
+ * @param server the #SoupServer
+ * @param msg the message being processed
+ * @param path the path component of `msg'`s Request-URI
+ * @param query the parsed query   component of `msg'`s Request-URI
  */
 interface ServerCallback {
-    (server: Server, msg: ServerMessage, path: string, query?: GLib.HashTable | null): void
+    (server: Server, msg: ServerMessage, path: string, query: GLib.HashTable | null): void
 }
 /**
  * A callback used to handle WebSocket requests to a #SoupServer. The
@@ -1078,30 +1515,68 @@ interface ServerCallback {
  * 
  * `path` contains the path of the Request-URI, subject to the same
  * rules as #SoupServerCallback (qv).
+ * @callback 
+ * @param server the #SoupServer
+ * @param msg the #SoupServerMessage
+ * @param path the path component of `msg'`s Request-URI
+ * @param connection the newly created WebSocket connection
  */
 interface ServerWebsocketCallback {
     (server: Server, msg: ServerMessage, path: string, connection: WebsocketConnection): void
 }
-class SessionFeature {
-    static name: string
+interface SessionFeature_ConstructProps extends GObject.Object_ConstructProps {
 }
+
+interface SessionFeature {
+
+    // Class property signals of Soup-3.0.Soup.SessionFeature
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+}
+
+/**
+ * An object that implement some sort of optional feature for
+ * #SoupSession.
+ * @interface 
+ */
+class SessionFeature extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.SessionFeature
+
+    static name: string
+    static $gtype: GObject.GType<SessionFeature>
+
+    // Constructors of Soup-3.0.Soup.SessionFeature
+
+    constructor(config?: SessionFeature_ConstructProps) 
+    _init(config?: SessionFeature_ConstructProps): void
+}
+
 interface Auth_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.Auth */
+
+    // Own constructor properties of Soup-3.0.Soup.Auth
+
     /**
      * The authority (host:port) being authenticated to.
      */
-    authority?: string
+    authority?: string | null
     /**
      * Whether or not the auth is for a proxy server.
      */
-    is_for_proxy?: boolean
+    is_for_proxy?: boolean | null
     /**
      * The authentication realm.
      */
-    realm?: string
+    realm?: string | null
 }
-class Auth {
-    /* Properties of Soup-3.0.Soup.Auth */
+
+interface Auth {
+
+    // Own properties of Soup-3.0.Soup.Auth
+
     /**
      * The authority (host:port) being authenticated to.
      */
@@ -1127,9 +1602,13 @@ class Auth {
      * The authentication scheme name.
      */
     readonly scheme_name: string
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Auth */
+
+    // Own fields of Soup-3.0.Soup.Auth
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.Auth
+
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
@@ -1202,324 +1681,13 @@ class Auth {
      * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     update(msg: Message, auth_header: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Auth */
+
+    // Own virtual methods of Soup-3.0.Soup.Auth
+
     /**
      * Call this on an auth to authenticate it; normally this will cause
      * the auth's message to be requeued with the new authentication info.
+     * @virtual 
      * @param username the username provided by the user or client
      * @param password the password provided by the user or client
      */
@@ -1527,12 +1695,14 @@ class Auth {
     /**
      * Tests if `auth` is able to authenticate by providing credentials to the
      * soup_auth_authenticate().
+     * @virtual 
      */
     vfunc_can_authenticate(): boolean
     /**
      * Generates an appropriate "Authorization" header for `msg`. (The
      * session will only call this if soup_auth_is_authenticated()
      * returned %TRUE.)
+     * @virtual 
      * @param msg the #SoupMessage to be authorized
      */
     vfunc_get_authorization(msg: Message): string
@@ -1541,11 +1711,13 @@ class Auth {
      * (All subdirectories of these paths are also assumed to be part
      * of `auth'`s protection space, unless otherwise discovered not to
      * be.)
+     * @virtual 
      * @param source_uri the URI of the request that `auth` was generated in response to.
      */
     vfunc_get_protection_space(source_uri: GLib.Uri): string[]
     /**
      * Tests if `auth` has been given a username and password
+     * @virtual 
      */
     vfunc_is_authenticated(): boolean
     /**
@@ -1553,6 +1725,7 @@ class Auth {
      * auths, this is equivalent to soup_auth_is_authenticated(), but for
      * some auth types (eg, NTLM), the auth may be sendable (eg, as an
      * authentication request) even before it is authenticated.
+     * @virtual 
      * @param msg a #SoupMessage
      */
     vfunc_is_ready(msg: Message): boolean
@@ -1560,1199 +1733,198 @@ class Auth {
      * Updates `auth` with the information from `msg` and `auth_header,`
      * possibly un-authenticating it. As with soup_auth_new(), this is
      * normally only used by #SoupSession.
+     * @virtual 
      * @param msg the #SoupMessage `auth` is being updated for
      * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
      */
     vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.Auth
+
     connect(sigName: "notify::authority", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::authority", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::authority", ...args: any[]): void
     connect(sigName: "notify::is-authenticated", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-authenticated", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-authenticated", ...args: any[]): void
     connect(sigName: "notify::is-cancelled", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-cancelled", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-cancelled", ...args: any[]): void
     connect(sigName: "notify::is-for-proxy", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-for-proxy", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-for-proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realm", ...args: any[]): void
     connect(sigName: "notify::scheme-name", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scheme-name", callback: (($obj: Auth, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::scheme-name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Auth_ConstructProps)
-    _init (config?: Auth_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(type: GObject.Type, msg: Message, auth_header: string): Auth
-    static $gtype: GObject.Type
 }
+
+/**
+ * The abstract base class for handling authentication. Specific HTTP
+ * Authentication mechanisms are implemented by its subclasses, but
+ * applications never need to be aware of the specific subclasses
+ * being used.
+ * @class 
+ */
+class Auth extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.Auth
+
+    static name: string
+    static $gtype: GObject.GType<Auth>
+
+    // Constructors of Soup-3.0.Soup.Auth
+
+    constructor(config?: Auth_ConstructProps) 
+    /**
+     * Creates a new #SoupAuth of type `type` with the information from
+     * `msg` and `auth_header`.
+     * 
+     * This is called by #SoupSession; you will normally not create auths
+     * yourself.
+     * @constructor 
+     * @param type the type of auth to create (a subtype of #SoupAuth)
+     * @param msg the #SoupMessage the auth is being created for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
+     */
+    constructor(type: GObject.GType, msg: Message, auth_header: string) 
+    /**
+     * Creates a new #SoupAuth of type `type` with the information from
+     * `msg` and `auth_header`.
+     * 
+     * This is called by #SoupSession; you will normally not create auths
+     * yourself.
+     * @constructor 
+     * @param type the type of auth to create (a subtype of #SoupAuth)
+     * @param msg the #SoupMessage the auth is being created for
+     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
+     */
+    static new(type: GObject.GType, msg: Message, auth_header: string): Auth
+    _init(config?: Auth_ConstructProps): void
+}
+
 interface AuthBasic_ConstructProps extends Auth_ConstructProps {
 }
-class AuthBasic {
-    /* Properties of Soup-3.0.Soup.Auth */
-    /**
-     * The authority (host:port) being authenticated to.
-     */
-    authority: string
-    /**
-     * Whether or not the auth has been authenticated.
-     */
-    readonly is_authenticated: boolean
-    /**
-     * An alias for the #SoupAuth:is-cancelled property.
-     * (Whether or not the auth has been cancelled.)
-     */
-    readonly is_cancelled: boolean
-    /**
-     * Whether or not the auth is for a proxy server.
-     */
-    is_for_proxy: boolean
-    /**
-     * The authentication realm.
-     */
-    realm: string
-    /**
-     * The authentication scheme name.
-     */
-    readonly scheme_name: string
-    /* Fields of Soup-3.0.Soup.Auth */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    can_authenticate(): boolean
-    /**
-     * Call this on an auth to cancel it. You need to cancel an auth to complete
-     * an asynchronous authenticate operation when no credentials are provided
-     * (soup_auth_authenticate() is not called).
-     * The #SoupAuth will be cancelled on dispose if it hans't been authenticated.
-     */
-    cancel(): void
-    /**
-     * Returns the authority (host:port) that `auth` is associated with.
-     */
-    get_authority(): string
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    get_authorization(msg: Message): string
-    /**
-     * Gets an opaque identifier for `auth,` for use as a hash key or the
-     * like. #SoupAuth objects from the same server with the same
-     * identifier refer to the same authentication domain (eg, the URLs
-     * associated with them take the same usernames and passwords).
-     */
-    get_info(): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Returns `auth'`s realm. This is an identifier that distinguishes
-     * separate authentication spaces on a given server, and may be some
-     * string that is meaningful to the user. (Although it is probably not
-     * localized.)
-     */
-    get_realm(): string
-    /**
-     * Returns `auth'`s scheme name. (Eg, "Basic", "Digest", or "NTLM")
-     */
-    get_scheme_name(): string
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    update(msg: Message, auth_header: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    vfunc_authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    vfunc_can_authenticate(): boolean
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    vfunc_get_authorization(msg: Message): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    vfunc_get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Tests if `auth` has been given a username and password
-     */
-    vfunc_is_authenticated(): boolean
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    vfunc_is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface AuthBasic {
+
+    // Class property signals of Soup-3.0.Soup.AuthBasic
+
     connect(sigName: "notify::authority", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::authority", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::authority", ...args: any[]): void
     connect(sigName: "notify::is-authenticated", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-authenticated", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-authenticated", ...args: any[]): void
     connect(sigName: "notify::is-cancelled", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-cancelled", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-cancelled", ...args: any[]): void
     connect(sigName: "notify::is-for-proxy", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-for-proxy", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-for-proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realm", ...args: any[]): void
     connect(sigName: "notify::scheme-name", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scheme-name", callback: (($obj: AuthBasic, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::scheme-name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: AuthBasic_ConstructProps)
-    _init (config?: AuthBasic_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class AuthBasic extends Auth {
+
+    // Own properties of Soup-3.0.Soup.AuthBasic
+
+    static name: string
+    static $gtype: GObject.GType<AuthBasic>
+
+    // Constructors of Soup-3.0.Soup.AuthBasic
+
+    constructor(config?: AuthBasic_ConstructProps) 
+    _init(config?: AuthBasic_ConstructProps): void
+}
+
 interface AuthDigest_ConstructProps extends Auth_ConstructProps {
 }
-class AuthDigest {
-    /* Properties of Soup-3.0.Soup.Auth */
-    /**
-     * The authority (host:port) being authenticated to.
-     */
-    authority: string
-    /**
-     * Whether or not the auth has been authenticated.
-     */
-    readonly is_authenticated: boolean
-    /**
-     * An alias for the #SoupAuth:is-cancelled property.
-     * (Whether or not the auth has been cancelled.)
-     */
-    readonly is_cancelled: boolean
-    /**
-     * Whether or not the auth is for a proxy server.
-     */
-    is_for_proxy: boolean
-    /**
-     * The authentication realm.
-     */
-    realm: string
-    /**
-     * The authentication scheme name.
-     */
-    readonly scheme_name: string
-    /* Fields of Soup-3.0.Soup.Auth */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    can_authenticate(): boolean
-    /**
-     * Call this on an auth to cancel it. You need to cancel an auth to complete
-     * an asynchronous authenticate operation when no credentials are provided
-     * (soup_auth_authenticate() is not called).
-     * The #SoupAuth will be cancelled on dispose if it hans't been authenticated.
-     */
-    cancel(): void
-    /**
-     * Returns the authority (host:port) that `auth` is associated with.
-     */
-    get_authority(): string
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    get_authorization(msg: Message): string
-    /**
-     * Gets an opaque identifier for `auth,` for use as a hash key or the
-     * like. #SoupAuth objects from the same server with the same
-     * identifier refer to the same authentication domain (eg, the URLs
-     * associated with them take the same usernames and passwords).
-     */
-    get_info(): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Returns `auth'`s realm. This is an identifier that distinguishes
-     * separate authentication spaces on a given server, and may be some
-     * string that is meaningful to the user. (Although it is probably not
-     * localized.)
-     */
-    get_realm(): string
-    /**
-     * Returns `auth'`s scheme name. (Eg, "Basic", "Digest", or "NTLM")
-     */
-    get_scheme_name(): string
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    update(msg: Message, auth_header: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    vfunc_authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    vfunc_can_authenticate(): boolean
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    vfunc_get_authorization(msg: Message): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    vfunc_get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Tests if `auth` has been given a username and password
-     */
-    vfunc_is_authenticated(): boolean
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    vfunc_is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface AuthDigest {
+
+    // Class property signals of Soup-3.0.Soup.AuthDigest
+
     connect(sigName: "notify::authority", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::authority", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::authority", ...args: any[]): void
     connect(sigName: "notify::is-authenticated", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-authenticated", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-authenticated", ...args: any[]): void
     connect(sigName: "notify::is-cancelled", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-cancelled", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-cancelled", ...args: any[]): void
     connect(sigName: "notify::is-for-proxy", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-for-proxy", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-for-proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realm", ...args: any[]): void
     connect(sigName: "notify::scheme-name", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scheme-name", callback: (($obj: AuthDigest, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::scheme-name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: AuthDigest_ConstructProps)
-    _init (config?: AuthDigest_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class AuthDigest extends Auth {
+
+    // Own properties of Soup-3.0.Soup.AuthDigest
+
+    static name: string
+    static $gtype: GObject.GType<AuthDigest>
+
+    // Constructors of Soup-3.0.Soup.AuthDigest
+
+    constructor(config?: AuthDigest_ConstructProps) 
+    _init(config?: AuthDigest_ConstructProps): void
+}
+
 interface AuthDomain_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.AuthDomain */
+
+    // Own constructor properties of Soup-3.0.Soup.AuthDomain
+
     /**
      * The #SoupAuthDomainFilter for the domain.
      */
-    filter?: AuthDomainFilter
+    filter?: AuthDomainFilter | null
     /**
      * Data to pass to the #SoupAuthDomainFilter.
      */
-    filter_data?: object
+    filter_data?: object | null
     /**
      * The #SoupAuthDomainGenericAuthCallback.
      */
-    generic_auth_callback?: AuthDomainGenericAuthCallback
+    generic_auth_callback?: AuthDomainGenericAuthCallback | null
     /**
      * The data to pass to the #SoupAuthDomainGenericAuthCallback.
      */
-    generic_auth_data?: object
-    proxy?: boolean
-    realm?: string
+    generic_auth_data?: object | null
+    proxy?: boolean | null
+    realm?: string | null
 }
-class AuthDomain {
-    /* Properties of Soup-3.0.Soup.AuthDomain */
+
+interface AuthDomain {
+
+    // Own properties of Soup-3.0.Soup.AuthDomain
+
     /**
      * The #SoupAuthDomainFilter for the domain.
      */
@@ -2771,9 +1943,13 @@ class AuthDomain {
     generic_auth_data: object
     readonly proxy: boolean
     readonly realm: string
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.AuthDomain */
+
+    // Own fields of Soup-3.0.Soup.AuthDomain
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.AuthDomain
+
     /**
      * Checks if `msg` contains appropriate authorization for `domain` to
      * accept it. Mirroring soup_auth_domain_covers(), this does not check
@@ -2887,321 +2063,9 @@ class AuthDomain {
      */
     set_generic_auth_callback(auth_callback: AuthDomainGenericAuthCallback): void
     try_generic_auth_callback(msg: ServerMessage, username: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.AuthDomain */
+
+    // Own virtual methods of Soup-3.0.Soup.AuthDomain
+
     vfunc_accepts(msg: ServerMessage, header: string): string
     /**
      * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg,`
@@ -3210,6 +2074,7 @@ class AuthDomain {
      * 
      * This is used by #SoupServer internally and is probably of no use to
      * anyone else.
+     * @virtual 
      * @param msg a #SoupServerMessage
      */
     vfunc_challenge(msg: ServerMessage): string
@@ -3217,100 +2082,74 @@ class AuthDomain {
      * Checks if `msg` authenticates to `domain` via `username` and
      * `password`. This would normally be called from a
      * #SoupAuthDomainGenericAuthCallback.
+     * @virtual 
      * @param msg a #SoupServerMessage
      * @param username a username
      * @param password a password
      */
     vfunc_check_password(msg: ServerMessage, username: string, password: string): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.AuthDomain
+
     connect(sigName: "notify::filter", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filter", ...args: any[]): void
     connect(sigName: "notify::filter-data", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter-data", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filter-data", ...args: any[]): void
     connect(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::generic-auth-callback", ...args: any[]): void
     connect(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::generic-auth-data", ...args: any[]): void
     connect(sigName: "notify::proxy", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthDomain, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::realm", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: AuthDomain_ConstructProps)
-    _init (config?: AuthDomain_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class managing authentication for #SoupServer.
+ * @class 
+ */
+class AuthDomain extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.AuthDomain
+
+    static name: string
+    static $gtype: GObject.GType<AuthDomain>
+
+    // Constructors of Soup-3.0.Soup.AuthDomain
+
+    constructor(config?: AuthDomain_ConstructProps) 
+    _init(config?: AuthDomain_ConstructProps): void
+}
+
 interface AuthDomainBasic_ConstructProps extends AuthDomain_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.AuthDomainBasic */
+
+    // Own constructor properties of Soup-3.0.Soup.AuthDomainBasic
+
     /**
      * The #SoupAuthDomainBasicAuthCallback
      */
-    auth_callback?: AuthDomainBasicAuthCallback
+    auth_callback?: AuthDomainBasicAuthCallback | null
     /**
      * The data to pass to the #SoupAuthDomainBasicAuthCallback
      */
-    auth_data?: object
+    auth_data?: object | null
 }
-class AuthDomainBasic {
-    /* Properties of Soup-3.0.Soup.AuthDomainBasic */
+
+interface AuthDomainBasic {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainBasic
+
     /**
      * The #SoupAuthDomainBasicAuthCallback
      */
@@ -3319,30 +2158,9 @@ class AuthDomainBasic {
      * The data to pass to the #SoupAuthDomainBasicAuthCallback
      */
     auth_data: object
-    /* Properties of Soup-3.0.Soup.AuthDomain */
-    /**
-     * The #SoupAuthDomainFilter for the domain.
-     */
-    filter: AuthDomainFilter
-    /**
-     * Data to pass to the #SoupAuthDomainFilter.
-     */
-    filter_data: object
-    /**
-     * The #SoupAuthDomainGenericAuthCallback.
-     */
-    generic_auth_callback: AuthDomainGenericAuthCallback
-    /**
-     * The data to pass to the #SoupAuthDomainGenericAuthCallback.
-     */
-    generic_auth_data: object
-    readonly proxy: boolean
-    readonly realm: string
-    /* Fields of Soup-3.0.Soup.AuthDomain */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.AuthDomainBasic */
+
+    // Owm methods of Soup-3.0.Soup.AuthDomainBasic
+
     /**
      * Sets the callback that `domain` will use to authenticate incoming
      * requests. For each request containing authorization, `domain` will
@@ -3356,548 +2174,74 @@ class AuthDomainBasic {
      * @param callback the callback
      */
     set_auth_callback(callback: AuthDomainBasicAuthCallback): void
-    /* Methods of Soup-3.0.Soup.AuthDomain */
-    /**
-     * Checks if `msg` contains appropriate authorization for `domain` to
-     * accept it. Mirroring soup_auth_domain_covers(), this does not check
-     * whether or not `domain` <emphasis>cares</emphasis> if `msg` is
-     * authorized.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    accepts(msg: ServerMessage): string | null
-    /**
-     * Adds `path` to `domain,` such that requests under `path` on `domain'`s
-     * server will require authentication (unless overridden by
-     * soup_auth_domain_remove_path() or soup_auth_domain_set_filter()).
-     * 
-     * You can also add paths by setting the SoupAuthDomain:add-path
-     * property, which can also be used to add one or more paths at
-     * construct time.
-     * @param path the path to add to `domain`
-     */
-    add_path(path: string): void
-    /**
-     * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg,`
-     * requesting that the client authenticate, and sets `msg'`s status
-     * accordingly.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    challenge(msg: ServerMessage): void
-    /**
-     * Checks if `msg` authenticates to `domain` via `username` and
-     * `password`. This would normally be called from a
-     * #SoupAuthDomainGenericAuthCallback.
-     * @param msg a #SoupServerMessage
-     * @param username a username
-     * @param password a password
-     */
-    check_password(msg: ServerMessage, username: string, password: string): boolean
-    /**
-     * Checks if `domain` requires `msg` to be authenticated (according to
-     * its paths and filter function). This does not actually look at
-     * whether `msg` <emphasis>is</emphasis> authenticated, merely whether
-     * or not it needs to be.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    covers(msg: ServerMessage): boolean
-    /**
-     * Gets the realm name associated with `domain`
-     */
-    get_realm(): string
-    /**
-     * Removes `path` from `domain,` such that requests under `path` on
-     * `domain'`s server will NOT require authentication.
-     * 
-     * This is not simply an undo-er for soup_auth_domain_add_path(); it
-     * can be used to "carve out" a subtree that does not require
-     * authentication inside a hierarchy that does. Note also that unlike
-     * with soup_auth_domain_add_path(), this cannot be overridden by
-     * adding a filter, as filters can only bypass authentication that
-     * would otherwise be required, not require it where it would
-     * otherwise be unnecessary.
-     * 
-     * You can also remove paths by setting the
-     * SoupAuthDomain:remove-path property, which can also be used to
-     * remove one or more paths at construct time.
-     * @param path the path to remove from `domain`
-     */
-    remove_path(path: string): void
-    /**
-     * Adds `filter` as an authentication filter to `domain`. The filter
-     * gets a chance to bypass authentication for certain requests that
-     * would otherwise require it. Eg, it might check the message's path
-     * in some way that is too complicated to do via the other methods, or
-     * it might check the message's method, and allow GETs but not PUTs.
-     * 
-     * The filter function returns %TRUE if the request should still
-     * require authentication, or %FALSE if authentication is unnecessary
-     * for this request.
-     * 
-     * To help prevent security holes, your filter should return %TRUE by
-     * default, and only return %FALSE under specifically-tested
-     * circumstances, rather than the other way around. Eg, in the example
-     * above, where you want to authenticate PUTs but not GETs, you should
-     * check if the method is GET and return %FALSE in that case, and then
-     * return %TRUE for all other methods (rather than returning %TRUE for
-     * PUT and %FALSE for all other methods). This way if it turned out
-     * (now or later) that some paths supported additional methods besides
-     * GET and PUT, those methods would default to being NOT allowed for
-     * unauthenticated users.
-     * 
-     * You can also set the filter by setting the SoupAuthDomain:filter
-     * and SoupAuthDomain:filter-data properties, which can also be
-     * used to set the filter at construct time.
-     * @param filter the auth filter for `domain`
-     */
-    set_filter(filter: AuthDomainFilter): void
-    /**
-     * Sets `auth_callback` as an authentication-handling callback for
-     * `domain`. Whenever a request comes in to `domain` which cannot be
-     * authenticated via a domain-specific auth callback (eg,
-     * #SoupAuthDomainDigestAuthCallback), the generic auth callback
-     * will be invoked. See #SoupAuthDomainGenericAuthCallback for information
-     * on what the callback should do.
-     * @param auth_callback the auth callback
-     */
-    set_generic_auth_callback(auth_callback: AuthDomainGenericAuthCallback): void
-    try_generic_auth_callback(msg: ServerMessage, username: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.AuthDomain */
-    vfunc_accepts(msg: ServerMessage, header: string): string
-    /**
-     * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg,`
-     * requesting that the client authenticate, and sets `msg'`s status
-     * accordingly.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    vfunc_challenge(msg: ServerMessage): string
-    /**
-     * Checks if `msg` authenticates to `domain` via `username` and
-     * `password`. This would normally be called from a
-     * #SoupAuthDomainGenericAuthCallback.
-     * @param msg a #SoupServerMessage
-     * @param username a username
-     * @param password a password
-     */
-    vfunc_check_password(msg: ServerMessage, username: string, password: string): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.AuthDomainBasic
+
     connect(sigName: "notify::auth-callback", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::auth-callback", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::auth-callback", ...args: any[]): void
     connect(sigName: "notify::auth-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::auth-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::auth-data", ...args: any[]): void
     connect(sigName: "notify::filter", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filter", ...args: any[]): void
     connect(sigName: "notify::filter-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filter-data", ...args: any[]): void
     connect(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::generic-auth-callback", ...args: any[]): void
     connect(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::generic-auth-data", ...args: any[]): void
     connect(sigName: "notify::proxy", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthDomainBasic, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::realm", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: AuthDomainBasic_ConstructProps)
-    _init (config?: AuthDomainBasic_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Subclass of #SoupAuthDomain for Basic authentication.
+ * @class 
+ */
+class AuthDomainBasic extends AuthDomain {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainBasic
+
+    static name: string
+    static $gtype: GObject.GType<AuthDomainBasic>
+
+    // Constructors of Soup-3.0.Soup.AuthDomainBasic
+
+    constructor(config?: AuthDomainBasic_ConstructProps) 
+    _init(config?: AuthDomainBasic_ConstructProps): void
+}
+
 interface AuthDomainDigest_ConstructProps extends AuthDomain_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.AuthDomainDigest */
+
+    // Own constructor properties of Soup-3.0.Soup.AuthDomainDigest
+
     /**
      * The #SoupAuthDomainDigestAuthCallback
      */
-    auth_callback?: AuthDomainDigestAuthCallback
+    auth_callback?: AuthDomainDigestAuthCallback | null
     /**
      * The data to pass to the #SoupAuthDomainDigestAuthCallback
      */
-    auth_data?: object
+    auth_data?: object | null
 }
-class AuthDomainDigest {
-    /* Properties of Soup-3.0.Soup.AuthDomainDigest */
+
+interface AuthDomainDigest {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainDigest
+
     /**
      * The #SoupAuthDomainDigestAuthCallback
      */
@@ -3906,30 +2250,9 @@ class AuthDomainDigest {
      * The data to pass to the #SoupAuthDomainDigestAuthCallback
      */
     auth_data: object
-    /* Properties of Soup-3.0.Soup.AuthDomain */
-    /**
-     * The #SoupAuthDomainFilter for the domain.
-     */
-    filter: AuthDomainFilter
-    /**
-     * Data to pass to the #SoupAuthDomainFilter.
-     */
-    filter_data: object
-    /**
-     * The #SoupAuthDomainGenericAuthCallback.
-     */
-    generic_auth_callback: AuthDomainGenericAuthCallback
-    /**
-     * The data to pass to the #SoupAuthDomainGenericAuthCallback.
-     */
-    generic_auth_data: object
-    readonly proxy: boolean
-    readonly realm: string
-    /* Fields of Soup-3.0.Soup.AuthDomain */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.AuthDomainDigest */
+
+    // Owm methods of Soup-3.0.Soup.AuthDomainDigest
+
     /**
      * Sets the callback that `domain` will use to authenticate incoming
      * requests. For each request containing authorization, `domain` will
@@ -3943,534 +2266,54 @@ class AuthDomainDigest {
      * @param callback the callback
      */
     set_auth_callback(callback: AuthDomainDigestAuthCallback): void
-    /* Methods of Soup-3.0.Soup.AuthDomain */
-    /**
-     * Checks if `msg` contains appropriate authorization for `domain` to
-     * accept it. Mirroring soup_auth_domain_covers(), this does not check
-     * whether or not `domain` <emphasis>cares</emphasis> if `msg` is
-     * authorized.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    accepts(msg: ServerMessage): string | null
-    /**
-     * Adds `path` to `domain,` such that requests under `path` on `domain'`s
-     * server will require authentication (unless overridden by
-     * soup_auth_domain_remove_path() or soup_auth_domain_set_filter()).
-     * 
-     * You can also add paths by setting the SoupAuthDomain:add-path
-     * property, which can also be used to add one or more paths at
-     * construct time.
-     * @param path the path to add to `domain`
-     */
-    add_path(path: string): void
-    /**
-     * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg,`
-     * requesting that the client authenticate, and sets `msg'`s status
-     * accordingly.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    challenge(msg: ServerMessage): void
-    /**
-     * Checks if `msg` authenticates to `domain` via `username` and
-     * `password`. This would normally be called from a
-     * #SoupAuthDomainGenericAuthCallback.
-     * @param msg a #SoupServerMessage
-     * @param username a username
-     * @param password a password
-     */
-    check_password(msg: ServerMessage, username: string, password: string): boolean
-    /**
-     * Checks if `domain` requires `msg` to be authenticated (according to
-     * its paths and filter function). This does not actually look at
-     * whether `msg` <emphasis>is</emphasis> authenticated, merely whether
-     * or not it needs to be.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    covers(msg: ServerMessage): boolean
-    /**
-     * Gets the realm name associated with `domain`
-     */
-    get_realm(): string
-    /**
-     * Removes `path` from `domain,` such that requests under `path` on
-     * `domain'`s server will NOT require authentication.
-     * 
-     * This is not simply an undo-er for soup_auth_domain_add_path(); it
-     * can be used to "carve out" a subtree that does not require
-     * authentication inside a hierarchy that does. Note also that unlike
-     * with soup_auth_domain_add_path(), this cannot be overridden by
-     * adding a filter, as filters can only bypass authentication that
-     * would otherwise be required, not require it where it would
-     * otherwise be unnecessary.
-     * 
-     * You can also remove paths by setting the
-     * SoupAuthDomain:remove-path property, which can also be used to
-     * remove one or more paths at construct time.
-     * @param path the path to remove from `domain`
-     */
-    remove_path(path: string): void
-    /**
-     * Adds `filter` as an authentication filter to `domain`. The filter
-     * gets a chance to bypass authentication for certain requests that
-     * would otherwise require it. Eg, it might check the message's path
-     * in some way that is too complicated to do via the other methods, or
-     * it might check the message's method, and allow GETs but not PUTs.
-     * 
-     * The filter function returns %TRUE if the request should still
-     * require authentication, or %FALSE if authentication is unnecessary
-     * for this request.
-     * 
-     * To help prevent security holes, your filter should return %TRUE by
-     * default, and only return %FALSE under specifically-tested
-     * circumstances, rather than the other way around. Eg, in the example
-     * above, where you want to authenticate PUTs but not GETs, you should
-     * check if the method is GET and return %FALSE in that case, and then
-     * return %TRUE for all other methods (rather than returning %TRUE for
-     * PUT and %FALSE for all other methods). This way if it turned out
-     * (now or later) that some paths supported additional methods besides
-     * GET and PUT, those methods would default to being NOT allowed for
-     * unauthenticated users.
-     * 
-     * You can also set the filter by setting the SoupAuthDomain:filter
-     * and SoupAuthDomain:filter-data properties, which can also be
-     * used to set the filter at construct time.
-     * @param filter the auth filter for `domain`
-     */
-    set_filter(filter: AuthDomainFilter): void
-    /**
-     * Sets `auth_callback` as an authentication-handling callback for
-     * `domain`. Whenever a request comes in to `domain` which cannot be
-     * authenticated via a domain-specific auth callback (eg,
-     * #SoupAuthDomainDigestAuthCallback), the generic auth callback
-     * will be invoked. See #SoupAuthDomainGenericAuthCallback for information
-     * on what the callback should do.
-     * @param auth_callback the auth callback
-     */
-    set_generic_auth_callback(auth_callback: AuthDomainGenericAuthCallback): void
-    try_generic_auth_callback(msg: ServerMessage, username: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.AuthDomain */
-    vfunc_accepts(msg: ServerMessage, header: string): string
-    /**
-     * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg,`
-     * requesting that the client authenticate, and sets `msg'`s status
-     * accordingly.
-     * 
-     * This is used by #SoupServer internally and is probably of no use to
-     * anyone else.
-     * @param msg a #SoupServerMessage
-     */
-    vfunc_challenge(msg: ServerMessage): string
-    /**
-     * Checks if `msg` authenticates to `domain` via `username` and
-     * `password`. This would normally be called from a
-     * #SoupAuthDomainGenericAuthCallback.
-     * @param msg a #SoupServerMessage
-     * @param username a username
-     * @param password a password
-     */
-    vfunc_check_password(msg: ServerMessage, username: string, password: string): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.AuthDomainDigest
+
     connect(sigName: "notify::auth-callback", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::auth-callback", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::auth-callback", ...args: any[]): void
     connect(sigName: "notify::auth-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::auth-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::auth-data", ...args: any[]): void
     connect(sigName: "notify::filter", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filter", ...args: any[]): void
     connect(sigName: "notify::filter-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filter-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filter-data", ...args: any[]): void
     connect(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-callback", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::generic-auth-callback", ...args: any[]): void
     connect(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::generic-auth-data", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::generic-auth-data", ...args: any[]): void
     connect(sigName: "notify::proxy", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthDomainDigest, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::realm", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Subclass of #SoupAuthDomain for Digest authentication.
+ * @class 
+ */
+class AuthDomainDigest extends AuthDomain {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainDigest
+
     static name: string
-    constructor (config?: AuthDomainDigest_ConstructProps)
-    _init (config?: AuthDomainDigest_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<AuthDomainDigest>
+
+    // Constructors of Soup-3.0.Soup.AuthDomainDigest
+
+    constructor(config?: AuthDomainDigest_ConstructProps) 
+    _init(config?: AuthDomainDigest_ConstructProps): void
     /**
      * Encodes the username/realm/password triplet for Digest
      * authentication. (That is, it returns a stringified MD5 hash of
@@ -4490,14 +2333,22 @@ class AuthDomainDigest {
      * @param password the password for `username` in `realm`
      */
     static encode_password(username: string, realm: string, password: string): string
-    static $gtype: GObject.Type
 }
-interface AuthManager_ConstructProps extends GObject.Object_ConstructProps {
+
+interface AuthManager_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
 }
-class AuthManager {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.AuthManager */
+
+/**
+ * Signal callback interface for `authenticate`
+ */
+interface AuthManager_AuthenticateSignalCallback {
+    ($obj: AuthManager, msg: Message, auth: Auth, retrying: boolean): void
+}
+
+interface AuthManager extends SessionFeature {
+
+    // Owm methods of Soup-3.0.Soup.AuthManager
+
     /**
      * Clear all credentials cached by `manager`
      */
@@ -4516,1486 +2367,124 @@ class AuthManager {
      * @param auth the #SoupAuth to use
      */
     use_auth(uri: GLib.Uri, auth: Auth): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.AuthManager */
-    /**
-     * Emitted when the manager requires the application to
-     * provide authentication credentials.
-     * 
-     * #SoupMessage connects to this signal and emits its own
-     * #SoupMessage::authenticate signal when it is emitted, so
-     * you shouldn't need to use this signal directly.
-     * @param msg the #SoupMessage being sent
-     * @param auth the #SoupAuth to authenticate
-     * @param retrying %TRUE if this is the second (or later) attempt
-     */
-    connect(sigName: "authenticate", callback: (($obj: AuthManager, msg: Message, auth: Auth, retrying: boolean) => void)): number
-    connect_after(sigName: "authenticate", callback: (($obj: AuthManager, msg: Message, auth: Auth, retrying: boolean) => void)): number
-    emit(sigName: "authenticate", msg: Message, auth: Auth, retrying: boolean): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthManager, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthManager, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Soup-3.0.Soup.AuthManager
+
+    connect(sigName: "authenticate", callback: AuthManager_AuthenticateSignalCallback): number
+    connect_after(sigName: "authenticate", callback: AuthManager_AuthenticateSignalCallback): number
+    emit(sigName: "authenticate", msg: Message, auth: Auth, retrying: boolean, ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.AuthManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: AuthManager_ConstructProps)
-    _init (config?: AuthManager_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class for managing client-side HTTP authentication.
+ * @class 
+ */
+class AuthManager extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.AuthManager
+
+    static name: string
+    static $gtype: GObject.GType<AuthManager>
+
+    // Constructors of Soup-3.0.Soup.AuthManager
+
+    constructor(config?: AuthManager_ConstructProps) 
+    _init(config?: AuthManager_ConstructProps): void
+}
+
 interface AuthNTLM_ConstructProps extends Auth_ConstructProps {
 }
-class AuthNTLM {
-    /* Properties of Soup-3.0.Soup.Auth */
-    /**
-     * The authority (host:port) being authenticated to.
-     */
-    authority: string
-    /**
-     * Whether or not the auth has been authenticated.
-     */
-    readonly is_authenticated: boolean
-    /**
-     * An alias for the #SoupAuth:is-cancelled property.
-     * (Whether or not the auth has been cancelled.)
-     */
-    readonly is_cancelled: boolean
-    /**
-     * Whether or not the auth is for a proxy server.
-     */
-    is_for_proxy: boolean
-    /**
-     * The authentication realm.
-     */
-    realm: string
-    /**
-     * The authentication scheme name.
-     */
-    readonly scheme_name: string
-    /* Fields of Soup-3.0.Soup.Auth */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    can_authenticate(): boolean
-    /**
-     * Call this on an auth to cancel it. You need to cancel an auth to complete
-     * an asynchronous authenticate operation when no credentials are provided
-     * (soup_auth_authenticate() is not called).
-     * The #SoupAuth will be cancelled on dispose if it hans't been authenticated.
-     */
-    cancel(): void
-    /**
-     * Returns the authority (host:port) that `auth` is associated with.
-     */
-    get_authority(): string
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    get_authorization(msg: Message): string
-    /**
-     * Gets an opaque identifier for `auth,` for use as a hash key or the
-     * like. #SoupAuth objects from the same server with the same
-     * identifier refer to the same authentication domain (eg, the URLs
-     * associated with them take the same usernames and passwords).
-     */
-    get_info(): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Returns `auth'`s realm. This is an identifier that distinguishes
-     * separate authentication spaces on a given server, and may be some
-     * string that is meaningful to the user. (Although it is probably not
-     * localized.)
-     */
-    get_realm(): string
-    /**
-     * Returns `auth'`s scheme name. (Eg, "Basic", "Digest", or "NTLM")
-     */
-    get_scheme_name(): string
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    update(msg: Message, auth_header: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    vfunc_authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    vfunc_can_authenticate(): boolean
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    vfunc_get_authorization(msg: Message): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    vfunc_get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Tests if `auth` has been given a username and password
-     */
-    vfunc_is_authenticated(): boolean
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    vfunc_is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface AuthNTLM {
+
+    // Class property signals of Soup-3.0.Soup.AuthNTLM
+
     connect(sigName: "notify::authority", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::authority", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::authority", ...args: any[]): void
     connect(sigName: "notify::is-authenticated", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-authenticated", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-authenticated", ...args: any[]): void
     connect(sigName: "notify::is-cancelled", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-cancelled", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-cancelled", ...args: any[]): void
     connect(sigName: "notify::is-for-proxy", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-for-proxy", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-for-proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realm", ...args: any[]): void
     connect(sigName: "notify::scheme-name", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scheme-name", callback: (($obj: AuthNTLM, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::scheme-name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: AuthNTLM_ConstructProps)
-    _init (config?: AuthNTLM_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+class AuthNTLM extends Auth {
+
+    // Own properties of Soup-3.0.Soup.AuthNTLM
+
+    static name: string
+    static $gtype: GObject.GType<AuthNTLM>
+
+    // Constructors of Soup-3.0.Soup.AuthNTLM
+
+    constructor(config?: AuthNTLM_ConstructProps) 
+    _init(config?: AuthNTLM_ConstructProps): void
+}
+
 interface AuthNegotiate_ConstructProps extends Auth_ConstructProps {
 }
-class AuthNegotiate {
-    /* Properties of Soup-3.0.Soup.Auth */
-    /**
-     * The authority (host:port) being authenticated to.
-     */
-    authority: string
-    /**
-     * Whether or not the auth has been authenticated.
-     */
-    readonly is_authenticated: boolean
-    /**
-     * An alias for the #SoupAuth:is-cancelled property.
-     * (Whether or not the auth has been cancelled.)
-     */
-    readonly is_cancelled: boolean
-    /**
-     * Whether or not the auth is for a proxy server.
-     */
-    is_for_proxy: boolean
-    /**
-     * The authentication realm.
-     */
-    realm: string
-    /**
-     * The authentication scheme name.
-     */
-    readonly scheme_name: string
-    /* Fields of Soup-3.0.Soup.Auth */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    can_authenticate(): boolean
-    /**
-     * Call this on an auth to cancel it. You need to cancel an auth to complete
-     * an asynchronous authenticate operation when no credentials are provided
-     * (soup_auth_authenticate() is not called).
-     * The #SoupAuth will be cancelled on dispose if it hans't been authenticated.
-     */
-    cancel(): void
-    /**
-     * Returns the authority (host:port) that `auth` is associated with.
-     */
-    get_authority(): string
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    get_authorization(msg: Message): string
-    /**
-     * Gets an opaque identifier for `auth,` for use as a hash key or the
-     * like. #SoupAuth objects from the same server with the same
-     * identifier refer to the same authentication domain (eg, the URLs
-     * associated with them take the same usernames and passwords).
-     */
-    get_info(): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Returns `auth'`s realm. This is an identifier that distinguishes
-     * separate authentication spaces on a given server, and may be some
-     * string that is meaningful to the user. (Although it is probably not
-     * localized.)
-     */
-    get_realm(): string
-    /**
-     * Returns `auth'`s scheme name. (Eg, "Basic", "Digest", or "NTLM")
-     */
-    get_scheme_name(): string
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    update(msg: Message, auth_header: string): boolean
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Auth */
-    /**
-     * Call this on an auth to authenticate it; normally this will cause
-     * the auth's message to be requeued with the new authentication info.
-     * @param username the username provided by the user or client
-     * @param password the password provided by the user or client
-     */
-    vfunc_authenticate(username: string, password: string): void
-    /**
-     * Tests if `auth` is able to authenticate by providing credentials to the
-     * soup_auth_authenticate().
-     */
-    vfunc_can_authenticate(): boolean
-    /**
-     * Generates an appropriate "Authorization" header for `msg`. (The
-     * session will only call this if soup_auth_is_authenticated()
-     * returned %TRUE.)
-     * @param msg the #SoupMessage to be authorized
-     */
-    vfunc_get_authorization(msg: Message): string
-    /**
-     * Returns a list of paths on the server which `auth` extends over.
-     * (All subdirectories of these paths are also assumed to be part
-     * of `auth'`s protection space, unless otherwise discovered not to
-     * be.)
-     * @param source_uri the URI of the request that `auth` was generated in response to.
-     */
-    vfunc_get_protection_space(source_uri: GLib.Uri): string[]
-    /**
-     * Tests if `auth` has been given a username and password
-     */
-    vfunc_is_authenticated(): boolean
-    /**
-     * Tests if `auth` is ready to make a request for `msg` with. For most
-     * auths, this is equivalent to soup_auth_is_authenticated(), but for
-     * some auth types (eg, NTLM), the auth may be sendable (eg, as an
-     * authentication request) even before it is authenticated.
-     * @param msg a #SoupMessage
-     */
-    vfunc_is_ready(msg: Message): boolean
-    /**
-     * Updates `auth` with the information from `msg` and `auth_header,`
-     * possibly un-authenticating it. As with soup_auth_new(), this is
-     * normally only used by #SoupSession.
-     * @param msg the #SoupMessage `auth` is being updated for
-     * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-     */
-    vfunc_update(msg: Message, auth_header: GLib.HashTable): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface AuthNegotiate {
+
+    // Class property signals of Soup-3.0.Soup.AuthNegotiate
+
     connect(sigName: "notify::authority", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::authority", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::authority", ...args: any[]): void
     connect(sigName: "notify::is-authenticated", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-authenticated", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-authenticated", ...args: any[]): void
     connect(sigName: "notify::is-cancelled", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-cancelled", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-cancelled", ...args: any[]): void
     connect(sigName: "notify::is-for-proxy", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-for-proxy", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-for-proxy", ...args: any[]): void
     connect(sigName: "notify::realm", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::realm", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::realm", ...args: any[]): void
     connect(sigName: "notify::scheme-name", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::scheme-name", callback: (($obj: AuthNegotiate, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::scheme-name", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class AuthNegotiate extends Auth {
+
+    // Own properties of Soup-3.0.Soup.AuthNegotiate
+
     static name: string
-    constructor (config?: AuthNegotiate_ConstructProps)
-    _init (config?: AuthNegotiate_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<AuthNegotiate>
+
+    // Constructors of Soup-3.0.Soup.AuthNegotiate
+
+    constructor(config?: AuthNegotiate_ConstructProps) 
+    _init(config?: AuthNegotiate_ConstructProps): void
     /**
      * Indicates whether libsoup was built with GSSAPI support. If this is
      * %FALSE, %SOUP_TYPE_AUTH_NEGOTIATE will still be defined and can
@@ -6003,20 +2492,29 @@ class AuthNegotiate {
      * actually use this auth type.
      */
     static supported(): boolean
-    static $gtype: GObject.Type
 }
-interface Cache_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.Cache */
-    cache_dir?: string
-    cache_type?: CacheType
+
+interface Cache_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.Cache
+
+    cache_dir?: string | null
+    cache_type?: CacheType | null
 }
-class Cache {
-    /* Properties of Soup-3.0.Soup.Cache */
+
+interface Cache extends SessionFeature {
+
+    // Own properties of Soup-3.0.Soup.Cache
+
     readonly cache_dir: string
     readonly cache_type: CacheType
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Cache */
+
+    // Own fields of Soup-3.0.Soup.Cache
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.Cache
+
     /**
      * Will remove all entries in the `cache` plus all the cache files.
      */
@@ -6052,781 +2550,93 @@ class Cache {
      * @param max_size the maximum size of the cache, in bytes
      */
     set_max_size(max_size: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Cache */
+
+    // Own virtual methods of Soup-3.0.Soup.Cache
+
     vfunc_get_cacheability(msg: Message): Cacheability
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.Cache
+
     connect(sigName: "notify::cache-dir", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-dir", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cache-dir", ...args: any[]): void
     connect(sigName: "notify::cache-type", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-type", callback: (($obj: Cache, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::cache-type", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Class implementing caching for HTTP resources.
+ * @class 
+ */
+class Cache extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.Cache
+
     static name: string
-    constructor (config?: Cache_ConstructProps)
-    _init (config?: Cache_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Cache>
+
+    // Constructors of Soup-3.0.Soup.Cache
+
+    constructor(config?: Cache_ConstructProps) 
+    /**
+     * Creates a new #SoupCache.
+     * @constructor 
+     * @param cache_dir the directory to store the cached data, or %NULL   to use the default one. Note that since the cache isn't safe to access for   multiple processes at once, and the default directory isn't namespaced by   process, clients are strongly discouraged from passing %NULL.
+     * @param cache_type the #SoupCacheType of the cache
+     */
+    constructor(cache_dir: string | null, cache_type: CacheType) 
+    /**
+     * Creates a new #SoupCache.
+     * @constructor 
+     * @param cache_dir the directory to store the cached data, or %NULL   to use the default one. Note that since the cache isn't safe to access for   multiple processes at once, and the default directory isn't namespaced by   process, clients are strongly discouraged from passing %NULL.
+     * @param cache_type the #SoupCacheType of the cache
+     */
     static new(cache_dir: string | null, cache_type: CacheType): Cache
-    static $gtype: GObject.Type
+    _init(config?: Cache_ConstructProps): void
 }
-interface ContentDecoder_ConstructProps extends GObject.Object_ConstructProps {
+
+interface ContentDecoder_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
 }
-class ContentDecoder {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: ContentDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: ContentDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface ContentDecoder extends SessionFeature {
+
+    // Class property signals of Soup-3.0.Soup.ContentDecoder
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Class handling decoding of HTTP messages.
+ * @class 
+ */
+class ContentDecoder extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.ContentDecoder
+
     static name: string
-    constructor (config?: ContentDecoder_ConstructProps)
-    _init (config?: ContentDecoder_ConstructProps): void
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<ContentDecoder>
+
+    // Constructors of Soup-3.0.Soup.ContentDecoder
+
+    constructor(config?: ContentDecoder_ConstructProps) 
+    _init(config?: ContentDecoder_ConstructProps): void
 }
-interface ContentSniffer_ConstructProps extends GObject.Object_ConstructProps {
+
+interface ContentSniffer_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
 }
-class ContentSniffer {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.ContentSniffer */
+
+interface ContentSniffer extends SessionFeature {
+
+    // Owm methods of Soup-3.0.Soup.ContentSniffer
+
     /**
      * Sniffs `buffer` to determine its Content-Type. The result may also
      * be influenced by the Content-Type declared in `msg'`s response
@@ -6835,404 +2645,76 @@ class ContentSniffer {
      * @param buffer a buffer containing the start of `msg'`s response body
      */
     sniff(msg: Message, buffer: GLib.Bytes): [ /* returnType */ string, /* params */ GLib.HashTable | null ]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: ContentSniffer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: ContentSniffer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Soup-3.0.Soup.ContentSniffer
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: ContentSniffer_ConstructProps)
-    _init (config?: ContentSniffer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): ContentSniffer
-    static $gtype: GObject.Type
 }
-interface CookieJar_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.CookieJar */
+
+/**
+ * Class that attempts to sniff the mime type of messages.
+ * @class 
+ */
+class ContentSniffer extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.ContentSniffer
+
+    static name: string
+    static $gtype: GObject.GType<ContentSniffer>
+
+    // Constructors of Soup-3.0.Soup.ContentSniffer
+
+    constructor(config?: ContentSniffer_ConstructProps) 
+    /**
+     * Creates a new #SoupContentSniffer.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #SoupContentSniffer.
+     * @constructor 
+     */
+    static new(): ContentSniffer
+    _init(config?: ContentSniffer_ConstructProps): void
+}
+
+interface CookieJar_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.CookieJar
+
     /**
      * The policy the jar should follow to accept or reject cookies
      */
-    accept_policy?: CookieJarAcceptPolicy
-    read_only?: boolean
+    accept_policy?: CookieJarAcceptPolicy | null
+    read_only?: boolean | null
 }
-class CookieJar {
-    /* Properties of Soup-3.0.Soup.CookieJar */
+
+/**
+ * Signal callback interface for `changed`
+ */
+interface CookieJar_ChangedSignalCallback {
+    ($obj: CookieJar, old_cookie: Cookie, new_cookie: Cookie): void
+}
+
+interface CookieJar extends SessionFeature {
+
+    // Own properties of Soup-3.0.Soup.CookieJar
+
     /**
      * The policy the jar should follow to accept or reject cookies
      */
     accept_policy: CookieJarAcceptPolicy
     readonly read_only: boolean
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.CookieJar */
+
+    // Own fields of Soup-3.0.Soup.CookieJar
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.CookieJar
+
     /**
      * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
      * an existing cookie or adding a valid new cookie ('valid' means
@@ -7258,7 +2740,7 @@ class CookieJar {
      * @param uri the URI setting the cookie
      * @param first_party the URI for the main document
      */
-    add_cookie_full(cookie: Cookie, uri?: GLib.Uri | null, first_party?: GLib.Uri | null): void
+    add_cookie_full(cookie: Cookie, uri: GLib.Uri | null, first_party: GLib.Uri | null): void
     /**
      * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
      * an existing cookie or adding a valid new cookie ('valid' means
@@ -7366,1540 +2848,252 @@ class CookieJar {
      * @param cookie the stringified cookie to set
      */
     set_cookie_with_first_party(uri: GLib.Uri, first_party: GLib.Uri, cookie: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.CookieJar */
+
+    // Own virtual methods of Soup-3.0.Soup.CookieJar
+
     vfunc_changed(old_cookie: Cookie, new_cookie: Cookie): void
     /**
      * Gets whether `jar` stores cookies persistenly.
+     * @virtual 
      */
     vfunc_is_persistent(): boolean
     vfunc_save(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.CookieJar */
-    /**
-     * Emitted when `jar` changes. If a cookie has been added,
-     * `new_cookie` will contain the newly-added cookie and
-     * `old_cookie` will be %NULL. If a cookie has been deleted,
-     * `old_cookie` will contain the to-be-deleted cookie and
-     * `new_cookie` will be %NULL. If a cookie has been changed,
-     * `old_cookie` will contain its old value, and `new_cookie` its
-     * new value.
-     * @param old_cookie the old #SoupCookie value
-     * @param new_cookie the new #SoupCookie value
-     */
-    connect(sigName: "changed", callback: (($obj: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void)): number
-    connect_after(sigName: "changed", callback: (($obj: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void)): number
-    emit(sigName: "changed", old_cookie: Cookie, new_cookie: Cookie): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Soup-3.0.Soup.CookieJar
+
+    connect(sigName: "changed", callback: CookieJar_ChangedSignalCallback): number
+    connect_after(sigName: "changed", callback: CookieJar_ChangedSignalCallback): number
+    emit(sigName: "changed", old_cookie: Cookie, new_cookie: Cookie, ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.CookieJar
+
     connect(sigName: "notify::accept-policy", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-policy", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accept-policy", ...args: any[]): void
     connect(sigName: "notify::read-only", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only", callback: (($obj: CookieJar, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::read-only", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Class that stores cookies in memory.
+ * @class 
+ */
+class CookieJar extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.CookieJar
+
     static name: string
-    constructor (config?: CookieJar_ConstructProps)
-    _init (config?: CookieJar_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<CookieJar>
+
+    // Constructors of Soup-3.0.Soup.CookieJar
+
+    constructor(config?: CookieJar_ConstructProps) 
+    /**
+     * Creates a new #SoupCookieJar. The base #SoupCookieJar class does
+     * not support persistent storage of cookies; use a subclass for that.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #SoupCookieJar. The base #SoupCookieJar class does
+     * not support persistent storage of cookies; use a subclass for that.
+     * @constructor 
+     */
     static new(): CookieJar
-    static $gtype: GObject.Type
+    _init(config?: CookieJar_ConstructProps): void
 }
-interface CookieJarDB_ConstructProps extends CookieJar_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.CookieJarDB */
-    filename?: string
+
+interface CookieJarDB_ConstructProps extends SessionFeature_ConstructProps, CookieJar_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.CookieJarDB
+
+    filename?: string | null
 }
-class CookieJarDB {
-    /* Properties of Soup-3.0.Soup.CookieJarDB */
+
+interface CookieJarDB extends SessionFeature {
+
+    // Own properties of Soup-3.0.Soup.CookieJarDB
+
     readonly filename: string
-    /* Properties of Soup-3.0.Soup.CookieJar */
-    /**
-     * The policy the jar should follow to accept or reject cookies
-     */
-    accept_policy: CookieJarAcceptPolicy
-    readonly read_only: boolean
-    /* Fields of Soup-3.0.Soup.CookieJar */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.CookieJar */
-    /**
-     * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
-     * an existing cookie or adding a valid new cookie ('valid' means
-     * that the cookie's expire date is not in the past).
-     * 
-     * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-     * @param cookie a #SoupCookie
-     */
-    add_cookie(cookie: Cookie): void
-    /**
-     * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
-     * an existing cookie or adding a valid new cookie ('valid' means
-     * that the cookie's expire date is not in the past).
-     * 
-     * `first_party` will be used to reject cookies coming from third party
-     * resources in case such a security policy is set in the `jar`.
-     * 
-     * `uri` will be used to reject setting or overwriting secure cookies
-     * from insecure origins. %NULL is treated as secure.
-     * 
-     * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-     * @param cookie a #SoupCookie
-     * @param uri the URI setting the cookie
-     * @param first_party the URI for the main document
-     */
-    add_cookie_full(cookie: Cookie, uri?: GLib.Uri | null, first_party?: GLib.Uri | null): void
-    /**
-     * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
-     * an existing cookie or adding a valid new cookie ('valid' means
-     * that the cookie's expire date is not in the past).
-     * 
-     * `first_party` will be used to reject cookies coming from third party
-     * resources in case such a security policy is set in the `jar`.
-     * 
-     * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-     * 
-     * For secure cookies to work properly you may want to use
-     * soup_cookie_jar_add_cookie_full().
-     * @param first_party the URI for the main document
-     * @param cookie a #SoupCookie
-     */
-    add_cookie_with_first_party(first_party: GLib.Uri, cookie: Cookie): void
-    /**
-     * Constructs a #GSList with every cookie inside the `jar`.
-     * The cookies in the list are a copy of the original, so
-     * you have to free them when you are done with them.
-     */
-    all_cookies(): Cookie[]
-    /**
-     * Deletes `cookie` from `jar,` emitting the 'changed' signal.
-     * @param cookie a #SoupCookie
-     */
-    delete_cookie(cookie: Cookie): void
-    /**
-     * Gets `jar'`s #SoupCookieJarAcceptPolicy
-     */
-    get_accept_policy(): CookieJarAcceptPolicy
-    /**
-     * Retrieves the list of cookies that would be sent with a request to `uri`
-     * as a #GSList of #SoupCookie objects.
-     * 
-     * If `for_http` is %TRUE, the return value will include cookies marked
-     * "HttpOnly" (that is, cookies that the server wishes to keep hidden
-     * from client-side scripting operations such as the JavaScript
-     * document.cookies property). Since #SoupCookieJar sets the Cookie
-     * header itself when making the actual HTTP request, you should
-     * almost certainly be setting `for_http` to %FALSE if you are calling
-     * this.
-     * @param uri a #GUri
-     * @param for_http whether or not the return value is being passed directly to an HTTP operation
-     */
-    get_cookie_list(uri: GLib.Uri, for_http: boolean): Cookie[]
-    /**
-     * This is an extended version of soup_cookie_jar_get_cookie_list() that
-     * provides more information required to use SameSite cookies. See the
-     * [SameSite cookies spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
-     * for more detailed information.
-     * @param uri a #GUri
-     * @param top_level a #GUri for the top level document
-     * @param site_for_cookies a #GUri indicating the origin to get cookies for
-     * @param for_http whether or not the return value is being passed directly to an HTTP operation
-     * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is %FALSE
-     * @param is_top_level_navigation whether or not the HTTP request is part of top level navigation
-     */
-    get_cookie_list_with_same_site_info(uri: GLib.Uri, top_level: GLib.Uri | null, site_for_cookies: GLib.Uri | null, for_http: boolean, is_safe_method: boolean, is_top_level_navigation: boolean): Cookie[]
-    /**
-     * Retrieves (in Cookie-header form) the list of cookies that would
-     * be sent with a request to `uri`.
-     * 
-     * If `for_http` is %TRUE, the return value will include cookies marked
-     * "HttpOnly" (that is, cookies that the server wishes to keep hidden
-     * from client-side scripting operations such as the JavaScript
-     * document.cookies property). Since #SoupCookieJar sets the Cookie
-     * header itself when making the actual HTTP request, you should
-     * almost certainly be setting `for_http` to %FALSE if you are calling
-     * this.
-     * @param uri a #GUri
-     * @param for_http whether or not the return value is being passed directly to an HTTP operation
-     */
-    get_cookies(uri: GLib.Uri, for_http: boolean): string | null
-    /**
-     * Gets whether `jar` stores cookies persistenly.
-     */
-    is_persistent(): boolean
-    /**
-     * Sets `policy` as the cookie acceptance policy for `jar`.
-     * @param policy a #SoupCookieJarAcceptPolicy
-     */
-    set_accept_policy(policy: CookieJarAcceptPolicy): void
-    /**
-     * Adds `cookie` to `jar,` exactly as though it had appeared in a
-     * Set-Cookie header returned from a request to `uri`.
-     * 
-     * Keep in mind that if the #SoupCookieJarAcceptPolicy set is either
-     * %SOUP_COOKIE_JAR_ACCEPT_NO_THIRD_PARTY or
-     * %SOUP_COOKIE_JAR_ACCEPT_GRANDFATHERED_THIRD_PARTY you'll need to use
-     * soup_cookie_jar_set_cookie_with_first_party(), otherwise the jar
-     * will have no way of knowing if the cookie is being set by a third
-     * party or not.
-     * @param uri the URI setting the cookie
-     * @param cookie the stringified cookie to set
-     */
-    set_cookie(uri: GLib.Uri, cookie: string): void
-    /**
-     * Adds `cookie` to `jar,` exactly as though it had appeared in a
-     * Set-Cookie header returned from a request to `uri`. `first_party`
-     * will be used to reject cookies coming from third party resources in
-     * case such a security policy is set in the `jar`.
-     * @param uri the URI setting the cookie
-     * @param first_party the URI for the main document
-     * @param cookie the stringified cookie to set
-     */
-    set_cookie_with_first_party(uri: GLib.Uri, first_party: GLib.Uri, cookie: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.CookieJar */
-    vfunc_changed(old_cookie: Cookie, new_cookie: Cookie): void
-    /**
-     * Gets whether `jar` stores cookies persistenly.
-     */
-    vfunc_is_persistent(): boolean
-    vfunc_save(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.CookieJar */
-    /**
-     * Emitted when `jar` changes. If a cookie has been added,
-     * `new_cookie` will contain the newly-added cookie and
-     * `old_cookie` will be %NULL. If a cookie has been deleted,
-     * `old_cookie` will contain the to-be-deleted cookie and
-     * `new_cookie` will be %NULL. If a cookie has been changed,
-     * `old_cookie` will contain its old value, and `new_cookie` its
-     * new value.
-     * @param old_cookie the old #SoupCookie value
-     * @param new_cookie the new #SoupCookie value
-     */
-    connect(sigName: "changed", callback: (($obj: CookieJarDB, old_cookie: Cookie, new_cookie: Cookie) => void)): number
-    connect_after(sigName: "changed", callback: (($obj: CookieJarDB, old_cookie: Cookie, new_cookie: Cookie) => void)): number
-    emit(sigName: "changed", old_cookie: Cookie, new_cookie: Cookie): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.CookieJarDB
+
     connect(sigName: "notify::filename", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filename", ...args: any[]): void
     connect(sigName: "notify::accept-policy", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-policy", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accept-policy", ...args: any[]): void
     connect(sigName: "notify::read-only", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only", callback: (($obj: CookieJarDB, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::read-only", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Subclass of #SoupCookieJar that stores cookies in a sqlite database.
+ * @class 
+ */
+class CookieJarDB extends CookieJar {
+
+    // Own properties of Soup-3.0.Soup.CookieJarDB
+
     static name: string
-    constructor (config?: CookieJarDB_ConstructProps)
-    _init (config?: CookieJarDB_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<CookieJarDB>
+
+    // Constructors of Soup-3.0.Soup.CookieJarDB
+
+    constructor(config?: CookieJarDB_ConstructProps) 
+    /**
+     * Creates a #SoupCookieJarDB.
+     * 
+     * `filename` will be read in at startup to create an initial set of
+     * cookies. If `read_only` is %FALSE, then the non-session cookies will
+     * be written to `filename` when the 'changed' signal is emitted from
+     * the jar. (If `read_only` is %TRUE, then the cookie jar will only be
+     * used for this session, and changes made to it will be lost when the
+     * jar is destroyed.)
+     * @constructor 
+     * @param filename the filename to read to/write from, or %NULL
+     * @param read_only %TRUE if `filename` is read-only
+     */
+    constructor(filename: string, read_only: boolean) 
+    /**
+     * Creates a #SoupCookieJarDB.
+     * 
+     * `filename` will be read in at startup to create an initial set of
+     * cookies. If `read_only` is %FALSE, then the non-session cookies will
+     * be written to `filename` when the 'changed' signal is emitted from
+     * the jar. (If `read_only` is %TRUE, then the cookie jar will only be
+     * used for this session, and changes made to it will be lost when the
+     * jar is destroyed.)
+     * @constructor 
+     * @param filename the filename to read to/write from, or %NULL
+     * @param read_only %TRUE if `filename` is read-only
+     */
     static new(filename: string, read_only: boolean): CookieJarDB
-    /* Function overloads */
-    static new(): CookieJarDB
-    static $gtype: GObject.Type
+
+    // Overloads of new
+
+    /**
+     * Creates a new #SoupCookieJar. The base #SoupCookieJar class does
+     * not support persistent storage of cookies; use a subclass for that.
+     * @constructor 
+     */
+    static new(): CookieJar
+    _init(config?: CookieJarDB_ConstructProps): void
 }
-interface CookieJarText_ConstructProps extends CookieJar_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.CookieJarText */
-    filename?: string
+
+interface CookieJarText_ConstructProps extends SessionFeature_ConstructProps, CookieJar_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.CookieJarText
+
+    filename?: string | null
 }
-class CookieJarText {
-    /* Properties of Soup-3.0.Soup.CookieJarText */
+
+interface CookieJarText extends SessionFeature {
+
+    // Own properties of Soup-3.0.Soup.CookieJarText
+
     readonly filename: string
-    /* Properties of Soup-3.0.Soup.CookieJar */
-    /**
-     * The policy the jar should follow to accept or reject cookies
-     */
-    accept_policy: CookieJarAcceptPolicy
-    readonly read_only: boolean
-    /* Fields of Soup-3.0.Soup.CookieJar */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.CookieJar */
-    /**
-     * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
-     * an existing cookie or adding a valid new cookie ('valid' means
-     * that the cookie's expire date is not in the past).
-     * 
-     * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-     * @param cookie a #SoupCookie
-     */
-    add_cookie(cookie: Cookie): void
-    /**
-     * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
-     * an existing cookie or adding a valid new cookie ('valid' means
-     * that the cookie's expire date is not in the past).
-     * 
-     * `first_party` will be used to reject cookies coming from third party
-     * resources in case such a security policy is set in the `jar`.
-     * 
-     * `uri` will be used to reject setting or overwriting secure cookies
-     * from insecure origins. %NULL is treated as secure.
-     * 
-     * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-     * @param cookie a #SoupCookie
-     * @param uri the URI setting the cookie
-     * @param first_party the URI for the main document
-     */
-    add_cookie_full(cookie: Cookie, uri?: GLib.Uri | null, first_party?: GLib.Uri | null): void
-    /**
-     * Adds `cookie` to `jar,` emitting the 'changed' signal if we are modifying
-     * an existing cookie or adding a valid new cookie ('valid' means
-     * that the cookie's expire date is not in the past).
-     * 
-     * `first_party` will be used to reject cookies coming from third party
-     * resources in case such a security policy is set in the `jar`.
-     * 
-     * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-     * 
-     * For secure cookies to work properly you may want to use
-     * soup_cookie_jar_add_cookie_full().
-     * @param first_party the URI for the main document
-     * @param cookie a #SoupCookie
-     */
-    add_cookie_with_first_party(first_party: GLib.Uri, cookie: Cookie): void
-    /**
-     * Constructs a #GSList with every cookie inside the `jar`.
-     * The cookies in the list are a copy of the original, so
-     * you have to free them when you are done with them.
-     */
-    all_cookies(): Cookie[]
-    /**
-     * Deletes `cookie` from `jar,` emitting the 'changed' signal.
-     * @param cookie a #SoupCookie
-     */
-    delete_cookie(cookie: Cookie): void
-    /**
-     * Gets `jar'`s #SoupCookieJarAcceptPolicy
-     */
-    get_accept_policy(): CookieJarAcceptPolicy
-    /**
-     * Retrieves the list of cookies that would be sent with a request to `uri`
-     * as a #GSList of #SoupCookie objects.
-     * 
-     * If `for_http` is %TRUE, the return value will include cookies marked
-     * "HttpOnly" (that is, cookies that the server wishes to keep hidden
-     * from client-side scripting operations such as the JavaScript
-     * document.cookies property). Since #SoupCookieJar sets the Cookie
-     * header itself when making the actual HTTP request, you should
-     * almost certainly be setting `for_http` to %FALSE if you are calling
-     * this.
-     * @param uri a #GUri
-     * @param for_http whether or not the return value is being passed directly to an HTTP operation
-     */
-    get_cookie_list(uri: GLib.Uri, for_http: boolean): Cookie[]
-    /**
-     * This is an extended version of soup_cookie_jar_get_cookie_list() that
-     * provides more information required to use SameSite cookies. See the
-     * [SameSite cookies spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
-     * for more detailed information.
-     * @param uri a #GUri
-     * @param top_level a #GUri for the top level document
-     * @param site_for_cookies a #GUri indicating the origin to get cookies for
-     * @param for_http whether or not the return value is being passed directly to an HTTP operation
-     * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is %FALSE
-     * @param is_top_level_navigation whether or not the HTTP request is part of top level navigation
-     */
-    get_cookie_list_with_same_site_info(uri: GLib.Uri, top_level: GLib.Uri | null, site_for_cookies: GLib.Uri | null, for_http: boolean, is_safe_method: boolean, is_top_level_navigation: boolean): Cookie[]
-    /**
-     * Retrieves (in Cookie-header form) the list of cookies that would
-     * be sent with a request to `uri`.
-     * 
-     * If `for_http` is %TRUE, the return value will include cookies marked
-     * "HttpOnly" (that is, cookies that the server wishes to keep hidden
-     * from client-side scripting operations such as the JavaScript
-     * document.cookies property). Since #SoupCookieJar sets the Cookie
-     * header itself when making the actual HTTP request, you should
-     * almost certainly be setting `for_http` to %FALSE if you are calling
-     * this.
-     * @param uri a #GUri
-     * @param for_http whether or not the return value is being passed directly to an HTTP operation
-     */
-    get_cookies(uri: GLib.Uri, for_http: boolean): string | null
-    /**
-     * Gets whether `jar` stores cookies persistenly.
-     */
-    is_persistent(): boolean
-    /**
-     * Sets `policy` as the cookie acceptance policy for `jar`.
-     * @param policy a #SoupCookieJarAcceptPolicy
-     */
-    set_accept_policy(policy: CookieJarAcceptPolicy): void
-    /**
-     * Adds `cookie` to `jar,` exactly as though it had appeared in a
-     * Set-Cookie header returned from a request to `uri`.
-     * 
-     * Keep in mind that if the #SoupCookieJarAcceptPolicy set is either
-     * %SOUP_COOKIE_JAR_ACCEPT_NO_THIRD_PARTY or
-     * %SOUP_COOKIE_JAR_ACCEPT_GRANDFATHERED_THIRD_PARTY you'll need to use
-     * soup_cookie_jar_set_cookie_with_first_party(), otherwise the jar
-     * will have no way of knowing if the cookie is being set by a third
-     * party or not.
-     * @param uri the URI setting the cookie
-     * @param cookie the stringified cookie to set
-     */
-    set_cookie(uri: GLib.Uri, cookie: string): void
-    /**
-     * Adds `cookie` to `jar,` exactly as though it had appeared in a
-     * Set-Cookie header returned from a request to `uri`. `first_party`
-     * will be used to reject cookies coming from third party resources in
-     * case such a security policy is set in the `jar`.
-     * @param uri the URI setting the cookie
-     * @param first_party the URI for the main document
-     * @param cookie the stringified cookie to set
-     */
-    set_cookie_with_first_party(uri: GLib.Uri, first_party: GLib.Uri, cookie: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.CookieJar */
-    vfunc_changed(old_cookie: Cookie, new_cookie: Cookie): void
-    /**
-     * Gets whether `jar` stores cookies persistenly.
-     */
-    vfunc_is_persistent(): boolean
-    vfunc_save(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.CookieJar */
-    /**
-     * Emitted when `jar` changes. If a cookie has been added,
-     * `new_cookie` will contain the newly-added cookie and
-     * `old_cookie` will be %NULL. If a cookie has been deleted,
-     * `old_cookie` will contain the to-be-deleted cookie and
-     * `new_cookie` will be %NULL. If a cookie has been changed,
-     * `old_cookie` will contain its old value, and `new_cookie` its
-     * new value.
-     * @param old_cookie the old #SoupCookie value
-     * @param new_cookie the new #SoupCookie value
-     */
-    connect(sigName: "changed", callback: (($obj: CookieJarText, old_cookie: Cookie, new_cookie: Cookie) => void)): number
-    connect_after(sigName: "changed", callback: (($obj: CookieJarText, old_cookie: Cookie, new_cookie: Cookie) => void)): number
-    emit(sigName: "changed", old_cookie: Cookie, new_cookie: Cookie): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.CookieJarText
+
     connect(sigName: "notify::filename", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::filename", ...args: any[]): void
     connect(sigName: "notify::accept-policy", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-policy", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accept-policy", ...args: any[]): void
     connect(sigName: "notify::read-only", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::read-only", callback: (($obj: CookieJarText, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::read-only", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Subclass of #SoupCookieJar that stores cookies in a text file.
+ * @class 
+ */
+class CookieJarText extends CookieJar {
+
+    // Own properties of Soup-3.0.Soup.CookieJarText
+
     static name: string
-    constructor (config?: CookieJarText_ConstructProps)
-    _init (config?: CookieJarText_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<CookieJarText>
+
+    // Constructors of Soup-3.0.Soup.CookieJarText
+
+    constructor(config?: CookieJarText_ConstructProps) 
+    /**
+     * Creates a #SoupCookieJarText.
+     * 
+     * `filename` will be read in at startup to create an initial set of
+     * cookies. If `read_only` is %FALSE, then the non-session cookies will
+     * be written to `filename` when the 'changed' signal is emitted from
+     * the jar. (If `read_only` is %TRUE, then the cookie jar will only be
+     * used for this session, and changes made to it will be lost when the
+     * jar is destroyed.)
+     * @constructor 
+     * @param filename the filename to read to/write from
+     * @param read_only %TRUE if `filename` is read-only
+     */
+    constructor(filename: string, read_only: boolean) 
+    /**
+     * Creates a #SoupCookieJarText.
+     * 
+     * `filename` will be read in at startup to create an initial set of
+     * cookies. If `read_only` is %FALSE, then the non-session cookies will
+     * be written to `filename` when the 'changed' signal is emitted from
+     * the jar. (If `read_only` is %TRUE, then the cookie jar will only be
+     * used for this session, and changes made to it will be lost when the
+     * jar is destroyed.)
+     * @constructor 
+     * @param filename the filename to read to/write from
+     * @param read_only %TRUE if `filename` is read-only
+     */
     static new(filename: string, read_only: boolean): CookieJarText
-    /* Function overloads */
-    static new(): CookieJarText
-    static $gtype: GObject.Type
+
+    // Overloads of new
+
+    /**
+     * Creates a new #SoupCookieJar. The base #SoupCookieJar class does
+     * not support persistent storage of cookies; use a subclass for that.
+     * @constructor 
+     */
+    static new(): CookieJar
+    _init(config?: CookieJarText_ConstructProps): void
 }
-interface HSTSEnforcer_ConstructProps extends GObject.Object_ConstructProps {
+
+interface HSTSEnforcer_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
 }
-class HSTSEnforcer {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.HSTSEnforcer */
+
+/**
+ * Signal callback interface for `changed`
+ */
+interface HSTSEnforcer_ChangedSignalCallback {
+    ($obj: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
+}
+
+interface HSTSEnforcer extends SessionFeature {
+
+    // Own fields of Soup-3.0.Soup.HSTSEnforcer
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.HSTSEnforcer
+
     /**
      * Gets a list of domains for which there are policies in `enforcer`.
      * @param session_policies whether to include session policies
@@ -8938,899 +3132,170 @@ class HSTSEnforcer {
      * @param include_subdomains %TRUE if the policy applies on sub domains
      */
     set_session_policy(domain: string, include_subdomains: boolean): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.HSTSEnforcer */
+
+    // Own virtual methods of Soup-3.0.Soup.HSTSEnforcer
+
     vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
     /**
      * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
+     * @virtual 
      * @param domain a domain.
      */
     vfunc_has_valid_policy(domain: string): boolean
     /**
      * Gets whether `hsts_enforcer` stores policies persistenly.
+     * @virtual 
      */
     vfunc_is_persistent(): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.HSTSEnforcer */
-    /**
-     * Emitted when `hsts_enforcer` changes. If a policy has been added,
-     * `new_policy` will contain the newly-added policy and
-     * `old_policy` will be %NULL. If a policy has been deleted,
-     * `old_policy` will contain the to-be-deleted policy and
-     * `new_policy` will be %NULL. If a policy has been changed,
-     * `old_policy` will contain its old value, and `new_policy` its
-     * new value.
-     * 
-     * Note that you shouldn't modify the policies from a callback to
-     * this signal.
-     * @param old_policy the old #SoupHSTSPolicy value
-     * @param new_policy the new #SoupHSTSPolicy value
-     */
-    connect(sigName: "changed", callback: (($obj: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
-    connect_after(sigName: "changed", callback: (($obj: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
-    emit(sigName: "changed", old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: HSTSEnforcer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: HSTSEnforcer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Soup-3.0.Soup.HSTSEnforcer
+
+    connect(sigName: "changed", callback: HSTSEnforcer_ChangedSignalCallback): number
+    connect_after(sigName: "changed", callback: HSTSEnforcer_ChangedSignalCallback): number
+    emit(sigName: "changed", old_policy: HSTSPolicy, new_policy: HSTSPolicy, ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.HSTSEnforcer
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: HSTSEnforcer_ConstructProps)
-    _init (config?: HSTSEnforcer_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): HSTSEnforcer
-    static $gtype: GObject.Type
 }
-interface HSTSEnforcerDB_ConstructProps extends HSTSEnforcer_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.HSTSEnforcerDB */
+
+/**
+ * Class for storing and enforcing a #SoupHSTSPolicy.
+ * @class 
+ */
+class HSTSEnforcer extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.HSTSEnforcer
+
+    static name: string
+    static $gtype: GObject.GType<HSTSEnforcer>
+
+    // Constructors of Soup-3.0.Soup.HSTSEnforcer
+
+    constructor(config?: HSTSEnforcer_ConstructProps) 
+    /**
+     * Creates a new #SoupHSTSEnforcer. The base #SoupHSTSEnforcer class
+     * does not support persistent storage of HSTS policies, see
+     * #SoupHSTSEnforcerDB for that.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #SoupHSTSEnforcer. The base #SoupHSTSEnforcer class
+     * does not support persistent storage of HSTS policies, see
+     * #SoupHSTSEnforcerDB for that.
+     * @constructor 
+     */
+    static new(): HSTSEnforcer
+    _init(config?: HSTSEnforcer_ConstructProps): void
+}
+
+interface HSTSEnforcerDB_ConstructProps extends SessionFeature_ConstructProps, HSTSEnforcer_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.HSTSEnforcerDB
+
     /**
      * The filename of the SQLite database where HSTS policies are stored.
      */
-    filename?: string
+    filename?: string | null
 }
-class HSTSEnforcerDB {
-    /* Properties of Soup-3.0.Soup.HSTSEnforcerDB */
+
+interface HSTSEnforcerDB extends SessionFeature {
+
+    // Own properties of Soup-3.0.Soup.HSTSEnforcerDB
+
     /**
      * The filename of the SQLite database where HSTS policies are stored.
      */
     readonly filename: string
-    /* Fields of Soup-3.0.Soup.HSTSEnforcer */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.HSTSEnforcer */
-    /**
-     * Gets a list of domains for which there are policies in `enforcer`.
-     * @param session_policies whether to include session policies
-     */
-    get_domains(session_policies: boolean): string[]
-    /**
-     * Gets a list with the policies in `enforcer`.
-     * @param session_policies whether to include session policies
-     */
-    get_policies(session_policies: boolean): HSTSPolicy[]
-    /**
-     * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
-     * @param domain a domain.
-     */
-    has_valid_policy(domain: string): boolean
-    /**
-     * Gets whether `hsts_enforcer` stores policies persistenly.
-     */
-    is_persistent(): boolean
-    /**
-     * Sets `policy` to `hsts_enforcer`. If `policy` is expired, any
-     * existing HSTS policy for its host will be removed instead. If a
-     * policy existed for this host, it will be replaced. Otherwise, the
-     * new policy will be inserted. If the policy is a session policy, that
-     * is, one created with soup_hsts_policy_new_session_policy(), the policy
-     * will not expire and will be enforced during the lifetime of
-     * `hsts_enforcer'`s #SoupSession.
-     * @param policy the policy of the HSTS host
-     */
-    set_policy(policy: HSTSPolicy): void
-    /**
-     * Sets a session policy for `domain`. A session policy is a policy
-     * that is permanent to the lifetime of `hsts_enforcer'`s #SoupSession
-     * and doesn't expire.
-     * @param domain policy domain or hostname
-     * @param include_subdomains %TRUE if the policy applies on sub domains
-     */
-    set_session_policy(domain: string, include_subdomains: boolean): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.HSTSEnforcer */
-    vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
-    /**
-     * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
-     * @param domain a domain.
-     */
-    vfunc_has_valid_policy(domain: string): boolean
-    /**
-     * Gets whether `hsts_enforcer` stores policies persistenly.
-     */
-    vfunc_is_persistent(): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.HSTSEnforcer */
-    /**
-     * Emitted when `hsts_enforcer` changes. If a policy has been added,
-     * `new_policy` will contain the newly-added policy and
-     * `old_policy` will be %NULL. If a policy has been deleted,
-     * `old_policy` will contain the to-be-deleted policy and
-     * `new_policy` will be %NULL. If a policy has been changed,
-     * `old_policy` will contain its old value, and `new_policy` its
-     * new value.
-     * 
-     * Note that you shouldn't modify the policies from a callback to
-     * this signal.
-     * @param old_policy the old #SoupHSTSPolicy value
-     * @param new_policy the new #SoupHSTSPolicy value
-     */
-    connect(sigName: "changed", callback: (($obj: HSTSEnforcerDB, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
-    connect_after(sigName: "changed", callback: (($obj: HSTSEnforcerDB, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void)): number
-    emit(sigName: "changed", old_policy: HSTSPolicy, new_policy: HSTSPolicy): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.HSTSEnforcerDB
+
     connect(sigName: "notify::filename", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::filename", callback: (($obj: HSTSEnforcerDB, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::filename", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: HSTSEnforcerDB_ConstructProps)
-    _init (config?: HSTSEnforcerDB_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(filename: string): HSTSEnforcerDB
-    /* Function overloads */
-    static new(): HSTSEnforcerDB
-    static $gtype: GObject.Type
 }
-interface Logger_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.Logger */
+
+/**
+ * Subclass of #SoupHSTSEnforcer using an sqlite database.
+ * @class 
+ */
+class HSTSEnforcerDB extends HSTSEnforcer {
+
+    // Own properties of Soup-3.0.Soup.HSTSEnforcerDB
+
+    static name: string
+    static $gtype: GObject.GType<HSTSEnforcerDB>
+
+    // Constructors of Soup-3.0.Soup.HSTSEnforcerDB
+
+    constructor(config?: HSTSEnforcerDB_ConstructProps) 
+    /**
+     * Creates a #SoupHSTSEnforcerDB.
+     * 
+     * `filename` will be read in during the initialization of a
+     * #SoupHSTSEnforcerDB, in order to create an initial set of HSTS
+     * policies. If the file doesn't exist, a new database will be created
+     * and initialized. Changes to the policies during the lifetime of a
+     * #SoupHSTSEnforcerDB will be written to `filename` when
+     * #SoupHSTSEnforcer::changed is emitted.
+     * @constructor 
+     * @param filename the filename of the database to read/write from.
+     */
+    constructor(filename: string) 
+    /**
+     * Creates a #SoupHSTSEnforcerDB.
+     * 
+     * `filename` will be read in during the initialization of a
+     * #SoupHSTSEnforcerDB, in order to create an initial set of HSTS
+     * policies. If the file doesn't exist, a new database will be created
+     * and initialized. Changes to the policies during the lifetime of a
+     * #SoupHSTSEnforcerDB will be written to `filename` when
+     * #SoupHSTSEnforcer::changed is emitted.
+     * @constructor 
+     * @param filename the filename of the database to read/write from.
+     */
+    static new(filename: string): HSTSEnforcerDB
+
+    // Overloads of new
+
+    /**
+     * Creates a new #SoupHSTSEnforcer. The base #SoupHSTSEnforcer class
+     * does not support persistent storage of HSTS policies, see
+     * #SoupHSTSEnforcerDB for that.
+     * @constructor 
+     */
+    static new(): HSTSEnforcer
+    _init(config?: HSTSEnforcerDB_ConstructProps): void
+}
+
+interface Logger_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.Logger
+
     /**
      * The level of logging output
      */
-    level?: LoggerLogLevel
+    level?: LoggerLogLevel | null
     /**
      * If #SoupLogger:level is %SOUP_LOGGER_LOG_BODY, this gives
      * the maximum number of bytes of the body that will be logged.
      * (-1 means "no limit".)
      */
-    max_body_size?: number
+    max_body_size?: number | null
 }
-class Logger {
-    /* Properties of Soup-3.0.Soup.Logger */
+
+interface Logger extends SessionFeature {
+
+    // Own properties of Soup-3.0.Soup.Logger
+
     /**
      * The level of logging output
      */
@@ -9841,9 +3306,9 @@ class Logger {
      * (-1 means "no limit".)
      */
     max_body_size: number
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Logger */
+
+    // Owm methods of Soup-3.0.Soup.Logger
+
     /**
      * Get the maximum body size for `logger`.
      */
@@ -9877,420 +3342,205 @@ class Logger {
      * @param response_filter the callback for response debugging
      */
     set_response_filter(response_filter: LoggerFilter): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.Logger
+
     connect(sigName: "notify::level", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::level", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::level", ...args: any[]): void
     connect(sigName: "notify::max-body-size", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-body-size", callback: (($obj: Logger, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::max-body-size", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Logger_ConstructProps)
-    _init (config?: Logger_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(level: LoggerLogLevel): Logger
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class implementing logging.
+ * @class 
+ */
+class Logger extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.Logger
+
+    static name: string
+    static $gtype: GObject.GType<Logger>
+
+    // Constructors of Soup-3.0.Soup.Logger
+
+    constructor(config?: Logger_ConstructProps) 
+    /**
+     * Creates a new #SoupLogger with the given debug level.
+     * 
+     * If you need finer control over what message parts are and aren't
+     * logged, use soup_logger_set_request_filter() and
+     * soup_logger_set_response_filter().
+     * @constructor 
+     * @param level the debug level
+     */
+    constructor(level: LoggerLogLevel) 
+    /**
+     * Creates a new #SoupLogger with the given debug level.
+     * 
+     * If you need finer control over what message parts are and aren't
+     * logged, use soup_logger_set_request_filter() and
+     * soup_logger_set_response_filter().
+     * @constructor 
+     * @param level the debug level
+     */
+    static new(level: LoggerLogLevel): Logger
+    _init(config?: Logger_ConstructProps): void
+}
+
 interface Message_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.Message */
+
+    // Own constructor properties of Soup-3.0.Soup.Message
+
     /**
      * The #GUri loaded in the application when the message was
      * queued.
      */
-    first_party?: GLib.Uri
-    flags?: MessageFlags
+    first_party?: GLib.Uri | null
+    flags?: MessageFlags | null
     /**
      * The #SoupMessage is intended to be used to send
      * `OPTIONS *` to a server. When set to %TRUE, the
      * path of #SoupMessage:uri will be ignored and
      * #SoupMessage:method set to %SOUP_METHOD_OPTIONS.
      */
-    is_options_ping?: boolean
+    is_options_ping?: boolean | null
     /**
      * Set when the message is navigating between top level domains.
      */
-    is_top_level_navigation?: boolean
-    method?: string
+    is_top_level_navigation?: boolean | null
+    method?: string | null
     /**
      * Sets the priority of the #SoupMessage. See
      * soup_message_set_priority() for further details.
      */
-    priority?: MessagePriority
-    site_for_cookies?: GLib.Uri
-    uri?: GLib.Uri
+    priority?: MessagePriority | null
+    site_for_cookies?: GLib.Uri | null
+    uri?: GLib.Uri | null
 }
-class Message {
-    /* Properties of Soup-3.0.Soup.Message */
+
+/**
+ * Signal callback interface for `accept-certificate`
+ */
+interface Message_AcceptCertificateSignalCallback {
+    ($obj: Message, tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags): boolean
+}
+
+/**
+ * Signal callback interface for `authenticate`
+ */
+interface Message_AuthenticateSignalCallback {
+    ($obj: Message, auth: Auth, retrying: boolean): boolean
+}
+
+/**
+ * Signal callback interface for `content-sniffed`
+ */
+interface Message_ContentSniffedSignalCallback {
+    ($obj: Message, type: string, params: GLib.HashTable): void
+}
+
+/**
+ * Signal callback interface for `finished`
+ */
+interface Message_FinishedSignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `got-body`
+ */
+interface Message_GotBodySignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `got-headers`
+ */
+interface Message_GotHeadersSignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `got-informational`
+ */
+interface Message_GotInformationalSignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `hsts-enforced`
+ */
+interface Message_HstsEnforcedSignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `network-event`
+ */
+interface Message_NetworkEventSignalCallback {
+    ($obj: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream): void
+}
+
+/**
+ * Signal callback interface for `request-certificate`
+ */
+interface Message_RequestCertificateSignalCallback {
+    ($obj: Message, tls_connection: Gio.TlsClientConnection): boolean
+}
+
+/**
+ * Signal callback interface for `request-certificate-password`
+ */
+interface Message_RequestCertificatePasswordSignalCallback {
+    ($obj: Message, tls_password: Gio.TlsPassword): boolean
+}
+
+/**
+ * Signal callback interface for `restarted`
+ */
+interface Message_RestartedSignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `starting`
+ */
+interface Message_StartingSignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `wrote-body`
+ */
+interface Message_WroteBodySignalCallback {
+    ($obj: Message): void
+}
+
+/**
+ * Signal callback interface for `wrote-body-data`
+ */
+interface Message_WroteBodyDataSignalCallback {
+    ($obj: Message, chunk_size: number): void
+}
+
+/**
+ * Signal callback interface for `wrote-headers`
+ */
+interface Message_WroteHeadersSignalCallback {
+    ($obj: Message): void
+}
+
+interface Message {
+
+    // Own properties of Soup-3.0.Soup.Message
+
     /**
      * The #GUri loaded in the application when the message was
      * queued.
@@ -10341,9 +3591,9 @@ class Message {
      */
     readonly tls_protocol_version: Gio.TlsProtocolVersion
     uri: GLib.Uri
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Message */
+
+    // Owm methods of Soup-3.0.Soup.Message
+
     /**
      * Adds `flags` to the set of `msg'`s flags
      * @param flags a set of #SoupMessageFlags values
@@ -10362,7 +3612,7 @@ class Message {
      * redirect or authentication.
      * @param feature_type the #GType of a #SoupSessionFeature
      */
-    disable_feature(feature_type: GObject.Type): void
+    disable_feature(feature_type: GObject.GType): void
     /**
      * Returns the unique idenfier for the last connection used.
      * This may be 0 if it was a cached resource or it has not gotten
@@ -10465,7 +3715,7 @@ class Message {
      * See soup_message_disable_feature().
      * @param feature_type the #GType of a #SoupSessionFeature
      */
-    is_feature_disabled(feature_type: GObject.Type): boolean
+    is_feature_disabled(feature_type: GObject.GType): boolean
     /**
      * Determines whether or not `msg'`s connection can be kept alive for
      * further requests after processing `msg,` based on the HTTP version,
@@ -10547,7 +3797,7 @@ class Message {
      * @param content_type MIME Content-Type of the body, or %NULL if unknown
      * @param bytes a #GBytes with the request body data
      */
-    set_request_body_from_bytes(content_type?: string | null, bytes?: GLib.Bytes | null): void
+    set_request_body_from_bytes(content_type: string | null, bytes: GLib.Bytes | null): void
     /**
      * Sets `site_for_cookies` as the policy URL for same-site cookies for `msg`.
      * 
@@ -10559,7 +3809,7 @@ class Message {
      * for more information.
      * @param site_for_cookies the #GUri for the `msg'`s site for cookies
      */
-    set_site_for_cookies(site_for_cookies?: GLib.Uri | null): void
+    set_site_for_cookies(site_for_cookies: GLib.Uri | null): void
     /**
      * Sets the `certificate` to be used by `msg'`s connection when a
      * client certificate is requested during the TLS handshake.
@@ -10570,7 +3820,7 @@ class Message {
      * #SoupSession::tls-interaction is not %NULL.
      * @param certificate the #GTlsCertificate to set, or %NULL
      */
-    set_tls_client_certificate(certificate?: Gio.TlsCertificate | null): void
+    set_tls_client_certificate(certificate: Gio.TlsCertificate | null): void
     /**
      * Sets `msg'`s URI to `uri`. If `msg` has already been sent and you want
      * to re-send it with the new URI, you need to send it again.
@@ -10584,633 +3834,217 @@ class Message {
      * signal, to notify `msg` that the #GTlsPassword has already been updated.
      */
     tls_client_certificate_password_request_complete(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.Message */
-    /**
-     * Emitted during the `msg'`s connection TLS handshake
-     * after an unacceptable TLS certificate has been received.
-     * You can return %TRUE to accept `tls_certificate` despite
-     * `tls_errors`.
-     * @param tls_peer_certificate the peer's #GTlsCertificate
-     * @param tls_peer_errors the tls errors of `tls_certificate`
-     */
-    connect(sigName: "accept-certificate", callback: (($obj: Message, tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags) => boolean)): number
-    connect_after(sigName: "accept-certificate", callback: (($obj: Message, tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags) => boolean)): number
-    emit(sigName: "accept-certificate", tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags): void
-    /**
-     * Emitted when the message requires authentication. If
-     * credentials are available call soup_auth_authenticate() on
-     * `auth`. If these credentials fail, the signal will be
-     * emitted again, with `retrying` set to %TRUE, which will
-     * continue until you return without calling
-     * soup_auth_authenticate() on `auth`.
-     * 
-     * Note that this may be emitted before `msg'`s body has been
-     * fully read.
-     * 
-     * You can authenticate `auth` asynchronously by calling g_object_ref()
-     * on `auth` and returning %TRUE. The operation will complete once
-     * either soup_auth_authenticate() or soup_auth_cancel() are called.
-     * @param auth the #SoupAuth to authenticate
-     * @param retrying %TRUE if this is the second (or later) attempt
-     */
-    connect(sigName: "authenticate", callback: (($obj: Message, auth: Auth, retrying: boolean) => boolean)): number
-    connect_after(sigName: "authenticate", callback: (($obj: Message, auth: Auth, retrying: boolean) => boolean)): number
-    emit(sigName: "authenticate", auth: Auth, retrying: boolean): void
-    /**
-     * This signal is emitted after #SoupMessage::got-headers.
-     * If content sniffing is disabled, or no content sniffing will be
-     * performed, due to the sniffer deciding to trust the
-     * Content-Type sent by the server, this signal is emitted
-     * immediately after #SoupMessage::got-headers, and `type` is
-     * %NULL.
-     * @param type the content type that we got from sniffing
-     * @param params a #GHashTable with the parameters
-     */
-    connect(sigName: "content-sniffed", callback: (($obj: Message, type: string, params: GLib.HashTable) => void)): number
-    connect_after(sigName: "content-sniffed", callback: (($obj: Message, type: string, params: GLib.HashTable) => void)): number
-    emit(sigName: "content-sniffed", type: string, params: GLib.HashTable): void
-    /**
-     * Emitted when all HTTP processing is finished for a message.
-     * (After #SoupMessage::got_body).
-     */
-    connect(sigName: "finished", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "finished", callback: (($obj: Message) => void)): number
-    emit(sigName: "finished"): void
-    /**
-     * Emitted after receiving the complete message request body.
-     * 
-     * See also soup_message_add_header_handler() and
-     * soup_message_add_status_code_handler(), which can be used
-     * to connect to a subset of emissions of this signal.
-     */
-    connect(sigName: "got-body", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "got-body", callback: (($obj: Message) => void)): number
-    emit(sigName: "got-body"): void
-    /**
-     * Emitted after receiving the Status-Line and response headers.
-     * 
-     * See also soup_message_add_header_handler() and
-     * soup_message_add_status_code_handler(), which can be used
-     * to connect to a subset of emissions of this signal.
-     * 
-     * If you cancel or requeue `msg` while processing this signal,
-     * then the current HTTP I/O will be stopped after this signal
-     * emission finished, and `msg'`s connection will be closed.
-     * (If you need to requeue a message--eg, after handling
-     * authentication or redirection--it is usually better to
-     * requeue it from a #SoupMessage::got_body handler rather
-     * than a #SoupMessage::got_headers handler, so that the
-     * existing HTTP connection can be reused.)
-     */
-    connect(sigName: "got-headers", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "got-headers", callback: (($obj: Message) => void)): number
-    emit(sigName: "got-headers"): void
-    /**
-     * Emitted after receiving a 1xx (Informational) response for
-     * a (client-side) message. The response_headers will be
-     * filled in with the headers associated with the
-     * informational response; however, those header values will
-     * be erased after this signal is done.
-     * 
-     * If you cancel or requeue `msg` while processing this signal,
-     * then the current HTTP I/O will be stopped after this signal
-     * emission finished, and `msg'`s connection will be closed.
-     */
-    connect(sigName: "got-informational", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "got-informational", callback: (($obj: Message) => void)): number
-    emit(sigName: "got-informational"): void
-    /**
-     * Emitted when #SoupHSTSEnforcer has upgraded the protocol
-     * for `msg` to HTTPS as a result of matching its domain with
-     * a HSTS policy.
-     */
-    connect(sigName: "hsts-enforced", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "hsts-enforced", callback: (($obj: Message) => void)): number
-    emit(sigName: "hsts-enforced"): void
-    /**
-     * Emitted to indicate that some network-related event
-     * related to `msg` has occurred. This essentially proxies the
-     * #GSocketClient::event signal, but only for events that
-     * occur while `msg` "owns" the connection; if `msg` is sent on
-     * an existing persistent connection, then this signal will
-     * not be emitted. (If you want to force the message to be
-     * sent on a new connection, set the
-     * %SOUP_MESSAGE_NEW_CONNECTION flag on it.)
-     * 
-     * See #GSocketClient::event for more information on what
-     * the different values of `event` correspond to, and what
-     * `connection` will be in each case.
-     * @param event the network event
-     * @param connection the current state of the network connection
-     */
-    connect(sigName: "network-event", callback: (($obj: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void)): number
-    connect_after(sigName: "network-event", callback: (($obj: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void)): number
-    emit(sigName: "network-event", event: Gio.SocketClientEvent, connection: Gio.IOStream): void
-    /**
-     * Emitted during the `msg'`s connection TLS handshake when
-     * `tls_connection` requests a certificate from the client.
-     * You can set the client certificate by calling
-     * soup_message_set_tls_client_certificate() and returning %TRUE.
-     * It's possible to handle the request asynchornously by returning
-     * %TRUE and call soup_message_set_tls_client_certificate() later
-     * once the certificate is available.
-     * Note that this signal is not emitted if #SoupSession::tls-interaction
-     * was set, or if soup_message_set_tls_client_certificate() was called
-     * before the connection TLS handshake started.
-     * @param tls_connection the #GTlsClientConnection
-     */
-    connect(sigName: "request-certificate", callback: (($obj: Message, tls_connection: Gio.TlsClientConnection) => boolean)): number
-    connect_after(sigName: "request-certificate", callback: (($obj: Message, tls_connection: Gio.TlsClientConnection) => boolean)): number
-    emit(sigName: "request-certificate", tls_connection: Gio.TlsClientConnection): void
-    /**
-     * Emitted during the `msg'`s connection TLS handshake when
-     * `tls_connection` requests a certificate password from the client.
-     * You can set the certificate password on `password,` then call
-     * soup_message_tls_client_certificate_password_request_complete() and return %TRUE
-     * to handle the signal synchronously.
-     * It's possible to handle the request asynchornously by calling g_object_ref()
-     * on `password,` then returning %TRUE and call
-     * soup_message_tls_client_certificate_password_request_complete() later after
-     * setting the password on `password`.
-     * Note that this signal is not emitted if #SoupSession::tls-interaction
-     * was set.
-     * @param tls_password the #GTlsPassword
-     */
-    connect(sigName: "request-certificate-password", callback: (($obj: Message, tls_password: Gio.TlsPassword) => boolean)): number
-    connect_after(sigName: "request-certificate-password", callback: (($obj: Message, tls_password: Gio.TlsPassword) => boolean)): number
-    emit(sigName: "request-certificate-password", tls_password: Gio.TlsPassword): void
-    /**
-     * Emitted when a request that was already sent once is now
-     * being sent again (eg, because the first attempt received a
-     * redirection response, or because we needed to use
-     * authentication).
-     */
-    connect(sigName: "restarted", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "restarted", callback: (($obj: Message) => void)): number
-    emit(sigName: "restarted"): void
-    /**
-     * Emitted just before a message is sent.
-     */
-    connect(sigName: "starting", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "starting", callback: (($obj: Message) => void)): number
-    emit(sigName: "starting"): void
-    /**
-     * Emitted immediately after writing the complete body for a
-     * message.
-     */
-    connect(sigName: "wrote-body", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "wrote-body", callback: (($obj: Message) => void)): number
-    emit(sigName: "wrote-body"): void
-    /**
-     * Emitted immediately after writing a portion of the message
-     * body to the network.
-     * @param chunk_size the number of bytes written
-     */
-    connect(sigName: "wrote-body-data", callback: (($obj: Message, chunk_size: number) => void)): number
-    connect_after(sigName: "wrote-body-data", callback: (($obj: Message, chunk_size: number) => void)): number
-    emit(sigName: "wrote-body-data", chunk_size: number): void
-    /**
-     * Emitted immediately after writing the request headers for a
-     * message.
-     */
-    connect(sigName: "wrote-headers", callback: (($obj: Message) => void)): number
-    connect_after(sigName: "wrote-headers", callback: (($obj: Message) => void)): number
-    emit(sigName: "wrote-headers"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Soup-3.0.Soup.Message
+
+    connect(sigName: "accept-certificate", callback: Message_AcceptCertificateSignalCallback): number
+    connect_after(sigName: "accept-certificate", callback: Message_AcceptCertificateSignalCallback): number
+    emit(sigName: "accept-certificate", tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags, ...args: any[]): void
+    connect(sigName: "authenticate", callback: Message_AuthenticateSignalCallback): number
+    connect_after(sigName: "authenticate", callback: Message_AuthenticateSignalCallback): number
+    emit(sigName: "authenticate", auth: Auth, retrying: boolean, ...args: any[]): void
+    connect(sigName: "content-sniffed", callback: Message_ContentSniffedSignalCallback): number
+    connect_after(sigName: "content-sniffed", callback: Message_ContentSniffedSignalCallback): number
+    emit(sigName: "content-sniffed", type: string, params: GLib.HashTable, ...args: any[]): void
+    connect(sigName: "finished", callback: Message_FinishedSignalCallback): number
+    connect_after(sigName: "finished", callback: Message_FinishedSignalCallback): number
+    emit(sigName: "finished", ...args: any[]): void
+    connect(sigName: "got-body", callback: Message_GotBodySignalCallback): number
+    connect_after(sigName: "got-body", callback: Message_GotBodySignalCallback): number
+    emit(sigName: "got-body", ...args: any[]): void
+    connect(sigName: "got-headers", callback: Message_GotHeadersSignalCallback): number
+    connect_after(sigName: "got-headers", callback: Message_GotHeadersSignalCallback): number
+    emit(sigName: "got-headers", ...args: any[]): void
+    connect(sigName: "got-informational", callback: Message_GotInformationalSignalCallback): number
+    connect_after(sigName: "got-informational", callback: Message_GotInformationalSignalCallback): number
+    emit(sigName: "got-informational", ...args: any[]): void
+    connect(sigName: "hsts-enforced", callback: Message_HstsEnforcedSignalCallback): number
+    connect_after(sigName: "hsts-enforced", callback: Message_HstsEnforcedSignalCallback): number
+    emit(sigName: "hsts-enforced", ...args: any[]): void
+    connect(sigName: "network-event", callback: Message_NetworkEventSignalCallback): number
+    connect_after(sigName: "network-event", callback: Message_NetworkEventSignalCallback): number
+    emit(sigName: "network-event", event: Gio.SocketClientEvent, connection: Gio.IOStream, ...args: any[]): void
+    connect(sigName: "request-certificate", callback: Message_RequestCertificateSignalCallback): number
+    connect_after(sigName: "request-certificate", callback: Message_RequestCertificateSignalCallback): number
+    emit(sigName: "request-certificate", tls_connection: Gio.TlsClientConnection, ...args: any[]): void
+    connect(sigName: "request-certificate-password", callback: Message_RequestCertificatePasswordSignalCallback): number
+    connect_after(sigName: "request-certificate-password", callback: Message_RequestCertificatePasswordSignalCallback): number
+    emit(sigName: "request-certificate-password", tls_password: Gio.TlsPassword, ...args: any[]): void
+    connect(sigName: "restarted", callback: Message_RestartedSignalCallback): number
+    connect_after(sigName: "restarted", callback: Message_RestartedSignalCallback): number
+    emit(sigName: "restarted", ...args: any[]): void
+    connect(sigName: "starting", callback: Message_StartingSignalCallback): number
+    connect_after(sigName: "starting", callback: Message_StartingSignalCallback): number
+    emit(sigName: "starting", ...args: any[]): void
+    connect(sigName: "wrote-body", callback: Message_WroteBodySignalCallback): number
+    connect_after(sigName: "wrote-body", callback: Message_WroteBodySignalCallback): number
+    emit(sigName: "wrote-body", ...args: any[]): void
+    connect(sigName: "wrote-body-data", callback: Message_WroteBodyDataSignalCallback): number
+    connect_after(sigName: "wrote-body-data", callback: Message_WroteBodyDataSignalCallback): number
+    emit(sigName: "wrote-body-data", chunk_size: number, ...args: any[]): void
+    connect(sigName: "wrote-headers", callback: Message_WroteHeadersSignalCallback): number
+    connect_after(sigName: "wrote-headers", callback: Message_WroteHeadersSignalCallback): number
+    emit(sigName: "wrote-headers", ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.Message
+
     connect(sigName: "notify::first-party", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::first-party", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::first-party", ...args: any[]): void
     connect(sigName: "notify::flags", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::flags", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::flags", ...args: any[]): void
     connect(sigName: "notify::http-version", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::http-version", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::http-version", ...args: any[]): void
     connect(sigName: "notify::is-options-ping", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-options-ping", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-options-ping", ...args: any[]): void
     connect(sigName: "notify::is-top-level-navigation", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::is-top-level-navigation", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::is-top-level-navigation", ...args: any[]): void
     connect(sigName: "notify::method", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::method", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::method", ...args: any[]): void
     connect(sigName: "notify::priority", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::priority", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::priority", ...args: any[]): void
     connect(sigName: "notify::reason-phrase", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reason-phrase", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::reason-phrase", ...args: any[]): void
     connect(sigName: "notify::remote-address", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remote-address", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::remote-address", ...args: any[]): void
     connect(sigName: "notify::request-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::request-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::request-headers", ...args: any[]): void
     connect(sigName: "notify::response-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::response-headers", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::response-headers", ...args: any[]): void
     connect(sigName: "notify::site-for-cookies", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::site-for-cookies", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::site-for-cookies", ...args: any[]): void
     connect(sigName: "notify::status-code", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::status-code", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::status-code", ...args: any[]): void
     connect(sigName: "notify::tls-ciphersuite-name", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-ciphersuite-name", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-ciphersuite-name", ...args: any[]): void
     connect(sigName: "notify::tls-peer-certificate", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-peer-certificate", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-peer-certificate", ...args: any[]): void
     connect(sigName: "notify::tls-peer-certificate-errors", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-peer-certificate-errors", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-peer-certificate-errors", ...args: any[]): void
     connect(sigName: "notify::tls-protocol-version", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-protocol-version", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-protocol-version", ...args: any[]): void
     connect(sigName: "notify::uri", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::uri", callback: (($obj: Message, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::uri", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Represents an HTTP message being sent or received.
+ * 
+ * `status_code` will normally be a #SoupStatus value, eg,
+ * %SOUP_STATUS_OK, though of course it might actually be an unknown
+ * status code. `reason_phrase` is the actual text returned from the
+ * server, which may or may not correspond to the "standard"
+ * description of `status_code`. At any rate, it is almost certainly
+ * not localized, and not very descriptive even if it is in the user's
+ * language; you should not use `reason_phrase` in user-visible
+ * messages. Rather, you should look at `status_code,` and determine an
+ * end-user-appropriate message based on that and on what you were
+ * trying to do.
+ * @class 
+ */
+class Message extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.Message
+
     static name: string
-    constructor (config?: Message_ConstructProps)
-    _init (config?: Message_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Message>
+
+    // Constructors of Soup-3.0.Soup.Message
+
+    constructor(config?: Message_ConstructProps) 
+    /**
+     * Creates a new empty #SoupMessage, which will connect to `uri`
+     * @constructor 
+     * @param method the HTTP method for the created request
+     * @param uri_string the destination endpoint (as a string)
+     */
+    constructor(method: string, uri_string: string) 
+    /**
+     * Creates a new empty #SoupMessage, which will connect to `uri`
+     * @constructor 
+     * @param method the HTTP method for the created request
+     * @param uri_string the destination endpoint (as a string)
+     */
     static new(method: string, uri_string: string): Message
+    /**
+     * Creates a new #SoupMessage and sets it up to send the given `encoded_form`
+     * to `uri` via `method`. If `method` is "GET", it will include the form data
+     * into `uri'`s query field, and if `method` is "POST" or "PUT", it will be set as
+     * request body.
+     * This function takes the ownership of `encoded_form,` that will be released
+     * with g_free() when no longer in use. See also soup_form_encode(),
+     * soup_form_encode_hash() and soup_form_encode_datalist().
+     * @constructor 
+     * @param method the HTTP method for the created request (GET, POST or PUT)
+     * @param uri_string the destination endpoint (as a string)
+     * @param encoded_form a encoded form
+     */
     static new_from_encoded_form(method: string, uri_string: string, encoded_form: string): Message
+    /**
+     * Creates a new #SoupMessage and sets it up to send `multipart` to
+     * `uri_string` via POST.
+     * @constructor 
+     * @param uri_string the destination endpoint (as a string)
+     * @param multipart a #SoupMultipart
+     */
     static new_from_multipart(uri_string: string, multipart: Multipart): Message
+    /**
+     * Creates a new empty #SoupMessage, which will connect to `uri`
+     * @constructor 
+     * @param method the HTTP method for the created request
+     * @param uri the destination endpoint (as a #GUri)
+     */
     static new_from_uri(method: string, uri: GLib.Uri): Message
+    /**
+     * Creates a new #SoupMessage to send `OPTIONS *` to a server. The path of `base_uri`
+     * will be ignored.
+     * @constructor 
+     * @param base_uri the destination endpoint (as a #GUri)
+     */
     static new_options_ping(base_uri: GLib.Uri): Message
-    static $gtype: GObject.Type
+    _init(config?: Message_ConstructProps): void
 }
-interface MultipartInputStream_ConstructProps extends Gio.FilterInputStream_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.MultipartInputStream */
-    message?: Message
+
+interface MultipartInputStream_ConstructProps extends Gio.PollableInputStream_ConstructProps, Gio.FilterInputStream_ConstructProps {
+
+    // Own constructor properties of Soup-3.0.Soup.MultipartInputStream
+
+    message?: Message | null
 }
-class MultipartInputStream {
-    /* Properties of Soup-3.0.Soup.MultipartInputStream */
+
+interface MultipartInputStream extends Gio.PollableInputStream {
+
+    // Own properties of Soup-3.0.Soup.MultipartInputStream
+
     readonly message: Message
-    /* Properties of Gio-2.0.Gio.FilterInputStream */
-    close_base_stream: boolean
-    /* Fields of Gio-2.0.Gio.FilterInputStream */
-    parent_instance: Gio.InputStream
-    base_stream: Gio.InputStream
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.MultipartInputStream */
+
+    // Conflicting properties
+
+    parent_instance: any
+
+    // Owm methods of Soup-3.0.Soup.MultipartInputStream
+
     /**
      * Obtains the headers for the part currently being processed. Note
      * that the #SoupMessageHeaders that are returned are owned by the
@@ -11237,7 +4071,7 @@ class MultipartInputStream {
      * to obtain the next part.
      * @param cancellable a #GCancellable
      */
-    next_part(cancellable?: Gio.Cancellable | null): Gio.InputStream | null
+    next_part(cancellable: Gio.Cancellable | null): Gio.InputStream | null
     /**
      * Obtains a #GInputStream for the next request. See
      * soup_multipart_input_stream_next_part() for details on the
@@ -11246,915 +4080,71 @@ class MultipartInputStream {
      * @param cancellable a #GCancellable.
      * @param callback callback to call when request is satisfied.
      */
-    next_part_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    next_part_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous request for the next part.
      * @param result a #GAsyncResult.
      */
     next_part_finish(result: Gio.AsyncResult): Gio.InputStream | null
-    /* Methods of Gio-2.0.Gio.FilterInputStream */
-    /**
-     * Gets the base stream for the filter stream.
-     */
-    get_base_stream(): Gio.InputStream
-    /**
-     * Returns whether the base stream will be closed when `stream` is
-     * closed.
-     */
-    get_close_base_stream(): boolean
-    /**
-     * Sets whether the base stream will be closed when `stream` is closed.
-     * @param close_base %TRUE to close the base stream.
-     */
-    set_close_base_stream(close_base: boolean): void
-    /* Methods of Gio-2.0.Gio.InputStream */
-    /**
-     * Clears the pending flag on `stream`.
-     */
-    clear_pending(): void
-    /**
-     * Closes the stream, releasing resources related to it.
-     * 
-     * Once the stream is closed, all other operations will return %G_IO_ERROR_CLOSED.
-     * Closing a stream multiple times will not return an error.
-     * 
-     * Streams will be automatically closed when the last reference
-     * is dropped, but you might want to call this function to make sure
-     * resources are released as early as possible.
-     * 
-     * Some streams might keep the backing store of the stream (e.g. a file descriptor)
-     * open after the stream is closed. See the documentation for the individual
-     * stream for details.
-     * 
-     * On failure the first error that happened will be reported, but the close
-     * operation will finish as much as possible. A stream that failed to
-     * close will still return %G_IO_ERROR_CLOSED for all operations. Still, it
-     * is important to check and report the error to the user.
-     * 
-     * If `cancellable` is not %NULL, then the operation can be cancelled by
-     * triggering the cancellable object from another thread. If the operation
-     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-     * Cancelling a close will still leave the stream closed, but some streams
-     * can use a faster close that doesn't block to e.g. check errors.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    close(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Requests an asynchronous closes of the stream, releasing resources related to it.
-     * When the operation is finished `callback` will be called.
-     * You can then call g_input_stream_close_finish() to get the result of the
-     * operation.
-     * 
-     * For behaviour details see g_input_stream_close().
-     * 
-     * The asynchronous methods have a default fallback that uses threads to implement
-     * asynchronicity, so they are optional for inheriting classes. However, if you
-     * override one you must override all.
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
-     */
-    close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
-     * @param result a #GAsyncResult.
-     */
-    close_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Checks if an input stream has pending actions.
-     */
-    has_pending(): boolean
-    /**
-     * Checks if an input stream is closed.
-     */
-    is_closed(): boolean
-    /**
-     * Tries to read `count` bytes from the stream into the buffer starting at
-     * `buffer`. Will block during this read.
-     * 
-     * If count is zero returns zero and does nothing. A value of `count`
-     * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, the number of bytes read into the buffer is returned.
-     * It is not an error if this is not the same as the requested size, as it
-     * can happen e.g. near the end of a file. Zero is returned on end of file
-     * (or if `count` is zero),  but never otherwise.
-     * 
-     * The returned `buffer` is not a nul-terminated string, it can contain nul bytes
-     * at any position, and this function doesn't nul-terminate the `buffer`.
-     * 
-     * If `cancellable` is not %NULL, then the operation can be cancelled by
-     * triggering the cancellable object from another thread. If the operation
-     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-     * operation was partially finished when the operation was cancelled the
-     * partial result will be returned, without an error.
-     * 
-     * On error -1 is returned and `error` is set accordingly.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    read(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
-    /**
-     * Tries to read `count` bytes from the stream into the buffer starting at
-     * `buffer`. Will block during this read.
-     * 
-     * This function is similar to g_input_stream_read(), except it tries to
-     * read as many bytes as requested, only stopping on an error or end of stream.
-     * 
-     * On a successful read of `count` bytes, or if we reached the end of the
-     * stream,  %TRUE is returned, and `bytes_read` is set to the number of bytes
-     * read into `buffer`.
-     * 
-     * If there is an error during the operation %FALSE is returned and `error`
-     * is set to indicate the error status.
-     * 
-     * As a special exception to the normal conventions for functions that
-     * use #GError, if this function returns %FALSE (and sets `error)` then
-     * `bytes_read` will be set to the number of bytes that were successfully
-     * read before the error was encountered.  This functionality is only
-     * available from C.  If you need it from another language then you must
-     * write your own loop around g_input_stream_read().
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    read_all(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* buffer */ Uint8Array, /* bytes_read */ number ]
-    /**
-     * Request an asynchronous read of `count` bytes from the stream into the
-     * buffer starting at `buffer`.
-     * 
-     * This is the asynchronous equivalent of g_input_stream_read_all().
-     * 
-     * Call g_input_stream_read_all_finish() to collect the result.
-     * 
-     * Any outstanding I/O request with higher priority (lower numerical
-     * value) will be executed before an outstanding request with lower
-     * priority. Default priority is %G_PRIORITY_DEFAULT.
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback callback to call when the request is satisfied
-     */
-    read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
-    /**
-     * Finishes an asynchronous stream read operation started with
-     * g_input_stream_read_all_async().
-     * 
-     * As a special exception to the normal conventions for functions that
-     * use #GError, if this function returns %FALSE (and sets `error)` then
-     * `bytes_read` will be set to the number of bytes that were successfully
-     * read before the error was encountered.  This functionality is only
-     * available from C.  If you need it from another language then you must
-     * write your own loop around g_input_stream_read_async().
-     * @param result a #GAsyncResult
-     */
-    read_all_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* bytes_read */ number ]
-    /**
-     * Request an asynchronous read of `count` bytes from the stream into the buffer
-     * starting at `buffer`. When the operation is finished `callback` will be called.
-     * You can then call g_input_stream_read_finish() to get the result of the
-     * operation.
-     * 
-     * During an async request no other sync and async calls are allowed on `stream,` and will
-     * result in %G_IO_ERROR_PENDING errors.
-     * 
-     * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, the number of bytes read into the buffer will be passed to the
-     * callback. It is not an error if this is not the same as the requested size, as it
-     * can happen e.g. near the end of a file, but generally we try to read
-     * as many bytes as requested. Zero is returned on end of file
-     * (or if `count` is zero),  but never otherwise.
-     * 
-     * Any outstanding i/o request with higher priority (lower numerical value) will
-     * be executed before an outstanding request with lower priority. Default
-     * priority is %G_PRIORITY_DEFAULT.
-     * 
-     * The asynchronous methods have a default fallback that uses threads to implement
-     * asynchronicity, so they are optional for inheriting classes. However, if you
-     * override one you must override all.
-     * @param io_priority the [I/O priority][io-priority] of the request.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
-     */
-    read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array
-    /**
-     * Like g_input_stream_read(), this tries to read `count` bytes from
-     * the stream in a blocking fashion. However, rather than reading into
-     * a user-supplied buffer, this will create a new #GBytes containing
-     * the data that was read. This may be easier to use from language
-     * bindings.
-     * 
-     * If count is zero, returns a zero-length #GBytes and does nothing. A
-     * value of `count` larger than %G_MAXSSIZE will cause a
-     * %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, a new #GBytes is returned. It is not an error if the
-     * size of this object is not the same as the requested size, as it
-     * can happen e.g. near the end of a file. A zero-length #GBytes is
-     * returned on end of file (or if `count` is zero), but never
-     * otherwise.
-     * 
-     * If `cancellable` is not %NULL, then the operation can be cancelled by
-     * triggering the cancellable object from another thread. If the operation
-     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-     * operation was partially finished when the operation was cancelled the
-     * partial result will be returned, without an error.
-     * 
-     * On error %NULL is returned and `error` is set accordingly.
-     * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    read_bytes(count: number, cancellable?: Gio.Cancellable | null): GLib.Bytes
-    /**
-     * Request an asynchronous read of `count` bytes from the stream into a
-     * new #GBytes. When the operation is finished `callback` will be
-     * called. You can then call g_input_stream_read_bytes_finish() to get the
-     * result of the operation.
-     * 
-     * During an async request no other sync and async calls are allowed
-     * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
-     * 
-     * A value of `count` larger than %G_MAXSSIZE will cause a
-     * %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, the new #GBytes will be passed to the callback. It is
-     * not an error if this is smaller than the requested size, as it can
-     * happen e.g. near the end of a file, but generally we try to read as
-     * many bytes as requested. Zero is returned on end of file (or if
-     * `count` is zero), but never otherwise.
-     * 
-     * Any outstanding I/O request with higher priority (lower numerical
-     * value) will be executed before an outstanding request with lower
-     * priority. Default priority is %G_PRIORITY_DEFAULT.
-     * @param count the number of bytes that will be read from the stream
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
-     */
-    read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an asynchronous stream read-into-#GBytes operation.
-     * @param result a #GAsyncResult.
-     */
-    read_bytes_finish(result: Gio.AsyncResult): GLib.Bytes
-    /**
-     * Finishes an asynchronous stream read operation.
-     * @param result a #GAsyncResult.
-     */
-    read_finish(result: Gio.AsyncResult): number
-    /**
-     * Sets `stream` to have actions pending. If the pending flag is
-     * already set or `stream` is closed, it will return %FALSE and set
-     * `error`.
-     */
-    set_pending(): boolean
-    /**
-     * Tries to skip `count` bytes from the stream. Will block during the operation.
-     * 
-     * This is identical to g_input_stream_read(), from a behaviour standpoint,
-     * but the bytes that are skipped are not returned to the user. Some
-     * streams have an implementation that is more efficient than reading the data.
-     * 
-     * This function is optional for inherited classes, as the default implementation
-     * emulates it using read.
-     * 
-     * If `cancellable` is not %NULL, then the operation can be cancelled by
-     * triggering the cancellable object from another thread. If the operation
-     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-     * operation was partially finished when the operation was cancelled the
-     * partial result will be returned, without an error.
-     * @param count the number of bytes that will be skipped from the stream
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    skip(count: number, cancellable?: Gio.Cancellable | null): number
-    /**
-     * Request an asynchronous skip of `count` bytes from the stream.
-     * When the operation is finished `callback` will be called.
-     * You can then call g_input_stream_skip_finish() to get the result
-     * of the operation.
-     * 
-     * During an async request no other sync and async calls are allowed,
-     * and will result in %G_IO_ERROR_PENDING errors.
-     * 
-     * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, the number of bytes skipped will be passed to the callback.
-     * It is not an error if this is not the same as the requested size, as it
-     * can happen e.g. near the end of a file, but generally we try to skip
-     * as many bytes as requested. Zero is returned on end of file
-     * (or if `count` is zero), but never otherwise.
-     * 
-     * Any outstanding i/o request with higher priority (lower numerical value)
-     * will be executed before an outstanding request with lower priority.
-     * Default priority is %G_PRIORITY_DEFAULT.
-     * 
-     * The asynchronous methods have a default fallback that uses threads to
-     * implement asynchronicity, so they are optional for inheriting classes.
-     * However, if you override one, you must override all.
-     * @param count the number of bytes that will be skipped from the stream
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
-     */
-    skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes a stream skip operation.
-     * @param result a #GAsyncResult.
-     */
-    skip_finish(result: Gio.AsyncResult): number
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.PollableInputStream */
-    /**
-     * Checks if `stream` is actually pollable. Some classes may implement
-     * #GPollableInputStream but have only certain instances of that class
-     * be pollable. If this method returns %FALSE, then the behavior of
-     * other #GPollableInputStream methods is undefined.
-     * 
-     * For any given stream, the value returned by this method is constant;
-     * a stream cannot switch from pollable to non-pollable or vice versa.
-     */
-    can_poll(): boolean
-    /**
-     * Creates a #GSource that triggers when `stream` can be read, or
-     * `cancellable` is triggered or an error occurs. The callback on the
-     * source is of the #GPollableSourceFunc type.
-     * 
-     * As with g_pollable_input_stream_is_readable(), it is possible that
-     * the stream may not actually be readable even after the source
-     * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-     * rather than g_input_stream_read() from the callback.
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    create_source(cancellable?: Gio.Cancellable | null): GLib.Source
-    /**
-     * Checks if `stream` can be read.
-     * 
-     * Note that some stream types may not be able to implement this 100%
-     * reliably, and it is possible that a call to g_input_stream_read()
-     * after this returns %TRUE would still block. To guarantee
-     * non-blocking behavior, you should always use
-     * g_pollable_input_stream_read_nonblocking(), which will return a
-     * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-     */
-    is_readable(): boolean
-    /**
-     * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-     * with g_input_stream_read(). If `stream` is not currently readable,
-     * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-     * use g_pollable_input_stream_create_source() to create a #GSource
-     * that will be triggered when `stream` is readable.
-     * 
-     * Note that since this method never blocks, you cannot actually
-     * use `cancellable` to cancel it. However, it will return an error
-     * if `cancellable` has already been cancelled when you call, which
-     * may happen if you call this method after a source triggers due
-     * to having been cancelled.
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    read_nonblocking(cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* buffer */ Uint8Array ]
-    /* Virtual methods of Soup-3.0.Soup.MultipartInputStream */
-    /**
-     * Checks if `stream` is actually pollable. Some classes may implement
-     * #GPollableInputStream but have only certain instances of that class
-     * be pollable. If this method returns %FALSE, then the behavior of
-     * other #GPollableInputStream methods is undefined.
-     * 
-     * For any given stream, the value returned by this method is constant;
-     * a stream cannot switch from pollable to non-pollable or vice versa.
-     */
-    vfunc_can_poll(): boolean
-    /**
-     * Creates a #GSource that triggers when `stream` can be read, or
-     * `cancellable` is triggered or an error occurs. The callback on the
-     * source is of the #GPollableSourceFunc type.
-     * 
-     * As with g_pollable_input_stream_is_readable(), it is possible that
-     * the stream may not actually be readable even after the source
-     * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-     * rather than g_input_stream_read() from the callback.
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source
-    /**
-     * Checks if `stream` can be read.
-     * 
-     * Note that some stream types may not be able to implement this 100%
-     * reliably, and it is possible that a call to g_input_stream_read()
-     * after this returns %TRUE would still block. To guarantee
-     * non-blocking behavior, you should always use
-     * g_pollable_input_stream_read_nonblocking(), which will return a
-     * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-     */
-    vfunc_is_readable(): boolean
-    /**
-     * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-     * with g_input_stream_read(). If `stream` is not currently readable,
-     * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-     * use g_pollable_input_stream_create_source() to create a #GSource
-     * that will be triggered when `stream` is readable.
-     * 
-     * Note that since this method never blocks, you cannot actually
-     * use `cancellable` to cancel it. However, it will return an error
-     * if `cancellable` has already been cancelled when you call, which
-     * may happen if you call this method after a source triggers due
-     * to having been cancelled.
-     */
-    vfunc_read_nonblocking(): [ /* returnType */ number, /* buffer */ Uint8Array | null ]
-    /* Virtual methods of Gio-2.0.Gio.InputStream */
-    /**
-     * Requests an asynchronous closes of the stream, releasing resources related to it.
-     * When the operation is finished `callback` will be called.
-     * You can then call g_input_stream_close_finish() to get the result of the
-     * operation.
-     * 
-     * For behaviour details see g_input_stream_close().
-     * 
-     * The asynchronous methods have a default fallback that uses threads to implement
-     * asynchronicity, so they are optional for inheriting classes. However, if you
-     * override one you must override all.
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional cancellable object
-     * @param callback callback to call when the request is satisfied
-     */
-    vfunc_close_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
-     * @param result a #GAsyncResult.
-     */
-    vfunc_close_finish(result: Gio.AsyncResult): boolean
-    vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Request an asynchronous read of `count` bytes from the stream into the buffer
-     * starting at `buffer`. When the operation is finished `callback` will be called.
-     * You can then call g_input_stream_read_finish() to get the result of the
-     * operation.
-     * 
-     * During an async request no other sync and async calls are allowed on `stream,` and will
-     * result in %G_IO_ERROR_PENDING errors.
-     * 
-     * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, the number of bytes read into the buffer will be passed to the
-     * callback. It is not an error if this is not the same as the requested size, as it
-     * can happen e.g. near the end of a file, but generally we try to read
-     * as many bytes as requested. Zero is returned on end of file
-     * (or if `count` is zero),  but never otherwise.
-     * 
-     * Any outstanding i/o request with higher priority (lower numerical value) will
-     * be executed before an outstanding request with lower priority. Default
-     * priority is %G_PRIORITY_DEFAULT.
-     * 
-     * The asynchronous methods have a default fallback that uses threads to implement
-     * asynchronicity, so they are optional for inheriting classes. However, if you
-     * override one you must override all.
-     * @param io_priority the [I/O priority][io-priority] of the request.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
-     */
-    vfunc_read_async(io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): /* buffer */ Uint8Array | null
-    /**
-     * Finishes an asynchronous stream read operation.
-     * @param result a #GAsyncResult.
-     */
-    vfunc_read_finish(result: Gio.AsyncResult): number
-    vfunc_read_fn(buffer: object | null, count: number, cancellable?: Gio.Cancellable | null): number
-    /**
-     * Tries to skip `count` bytes from the stream. Will block during the operation.
-     * 
-     * This is identical to g_input_stream_read(), from a behaviour standpoint,
-     * but the bytes that are skipped are not returned to the user. Some
-     * streams have an implementation that is more efficient than reading the data.
-     * 
-     * This function is optional for inherited classes, as the default implementation
-     * emulates it using read.
-     * 
-     * If `cancellable` is not %NULL, then the operation can be cancelled by
-     * triggering the cancellable object from another thread. If the operation
-     * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-     * operation was partially finished when the operation was cancelled the
-     * partial result will be returned, without an error.
-     * @param count the number of bytes that will be skipped from the stream
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): number
-    /**
-     * Request an asynchronous skip of `count` bytes from the stream.
-     * When the operation is finished `callback` will be called.
-     * You can then call g_input_stream_skip_finish() to get the result
-     * of the operation.
-     * 
-     * During an async request no other sync and async calls are allowed,
-     * and will result in %G_IO_ERROR_PENDING errors.
-     * 
-     * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-     * 
-     * On success, the number of bytes skipped will be passed to the callback.
-     * It is not an error if this is not the same as the requested size, as it
-     * can happen e.g. near the end of a file, but generally we try to skip
-     * as many bytes as requested. Zero is returned on end of file
-     * (or if `count` is zero), but never otherwise.
-     * 
-     * Any outstanding i/o request with higher priority (lower numerical value)
-     * will be executed before an outstanding request with lower priority.
-     * Default priority is %G_PRIORITY_DEFAULT.
-     * 
-     * The asynchronous methods have a default fallback that uses threads to
-     * implement asynchronicity, so they are optional for inheriting classes.
-     * However, if you override one, you must override all.
-     * @param count the number of bytes that will be skipped from the stream
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback callback to call when the request is satisfied
-     */
-    vfunc_skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes a stream skip operation.
-     * @param result a #GAsyncResult.
-     */
-    vfunc_skip_finish(result: Gio.AsyncResult): number
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of Soup-3.0.Soup.MultipartInputStream
+
     connect(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::message", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::message", ...args: any[]): void
     connect(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::close-base-stream", callback: (($obj: MultipartInputStream, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::close-base-stream", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: MultipartInputStream_ConstructProps)
-    _init (config?: MultipartInputStream_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(msg: Message, base_stream: Gio.InputStream): MultipartInputStream
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class for handling streams of multipart messages.
+ * @class 
+ */
+class MultipartInputStream extends Gio.FilterInputStream {
+
+    // Own properties of Soup-3.0.Soup.MultipartInputStream
+
+    static name: string
+    static $gtype: GObject.GType<MultipartInputStream>
+
+    // Constructors of Soup-3.0.Soup.MultipartInputStream
+
+    constructor(config?: MultipartInputStream_ConstructProps) 
+    /**
+     * Creates a new #SoupMultipartInputStream that wraps the
+     * #GInputStream obtained by sending the #SoupMessage. Reads should
+     * not be done directly through this object, use the input streams
+     * returned by soup_multipart_input_stream_next_part() or its async
+     * counterpart instead.
+     * @constructor 
+     * @param msg the #SoupMessage the response is related to.
+     * @param base_stream the #GInputStream returned by sending the request.
+     */
+    constructor(msg: Message, base_stream: Gio.InputStream) 
+    /**
+     * Creates a new #SoupMultipartInputStream that wraps the
+     * #GInputStream obtained by sending the #SoupMessage. Reads should
+     * not be done directly through this object, use the input streams
+     * returned by soup_multipart_input_stream_next_part() or its async
+     * counterpart instead.
+     * @constructor 
+     * @param msg the #SoupMessage the response is related to.
+     * @param base_stream the #GInputStream returned by sending the request.
+     */
+    static new(msg: Message, base_stream: Gio.InputStream): MultipartInputStream
+    _init(config?: MultipartInputStream_ConstructProps): void
+}
+
 interface Server_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.Server */
-    raw_paths?: boolean
+
+    // Own constructor properties of Soup-3.0.Soup.Server
+
+    raw_paths?: boolean | null
     /**
      * If non-%NULL, the value to use for the "Server" header on
      * #SoupServerMessage<!-- -->s processed by this server.
@@ -12181,24 +4171,55 @@ interface Server_ConstructProps extends GObject.Object_ConstructProps {
      * "<literal>libsoup/2.3.2</literal>") to the end of the
      * header for you.
      */
-    server_header?: string
+    server_header?: string | null
     /**
      * A #GTlsAuthenticationMode for SSL/TLS client authentication
      */
-    tls_auth_mode?: Gio.TlsAuthenticationMode
+    tls_auth_mode?: Gio.TlsAuthenticationMode | null
     /**
      * A #GTlsCertificate that has a #GTlsCertificate:private-key
      * set. If this is set, then the server will be able to speak
      * https in addition to (or instead of) plain http.
      */
-    tls_certificate?: Gio.TlsCertificate
+    tls_certificate?: Gio.TlsCertificate | null
     /**
      * A #GTlsDatabase to use for validating SSL/TLS client certificates.
      */
-    tls_database?: Gio.TlsDatabase
+    tls_database?: Gio.TlsDatabase | null
 }
-class Server {
-    /* Properties of Soup-3.0.Soup.Server */
+
+/**
+ * Signal callback interface for `request-aborted`
+ */
+interface Server_RequestAbortedSignalCallback {
+    ($obj: Server, message: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `request-finished`
+ */
+interface Server_RequestFinishedSignalCallback {
+    ($obj: Server, message: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `request-read`
+ */
+interface Server_RequestReadSignalCallback {
+    ($obj: Server, message: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `request-started`
+ */
+interface Server_RequestStartedSignalCallback {
+    ($obj: Server, message: ServerMessage): void
+}
+
+interface Server {
+
+    // Own properties of Soup-3.0.Soup.Server
+
     readonly raw_paths: boolean
     /**
      * If non-%NULL, the value to use for the "Server" header on
@@ -12241,16 +4262,20 @@ class Server {
      * A #GTlsDatabase to use for validating SSL/TLS client certificates.
      */
     tls_database: Gio.TlsDatabase
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Server */
+
+    // Own fields of Soup-3.0.Soup.Server
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.Server
+
     /**
      * Add a new client stream to the `server`.
      * @param stream a #GIOStream
      * @param local_addr the local #GSocketAddress associated with the `stream`
      * @param remote_addr the remote #GSocketAddress associated with the `stream`
      */
-    accept_iostream(stream: Gio.IOStream, local_addr?: Gio.SocketAddress | null, remote_addr?: Gio.SocketAddress | null): boolean
+    accept_iostream(stream: Gio.IOStream, local_addr: Gio.SocketAddress | null, remote_addr: Gio.SocketAddress | null): boolean
     /**
      * Adds an authentication domain to `server`. Each auth domain will
      * have the chance to require authentication for each request that
@@ -12348,7 +4373,7 @@ class Server {
      * soup_server_remove_websocket_extension() if you want to disable it.
      * @param extension_type a #GType
      */
-    add_websocket_extension(extension_type: GObject.Type): void
+    add_websocket_extension(extension_type: GObject.GType): void
     /**
      * Adds a WebSocket handler to `server` for requests prefixed by `path`. (If
      * `path` is %NULL or "/", then this will be the default handler for
@@ -12519,7 +4544,7 @@ class Server {
      * `extension_type)` from `server`.
      * @param extension_type a #GType
      */
-    remove_websocket_extension(extension_type: GObject.Type): void
+    remove_websocket_extension(extension_type: GObject.GType): void
     /**
      * Sets `server'`s #GTlsAuthenticationMode to use for SSL/TLS client authentication
      * @param mode a #GTlsAuthenticationMode
@@ -12548,461 +4573,153 @@ class Server {
      * @param msg a #SoupServerMessage associated with `server`.
      */
     unpause_message(msg: ServerMessage): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Server */
+
+    // Own virtual methods of Soup-3.0.Soup.Server
+
     vfunc_request_aborted(msg: ServerMessage): void
     vfunc_request_finished(msg: ServerMessage): void
     vfunc_request_read(msg: ServerMessage): void
     vfunc_request_started(msg: ServerMessage): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.Server */
-    /**
-     * Emitted when processing has failed for a message; this
-     * could mean either that it could not be read (if
-     * #SoupServer::request_read has not been emitted for it yet),
-     * or that the response could not be written back (if
-     * #SoupServer::request_read has been emitted but
-     * #SoupServer::request_finished has not been).
-     * 
-     * `message` is in an undefined state when this signal is
-     * emitted; the signal exists primarily to allow the server to
-     * free any state that it may have allocated in
-     * #SoupServer::request_started.
-     * @param message the message
-     */
-    connect(sigName: "request-aborted", callback: (($obj: Server, message: ServerMessage) => void)): number
-    connect_after(sigName: "request-aborted", callback: (($obj: Server, message: ServerMessage) => void)): number
-    emit(sigName: "request-aborted", message: ServerMessage): void
-    /**
-     * Emitted when the server has finished writing a response to
-     * a request.
-     * @param message the message
-     */
-    connect(sigName: "request-finished", callback: (($obj: Server, message: ServerMessage) => void)): number
-    connect_after(sigName: "request-finished", callback: (($obj: Server, message: ServerMessage) => void)): number
-    emit(sigName: "request-finished", message: ServerMessage): void
-    /**
-     * Emitted when the server has successfully read a request.
-     * `message` will have all of its request-side information
-     * filled in, and if the message was authenticated, `client`
-     * will have information about that. This signal is emitted
-     * before any (non-early) handlers are called for the message,
-     * and if it sets the message's #status_code, then normal
-     * handler processing will be skipped.
-     * @param message the message
-     */
-    connect(sigName: "request-read", callback: (($obj: Server, message: ServerMessage) => void)): number
-    connect_after(sigName: "request-read", callback: (($obj: Server, message: ServerMessage) => void)): number
-    emit(sigName: "request-read", message: ServerMessage): void
-    /**
-     * Emitted when the server has started reading a new request.
-     * `message` will be completely blank; not even the
-     * Request-Line will have been read yet. About the only thing
-     * you can usefully do with it is connect to its signals.
-     * 
-     * If the request is read successfully, this will eventually
-     * be followed by a #SoupServer::request_read signal. If a
-     * response is then sent, the request processing will end with
-     * a #SoupServer::request_finished signal. If a network error
-     * occurs, the processing will instead end with
-     * #SoupServer::request_aborted.
-     * @param message the new message
-     */
-    connect(sigName: "request-started", callback: (($obj: Server, message: ServerMessage) => void)): number
-    connect_after(sigName: "request-started", callback: (($obj: Server, message: ServerMessage) => void)): number
-    emit(sigName: "request-started", message: ServerMessage): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Soup-3.0.Soup.Server
+
+    connect(sigName: "request-aborted", callback: Server_RequestAbortedSignalCallback): number
+    connect_after(sigName: "request-aborted", callback: Server_RequestAbortedSignalCallback): number
+    emit(sigName: "request-aborted", message: ServerMessage, ...args: any[]): void
+    connect(sigName: "request-finished", callback: Server_RequestFinishedSignalCallback): number
+    connect_after(sigName: "request-finished", callback: Server_RequestFinishedSignalCallback): number
+    emit(sigName: "request-finished", message: ServerMessage, ...args: any[]): void
+    connect(sigName: "request-read", callback: Server_RequestReadSignalCallback): number
+    connect_after(sigName: "request-read", callback: Server_RequestReadSignalCallback): number
+    emit(sigName: "request-read", message: ServerMessage, ...args: any[]): void
+    connect(sigName: "request-started", callback: Server_RequestStartedSignalCallback): number
+    connect_after(sigName: "request-started", callback: Server_RequestStartedSignalCallback): number
+    emit(sigName: "request-started", message: ServerMessage, ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.Server
+
     connect(sigName: "notify::raw-paths", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::raw-paths", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::raw-paths", ...args: any[]): void
     connect(sigName: "notify::server-header", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::server-header", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::server-header", ...args: any[]): void
     connect(sigName: "notify::tls-auth-mode", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-auth-mode", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-auth-mode", ...args: any[]): void
     connect(sigName: "notify::tls-certificate", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-certificate", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-certificate", ...args: any[]): void
     connect(sigName: "notify::tls-database", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-database", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::tls-database", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Server_ConstructProps)
-    _init (config?: Server_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class implementing an HTTP server.
+ * @class 
+ */
+class Server extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.Server
+
+    static name: string
+    static $gtype: GObject.GType<Server>
+
+    // Constructors of Soup-3.0.Soup.Server
+
+    constructor(config?: Server_ConstructProps) 
+    _init(config?: Server_ConstructProps): void
+}
+
 interface ServerMessage_ConstructProps extends GObject.Object_ConstructProps {
 }
-class ServerMessage {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.ServerMessage */
+
+/**
+ * Signal callback interface for `accept-certificate`
+ */
+interface ServerMessage_AcceptCertificateSignalCallback {
+    ($obj: ServerMessage, tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags): boolean
+}
+
+/**
+ * Signal callback interface for `disconnected`
+ */
+interface ServerMessage_DisconnectedSignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `finished`
+ */
+interface ServerMessage_FinishedSignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `got-body`
+ */
+interface ServerMessage_GotBodySignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `got-chunk`
+ */
+interface ServerMessage_GotChunkSignalCallback {
+    ($obj: ServerMessage, chunk: GLib.Bytes): void
+}
+
+/**
+ * Signal callback interface for `got-headers`
+ */
+interface ServerMessage_GotHeadersSignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `wrote-body`
+ */
+interface ServerMessage_WroteBodySignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `wrote-body-data`
+ */
+interface ServerMessage_WroteBodyDataSignalCallback {
+    ($obj: ServerMessage, chunk_size: number): void
+}
+
+/**
+ * Signal callback interface for `wrote-chunk`
+ */
+interface ServerMessage_WroteChunkSignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `wrote-headers`
+ */
+interface ServerMessage_WroteHeadersSignalCallback {
+    ($obj: ServerMessage): void
+}
+
+/**
+ * Signal callback interface for `wrote-informational`
+ */
+interface ServerMessage_WroteInformationalSignalCallback {
+    ($obj: ServerMessage): void
+}
+
+interface ServerMessage {
+
+    // Owm methods of Soup-3.0.Soup.ServerMessage
+
     /**
      * Get the HTTP version of `msg`.
      */
@@ -13102,7 +4819,7 @@ class ServerMessage {
      * @param status_code an HTTP status code
      * @param reason_phrase a reason phrase
      */
-    set_status(status_code: number, reason_phrase?: string | null): void
+    set_status(status_code: number, reason_phrase: string | null): void
     /**
      * "Steals" the HTTP connection associated with `msg` from its
      * #SoupServer. This happens immediately, regardless of the current
@@ -13115,481 +4832,79 @@ class ServerMessage {
      * likely be freed as a side effect.
      */
     steal_connection(): Gio.IOStream
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.ServerMessage */
-    /**
-     * Emitted during the `msg'`s connection TLS handshake
-     * after client TLS certificate has been received.
-     * You can return %TRUE to accept `tls_certificate` despite
-     * `tls_errors`.
-     * @param tls_peer_certificate the peer's #GTlsCertificate
-     * @param tls_peer_errors the tls errors of `tls_certificate`
-     */
-    connect(sigName: "accept-certificate", callback: (($obj: ServerMessage, tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags) => boolean)): number
-    connect_after(sigName: "accept-certificate", callback: (($obj: ServerMessage, tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags) => boolean)): number
-    emit(sigName: "accept-certificate", tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags): void
-    /**
-     * Emitted when the `msg'`s socket is disconnected.
-     */
-    connect(sigName: "disconnected", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "disconnected", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "disconnected"): void
-    /**
-     * Emitted when all HTTP processing is finished for a message.
-     * (After #SoupServerMessage::wrote-body).
-     */
-    connect(sigName: "finished", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "finished", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "finished"): void
-    /**
-     * Emitted after receiving the complete request body.
-     */
-    connect(sigName: "got-body", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "got-body", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "got-body"): void
-    /**
-     * Emitted after receiving a chunk of a message body. Note
-     * that "chunk" in this context means any subpiece of the
-     * body, not necessarily the specific HTTP 1.1 chunks sent by
-     * the other side.
-     * @param chunk the just-read chunk
-     */
-    connect(sigName: "got-chunk", callback: (($obj: ServerMessage, chunk: GLib.Bytes) => void)): number
-    connect_after(sigName: "got-chunk", callback: (($obj: ServerMessage, chunk: GLib.Bytes) => void)): number
-    emit(sigName: "got-chunk", chunk: GLib.Bytes): void
-    /**
-     * Emitted after receiving the Request-Line and request headers.
-     */
-    connect(sigName: "got-headers", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "got-headers", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "got-headers"): void
-    /**
-     * Emitted immediately after writing the complete response body for a
-     * message.
-     */
-    connect(sigName: "wrote-body", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "wrote-body", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "wrote-body"): void
-    /**
-     * Emitted immediately after writing a portion of the message
-     * body to the network.
-     * @param chunk_size the number of bytes written
-     */
-    connect(sigName: "wrote-body-data", callback: (($obj: ServerMessage, chunk_size: number) => void)): number
-    connect_after(sigName: "wrote-body-data", callback: (($obj: ServerMessage, chunk_size: number) => void)): number
-    emit(sigName: "wrote-body-data", chunk_size: number): void
-    /**
-     * Emitted immediately after writing a body chunk for a message.
-     * 
-     * Note that this signal is not parallel to
-     * #SoupServerMessage::got-chunk; it is emitted only when a complete
-     * chunk (added with soup_message_body_append() or
-     * soup_message_body_append_bytes()) has been written. To get
-     * more useful continuous progress information, use
-     * #SoupServerMessage::wrote-body-data.
-     */
-    connect(sigName: "wrote-chunk", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "wrote-chunk", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "wrote-chunk"): void
-    /**
-     * Emitted immediately after writing the response headers for a
-     * message.
-     */
-    connect(sigName: "wrote-headers", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "wrote-headers", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "wrote-headers"): void
-    /**
-     * Emitted immediately after writing a 1xx (Informational) response.
-     */
-    connect(sigName: "wrote-informational", callback: (($obj: ServerMessage) => void)): number
-    connect_after(sigName: "wrote-informational", callback: (($obj: ServerMessage) => void)): number
-    emit(sigName: "wrote-informational"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: ServerMessage, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: ServerMessage, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Soup-3.0.Soup.ServerMessage
+
+    connect(sigName: "accept-certificate", callback: ServerMessage_AcceptCertificateSignalCallback): number
+    connect_after(sigName: "accept-certificate", callback: ServerMessage_AcceptCertificateSignalCallback): number
+    emit(sigName: "accept-certificate", tls_peer_certificate: Gio.TlsCertificate, tls_peer_errors: Gio.TlsCertificateFlags, ...args: any[]): void
+    connect(sigName: "disconnected", callback: ServerMessage_DisconnectedSignalCallback): number
+    connect_after(sigName: "disconnected", callback: ServerMessage_DisconnectedSignalCallback): number
+    emit(sigName: "disconnected", ...args: any[]): void
+    connect(sigName: "finished", callback: ServerMessage_FinishedSignalCallback): number
+    connect_after(sigName: "finished", callback: ServerMessage_FinishedSignalCallback): number
+    emit(sigName: "finished", ...args: any[]): void
+    connect(sigName: "got-body", callback: ServerMessage_GotBodySignalCallback): number
+    connect_after(sigName: "got-body", callback: ServerMessage_GotBodySignalCallback): number
+    emit(sigName: "got-body", ...args: any[]): void
+    connect(sigName: "got-chunk", callback: ServerMessage_GotChunkSignalCallback): number
+    connect_after(sigName: "got-chunk", callback: ServerMessage_GotChunkSignalCallback): number
+    emit(sigName: "got-chunk", chunk: GLib.Bytes, ...args: any[]): void
+    connect(sigName: "got-headers", callback: ServerMessage_GotHeadersSignalCallback): number
+    connect_after(sigName: "got-headers", callback: ServerMessage_GotHeadersSignalCallback): number
+    emit(sigName: "got-headers", ...args: any[]): void
+    connect(sigName: "wrote-body", callback: ServerMessage_WroteBodySignalCallback): number
+    connect_after(sigName: "wrote-body", callback: ServerMessage_WroteBodySignalCallback): number
+    emit(sigName: "wrote-body", ...args: any[]): void
+    connect(sigName: "wrote-body-data", callback: ServerMessage_WroteBodyDataSignalCallback): number
+    connect_after(sigName: "wrote-body-data", callback: ServerMessage_WroteBodyDataSignalCallback): number
+    emit(sigName: "wrote-body-data", chunk_size: number, ...args: any[]): void
+    connect(sigName: "wrote-chunk", callback: ServerMessage_WroteChunkSignalCallback): number
+    connect_after(sigName: "wrote-chunk", callback: ServerMessage_WroteChunkSignalCallback): number
+    emit(sigName: "wrote-chunk", ...args: any[]): void
+    connect(sigName: "wrote-headers", callback: ServerMessage_WroteHeadersSignalCallback): number
+    connect_after(sigName: "wrote-headers", callback: ServerMessage_WroteHeadersSignalCallback): number
+    emit(sigName: "wrote-headers", ...args: any[]): void
+    connect(sigName: "wrote-informational", callback: ServerMessage_WroteInformationalSignalCallback): number
+    connect_after(sigName: "wrote-informational", callback: ServerMessage_WroteInformationalSignalCallback): number
+    emit(sigName: "wrote-informational", ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.ServerMessage
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: ServerMessage_ConstructProps)
-    _init (config?: ServerMessage_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class represnting an HTTP request and response pair for a server.
+ * @class 
+ */
+class ServerMessage extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.ServerMessage
+
+    static name: string
+    static $gtype: GObject.GType<ServerMessage>
+
+    // Constructors of Soup-3.0.Soup.ServerMessage
+
+    constructor(config?: ServerMessage_ConstructProps) 
+    _init(config?: ServerMessage_ConstructProps): void
+}
+
 interface Session_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.Session */
+
+    // Own constructor properties of Soup-3.0.Soup.Session
+
     /**
      * If non-%NULL, the value to use for the "Accept-Language" header
      * on #SoupMessage<!-- -->s sent from this session.
      * 
      * Setting this will disable #SoupSession:accept-language-auto.
      */
-    accept_language?: string
+    accept_language?: string | null
     /**
      * If %TRUE, #SoupSession will automatically set the string
      * for the "Accept-Language" header on every #SoupMessage
@@ -13598,7 +4913,7 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * Setting this will override any previous value of
      * #SoupSession:accept-language.
      */
-    accept_language_auto?: boolean
+    accept_language_auto?: boolean | null
     /**
      * Connection lifetime (in seconds) when idle. Any connection
      * left idle longer than this will be closed.
@@ -13609,7 +4924,7 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * if you want to ensure that all future connections will have
      * this timeout value.
      */
-    idle_timeout?: number
+    idle_timeout?: number | null
     /**
      * Sets the #GInetSocketAddress to use for the client side of
      * the connection.
@@ -13617,15 +4932,15 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * Use this property if you want for instance to bind the
      * local socket to a specific IP address.
      */
-    local_address?: Gio.InetSocketAddress
+    local_address?: Gio.InetSocketAddress | null
     /**
      * The maximum number of connections that the session can open at once.
      */
-    max_conns?: number
+    max_conns?: number | null
     /**
      * The maximum number of connections that the session can open at once to a given host.
      */
-    max_conns_per_host?: number
+    max_conns_per_host?: number | null
     /**
      * A #GProxyResolver to use with this session.
      * 
@@ -13635,7 +4950,7 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * set it to your own #GProxyResolver if you want to control
      * what proxies get used.
      */
-    proxy_resolver?: Gio.ProxyResolver
+    proxy_resolver?: Gio.ProxyResolver | null
     /**
      * Sets a socket to make outgoing connections on. This will override the default
      * behaviour of opening TCP/IP sockets to the hosts specified in the URIs.
@@ -13645,7 +4960,7 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * this is a local service that uses HTTP over UNIX-domain sockets, in that case
      * a #GUnixSocketAddress can be passed to this function.
      */
-    remote_connectable?: Gio.SocketConnectable
+    remote_connectable?: Gio.SocketConnectable | null
     /**
      * The timeout (in seconds) for socket I/O operations
      * (including connecting to a server, and waiting for a reply
@@ -13661,7 +4976,7 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * the length of time that idle persistent connections will be
      * kept open).
      */
-    timeout?: number
+    timeout?: number | null
     /**
      * Sets the #GTlsDatabase to use for validating SSL/TLS
      * certificates.
@@ -13669,13 +4984,13 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * If no certificate database is set, then the default database will be
      * used. See g_tls_backend_get_default_database().
      */
-    tls_database?: Gio.TlsDatabase
+    tls_database?: Gio.TlsDatabase | null
     /**
      * A #GTlsInteraction object that will be passed on to any
      * #GTlsConnections created by the session. (This can be used to
      * provide client-side certificates, for example.)
      */
-    tls_interaction?: Gio.TlsInteraction
+    tls_interaction?: Gio.TlsInteraction | null
     /**
      * If non-%NULL, the value to use for the "User-Agent" header
      * on #SoupMessage<!-- -->s sent from this session.
@@ -13701,10 +5016,27 @@ interface Session_ConstructProps extends GObject.Object_ConstructProps {
      * (eg, "<literal>libsoup/2.3.2</literal>") to the end of the
      * header for you.
      */
-    user_agent?: string
+    user_agent?: string | null
 }
-class Session {
-    /* Properties of Soup-3.0.Soup.Session */
+
+/**
+ * Signal callback interface for `request-queued`
+ */
+interface Session_RequestQueuedSignalCallback {
+    ($obj: Session, msg: Message): void
+}
+
+/**
+ * Signal callback interface for `request-unqueued`
+ */
+interface Session_RequestUnqueuedSignalCallback {
+    ($obj: Session, msg: Message): void
+}
+
+interface Session {
+
+    // Own properties of Soup-3.0.Soup.Session
+
     /**
      * If non-%NULL, the value to use for the "Accept-Language" header
      * on #SoupMessage<!-- -->s sent from this session.
@@ -13824,9 +5156,13 @@ class Session {
      * header for you.
      */
     user_agent: string
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.Session */
+
+    // Own fields of Soup-3.0.Soup.Session
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.Session
+
     /**
      * Cancels all pending requests in `session` and closes all idle
      * persistent connections.
@@ -13856,7 +5192,7 @@ class Session {
      * features are present in sessions by default.
      * @param feature_type a #GType
      */
-    add_feature_by_type(feature_type: GObject.Type): void
+    add_feature_by_type(feature_type: GObject.GType): void
     /**
      * Get the value used by `session` for the "Accept-Language" header on new requests.
      */
@@ -13876,14 +5212,14 @@ class Session {
      * Gets the feature in `session` of type `feature_type`.
      * @param feature_type the #GType of the feature to get
      */
-    get_feature(feature_type: GObject.Type): SessionFeature | null
+    get_feature(feature_type: GObject.GType): SessionFeature | null
     /**
      * Gets the feature in `session` of type `feature_type,` provided
      * that it is not disabled for `msg`.
      * @param feature_type the #GType of the feature to get
      * @param msg a #SoupMessage
      */
-    get_feature_for_message(feature_type: GObject.Type, msg: Message): SessionFeature | null
+    get_feature_for_message(feature_type: GObject.GType, msg: Message): SessionFeature | null
     /**
      * Get the timeout in seconds for idle connection lifetime currently used by `session`.
      */
@@ -13930,7 +5266,7 @@ class Session {
      * some class managed by another feature, such as #SoupAuth).
      * @param feature_type the #GType of the class of features to check for
      */
-    has_feature(feature_type: GObject.Type): boolean
+    has_feature(feature_type: GObject.GType): boolean
     /**
      * Start a preconnection to `msg`. Once the connection is done, it will remain in idle state so that
      * it can be reused by future requests. If there's already an idle connection for the given `msg`
@@ -13945,7 +5281,7 @@ class Session {
      * @param cancellable a #GCancellable
      * @param callback the callback to invoke when the operation finishes
      */
-    preconnect_async(msg: Message, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    preconnect_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete a preconnect async operation started with soup_session_preconnect_async().
      * @param result the #GAsyncResult passed to your callback
@@ -13963,7 +5299,7 @@ class Session {
      * SoupSession:remove-feature-by-type property.
      * @param feature_type a #GType
      */
-    remove_feature_by_type(feature_type: GObject.Type): void
+    remove_feature_by_type(feature_type: GObject.GType): void
     /**
      * Synchronously sends `msg` and waits for the beginning of a response.
      * On success, a #GInputStream will be returned which you can use to
@@ -13986,7 +5322,7 @@ class Session {
      * @param msg a #SoupMessage
      * @param cancellable a #GCancellable
      */
-    send(msg: Message, cancellable?: Gio.Cancellable | null): Gio.InputStream
+    send(msg: Message, cancellable: Gio.Cancellable | null): Gio.InputStream
     /**
      * Synchronously sends `msg` and reads the response body.
      * On success, a #GBytes will be returned with the response body.
@@ -13997,7 +5333,7 @@ class Session {
      * @param msg a #SoupMessage
      * @param cancellable a #GCancellable
      */
-    send_and_read(msg: Message, cancellable?: Gio.Cancellable | null): GLib.Bytes
+    send_and_read(msg: Message, cancellable: Gio.Cancellable | null): GLib.Bytes
     /**
      * Asynchronously sends `msg` and reads the response body.
      * When `callback` is called, then either `msg` has been sent, and its response
@@ -14013,7 +5349,7 @@ class Session {
      * @param cancellable a #GCancellable
      * @param callback the callback to invoke
      */
-    send_and_read_async(msg: Message, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    send_and_read_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_and_read_async() call and (if
      * successful), returns a #GBytes with the response body.
@@ -14033,7 +5369,7 @@ class Session {
      * @param cancellable a #GCancellable
      * @param callback the callback to invoke
      */
-    send_async(msg: Message, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    send_async(msg: Message, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the response to a soup_session_send_async() call and (if
      * successful), returns a #GInputStream that can be used to read the
@@ -14066,7 +5402,7 @@ class Session {
      * is %NULL then no proxies will be used. See #SoupSession:proxy-resolver for more information.
      * @param proxy_resolver a #GProxyResolver or %NULL
      */
-    set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void
+    set_proxy_resolver(proxy_resolver: Gio.ProxyResolver | null): void
     /**
      * Set a timeout in seconds for socket I/O operations to be used by `session`
      * on new connections. See #SoupSession:timeout for more information.
@@ -14079,14 +5415,14 @@ class Session {
      * for more information.
      * @param tls_database a #GTlsDatabase or %NULL
      */
-    set_tls_database(tls_database?: Gio.TlsDatabase | null): void
+    set_tls_database(tls_database: Gio.TlsDatabase | null): void
     /**
      * Set a #GTlsInteraction to be used by `session` on new connections. If `tls_interaction`
      * is %NULL then client certificate validation will always fail. See #SoupSession:tls-interaction
      * for more information.
      * @param tls_interaction a #GTlsInteraction or %NULL
      */
-    set_tls_interaction(tls_interaction?: Gio.TlsInteraction | null): void
+    set_tls_interaction(tls_interaction: Gio.TlsInteraction | null): void
     /**
      * Set the value to use for the "User-Agent" header on #SoupMessage<!-- -->s sent from `session`.
      * If `user_agent` has trailing whitespace, `session` will append its own product token
@@ -14122,7 +5458,7 @@ class Session {
      * @param cancellable a #GCancellable
      * @param callback the callback to invoke
      */
-    websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the #SoupWebsocketConnection response to a
      * soup_session_websocket_connect_async() call and (if successful),
@@ -14131,505 +5467,179 @@ class Session {
      * @param result the #GAsyncResult passed to your callback
      */
     websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.Session */
+
+    // Own virtual methods of Soup-3.0.Soup.Session
+
     vfunc_request_queued(msg: Message): void
     vfunc_request_unqueued(msg: Message): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.Session */
-    /**
-     * Emitted when a request is queued on `session`.
-     * 
-     * When sending a request, first #SoupSession::request_queued
-     * is emitted, indicating that the session has become aware of
-     * the request.
-     * 
-     * After a connection is available to send the request various
-     * #SoupMessage signals are emitted as the message is
-     * processed. If the message is requeued, it will emit
-     * #SoupMessage::restarted, which will then be followed by other
-     * #SoupMessage signals when the message is re-sent.
-     * 
-     * Eventually, the message will emit #SoupMessage::finished.
-     * Normally, this signals the completion of message
-     * processing. However, it is possible that the application
-     * will requeue the message from the "finished" handler.
-     * In that case the process will loop back.
-     * 
-     * Eventually, a message will reach "finished" and not be
-     * requeued. At that point, the session will emit
-     * #SoupSession::request_unqueued to indicate that it is done
-     * with the message.
-     * 
-     * To sum up: #SoupSession::request_queued and
-     * #SoupSession::request_unqueued are guaranteed to be emitted
-     * exactly once, but #SoupMessage::finished (and all of the
-     * other #SoupMessage signals) may be invoked multiple times
-     * for a given message.
-     * @param msg the request that was queued
-     */
-    connect(sigName: "request-queued", callback: (($obj: Session, msg: Message) => void)): number
-    connect_after(sigName: "request-queued", callback: (($obj: Session, msg: Message) => void)): number
-    emit(sigName: "request-queued", msg: Message): void
-    /**
-     * Emitted when a request is removed from `session'`s queue,
-     * indicating that `session` is done with it. See
-     * #SoupSession::request_queued for a detailed description of the
-     * message lifecycle within a session.
-     * @param msg the request that was unqueued
-     */
-    connect(sigName: "request-unqueued", callback: (($obj: Session, msg: Message) => void)): number
-    connect_after(sigName: "request-unqueued", callback: (($obj: Session, msg: Message) => void)): number
-    emit(sigName: "request-unqueued", msg: Message): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Soup-3.0.Soup.Session
+
+    connect(sigName: "request-queued", callback: Session_RequestQueuedSignalCallback): number
+    connect_after(sigName: "request-queued", callback: Session_RequestQueuedSignalCallback): number
+    emit(sigName: "request-queued", msg: Message, ...args: any[]): void
+    connect(sigName: "request-unqueued", callback: Session_RequestUnqueuedSignalCallback): number
+    connect_after(sigName: "request-unqueued", callback: Session_RequestUnqueuedSignalCallback): number
+    emit(sigName: "request-unqueued", msg: Message, ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.Session
+
     connect(sigName: "notify::accept-language", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accept-language", ...args: any[]): void
     connect(sigName: "notify::accept-language-auto", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::accept-language-auto", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::accept-language-auto", ...args: any[]): void
     connect(sigName: "notify::idle-timeout", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::idle-timeout", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::idle-timeout", ...args: any[]): void
     connect(sigName: "notify::local-address", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::local-address", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::local-address", ...args: any[]): void
     connect(sigName: "notify::max-conns", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-conns", ...args: any[]): void
     connect(sigName: "notify::max-conns-per-host", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-conns-per-host", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-conns-per-host", ...args: any[]): void
     connect(sigName: "notify::proxy-resolver", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-resolver", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-resolver", ...args: any[]): void
     connect(sigName: "notify::remote-connectable", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::remote-connectable", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::remote-connectable", ...args: any[]): void
     connect(sigName: "notify::timeout", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::timeout", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::timeout", ...args: any[]): void
     connect(sigName: "notify::tls-database", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-database", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-database", ...args: any[]): void
     connect(sigName: "notify::tls-interaction", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-interaction", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-interaction", ...args: any[]): void
     connect(sigName: "notify::user-agent", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-agent", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::user-agent", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Session_ConstructProps)
-    _init (config?: Session_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Session
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class managing options and state for #SoupMessage<!-- -->s.
+ * @class 
+ */
+class Session extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.Session
+
+    static name: string
+    static $gtype: GObject.GType<Session>
+
+    // Constructors of Soup-3.0.Soup.Session
+
+    constructor(config?: Session_ConstructProps) 
+    /**
+     * Creates a #SoupSession with the default options.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a #SoupSession with the default options.
+     * @constructor 
+     */
+    static new(): Session
+    _init(config?: Session_ConstructProps): void
+}
+
 interface WebsocketConnection_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Soup-3.0.Soup.WebsocketConnection */
+
+    // Own constructor properties of Soup-3.0.Soup.WebsocketConnection
+
     /**
      * The type of connection (client/server).
      */
-    connection_type?: WebsocketConnectionType
+    connection_type?: WebsocketConnectionType | null
     /**
      * List of #SoupWebsocketExtension objects that are active in the connection.
      */
-    extensions?: object
+    extensions?: object | null
     /**
      * The underlying IO stream the WebSocket is communicating
      * over.
      * 
      * The input and output streams must be pollable streams.
      */
-    io_stream?: Gio.IOStream
+    io_stream?: Gio.IOStream | null
     /**
      * Interval in seconds on when to send a ping message which will
      * serve as a keepalive message. If set to 0 the keepalive message is
      * disabled.
      */
-    keepalive_interval?: number
+    keepalive_interval?: number | null
     /**
      * The maximum payload size for incoming packets the protocol expects
      * or 0 to not limit it.
      */
-    max_incoming_payload_size?: number
+    max_incoming_payload_size?: number | null
     /**
      * The client's Origin.
      */
-    origin?: string
+    origin?: string | null
     /**
      * The chosen protocol, or %NULL if a protocol was not agreed
      * upon.
      */
-    protocol?: string
+    protocol?: string | null
     /**
      * The URI of the WebSocket.
      * 
      * For servers this represents the address of the WebSocket,
      * and for clients it is the address connected to.
      */
-    uri?: GLib.Uri
+    uri?: GLib.Uri | null
 }
-class WebsocketConnection {
-    /* Properties of Soup-3.0.Soup.WebsocketConnection */
+
+/**
+ * Signal callback interface for `closed`
+ */
+interface WebsocketConnection_ClosedSignalCallback {
+    ($obj: WebsocketConnection): void
+}
+
+/**
+ * Signal callback interface for `closing`
+ */
+interface WebsocketConnection_ClosingSignalCallback {
+    ($obj: WebsocketConnection): void
+}
+
+/**
+ * Signal callback interface for `error`
+ */
+interface WebsocketConnection_ErrorSignalCallback {
+    ($obj: WebsocketConnection, error: GLib.Error): void
+}
+
+/**
+ * Signal callback interface for `message`
+ */
+interface WebsocketConnection_MessageSignalCallback {
+    ($obj: WebsocketConnection, type: number, message: GLib.Bytes): void
+}
+
+/**
+ * Signal callback interface for `pong`
+ */
+interface WebsocketConnection_PongSignalCallback {
+    ($obj: WebsocketConnection, message: GLib.Bytes): void
+}
+
+interface WebsocketConnection {
+
+    // Own properties of Soup-3.0.Soup.WebsocketConnection
+
     /**
      * The type of connection (client/server).
      */
@@ -14676,9 +5686,9 @@ class WebsocketConnection {
      * and for clients it is the address connected to.
      */
     readonly uri: GLib.Uri
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.WebsocketConnection */
+
+    // Owm methods of Soup-3.0.Soup.WebsocketConnection
+
     /**
      * Close the connection in an orderly fashion.
      * 
@@ -14693,7 +5703,7 @@ class WebsocketConnection {
      * @param code close code
      * @param data close data
      */
-    close(code: number, data?: string | null): void
+    close(code: number, data: string | null): void
     /**
      * Get the close code received from the WebSocket peer.
      * 
@@ -14790,467 +5800,120 @@ class WebsocketConnection {
      * @param max_incoming_payload_size the maximum payload size
      */
     set_max_incoming_payload_size(max_incoming_payload_size: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Soup-3.0.Soup.WebsocketConnection */
-    /**
-     * Emitted when the connection has completely closed, either
-     * due to an orderly close from the peer, one initiated via
-     * soup_websocket_connection_close() or a fatal error
-     * condition that caused a close.
-     * 
-     * This signal will be emitted once.
-     */
-    connect(sigName: "closed", callback: (($obj: WebsocketConnection) => void)): number
-    connect_after(sigName: "closed", callback: (($obj: WebsocketConnection) => void)): number
-    emit(sigName: "closed"): void
-    /**
-     * This signal will be emitted during an orderly close.
-     */
-    connect(sigName: "closing", callback: (($obj: WebsocketConnection) => void)): number
-    connect_after(sigName: "closing", callback: (($obj: WebsocketConnection) => void)): number
-    emit(sigName: "closing"): void
-    /**
-     * Emitted when an error occurred on the WebSocket. This may
-     * be fired multiple times. Fatal errors will be followed by
-     * the #SoupWebsocketConnection::closed signal being emitted.
-     * @param error the error that occured
-     */
-    connect(sigName: "error", callback: (($obj: WebsocketConnection, error: GLib.Error) => void)): number
-    connect_after(sigName: "error", callback: (($obj: WebsocketConnection, error: GLib.Error) => void)): number
-    emit(sigName: "error", error: GLib.Error): void
-    /**
-     * Emitted when we receive a message from the peer.
-     * 
-     * As a convenience, the `message` data will always be
-     * NUL-terminated, but the NUL byte will not be included in
-     * the length count.
-     * @param type the type of message contents
-     * @param message the message data
-     */
-    connect(sigName: "message", callback: (($obj: WebsocketConnection, type: number, message: GLib.Bytes) => void)): number
-    connect_after(sigName: "message", callback: (($obj: WebsocketConnection, type: number, message: GLib.Bytes) => void)): number
-    emit(sigName: "message", type: number, message: GLib.Bytes): void
-    /**
-     * Emitted when we receive a Pong frame (solicited or
-     * unsolicited) from the peer.
-     * 
-     * As a convenience, the `message` data will always be
-     * NUL-terminated, but the NUL byte will not be included in
-     * the length count.
-     * @param message the application data (if any)
-     */
-    connect(sigName: "pong", callback: (($obj: WebsocketConnection, message: GLib.Bytes) => void)): number
-    connect_after(sigName: "pong", callback: (($obj: WebsocketConnection, message: GLib.Bytes) => void)): number
-    emit(sigName: "pong", message: GLib.Bytes): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Soup-3.0.Soup.WebsocketConnection
+
+    connect(sigName: "closed", callback: WebsocketConnection_ClosedSignalCallback): number
+    connect_after(sigName: "closed", callback: WebsocketConnection_ClosedSignalCallback): number
+    emit(sigName: "closed", ...args: any[]): void
+    connect(sigName: "closing", callback: WebsocketConnection_ClosingSignalCallback): number
+    connect_after(sigName: "closing", callback: WebsocketConnection_ClosingSignalCallback): number
+    emit(sigName: "closing", ...args: any[]): void
+    connect(sigName: "error", callback: WebsocketConnection_ErrorSignalCallback): number
+    connect_after(sigName: "error", callback: WebsocketConnection_ErrorSignalCallback): number
+    emit(sigName: "error", error: GLib.Error, ...args: any[]): void
+    connect(sigName: "message", callback: WebsocketConnection_MessageSignalCallback): number
+    connect_after(sigName: "message", callback: WebsocketConnection_MessageSignalCallback): number
+    emit(sigName: "message", type: number, message: GLib.Bytes, ...args: any[]): void
+    connect(sigName: "pong", callback: WebsocketConnection_PongSignalCallback): number
+    connect_after(sigName: "pong", callback: WebsocketConnection_PongSignalCallback): number
+    emit(sigName: "pong", message: GLib.Bytes, ...args: any[]): void
+
+    // Class property signals of Soup-3.0.Soup.WebsocketConnection
+
     connect(sigName: "notify::connection-type", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connection-type", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::connection-type", ...args: any[]): void
     connect(sigName: "notify::extensions", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::extensions", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::extensions", ...args: any[]): void
     connect(sigName: "notify::io-stream", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::io-stream", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::io-stream", ...args: any[]): void
     connect(sigName: "notify::keepalive-interval", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::keepalive-interval", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::keepalive-interval", ...args: any[]): void
     connect(sigName: "notify::max-incoming-payload-size", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::max-incoming-payload-size", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::max-incoming-payload-size", ...args: any[]): void
     connect(sigName: "notify::origin", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::origin", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::origin", ...args: any[]): void
     connect(sigName: "notify::protocol", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::protocol", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::protocol", ...args: any[]): void
     connect(sigName: "notify::state", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::state", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::state", ...args: any[]): void
     connect(sigName: "notify::uri", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::uri", callback: (($obj: WebsocketConnection, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::uri", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: WebsocketConnection_ConstructProps)
-    _init (config?: WebsocketConnection_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(stream: Gio.IOStream, uri: GLib.Uri, type: WebsocketConnectionType, origin: string | null, protocol: string | null, extensions: WebsocketExtension[]): WebsocketConnection
-    static $gtype: GObject.Type
 }
+
+/**
+ * A class representing a WebSocket connection.
+ * @class 
+ */
+class WebsocketConnection extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.WebsocketConnection
+
+    static name: string
+    static $gtype: GObject.GType<WebsocketConnection>
+
+    // Constructors of Soup-3.0.Soup.WebsocketConnection
+
+    constructor(config?: WebsocketConnection_ConstructProps) 
+    /**
+     * Creates a #SoupWebsocketConnection on `stream` with the given active `extensions`.
+     * This should be called after completing the handshake to begin using the WebSocket
+     * protocol.
+     * @constructor 
+     * @param stream a #GIOStream connected to the WebSocket server
+     * @param uri the URI of the connection
+     * @param type the type of connection (client/side)
+     * @param origin the Origin of the client
+     * @param protocol the subprotocol in use
+     * @param extensions a #GList of #SoupWebsocketExtension objects
+     */
+    constructor(stream: Gio.IOStream, uri: GLib.Uri, type: WebsocketConnectionType, origin: string | null, protocol: string | null, extensions: WebsocketExtension[]) 
+    /**
+     * Creates a #SoupWebsocketConnection on `stream` with the given active `extensions`.
+     * This should be called after completing the handshake to begin using the WebSocket
+     * protocol.
+     * @constructor 
+     * @param stream a #GIOStream connected to the WebSocket server
+     * @param uri the URI of the connection
+     * @param type the type of connection (client/side)
+     * @param origin the Origin of the client
+     * @param protocol the subprotocol in use
+     * @param extensions a #GList of #SoupWebsocketExtension objects
+     */
+    static new(stream: Gio.IOStream, uri: GLib.Uri, type: WebsocketConnectionType, origin: string | null, protocol: string | null, extensions: WebsocketExtension[]): WebsocketConnection
+    _init(config?: WebsocketConnection_ConstructProps): void
+}
+
 interface WebsocketExtension_ConstructProps extends GObject.Object_ConstructProps {
 }
-class WebsocketExtension {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.WebsocketExtension */
+
+interface WebsocketExtension {
+
+    // Own fields of Soup-3.0.Soup.WebsocketExtension
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Soup-3.0.Soup.WebsocketExtension
+
     /**
      * Configures `extension` with the given `params`
      * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
      * @param params the parameters, or %NULL
      */
-    configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
+    configure(connection_type: WebsocketConnectionType, params: GLib.HashTable | null): boolean
     /**
      * Get the parameters strings to be included in the request header. If the extension
      * doesn't include any parameter in the request, this function returns %NULL.
@@ -15281,335 +5944,26 @@ class WebsocketExtension {
      * @param payload the payload data
      */
     process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.WebsocketExtension */
+
+    // Own virtual methods of Soup-3.0.Soup.WebsocketExtension
+
     /**
      * Configures `extension` with the given `params`
+     * @virtual 
      * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
      * @param params the parameters, or %NULL
      */
-    vfunc_configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
+    vfunc_configure(connection_type: WebsocketConnectionType, params: GLib.HashTable | null): boolean
     /**
      * Get the parameters strings to be included in the request header. If the extension
      * doesn't include any parameter in the request, this function returns %NULL.
+     * @virtual 
      */
     vfunc_get_request_params(): string | null
     /**
      * Get the parameters strings to be included in the response header. If the extension
      * doesn't include any parameter in the response, this function returns %NULL.
+     * @virtual 
      */
     vfunc_get_response_params(): string | null
     /**
@@ -15618,6 +5972,7 @@ class WebsocketExtension {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will reset them in `header`.
+     * @virtual 
      * @param header the message header
      * @param payload the payload data
      */
@@ -15628,918 +5983,112 @@ class WebsocketExtension {
      * `payload` and a new #GBytes is returned with the new data.
      * 
      * Extensions using reserved bits of the header will change them in `header`.
+     * @virtual 
      * @param header the message header
      * @param payload the payload data
      */
     vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: WebsocketExtension, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: WebsocketExtension, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Soup-3.0.Soup.WebsocketExtension
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: WebsocketExtension_ConstructProps)
-    _init (config?: WebsocketExtension_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Class for impelementing websocket extensions.
+ * @class 
+ */
+class WebsocketExtension extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.WebsocketExtension
+
+    static name: string
+    static $gtype: GObject.GType<WebsocketExtension>
+
+    // Constructors of Soup-3.0.Soup.WebsocketExtension
+
+    constructor(config?: WebsocketExtension_ConstructProps) 
+    _init(config?: WebsocketExtension_ConstructProps): void
+}
+
 interface WebsocketExtensionDeflate_ConstructProps extends WebsocketExtension_ConstructProps {
 }
-class WebsocketExtensionDeflate {
-    /* Fields of Soup-3.0.Soup.WebsocketExtension */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Soup-3.0.Soup.WebsocketExtension */
-    /**
-     * Configures `extension` with the given `params`
-     * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
-     * @param params the parameters, or %NULL
-     */
-    configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
-    /**
-     * Get the parameters strings to be included in the request header. If the extension
-     * doesn't include any parameter in the request, this function returns %NULL.
-     */
-    get_request_params(): string | null
-    /**
-     * Get the parameters strings to be included in the response header. If the extension
-     * doesn't include any parameter in the response, this function returns %NULL.
-     */
-    get_response_params(): string | null
-    /**
-     * Process a message after it's received. If the payload isn't changed the given
-     * `payload` is just returned, otherwise g_bytes_unref() is called on the given
-     * `payload` and a new #GBytes is returned with the new data.
-     * 
-     * Extensions using reserved bits of the header will reset them in `header`.
-     * @param header the message header
-     * @param payload the payload data
-     */
-    process_incoming_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
-    /**
-     * Process a message before it's sent. If the payload isn't changed the given
-     * `payload` is just returned, otherwise g_bytes_unref() is called on the given
-     * `payload` and a new #GBytes is returned with the new data.
-     * 
-     * Extensions using reserved bits of the header will change them in `header`.
-     * @param header the message header
-     * @param payload the payload data
-     */
-    process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Soup-3.0.Soup.WebsocketExtension */
-    /**
-     * Configures `extension` with the given `params`
-     * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
-     * @param params the parameters, or %NULL
-     */
-    vfunc_configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable | null): boolean
-    /**
-     * Get the parameters strings to be included in the request header. If the extension
-     * doesn't include any parameter in the request, this function returns %NULL.
-     */
-    vfunc_get_request_params(): string | null
-    /**
-     * Get the parameters strings to be included in the response header. If the extension
-     * doesn't include any parameter in the response, this function returns %NULL.
-     */
-    vfunc_get_response_params(): string | null
-    /**
-     * Process a message after it's received. If the payload isn't changed the given
-     * `payload` is just returned, otherwise g_bytes_unref() is called on the given
-     * `payload` and a new #GBytes is returned with the new data.
-     * 
-     * Extensions using reserved bits of the header will reset them in `header`.
-     * @param header the message header
-     * @param payload the payload data
-     */
-    vfunc_process_incoming_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
-    /**
-     * Process a message before it's sent. If the payload isn't changed the given
-     * `payload` is just returned, otherwise g_bytes_unref() is called on the given
-     * `payload` and a new #GBytes is returned with the new data.
-     * 
-     * Extensions using reserved bits of the header will change them in `header`.
-     * @param header the message header
-     * @param payload the payload data
-     */
-    vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [ /* returnType */ GLib.Bytes, /* header */ number ]
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: WebsocketExtensionDeflate, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: WebsocketExtensionDeflate, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface WebsocketExtensionDeflate {
+
+    // Class property signals of Soup-3.0.Soup.WebsocketExtensionDeflate
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * A SoupWebsocketExtensionDeflate is a #SoupWebsocketExtension
+ * implementing permessage-deflate (RFC 7692).
+ * 
+ * This extension is used by default in a #SoupSession when #SoupWebsocketExtensionManager
+ * feature is present, and always used by #SoupServer.
+ * @class 
+ */
+class WebsocketExtensionDeflate extends WebsocketExtension {
+
+    // Own properties of Soup-3.0.Soup.WebsocketExtensionDeflate
+
     static name: string
-    constructor (config?: WebsocketExtensionDeflate_ConstructProps)
-    _init (config?: WebsocketExtensionDeflate_ConstructProps): void
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<WebsocketExtensionDeflate>
+
+    // Constructors of Soup-3.0.Soup.WebsocketExtensionDeflate
+
+    constructor(config?: WebsocketExtensionDeflate_ConstructProps) 
+    _init(config?: WebsocketExtensionDeflate_ConstructProps): void
 }
-interface WebsocketExtensionManager_ConstructProps extends GObject.Object_ConstructProps {
+
+interface WebsocketExtensionManager_ConstructProps extends SessionFeature_ConstructProps, GObject.Object_ConstructProps {
 }
-class WebsocketExtensionManager {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: WebsocketExtensionManager, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: WebsocketExtensionManager, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+interface WebsocketExtensionManager extends SessionFeature {
+
+    // Class property signals of Soup-3.0.Soup.WebsocketExtensionManager
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: WebsocketExtensionManager_ConstructProps)
-    _init (config?: WebsocketExtensionManager_ConstructProps): void
-    static $gtype: GObject.Type
 }
-abstract class AuthClass {
-    /* Fields of Soup-3.0.Soup.AuthClass */
+
+/**
+ * SoupWebsocketExtensionManager is the #SoupSessionFeature that handles WebSockets
+ * extensions for a #SoupSession.
+ * 
+ * A SoupWebsocketExtensionManager is added to the session by default, and normally
+ * you don't need to worry about it at all. However, if you want to
+ * disable WebSocket extensions, you can remove the feature from the
+ * session with soup_session_remove_feature_by_type(), or disable it on
+ * individual requests with soup_message_disable_feature().
+ * @class 
+ */
+class WebsocketExtensionManager extends GObject.Object {
+
+    // Own properties of Soup-3.0.Soup.WebsocketExtensionManager
+
+    static name: string
+    static $gtype: GObject.GType<WebsocketExtensionManager>
+
+    // Constructors of Soup-3.0.Soup.WebsocketExtensionManager
+
+    constructor(config?: WebsocketExtensionManager_ConstructProps) 
+    _init(config?: WebsocketExtensionManager_ConstructProps): void
+}
+
+interface AuthClass {
+
+    // Own fields of Soup-3.0.Soup.AuthClass
+
     parent_class: GObject.ObjectClass
     scheme_name: string
     strength: number
@@ -16551,51 +6100,123 @@ abstract class AuthClass {
     is_ready: (auth: Auth, msg: Message) => boolean
     can_authenticate: (auth: Auth) => boolean
     padding: object[]
+}
+
+abstract class AuthClass {
+
+    // Own properties of Soup-3.0.Soup.AuthClass
+
     static name: string
 }
-abstract class AuthDomainBasicClass {
-    /* Fields of Soup-3.0.Soup.AuthDomainBasicClass */
+
+interface AuthDomainBasicClass {
+
+    // Own fields of Soup-3.0.Soup.AuthDomainBasicClass
+
     parent_class: AuthDomainClass
+}
+
+abstract class AuthDomainBasicClass {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainBasicClass
+
     static name: string
 }
-abstract class AuthDomainClass {
-    /* Fields of Soup-3.0.Soup.AuthDomainClass */
+
+interface AuthDomainClass {
+
+    // Own fields of Soup-3.0.Soup.AuthDomainClass
+
     parent_class: GObject.ObjectClass
     accepts: (domain: AuthDomain, msg: ServerMessage, header: string) => string
     challenge: (domain: AuthDomain, msg: ServerMessage) => string
     check_password: (domain: AuthDomain, msg: ServerMessage, username: string, password: string) => boolean
     padding: object[]
+}
+
+abstract class AuthDomainClass {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainClass
+
     static name: string
 }
-abstract class AuthDomainDigestClass {
-    /* Fields of Soup-3.0.Soup.AuthDomainDigestClass */
+
+interface AuthDomainDigestClass {
+
+    // Own fields of Soup-3.0.Soup.AuthDomainDigestClass
+
     parent_class: AuthDomainClass
+}
+
+abstract class AuthDomainDigestClass {
+
+    // Own properties of Soup-3.0.Soup.AuthDomainDigestClass
+
     static name: string
 }
-abstract class AuthManagerClass {
-    /* Fields of Soup-3.0.Soup.AuthManagerClass */
+
+interface AuthManagerClass {
+
+    // Own fields of Soup-3.0.Soup.AuthManagerClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class AuthManagerClass {
+
+    // Own properties of Soup-3.0.Soup.AuthManagerClass
+
     static name: string
 }
-abstract class CacheClass {
-    /* Fields of Soup-3.0.Soup.CacheClass */
+
+interface CacheClass {
+
+    // Own fields of Soup-3.0.Soup.CacheClass
+
     parent_class: GObject.ObjectClass
     get_cacheability: (cache: Cache, msg: Message) => Cacheability
     padding: object[]
+}
+
+abstract class CacheClass {
+
+    // Own properties of Soup-3.0.Soup.CacheClass
+
     static name: string
 }
+
+interface ContentDecoderClass {
+
+    // Own fields of Soup-3.0.Soup.ContentDecoderClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class ContentDecoderClass {
-    /* Fields of Soup-3.0.Soup.ContentDecoderClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Soup-3.0.Soup.ContentDecoderClass
+
     static name: string
 }
+
+interface ContentSnifferClass {
+
+    // Own fields of Soup-3.0.Soup.ContentSnifferClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class ContentSnifferClass {
-    /* Fields of Soup-3.0.Soup.ContentSnifferClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Soup-3.0.Soup.ContentSnifferClass
+
     static name: string
 }
-class Cookie {
-    /* Methods of Soup-3.0.Soup.Cookie */
+
+interface Cookie {
+
+    // Owm methods of Soup-3.0.Soup.Cookie
+
     /**
      * Tests if `cookie` should be sent to `uri`.
      * 
@@ -16733,10 +6354,90 @@ class Cookie {
      * (ie, for sending a cookie from a #SoupServer to a client).
      */
     to_set_cookie_header(): string
+}
+
+/**
+ * An HTTP cookie.
+ * 
+ * `name` and `value` will be set for all cookies. If the cookie is
+ * generated from a string that appears to have no name, then `name`
+ * will be the empty string.
+ * 
+ * `domain` and `path` give the host or domain, and path within that
+ * host/domain, to restrict this cookie to. If `domain` starts with
+ * ".", that indicates a domain (which matches the string after the
+ * ".", or any hostname that has `domain` as a suffix). Otherwise, it
+ * is a hostname and must match exactly.
+ * 
+ * `expires` will be non-%NULL if the cookie uses either the original
+ * "expires" attribute, or the newer "max-age" attribute. If `expires`
+ * is %NULL, it indicates that neither "expires" nor "max-age" was
+ * specified, and the cookie expires at the end of the session.
+ * 
+ * If `http_only` is set, the cookie should not be exposed to untrusted
+ * code (eg, javascript), so as to minimize the danger posed by
+ * cross-site scripting attacks.
+ * @record 
+ */
+class Cookie {
+
+    // Own properties of Soup-3.0.Soup.Cookie
+
     static name: string
-    static new(name: string, value: string, domain: string, path: string, max_age: number): Cookie
-    constructor(name: string, value: string, domain: string, path: string, max_age: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Soup-3.0.Soup.Cookie
+
+    /**
+     * Creates a new #SoupCookie with the given attributes. (Use
+     * soup_cookie_set_secure() and soup_cookie_set_http_only() if you
+     * need to set those attributes on the returned cookie.)
+     * 
+     * If `domain` starts with ".", that indicates a domain (which matches
+     * the string after the ".", or any hostname that has `domain` as a
+     * suffix). Otherwise, it is a hostname and must match exactly.
+     * 
+     * `max_age` is used to set the "expires" attribute on the cookie; pass
+     * -1 to not include the attribute (indicating that the cookie expires
+     * with the current session), 0 for an already-expired cookie, or a
+     * lifetime in seconds. You can use the constants
+     * %SOUP_COOKIE_MAX_AGE_ONE_HOUR, %SOUP_COOKIE_MAX_AGE_ONE_DAY,
+     * %SOUP_COOKIE_MAX_AGE_ONE_WEEK and %SOUP_COOKIE_MAX_AGE_ONE_YEAR (or
+     * multiples thereof) to calculate this value. (If you really care
+     * about setting the exact time that the cookie will expire, use
+     * soup_cookie_set_expires().)
+     * @constructor 
+     * @param name cookie name
+     * @param value cookie value
+     * @param domain cookie domain or hostname
+     * @param path cookie path, or %NULL
+     * @param max_age max age of the cookie, or -1 for a session cookie
+     */
+    constructor(name: string, value: string, domain: string, path: string, max_age: number) 
+    /**
+     * Creates a new #SoupCookie with the given attributes. (Use
+     * soup_cookie_set_secure() and soup_cookie_set_http_only() if you
+     * need to set those attributes on the returned cookie.)
+     * 
+     * If `domain` starts with ".", that indicates a domain (which matches
+     * the string after the ".", or any hostname that has `domain` as a
+     * suffix). Otherwise, it is a hostname and must match exactly.
+     * 
+     * `max_age` is used to set the "expires" attribute on the cookie; pass
+     * -1 to not include the attribute (indicating that the cookie expires
+     * with the current session), 0 for an already-expired cookie, or a
+     * lifetime in seconds. You can use the constants
+     * %SOUP_COOKIE_MAX_AGE_ONE_HOUR, %SOUP_COOKIE_MAX_AGE_ONE_DAY,
+     * %SOUP_COOKIE_MAX_AGE_ONE_WEEK and %SOUP_COOKIE_MAX_AGE_ONE_YEAR (or
+     * multiples thereof) to calculate this value. (If you really care
+     * about setting the exact time that the cookie will expire, use
+     * soup_cookie_set_expires().)
+     * @constructor 
+     * @param name cookie name
+     * @param value cookie value
+     * @param domain cookie domain or hostname
+     * @param path cookie path, or %NULL
+     * @param max_age max age of the cookie, or -1 for a session cookie
+     */
     static new(name: string, value: string, domain: string, path: string, max_age: number): Cookie
     /**
      * Parses `header` and returns a #SoupCookie. (If `header` contains
@@ -16751,45 +6452,98 @@ class Cookie {
      * @param header a cookie string (eg, the value of a Set-Cookie header)
      * @param origin origin of the cookie, or %NULL
      */
-    static parse(header: string, origin?: GLib.Uri | null): Cookie | null
+    static parse(header: string, origin: GLib.Uri | null): Cookie | null
 }
-abstract class CookieJarClass {
-    /* Fields of Soup-3.0.Soup.CookieJarClass */
+
+interface CookieJarClass {
+
+    // Own fields of Soup-3.0.Soup.CookieJarClass
+
     parent_class: GObject.ObjectClass
     save: (jar: CookieJar) => void
     is_persistent: (jar: CookieJar) => boolean
     changed: (jar: CookieJar, old_cookie: Cookie, new_cookie: Cookie) => void
     padding: object[]
+}
+
+abstract class CookieJarClass {
+
+    // Own properties of Soup-3.0.Soup.CookieJarClass
+
     static name: string
 }
+
+interface CookieJarDBClass {
+
+    // Own fields of Soup-3.0.Soup.CookieJarDBClass
+
+    parent_class: CookieJarClass
+}
+
 abstract class CookieJarDBClass {
-    /* Fields of Soup-3.0.Soup.CookieJarDBClass */
-    parent_class: CookieJarClass
+
+    // Own properties of Soup-3.0.Soup.CookieJarDBClass
+
     static name: string
 }
+
+interface CookieJarTextClass {
+
+    // Own fields of Soup-3.0.Soup.CookieJarTextClass
+
+    parent_class: CookieJarClass
+}
+
 abstract class CookieJarTextClass {
-    /* Fields of Soup-3.0.Soup.CookieJarTextClass */
-    parent_class: CookieJarClass
+
+    // Own properties of Soup-3.0.Soup.CookieJarTextClass
+
     static name: string
 }
-abstract class HSTSEnforcerClass {
-    /* Fields of Soup-3.0.Soup.HSTSEnforcerClass */
+
+interface HSTSEnforcerClass {
+
+    // Own fields of Soup-3.0.Soup.HSTSEnforcerClass
+
     /**
      * The parent class.
+     * @field 
      */
     parent_class: GObject.ObjectClass
     is_persistent: (hsts_enforcer: HSTSEnforcer) => boolean
     has_valid_policy: (hsts_enforcer: HSTSEnforcer, domain: string) => boolean
     changed: (enforcer: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void
+}
+
+/**
+ * Class structure for #SoupHSTSEnforcer.
+ * @record 
+ */
+abstract class HSTSEnforcerClass {
+
+    // Own properties of Soup-3.0.Soup.HSTSEnforcerClass
+
     static name: string
 }
-abstract class HSTSEnforcerDBClass {
-    /* Fields of Soup-3.0.Soup.HSTSEnforcerDBClass */
+
+interface HSTSEnforcerDBClass {
+
+    // Own fields of Soup-3.0.Soup.HSTSEnforcerDBClass
+
     parent_class: HSTSEnforcerClass
+}
+
+abstract class HSTSEnforcerDBClass {
+
+    // Own properties of Soup-3.0.Soup.HSTSEnforcerDBClass
+
     static name: string
 }
-class HSTSPolicy {
-    /* Methods of Soup-3.0.Soup.HSTSPolicy */
+
+interface HSTSPolicy {
+
+    // Owm methods of Soup-3.0.Soup.HSTSPolicy
+
     /**
      * Copies `policy`.
      */
@@ -16829,31 +6583,140 @@ class HSTSPolicy {
      * see soup_hsts_policy_new_session_policy() for details.
      */
     is_session_policy(): boolean
+}
+
+/**
+ * #SoupHSTSPolicy implements HTTP policies, as described by
+ * [RFC 6797](http://tools.ietf.org/html/rfc6797).
+ * 
+ * `domain` represents the host that this policy applies to. The domain
+ * must be IDNA-canonicalized. soup_hsts_policy_new() and related methods
+ * will do this for you.
+ * 
+ * `max_age` contains the 'max-age' value from the Strict Transport
+ * Security header and indicates the time to live of this policy,
+ * in seconds.
+ * 
+ * `expires` will be non-%NULL if the policy has been set by the host and
+ * hence has an expiry time. If `expires` is %NULL, it indicates that the
+ * policy is a permanent session policy set by the user agent.
+ * 
+ * If `include_subdomains` is %TRUE, the Strict Transport Security policy
+ * must also be enforced on subdomains of `domain`.
+ * @record 
+ */
+class HSTSPolicy {
+
+    // Own properties of Soup-3.0.Soup.HSTSPolicy
+
     static name: string
+
+    // Constructors of Soup-3.0.Soup.HSTSPolicy
+
+    /**
+     * Creates a new #SoupHSTSPolicy with the given attributes.
+     * 
+     * `domain` is a domain on which the strict transport security policy
+     * represented by this object must be enforced.
+     * 
+     * `max_age` is used to set the "expires" attribute on the policy; pass
+     * SOUP_HSTS_POLICY_MAX_AGE_PAST for an already-expired policy, or a
+     * lifetime in seconds.
+     * 
+     * If `include_subdomains` is %TRUE, the strict transport security policy
+     * must also be enforced on all subdomains of `domain`.
+     * @constructor 
+     * @param domain policy domain or hostname
+     * @param max_age max age of the policy
+     * @param include_subdomains %TRUE if the policy applies on subdomains
+     */
+    constructor(domain: string, max_age: number, include_subdomains: boolean) 
+    /**
+     * Creates a new #SoupHSTSPolicy with the given attributes.
+     * 
+     * `domain` is a domain on which the strict transport security policy
+     * represented by this object must be enforced.
+     * 
+     * `max_age` is used to set the "expires" attribute on the policy; pass
+     * SOUP_HSTS_POLICY_MAX_AGE_PAST for an already-expired policy, or a
+     * lifetime in seconds.
+     * 
+     * If `include_subdomains` is %TRUE, the strict transport security policy
+     * must also be enforced on all subdomains of `domain`.
+     * @constructor 
+     * @param domain policy domain or hostname
+     * @param max_age max age of the policy
+     * @param include_subdomains %TRUE if the policy applies on subdomains
+     */
     static new(domain: string, max_age: number, include_subdomains: boolean): HSTSPolicy
-    constructor(domain: string, max_age: number, include_subdomains: boolean)
-    /* Static methods and pseudo-constructors */
-    static new(domain: string, max_age: number, include_subdomains: boolean): HSTSPolicy
+    /**
+     * Parses `msg'`s first "Strict-Transport-Security" response header and
+     * returns a #SoupHSTSPolicy.
+     * @constructor 
+     * @param msg a #SoupMessage
+     */
     static new_from_response(msg: Message): HSTSPolicy
+    /**
+     * Full version of #soup_hsts_policy_new(), to use with an existing
+     * expiration date. See #soup_hsts_policy_new() for details.
+     * @constructor 
+     * @param domain policy domain or hostname
+     * @param max_age max age of the policy
+     * @param expires the date of expiration of the policy or %NULL for a permanent policy
+     * @param include_subdomains %TRUE if the policy applies on subdomains
+     */
     static new_full(domain: string, max_age: number, expires: GLib.DateTime, include_subdomains: boolean): HSTSPolicy
+    /**
+     * Creates a new session #SoupHSTSPolicy with the given attributes.
+     * A session policy is a policy that is valid during the lifetime of
+     * the #SoupHSTSEnforcer it is added to. Contrary to regular policies,
+     * it has no expiration date and is not stored in persistent
+     * enforcers. These policies are useful for user-agent to load their
+     * own or user-defined rules.
+     * 
+     * `domain` is a domain on which the strict transport security policy
+     * represented by this object must be enforced.
+     * 
+     * If `include_subdomains` is %TRUE, the strict transport security policy
+     * must also be enforced on all subdomains of `domain`.
+     * @constructor 
+     * @param domain policy domain or hostname
+     * @param include_subdomains %TRUE if the policy applies on sub domains
+     */
     static new_session_policy(domain: string, include_subdomains: boolean): HSTSPolicy
 }
-abstract class LoggerClass {
-    /* Fields of Soup-3.0.Soup.LoggerClass */
+
+interface LoggerClass {
+
+    // Own fields of Soup-3.0.Soup.LoggerClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class LoggerClass {
+
+    // Own properties of Soup-3.0.Soup.LoggerClass
+
     static name: string
 }
-class MessageBody {
-    /* Fields of Soup-3.0.Soup.MessageBody */
+
+interface MessageBody {
+
+    // Own fields of Soup-3.0.Soup.MessageBody
+
     /**
      * the data
+     * @field 
      */
     data: Uint8Array
     /**
      * length of `data`
+     * @field 
      */
     length: number
-    /* Methods of Soup-3.0.Soup.MessageBody */
+
+    // Owm methods of Soup-3.0.Soup.MessageBody
+
     /**
      * Appends the data from `buffer` to `body`.
      * @param buffer a #GBytes
@@ -16956,19 +6819,63 @@ class MessageBody {
      * @param chunk a #GBytes returned from soup_message_body_get_chunk()
      */
     wrote_chunk(chunk: GLib.Bytes): void
+}
+
+/**
+ * A #SoupMessage request or response body.
+ * 
+ * Note that while `length` always reflects the full length of the
+ * message body, `data` is normally %NULL, and will only be filled in
+ * after soup_message_body_flatten() is called. For client-side
+ * messages, this automatically happens for the response body after it
+ * has been fully read. Likewise, for server-side
+ * messages, the request body is automatically filled in after being
+ * read.
+ * 
+ * As an added bonus, when `data` is filled in, it is always terminated
+ * with a '\0' byte (which is not reflected in `length)`.
+ * @record 
+ */
+class MessageBody {
+
+    // Own properties of Soup-3.0.Soup.MessageBody
+
     static name: string
-    static new(): MessageBody
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Soup-3.0.Soup.MessageBody
+
+    /**
+     * Creates a new #SoupMessageBody. #SoupMessage uses this internally; you
+     * will not normally need to call it yourself.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #SoupMessageBody. #SoupMessage uses this internally; you
+     * will not normally need to call it yourself.
+     * @constructor 
+     */
     static new(): MessageBody
 }
-abstract class MessageClass {
-    /* Fields of Soup-3.0.Soup.MessageClass */
+
+interface MessageClass {
+
+    // Own fields of Soup-3.0.Soup.MessageClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class MessageClass {
+
+    // Own properties of Soup-3.0.Soup.MessageClass
+
     static name: string
 }
-class MessageHeaders {
-    /* Methods of Soup-3.0.Soup.MessageHeaders */
+
+interface MessageHeaders {
+
+    // Owm methods of Soup-3.0.Soup.MessageHeaders
+
     /**
      * Appends a new header with name `name` and value `value` to `hdrs`. (If
      * there is an existing header with name `name,` then this creates a
@@ -17040,13 +6947,13 @@ class MessageHeaders {
      * `end,` and `total_length`. If the total length field in the header
      * was specified as "*", then `total_length` will be set to -1.
      */
-    get_content_range(): [ /* returnType */ boolean, /* start */ number, /* end */ number, /* total_length */ number | null ]
+    get_content_range(): [ /* returnType */ boolean, /* start */ number, /* end */ number, /* total_length */ number ]
     /**
      * Looks up the "Content-Type" header in `hdrs,` parses it, and returns
      * its value in *`content_type` and *`params`. `params` can be %NULL if you
      * are only interested in the content type itself.
      */
-    get_content_type(): [ /* returnType */ string | null, /* params */ GLib.HashTable | null ]
+    get_content_type(): [ /* returnType */ string | null, /* params */ GLib.HashTable ]
     /**
      * Gets the message body encoding that `hdrs` declare. This may not
      * always correspond to the encoding used on the wire; eg, a HEAD
@@ -17172,7 +7079,7 @@ class MessageHeaders {
      * @param disposition the disposition-type
      * @param params additional parameters, or %NULL
      */
-    set_content_disposition(disposition: string, params?: GLib.HashTable | null): void
+    set_content_disposition(disposition: string, params: GLib.HashTable | null): void
     /**
      * Sets the message body length that `hdrs` will declare, and sets
      * `hdrs'`s encoding to %SOUP_ENCODING_CONTENT_LENGTH.
@@ -17209,7 +7116,7 @@ class MessageHeaders {
      * @param content_type the MIME type
      * @param params additional parameters, or %NULL
      */
-    set_content_type(content_type: string, params?: GLib.HashTable | null): void
+    set_content_type(content_type: string, params: GLib.HashTable | null): void
     /**
      * Sets the message body encoding that `hdrs` will declare. In particular,
      * you should use this if you are going to send a request or response in
@@ -17255,14 +7162,42 @@ class MessageHeaders {
      * `hdrs` are freed
      */
     unref(): void
+}
+
+/**
+ * The HTTP message headers associated with a request or response.
+ * @record 
+ */
+class MessageHeaders {
+
+    // Own properties of Soup-3.0.Soup.MessageHeaders
+
     static name: string
-    static new(type: MessageHeadersType): MessageHeaders
-    constructor(type: MessageHeadersType)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Soup-3.0.Soup.MessageHeaders
+
+    /**
+     * Creates a #SoupMessageHeaders. (#SoupMessage does this
+     * automatically for its own headers. You would only need to use this
+     * method if you are manually parsing or generating message headers.)
+     * @constructor 
+     * @param type the type of headers
+     */
+    constructor(type: MessageHeadersType) 
+    /**
+     * Creates a #SoupMessageHeaders. (#SoupMessage does this
+     * automatically for its own headers. You would only need to use this
+     * method if you are manually parsing or generating message headers.)
+     * @constructor 
+     * @param type the type of headers
+     */
     static new(type: MessageHeadersType): MessageHeaders
 }
-class MessageHeadersIter {
-    /* Methods of Soup-3.0.Soup.MessageHeadersIter */
+
+interface MessageHeadersIter {
+
+    // Owm methods of Soup-3.0.Soup.MessageHeadersIter
+
     /**
      * Yields the next name/value pair in the %SoupMessageHeaders being
      * iterated by `iter`. If `iter` has already yielded the last header,
@@ -17270,16 +7205,38 @@ class MessageHeadersIter {
      * and `value` will be unchanged.
      */
     next(): [ /* returnType */ boolean, /* name */ string, /* value */ string ]
+}
+
+/**
+ * An opaque type used to iterate over a %SoupMessageHeaders
+ * structure.
+ * 
+ * After intializing the iterator with
+ * soup_message_headers_iter_init(), call
+ * soup_message_headers_iter_next() to fetch data from it.
+ * 
+ * You may not modify the headers while iterating over them.
+ * @record 
+ */
+class MessageHeadersIter {
+
+    // Own properties of Soup-3.0.Soup.MessageHeadersIter
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Soup-3.0.Soup.MessageHeadersIter
+
     /**
      * Initializes `iter` for iterating `hdrs`.
      * @param hdrs a %SoupMessageHeaders
      */
     static init(hdrs: MessageHeaders): /* iter */ MessageHeadersIter
 }
-class MessageMetrics {
-    /* Methods of Soup-3.0.Soup.MessageMetrics */
+
+interface MessageMetrics {
+
+    // Owm methods of Soup-3.0.Soup.MessageMetrics
+
     /**
      * Copies `metrics`.
      */
@@ -17389,10 +7346,33 @@ class MessageMetrics {
      * connection was used or resource was loaded from the local disk cache).
      */
     get_tls_start(): number
+}
+
+/**
+ * SoupMessageMetrics contains metrics collected while loading a #SoupMessage
+ * either from the network or the disk cache.
+ * 
+ * Temporal metrics are expressed as a monotonic time and always start with a
+ * fetch start event and finish with response end. All other events are optional.
+ * An event can be 0 because it hasn't happened yet, because it's optional or
+ * because the load failed before the event reached.
+ * 
+ * Size metrics are expressed in bytes and aree updated while the #SoupMessage is
+ * being loaded. You can connect to different #SoupMessage signals to get the
+ * final result of every value.
+ * @record 
+ */
+class MessageMetrics {
+
+    // Own properties of Soup-3.0.Soup.MessageMetrics
+
     static name: string
 }
-class Multipart {
-    /* Methods of Soup-3.0.Soup.Multipart */
+
+interface Multipart {
+
+    // Owm methods of Soup-3.0.Soup.Multipart
+
     /**
      * Adds a new MIME part containing `body` to `multipart,` using
      * "Content-Disposition: form-data", as per the HTML forms
@@ -17438,86 +7418,249 @@ class Multipart {
      * @param dest_headers the headers of the HTTP message to serialize `multipart` to
      */
     to_message(dest_headers: MessageHeaders): /* dest_body */ GLib.Bytes
+}
+
+/**
+ * Represents a multipart HTTP message body, parsed according to the
+ * syntax of RFC 2046. Of particular interest to HTTP are
+ * <literal>multipart/byte-ranges</literal> and
+ * <literal>multipart/form-data</literal>.
+ * 
+ * Although the headers of a #SoupMultipart body part will contain the
+ * full headers from that body part, libsoup does not interpret them
+ * according to MIME rules. For example, each body part is assumed to
+ * have "binary" Content-Transfer-Encoding, even if its headers
+ * explicitly state otherwise. In other words, don't try to use
+ * #SoupMultipart for handling real MIME multiparts.
+ * @record 
+ */
+class Multipart {
+
+    // Own properties of Soup-3.0.Soup.Multipart
+
     static name: string
+
+    // Constructors of Soup-3.0.Soup.Multipart
+
+    /**
+     * Creates a new empty #SoupMultipart with a randomly-generated
+     * boundary string. Note that `mime_type` must be the full MIME type,
+     * including "multipart/".
+     * @constructor 
+     * @param mime_type the MIME type of the multipart to create.
+     */
+    constructor(mime_type: string) 
+    /**
+     * Creates a new empty #SoupMultipart with a randomly-generated
+     * boundary string. Note that `mime_type` must be the full MIME type,
+     * including "multipart/".
+     * @constructor 
+     * @param mime_type the MIME type of the multipart to create.
+     */
     static new(mime_type: string): Multipart
-    constructor(mime_type: string)
-    /* Static methods and pseudo-constructors */
-    static new(mime_type: string): Multipart
+    /**
+     * Parses `headers` and `body` to form a new #SoupMultipart
+     * @constructor 
+     * @param headers the headers of the HTTP message to parse
+     * @param body the body of the HTTP message to parse
+     */
     static new_from_message(headers: MessageHeaders, body: GLib.Bytes): Multipart
 }
-abstract class MultipartInputStreamClass {
-    /* Fields of Soup-3.0.Soup.MultipartInputStreamClass */
+
+interface MultipartInputStreamClass {
+
+    // Own fields of Soup-3.0.Soup.MultipartInputStreamClass
+
     parent_class: Gio.FilterInputStreamClass
+}
+
+abstract class MultipartInputStreamClass {
+
+    // Own properties of Soup-3.0.Soup.MultipartInputStreamClass
+
     static name: string
 }
-class Range {
-    /* Fields of Soup-3.0.Soup.Range */
+
+interface Range {
+
+    // Own fields of Soup-3.0.Soup.Range
+
     /**
      * the start of the range
+     * @field 
      */
     start: number
     /**
      * the end of the range
+     * @field 
      */
     end: number
+}
+
+/**
+ * Represents a byte range as used in the Range header.
+ * 
+ * If `end` is non-negative, then `start` and `end` represent the bounds
+ * of of the range, counting from 0. (Eg, the first 500 bytes would be
+ * represented as `start` = 0 and `end` = 499.)
+ * 
+ * If `end` is -1 and `start` is non-negative, then this represents a
+ * range starting at `start` and ending with the last byte of the
+ * requested resource body. (Eg, all but the first 500 bytes would be
+ * `start` = 500, and `end` = -1.)
+ * 
+ * If `end` is -1 and `start` is negative, then it represents a "suffix
+ * range", referring to the last -`start` bytes of the resource body.
+ * (Eg, the last 500 bytes would be `start` = -500 and `end` = -1.)
+ * @record 
+ */
+class Range {
+
+    // Own properties of Soup-3.0.Soup.Range
+
     static name: string
 }
-abstract class ServerClass {
-    /* Fields of Soup-3.0.Soup.ServerClass */
+
+interface ServerClass {
+
+    // Own fields of Soup-3.0.Soup.ServerClass
+
     parent_class: GObject.ObjectClass
     request_started: (server: Server, msg: ServerMessage) => void
     request_read: (server: Server, msg: ServerMessage) => void
     request_finished: (server: Server, msg: ServerMessage) => void
     request_aborted: (server: Server, msg: ServerMessage) => void
     padding: object[]
+}
+
+abstract class ServerClass {
+
+    // Own properties of Soup-3.0.Soup.ServerClass
+
     static name: string
 }
-abstract class ServerMessageClass {
-    /* Fields of Soup-3.0.Soup.ServerMessageClass */
+
+interface ServerMessageClass {
+
+    // Own fields of Soup-3.0.Soup.ServerMessageClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class ServerMessageClass {
+
+    // Own properties of Soup-3.0.Soup.ServerMessageClass
+
     static name: string
 }
-abstract class SessionClass {
-    /* Fields of Soup-3.0.Soup.SessionClass */
+
+interface SessionClass {
+
+    // Own fields of Soup-3.0.Soup.SessionClass
+
     parent_class: GObject.ObjectClass
     request_queued: (session: Session, msg: Message) => void
     request_unqueued: (session: Session, msg: Message) => void
+}
+
+abstract class SessionClass {
+
+    // Own properties of Soup-3.0.Soup.SessionClass
+
     static name: string
 }
+
+interface SessionFeatureInterface {
+}
+
+/**
+ * The interface implemented by #SoupSessionFeature<!-- -->s.
+ * @record 
+ */
 abstract class SessionFeatureInterface {
+
+    // Own properties of Soup-3.0.Soup.SessionFeatureInterface
+
     static name: string
 }
-abstract class WebsocketConnectionClass {
-    /* Fields of Soup-3.0.Soup.WebsocketConnectionClass */
+
+interface WebsocketConnectionClass {
+
+    // Own fields of Soup-3.0.Soup.WebsocketConnectionClass
+
     parent_class: GObject.ObjectClass
+}
+
+/**
+ * The abstract base class for #SoupWebsocketConnection
+ * @record 
+ */
+abstract class WebsocketConnectionClass {
+
+    // Own properties of Soup-3.0.Soup.WebsocketConnectionClass
+
     static name: string
 }
-abstract class WebsocketExtensionClass {
-    /* Fields of Soup-3.0.Soup.WebsocketExtensionClass */
+
+interface WebsocketExtensionClass {
+
+    // Own fields of Soup-3.0.Soup.WebsocketExtensionClass
+
     /**
      * the parent class
+     * @field 
      */
     parent_class: GObject.ObjectClass
     /**
      * the name of the extension
+     * @field 
      */
     name: string
-    configure: (extension: WebsocketExtension, connection_type: WebsocketConnectionType, params?: GLib.HashTable | null) => boolean
+    configure: (extension: WebsocketExtension, connection_type: WebsocketConnectionType, params: GLib.HashTable | null) => boolean
     get_request_params: (extension: WebsocketExtension) => string | null
     get_response_params: (extension: WebsocketExtension) => string | null
     process_outgoing_message: (extension: WebsocketExtension, header: number, payload: GLib.Bytes) => [ /* returnType */ GLib.Bytes, /* header */ number ]
     process_incoming_message: (extension: WebsocketExtension, header: number, payload: GLib.Bytes) => [ /* returnType */ GLib.Bytes, /* header */ number ]
+}
+
+/**
+ * The class structure for the SoupWebsocketExtension.
+ * @record 
+ */
+abstract class WebsocketExtensionClass {
+
+    // Own properties of Soup-3.0.Soup.WebsocketExtensionClass
+
     static name: string
 }
-abstract class WebsocketExtensionDeflateClass {
-    /* Fields of Soup-3.0.Soup.WebsocketExtensionDeflateClass */
+
+interface WebsocketExtensionDeflateClass {
+
+    // Own fields of Soup-3.0.Soup.WebsocketExtensionDeflateClass
+
     parent_class: WebsocketExtensionClass
+}
+
+abstract class WebsocketExtensionDeflateClass {
+
+    // Own properties of Soup-3.0.Soup.WebsocketExtensionDeflateClass
+
     static name: string
 }
-abstract class WebsocketExtensionManagerClass {
-    /* Fields of Soup-3.0.Soup.WebsocketExtensionManagerClass */
+
+interface WebsocketExtensionManagerClass {
+
+    // Own fields of Soup-3.0.Soup.WebsocketExtensionManagerClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class WebsocketExtensionManagerClass {
+
+    // Own properties of Soup-3.0.Soup.WebsocketExtensionManagerClass
+
     static name: string
 }
+
 }
 export default Soup;

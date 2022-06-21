@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -209,6 +211,7 @@ enum UserInformationFlags {
 }
 /**
  * Options to use when requesting background.
+ * @bitfield 
  */
 enum BackgroundFlags {
     /**
@@ -226,6 +229,7 @@ enum BackgroundFlags {
 }
 /**
  * Options for how the cursor is handled.
+ * @bitfield 
  */
 enum CursorMode {
     /**
@@ -243,6 +247,7 @@ enum CursorMode {
 }
 /**
  * Flags to specify what input devices to control for a remote desktop session.
+ * @bitfield 
  */
 enum DeviceType {
     /**
@@ -264,6 +269,7 @@ enum DeviceType {
 }
 /**
  * Flags that determine what session status changes are inhibited.
+ * @bitfield 
  */
 enum InhibitFlags {
     /**
@@ -285,6 +291,7 @@ enum InhibitFlags {
 }
 /**
  * The type of a launcher.
+ * @bitfield 
  */
 enum LauncherType {
     /**
@@ -298,6 +305,7 @@ enum LauncherType {
 }
 /**
  * Options for opening files.
+ * @bitfield 
  */
 enum OpenFileFlags {
     /**
@@ -316,6 +324,7 @@ enum OpenUriFlags {
 }
 /**
  * Flags to specify what kind of sources to offer for a screencast session.
+ * @bitfield 
  */
 enum OutputType {
     /**
@@ -333,6 +342,7 @@ enum OutputType {
 }
 /**
  * Options for starting remote desktop sessions.
+ * @bitfield 
  */
 enum RemoteDesktopFlags {
     /**
@@ -346,6 +356,7 @@ enum RemoteDesktopFlags {
 }
 /**
  * Options for starting screen casts.
+ * @bitfield 
  */
 enum ScreencastFlags {
     /**
@@ -364,6 +375,7 @@ enum ScreenshotFlags {
 /**
  * Flags influencing the spawn operation and how the
  * new sandbox is created.
+ * @bitfield 
  */
 enum SpawnFlags {
     /**
@@ -393,6 +405,7 @@ enum SpawnFlags {
 }
 /**
  * The values of this enumeration determine where the wallpaper is being set.
+ * @bitfield 
  */
 enum WallpaperFlags {
     /**
@@ -415,10 +428,53 @@ enum WallpaperFlags {
 const WALLPAPER_TARGET_BOTH: number
 interface Portal_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Portal {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Xdp-1.0.Xdp.Portal */
+
+/**
+ * Signal callback interface for `location-updated`
+ */
+interface Portal_LocationUpdatedSignalCallback {
+    ($obj: Portal, latitude: number, longitude: number, altitude: number, accuracy: number, speed: number, heading: number, description: string, timestamp_s: number, timestamp_ms: number): void
+}
+
+/**
+ * Signal callback interface for `notification-action-invoked`
+ */
+interface Portal_NotificationActionInvokedSignalCallback {
+    ($obj: Portal, id: string, action: string, parameter: GLib.Variant | null): void
+}
+
+/**
+ * Signal callback interface for `session-state-changed`
+ */
+interface Portal_SessionStateChangedSignalCallback {
+    ($obj: Portal, screensaver_active: boolean, session_state: LoginSessionState): void
+}
+
+/**
+ * Signal callback interface for `spawn-exited`
+ */
+interface Portal_SpawnExitedSignalCallback {
+    ($obj: Portal, pid: number, exit_status: number): void
+}
+
+/**
+ * Signal callback interface for `update-available`
+ */
+interface Portal_UpdateAvailableSignalCallback {
+    ($obj: Portal, running_commit: string, local_commit: string, remote_commit: string): void
+}
+
+/**
+ * Signal callback interface for `update-progress`
+ */
+interface Portal_UpdateProgressSignalCallback {
+    ($obj: Portal, n_ops: number, op: number, progress: number, status: UpdateStatus, error: string, error_message: string): void
+}
+
+interface Portal {
+
+    // Owm methods of Xdp-1.0.Xdp.Portal
+
     /**
      * Request access to a camera.
      * 
@@ -430,7 +486,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    access_camera(parent: Parent | null, flags: CameraFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    access_camera(parent: Parent | null, flags: CameraFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a camera acess request.
      * 
@@ -480,7 +536,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    add_notification(id: string, notification: GLib.Variant, flags: NotificationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    add_notification(id: string, notification: GLib.Variant, flags: NotificationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the notification request.
      * 
@@ -505,7 +561,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    compose_email(parent: Parent | null, addresses: string[] | null, cc: string[] | null, bcc: string[] | null, subject: string | null, body: string | null, attachments: string[] | null, flags: EmailFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    compose_email(parent: Parent | null, addresses: string[] | null, cc: string[] | null, bcc: string[] | null, subject: string | null, body: string | null, attachments: string[] | null, flags: EmailFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the compose-email request.
      * @param result a [iface`Gio`.AsyncResult]
@@ -523,7 +579,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    create_remote_desktop_session(devices: DeviceType, outputs: OutputType, flags: RemoteDesktopFlags, cursor_mode: CursorMode, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    create_remote_desktop_session(devices: DeviceType, outputs: OutputType, flags: RemoteDesktopFlags, cursor_mode: CursorMode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the create-remote-desktop request, and returns a [class`Session]`.
      * @param result a [iface`Gio`.AsyncResult]
@@ -542,7 +598,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    create_screencast_session(outputs: OutputType, flags: ScreencastFlags, cursor_mode: CursorMode, persist_mode: PersistMode, restore_token?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    create_screencast_session(outputs: OutputType, flags: ScreencastFlags, cursor_mode: CursorMode, persist_mode: PersistMode, restore_token: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the create-screencast request, and returns a [class`Session]`.
      * @param result a [iface`Gio`.AsyncResult]
@@ -567,7 +623,7 @@ class Portal {
      * @param out_icon_format return location for icon format string, one of "png", "jpeg", "svg"
      * @param out_icon_size return location for icon size
      */
-    dynamic_launcher_get_icon(desktop_file_id: string, out_icon_format?: string | null, out_icon_size?: number | null): GLib.Variant
+    dynamic_launcher_get_icon(desktop_file_id: string, out_icon_format: string | null, out_icon_size: number | null): GLib.Variant
     /**
      * This function completes installation of a launcher so that the icon and name
      * given in previous method calls will show up in the desktop environment's menu.
@@ -601,7 +657,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    dynamic_launcher_prepare_install(parent: Parent | null, name: string, icon_v: GLib.Variant, launcher_type: LauncherType, target: string | null, editable_name: boolean, editable_icon: boolean, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    dynamic_launcher_prepare_install(parent: Parent | null, name: string, icon_v: GLib.Variant, launcher_type: LauncherType, target: string | null, editable_name: boolean, editable_icon: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the prepare-install-launcher request, and returns
      * [struct`GLib`.Variant] dictionary with the following information:
@@ -644,7 +700,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    get_user_information(parent: Parent | null, reason: string | null, flags: UserInformationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_user_information(parent: Parent | null, reason: string | null, flags: UserInformationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the get-user-information request.
      * 
@@ -682,7 +738,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    location_monitor_start(parent: Parent | null, distance_threshold: number, time_threshold: number, accuracy: LocationAccuracy, flags: LocationMonitorFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    location_monitor_start(parent: Parent | null, distance_threshold: number, time_threshold: number, accuracy: LocationAccuracy, flags: LocationMonitorFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a location-monitor request.
      * 
@@ -706,7 +762,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    open_directory(parent: Parent, uri: string, flags: OpenUriFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    open_directory(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-directory request.
      * 
@@ -750,7 +806,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    open_file(parent: Parent | null, title: string, filters: GLib.Variant | null, current_filter: GLib.Variant | null, choices: GLib.Variant | null, flags: OpenFileFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    open_file(parent: Parent | null, title: string, filters: GLib.Variant | null, current_filter: GLib.Variant | null, choices: GLib.Variant | null, flags: OpenFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-file request
      * 
@@ -781,7 +837,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    open_uri(parent: Parent, uri: string, flags: OpenUriFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    open_uri(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-uri request.
      * 
@@ -798,7 +854,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    pick_color(parent?: Parent | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    pick_color(parent: Parent | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a pick-color request.
      * 
@@ -820,7 +876,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    prepare_print(parent: Parent | null, title: string, settings: GLib.Variant | null, page_setup: GLib.Variant | null, flags: PrintFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    prepare_print(parent: Parent | null, title: string, settings: GLib.Variant | null, page_setup: GLib.Variant | null, flags: PrintFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the prepare-print request.
      * 
@@ -850,7 +906,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    print_file(parent: Parent | null, title: string, token: number, file: string, flags: PrintFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    print_file(parent: Parent | null, title: string, token: number, file: string, flags: PrintFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the print request.
      * @param result a [iface`Gio`.AsyncResult]
@@ -873,7 +929,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    request_background(parent: Parent | null, reason: string | null, commandline: string[], flags: BackgroundFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    request_background(parent: Parent | null, reason: string | null, commandline: string[], flags: BackgroundFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the request.
      * 
@@ -902,7 +958,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    save_file(parent: Parent | null, title: string, current_name: string | null, current_folder: string | null, current_file: string | null, filters: GLib.Variant | null, current_filter: GLib.Variant | null, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    save_file(parent: Parent | null, title: string, current_name: string | null, current_folder: string | null, current_file: string | null, filters: GLib.Variant | null, current_filter: GLib.Variant | null, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the save-file request.
      * 
@@ -938,7 +994,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    save_files(parent: Parent | null, title: string, current_name: string | null, current_folder: string | null, files: GLib.Variant, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    save_files(parent: Parent | null, title: string, current_name: string | null, current_folder: string | null, files: GLib.Variant, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the save-files request.
      * 
@@ -969,7 +1025,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    session_inhibit(parent: Parent | null, reason: string | null, flags: InhibitFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    session_inhibit(parent: Parent | null, reason: string | null, flags: InhibitFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the inhbit request.
      * 
@@ -1002,7 +1058,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    session_monitor_start(parent: Parent | null, flags: SessionMonitorFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    session_monitor_start(parent: Parent | null, flags: SessionMonitorFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a session-monitor request.
      * 
@@ -1029,7 +1085,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    set_wallpaper(parent: Parent, uri: string, flags: WallpaperFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    set_wallpaper(parent: Parent, uri: string, flags: WallpaperFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-uri request.
      * 
@@ -1054,7 +1110,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    spawn(cwd: string, argv: string[], fds: number[] | null, map_to: number[] | null, env: string[] | null, flags: SpawnFlags, sandbox_expose?: string[] | null, sandbox_expose_ro?: string[] | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    spawn(cwd: string, argv: string[], fds: number[] | null, map_to: number[] | null, env: string[] | null, flags: SpawnFlags, sandbox_expose: string[] | null, sandbox_expose_ro: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the spawn request.
      * 
@@ -1080,7 +1136,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    take_screenshot(parent: Parent | null, flags: ScreenshotFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    take_screenshot(parent: Parent | null, flags: ScreenshotFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a screenshot request.
      * 
@@ -1094,7 +1150,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    trash_file(path: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    trash_file(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the trash-file request.
      * 
@@ -1115,7 +1171,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    update_install(parent: Parent, flags: UpdateInstallFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    update_install(parent: Parent, flags: UpdateInstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an update-installation request.
      * 
@@ -1139,7 +1195,7 @@ class Portal {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    update_monitor_start(flags: UpdateMonitorFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    update_monitor_start(flags: UpdateMonitorFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an update-monitor request.
      * 
@@ -1152,457 +1208,67 @@ class Portal {
      * [method`Portal`.update_monitor_start].
      */
     update_monitor_stop(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Xdp-1.0.Xdp.Portal */
-    /**
-     * Emitted when location monitoring is enabled and the location changes.
-     * @param latitude the latitude, in degrees
-     * @param longitude the longitude, in degrees
-     * @param altitude the altitude, in meters
-     * @param accuracy the accuracy, in meters
-     * @param speed the speed, in meters per second
-     * @param heading the heading, in degrees
-     * @param description the description
-     * @param timestamp_s the timestamp seconds since the Unix epoch
-     * @param timestamp_ms the microseconds fraction of the timestamp
-     */
-    connect(sigName: "location-updated", callback: (($obj: Portal, latitude: number, longitude: number, altitude: number, accuracy: number, speed: number, heading: number, description: string, timestamp_s: number, timestamp_ms: number) => void)): number
-    connect_after(sigName: "location-updated", callback: (($obj: Portal, latitude: number, longitude: number, altitude: number, accuracy: number, speed: number, heading: number, description: string, timestamp_s: number, timestamp_ms: number) => void)): number
-    emit(sigName: "location-updated", latitude: number, longitude: number, altitude: number, accuracy: number, speed: number, heading: number, description: string, timestamp_s: number, timestamp_ms: number): void
-    /**
-     * Emitted when a non-exported action is activated on a notification.
-     * @param id the notification ID
-     * @param action the action name
-     * @param parameter the target parameter for the action
-     */
-    connect(sigName: "notification-action-invoked", callback: (($obj: Portal, id: string, action: string, parameter?: GLib.Variant | null) => void)): number
-    connect_after(sigName: "notification-action-invoked", callback: (($obj: Portal, id: string, action: string, parameter?: GLib.Variant | null) => void)): number
-    emit(sigName: "notification-action-invoked", id: string, action: string, parameter?: GLib.Variant | null): void
-    /**
-     * Emitted when session state monitoring is
-     * enabled and the state of the login session changes or
-     * the screensaver is activated or deactivated.
-     * @param screensaver_active whether the screensaver is active
-     * @param session_state the current state of the login session
-     */
-    connect(sigName: "session-state-changed", callback: (($obj: Portal, screensaver_active: boolean, session_state: LoginSessionState) => void)): number
-    connect_after(sigName: "session-state-changed", callback: (($obj: Portal, screensaver_active: boolean, session_state: LoginSessionState) => void)): number
-    emit(sigName: "session-state-changed", screensaver_active: boolean, session_state: LoginSessionState): void
-    /**
-     * Emitted when a process that was spawned with [method`Portal`.spawn] exits.
-     * @param pid the pid of the process
-     * @param exit_status the exit status of the process
-     */
-    connect(sigName: "spawn-exited", callback: (($obj: Portal, pid: number, exit_status: number) => void)): number
-    connect_after(sigName: "spawn-exited", callback: (($obj: Portal, pid: number, exit_status: number) => void)): number
-    emit(sigName: "spawn-exited", pid: number, exit_status: number): void
-    /**
-     * Emitted when updates monitoring is enabled
-     * and a new update is available.
-     * 
-     * It is only sent once with the same information, but it can be sent many
-     * times if new updates appear.
-     * @param running_commit the commit that the sandbox is running with
-     * @param local_commit the commit that is currently deployed. Restarting     the app will use this commit
-     * @param remote_commit the commit that is available as an update.     Updating the app will deloy this commit
-     */
-    connect(sigName: "update-available", callback: (($obj: Portal, running_commit: string, local_commit: string, remote_commit: string) => void)): number
-    connect_after(sigName: "update-available", callback: (($obj: Portal, running_commit: string, local_commit: string, remote_commit: string) => void)): number
-    emit(sigName: "update-available", running_commit: string, local_commit: string, remote_commit: string): void
-    /**
-     * Emitted to indicate progress of an update installation.
-     * 
-     * It is undefined exactly how often it is sent, but it will be emitted at
-     * least once at the end with a non-zero `status`. For each successful
-     * operation in the update, we're also guaranteed to send exactly one signal
-     * with `progress` 100.
-     * @param n_ops the number of operations that the update consists of
-     * @param op the position of the currently active operation
-     * @param progress the progress of the currently active operation, as   a number between 0 and 100
-     * @param status the overall status of the update
-     * @param error the error name if the status is 'failed'
-     * @param error_message the error message if the status is 'failed'
-     */
-    connect(sigName: "update-progress", callback: (($obj: Portal, n_ops: number, op: number, progress: number, status: UpdateStatus, error: string, error_message: string) => void)): number
-    connect_after(sigName: "update-progress", callback: (($obj: Portal, n_ops: number, op: number, progress: number, status: UpdateStatus, error: string, error_message: string) => void)): number
-    emit(sigName: "update-progress", n_ops: number, op: number, progress: number, status: UpdateStatus, error: string, error_message: string): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Portal, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Portal, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Xdp-1.0.Xdp.Portal
+
+    connect(sigName: "location-updated", callback: Portal_LocationUpdatedSignalCallback): number
+    connect_after(sigName: "location-updated", callback: Portal_LocationUpdatedSignalCallback): number
+    emit(sigName: "location-updated", latitude: number, longitude: number, altitude: number, accuracy: number, speed: number, heading: number, description: string, timestamp_s: number, timestamp_ms: number, ...args: any[]): void
+    connect(sigName: "notification-action-invoked", callback: Portal_NotificationActionInvokedSignalCallback): number
+    connect_after(sigName: "notification-action-invoked", callback: Portal_NotificationActionInvokedSignalCallback): number
+    emit(sigName: "notification-action-invoked", id: string, action: string, parameter: GLib.Variant | null, ...args: any[]): void
+    connect(sigName: "session-state-changed", callback: Portal_SessionStateChangedSignalCallback): number
+    connect_after(sigName: "session-state-changed", callback: Portal_SessionStateChangedSignalCallback): number
+    emit(sigName: "session-state-changed", screensaver_active: boolean, session_state: LoginSessionState, ...args: any[]): void
+    connect(sigName: "spawn-exited", callback: Portal_SpawnExitedSignalCallback): number
+    connect_after(sigName: "spawn-exited", callback: Portal_SpawnExitedSignalCallback): number
+    emit(sigName: "spawn-exited", pid: number, exit_status: number, ...args: any[]): void
+    connect(sigName: "update-available", callback: Portal_UpdateAvailableSignalCallback): number
+    connect_after(sigName: "update-available", callback: Portal_UpdateAvailableSignalCallback): number
+    emit(sigName: "update-available", running_commit: string, local_commit: string, remote_commit: string, ...args: any[]): void
+    connect(sigName: "update-progress", callback: Portal_UpdateProgressSignalCallback): number
+    connect_after(sigName: "update-progress", callback: Portal_UpdateProgressSignalCallback): number
+    emit(sigName: "update-progress", n_ops: number, op: number, progress: number, status: UpdateStatus, error: string, error_message: string, ...args: any[]): void
+
+    // Class property signals of Xdp-1.0.Xdp.Portal
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Context for portal calls.
+ * 
+ * The XdpPortal object provides the main context object
+ * for the portal operations of libportal.
+ * 
+ * Typically, an application will create a single XdpPortal
+ * object with [ctor`Portal`.new] and use it throughout its lifetime.
+ * @class 
+ */
+class Portal extends GObject.Object {
+
+    // Own properties of Xdp-1.0.Xdp.Portal
+
     static name: string
-    constructor (config?: Portal_ConstructProps)
-    _init (config?: Portal_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Portal>
+
+    // Constructors of Xdp-1.0.Xdp.Portal
+
+    constructor(config?: Portal_ConstructProps) 
+    /**
+     * Creates a new [class`Portal]` object.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new [class`Portal]` object.
+     * @constructor 
+     */
     static new(): Portal
+    _init(config?: Portal_ConstructProps): void
     /**
      * Detects if running inside of a Flatpak or WebKit sandbox.
      * 
@@ -1624,14 +1290,22 @@ class Portal {
      * See also: [func`Portal`.running_under_sandbox].
      */
     static running_under_snap(): boolean
-    static $gtype: GObject.Type
 }
+
 interface Session_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Session {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Xdp-1.0.Xdp.Session */
+
+/**
+ * Signal callback interface for `closed`
+ */
+interface Session_ClosedSignalCallback {
+    ($obj: Session): void
+}
+
+interface Session {
+
+    // Owm methods of Xdp-1.0.Xdp.Session
+
     /**
      * Closes the session.
      */
@@ -1769,7 +1443,7 @@ class Session {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    start(parent?: Parent | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    start(parent: Parent | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the session-start request.
      * @param result a [iface`Gio`.AsyncResult]
@@ -1811,393 +1485,52 @@ class Session {
      * @param slot touch slot that changed
      */
     touch_up(slot: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Xdp-1.0.Xdp.Session */
-    /**
-     * Emitted when a session is closed externally.
-     */
-    connect(sigName: "closed", callback: (($obj: Session) => void)): number
-    connect_after(sigName: "closed", callback: (($obj: Session) => void)): number
-    emit(sigName: "closed"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Session, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of Xdp-1.0.Xdp.Session
+
+    connect(sigName: "closed", callback: Session_ClosedSignalCallback): number
+    connect_after(sigName: "closed", callback: Session_ClosedSignalCallback): number
+    emit(sigName: "closed", ...args: any[]): void
+
+    // Class property signals of Xdp-1.0.Xdp.Session
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Session_ConstructProps)
-    _init (config?: Session_ConstructProps): void
-    static $gtype: GObject.Type
 }
-class Parent {
-    /* Methods of Xdp-1.0.Xdp.Parent */
+
+/**
+ * A representation of long-lived screencast portal interactions.
+ * 
+ * The XdpSession object is used to represent portal interactions with the
+ * screencast or remote desktop portals that extend over multiple portal calls.
+ * 
+ * To find out what kind of session an XdpSession object represents and whether
+ * it is still active, you can use [method`Session`.get_session_type] and
+ * [method`Session`.get_session_state].
+ * 
+ * All sessions start in an initial state. They can be made active by calling
+ * [method`Session`.start], and ended by calling [method`Session`.close].
+ * @class 
+ */
+class Session extends GObject.Object {
+
+    // Own properties of Xdp-1.0.Xdp.Session
+
+    static name: string
+    static $gtype: GObject.GType<Session>
+
+    // Constructors of Xdp-1.0.Xdp.Session
+
+    constructor(config?: Session_ConstructProps) 
+    _init(config?: Session_ConstructProps): void
+}
+
+interface Parent {
+
+    // Owm methods of Xdp-1.0.Xdp.Parent
+
     /**
      * Copies `source` into a new [struct`Parent]`.
      */
@@ -2206,17 +1539,55 @@ class Parent {
      * Frees `parent`.
      */
     free(): void
+}
+
+/**
+ * Parent window abstraction.
+ * 
+ * The [struct`Parent]` struct provides an abstract way to represent
+ * a window, without introducing a dependency on a toolkit
+ * library.
+ * 
+ * An XdpParent implementation for GTK is included in the
+ * `portal-gtk3.h` and `portal-gtk4.h` header files, in the form of inline functions.
+ * To create a XdpParent for a GTK window, use
+ * `xdp_parent_new_gtk()`.
+ * @record 
+ */
+class Parent {
+
+    // Own properties of Xdp-1.0.Xdp.Parent
+
     static name: string
 }
+
+interface PortalClass {
+
+    // Own fields of Xdp-1.0.Xdp.PortalClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class PortalClass {
-    /* Fields of Xdp-1.0.Xdp.PortalClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Xdp-1.0.Xdp.PortalClass
+
     static name: string
 }
+
+interface SessionClass {
+
+    // Own fields of Xdp-1.0.Xdp.SessionClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class SessionClass {
-    /* Fields of Xdp-1.0.Xdp.SessionClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of Xdp-1.0.Xdp.SessionClass
+
     static name: string
 }
+
 }
 export default Xdp;

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -37,18 +39,39 @@ const EDS_CALENDAR_MODULES: string
 const EDS_SUBPROCESS_CAL_PATH: string
 const INTERVALTREE_DEBUG: number
 const LIBICAL_GLIB_UNSTABLE_API: number
-function cal_cache_offline_change_free(change?: object | null): void
-function cal_cache_search_data_free(ptr?: object | null): void
-function cal_meta_backend_info_free(ptr?: object | null): void
+/**
+ * Frees the `change` structure, previously allocated with e_cal_cache_offline_change_new()
+ * or e_cal_cache_offline_change_copy().
+ * @param change an #ECalCacheOfflineChange
+ */
+function cal_cache_offline_change_free(change: object | null): void
+/**
+ * Frees the `ptr` structure, previously allocated with e_cal_cache_search_data_new()
+ * or e_cal_cache_search_data_copy().
+ * @param ptr an #ECalCacheSearchData
+ */
+function cal_cache_search_data_free(ptr: object | null): void
+/**
+ * Frees the `ptr` structure, previously allocated with e_cal_meta_backend_info_new()
+ * or e_cal_meta_backend_info_copy().
+ * @param ptr an #ECalMetaBackendInfo
+ */
+function cal_meta_backend_info_free(ptr: object | null): void
 /**
  * A callback prototype being called in a dedicated thread, scheduled
  * by e_cal_backend_schedule_custom_operation().
+ * @callback 
+ * @param cal_backend an #ECalBackend
+ * @param cancellable an optional #GCancellable, as provided to e_cal_backend_schedule_custom_operation()
  */
 interface CalBackendCustomOpFunc {
-    (cal_backend: CalBackend, cancellable?: Gio.Cancellable | null): void
+    (cal_backend: CalBackend, cancellable: Gio.Cancellable | null): void
 }
 /**
  * Callback function used by e_cal_backend_foreach_view().
+ * @callback 
+ * @param backend an #ECalBackend
+ * @param view an #EDataCalView
  */
 interface CalBackendForeachViewFunc {
     (backend: CalBackend, view: DataCalView): boolean
@@ -56,33 +79,55 @@ interface CalBackendForeachViewFunc {
 /**
  * A callback called for each object row when using
  * e_cal_cache_search_with_callback() function.
+ * @callback 
+ * @param cal_cache an #ECalCache
+ * @param uid a unique object identifier
+ * @param rid an optional Recurrence-ID of the object
+ * @param revision the object revision
+ * @param object the object itself
+ * @param extra extra data stored with the object
+ * @param custom_flags object's custom flags
+ * @param offline_state object's offline state, one of #EOfflineState
  */
 interface CalCacheSearchFunc {
     (cal_cache: CalCache, uid: string, rid: string | null, revision: string, object: string, extra: string, custom_flags: number, offline_state: EBackend.OfflineState): boolean
 }
-interface CalBackend_ConstructProps extends EBackend.Backend_ConstructProps {
-    /* Constructor properties of EDataCal-2.0.EDataCal.CalBackend */
-    cache_dir?: string
-    kind?: number
-    registry?: EDataServer.SourceRegistry
-    writable?: boolean
+interface CalBackend_ConstructProps extends ECal.TimezoneCache_ConstructProps, EBackend.Backend_ConstructProps {
+
+    // Own constructor properties of EDataCal-2.0.EDataCal.CalBackend
+
+    cache_dir?: string | null
+    kind?: number | null
+    registry?: EDataServer.SourceRegistry | null
+    writable?: boolean | null
 }
-class CalBackend {
-    /* Properties of EDataCal-2.0.EDataCal.CalBackend */
+
+/**
+ * Signal callback interface for `closed`
+ */
+interface CalBackend_ClosedSignalCallback {
+    ($obj: CalBackend, sender: string): void
+}
+
+/**
+ * Signal callback interface for `shutdown`
+ */
+interface CalBackend_ShutdownSignalCallback {
+    ($obj: CalBackend): void
+}
+
+interface CalBackend extends ECal.TimezoneCache {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackend
+
     cache_dir: string
     readonly kind: number
     readonly proxy_resolver: Gio.ProxyResolver
     readonly registry: EDataServer.SourceRegistry
     writable: boolean
-    /* Properties of EBackend-1.2.EBackend.Backend */
-    connectable: Gio.SocketConnectable
-    readonly main_context: GLib.MainContext
-    online: boolean
-    readonly source: EDataServer.Source
-    readonly user_prompter: EBackend.UserPrompter
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.CalBackend */
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalBackend
+
     /**
      * Asynchronously adds the timezone described by `tzobject` to `backend`.
      * 
@@ -94,6 +139,24 @@ class CalBackend {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     add_timezone(tzobject: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+
+    // Overloads of add_timezone
+
+    /**
+     * Adds a copy of `zone` to `cache` and emits an
+     * #ETimezoneCache::timezone-added signal.  The `cache` will use the TZID
+     * string returned by i_cal_timezone_get_tzid() as the lookup key, which can
+     * be passed to e_timezone_cache_get_timezone() to obtain `zone` again.
+     * 
+     * If the `cache` already has an #ICalTimezone with the same TZID string
+     * as `zone,` the `cache` will remain unchanged to avoid invalidating any
+     * #ICalTimezone pointers which may have already been returned through
+     * e_timezone_cache_get_timezone().
+     * @param zone an #ICalTimezone
+     */
+    add_timezone(zone: ICalGLib.Timezone): void
+    add_timezone(...args: any[]): any
+    add_timezone(args_or_zone: any[] | ICalGLib.Timezone): void | any
     /**
      * Finishes the operation started with e_cal_backend_add_timezone().
      * 
@@ -108,7 +171,7 @@ class CalBackend {
      * @param tzobject an iCalendar VTIMEZONE string
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    add_timezone_sync(tzobject: string, cancellable?: Gio.Cancellable | null): boolean
+    add_timezone_sync(tzobject: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Adds a view to the list of live views being run by the given backend.
      * Doing so means that any listener on the view will get notified of any
@@ -128,7 +191,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisifed
      */
-    create_objects(calobjs: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    create_objects(calobjs: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_create_objects().
      * 
@@ -152,7 +215,7 @@ class CalBackend {
      * @param out_uids a #GQueue in which to deposit results
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    create_objects_sync(calobjs: string, opflags: ECal.OperationFlags, out_uids: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
+    create_objects_sync(calobjs: string, opflags: ECal.OperationFlags, out_uids: GLib.Queue, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
      * from the iCalendar object identified by `uid` and, optionally, `rid`.
@@ -167,7 +230,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    discard_alarm(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    discard_alarm(uid: string, rid?: string | null, alarm_uid?: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_discard_alarm().
      * 
@@ -186,7 +249,7 @@ class CalBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    discard_alarm_sync(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    discard_alarm_sync(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Thread-safe variation of e_cal_backend_get_cache_dir().
      * Use this function when accessing `backend` from multiple threads.
@@ -206,7 +269,7 @@ class CalBackend {
      * @param percent percent complete
      * @param message message describing the operation in progress, or %NULL
      */
-    foreach_view_notify_progress(only_completed_views: boolean, percent: number, message?: string | null): void
+    foreach_view_notify_progress(only_completed_views: boolean, percent: number, message: string | null): void
     /**
      * Asynchronously inspects the iCalendar object specified by `uid` and,
      * optionally, `rid` for attachments.
@@ -245,7 +308,7 @@ class CalBackend {
      * @param out_attachment_uris a #GQueue in which to deposit results
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_attachment_uris_sync(uid: string, rid: string | null, out_attachment_uris: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
+    get_attachment_uris_sync(uid: string, rid: string | null, out_attachment_uris: GLib.Queue, cancellable: Gio.Cancellable | null): boolean
     /**
      * Obtains the value of the backend property named `prop_name`.
      * Freed the returned string with g_free() when finished with it.
@@ -269,7 +332,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    get_free_busy(start: number, end: number, users: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_free_busy(start: number, end?: number, users?: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_get_free_busy().
      * 
@@ -299,7 +362,7 @@ class CalBackend {
      * @param out_freebusy iCalendar strings with overall returned Free/Busy data
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_free_busy_sync(start: number, end: number, users: string[], out_freebusy: string[], cancellable?: Gio.Cancellable | null): boolean
+    get_free_busy_sync(start: number, end: number, users: string[], out_freebusy: string[], cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets the kind of components the given backend stores.
      */
@@ -362,7 +425,7 @@ class CalBackend {
      * @param out_objects a #GQueue in which to deposit results
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
+    get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable: Gio.Cancellable | null): boolean
     /**
      * Obtains an iCalendar string for an object identified by its `uid` and,
      * optionally, `rid`.
@@ -374,7 +437,7 @@ class CalBackend {
      * @param rid a recurrence ID, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_object_sync(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): string
+    get_object_sync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): string
     /**
      * Returns the data source registry to which #EBackend:source belongs.
      */
@@ -390,6 +453,18 @@ class CalBackend {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     get_timezone(tzid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+
+    // Overloads of get_timezone
+
+    /**
+     * Obtains an #ICalTimezone by its TZID string.  If no match is found,
+     * the function returns %NULL.  The returned #ICalTimezone is owned by
+     * the `cache` and should not be modified or freed.
+     * @param tzid the TZID of a timezone
+     */
+    get_timezone(tzid: string): ICalGLib.Timezone | null
+    get_timezone(...args: any[]): any
+    get_timezone(args_or_tzid: any[] | string): void | ICalGLib.Timezone | null | any
     /**
      * Finishes the operation started with e_cal_backend_get_timezone().
      * 
@@ -407,7 +482,7 @@ class CalBackend {
      * @param tzid a unique ID for an iCalendar VTIMEZONE object
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_timezone_sync(tzid: string, cancellable?: Gio.Cancellable | null): string
+    get_timezone_sync(tzid: string, cancellable: Gio.Cancellable | null): string
     /**
      * Returns whether `backend` will accept changes to its data content.
      */
@@ -449,7 +524,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    modify_objects(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modify_objects(calobjs: string, mod?: ECal.ObjModType, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_modify_objects().
      * 
@@ -466,7 +541,7 @@ class CalBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    modify_objects_sync(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    modify_objects_sync(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Notifies each of the backend's listeners about a new object.
      * 
@@ -504,7 +579,7 @@ class CalBackend {
      * @param prop_name property name, which changed
      * @param prop_value new property value
      */
-    notify_property_changed(prop_name: string, prop_value?: string | null): void
+    notify_property_changed(prop_name: string, prop_value: string | null): void
     /**
      * Asynchronously "opens" the `backend`.  Opening a backend is something of
      * an outdated concept, but the operation is hanging around for a little
@@ -516,7 +591,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    open(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    open(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_open().
      * 
@@ -533,7 +608,7 @@ class CalBackend {
      * If an error occurs, the function will set `error` and return %FALSE.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    open_sync(cancellable?: Gio.Cancellable | null): boolean
+    open_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
      * place to deposit results prior to completing the #GSimpleAsyncResult.
@@ -562,7 +637,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    receive_objects(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    receive_objects(calobj: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_receive_objects().
      * 
@@ -579,7 +654,7 @@ class CalBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    receive_objects_sync(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    receive_objects_sync(calobj: string, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Returns the #EDataCal for `backend`.  The #EDataCal is essentially
      * the glue between incoming D-Bus requests and `backend'`s native API.
@@ -611,7 +686,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    refresh(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the refresh initiation started with e_cal_backend_refresh().
      * 
@@ -633,7 +708,7 @@ class CalBackend {
      * %FALSE.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    refresh_sync(cancellable?: Gio.Cancellable | null): boolean
+    refresh_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously removes one or more iCalendar objects according to
      * `component_ids` and `mod`.
@@ -647,7 +722,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    remove_objects(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    remove_objects(component_ids: ECal.ComponentId[], mod?: ECal.ObjModType, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_remove_objects().
      * 
@@ -664,7 +739,7 @@ class CalBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    remove_objects_sync(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    remove_objects_sync(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes view from the list of live views for the backend.
      * @param view An #EDataCalView object, previously added with `ref` e_cal_backend_add_view.
@@ -694,7 +769,7 @@ class CalBackend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    send_objects(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    send_objects(calobj: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_cal_backend_send_objects().
      * 
@@ -723,7 +798,7 @@ class CalBackend {
      * @param out_users a #GQueue in which to deposit results
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    send_objects_sync(calobj: string, opflags: ECal.OperationFlags, out_users: GLib.Queue, cancellable?: Gio.Cancellable | null): string
+    send_objects_sync(calobj: string, opflags: ECal.OperationFlags, out_users: GLib.Queue, cancellable: Gio.Cancellable | null): string
     /**
      * Sets the cache directory path for use by `backend`.
      * 
@@ -758,538 +833,9 @@ class CalBackend {
      * @param view The view to be stopped.
      */
     stop_view(view: DataCalView): void
-    /* Methods of EBackend-1.2.EBackend.Backend */
-    /**
-     * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
-     * to inform clients that credentials are required.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_backend_credentials_required_finish() to get the result of the operation.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_backend_credentials_required().
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param result a #GAsyncResult
-     */
-    credentials_required_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Synchronously lets the clients know that the backned requires credentials to be
-     * properly opened. It's a proxy function for e_source_invoke_credentials_required_sync(),
-     * where can be found more information about actual parameters meaning.
-     * 
-     * The provided credentials are received through #EBackendClass.authenticate_sync()
-     * method asynchronously.
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Makes sure that the "online" property is updated, that is, if there
-     * is any destination reachability test pending, it'll be done immediately
-     * and the only state will be updated as well.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    ensure_online_state_updated(cancellable?: Gio.Cancellable | null): void
-    /**
-     * Makes sure that the associated ESource::connection-status is connected. This is
-     * useful in cases when the backend can connect to the destination without invoking
-     * #EBackendClass.authenticate_sync(), possibly through e_backend_schedule_authenticate().
-     */
-    ensure_source_status_connected(): void
-    /**
-     * Provides destination server host name and port to which
-     * the backend connects. This is used to determine required
-     * connection point for e_backend_is_destination_reachable().
-     * The `host` is a newly allocated string, which will be freed
-     * with g_free(). When `backend` sets both `host` and `port,` then
-     * it should return %TRUE, indicating it's a remote backend.
-     * Default implementation returns %FALSE, which is treated
-     * like the backend is local, no checking for server reachability
-     * is possible.
-     */
-    get_destination_address(): [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    /**
-     * Returns the online state of `backend:` %TRUE if `backend` is online,
-     * %FALSE if offline.
-     * 
-     * If the #EBackend:connectable property is non-%NULL, the `backend` will
-     * automatically determine whether the network service should be reachable,
-     * and hence whether the `backend` is #EBackend:online.  But subclasses may
-     * override the online state if, for example, a connection attempt fails.
-     */
-    get_online(): boolean
-    /**
-     * Returns the #ESource to which `backend` is paired.
-     */
-    get_source(): EDataServer.Source
-    /**
-     * Gets an instance of #EUserPrompter, associated with this `backend`.
-     * 
-     * The returned instance is owned by the `backend`.
-     */
-    get_user_prompter(): object | null
-    /**
-     * Checks whether the `backend<`!-- -->'s destination server, as returned
-     * by e_backend_get_destination_address(), is reachable.
-     * If the e_backend_get_destination_address() returns %FALSE, this function
-     * returns %TRUE, meaning the destination is always reachable.
-     * This uses #GNetworkMonitor<!-- -->'s g_network_monitor_can_reach()
-     * for reachability tests.
-     * @param cancellable a #GCancellable instance, or %NULL
-     */
-    is_destination_reachable(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Let's the `backend` know that it'll be shut down shortly, no client connects
-     * to it anymore. The `backend` can free any resources which reference it, for
-     * example the opened views.
-     */
-    prepare_shutdown(): void
-    /**
-     * Returns the socket endpoint for the network service to which `backend`
-     * is a client, or %NULL if `backend` does not use network sockets.
-     * 
-     * The initial value of the #EBackend:connectable property is derived from
-     * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
-     * property, if the extension is present.
-     * 
-     * The returned #GSocketConnectable is referenced for thread-safety and
-     * must be unreferenced with g_object_unref() when finished with it.
-     */
-    ref_connectable(): Gio.SocketConnectable | null
-    /**
-     * Returns the #GMainContext on which event sources for `backend` are to
-     * be attached.
-     * 
-     * The returned #GMainContext is referenced for thread-safety and must be
-     * unreferenced with g_main_context_unref() when finished with it.
-     */
-    ref_main_context(): GLib.MainContext
-    /**
-     * Schedules a new authenticate session, cancelling any previously run.
-     * This is usually done automatically, when an 'authenticate' signal is
-     * received for the associated #ESource. With %NULL `credentials` an attempt
-     * without it is run.
-     * @param credentials a credentials to use to authenticate, or %NULL
-     */
-    schedule_authenticate(credentials?: EDataServer.NamedParameters | null): void
-    /**
-     * Asynchronously invokes e_backend_credentials_required(), but installs its
-     * own callback which only prints a runtime warning on the console when
-     * the call fails. The `who_calls` is a prefix of the console message.
-     * This is useful when the caller just wants to start the operation
-     * without having actual place where to show the operation result.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param who_calls an identification who calls this
-     */
-    schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, who_calls?: string | null): void
-    /**
-     * Sets the socket endpoint for the network service to which `backend` is
-     * a client.  This can be %NULL if `backend` does not use network sockets.
-     * 
-     * The initial value of the #EBackend:connectable property is derived from
-     * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
-     * property, if the extension is present.
-     * @param connectable a #GSocketConnectable, or %NULL
-     */
-    set_connectable(connectable: Gio.SocketConnectable): void
-    /**
-     * Sets the online state of `backend:` %TRUE if `backend` is online,
-     * `FALSE` if offline.
-     * 
-     * If the #EBackend:connectable property is non-%NULL, the `backend` will
-     * automatically determine whether the network service should be reachable,
-     * and hence whether the `backend` is #EBackend:online.  But subclasses may
-     * override the online state if, for example, a connection attempt fails.
-     * @param online the online state
-     */
-    set_online(online: boolean): void
-    /**
-     * Initiates a user trust prompt with given `parameters`.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_backend_trust_prompt_finish() to get the result of the operation.
-     * @param parameters an #ENamedParameters with values for the trust prompt
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    trust_prompt(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_backend_trust_prompt().
-     * If an error occurred, the function will set `error` and return
-     * %E_TRUST_PROMPT_RESPONSE_UNKNOWN.
-     * @param result a #GAsyncResult
-     */
-    trust_prompt_finish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse
-    /**
-     * Asks a user a trust prompt with given `parameters,` and returns what
-     * user responded. This blocks until the response is delivered.
-     * @param parameters an #ENamedParameters with values for the trust prompt
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): EDataServer.TrustPromptResponse
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Adds a copy of `zone` to `cache` and emits an
-     * #ETimezoneCache::timezone-added signal.  The `cache` will use the TZID
-     * string returned by i_cal_timezone_get_tzid() as the lookup key, which can
-     * be passed to e_timezone_cache_get_timezone() to obtain `zone` again.
-     * 
-     * If the `cache` already has an #ICalTimezone with the same TZID string
-     * as `zone,` the `cache` will remain unchanged to avoid invalidating any
-     * #ICalTimezone pointers which may have already been returned through
-     * e_timezone_cache_get_timezone().
-     * @param zone an #ICalTimezone
-     */
-    add_timezone(zone: ICalGLib.Timezone): void
-    /**
-     * Obtains an #ICalTimezone by its TZID string.  If no match is found,
-     * the function returns %NULL.  The returned #ICalTimezone is owned by
-     * the `cache` and should not be modified or freed.
-     * @param tzid the TZID of a timezone
-     */
-    get_timezone(tzid: string): ICalGLib.Timezone | null
-    /**
-     * Returns a list of #ICalTimezone instances that were explicitly added to
-     * the `cache` through e_timezone_cache_add_timezone().  In particular, any
-     * built-in time zone data that e_timezone_cache_get_timezone() may use to
-     * match a TZID string is excluded from the returned list.
-     * 
-     * Free the returned list with g_list_free().  The list elements are owned
-     * by the `cache` and should not be modified or freed.
-     */
-    list_timezones(): ICalGLib.Timezone[]
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalBackend */
+
+    // Own virtual methods of EDataCal-2.0.EDataCal.CalBackend
+
     vfunc_closed(sender: string): void
     vfunc_impl_add_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzobject: string): void
     vfunc_impl_discard_alarm(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
@@ -1298,142 +844,77 @@ class CalBackend {
     vfunc_impl_get_object(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string): void
     vfunc_impl_get_object_list(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string): void
     vfunc_impl_get_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzid: string): void
-    vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void
+    vfunc_impl_open(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null): void
     vfunc_impl_receive_objects(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void
+    vfunc_impl_refresh(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null): void
     vfunc_impl_send_objects(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
     vfunc_impl_start_view(view: DataCalView): void
     vfunc_impl_stop_view(view: DataCalView): void
     vfunc_shutdown(): void
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EBackend-1.2.EBackend.Backend */
-    vfunc_authenticate_sync(credentials: EDataServer.NamedParameters, out_certificate_pem: string, out_certificate_errors: Gio.TlsCertificateFlags, cancellable?: Gio.Cancellable | null): EDataServer.SourceAuthenticationResult
-    /**
-     * Provides destination server host name and port to which
-     * the backend connects. This is used to determine required
-     * connection point for e_backend_is_destination_reachable().
-     * The `host` is a newly allocated string, which will be freed
-     * with g_free(). When `backend` sets both `host` and `port,` then
-     * it should return %TRUE, indicating it's a remote backend.
-     * Default implementation returns %FALSE, which is treated
-     * like the backend is local, no checking for server reachability
-     * is possible.
-     */
-    vfunc_get_destination_address(): [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    /**
-     * Let's the `backend` know that it'll be shut down shortly, no client connects
-     * to it anymore. The `backend` can free any resources which reference it, for
-     * example the opened views.
-     */
-    vfunc_prepare_shutdown(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of EDataCal-2.0.EDataCal.CalBackend */
-    /**
-     * Emitted when a client destroys its #ECalClient for `backend`
-     * @param sender the bus name that invoked the "close" method
-     */
-    connect(sigName: "closed", callback: (($obj: CalBackend, sender: string) => void)): number
-    connect_after(sigName: "closed", callback: (($obj: CalBackend, sender: string) => void)): number
-    emit(sigName: "closed", sender: string): void
-    /**
-     * Emitted when the last client destroys its #ECalClient for
-     * `backend`.  This signals the `backend` to begin final cleanup
-     * tasks such as synchronizing data to permanent storage.
-     */
-    connect(sigName: "shutdown", callback: (($obj: CalBackend) => void)): number
-    connect_after(sigName: "shutdown", callback: (($obj: CalBackend) => void)): number
-    emit(sigName: "shutdown"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    /* Signals of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Emitted when a new #icaltimezone is added to `cache`.
-     * @param zone the newly-added #ICalTimezone
-     */
-    connect(sigName: "timezone-added", callback: (($obj: CalBackend, zone: ICalGLib.Timezone) => void)): number
-    connect_after(sigName: "timezone-added", callback: (($obj: CalBackend, zone: ICalGLib.Timezone) => void)): number
-    emit(sigName: "timezone-added", zone: ICalGLib.Timezone): void
+
+    // Own signals of EDataCal-2.0.EDataCal.CalBackend
+
+    connect(sigName: "closed", callback: CalBackend_ClosedSignalCallback): number
+    connect_after(sigName: "closed", callback: CalBackend_ClosedSignalCallback): number
+    emit(sigName: "closed", sender: string, ...args: any[]): void
+    connect(sigName: "shutdown", callback: CalBackend_ShutdownSignalCallback): number
+    connect_after(sigName: "shutdown", callback: CalBackend_ShutdownSignalCallback): number
+    emit(sigName: "shutdown", ...args: any[]): void
+
+    // Class property signals of EDataCal-2.0.EDataCal.CalBackend
+
     connect(sigName: "notify::cache-dir", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-dir", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cache-dir", ...args: any[]): void
     connect(sigName: "notify::kind", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::kind", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::kind", ...args: any[]): void
     connect(sigName: "notify::proxy-resolver", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-resolver", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-resolver", ...args: any[]): void
     connect(sigName: "notify::registry", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::registry", ...args: any[]): void
     connect(sigName: "notify::writable", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::writable", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::writable", ...args: any[]): void
     connect(sigName: "notify::connectable", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connectable", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::connectable", ...args: any[]): void
     connect(sigName: "notify::main-context", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::main-context", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::main-context", ...args: any[]): void
     connect(sigName: "notify::online", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::online", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::online", ...args: any[]): void
     connect(sigName: "notify::source", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source", ...args: any[]): void
     connect(sigName: "notify::user-prompter", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-prompter", callback: (($obj: CalBackend, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::user-prompter", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class CalBackend extends EBackend.Backend {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackend
+
     static name: string
-    constructor (config?: CalBackend_ConstructProps)
-    _init (config?: CalBackend_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<CalBackend>
+
+    // Constructors of EDataCal-2.0.EDataCal.CalBackend
+
+    constructor(config?: CalBackend_ConstructProps) 
+    _init(config?: CalBackend_ConstructProps): void
     /**
      * Retrieve the default mail account as stored in Evolution configuration.
      * @param registry an #ESourceRegistry
@@ -1449,444 +930,49 @@ class CalBackend {
      */
     static mail_account_is_valid(registry: EDataServer.SourceRegistry, user: string, name: string): boolean
     static user_declined(registry: EDataServer.SourceRegistry, icalcomp: ICalGLib.Component): boolean
-    static $gtype: GObject.Type
 }
+
 interface CalBackendFactory_ConstructProps extends EBackend.BackendFactory_ConstructProps {
 }
-class CalBackendFactory {
-    /* Properties of EDataServer-1.2.EDataServer.Extension */
-    readonly extensible: EDataServer.Extensible
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EBackend-1.2.EBackend.BackendFactory */
-    /**
-     * Returns a hash key which uniquely identifies `factory`.
-     * 
-     * Since only one instance of each #EBackendFactory subclass is ever created,
-     * the hash key need only be unique among subclasses, not among instances of
-     * each subclass.
-     */
-    get_hash_key(): string
-    /**
-     * Returns the filename of the shared library for the module used
-     * to load the backends provided by `factory`.
-     */
-    get_module_filename(): string
-    /**
-     * Returns a new #EBackend instance for `source`.
-     * @param source an #ESource
-     */
-    new_backend(source: EDataServer.Source): EBackend.Backend
-    /**
-     * Returns TRUE if the `factory` wants to share the subprocess
-     * for all backends provided by itself. Otherwise, returns FALSE.
-     */
-    share_subprocess(): boolean
-    /* Methods of EDataServer-1.2.EDataServer.Extension */
-    /**
-     * Returns the object that `extension` extends.
-     */
-    get_extensible(): EDataServer.Extensible
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of EBackend-1.2.EBackend.BackendFactory */
-    /**
-     * Returns a hash key which uniquely identifies `factory`.
-     * 
-     * Since only one instance of each #EBackendFactory subclass is ever created,
-     * the hash key need only be unique among subclasses, not among instances of
-     * each subclass.
-     */
-    vfunc_get_hash_key(): string
-    /**
-     * Returns a new #EBackend instance for `source`.
-     * @param source an #ESource
-     */
-    vfunc_new_backend(source: EDataServer.Source): EBackend.Backend
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CalBackendFactory, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CalBackendFactory, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface CalBackendFactory {
+
+    // Class property signals of EDataCal-2.0.EDataCal.CalBackendFactory
+
     connect(sigName: "notify::extensible", callback: (($obj: CalBackendFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::extensible", callback: (($obj: CalBackendFactory, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::extensible", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: CalBackendFactory_ConstructProps)
-    _init (config?: CalBackendFactory_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class CalBackendFactory extends EBackend.BackendFactory {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendFactory
+
+    static name: string
+    static $gtype: GObject.GType<CalBackendFactory>
+
+    // Constructors of EDataCal-2.0.EDataCal.CalBackendFactory
+
+    constructor(config?: CalBackendFactory_ConstructProps) 
+    _init(config?: CalBackendFactory_ConstructProps): void
+}
+
 interface CalBackendSExp_ConstructProps extends GObject.Object_ConstructProps {
 }
-class CalBackendSExp {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.CalBackendSExp */
+
+interface CalBackendSExp {
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalBackendSExp
+
     /**
      * Determines biggest time window given by expressions "occur-in-range" in sexp.
      * @param start Start of the time window will be stored here.
@@ -1918,1700 +1004,47 @@ class CalBackendSExp {
      * Unlocks the `sexp,` previously locked by e_cal_backend_sexp_lock().
      */
     unlock(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CalBackendSExp, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CalBackendSExp, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of EDataCal-2.0.EDataCal.CalBackendSExp
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class CalBackendSExp extends GObject.Object {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendSExp
+
     static name: string
-    constructor (config?: CalBackendSExp_ConstructProps)
-    _init (config?: CalBackendSExp_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<CalBackendSExp>
+
+    // Constructors of EDataCal-2.0.EDataCal.CalBackendSExp
+
+    constructor(config?: CalBackendSExp_ConstructProps) 
+    constructor(text: string) 
     static new(text: string): CalBackendSExp
-    static $gtype: GObject.Type
+    _init(config?: CalBackendSExp_ConstructProps): void
 }
-interface CalBackendSync_ConstructProps extends CalBackend_ConstructProps {
+
+interface CalBackendSync_ConstructProps extends ECal.TimezoneCache_ConstructProps, CalBackend_ConstructProps {
 }
-class CalBackendSync {
-    /* Properties of EDataCal-2.0.EDataCal.CalBackend */
-    cache_dir: string
-    readonly kind: number
-    readonly proxy_resolver: Gio.ProxyResolver
-    readonly registry: EDataServer.SourceRegistry
-    writable: boolean
-    /* Properties of EBackend-1.2.EBackend.Backend */
-    connectable: Gio.SocketConnectable
-    readonly main_context: GLib.MainContext
-    online: boolean
-    readonly source: EDataServer.Source
-    readonly user_prompter: EBackend.UserPrompter
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.CalBackendSync */
+
+interface CalBackendSync extends ECal.TimezoneCache {
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalBackendSync
+
     /**
      * Calls the add_timezone_sync method on the given backend.
      * @param cal An EDataCal object.
      * @param cancellable a #GCancellable for the operation
      * @param tzobject VTIMEZONE object to be added.
      */
-    add_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void
-    /**
-     * Calls the create_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobjs The objects to be added.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    create_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobjs: string[], opflags: ECal.OperationFlags): [ /* uids */ string[], /* new_components */ ECal.Component[] ]
-    /**
-     * Calls the discard_alarm_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param uid Unique id of the calendar object.
-     * @param rid Recurrence id of the calendar object.
-     * @param auid Alarm ID to remove.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    discard_alarm(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
-    /**
-     * Calls the get_attachment_uris_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param uid Unique id of the calendar object.
-     * @param rid Recurrence id of the calendar object.
-     * @param attachments Placeholder for list of returned attachment uris.
-     */
-    get_attachment_uris(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, attachments: string[]): void
-    /**
-     * Calls the get_free_busy_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param users List of users to get F/B info from.
-     * @param start Time range start.
-     * @param end Time range end.
-     */
-    get_free_busy(cal: DataCal, cancellable: Gio.Cancellable | null, users: string[], start: number, end: number): /* freebusyobjects */ string[]
-    /**
-     * Calls the get_object_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param uid UID of the object to get.
-     * @param rid Recurrence ID of the specific instance to get, or %NULL if    getting the master object.
-     */
-    get_object(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid?: string | null): /* calobj */ string
-    /**
-     * Calls the get_object_list_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param sexp Search query.
-     */
-    get_object_list(cal: DataCal, cancellable: Gio.Cancellable | null, sexp: string): /* calobjs */ string[]
-    /**
-     * Calls the get_timezone_sync method on the given backend.
-     * This method is not mandatory on the backend, because here
-     * is used internal_get_timezone call to fetch timezone from
-     * it and that is transformed to a string. In other words,
-     * any object deriving from ECalBackendSync can implement only
-     * internal_get_timezone and can skip implementation of
-     * get_timezone_sync completely.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param tzid ID of the timezone to retrieve.
-     * @param tzobject Placeholder for the returned timezone.
-     */
-    get_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string): void
-    /**
-     * Calls the modify_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobjs Objects to be modified.
-     * @param mod Type of modification to be done.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    modify_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobjs: string[], mod: ECal.ObjModType, opflags: ECal.OperationFlags): [ /* old_components */ ECal.Component[], /* new_components */ ECal.Component[] ]
-    /**
-     * Calls the open_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation or just create it when it does not exist.
-     */
-    open(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    /**
-     * Calls the receive_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobj iCalendar object to receive.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    receive_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    /**
-     * Calls the refresh_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     */
-    refresh(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    /**
-     * Calls the remove_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param ids List of #ECalComponentId objects identifying the objects to remove.
-     * @param mod Type of removal.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    remove_objects(cal: DataCal, cancellable: Gio.Cancellable | null, ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags): [ /* old_components */ ECal.Component[], /* new_components */ ECal.Component[] ]
-    /**
-     * Calls the send_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobj The iCalendar object to send.
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param users List of users to send notifications to.
-     */
-    send_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags, users: string[]): /* modified_calobj */ string
-    /* Methods of EDataCal-2.0.EDataCal.CalBackend */
-    /**
-     * Asynchronously adds the timezone described by `tzobject` to `backend`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_add_timezone_finish() to get the result of
-     * the operation.
-     * @param tzobject an iCalendar VTIMEZONE string
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    add_timezone(tzobject: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_add_timezone().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    add_timezone_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Adds the timezone described by `tzobject` to `backend`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param tzobject an iCalendar VTIMEZONE string
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    add_timezone_sync(tzobject: string, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Adds a view to the list of live views being run by the given backend.
-     * Doing so means that any listener on the view will get notified of any
-     * change that affect the live view.
-     * @param view An #EDataCalView object.
-     */
-    add_view(view: DataCalView): void
-    create_cache_filename(uid: string, filename: string | null, fileindex: number): string
-    /**
-     * Asynchronously creates one or more new iCalendar objects from `calobjs`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_create_objects_finish() to get the result of the
-     * operation.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisifed
-     */
-    create_objects(calobjs: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_create_objects().
-     * 
-     * A unique ID string for each newly-created object is deposited in `out_uids`.
-     * Free the returned ID strings with g_free() when finished with them.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     * @param out_uids a #GQueue in which to deposit results
-     */
-    create_objects_finish(result: Gio.AsyncResult, out_uids: GLib.Queue): boolean
-    /**
-     * Creates one or more new iCalendar objects from `calobjs,` and deposits
-     * the unique ID string for each newly-created object in `out_uids`.
-     * 
-     * Free the returned ID strings with g_free() when finished with them.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param out_uids a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    create_objects_sync(calobjs: string, opflags: ECal.OperationFlags, out_uids: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
-     * from the iCalendar object identified by `uid` and, optionally, `rid`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_discard_alarm_finish() to get the result of
-     * the operation.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param alarm_uid a unique ID for an iCalendar VALARM object
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    discard_alarm(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_discard_alarm().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    discard_alarm_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Discards the VALARM object with a unique ID of `alarm_uid` from the
-     * iCalendar object identified by `uid` and, optionally, `rid`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param alarm_uid a unique ID for an iCalendar VALARM object
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    discard_alarm_sync(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Thread-safe variation of e_cal_backend_get_cache_dir().
-     * Use this function when accessing `backend` from multiple threads.
-     * 
-     * The returned string should be freed with g_free() when no longer needed.
-     */
-    dup_cache_dir(): string
-    /**
-     * Calls `func` for each existing view (as returned by e_cal_backend_list_views()).
-     * The `func` can return %FALSE to stop early.
-     */
-    foreach_view(): boolean
-    /**
-     * Notifies each view of the `backend` about progress. When `only_completed_views`
-     * is %TRUE, notifies only completed views.
-     * @param only_completed_views whether notify in completed views only
-     * @param percent percent complete
-     * @param message message describing the operation in progress, or %NULL
-     */
-    foreach_view_notify_progress(only_completed_views: boolean, percent: number, message?: string | null): void
-    /**
-     * Asynchronously inspects the iCalendar object specified by `uid` and,
-     * optionally, `rid` for attachments.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_get_attachment_uris_finish() to get the result of the
-     * operation.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_attachment_uris(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_attachment_uris().
-     * 
-     * The requested attachment URI strings are deposited in `out_attachment_uris`.
-     * Free the returned strings with g_free() when finished with them.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param result a #GAsyncResult
-     * @param out_attachment_uris a #GQueue in which to deposit results
-     */
-    get_attachment_uris_finish(result: Gio.AsyncResult, out_attachment_uris: GLib.Queue): boolean
-    /**
-     * Inspects the iCalendar object specified by `uid` and, optionally, `rid`
-     * for attachments and deposits a URI string for each attachment in
-     * `out_attachment_uris`.  Free the returned strings with g_free() when
-     * finished with them.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param out_attachment_uris a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_attachment_uris_sync(uid: string, rid: string | null, out_attachment_uris: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Obtains the value of the backend property named `prop_name`.
-     * Freed the returned string with g_free() when finished with it.
-     * @param prop_name a backend property name
-     */
-    get_backend_property(prop_name: string): string
-    /**
-     * Returns the cache directory path used by `backend`.
-     */
-    get_cache_dir(): string
-    /**
-     * Asynchronously obtains a free/busy object for the list of `users` in the
-     * time interval between `start` and `end`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_get_free_busy_finish() to get the result of
-     * the operation.
-     * @param start start time
-     * @param end end time
-     * @param users a %NULL-terminated array of user strings
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_free_busy(start: number, end: number, users: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_free_busy().
-     * 
-     * The free/busy results can be returned through the
-     * e_data_cal_report_free_busy_data() function asynchronously. The out_freebusy
-     * will contain all the returned data, possibly again, thus the client is
-     * responsible for the data merge, if needed.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     * @param out_freebusy iCalendar strings with overall returned Free/Busy data
-     */
-    get_free_busy_finish(result: Gio.AsyncResult, out_freebusy: string[]): boolean
-    /**
-     * Obtains a free/busy object for the list of `users` in the time interval
-     * between `start` and `end`.
-     * 
-     * The free/busy results can be returned through the
-     * e_data_cal_report_free_busy_data() function asynchronously. The out_freebusy
-     * will contain all the returned data, possibly again, thus the client is
-     * responsible for the data merge, if needed.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param start start time
-     * @param end end time
-     * @param users a %NULL-terminated array of user strings
-     * @param out_freebusy iCalendar strings with overall returned Free/Busy data
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_free_busy_sync(start: number, end: number, users: string[], out_freebusy: string[], cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Gets the kind of components the given backend stores.
-     */
-    get_kind(): ICalGLib.ComponentKind
-    /**
-     * Asynchronously obtains an #ECalComponent by its `uid` and, optionally, `rid`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_get_object_finish() to get the result of the operation.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_object(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_object().
-     * 
-     * The returned string is an iCalendar object describing either single component
-     * or a vCalendar object, which includes also detached instances. It should be
-     * freed when no longer needed.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param result a #GAsyncResult
-     */
-    get_object_finish(result: Gio.AsyncResult): string
-    /**
-     * Asynchronously obtains a set of iCalendar instances which satisfy
-     * the criteria specified in `query`.
-     * 
-     * When the operation in finished, `callback` will be called.  You can then
-     * call e_cal_backend_get_object_list_finish() to get the result of the
-     * operation.
-     * @param query a search query in S-expression format
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_object_list(query: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_object_list().
-     * 
-     * The matching iCalendar instances are deposited in `out_objects`.
-     * The returned instances should be freed with g_free() when finished with them.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param result a #GAsyncResult
-     * @param out_objects a #GQueue in which to deposit results
-     */
-    get_object_list_finish(result: Gio.AsyncResult, out_objects: GLib.Queue): boolean
-    /**
-     * Obtains a set of iCalendar string instances which satisfy the criteria
-     * specified in `query,` and deposits them in `out_objects`.
-     * 
-     * The returned instances should be freed with g_free() when finished with them.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param query a search query in S-expression format
-     * @param out_objects a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Obtains an iCalendar string for an object identified by its `uid` and,
-     * optionally, `rid`.
-     * 
-     * The returned string should be freed with g_free() when finished with it.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_object_sync(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Returns the data source registry to which #EBackend:source belongs.
-     */
-    get_registry(): EDataServer.SourceRegistry
-    /**
-     * Asynchronously obtains the VTIMEZONE object identified by `tzid`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_get_timezone_finish() to get the result of
-     * the operation.
-     * @param tzid a unique ID for an iCalendar VTIMEZONE object
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_timezone(tzid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_timezone().
-     * 
-     * Free the returned string with g_free() when finished with it.
-     * 
-     * If an error occurred, the function will set `error` and return %NULL.
-     * @param result a #GAsyncResult
-     */
-    get_timezone_finish(result: Gio.AsyncResult): string
-    /**
-     * Obtains the VTIMEZONE object identified by `tzid`.  Free the returned
-     * string with g_free() when finished with it.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param tzid a unique ID for an iCalendar VTIMEZONE object
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_timezone_sync(tzid: string, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Returns whether `backend` will accept changes to its data content.
-     */
-    get_writable(): boolean
-    /**
-     * Checks if `backend'`s storage has been opened (and
-     * authenticated, if necessary) and the backend itself
-     * is ready for accessing. This property is changed automatically
-     * after the `backend` is successfully opened.
-     */
-    is_opened(): boolean
-    is_readonly(): boolean
-    /**
-     * Returns a list of #EDataCalView instances added with
-     * e_cal_backend_add_view().
-     * 
-     * The views returned in the list are referenced for thread-safety.
-     * They must each be unreferenced with g_object_unref() when finished
-     * with them.  Free the returned list itself with g_list_free().
-     * 
-     * An easy way to free the list properly in one step is as follows:
-     * 
-     * |[
-     *   g_list_free_full (list, g_object_unref);
-     * ```
-     * 
-     */
-    list_views(): DataCalView[]
-    /**
-     * Asynchronously modifies one or more iCalendar objects according to
-     * `calobjs` and `mod`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_modify_objects_finish() to get the result of the
-     * operation.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    modify_objects(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_modify_objects().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    modify_objects_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Modifies one or more iCalendar objects according to `calobjs` and `mod`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    modify_objects_sync(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Notifies each of the backend's listeners about a new object.
-     * 
-     * Uses the #EDataCalView's fields-of-interest to filter out unwanted
-     * information from ical strings sent over the bus.
-     * @param component the newly created #ECalComponent
-     */
-    notify_component_created(component: ECal.Component): void
-    /**
-     * Notifies each of the backend's listeners about a modified object.
-     * 
-     * Uses the #EDataCalView's fields-of-interest to filter out unwanted
-     * information from ical strings sent over the bus.
-     * @param old_component the #ECalComponent before the modification
-     * @param new_component the #ECalComponent after the modification
-     */
-    notify_component_modified(old_component: ECal.Component, new_component: ECal.Component): void
-    /**
-     * Notifies each of the backend's listeners about a removed object.
-     * 
-     * Uses the #EDataCalView's fields-of-interest to filter out unwanted
-     * information from ical strings sent over the bus.
-     * @param id the Id of the removed object
-     * @param old_component the removed component
-     * @param new_component the component after the removal. This only applies to recurrent appointments that had an instance removed. In that case, this function notifies a modification instead of a removal.
-     */
-    notify_component_removed(id: ECal.ComponentId, old_component: ECal.Component, new_component: ECal.Component): void
-    /**
-     * Notifies each of the backend's listeners about an error
-     * @param message Error message
-     */
-    notify_error(message: string): void
-    /**
-     * Notifies client about property value change.
-     * @param prop_name property name, which changed
-     * @param prop_value new property value
-     */
-    notify_property_changed(prop_name: string, prop_value?: string | null): void
-    /**
-     * Asynchronously "opens" the `backend`.  Opening a backend is something of
-     * an outdated concept, but the operation is hanging around for a little
-     * while longer.  This usually involves some custom initialization logic,
-     * and testing of remote authentication if applicable.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_open_finish() to get the result of the operation.
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    open(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_open().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    open_finish(result: Gio.AsyncResult): boolean
-    /**
-     * "Opens" the `backend`.  Opening a backend is something of an outdated
-     * concept, but the operation is hanging around for a little while longer.
-     * This usually involves some custom initialization logic, and testing of
-     * remote authentication if applicable.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    open_sync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
-     * place to deposit results prior to completing the #GSimpleAsyncResult.
-     * 
-     * <note>
-     *   <para>
-     *     This is a temporary function to serve #EDataCal's "respond"
-     *     functions until they can be removed.  Nothing else should be
-     *     calling this function.
-     *   </para>
-     * </note>
-     * @param opid an operation ID given to #EDataCal
-     * @param result_queue return location for a #GQueue, or %NULL
-     */
-    prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult
-    /**
-     * Asynchronously receives the set of iCalendar objects specified by
-     * `calobj`.  This is used for iTIP confirmation and cancellation messages
-     * for scheduled meetings.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_receive_objects_finish() to get the result of the
-     * operation.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    receive_objects(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_receive_objects().
-     * 
-     * If an error occurred, the function will set `error` and erturn %FALSE.
-     * @param result a #GAsyncResult
-     */
-    receive_objects_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Receives the set of iCalendar objects specified by `calobj`.  This is used
-     * for iTIP confirmation and cancellation messages for scheduled meetings.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    receive_objects_sync(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Returns the #EDataCal for `backend`.  The #EDataCal is essentially
-     * the glue between incoming D-Bus requests and `backend'`s native API.
-     * 
-     * An #EDataCal should be set only once after `backend` is first created.
-     * If an #EDataCal has not yet been set, the function returns %NULL.
-     * 
-     * The returned #EDataCal is referenced for thread-safety and must be
-     * unreferenced with g_object_unref() when finished with it.
-     */
-    ref_data_cal(): DataCal | null
-    /**
-     * Returns the #GProxyResolver for `backend` (if applicable), as indicated
-     * by the #ESourceAuthentication:proxy-uid of `backend'`s #EBackend:source
-     * or one of its ancestors.
-     * 
-     * The returned #GProxyResolver is referenced for thread-safety and must
-     * be unreferenced with g_object_unref() when finished with it.
-     */
-    ref_proxy_resolver(): Gio.ProxyResolver | null
-    /**
-     * Asynchronously initiates a refresh for `backend,` if the `backend` supports
-     * refreshing.  The actual refresh operation completes on its own time.  This
-     * function, along with e_cal_backend_refresh_finish(), merely initiates the
-     * operation.
-     * 
-     * Once the refresh is initiated, `callback` will be called.  You can then
-     * call e_cal_backend_refresh_finish() to get the result of the initiation.
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the refresh initiation started with e_cal_backend_refresh().
-     * 
-     * If an error occurred while initiating the refresh, the function will set
-     * `error` and return %FALSE.  If the `backend` does not support refreshing,
-     * the function will set an %E_CLIENT_ERROR_NOT_SUPPORTED error and return
-     * %FALSE.
-     * @param result a #GAsyncResult
-     */
-    refresh_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Initiates a refresh for `backend,` if the `backend` supports refreshing.
-     * The actual refresh operation completes on its own time.  This function
-     * merely initiates the operation.
-     * 
-     * If an error occrs while initiating the refresh, the function will set
-     * `error` and return %FALSE.  If the `backend` does not support refreshing,
-     * the function will set an %E_CLIENT_ERROR_NOT_SUPPORTED error and return
-     * %FALSE.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    refresh_sync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Asynchronously removes one or more iCalendar objects according to
-     * `component_ids` and `mod`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_remove_objects_finish() to get the result of the
-     * operation.
-     * @param component_ids a #GList of #ECalComponentId structs
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    remove_objects(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_remove_objects().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    remove_objects_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Removes one or more iCalendar objects according to `component_ids` and `mod`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param component_ids a #GList of #ECalComponentId structs
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    remove_objects_sync(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Removes view from the list of live views for the backend.
-     * @param view An #EDataCalView object, previously added with `ref` e_cal_backend_add_view.
-     */
-    remove_view(view: DataCalView): void
-    /**
-     * Schedules user function `func` to be run in a dedicated thread as
-     * a blocking operation.
-     * 
-     * The function adds its own reference to `use_cancellable,` if not %NULL.
-     * 
-     * The error returned from `func` is propagated to client using
-     * e_cal_backend_notify_error() function. If it's not desired,
-     * then left the error unchanged and notify about errors manually.
-     * @param use_cancellable an optional #GCancellable to use for `func`
-     * @param func a function to call in a dedicated thread
-     */
-    schedule_custom_operation(use_cancellable: Gio.Cancellable | null, func: CalBackendCustomOpFunc): void
-    /**
-     * Asynchronously sends meeting information in `calobj`.  The `backend` may
-     * modify `calobj` and send meeting information only to particular users.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_send_objects_finish() to get the result of the operation.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    send_objects(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_send_objects().
-     * 
-     * The function returns a string representation of a sent, or to be send,
-     * vCalendar and deposits the list of users the meeting information was sent
-     * to, or to be send to, in `out_users`.
-     * 
-     * Free the returned pointer with g_free(), when no longer needed.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param result a #GAsyncResult
-     * @param out_users a #GQueue in which to deposit results
-     */
-    send_objects_finish(result: Gio.AsyncResult, out_users: GLib.Queue): string
-    /**
-     * Sends meeting information in `calobj`.  The `backend` may modify `calobj`
-     * and send meeting information only to particular users.  The function
-     * returns the (maybe) modified `calobj` and deposits the list of users the
-     * meeting information was sent (to be send) to in `out_users`.
-     * 
-     * The returned pointer should be freed with g_free(), when no londer needed.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param out_users a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    send_objects_sync(calobj: string, opflags: ECal.OperationFlags, out_users: GLib.Queue, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Sets the cache directory path for use by `backend`.
-     * 
-     * Note that #ECalBackend is initialized with a default cache directory
-     * path which should suffice for most cases.  Backends should not override
-     * the default path without good reason.
-     * @param cache_dir a local cache directory path
-     */
-    set_cache_dir(cache_dir: string): void
-    /**
-     * Sets the #EDataCal for `backend`.  The #EDataCal is essentially the
-     * glue between incoming D-Bus requests and `backend'`s native API.
-     * 
-     * An #EDataCal should be set only once after `backend` is first created.
-     * 
-     * The `backend` adds its own reference on the `data_cal`.
-     * @param data_cal an #EDataCal
-     */
-    set_data_cal(data_cal: DataCal): void
-    /**
-     * Sets whether `backend` will accept changes to its data content.
-     * @param writable whether `backend` is writable
-     */
-    set_writable(writable: boolean): void
-    /**
-     * Starts a new live view on the given backend.
-     * @param view The view to be started.
-     */
-    start_view(view: DataCalView): void
-    /**
-     * Stops a previously started live view on the given backend.
-     * @param view The view to be stopped.
-     */
-    stop_view(view: DataCalView): void
-    /* Methods of EBackend-1.2.EBackend.Backend */
-    /**
-     * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
-     * to inform clients that credentials are required.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_backend_credentials_required_finish() to get the result of the operation.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_backend_credentials_required().
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param result a #GAsyncResult
-     */
-    credentials_required_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Synchronously lets the clients know that the backned requires credentials to be
-     * properly opened. It's a proxy function for e_source_invoke_credentials_required_sync(),
-     * where can be found more information about actual parameters meaning.
-     * 
-     * The provided credentials are received through #EBackendClass.authenticate_sync()
-     * method asynchronously.
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Makes sure that the "online" property is updated, that is, if there
-     * is any destination reachability test pending, it'll be done immediately
-     * and the only state will be updated as well.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    ensure_online_state_updated(cancellable?: Gio.Cancellable | null): void
-    /**
-     * Makes sure that the associated ESource::connection-status is connected. This is
-     * useful in cases when the backend can connect to the destination without invoking
-     * #EBackendClass.authenticate_sync(), possibly through e_backend_schedule_authenticate().
-     */
-    ensure_source_status_connected(): void
-    /**
-     * Provides destination server host name and port to which
-     * the backend connects. This is used to determine required
-     * connection point for e_backend_is_destination_reachable().
-     * The `host` is a newly allocated string, which will be freed
-     * with g_free(). When `backend` sets both `host` and `port,` then
-     * it should return %TRUE, indicating it's a remote backend.
-     * Default implementation returns %FALSE, which is treated
-     * like the backend is local, no checking for server reachability
-     * is possible.
-     */
-    get_destination_address(): [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    /**
-     * Returns the online state of `backend:` %TRUE if `backend` is online,
-     * %FALSE if offline.
-     * 
-     * If the #EBackend:connectable property is non-%NULL, the `backend` will
-     * automatically determine whether the network service should be reachable,
-     * and hence whether the `backend` is #EBackend:online.  But subclasses may
-     * override the online state if, for example, a connection attempt fails.
-     */
-    get_online(): boolean
-    /**
-     * Returns the #ESource to which `backend` is paired.
-     */
-    get_source(): EDataServer.Source
-    /**
-     * Gets an instance of #EUserPrompter, associated with this `backend`.
-     * 
-     * The returned instance is owned by the `backend`.
-     */
-    get_user_prompter(): object | null
-    /**
-     * Checks whether the `backend<`!-- -->'s destination server, as returned
-     * by e_backend_get_destination_address(), is reachable.
-     * If the e_backend_get_destination_address() returns %FALSE, this function
-     * returns %TRUE, meaning the destination is always reachable.
-     * This uses #GNetworkMonitor<!-- -->'s g_network_monitor_can_reach()
-     * for reachability tests.
-     * @param cancellable a #GCancellable instance, or %NULL
-     */
-    is_destination_reachable(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Let's the `backend` know that it'll be shut down shortly, no client connects
-     * to it anymore. The `backend` can free any resources which reference it, for
-     * example the opened views.
-     */
-    prepare_shutdown(): void
-    /**
-     * Returns the socket endpoint for the network service to which `backend`
-     * is a client, or %NULL if `backend` does not use network sockets.
-     * 
-     * The initial value of the #EBackend:connectable property is derived from
-     * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
-     * property, if the extension is present.
-     * 
-     * The returned #GSocketConnectable is referenced for thread-safety and
-     * must be unreferenced with g_object_unref() when finished with it.
-     */
-    ref_connectable(): Gio.SocketConnectable | null
-    /**
-     * Returns the #GMainContext on which event sources for `backend` are to
-     * be attached.
-     * 
-     * The returned #GMainContext is referenced for thread-safety and must be
-     * unreferenced with g_main_context_unref() when finished with it.
-     */
-    ref_main_context(): GLib.MainContext
-    /**
-     * Schedules a new authenticate session, cancelling any previously run.
-     * This is usually done automatically, when an 'authenticate' signal is
-     * received for the associated #ESource. With %NULL `credentials` an attempt
-     * without it is run.
-     * @param credentials a credentials to use to authenticate, or %NULL
-     */
-    schedule_authenticate(credentials?: EDataServer.NamedParameters | null): void
-    /**
-     * Asynchronously invokes e_backend_credentials_required(), but installs its
-     * own callback which only prints a runtime warning on the console when
-     * the call fails. The `who_calls` is a prefix of the console message.
-     * This is useful when the caller just wants to start the operation
-     * without having actual place where to show the operation result.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param who_calls an identification who calls this
-     */
-    schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, who_calls?: string | null): void
-    /**
-     * Sets the socket endpoint for the network service to which `backend` is
-     * a client.  This can be %NULL if `backend` does not use network sockets.
-     * 
-     * The initial value of the #EBackend:connectable property is derived from
-     * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
-     * property, if the extension is present.
-     * @param connectable a #GSocketConnectable, or %NULL
-     */
-    set_connectable(connectable: Gio.SocketConnectable): void
-    /**
-     * Sets the online state of `backend:` %TRUE if `backend` is online,
-     * `FALSE` if offline.
-     * 
-     * If the #EBackend:connectable property is non-%NULL, the `backend` will
-     * automatically determine whether the network service should be reachable,
-     * and hence whether the `backend` is #EBackend:online.  But subclasses may
-     * override the online state if, for example, a connection attempt fails.
-     * @param online the online state
-     */
-    set_online(online: boolean): void
-    /**
-     * Initiates a user trust prompt with given `parameters`.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_backend_trust_prompt_finish() to get the result of the operation.
-     * @param parameters an #ENamedParameters with values for the trust prompt
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    trust_prompt(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_backend_trust_prompt().
-     * If an error occurred, the function will set `error` and return
-     * %E_TRUST_PROMPT_RESPONSE_UNKNOWN.
-     * @param result a #GAsyncResult
-     */
-    trust_prompt_finish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse
-    /**
-     * Asks a user a trust prompt with given `parameters,` and returns what
-     * user responded. This blocks until the response is delivered.
-     * @param parameters an #ENamedParameters with values for the trust prompt
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): EDataServer.TrustPromptResponse
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of ECal-2.0.ECal.TimezoneCache */
+    add_timezone(cal: DataCal, cancellable?: Gio.Cancellable | null, tzobject?: string): void
+
+    // Overloads of add_timezone
+
     /**
      * Adds a copy of `zone` to `cache` and emits an
      * #ETimezoneCache::timezone-added signal.  The `cache` will use the TZID
@@ -3626,6 +1059,194 @@ class CalBackendSync {
      */
     add_timezone(zone: ICalGLib.Timezone): void
     /**
+     * Asynchronously adds the timezone described by `tzobject` to `backend`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call e_cal_backend_add_timezone_finish() to get the result of
+     * the operation.
+     * @param tzobject an iCalendar VTIMEZONE string
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    add_timezone(tzobject: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    add_timezone(...args: any[]): any
+    add_timezone(args_or_tzobject: any[] | string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the create_objects_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param calobjs The objects to be added.
+     * @param opflags bit-or of #ECalOperationFlags
+     */
+    create_objects(cal: DataCal, cancellable?: Gio.Cancellable | null, calobjs?: string[], opflags?: ECal.OperationFlags): [ /* uids */ string[], /* new_components */ ECal.Component[] ]
+
+    // Overloads of create_objects
+
+    /**
+     * Asynchronously creates one or more new iCalendar objects from `calobjs`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_create_objects_finish() to get the result of the
+     * operation.
+     * @param calobjs a %NULL-terminated array of iCalendar strings
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisifed
+     */
+    create_objects(calobjs: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    create_objects(...args: any[]): any
+    create_objects(args_or_calobjs: any[] | string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the discard_alarm_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param uid Unique id of the calendar object.
+     * @param rid Recurrence id of the calendar object.
+     * @param auid Alarm ID to remove.
+     * @param opflags bit-or of #ECalOperationFlags
+     */
+    discard_alarm(cal: DataCal, cancellable?: Gio.Cancellable | null, uid?: string, rid?: string, auid?: string, opflags?: ECal.OperationFlags): void
+
+    // Overloads of discard_alarm
+
+    /**
+     * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
+     * from the iCalendar object identified by `uid` and, optionally, `rid`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call e_cal_backend_discard_alarm_finish() to get the result of
+     * the operation.
+     * @param uid a unique ID for an iCalendar object
+     * @param rid a recurrence ID, or %NULL
+     * @param alarm_uid a unique ID for an iCalendar VALARM object
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    discard_alarm(uid: string, rid?: string | null, alarm_uid?: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    discard_alarm(...args: any[]): any
+    discard_alarm(args_or_uid: any[] | string, rid?: string | null, alarm_uid?: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the get_attachment_uris_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param uid Unique id of the calendar object.
+     * @param rid Recurrence id of the calendar object.
+     * @param attachments Placeholder for list of returned attachment uris.
+     */
+    get_attachment_uris(cal: DataCal, cancellable?: Gio.Cancellable | null, uid?: string, rid?: string, attachments?: string[]): void
+
+    // Overloads of get_attachment_uris
+
+    /**
+     * Asynchronously inspects the iCalendar object specified by `uid` and,
+     * optionally, `rid` for attachments.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_get_attachment_uris_finish() to get the result of the
+     * operation.
+     * @param uid a unique ID for an iCalendar object
+     * @param rid a recurrence ID, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    get_attachment_uris(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_attachment_uris(...args: any[]): any
+    get_attachment_uris(args_or_uid: any[] | string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the get_free_busy_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param users List of users to get F/B info from.
+     * @param start Time range start.
+     * @param end Time range end.
+     */
+    get_free_busy(cal: DataCal, cancellable?: Gio.Cancellable | null, users?: string[], start?: number, end?: number): /* freebusyobjects */ string[]
+
+    // Overloads of get_free_busy
+
+    /**
+     * Asynchronously obtains a free/busy object for the list of `users` in the
+     * time interval between `start` and `end`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can
+     * then call e_cal_backend_get_free_busy_finish() to get the result of
+     * the operation.
+     * @param start start time
+     * @param end end time
+     * @param users a %NULL-terminated array of user strings
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    get_free_busy(start: number, end?: number, users?: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_free_busy(...args: any[]): any
+    get_free_busy(args_or_start: any[] | number, end?: number, users?: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the get_object_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param uid UID of the object to get.
+     * @param rid Recurrence ID of the specific instance to get, or %NULL if    getting the master object.
+     */
+    get_object(cal: DataCal, cancellable?: Gio.Cancellable | null, uid?: string, rid?: string | null): /* calobj */ string
+
+    // Overloads of get_object
+
+    /**
+     * Asynchronously obtains an #ECalComponent by its `uid` and, optionally, `rid`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_get_object_finish() to get the result of the operation.
+     * @param uid a unique ID for an iCalendar object
+     * @param rid a recurrence ID, or %NULL
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    get_object(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_object(...args: any[]): any
+    get_object(args_or_uid: any[] | string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the get_object_list_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param sexp Search query.
+     */
+    get_object_list(cal: DataCal, cancellable?: Gio.Cancellable | null, sexp?: string): /* calobjs */ string[]
+
+    // Overloads of get_object_list
+
+    /**
+     * Asynchronously obtains a set of iCalendar instances which satisfy
+     * the criteria specified in `query`.
+     * 
+     * When the operation in finished, `callback` will be called.  You can then
+     * call e_cal_backend_get_object_list_finish() to get the result of the
+     * operation.
+     * @param query a search query in S-expression format
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    get_object_list(query: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_object_list(...args: any[]): any
+    get_object_list(args_or_query: any[] | string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the get_timezone_sync method on the given backend.
+     * This method is not mandatory on the backend, because here
+     * is used internal_get_timezone call to fetch timezone from
+     * it and that is transformed to a string. In other words,
+     * any object deriving from ECalBackendSync can implement only
+     * internal_get_timezone and can skip implementation of
+     * get_timezone_sync completely.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param tzid ID of the timezone to retrieve.
+     * @param tzobject Placeholder for the returned timezone.
+     */
+    get_timezone(cal: DataCal, cancellable?: Gio.Cancellable | null, tzid?: string, tzobject?: string): void
+
+    // Overloads of get_timezone
+
+    /**
      * Obtains an #ICalTimezone by its TZID string.  If no match is found,
      * the function returns %NULL.  The returned #ICalTimezone is owned by
      * the `cache` and should not be modified or freed.
@@ -3633,177 +1254,261 @@ class CalBackendSync {
      */
     get_timezone(tzid: string): ICalGLib.Timezone | null
     /**
-     * Returns a list of #ICalTimezone instances that were explicitly added to
-     * the `cache` through e_timezone_cache_add_timezone().  In particular, any
-     * built-in time zone data that e_timezone_cache_get_timezone() may use to
-     * match a TZID string is excluded from the returned list.
+     * Asynchronously obtains the VTIMEZONE object identified by `tzid`.
      * 
-     * Free the returned list with g_list_free().  The list elements are owned
-     * by the `cache` and should not be modified or freed.
+     * When the operation is finished, `callback` will be called.  You can
+     * then call e_cal_backend_get_timezone_finish() to get the result of
+     * the operation.
+     * @param tzid a unique ID for an iCalendar VTIMEZONE object
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    list_timezones(): ICalGLib.Timezone[]
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalBackendSync */
+    get_timezone(tzid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    get_timezone(...args: any[]): any
+    get_timezone(args_or_tzid: any[] | string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | ICalGLib.Timezone | null | any
+    /**
+     * Calls the modify_objects_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param calobjs Objects to be modified.
+     * @param mod Type of modification to be done.
+     * @param opflags bit-or of #ECalOperationFlags
+     */
+    modify_objects(cal: DataCal, cancellable?: Gio.Cancellable | null, calobjs?: string[], mod?: ECal.ObjModType, opflags?: ECal.OperationFlags): [ /* old_components */ ECal.Component[], /* new_components */ ECal.Component[] ]
+
+    // Overloads of modify_objects
+
+    /**
+     * Asynchronously modifies one or more iCalendar objects according to
+     * `calobjs` and `mod`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_modify_objects_finish() to get the result of the
+     * operation.
+     * @param calobjs a %NULL-terminated array of iCalendar strings
+     * @param mod modification type for recurrences
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    modify_objects(calobjs: string, mod?: ECal.ObjModType, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    modify_objects(...args: any[]): any
+    modify_objects(args_or_calobjs: any[] | string, mod?: ECal.ObjModType, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the open_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation or just create it when it does not exist.
+     */
+    open(cal: DataCal, cancellable?: Gio.Cancellable | null): void
+
+    // Overloads of open
+
+    /**
+     * Asynchronously "opens" the `backend`.  Opening a backend is something of
+     * an outdated concept, but the operation is hanging around for a little
+     * while longer.  This usually involves some custom initialization logic,
+     * and testing of remote authentication if applicable.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_open_finish() to get the result of the operation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    open(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    open(...args: any[]): any
+    open(args_or_cancellable: any[] | Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the receive_objects_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param calobj iCalendar object to receive.
+     * @param opflags bit-or of #ECalOperationFlags
+     */
+    receive_objects(cal: DataCal, cancellable?: Gio.Cancellable | null, calobj?: string, opflags?: ECal.OperationFlags): void
+
+    // Overloads of receive_objects
+
+    /**
+     * Asynchronously receives the set of iCalendar objects specified by
+     * `calobj`.  This is used for iTIP confirmation and cancellation messages
+     * for scheduled meetings.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_receive_objects_finish() to get the result of the
+     * operation.
+     * @param calobj an iCalendar string
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    receive_objects(calobj: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    receive_objects(...args: any[]): any
+    receive_objects(args_or_calobj: any[] | string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the refresh_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     */
+    refresh(cal: DataCal, cancellable?: Gio.Cancellable | null): void
+
+    // Overloads of refresh
+
+    /**
+     * Asynchronously initiates a refresh for `backend,` if the `backend` supports
+     * refreshing.  The actual refresh operation completes on its own time.  This
+     * function, along with e_cal_backend_refresh_finish(), merely initiates the
+     * operation.
+     * 
+     * Once the refresh is initiated, `callback` will be called.  You can then
+     * call e_cal_backend_refresh_finish() to get the result of the initiation.
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    refresh(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    refresh(...args: any[]): any
+    refresh(args_or_cancellable: any[] | Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the remove_objects_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param ids List of #ECalComponentId objects identifying the objects to remove.
+     * @param mod Type of removal.
+     * @param opflags bit-or of #ECalOperationFlags
+     */
+    remove_objects(cal: DataCal, cancellable?: Gio.Cancellable | null, ids?: ECal.ComponentId[], mod?: ECal.ObjModType, opflags?: ECal.OperationFlags): [ /* old_components */ ECal.Component[], /* new_components */ ECal.Component[] ]
+
+    // Overloads of remove_objects
+
+    /**
+     * Asynchronously removes one or more iCalendar objects according to
+     * `component_ids` and `mod`.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_remove_objects_finish() to get the result of the
+     * operation.
+     * @param component_ids a #GList of #ECalComponentId structs
+     * @param mod modification type for recurrences
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    remove_objects(component_ids: ECal.ComponentId[], mod?: ECal.ObjModType, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    remove_objects(...args: any[]): any
+    remove_objects(args_or_component_ids: any[] | ECal.ComponentId[], mod?: ECal.ObjModType, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+    /**
+     * Calls the send_objects_sync method on the given backend.
+     * @param cal An EDataCal object.
+     * @param cancellable a #GCancellable for the operation
+     * @param calobj The iCalendar object to send.
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param users List of users to send notifications to.
+     */
+    send_objects(cal: DataCal, cancellable?: Gio.Cancellable | null, calobj?: string, opflags?: ECal.OperationFlags, users?: string[]): /* modified_calobj */ string
+
+    // Overloads of send_objects
+
+    /**
+     * Asynchronously sends meeting information in `calobj`.  The `backend` may
+     * modify `calobj` and send meeting information only to particular users.
+     * 
+     * When the operation is finished, `callback` will be called.  You can then
+     * call e_cal_backend_send_objects_finish() to get the result of the operation.
+     * @param calobj an iCalendar string
+     * @param opflags bit-or of #ECalOperationFlags
+     * @param cancellable optional #GCancellable object, or %NULL
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     */
+    send_objects(calobj: string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    send_objects(...args: any[]): any
+    send_objects(args_or_calobj: any[] | string, opflags?: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void | any
+
+    // Own virtual methods of EDataCal-2.0.EDataCal.CalBackendSync
+
     vfunc_add_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void
     vfunc_discard_alarm_sync(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
     vfunc_get_object_sync(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, calobj: string): void
     vfunc_get_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string): void
-    vfunc_open_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void
+    vfunc_open_sync(cal: DataCal, cancellable: Gio.Cancellable | null): void
     vfunc_receive_objects_sync(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_refresh_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalBackend */
-    vfunc_closed(sender: string): void
-    vfunc_impl_add_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzobject: string): void
-    vfunc_impl_discard_alarm(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_get_attachment_uris(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string): void
-    vfunc_impl_get_backend_property(prop_name: string): string
-    vfunc_impl_get_object(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string): void
-    vfunc_impl_get_object_list(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string): void
-    vfunc_impl_get_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzid: string): void
-    vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void
-    vfunc_impl_receive_objects(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void
-    vfunc_impl_send_objects(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_start_view(view: DataCalView): void
-    vfunc_impl_stop_view(view: DataCalView): void
-    vfunc_shutdown(): void
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EBackend-1.2.EBackend.Backend */
-    vfunc_authenticate_sync(credentials: EDataServer.NamedParameters, out_certificate_pem: string, out_certificate_errors: Gio.TlsCertificateFlags, cancellable?: Gio.Cancellable | null): EDataServer.SourceAuthenticationResult
-    /**
-     * Provides destination server host name and port to which
-     * the backend connects. This is used to determine required
-     * connection point for e_backend_is_destination_reachable().
-     * The `host` is a newly allocated string, which will be freed
-     * with g_free(). When `backend` sets both `host` and `port,` then
-     * it should return %TRUE, indicating it's a remote backend.
-     * Default implementation returns %FALSE, which is treated
-     * like the backend is local, no checking for server reachability
-     * is possible.
-     */
-    vfunc_get_destination_address(): [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    /**
-     * Let's the `backend` know that it'll be shut down shortly, no client connects
-     * to it anymore. The `backend` can free any resources which reference it, for
-     * example the opened views.
-     */
-    vfunc_prepare_shutdown(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of EDataCal-2.0.EDataCal.CalBackend */
-    /**
-     * Emitted when a client destroys its #ECalClient for `backend`
-     * @param sender the bus name that invoked the "close" method
-     */
-    connect(sigName: "closed", callback: (($obj: CalBackendSync, sender: string) => void)): number
-    connect_after(sigName: "closed", callback: (($obj: CalBackendSync, sender: string) => void)): number
-    emit(sigName: "closed", sender: string): void
-    /**
-     * Emitted when the last client destroys its #ECalClient for
-     * `backend`.  This signals the `backend` to begin final cleanup
-     * tasks such as synchronizing data to permanent storage.
-     */
-    connect(sigName: "shutdown", callback: (($obj: CalBackendSync) => void)): number
-    connect_after(sigName: "shutdown", callback: (($obj: CalBackendSync) => void)): number
-    emit(sigName: "shutdown"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    /* Signals of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Emitted when a new #icaltimezone is added to `cache`.
-     * @param zone the newly-added #ICalTimezone
-     */
-    connect(sigName: "timezone-added", callback: (($obj: CalBackendSync, zone: ICalGLib.Timezone) => void)): number
-    connect_after(sigName: "timezone-added", callback: (($obj: CalBackendSync, zone: ICalGLib.Timezone) => void)): number
-    emit(sigName: "timezone-added", zone: ICalGLib.Timezone): void
+    vfunc_refresh_sync(cal: DataCal, cancellable: Gio.Cancellable | null): void
+
+    // Class property signals of EDataCal-2.0.EDataCal.CalBackendSync
+
     connect(sigName: "notify::cache-dir", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-dir", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cache-dir", ...args: any[]): void
     connect(sigName: "notify::kind", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::kind", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::kind", ...args: any[]): void
     connect(sigName: "notify::proxy-resolver", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-resolver", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-resolver", ...args: any[]): void
     connect(sigName: "notify::registry", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::registry", ...args: any[]): void
     connect(sigName: "notify::writable", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::writable", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::writable", ...args: any[]): void
     connect(sigName: "notify::connectable", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connectable", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::connectable", ...args: any[]): void
     connect(sigName: "notify::main-context", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::main-context", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::main-context", ...args: any[]): void
     connect(sigName: "notify::online", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::online", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::online", ...args: any[]): void
     connect(sigName: "notify::source", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source", ...args: any[]): void
     connect(sigName: "notify::user-prompter", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-prompter", callback: (($obj: CalBackendSync, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::user-prompter", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class CalBackendSync extends CalBackend {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendSync
+
     static name: string
-    constructor (config?: CalBackendSync_ConstructProps)
-    _init (config?: CalBackendSync_ConstructProps): void
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<CalBackendSync>
+
+    // Constructors of EDataCal-2.0.EDataCal.CalBackendSync
+
+    constructor(config?: CalBackendSync_ConstructProps) 
+    _init(config?: CalBackendSync_ConstructProps): void
 }
-interface CalCache_ConstructProps extends EBackend.Cache_ConstructProps {
+
+interface CalCache_ConstructProps extends ECal.TimezoneCache_ConstructProps, EDataServer.Extensible_ConstructProps, EBackend.Cache_ConstructProps {
 }
-class CalCache {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.CalCache */
+
+/**
+ * Signal callback interface for `dup-component-revision`
+ */
+interface CalCache_DupComponentRevisionSignalCallback {
+    ($obj: CalCache, object: ICalGLib.Component): string
+}
+
+/**
+ * Signal callback interface for `get-timezone`
+ */
+interface CalCache_GetTimezoneSignalCallback {
+    ($obj: CalCache, tzid: string): ICalGLib.Timezone
+}
+
+interface CalCache extends ECal.TimezoneCache, EDataServer.Extensible {
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalCache
+
     /**
      * Checkes whether the `cal_cache` contains an object with
      * the given `uid` and `rid`. The `rid` can be an empty string
@@ -3813,7 +1518,19 @@ class CalCache {
      * @param rid optional component Recurrence-ID or %NULL
      * @param deleted_flag one of #ECacheDeletedFlag enum
      */
-    contains(uid: string, rid: string | null, deleted_flag: EBackend.CacheDeletedFlag): boolean
+    contains(uid: string, rid?: string | null, deleted_flag?: EBackend.CacheDeletedFlag): boolean
+
+    // Overloads of contains
+
+    /**
+     * Checkes whether the `cache` contains an object with
+     * the given `uid`.
+     * @param uid a unique identifier of an object
+     * @param deleted_flag one of #ECacheDeletedFlag enum
+     */
+    contains(uid: string, deleted_flag?: EBackend.CacheDeletedFlag): boolean
+    contains(...args: any[]): any
+    contains(args_or_uid: any[] | string, deleted_flag?: EBackend.CacheDeletedFlag): boolean | any
     /**
      * Deletes all locally stored attachments beside the cache file from the disk.
      * This doesn't modify the `component`. It's usually called before the `component`
@@ -3821,7 +1538,7 @@ class CalCache {
      * @param component an #ICalComponent
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    delete_attachments(component: ICalGLib.Component, cancellable?: Gio.Cancellable | null): boolean
+    delete_attachments(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean
     /**
      * Returns the `icomp` revision, used to detect changes.
      * The returned string should be freed with g_free(), when
@@ -3837,7 +1554,7 @@ class CalCache {
      * @param tzid a timezone ID to get
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    dup_timezone_as_string(tzid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_zone_string */ string ]
+    dup_timezone_as_string(tzid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_zone_string */ string ]
     /**
      * Gets a component identified by `uid,` and optionally by the `rid,`
      * from the `cal_cache`. The returned `out_component` should be freed with
@@ -3846,7 +1563,7 @@ class CalCache {
      * @param rid an optional Recurrence-ID
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_component(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_component */ ECal.Component ]
+    get_component(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_component */ ECal.Component ]
     /**
      * Gets a component identified by `uid,` and optionally by the `rid,`
      * from the `cal_cache`. The returned `out_icalstring` should be freed with
@@ -3855,7 +1572,7 @@ class CalCache {
      * @param rid an optional Recurrence-ID
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_component_as_string(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstring */ string ]
+    get_component_as_string(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstring */ string ]
     /**
      * Gets the custom flags previously set for `uid` and `rid,` either with
      * e_cal_cache_set_component_custom_flags(), when adding components or
@@ -3864,7 +1581,7 @@ class CalCache {
      * @param rid an optional Recurrence-ID
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_component_custom_flags(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_custom_flags */ number ]
+    get_component_custom_flags(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_custom_flags */ number ]
     /**
      * Gets the extra data previously set for `uid` and `rid,` either with
      * e_cal_cache_set_component_extra() or when adding components.
@@ -3872,7 +1589,7 @@ class CalCache {
      * @param rid an optional Recurrence-ID
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_component_extra(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_extra */ string ]
+    get_component_extra(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_extra */ string ]
     /**
      * Gets the master object and all detached instances for a component
      * identified by the `uid`. Free the returned #GSList with
@@ -3881,7 +1598,7 @@ class CalCache {
      * @param uid a UID of the component
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_components_by_uid(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
+    get_components_by_uid(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
     /**
      * Gets the master object and all detached instances as string
      * for a component identified by the `uid`. Free the returned #GSList
@@ -3889,7 +1606,7 @@ class CalCache {
      * @param uid a UID of the component
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_components_by_uid_as_string(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
+    get_components_by_uid_as_string(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
     /**
      * Gets a list of components which occur in the given time range.
      * It's not an error if none is found.
@@ -3897,14 +1614,14 @@ class CalCache {
      * @param range_end end of the range, as time_t, exclusive
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_components_in_range(range_start: number, range_end: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
+    get_components_in_range(range_start: number, range_end: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
     /**
      * Gets a list of components, as iCal strings, which occur in the given time range.
      * @param range_start start of the range, as time_t, inclusive
      * @param range_end end of the range, as time_t, exclusive
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_components_in_range_as_strings(range_start: number, range_end: number, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
+    get_components_in_range_as_strings(range_start: number, range_end: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
     /**
      * Gets all the ID-s the `extra` data is set for.
      * 
@@ -3914,13 +1631,26 @@ class CalCache {
      * @param extra an extra column value to search for
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_ids_with_extra(extra: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ids */ ECal.ComponentId[] ]
+    get_ids_with_extra(extra: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ids */ ECal.ComponentId[] ]
     /**
      * The same as e_cache_get_offline_changes(), only splits the saved UID
      * into UID and RID and saved the data into #ECalCacheOfflineChange structure.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_offline_changes(cancellable?: Gio.Cancellable | null): CalCacheOfflineChange[]
+    get_offline_changes(cancellable: Gio.Cancellable | null): CalCacheOfflineChange[]
+
+    // Overloads of get_offline_changes
+
+    /**
+     * Gathers the list of all offline changes being done so far.
+     * The returned #GSList contains #ECacheOfflineChange structure.
+     * Use e_cache_clear_offline_changes() to clear all offline
+     * changes at once.
+     * @param cancellable optional #GCancellable object, or %NULL
+     */
+    get_offline_changes(cancellable: Gio.Cancellable | null): EBackend.CacheOfflineChange[]
+    get_offline_changes(...args: any[]): any
+    get_offline_changes(args_or_cancellable: any[] | Gio.Cancellable | null): CalCacheOfflineChange[] | EBackend.CacheOfflineChange[] | any
     /**
      * This is a wrapper of e_cache_get_offline_state(), ensuring that
      * a correct #ECache UID will be used.
@@ -3929,6 +1659,12 @@ class CalCache {
      * @param cancellable optional #GCancellable object, or %NULL
      */
     get_offline_state(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): EBackend.OfflineState
+
+    // Overloads of get_offline_state
+
+    get_offline_state(uid: string, cancellable?: Gio.Cancellable | null): EBackend.OfflineState
+    get_offline_state(...args: any[]): any
+    get_offline_state(args_or_uid: any[] | string, cancellable?: Gio.Cancellable | null): EBackend.OfflineState | any
     /**
      * Gets a timezone with given `tzid,` which had been previously put
      * into the `cal_cache` with e_cal_cache_put_timezone().
@@ -3938,6 +1674,18 @@ class CalCache {
      * @param cancellable optional #GCancellable object, or %NULL
      */
     get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_zone */ ICalGLib.Timezone ]
+
+    // Overloads of get_timezone
+
+    /**
+     * Obtains an #ICalTimezone by its TZID string.  If no match is found,
+     * the function returns %NULL.  The returned #ICalTimezone is owned by
+     * the `cache` and should not be modified or freed.
+     * @param tzid the TZID of a timezone
+     */
+    get_timezone(tzid: string): ICalGLib.Timezone | null
+    get_timezone(...args: any[]): any
+    get_timezone(args_or_tzid: any[] | string): boolean | ICalGLib.Timezone | null | any
     /**
      * Gets a list of all stored timezones by the `cal_cache`.
      * Only the returned list should be freed with g_list_free()
@@ -3950,6 +1698,21 @@ class CalCache {
      * @param cancellable optional #GCancellable object, or %NULL
      */
     list_timezones(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_timezones */ ICalGLib.Timezone[] ]
+
+    // Overloads of list_timezones
+
+    /**
+     * Returns a list of #ICalTimezone instances that were explicitly added to
+     * the `cache` through e_timezone_cache_add_timezone().  In particular, any
+     * built-in time zone data that e_timezone_cache_get_timezone() may use to
+     * match a TZID string is excluded from the returned list.
+     * 
+     * Free the returned list with g_list_free().  The list elements are owned
+     * by the `cache` and should not be modified or freed.
+     */
+    list_timezones(): ICalGLib.Timezone[]
+    list_timezones(...args: any[]): any
+    list_timezones(...args: any[]): boolean | ICalGLib.Timezone[] | any
     /**
      * Adds a `component` into the `cal_cache`. Any existing with the same UID
      * and RID is replaced.
@@ -3959,7 +1722,7 @@ class CalCache {
      * @param offline_flag one of #ECacheOfflineFlag, whether putting this component in offline
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    put_component(component: ECal.Component, extra: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
+    put_component(component: ECal.Component, extra: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
     /**
      * Adds a list of `components` into the `cal_cache`. Any existing with the same UID
      * and RID are replaced.
@@ -3973,7 +1736,7 @@ class CalCache {
      * @param offline_flag one of #ECacheOfflineFlag, whether putting these components in offline
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    put_components(components: ECal.Component[], extras: string[] | null, custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
+    put_components(components: ECal.Component[], extras: string[] | null, custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
     /**
      * Puts the `zone` into the `cal_cache` using its timezone ID as
      * an identificator. The function adds a new or replaces existing,
@@ -3984,7 +1747,7 @@ class CalCache {
      * @param inc_ref_counts how many refs to add, or 0 to have it stored forever
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    put_timezone(zone: ICalGLib.Timezone, inc_ref_counts: number, cancellable?: Gio.Cancellable | null): boolean
+    put_timezone(zone: ICalGLib.Timezone, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes a component identified by `uid` and `rid` from the `cal_cache`.
      * When the `rid` is %NULL, or an empty string, then removes the master
@@ -3995,7 +1758,7 @@ class CalCache {
      * @param offline_flag one of #ECacheOfflineFlag, whether removing this component in offline
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    remove_component(uid: string, rid: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
+    remove_component(uid: string, rid: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes components identified by `uid` and `rid` from the `cal_cache`
      * in the `ids` list. When the `rid` is %NULL, or an empty string, then
@@ -4008,7 +1771,7 @@ class CalCache {
      * @param offline_flag one of #ECacheOfflineFlag, whether removing these comonents in offline
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    remove_components(ids: ECal.ComponentId[], custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
+    remove_components(ids: ECal.ComponentId[], custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
     /**
      * Dereferences use count of the time zone with ID `tzid` by `dec_ref_counts`
      * and removes the timezone from the cache when the reference count reaches
@@ -4021,12 +1784,12 @@ class CalCache {
      * @param dec_ref_counts reference counts to drop, 0 to remove it regardless of the current reference count
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    remove_timezone(tzid: string, dec_ref_counts: number, cancellable?: Gio.Cancellable | null): boolean
+    remove_timezone(tzid: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes all stored timezones from the `cal_cache`.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    remove_timezones(cancellable?: Gio.Cancellable | null): boolean
+    remove_timezones(cancellable: Gio.Cancellable | null): boolean
     /**
      * Searches the `cal_cache` with the given `sexp` and
      * returns those components which satisfy the search
@@ -4037,7 +1800,7 @@ class CalCache {
      * @param sexp search expression; use %NULL or an empty string to list all stored components
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    search(sexp?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ CalCacheSearchData[] ]
+    search(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_data */ CalCacheSearchData[] ]
     /**
      * Searches the `cal_cache` with the given `sexp` and
      * returns those components which satisfy the search
@@ -4047,7 +1810,7 @@ class CalCache {
      * @param sexp search expression; use %NULL or an empty string to list all stored components
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    search_components(sexp?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
+    search_components(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
     /**
      * Searches the `cal_cache` with the given `sexp` and returns ECalComponentId
      * for those components which satisfy the search expression.
@@ -4057,14 +1820,14 @@ class CalCache {
      * @param sexp search expression; use %NULL or an empty string to list all stored components
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    search_ids(sexp?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ids */ ECal.ComponentId[] ]
+    search_ids(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ids */ ECal.ComponentId[] ]
     /**
      * Searches the `cal_cache` with the given `sexp` and calls `func` for each
      * row which satisfy the search expression.
      * @param sexp search expression; use %NULL or an empty string to list all stored components
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    search_with_callback(sexp?: string | null, cancellable?: Gio.Cancellable | null): boolean
+    search_with_callback(sexp: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets or replaces the custom flags associated with a component
      * identified by `uid` and optionally `rid`.
@@ -4073,7 +1836,7 @@ class CalCache {
      * @param custom_flags the custom flags to set for the component
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    set_component_custom_flags(uid: string, rid: string | null, custom_flags: number, cancellable?: Gio.Cancellable | null): boolean
+    set_component_custom_flags(uid: string, rid: string | null, custom_flags: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets or replaces the extra data associated with a component
      * identified by `uid` and optionally `rid`.
@@ -4082,736 +1845,66 @@ class CalCache {
      * @param extra extra data to set for the component
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    set_component_extra(uid: string, rid?: string | null, extra?: string | null, cancellable?: Gio.Cancellable | null): boolean
-    /* Methods of EBackend-1.2.EBackend.Cache */
-    /**
-     * Instructs the `cache` to change its revision. In case the revision
-     * change is frozen with e_cache_freeze_revision_change() it notes to
-     * change the revision once the revision change is fully thaw.
-     */
-    change_revision(): void
-    /**
-     * Marks all objects as being fully synchronized with the server and
-     * removes those which are marked as locally deleted.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    clear_offline_changes(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Checkes whether the `cache` contains an object with
-     * the given `uid`.
-     * @param uid a unique identifier of an object
-     * @param deleted_flag one of #ECacheDeletedFlag enum
-     */
-    contains(uid: string, deleted_flag: EBackend.CacheDeletedFlag): boolean
-    /**
-     * Adds every column value which is not part of the `other_columns` to it,
-     * except of E_CACHE_COLUMN_UID, E_CACHE_COLUMN_REVISION, E_CACHE_COLUMN_OBJECT
-     * and E_CACHE_COLUMN_STATE columns.
-     * 
-     * This can be used within the callback of e_cache_foreach_update().
-     * @param column_names column names
-     * @param column_values column values
-     * @param other_columns an #ECacheColumnValues to fill
-     */
-    copy_missing_to_column_values(column_names: string[], column_values: string[], other_columns: EBackend.CacheColumnValues): /* other_columns */ EBackend.CacheColumnValues
-    dup_key(key: string): string
-    dup_revision(): string
-    /**
-     * Erases the cache and all of its content from the disk.
-     * The only valid operation after this is to free the `cache`.
-     */
-    erase(): void
-    /**
-     * Calls `func` for each found object, which satisfies the criteria
-     * for both `deleted_flag` and `where_clause`.
-     * 
-     * Note the `func` should not call any SQLite commands, because it's invoked
-     * within a SELECT statement execution.
-     * @param deleted_flag one of #ECacheDeletedFlag enum
-     * @param where_clause an optional SQLite WHERE clause part, or %NULL
-     * @param func an #ECacheForeachFunc function to call for each object
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    foreach(deleted_flag: EBackend.CacheDeletedFlag, where_clause: string | null, func: EBackend.CacheForeachFunc, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Calls `func` for each found object, which satisfies the criteria for both
-     * `deleted_flag` and `where_clause,` letting the caller update values where
-     * necessary. The return value of `func` is used to determine whether the call
-     * was successful, not whether there are any changes to be saved. If anything
-     * fails during the call then the all changes are reverted.
-     * 
-     * When there are requested any changes by the `func,` this function also
-     * calls e_cache_copy_missing_to_column_values() to ensure no descendant
-     * column data is lost.
-     * @param deleted_flag one of #ECacheDeletedFlag enum
-     * @param where_clause an optional SQLite WHERE clause part, or %NULL
-     * @param func an #ECacheUpdateFunc function to call for each object
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    foreach_update(deleted_flag: EBackend.CacheDeletedFlag, where_clause: string | null, func: EBackend.CacheUpdateFunc, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Freezes automatic revision change for the `cache`. The function
-     * can be called multiple times, but each such call requires its
-     * pair function e_cache_thaw_revision_change() call. See also
-     * e_cache_change_revision().
-     */
-    freeze_revision_change(): void
-    /**
-     * Returns an object with the given `uid`. This function does not consider locally
-     * deleted objects. The `out_revision` is set to the object revision, if not %NULL.
-     * Free it with g_free() when no longer needed. Similarly the `out_other_columns`
-     * contains a column name to column value strings for additional columns which had
-     * been requested when calling e_cache_initialize_sync(), if not %NULL.
-     * Free the returned #ECacheColumnValues with e_cache_column_values_free(), when
-     * no longer needed.
-     * @param uid a unique identifier of an object
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ string | null, /* out_revision */ string | null, /* out_other_columns */ EBackend.CacheColumnValues | null ]
-    get_count(deleted_flag: EBackend.CacheDeletedFlag, cancellable?: Gio.Cancellable | null): number
-    get_filename(): string
-    /**
-     * Reads the user `key` value as an integer.
-     * @param key a key name
-     */
-    get_key_int(key: string): number
-    /**
-     * The same as e_cache_get(), only considers also locally deleted objects.
-     * @param uid a unique identifier of an object
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_object_include_deleted(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ string | null, /* out_revision */ string | null, /* out_other_columns */ EBackend.CacheColumnValues | null ]
-    /**
-     * Gets a list of objects stored in the `cache,` optionally together with
-     * their revisions. The uids are not returned in any particular order,
-     * but the position between `out_objects` and `out_revisions` matches
-     * the same object.
-     * 
-     * Both `out_objects` and `out_revisions` contain newly allocated #GSList, which
-     * should be freed with g_slist_free_full (slist, g_free); when no longer needed.
-     * @param deleted_flag one of #ECacheDeletedFlag enum
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_objects(deleted_flag: EBackend.CacheDeletedFlag, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_objects */ string[], /* out_revisions */ string[] | null ]
-    /**
-     * Gathers the list of all offline changes being done so far.
-     * The returned #GSList contains #ECacheOfflineChange structure.
-     * Use e_cache_clear_offline_changes() to clear all offline
-     * changes at once.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_offline_changes(cancellable?: Gio.Cancellable | null): EBackend.CacheOfflineChange[]
-    get_offline_state(uid: string, cancellable?: Gio.Cancellable | null): EBackend.OfflineState
-    get_sqlitedb(): object | null
-    /**
-     * Gets a list of unique object identifiers stored in the `cache,` optionally
-     * together with their revisions. The uids are not returned in any particular
-     * order, but the position between `out_uids` and `out_revisions` matches
-     * the same object.
-     * 
-     * Both `out_uids` and `out_revisions` contain newly allocated #GSList, which
-     * should be freed with g_slist_free_full (slist, g_free); when no longer needed.
-     * @param deleted_flag one of #ECacheDeletedFlag enum
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_uids(deleted_flag: EBackend.CacheDeletedFlag, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_uids */ string[], /* out_revisions */ string[] | null ]
-    get_version(): number
-    /**
-     * Initializes the `cache` and opens the `filename` database.
-     * This should be called by the descendant.
-     * 
-     * The `other_columns` are added to the objects table (`E_CACHE_TABLE_OBJECTS)`.
-     * Values for these columns are returned by e_cache_get()
-     * and can be stored with e_cache_put().
-     * @param filename a filename of an SQLite database to use
-     * @param other_columns an optional    #GSList with additional columns to add to the objects table
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    initialize_sync(filename: string, other_columns?: EBackend.CacheColumnInfo[] | null, cancellable?: Gio.Cancellable | null): boolean
-    is_revision_change_frozen(): boolean
-    /**
-     * Locks the `cache` thus other threads cannot use it.
-     * This can be called recursively within one thread.
-     * Each call should have its pair e_cache_unlock().
-     * @param lock_type an #ECacheLockType
-     */
-    lock(lock_type: EBackend.CacheLockType): void
-    /**
-     * Stores an object into the cache. Depending on `offline_flag,` this update
-     * the object's offline state accordingly. When the `offline_flag` is set
-     * to %E_CACHE_IS_ONLINE, then it's set to #E_OFFLINE_STATE_SYNCED, like
-     * to be fully synchronized with the server, regardless of its previous
-     * offline state. Overwriting locally deleted object behaves like an addition
-     * of a completely new object.
-     * @param uid a unique identifier of an object
-     * @param revision a revision of the object
-     * @param object the object itself
-     * @param other_columns an #ECacheColumnValues with other columns to set; can be %NULL
-     * @param offline_flag one of #ECacheOfflineFlag, whether putting this object in offline
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    put(uid: string, revision: string | null, object: string, other_columns: EBackend.CacheColumnValues | null, offline_flag: EBackend.CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Removes the object with the given `uid` from the `cache`. Based on the `offline_flag,`
-     * it can remove also any information about locally made offline changes. Removing
-     * the object with %E_CACHE_IS_OFFLINE will still remember it for later use
-     * with e_cache_get_offline_changes().
-     * @param uid a unique identifier of an object
-     * @param offline_flag one of #ECacheOfflineFlag, whether removing the object in offline
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    remove(uid: string, offline_flag: EBackend.CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Removes all objects from the `cache` in one call.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    remove_all(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Sets a `value` of the user `key,` or deletes it, if the `value` is %NULL.
-     * @param key a key name
-     * @param value a value to set, or %NULL to delete the key
-     */
-    set_key(key: string, value?: string | null): boolean
-    /**
-     * Sets an integer `value` for the user `key`.
-     * @param key a key name
-     * @param value an integer value to set
-     */
-    set_key_int(key: string, value: number): boolean
-    /**
-     * Sets an offline `state` for the object identified by `uid`.
-     * @param uid a unique identifier of an object
-     * @param state an #EOfflineState to set
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    set_offline_state(uid: string, state: EBackend.OfflineState, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Sets the `revision` of the whole `cache`. This is not meant to be
-     * used by the descendants, because the revision is updated automatically
-     * when needed. The descendants can listen to "revision-changed" signal.
-     * @param revision a revision to set; use %NULL to unset it
-     */
-    set_revision(revision?: string | null): void
-    /**
-     * Sets a cache data version. This is meant to be used by the descendants.
-     * The `version` should be greater than zero.
-     * @param version a cache data version to set
-     */
-    set_version(version: number): void
-    /**
-     * Executes an SQLite statement. Use e_cache_sqlite_select() for
-     * SELECT statements.
-     * @param sql_stmt an SQLite statement to execute
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    sqlite_exec(sql_stmt: string, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Runs vacuum (compacts the database file), if needed.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    sqlite_maybe_vacuum(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Executes a SELECT statement `sql_stmt` and calls `func` for each row of the result.
-     * Use e_cache_sqlite_exec() for statements which do not return row sets.
-     * @param sql_stmt an SQLite SELECT statement to execute
-     * @param func an #ECacheSelectFunc function to call for each row
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    sqlite_select(sql_stmt: string, func: EBackend.CacheSelectFunc, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Thaws automatic revision change for the `cache`. It's the pair
-     * function of e_cache_freeze_revision_change().
-     */
-    thaw_revision_change(): void
-    /**
-     * Unlocks the cache which was previouly locked with e_cache_lock().
-     * The cache locked with #E_CACHE_LOCK_WRITE should use either
-     * `action` #E_CACHE_UNLOCK_COMMIT or #E_CACHE_UNLOCK_ROLLBACK,
-     * while the #E_CACHE_LOCK_READ should use #E_CACHE_UNLOCK_NONE `action`.
-     * @param action an #ECacheUnlockAction
-     */
-    unlock(action: EBackend.CacheUnlockAction): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Adds a copy of `zone` to `cache` and emits an
-     * #ETimezoneCache::timezone-added signal.  The `cache` will use the TZID
-     * string returned by i_cal_timezone_get_tzid() as the lookup key, which can
-     * be passed to e_timezone_cache_get_timezone() to obtain `zone` again.
-     * 
-     * If the `cache` already has an #ICalTimezone with the same TZID string
-     * as `zone,` the `cache` will remain unchanged to avoid invalidating any
-     * #ICalTimezone pointers which may have already been returned through
-     * e_timezone_cache_get_timezone().
-     * @param zone an #ICalTimezone
-     */
-    add_timezone(zone: ICalGLib.Timezone): void
-    /**
-     * Obtains an #ICalTimezone by its TZID string.  If no match is found,
-     * the function returns %NULL.  The returned #ICalTimezone is owned by
-     * the `cache` and should not be modified or freed.
-     * @param tzid the TZID of a timezone
-     */
-    get_timezone(tzid: string): ICalGLib.Timezone | null
-    /**
-     * Returns a list of #ICalTimezone instances that were explicitly added to
-     * the `cache` through e_timezone_cache_add_timezone().  In particular, any
-     * built-in time zone data that e_timezone_cache_get_timezone() may use to
-     * match a TZID string is excluded from the returned list.
-     * 
-     * Free the returned list with g_list_free().  The list elements are owned
-     * by the `cache` and should not be modified or freed.
-     */
-    list_timezones(): ICalGLib.Timezone[]
-    /* Methods of EDataServer-1.2.EDataServer.Extensible */
-    /**
-     * Returns a list of #EExtension objects bound to `extensible` whose
-     * types are ancestors of `extension_type`.  For a complete list of
-     * extension objects bound to `extensible,` pass %E_TYPE_EXTENSION.
-     * 
-     * The list itself should be freed with g_list_free().  The extension
-     * objects are owned by `extensible` and should not be unreferenced.
-     * @param extension_type the type of extensions to list
-     */
-    list_extensions(extension_type: GObject.Type): EDataServer.Extension[]
-    /**
-     * Creates an instance of all instantiable subtypes of #EExtension which
-     * target the class of `extensible`.  The lifetimes of these newly created
-     * #EExtension objects are bound to `extensible` such that they are finalized
-     * when `extensible` is finalized.
-     */
-    load_extensions(): void
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalCache */
+    set_component_extra(uid: string, rid: string | null, extra: string | null, cancellable: Gio.Cancellable | null): boolean
+
+    // Own virtual methods of EDataCal-2.0.EDataCal.CalCache
+
     /**
      * Returns the `icomp` revision, used to detect changes.
      * The returned string should be freed with g_free(), when
      * no longer needed.
+     * @virtual 
      * @param icomp an #ICalComponent
      */
     vfunc_dup_component_revision(icomp: ICalGLib.Component): string
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EBackend-1.2.EBackend.Cache */
-    vfunc_before_put(uid: string, revision: string, object: string, other_columns: EBackend.CacheColumnValues, is_replace: boolean, cancellable?: Gio.Cancellable | null): boolean
-    vfunc_before_remove(uid: string, cancellable?: Gio.Cancellable | null): boolean
-    vfunc_clear_offline_changes_locked(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Erases the cache and all of its content from the disk.
-     * The only valid operation after this is to free the `cache`.
-     */
-    vfunc_erase(): void
-    vfunc_put_locked(uid: string, revision: string, object: string, other_columns: EBackend.CacheColumnValues, offline_state: EBackend.OfflineState, is_replace: boolean, cancellable?: Gio.Cancellable | null): boolean
-    vfunc_remove_locked(uid: string, cancellable?: Gio.Cancellable | null): boolean
-    vfunc_revision_changed(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of EDataCal-2.0.EDataCal.CalCache */
-    connect(sigName: "dup-component-revision", callback: (($obj: CalCache, object: ICalGLib.Component) => string)): number
-    connect_after(sigName: "dup-component-revision", callback: (($obj: CalCache, object: ICalGLib.Component) => string)): number
-    emit(sigName: "dup-component-revision", object: ICalGLib.Component): void
-    /**
-     * A signal being called to get timezone when putting component
-     * into the cache. It's used to make sure the cache contains
-     * all timezones which are needed by the component. The returned
-     * ICalTimezone will not be freed.
-     * @param tzid timezone ID
-     */
-    connect(sigName: "get-timezone", callback: (($obj: CalCache, tzid: string) => ICalGLib.Timezone)): number
-    connect_after(sigName: "get-timezone", callback: (($obj: CalCache, tzid: string) => ICalGLib.Timezone)): number
-    emit(sigName: "get-timezone", tzid: string): void
-    /* Signals of EBackend-1.2.EBackend.Cache */
-    connect(sigName: "before-put", callback: (($obj: CalCache, object: string, p0: string, p1: string, p2: EBackend.CacheColumnValues, p3: boolean, p4?: Gio.Cancellable | null, p5?: object | null) => boolean)): number
-    connect_after(sigName: "before-put", callback: (($obj: CalCache, object: string, p0: string, p1: string, p2: EBackend.CacheColumnValues, p3: boolean, p4?: Gio.Cancellable | null, p5?: object | null) => boolean)): number
-    emit(sigName: "before-put", object: string, p0: string, p1: string, p2: EBackend.CacheColumnValues, p3: boolean, p4?: Gio.Cancellable | null, p5?: object | null): void
-    connect(sigName: "before-remove", callback: (($obj: CalCache, object: string, p0?: Gio.Cancellable | null, p1?: object | null) => boolean)): number
-    connect_after(sigName: "before-remove", callback: (($obj: CalCache, object: string, p0?: Gio.Cancellable | null, p1?: object | null) => boolean)): number
-    emit(sigName: "before-remove", object: string, p0?: Gio.Cancellable | null, p1?: object | null): void
-    connect(sigName: "revision-changed", callback: (($obj: CalCache) => void)): number
-    connect_after(sigName: "revision-changed", callback: (($obj: CalCache) => void)): number
-    emit(sigName: "revision-changed"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CalCache, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CalCache, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    /* Signals of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Emitted when a new #icaltimezone is added to `cache`.
-     * @param zone the newly-added #ICalTimezone
-     */
-    connect(sigName: "timezone-added", callback: (($obj: CalCache, zone: ICalGLib.Timezone) => void)): number
-    connect_after(sigName: "timezone-added", callback: (($obj: CalCache, zone: ICalGLib.Timezone) => void)): number
-    emit(sigName: "timezone-added", zone: ICalGLib.Timezone): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of EDataCal-2.0.EDataCal.CalCache
+
+    connect(sigName: "dup-component-revision", callback: CalCache_DupComponentRevisionSignalCallback): number
+    connect_after(sigName: "dup-component-revision", callback: CalCache_DupComponentRevisionSignalCallback): number
+    emit(sigName: "dup-component-revision", object: ICalGLib.Component, ...args: any[]): void
+    connect(sigName: "get-timezone", callback: CalCache_GetTimezoneSignalCallback): number
+    connect_after(sigName: "get-timezone", callback: CalCache_GetTimezoneSignalCallback): number
+    emit(sigName: "get-timezone", tzid: string, ...args: any[]): void
+
+    // Class property signals of EDataCal-2.0.EDataCal.CalCache
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Contains only private data that should be read and manipulated using
+ * the functions below.
+ * @class 
+ */
+class CalCache extends EBackend.Cache {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalCache
+
     static name: string
-    constructor (config?: CalCache_ConstructProps)
-    _init (config?: CalCache_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(filename: string, cancellable?: Gio.Cancellable | null): CalCache
+    static $gtype: GObject.GType<CalCache>
+
+    // Constructors of EDataCal-2.0.EDataCal.CalCache
+
+    constructor(config?: CalCache_ConstructProps) 
+    /**
+     * Creates a new #ECalCache.
+     * @constructor 
+     * @param filename file name to load or create the new cache
+     * @param cancellable optional #GCancellable object, or %NULL
+     */
+    constructor(filename: string, cancellable: Gio.Cancellable | null) 
+    /**
+     * Creates a new #ECalCache.
+     * @constructor 
+     * @param filename file name to load or create the new cache
+     * @param cancellable optional #GCancellable object, or %NULL
+     */
+    static new(filename: string, cancellable: Gio.Cancellable | null): CalCache
+    _init(config?: CalCache_ConstructProps): void
     /**
      * An #ECalRecurResolveTimezoneCb callback, which can be used
      * with e_cal_recur_generate_instances_sync(). The `cal_cache`
@@ -4820,37 +1913,44 @@ class CalCache {
      * @param cal_cache an #ECalCache
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    static resolve_timezone_cb(tzid: string, cal_cache?: object | null, cancellable?: Gio.Cancellable | null): ICalGLib.Timezone | null
-    static $gtype: GObject.Type
+    static resolve_timezone_cb(tzid: string, cal_cache: object | null, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
 }
-interface CalMetaBackend_ConstructProps extends CalBackendSync_ConstructProps {
-    /* Constructor properties of EDataCal-2.0.EDataCal.CalMetaBackend */
+
+interface CalMetaBackend_ConstructProps extends ECal.TimezoneCache_ConstructProps, CalBackendSync_ConstructProps {
+
+    // Own constructor properties of EDataCal-2.0.EDataCal.CalMetaBackend
+
     /**
      * The #ECalCache being used for this meta backend.
      */
-    cache?: CalCache
+    cache?: CalCache | null
 }
-class CalMetaBackend {
-    /* Properties of EDataCal-2.0.EDataCal.CalMetaBackend */
+
+/**
+ * Signal callback interface for `refresh-completed`
+ */
+interface CalMetaBackend_RefreshCompletedSignalCallback {
+    ($obj: CalMetaBackend): void
+}
+
+/**
+ * Signal callback interface for `source-changed`
+ */
+interface CalMetaBackend_SourceChangedSignalCallback {
+    ($obj: CalMetaBackend): void
+}
+
+interface CalMetaBackend extends ECal.TimezoneCache {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalMetaBackend
+
     /**
      * The #ECalCache being used for this meta backend.
      */
     cache: CalCache
-    /* Properties of EDataCal-2.0.EDataCal.CalBackend */
-    cache_dir: string
-    readonly kind: number
-    readonly proxy_resolver: Gio.ProxyResolver
-    readonly registry: EDataServer.SourceRegistry
-    writable: boolean
-    /* Properties of EBackend-1.2.EBackend.Backend */
-    connectable: Gio.SocketConnectable
-    readonly main_context: GLib.MainContext
-    online: boolean
-    readonly source: EDataServer.Source
-    readonly user_prompter: EBackend.UserPrompter
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.CalMetaBackend */
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalMetaBackend
+
     /**
      * This is called always before any operation which requires a connection
      * to the remote side. It can fail with an #E_CLIENT_ERROR_REPOSITORY_OFFLINE
@@ -4881,7 +1981,7 @@ class CalMetaBackend {
      * @param credentials an #ENamedParameters with previously used credentials, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    connect_sync(credentials?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_auth_result */ EDataServer.SourceAuthenticationResult, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
+    connect_sync(credentials: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_auth_result */ EDataServer.SourceAuthenticationResult, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
     /**
      * This is called when the backend goes into offline mode or
      * when the disconnect is required. The implementation should
@@ -4891,7 +1991,7 @@ class CalMetaBackend {
      * It is mandatory to implement this virtual method by the descendant.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    disconnect_sync(cancellable?: Gio.Cancellable | null): boolean
+    disconnect_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Returns the last known synchronization tag, the same as used to
      * call e_cal_meta_backend_get_changes_sync().
@@ -4905,12 +2005,12 @@ class CalMetaBackend {
      * all known time zones.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    empty_cache_sync(cancellable?: Gio.Cancellable | null): boolean
+    empty_cache_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Ensures that the `meta_backend` is connected to its destination.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    ensure_connected_sync(cancellable?: Gio.Cancellable | null): boolean
+    ensure_connected_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Extracts all VTIMEZONE components from the `vcalendar` and adds them
      * to the memory cache, thus they are available when needed. The function does
@@ -4923,7 +2023,7 @@ class CalMetaBackend {
      * @param remove_existing whether to remove any existing first
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    gather_timezones_sync(vcalendar: ICalGLib.Component, remove_existing: boolean, cancellable?: Gio.Cancellable | null): boolean
+    gather_timezones_sync(vcalendar: ICalGLib.Component, remove_existing: boolean, cancellable: Gio.Cancellable | null): boolean
     get_capabilities(): string
     /**
      * Gathers the changes since the last check which had been done
@@ -4956,7 +2056,7 @@ class CalMetaBackend {
      * @param is_repeat set to %TRUE when this is the repeated call
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_repeat */ boolean, /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] ]
+    get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_repeat */ boolean, /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] ]
     /**
      * This value has meaning only if e_cal_meta_backend_get_ever_connected()
      * is %TRUE.
@@ -4979,7 +2079,7 @@ class CalMetaBackend {
      * @param component an #ICalComponent to work with
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    inline_local_attachments_sync(component: ICalGLib.Component, cancellable?: Gio.Cancellable | null): boolean
+    inline_local_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean
     /**
      * Used to get list of all existing objects on the remote side. The descendant
      * can optionally provide `out_new_sync_tag,` which will be stored on success, if
@@ -4995,7 +2095,7 @@ class CalMetaBackend {
      * when no longer needed.
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    list_existing_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_existing_objects */ CalMetaBackendInfo[] ]
+    list_existing_sync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_existing_objects */ CalMetaBackendInfo[] ]
     /**
      * Loads a component from the remote side. Any detached instances should be
      * returned together with the master object. The `out_component` can be either
@@ -5014,7 +2114,7 @@ class CalMetaBackend {
      * @param extra optional extra data stored with the component, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    load_component_sync(uid: string, extra?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_component */ ICalGLib.Component, /* out_extra */ string ]
+    load_component_sync(uid: string, extra: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_component */ ICalGLib.Component, /* out_extra */ string ]
     /**
      * Merges all the instances provided in `instances` list into one VCALENDAR
      * object, which would eventually contain also all the used timezones.
@@ -5036,14 +2136,14 @@ class CalMetaBackend {
      * @param removed_objects     a #GSList of #ECalMetaBackendInfo object infos which had been removed
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    process_changes_sync(created_objects?: CalMetaBackendInfo[] | null, modified_objects?: CalMetaBackendInfo[] | null, removed_objects?: CalMetaBackendInfo[] | null, cancellable?: Gio.Cancellable | null): boolean
+    process_changes_sync(created_objects: CalMetaBackendInfo[] | null, modified_objects: CalMetaBackendInfo[] | null, removed_objects: CalMetaBackendInfo[] | null, cancellable: Gio.Cancellable | null): boolean
     ref_cache(): CalCache
     /**
      * Refreshes the `meta_backend` immediately. To just schedule refresh
      * operation call e_cal_meta_backend_schedule_refresh().
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    refresh_sync(cancellable?: Gio.Cancellable | null): boolean
+    refresh_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes a component from the remote side, with all its detached instances.
      * The `object` is not %NULL when it's removing locally deleted object
@@ -5058,7 +2158,7 @@ class CalMetaBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    remove_component_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    remove_component_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Determines, whether current source content requires reconnect of the backend.
      * 
@@ -5107,7 +2207,7 @@ class CalMetaBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    save_component_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_uid */ string, /* out_new_extra */ string ]
+    save_component_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_uid */ string, /* out_new_extra */ string ]
     /**
      * Schedules refresh of the content of the `meta_backend`. If there's any
      * already scheduled, then the function does nothing.
@@ -5131,7 +2231,7 @@ class CalMetaBackend {
      * @param expr a search expression, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    search_components_sync(expr?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
+    search_components_sync(expr: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
     /**
      * Searches `meta_backend` with given expression `expr` and returns
      * found components as a #GSList of iCal strings `out_icalstrings`.
@@ -5147,7 +2247,7 @@ class CalMetaBackend {
      * @param expr a search expression, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    search_sync(expr?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
+    search_sync(expr: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
     /**
      * Sets the `cache` as the cache to be used by the `meta_backend`.
      * By default, a cache.db in ECalBackend::cache-dir is created
@@ -5192,7 +2292,7 @@ class CalMetaBackend {
      * @param objects     a #GSList of #ECalMetaBackendInfo object infos to split
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    split_changes_sync(objects: CalMetaBackendInfo[], cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* objects */ CalMetaBackendInfo[], /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] | null ]
+    split_changes_sync(objects: CalMetaBackendInfo[], cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* objects */ CalMetaBackendInfo[], /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] | null ]
     /**
      * Changes all inline attachments to URL attachments in `component,` which
      * will point to a local file instead. The function expects FILENAME parameter
@@ -5203,1335 +2303,27 @@ class CalMetaBackend {
      * @param component an #ICalComponent to work with
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    store_inline_attachments_sync(component: ICalGLib.Component, cancellable?: Gio.Cancellable | null): boolean
-    /* Methods of EDataCal-2.0.EDataCal.CalBackendSync */
-    /**
-     * Calls the add_timezone_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param tzobject VTIMEZONE object to be added.
-     */
-    add_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void
-    /**
-     * Calls the create_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobjs The objects to be added.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    create_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobjs: string[], opflags: ECal.OperationFlags): [ /* uids */ string[], /* new_components */ ECal.Component[] ]
-    /**
-     * Calls the discard_alarm_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param uid Unique id of the calendar object.
-     * @param rid Recurrence id of the calendar object.
-     * @param auid Alarm ID to remove.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    discard_alarm(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
-    /**
-     * Calls the get_attachment_uris_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param uid Unique id of the calendar object.
-     * @param rid Recurrence id of the calendar object.
-     * @param attachments Placeholder for list of returned attachment uris.
-     */
-    get_attachment_uris(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, attachments: string[]): void
-    /**
-     * Calls the get_free_busy_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param users List of users to get F/B info from.
-     * @param start Time range start.
-     * @param end Time range end.
-     */
-    get_free_busy(cal: DataCal, cancellable: Gio.Cancellable | null, users: string[], start: number, end: number): /* freebusyobjects */ string[]
-    /**
-     * Calls the get_object_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param uid UID of the object to get.
-     * @param rid Recurrence ID of the specific instance to get, or %NULL if    getting the master object.
-     */
-    get_object(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid?: string | null): /* calobj */ string
-    /**
-     * Calls the get_object_list_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param sexp Search query.
-     */
-    get_object_list(cal: DataCal, cancellable: Gio.Cancellable | null, sexp: string): /* calobjs */ string[]
-    /**
-     * Calls the get_timezone_sync method on the given backend.
-     * This method is not mandatory on the backend, because here
-     * is used internal_get_timezone call to fetch timezone from
-     * it and that is transformed to a string. In other words,
-     * any object deriving from ECalBackendSync can implement only
-     * internal_get_timezone and can skip implementation of
-     * get_timezone_sync completely.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param tzid ID of the timezone to retrieve.
-     * @param tzobject Placeholder for the returned timezone.
-     */
-    get_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string): void
-    /**
-     * Calls the modify_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobjs Objects to be modified.
-     * @param mod Type of modification to be done.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    modify_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobjs: string[], mod: ECal.ObjModType, opflags: ECal.OperationFlags): [ /* old_components */ ECal.Component[], /* new_components */ ECal.Component[] ]
-    /**
-     * Calls the open_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation or just create it when it does not exist.
-     */
-    open(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    /**
-     * Calls the receive_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobj iCalendar object to receive.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    receive_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    /**
-     * Calls the refresh_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     */
-    refresh(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    /**
-     * Calls the remove_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param ids List of #ECalComponentId objects identifying the objects to remove.
-     * @param mod Type of removal.
-     * @param opflags bit-or of #ECalOperationFlags
-     */
-    remove_objects(cal: DataCal, cancellable: Gio.Cancellable | null, ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags): [ /* old_components */ ECal.Component[], /* new_components */ ECal.Component[] ]
-    /**
-     * Calls the send_objects_sync method on the given backend.
-     * @param cal An EDataCal object.
-     * @param cancellable a #GCancellable for the operation
-     * @param calobj The iCalendar object to send.
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param users List of users to send notifications to.
-     */
-    send_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags, users: string[]): /* modified_calobj */ string
-    /* Methods of EDataCal-2.0.EDataCal.CalBackend */
-    /**
-     * Asynchronously adds the timezone described by `tzobject` to `backend`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_add_timezone_finish() to get the result of
-     * the operation.
-     * @param tzobject an iCalendar VTIMEZONE string
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    add_timezone(tzobject: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_add_timezone().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    add_timezone_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Adds the timezone described by `tzobject` to `backend`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param tzobject an iCalendar VTIMEZONE string
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    add_timezone_sync(tzobject: string, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Adds a view to the list of live views being run by the given backend.
-     * Doing so means that any listener on the view will get notified of any
-     * change that affect the live view.
-     * @param view An #EDataCalView object.
-     */
-    add_view(view: DataCalView): void
-    create_cache_filename(uid: string, filename: string | null, fileindex: number): string
-    /**
-     * Asynchronously creates one or more new iCalendar objects from `calobjs`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_create_objects_finish() to get the result of the
-     * operation.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisifed
-     */
-    create_objects(calobjs: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_create_objects().
-     * 
-     * A unique ID string for each newly-created object is deposited in `out_uids`.
-     * Free the returned ID strings with g_free() when finished with them.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     * @param out_uids a #GQueue in which to deposit results
-     */
-    create_objects_finish(result: Gio.AsyncResult, out_uids: GLib.Queue): boolean
-    /**
-     * Creates one or more new iCalendar objects from `calobjs,` and deposits
-     * the unique ID string for each newly-created object in `out_uids`.
-     * 
-     * Free the returned ID strings with g_free() when finished with them.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param out_uids a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    create_objects_sync(calobjs: string, opflags: ECal.OperationFlags, out_uids: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
-     * from the iCalendar object identified by `uid` and, optionally, `rid`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_discard_alarm_finish() to get the result of
-     * the operation.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param alarm_uid a unique ID for an iCalendar VALARM object
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    discard_alarm(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_discard_alarm().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    discard_alarm_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Discards the VALARM object with a unique ID of `alarm_uid` from the
-     * iCalendar object identified by `uid` and, optionally, `rid`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param alarm_uid a unique ID for an iCalendar VALARM object
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    discard_alarm_sync(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Thread-safe variation of e_cal_backend_get_cache_dir().
-     * Use this function when accessing `backend` from multiple threads.
-     * 
-     * The returned string should be freed with g_free() when no longer needed.
-     */
-    dup_cache_dir(): string
-    /**
-     * Calls `func` for each existing view (as returned by e_cal_backend_list_views()).
-     * The `func` can return %FALSE to stop early.
-     */
-    foreach_view(): boolean
-    /**
-     * Notifies each view of the `backend` about progress. When `only_completed_views`
-     * is %TRUE, notifies only completed views.
-     * @param only_completed_views whether notify in completed views only
-     * @param percent percent complete
-     * @param message message describing the operation in progress, or %NULL
-     */
-    foreach_view_notify_progress(only_completed_views: boolean, percent: number, message?: string | null): void
-    /**
-     * Asynchronously inspects the iCalendar object specified by `uid` and,
-     * optionally, `rid` for attachments.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_get_attachment_uris_finish() to get the result of the
-     * operation.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_attachment_uris(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_attachment_uris().
-     * 
-     * The requested attachment URI strings are deposited in `out_attachment_uris`.
-     * Free the returned strings with g_free() when finished with them.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param result a #GAsyncResult
-     * @param out_attachment_uris a #GQueue in which to deposit results
-     */
-    get_attachment_uris_finish(result: Gio.AsyncResult, out_attachment_uris: GLib.Queue): boolean
-    /**
-     * Inspects the iCalendar object specified by `uid` and, optionally, `rid`
-     * for attachments and deposits a URI string for each attachment in
-     * `out_attachment_uris`.  Free the returned strings with g_free() when
-     * finished with them.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param out_attachment_uris a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_attachment_uris_sync(uid: string, rid: string | null, out_attachment_uris: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Obtains the value of the backend property named `prop_name`.
-     * Freed the returned string with g_free() when finished with it.
-     * @param prop_name a backend property name
-     */
-    get_backend_property(prop_name: string): string
-    /**
-     * Returns the cache directory path used by `backend`.
-     */
-    get_cache_dir(): string
-    /**
-     * Asynchronously obtains a free/busy object for the list of `users` in the
-     * time interval between `start` and `end`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_get_free_busy_finish() to get the result of
-     * the operation.
-     * @param start start time
-     * @param end end time
-     * @param users a %NULL-terminated array of user strings
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_free_busy(start: number, end: number, users: string[], cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_free_busy().
-     * 
-     * The free/busy results can be returned through the
-     * e_data_cal_report_free_busy_data() function asynchronously. The out_freebusy
-     * will contain all the returned data, possibly again, thus the client is
-     * responsible for the data merge, if needed.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     * @param out_freebusy iCalendar strings with overall returned Free/Busy data
-     */
-    get_free_busy_finish(result: Gio.AsyncResult, out_freebusy: string[]): boolean
-    /**
-     * Obtains a free/busy object for the list of `users` in the time interval
-     * between `start` and `end`.
-     * 
-     * The free/busy results can be returned through the
-     * e_data_cal_report_free_busy_data() function asynchronously. The out_freebusy
-     * will contain all the returned data, possibly again, thus the client is
-     * responsible for the data merge, if needed.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param start start time
-     * @param end end time
-     * @param users a %NULL-terminated array of user strings
-     * @param out_freebusy iCalendar strings with overall returned Free/Busy data
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_free_busy_sync(start: number, end: number, users: string[], out_freebusy: string[], cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Gets the kind of components the given backend stores.
-     */
-    get_kind(): ICalGLib.ComponentKind
-    /**
-     * Asynchronously obtains an #ECalComponent by its `uid` and, optionally, `rid`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_get_object_finish() to get the result of the operation.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_object(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_object().
-     * 
-     * The returned string is an iCalendar object describing either single component
-     * or a vCalendar object, which includes also detached instances. It should be
-     * freed when no longer needed.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param result a #GAsyncResult
-     */
-    get_object_finish(result: Gio.AsyncResult): string
-    /**
-     * Asynchronously obtains a set of iCalendar instances which satisfy
-     * the criteria specified in `query`.
-     * 
-     * When the operation in finished, `callback` will be called.  You can then
-     * call e_cal_backend_get_object_list_finish() to get the result of the
-     * operation.
-     * @param query a search query in S-expression format
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_object_list(query: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_object_list().
-     * 
-     * The matching iCalendar instances are deposited in `out_objects`.
-     * The returned instances should be freed with g_free() when finished with them.
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param result a #GAsyncResult
-     * @param out_objects a #GQueue in which to deposit results
-     */
-    get_object_list_finish(result: Gio.AsyncResult, out_objects: GLib.Queue): boolean
-    /**
-     * Obtains a set of iCalendar string instances which satisfy the criteria
-     * specified in `query,` and deposits them in `out_objects`.
-     * 
-     * The returned instances should be freed with g_free() when finished with them.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * Note that an empty result set does not necessarily imply an error.
-     * @param query a search query in S-expression format
-     * @param out_objects a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Obtains an iCalendar string for an object identified by its `uid` and,
-     * optionally, `rid`.
-     * 
-     * The returned string should be freed with g_free() when finished with it.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param uid a unique ID for an iCalendar object
-     * @param rid a recurrence ID, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_object_sync(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Returns the data source registry to which #EBackend:source belongs.
-     */
-    get_registry(): EDataServer.SourceRegistry
-    /**
-     * Asynchronously obtains the VTIMEZONE object identified by `tzid`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can
-     * then call e_cal_backend_get_timezone_finish() to get the result of
-     * the operation.
-     * @param tzid a unique ID for an iCalendar VTIMEZONE object
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_timezone(tzid: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_get_timezone().
-     * 
-     * Free the returned string with g_free() when finished with it.
-     * 
-     * If an error occurred, the function will set `error` and return %NULL.
-     * @param result a #GAsyncResult
-     */
-    get_timezone_finish(result: Gio.AsyncResult): string
-    /**
-     * Obtains the VTIMEZONE object identified by `tzid`.  Free the returned
-     * string with g_free() when finished with it.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param tzid a unique ID for an iCalendar VTIMEZONE object
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    get_timezone_sync(tzid: string, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Returns whether `backend` will accept changes to its data content.
-     */
-    get_writable(): boolean
-    /**
-     * Checks if `backend'`s storage has been opened (and
-     * authenticated, if necessary) and the backend itself
-     * is ready for accessing. This property is changed automatically
-     * after the `backend` is successfully opened.
-     */
-    is_opened(): boolean
-    is_readonly(): boolean
-    /**
-     * Returns a list of #EDataCalView instances added with
-     * e_cal_backend_add_view().
-     * 
-     * The views returned in the list are referenced for thread-safety.
-     * They must each be unreferenced with g_object_unref() when finished
-     * with them.  Free the returned list itself with g_list_free().
-     * 
-     * An easy way to free the list properly in one step is as follows:
-     * 
-     * |[
-     *   g_list_free_full (list, g_object_unref);
-     * ```
-     * 
-     */
-    list_views(): DataCalView[]
-    /**
-     * Asynchronously modifies one or more iCalendar objects according to
-     * `calobjs` and `mod`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_modify_objects_finish() to get the result of the
-     * operation.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    modify_objects(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_modify_objects().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    modify_objects_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Modifies one or more iCalendar objects according to `calobjs` and `mod`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param calobjs a %NULL-terminated array of iCalendar strings
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    modify_objects_sync(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Notifies each of the backend's listeners about a new object.
-     * 
-     * Uses the #EDataCalView's fields-of-interest to filter out unwanted
-     * information from ical strings sent over the bus.
-     * @param component the newly created #ECalComponent
-     */
-    notify_component_created(component: ECal.Component): void
-    /**
-     * Notifies each of the backend's listeners about a modified object.
-     * 
-     * Uses the #EDataCalView's fields-of-interest to filter out unwanted
-     * information from ical strings sent over the bus.
-     * @param old_component the #ECalComponent before the modification
-     * @param new_component the #ECalComponent after the modification
-     */
-    notify_component_modified(old_component: ECal.Component, new_component: ECal.Component): void
-    /**
-     * Notifies each of the backend's listeners about a removed object.
-     * 
-     * Uses the #EDataCalView's fields-of-interest to filter out unwanted
-     * information from ical strings sent over the bus.
-     * @param id the Id of the removed object
-     * @param old_component the removed component
-     * @param new_component the component after the removal. This only applies to recurrent appointments that had an instance removed. In that case, this function notifies a modification instead of a removal.
-     */
-    notify_component_removed(id: ECal.ComponentId, old_component: ECal.Component, new_component: ECal.Component): void
-    /**
-     * Notifies each of the backend's listeners about an error
-     * @param message Error message
-     */
-    notify_error(message: string): void
-    /**
-     * Notifies client about property value change.
-     * @param prop_name property name, which changed
-     * @param prop_value new property value
-     */
-    notify_property_changed(prop_name: string, prop_value?: string | null): void
-    /**
-     * Asynchronously "opens" the `backend`.  Opening a backend is something of
-     * an outdated concept, but the operation is hanging around for a little
-     * while longer.  This usually involves some custom initialization logic,
-     * and testing of remote authentication if applicable.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_open_finish() to get the result of the operation.
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    open(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_open().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    open_finish(result: Gio.AsyncResult): boolean
-    /**
-     * "Opens" the `backend`.  Opening a backend is something of an outdated
-     * concept, but the operation is hanging around for a little while longer.
-     * This usually involves some custom initialization logic, and testing of
-     * remote authentication if applicable.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    open_sync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
-     * place to deposit results prior to completing the #GSimpleAsyncResult.
-     * 
-     * <note>
-     *   <para>
-     *     This is a temporary function to serve #EDataCal's "respond"
-     *     functions until they can be removed.  Nothing else should be
-     *     calling this function.
-     *   </para>
-     * </note>
-     * @param opid an operation ID given to #EDataCal
-     * @param result_queue return location for a #GQueue, or %NULL
-     */
-    prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult
-    /**
-     * Asynchronously receives the set of iCalendar objects specified by
-     * `calobj`.  This is used for iTIP confirmation and cancellation messages
-     * for scheduled meetings.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_receive_objects_finish() to get the result of the
-     * operation.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    receive_objects(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_receive_objects().
-     * 
-     * If an error occurred, the function will set `error` and erturn %FALSE.
-     * @param result a #GAsyncResult
-     */
-    receive_objects_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Receives the set of iCalendar objects specified by `calobj`.  This is used
-     * for iTIP confirmation and cancellation messages for scheduled meetings.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    receive_objects_sync(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Returns the #EDataCal for `backend`.  The #EDataCal is essentially
-     * the glue between incoming D-Bus requests and `backend'`s native API.
-     * 
-     * An #EDataCal should be set only once after `backend` is first created.
-     * If an #EDataCal has not yet been set, the function returns %NULL.
-     * 
-     * The returned #EDataCal is referenced for thread-safety and must be
-     * unreferenced with g_object_unref() when finished with it.
-     */
-    ref_data_cal(): DataCal | null
-    /**
-     * Returns the #GProxyResolver for `backend` (if applicable), as indicated
-     * by the #ESourceAuthentication:proxy-uid of `backend'`s #EBackend:source
-     * or one of its ancestors.
-     * 
-     * The returned #GProxyResolver is referenced for thread-safety and must
-     * be unreferenced with g_object_unref() when finished with it.
-     */
-    ref_proxy_resolver(): Gio.ProxyResolver | null
-    /**
-     * Asynchronously initiates a refresh for `backend,` if the `backend` supports
-     * refreshing.  The actual refresh operation completes on its own time.  This
-     * function, along with e_cal_backend_refresh_finish(), merely initiates the
-     * operation.
-     * 
-     * Once the refresh is initiated, `callback` will be called.  You can then
-     * call e_cal_backend_refresh_finish() to get the result of the initiation.
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the refresh initiation started with e_cal_backend_refresh().
-     * 
-     * If an error occurred while initiating the refresh, the function will set
-     * `error` and return %FALSE.  If the `backend` does not support refreshing,
-     * the function will set an %E_CLIENT_ERROR_NOT_SUPPORTED error and return
-     * %FALSE.
-     * @param result a #GAsyncResult
-     */
-    refresh_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Initiates a refresh for `backend,` if the `backend` supports refreshing.
-     * The actual refresh operation completes on its own time.  This function
-     * merely initiates the operation.
-     * 
-     * If an error occrs while initiating the refresh, the function will set
-     * `error` and return %FALSE.  If the `backend` does not support refreshing,
-     * the function will set an %E_CLIENT_ERROR_NOT_SUPPORTED error and return
-     * %FALSE.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    refresh_sync(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Asynchronously removes one or more iCalendar objects according to
-     * `component_ids` and `mod`.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_remove_objects_finish() to get the result of the
-     * operation.
-     * @param component_ids a #GList of #ECalComponentId structs
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    remove_objects(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_remove_objects().
-     * 
-     * If an error occurred, the function will set `error` and return %FALSE.
-     * @param result a #GAsyncResult
-     */
-    remove_objects_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Removes one or more iCalendar objects according to `component_ids` and `mod`.
-     * 
-     * If an error occurs, the function will set `error` and return %FALSE.
-     * @param component_ids a #GList of #ECalComponentId structs
-     * @param mod modification type for recurrences
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    remove_objects_sync(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Removes view from the list of live views for the backend.
-     * @param view An #EDataCalView object, previously added with `ref` e_cal_backend_add_view.
-     */
-    remove_view(view: DataCalView): void
-    /**
-     * Schedules user function `func` to be run in a dedicated thread as
-     * a blocking operation.
-     * 
-     * The function adds its own reference to `use_cancellable,` if not %NULL.
-     * 
-     * The error returned from `func` is propagated to client using
-     * e_cal_backend_notify_error() function. If it's not desired,
-     * then left the error unchanged and notify about errors manually.
-     * @param use_cancellable an optional #GCancellable to use for `func`
-     * @param func a function to call in a dedicated thread
-     */
-    schedule_custom_operation(use_cancellable: Gio.Cancellable | null, func: CalBackendCustomOpFunc): void
-    /**
-     * Asynchronously sends meeting information in `calobj`.  The `backend` may
-     * modify `calobj` and send meeting information only to particular users.
-     * 
-     * When the operation is finished, `callback` will be called.  You can then
-     * call e_cal_backend_send_objects_finish() to get the result of the operation.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    send_objects(calobj: string, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_cal_backend_send_objects().
-     * 
-     * The function returns a string representation of a sent, or to be send,
-     * vCalendar and deposits the list of users the meeting information was sent
-     * to, or to be send to, in `out_users`.
-     * 
-     * Free the returned pointer with g_free(), when no longer needed.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param result a #GAsyncResult
-     * @param out_users a #GQueue in which to deposit results
-     */
-    send_objects_finish(result: Gio.AsyncResult, out_users: GLib.Queue): string
-    /**
-     * Sends meeting information in `calobj`.  The `backend` may modify `calobj`
-     * and send meeting information only to particular users.  The function
-     * returns the (maybe) modified `calobj` and deposits the list of users the
-     * meeting information was sent (to be send) to in `out_users`.
-     * 
-     * The returned pointer should be freed with g_free(), when no londer needed.
-     * 
-     * If an error occurs, the function will set `error` and return %NULL.
-     * @param calobj an iCalendar string
-     * @param opflags bit-or of #ECalOperationFlags
-     * @param out_users a #GQueue in which to deposit results
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    send_objects_sync(calobj: string, opflags: ECal.OperationFlags, out_users: GLib.Queue, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Sets the cache directory path for use by `backend`.
-     * 
-     * Note that #ECalBackend is initialized with a default cache directory
-     * path which should suffice for most cases.  Backends should not override
-     * the default path without good reason.
-     * @param cache_dir a local cache directory path
-     */
-    set_cache_dir(cache_dir: string): void
-    /**
-     * Sets the #EDataCal for `backend`.  The #EDataCal is essentially the
-     * glue between incoming D-Bus requests and `backend'`s native API.
-     * 
-     * An #EDataCal should be set only once after `backend` is first created.
-     * 
-     * The `backend` adds its own reference on the `data_cal`.
-     * @param data_cal an #EDataCal
-     */
-    set_data_cal(data_cal: DataCal): void
-    /**
-     * Sets whether `backend` will accept changes to its data content.
-     * @param writable whether `backend` is writable
-     */
-    set_writable(writable: boolean): void
-    /**
-     * Starts a new live view on the given backend.
-     * @param view The view to be started.
-     */
-    start_view(view: DataCalView): void
-    /**
-     * Stops a previously started live view on the given backend.
-     * @param view The view to be stopped.
-     */
-    stop_view(view: DataCalView): void
-    /* Methods of EBackend-1.2.EBackend.Backend */
-    /**
-     * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
-     * to inform clients that credentials are required.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_backend_credentials_required_finish() to get the result of the operation.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_backend_credentials_required().
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param result a #GAsyncResult
-     */
-    credentials_required_finish(result: Gio.AsyncResult): boolean
-    /**
-     * Synchronously lets the clients know that the backned requires credentials to be
-     * properly opened. It's a proxy function for e_source_invoke_credentials_required_sync(),
-     * where can be found more information about actual parameters meaning.
-     * 
-     * The provided credentials are received through #EBackendClass.authenticate_sync()
-     * method asynchronously.
-     * 
-     * If an error occurs, the function sets `error` and returns %FALSE.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Makes sure that the "online" property is updated, that is, if there
-     * is any destination reachability test pending, it'll be done immediately
-     * and the only state will be updated as well.
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    ensure_online_state_updated(cancellable?: Gio.Cancellable | null): void
-    /**
-     * Makes sure that the associated ESource::connection-status is connected. This is
-     * useful in cases when the backend can connect to the destination without invoking
-     * #EBackendClass.authenticate_sync(), possibly through e_backend_schedule_authenticate().
-     */
-    ensure_source_status_connected(): void
-    /**
-     * Provides destination server host name and port to which
-     * the backend connects. This is used to determine required
-     * connection point for e_backend_is_destination_reachable().
-     * The `host` is a newly allocated string, which will be freed
-     * with g_free(). When `backend` sets both `host` and `port,` then
-     * it should return %TRUE, indicating it's a remote backend.
-     * Default implementation returns %FALSE, which is treated
-     * like the backend is local, no checking for server reachability
-     * is possible.
-     */
-    get_destination_address(): [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    /**
-     * Returns the online state of `backend:` %TRUE if `backend` is online,
-     * %FALSE if offline.
-     * 
-     * If the #EBackend:connectable property is non-%NULL, the `backend` will
-     * automatically determine whether the network service should be reachable,
-     * and hence whether the `backend` is #EBackend:online.  But subclasses may
-     * override the online state if, for example, a connection attempt fails.
-     */
-    get_online(): boolean
-    /**
-     * Returns the #ESource to which `backend` is paired.
-     */
-    get_source(): EDataServer.Source
-    /**
-     * Gets an instance of #EUserPrompter, associated with this `backend`.
-     * 
-     * The returned instance is owned by the `backend`.
-     */
-    get_user_prompter(): object | null
-    /**
-     * Checks whether the `backend<`!-- -->'s destination server, as returned
-     * by e_backend_get_destination_address(), is reachable.
-     * If the e_backend_get_destination_address() returns %FALSE, this function
-     * returns %TRUE, meaning the destination is always reachable.
-     * This uses #GNetworkMonitor<!-- -->'s g_network_monitor_can_reach()
-     * for reachability tests.
-     * @param cancellable a #GCancellable instance, or %NULL
-     */
-    is_destination_reachable(cancellable?: Gio.Cancellable | null): boolean
-    /**
-     * Let's the `backend` know that it'll be shut down shortly, no client connects
-     * to it anymore. The `backend` can free any resources which reference it, for
-     * example the opened views.
-     */
-    prepare_shutdown(): void
-    /**
-     * Returns the socket endpoint for the network service to which `backend`
-     * is a client, or %NULL if `backend` does not use network sockets.
-     * 
-     * The initial value of the #EBackend:connectable property is derived from
-     * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
-     * property, if the extension is present.
-     * 
-     * The returned #GSocketConnectable is referenced for thread-safety and
-     * must be unreferenced with g_object_unref() when finished with it.
-     */
-    ref_connectable(): Gio.SocketConnectable | null
-    /**
-     * Returns the #GMainContext on which event sources for `backend` are to
-     * be attached.
-     * 
-     * The returned #GMainContext is referenced for thread-safety and must be
-     * unreferenced with g_main_context_unref() when finished with it.
-     */
-    ref_main_context(): GLib.MainContext
-    /**
-     * Schedules a new authenticate session, cancelling any previously run.
-     * This is usually done automatically, when an 'authenticate' signal is
-     * received for the associated #ESource. With %NULL `credentials` an attempt
-     * without it is run.
-     * @param credentials a credentials to use to authenticate, or %NULL
-     */
-    schedule_authenticate(credentials?: EDataServer.NamedParameters | null): void
-    /**
-     * Asynchronously invokes e_backend_credentials_required(), but installs its
-     * own callback which only prints a runtime warning on the console when
-     * the call fails. The `who_calls` is a prefix of the console message.
-     * This is useful when the caller just wants to start the operation
-     * without having actual place where to show the operation result.
-     * @param reason an #ESourceCredentialsReason, why the credentials are required
-     * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
-     * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
-     * @param op_error a #GError with a description of the previous credentials error, or %NULL
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param who_calls an identification who calls this
-     */
-    schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error?: GLib.Error | null, cancellable?: Gio.Cancellable | null, who_calls?: string | null): void
-    /**
-     * Sets the socket endpoint for the network service to which `backend` is
-     * a client.  This can be %NULL if `backend` does not use network sockets.
-     * 
-     * The initial value of the #EBackend:connectable property is derived from
-     * the #ESourceAuthentication extension of the `backend'`s #EBackend:source
-     * property, if the extension is present.
-     * @param connectable a #GSocketConnectable, or %NULL
-     */
-    set_connectable(connectable: Gio.SocketConnectable): void
-    /**
-     * Sets the online state of `backend:` %TRUE if `backend` is online,
-     * `FALSE` if offline.
-     * 
-     * If the #EBackend:connectable property is non-%NULL, the `backend` will
-     * automatically determine whether the network service should be reachable,
-     * and hence whether the `backend` is #EBackend:online.  But subclasses may
-     * override the online state if, for example, a connection attempt fails.
-     * @param online the online state
-     */
-    set_online(online: boolean): void
-    /**
-     * Initiates a user trust prompt with given `parameters`.
-     * 
-     * When the operation is finished, `callback` will be called. You can then
-     * call e_backend_trust_prompt_finish() to get the result of the operation.
-     * @param parameters an #ENamedParameters with values for the trust prompt
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    trust_prompt(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes the operation started with e_backend_trust_prompt().
-     * If an error occurred, the function will set `error` and return
-     * %E_TRUST_PROMPT_RESPONSE_UNKNOWN.
-     * @param result a #GAsyncResult
-     */
-    trust_prompt_finish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse
-    /**
-     * Asks a user a trust prompt with given `parameters,` and returns what
-     * user responded. This blocks until the response is delivered.
-     * @param parameters an #ENamedParameters with values for the trust prompt
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable?: Gio.Cancellable | null): EDataServer.TrustPromptResponse
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Adds a copy of `zone` to `cache` and emits an
-     * #ETimezoneCache::timezone-added signal.  The `cache` will use the TZID
-     * string returned by i_cal_timezone_get_tzid() as the lookup key, which can
-     * be passed to e_timezone_cache_get_timezone() to obtain `zone` again.
-     * 
-     * If the `cache` already has an #ICalTimezone with the same TZID string
-     * as `zone,` the `cache` will remain unchanged to avoid invalidating any
-     * #ICalTimezone pointers which may have already been returned through
-     * e_timezone_cache_get_timezone().
-     * @param zone an #ICalTimezone
-     */
-    add_timezone(zone: ICalGLib.Timezone): void
-    /**
-     * Obtains an #ICalTimezone by its TZID string.  If no match is found,
-     * the function returns %NULL.  The returned #ICalTimezone is owned by
-     * the `cache` and should not be modified or freed.
-     * @param tzid the TZID of a timezone
-     */
-    get_timezone(tzid: string): ICalGLib.Timezone | null
-    /**
-     * Returns a list of #ICalTimezone instances that were explicitly added to
-     * the `cache` through e_timezone_cache_add_timezone().  In particular, any
-     * built-in time zone data that e_timezone_cache_get_timezone() may use to
-     * match a TZID string is excluded from the returned list.
-     * 
-     * Free the returned list with g_list_free().  The list elements are owned
-     * by the `cache` and should not be modified or freed.
-     */
-    list_timezones(): ICalGLib.Timezone[]
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalMetaBackend */
+    store_inline_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean
+
+    // Conflicting methods
+
+    add_timezone(...args: any[]): any
+    get_timezone(...args: any[]): any
+    create_objects(...args: any[]): any
+    discard_alarm(...args: any[]): any
+    get_attachment_uris(...args: any[]): any
+    get_free_busy(...args: any[]): any
+    get_object(...args: any[]): any
+    get_object_list(...args: any[]): any
+    modify_objects(...args: any[]): any
+    open(...args: any[]): any
+    receive_objects(...args: any[]): any
+    refresh(...args: any[]): any
+    remove_objects(...args: any[]): any
+    send_objects(...args: any[]): any
+
+    // Own virtual methods of EDataCal-2.0.EDataCal.CalMetaBackend
+
     /**
      * This is called always before any operation which requires a connection
      * to the remote side. It can fail with an #E_CLIENT_ERROR_REPOSITORY_OFFLINE
@@ -6559,10 +2351,11 @@ class CalMetaBackend {
      * according to `out_auth_result` value.
      * 
      * It is mandatory to implement this virtual method by the descendant.
+     * @virtual 
      * @param credentials an #ENamedParameters with previously used credentials, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_connect_sync(credentials?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_auth_result */ EDataServer.SourceAuthenticationResult, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
+    vfunc_connect_sync(credentials: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_auth_result */ EDataServer.SourceAuthenticationResult, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
     /**
      * This is called when the backend goes into offline mode or
      * when the disconnect is required. The implementation should
@@ -6570,9 +2363,10 @@ class CalMetaBackend {
      * is not connected.
      * 
      * It is mandatory to implement this virtual method by the descendant.
+     * @virtual 
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean
+    vfunc_disconnect_sync(cancellable: Gio.Cancellable | null): boolean
     /**
      * Gathers the changes since the last check which had been done
      * on the remote side.
@@ -6600,15 +2394,17 @@ class CalMetaBackend {
      * Each output #GSList should be freed with
      * g_slist_free_full (objects, e_cal_meta_backend_info_free);
      * when no longer needed.
+     * @virtual 
      * @param last_sync_tag optional sync tag from the last check
      * @param is_repeat set to %TRUE when this is the repeated call
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_repeat */ boolean, /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] ]
+    vfunc_get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_repeat */ boolean, /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] ]
     /**
      * It is optional to implement this virtual method by the descendants.
      * It is used to receive SSL error details when any online operation
      * returns E_CLIENT_ERROR, E_CLIENT_ERROR_TLS_NOT_AVAILABLE error.
+     * @virtual 
      */
     vfunc_get_ssl_error_details(): [ /* returnType */ boolean, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
     /**
@@ -6624,9 +2420,10 @@ class CalMetaBackend {
      * The `out_existing_objects` #GSList should be freed with
      * g_slist_free_full (objects, e_cal_meta_backend_info_free);
      * when no longer needed.
+     * @virtual 
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_list_existing_sync(cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_existing_objects */ CalMetaBackendInfo[] ]
+    vfunc_list_existing_sync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_existing_objects */ CalMetaBackendInfo[] ]
     /**
      * Loads a component from the remote side. Any detached instances should be
      * returned together with the master object. The `out_component` can be either
@@ -6641,11 +2438,12 @@ class CalMetaBackend {
      * 
      * The returned `out_extra` should be freed with g_free(), when no longer
      * needed.
+     * @virtual 
      * @param uid a component UID
      * @param extra optional extra data stored with the component, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_load_component_sync(uid: string, extra?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_component */ ICalGLib.Component, /* out_extra */ string ]
+    vfunc_load_component_sync(uid: string, extra: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_component */ ICalGLib.Component, /* out_extra */ string ]
     /**
      * Removes a component from the remote side, with all its detached instances.
      * The `object` is not %NULL when it's removing locally deleted object
@@ -6653,6 +2451,7 @@ class CalMetaBackend {
      * from the #ECalCache.
      * 
      * It is mandatory to implement this virtual method by the writable descendant.
+     * @virtual 
      * @param conflict_resolution an #EConflictResolution to use
      * @param uid a component UID
      * @param extra extra data being saved with the component in the local cache, or %NULL
@@ -6660,7 +2459,7 @@ class CalMetaBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_remove_component_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): boolean
+    vfunc_remove_component_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Determines, whether current source content requires reconnect of the backend.
      * 
@@ -6670,6 +2469,7 @@ class CalMetaBackend {
      * with the values after the last successful connect and returns
      * %TRUE when they changed. It always return %TRUE when there was
      * no successful connect done yet.
+     * @virtual 
      */
     vfunc_requires_reconnect(): boolean
     /**
@@ -6702,6 +2502,7 @@ class CalMetaBackend {
      * is able to resolve the conflicts itself.
      * 
      * It is mandatory to implement this virtual method by the writable descendant.
+     * @virtual 
      * @param overwrite_existing %TRUE when can overwrite existing components, %FALSE otherwise
      * @param conflict_resolution one of #EConflictResolution, what to do on conflicts
      * @param instances instances of the component to save
@@ -6709,7 +2510,7 @@ class CalMetaBackend {
      * @param opflags bit-or of #ECalOperationFlags
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_save_component_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_uid */ string, /* out_new_extra */ string ]
+    vfunc_save_component_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_uid */ string, /* out_new_extra */ string ]
     /**
      * Searches `meta_backend` with given expression `expr` and returns
      * found components as a #GSList of #ECalComponent `out_components`.
@@ -6722,10 +2523,11 @@ class CalMetaBackend {
      * The default implementation searches `meta_backend'`s cache. It's also
      * not required to be online for searching, thus `meta_backend` doesn't
      * ensure it.
+     * @virtual 
      * @param expr a search expression, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_search_components_sync(expr?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
+    vfunc_search_components_sync(expr: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
     /**
      * Searches `meta_backend` with given expression `expr` and returns
      * found components as a #GSList of iCal strings `out_icalstrings`.
@@ -6738,198 +2540,105 @@ class CalMetaBackend {
      * The default implementation searches `meta_backend'`s cache. It's also
      * not required to be online for searching, thus `meta_backend` doesn't
      * ensure it.
+     * @virtual 
      * @param expr a search expression, or %NULL
      * @param cancellable optional #GCancellable object, or %NULL
      */
-    vfunc_search_sync(expr?: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
+    vfunc_search_sync(expr: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
     vfunc_source_changed(): void
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalBackendSync */
-    vfunc_add_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void
-    vfunc_discard_alarm_sync(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
-    vfunc_get_object_sync(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, calobj: string): void
-    vfunc_get_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string): void
-    vfunc_open_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    vfunc_receive_objects_sync(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_refresh_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EDataCal-2.0.EDataCal.CalBackend */
-    vfunc_closed(sender: string): void
-    vfunc_impl_add_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzobject: string): void
-    vfunc_impl_discard_alarm(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_get_attachment_uris(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string): void
-    vfunc_impl_get_backend_property(prop_name: string): string
-    vfunc_impl_get_object(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string): void
-    vfunc_impl_get_object_list(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string): void
-    vfunc_impl_get_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzid: string): void
-    vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void
-    vfunc_impl_receive_objects(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void
-    vfunc_impl_send_objects(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void
-    vfunc_impl_start_view(view: DataCalView): void
-    vfunc_impl_stop_view(view: DataCalView): void
-    vfunc_shutdown(): void
-    vfunc_timezone_added(zone: ICalGLib.Timezone): void
-    vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void
-    /* Virtual methods of EBackend-1.2.EBackend.Backend */
-    vfunc_authenticate_sync(credentials: EDataServer.NamedParameters, out_certificate_pem: string, out_certificate_errors: Gio.TlsCertificateFlags, cancellable?: Gio.Cancellable | null): EDataServer.SourceAuthenticationResult
-    /**
-     * Provides destination server host name and port to which
-     * the backend connects. This is used to determine required
-     * connection point for e_backend_is_destination_reachable().
-     * The `host` is a newly allocated string, which will be freed
-     * with g_free(). When `backend` sets both `host` and `port,` then
-     * it should return %TRUE, indicating it's a remote backend.
-     * Default implementation returns %FALSE, which is treated
-     * like the backend is local, no checking for server reachability
-     * is possible.
-     */
-    vfunc_get_destination_address(): [ /* returnType */ boolean, /* host */ string, /* port */ number ]
-    /**
-     * Let's the `backend` know that it'll be shut down shortly, no client connects
-     * to it anymore. The `backend` can free any resources which reference it, for
-     * example the opened views.
-     */
-    vfunc_prepare_shutdown(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of EDataCal-2.0.EDataCal.CalMetaBackend */
-    connect(sigName: "refresh-completed", callback: (($obj: CalMetaBackend) => void)): number
-    connect_after(sigName: "refresh-completed", callback: (($obj: CalMetaBackend) => void)): number
-    emit(sigName: "refresh-completed"): void
-    /**
-     * This signal is emitted whenever the underlying backend #ESource
-     * changes. Unlike the #ESource's 'changed' signal this one is
-     * tight to the #ECalMetaBackend itself and is emitted from
-     * a dedicated thread, thus it doesn't block the main thread.
-     */
-    connect(sigName: "source-changed", callback: (($obj: CalMetaBackend) => void)): number
-    connect_after(sigName: "source-changed", callback: (($obj: CalMetaBackend) => void)): number
-    emit(sigName: "source-changed"): void
-    /* Signals of EDataCal-2.0.EDataCal.CalBackend */
-    /**
-     * Emitted when a client destroys its #ECalClient for `backend`
-     * @param sender the bus name that invoked the "close" method
-     */
-    connect(sigName: "closed", callback: (($obj: CalMetaBackend, sender: string) => void)): number
-    connect_after(sigName: "closed", callback: (($obj: CalMetaBackend, sender: string) => void)): number
-    emit(sigName: "closed", sender: string): void
-    /**
-     * Emitted when the last client destroys its #ECalClient for
-     * `backend`.  This signals the `backend` to begin final cleanup
-     * tasks such as synchronizing data to permanent storage.
-     */
-    connect(sigName: "shutdown", callback: (($obj: CalMetaBackend) => void)): number
-    connect_after(sigName: "shutdown", callback: (($obj: CalMetaBackend) => void)): number
-    emit(sigName: "shutdown"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    /* Signals of ECal-2.0.ECal.TimezoneCache */
-    /**
-     * Emitted when a new #icaltimezone is added to `cache`.
-     * @param zone the newly-added #ICalTimezone
-     */
-    connect(sigName: "timezone-added", callback: (($obj: CalMetaBackend, zone: ICalGLib.Timezone) => void)): number
-    connect_after(sigName: "timezone-added", callback: (($obj: CalMetaBackend, zone: ICalGLib.Timezone) => void)): number
-    emit(sigName: "timezone-added", zone: ICalGLib.Timezone): void
+
+    // Own signals of EDataCal-2.0.EDataCal.CalMetaBackend
+
+    connect(sigName: "refresh-completed", callback: CalMetaBackend_RefreshCompletedSignalCallback): number
+    connect_after(sigName: "refresh-completed", callback: CalMetaBackend_RefreshCompletedSignalCallback): number
+    emit(sigName: "refresh-completed", ...args: any[]): void
+    connect(sigName: "source-changed", callback: CalMetaBackend_SourceChangedSignalCallback): number
+    connect_after(sigName: "source-changed", callback: CalMetaBackend_SourceChangedSignalCallback): number
+    emit(sigName: "source-changed", ...args: any[]): void
+
+    // Class property signals of EDataCal-2.0.EDataCal.CalMetaBackend
+
     connect(sigName: "notify::cache", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cache", ...args: any[]): void
     connect(sigName: "notify::cache-dir", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::cache-dir", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::cache-dir", ...args: any[]): void
     connect(sigName: "notify::kind", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::kind", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::kind", ...args: any[]): void
     connect(sigName: "notify::proxy-resolver", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::proxy-resolver", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::proxy-resolver", ...args: any[]): void
     connect(sigName: "notify::registry", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::registry", ...args: any[]): void
     connect(sigName: "notify::writable", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::writable", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::writable", ...args: any[]): void
     connect(sigName: "notify::connectable", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connectable", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::connectable", ...args: any[]): void
     connect(sigName: "notify::main-context", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::main-context", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::main-context", ...args: any[]): void
     connect(sigName: "notify::online", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::online", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::online", ...args: any[]): void
     connect(sigName: "notify::source", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::source", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::source", ...args: any[]): void
     connect(sigName: "notify::user-prompter", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::user-prompter", callback: (($obj: CalMetaBackend, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::user-prompter", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Contains only private data that should be read and manipulated using
+ * the functions below.
+ * @class 
+ */
+class CalMetaBackend extends CalBackendSync {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalMetaBackend
+
     static name: string
-    constructor (config?: CalMetaBackend_ConstructProps)
-    _init (config?: CalMetaBackend_ConstructProps): void
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<CalMetaBackend>
+
+    // Constructors of EDataCal-2.0.EDataCal.CalMetaBackend
+
+    constructor(config?: CalMetaBackend_ConstructProps) 
+    _init(config?: CalMetaBackend_ConstructProps): void
 }
-interface DataCal_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of EDataCal-2.0.EDataCal.DataCal */
-    backend?: CalBackend
-    connection?: Gio.DBusConnection
-    object_path?: string
+
+interface DataCal_ConstructProps extends Gio.Initable_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of EDataCal-2.0.EDataCal.DataCal
+
+    backend?: CalBackend | null
+    connection?: Gio.DBusConnection | null
+    object_path?: string | null
 }
-class DataCal {
-    /* Properties of EDataCal-2.0.EDataCal.DataCal */
+
+interface DataCal extends Gio.Initable {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCal
+
     readonly backend: CalBackend
     readonly connection: Gio.DBusConnection
     readonly object_path: string
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.DataCal */
+
+    // Own fields of EDataCal-2.0.EDataCal.DataCal
+
+    parent: GObject.Object
+    priv: DataCalPrivate
+
+    // Owm methods of EDataCal-2.0.EDataCal.DataCal
+
     /**
      * Returns the #GDBusConnection on which the Calendar D-Bus interface
      * is exported.
@@ -7065,1214 +2774,127 @@ class DataCal {
      * @param calobj An iCalendar string representing the object sent.
      */
     respond_send_objects(opid: number, error: GLib.Error, users: string[], calobj: string): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EDataCal-2.0.EDataCal.DataCal */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of EDataCal-2.0.EDataCal.DataCal
+
     connect(sigName: "notify::backend", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::backend", ...args: any[]): void
     connect(sigName: "notify::connection", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connection", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::connection", ...args: any[]): void
     connect(sigName: "notify::object-path", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::object-path", callback: (($obj: DataCal, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::object-path", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class DataCal extends GObject.Object {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCal
+
     static name: string
-    constructor (config?: DataCal_ConstructProps)
-    _init (config?: DataCal_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<DataCal>
+
+    // Constructors of EDataCal-2.0.EDataCal.DataCal
+
+    constructor(config?: DataCal_ConstructProps) 
+    /**
+     * Creates a new #EDataCal and exports the Calendar D-Bus interface
+     * on `connection` at `object_path`.  The #EDataCal handles incoming remote
+     * method invocations and forwards them to the `backend`.  If the Calendar
+     * interface fails to export, the function sets `error` and returns %NULL.
+     * @constructor 
+     * @param backend an #ECalBackend
+     * @param connection a #GDBusConnection
+     * @param object_path object path for the D-Bus interface
+     */
+    constructor(backend: CalBackend, connection: Gio.DBusConnection, object_path: string) 
+    /**
+     * Creates a new #EDataCal and exports the Calendar D-Bus interface
+     * on `connection` at `object_path`.  The #EDataCal handles incoming remote
+     * method invocations and forwards them to the `backend`.  If the Calendar
+     * interface fails to export, the function sets `error` and returns %NULL.
+     * @constructor 
+     * @param backend an #ECalBackend
+     * @param connection a #GDBusConnection
+     * @param object_path object path for the D-Bus interface
+     */
     static new(backend: CalBackend, connection: Gio.DBusConnection, object_path: string): DataCal
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param object_type a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
+    _init(config?: DataCal_ConstructProps): void
 }
-interface DataCalFactory_ConstructProps extends EBackend.DataFactory_ConstructProps {
+
+interface DataCalFactory_ConstructProps extends EDataServer.Extensible_ConstructProps, Gio.Initable_ConstructProps, EBackend.DataFactory_ConstructProps {
 }
-class DataCalFactory {
-    /* Properties of EBackend-1.2.EBackend.DataFactory */
-    readonly backend_per_process: number
-    readonly registry: EDataServer.SourceRegistry
-    readonly reload_supported: boolean
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EBackend-1.2.EBackend.DataFactory */
-    backend_closed(backend: EBackend.Backend): void
-    backend_closed_by_sender(backend: EBackend.Backend, sender: string): void
-    /**
-     * Returns a new and unique object path for a D-Bus interface based
-     * in the data object path prefix of the `data_factory`
-     */
-    construct_path(): string
-    /**
-     * Used only when backend-per-process is off.
-     * 
-     * Free the returned pointer with g_object_unref(), if not NULL and no longer
-     * needed.
-     * @param backend_factory 
-     * @param source 
-     */
-    create_backend(backend_factory: EBackend.BackendFactory, source: EDataServer.Source): EBackend.Backend | null
-    get_backend_per_process(): number
-    /**
-     * Returns the #ESourceRegistry owned by `data_factory`.
-     */
-    get_registry(): EDataServer.SourceRegistry
-    get_reload_supported(): boolean
-    /**
-     * Lists the currently opened backends.
-     * 
-     * The sources returned in the list are referenced for thread-safety.
-     * They must each be unreferenced with g_object_unref() when finished
-     * with them.  Free the returned #GSList itself with g_slist_free().
-     * 
-     * An easy way to free the list properly in one step is as follows:
-     * 
-     * |[
-     *   g_slist_free_full (list, g_object_unref);
-     * ```
-     * 
-     */
-    list_opened_backends(): EBackend.Backend[]
-    open_backend(backend: EBackend.Backend, connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Returns the #EBackendFactory for "`backend_name:``extension_name"`, or
-     * %NULL if no such factory is registered.
-     * 
-     * The returned #EBackendFactory is referenced for thread-safety.
-     * Unreference the #EBackendFactory with g_object_unref() when finished
-     * with it.
-     * @param backend_name a backend name
-     * @param extension_name an extension name
-     */
-    ref_backend_factory(backend_name: string, extension_name: string): EBackend.BackendFactory | null
-    /**
-     * Spawns a new subprocess for a backend type and returns the object path
-     * of the new subprocess to the client, in the way the client can talk
-     * directly to the running backend. If the backend already has a subprocess
-     * running, the used object path is returned to the client.
-     * @param invocation a #GDBusMethodInvocation
-     * @param uid an #ESource UID
-     * @param extension_name an extension name
-     * @param subprocess_path a path of an executable responsible for running the subprocess
-     */
-    spawn_subprocess_backend(invocation: Gio.DBusMethodInvocation, uid: string, extension_name: string, subprocess_path: string): void
-    use_backend_per_process(): boolean
-    /* Methods of EBackend-1.2.EBackend.DBusServer */
-    /**
-     * Increases the use count of `server`.
-     * 
-     * Use this function to indicate that the server has a reason to continue
-     * to run.  To cancel the hold, call e_dbus_server_release().
-     */
-    hold(): void
-    /**
-     * This function should be called once during `server` initialization to
-     * load all available library modules to extend the `server'`s functionality.
-     */
-    load_modules(): void
-    /**
-     * Emits the #EDBusServer::quit signal with the given `code`.
-     * 
-     * By default the `server` will quit its main loop and cause
-     * e_dbus_server_run() to return `code`.
-     * @param code an #EDBusServerExitCode
-     */
-    quit(code: EBackend.DBusServerExitCode): void
-    /**
-     * Decreates the use count of `server`.
-     * 
-     * When the use count reaches zero, the server will stop running.
-     * 
-     * Never call this function except to cancel the effect of a previous call
-     * to e_dbus_server_hold().
-     */
-    release(): void
-    /**
-     * Emits the #EDBusServer::run signal.
-     * 
-     * By default the `server` will start its main loop and attempt to acquire
-     * its well-known session bus name.  If the `server'`s main loop is already
-     * running, the function will immediately return #E_DBUS_SERVER_EXIT_NONE.
-     * Otherwise the function blocks until e_dbus_server_quit() is called.
-     * 
-     * If `wait_for_client` is %TRUE, the `server` will continue running until
-     * the first client connection is made instead of quitting on its own if
-     * no client connection is made within the first few seconds.
-     * @param wait_for_client continue running until a client connects
-     */
-    run(wait_for_client: boolean): EBackend.DBusServerExitCode
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of EDataServer-1.2.EDataServer.Extensible */
-    /**
-     * Returns a list of #EExtension objects bound to `extensible` whose
-     * types are ancestors of `extension_type`.  For a complete list of
-     * extension objects bound to `extensible,` pass %E_TYPE_EXTENSION.
-     * 
-     * The list itself should be freed with g_list_free().  The extension
-     * objects are owned by `extensible` and should not be unreferenced.
-     * @param extension_type the type of extensions to list
-     */
-    list_extensions(extension_type: GObject.Type): EDataServer.Extension[]
-    /**
-     * Creates an instance of all instantiable subtypes of #EExtension which
-     * target the class of `extensible`.  The lifetimes of these newly created
-     * #EExtension objects are bound to `extensible` such that they are finalized
-     * when `extensible` is finalized.
-     */
-    load_extensions(): void
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EDataCal-2.0.EDataCal.DataCalFactory */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EBackend-1.2.EBackend.DataFactory */
-    vfunc_complete_open(invocation: Gio.DBusMethodInvocation, object_path: string, bus_name: string, extension_name: string): void
-    /**
-     * Used only when backend-per-process is off.
-     * 
-     * Free the returned pointer with g_object_unref(), if not NULL and no longer
-     * needed.
-     * @param backend_factory 
-     * @param source 
-     */
-    vfunc_create_backend(backend_factory: EBackend.BackendFactory, source: EDataServer.Source): EBackend.Backend | null
-    vfunc_open_backend(backend: EBackend.Backend, connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EBackend-1.2.EBackend.DBusServer */
-    vfunc_bus_acquired(connection: Gio.DBusConnection): void
-    vfunc_bus_name_acquired(connection: Gio.DBusConnection): void
-    vfunc_bus_name_lost(connection: Gio.DBusConnection): void
-    vfunc_quit_server(code: EBackend.DBusServerExitCode): void
-    vfunc_run_server(): EBackend.DBusServerExitCode
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of EBackend-1.2.EBackend.DBusServer */
-    /**
-     * Emitted when `server` acquires a connection to the session bus.
-     * @param connection the #GDBusConnection to the session bus
-     */
-    connect(sigName: "bus-acquired", callback: (($obj: DataCalFactory, connection: Gio.DBusConnection) => void)): number
-    connect_after(sigName: "bus-acquired", callback: (($obj: DataCalFactory, connection: Gio.DBusConnection) => void)): number
-    emit(sigName: "bus-acquired", connection: Gio.DBusConnection): void
-    /**
-     * Emitted when `server` acquires its well-known session bus name.
-     * @param connection the #GDBusConnection to the session bus
-     */
-    connect(sigName: "bus-name-acquired", callback: (($obj: DataCalFactory, connection: Gio.DBusConnection) => void)): number
-    connect_after(sigName: "bus-name-acquired", callback: (($obj: DataCalFactory, connection: Gio.DBusConnection) => void)): number
-    emit(sigName: "bus-name-acquired", connection: Gio.DBusConnection): void
-    /**
-     * Emitted when `server` loses its well-known session bus name
-     * or the session bus connection has been closed.
-     * @param connection the #GDBusconnection to the session bus,              or %NULL if the connection has been closed
-     */
-    connect(sigName: "bus-name-lost", callback: (($obj: DataCalFactory, connection: Gio.DBusConnection) => void)): number
-    connect_after(sigName: "bus-name-lost", callback: (($obj: DataCalFactory, connection: Gio.DBusConnection) => void)): number
-    emit(sigName: "bus-name-lost", connection: Gio.DBusConnection): void
-    /**
-     * Emitted to request that `server` quit its main loop.
-     * @param code an #EDBusServerExitCode
-     */
-    connect(sigName: "quit-server", callback: (($obj: DataCalFactory, code: EBackend.DBusServerExitCode) => void)): number
-    connect_after(sigName: "quit-server", callback: (($obj: DataCalFactory, code: EBackend.DBusServerExitCode) => void)): number
-    emit(sigName: "quit-server", code: EBackend.DBusServerExitCode): void
-    /**
-     * Emitted to request that `server` start its main loop and
-     * attempt to acquire its well-known session bus name.
-     */
-    connect(sigName: "run-server", callback: (($obj: DataCalFactory) => EBackend.DBusServerExitCode)): number
-    connect_after(sigName: "run-server", callback: (($obj: DataCalFactory) => EBackend.DBusServerExitCode)): number
-    emit(sigName: "run-server"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface DataCalFactory extends EDataServer.Extensible, Gio.Initable {
+
+    // Own fields of EDataCal-2.0.EDataCal.DataCalFactory
+
+    parent: EBackend.DataFactory
+    priv: DataCalFactoryPrivate
+
+    // Class property signals of EDataCal-2.0.EDataCal.DataCalFactory
+
     connect(sigName: "notify::backend-per-process", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend-per-process", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::backend-per-process", ...args: any[]): void
     connect(sigName: "notify::registry", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::registry", ...args: any[]): void
     connect(sigName: "notify::reload-supported", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::reload-supported", callback: (($obj: DataCalFactory, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::reload-supported", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class DataCalFactory extends EBackend.DataFactory {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalFactory
+
     static name: string
-    constructor (config?: DataCalFactory_ConstructProps)
-    _init (config?: DataCalFactory_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(backend_per_process: number, cancellable?: Gio.Cancellable | null): DataCalFactory
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param object_type a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
+    static $gtype: GObject.GType<DataCalFactory>
+
+    // Constructors of EDataCal-2.0.EDataCal.DataCalFactory
+
+    constructor(config?: DataCalFactory_ConstructProps) 
+    constructor(backend_per_process: number, cancellable: Gio.Cancellable | null) 
+    static new(backend_per_process: number, cancellable: Gio.Cancellable | null): DataCalFactory
+    _init(config?: DataCalFactory_ConstructProps): void
 }
-interface DataCalView_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of EDataCal-2.0.EDataCal.DataCalView */
-    backend?: CalBackend
-    connection?: Gio.DBusConnection
-    object_path?: string
-    sexp?: CalBackendSExp
+
+interface DataCalView_ConstructProps extends Gio.Initable_ConstructProps, GObject.Object_ConstructProps {
+
+    // Own constructor properties of EDataCal-2.0.EDataCal.DataCalView
+
+    backend?: CalBackend | null
+    connection?: Gio.DBusConnection | null
+    object_path?: string | null
+    sexp?: CalBackendSExp | null
 }
-class DataCalView {
-    /* Properties of EDataCal-2.0.EDataCal.DataCalView */
+
+interface DataCalView extends Gio.Initable {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalView
+
     readonly backend: CalBackend
     readonly connection: Gio.DBusConnection
     readonly object_path: string
     readonly sexp: CalBackendSExp
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.DataCalView */
+
+    // Own fields of EDataCal-2.0.EDataCal.DataCalView
+
+    parent: GObject.Object
+    priv: DataCalViewPrivate
+
+    // Owm methods of EDataCal-2.0.EDataCal.DataCalView
+
     /**
      * Compares the given `component` to the regular expression used for the
      * given view.
@@ -8385,1468 +3007,160 @@ class DataCalView {
      * if not %NULL, with g_object_unref(), when no longer needed.
      */
     ref_backend(): CalBackend | null
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EDataCal-2.0.EDataCal.DataCalView */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Class property signals of EDataCal-2.0.EDataCal.DataCalView
+
     connect(sigName: "notify::backend", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::backend", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::backend", ...args: any[]): void
     connect(sigName: "notify::connection", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::connection", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::connection", ...args: any[]): void
     connect(sigName: "notify::object-path", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::object-path", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::object-path", ...args: any[]): void
     connect(sigName: "notify::sexp", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::sexp", callback: (($obj: DataCalView, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::sexp", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: DataCalView_ConstructProps)
-    _init (config?: DataCalView_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(backend: object | null, sexp: object | null, connection: Gio.DBusConnection, object_path: string): DataCalView
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param object_type a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
 }
+
+class DataCalView extends GObject.Object {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalView
+
+    static name: string
+    static $gtype: GObject.GType<DataCalView>
+
+    // Constructors of EDataCal-2.0.EDataCal.DataCalView
+
+    constructor(config?: DataCalView_ConstructProps) 
+    /**
+     * Creates a new #EDataCalView and exports its D-Bus interface on
+     * `connection` at `object_path`.  If an error occurs while exporting,
+     * the function sets `error` and returns %NULL.
+     * @constructor 
+     * @param backend an #ECalBackend
+     * @param sexp an #ECalBackendSExp
+     * @param connection a #GDBusConnection
+     * @param object_path an object path for the view
+     */
+    constructor(backend: object | null, sexp: object | null, connection: Gio.DBusConnection, object_path: string) 
+    /**
+     * Creates a new #EDataCalView and exports its D-Bus interface on
+     * `connection` at `object_path`.  If an error occurs while exporting,
+     * the function sets `error` and returns %NULL.
+     * @constructor 
+     * @param backend an #ECalBackend
+     * @param sexp an #ECalBackendSExp
+     * @param connection a #GDBusConnection
+     * @param object_path an object path for the view
+     */
+    static new(backend: object | null, sexp: object | null, connection: Gio.DBusConnection, object_path: string): DataCalView
+    _init(config?: DataCalView_ConstructProps): void
+}
+
 interface IntervalTree_ConstructProps extends GObject.Object_ConstructProps {
 }
-class IntervalTree {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EDataCal-2.0.EDataCal.IntervalTree */
+
+interface IntervalTree {
+
+    // Owm methods of EDataCal-2.0.EDataCal.IntervalTree
+
     destroy(): void
     dump(): void
     insert(start: number, end: number, comp: ECal.Component): boolean
     remove(uid: string, rid: string): boolean
     search(start: number, end: number): ECal.Component[] | null
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: IntervalTree, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: IntervalTree, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of EDataCal-2.0.EDataCal.IntervalTree
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * Contains only private data that should be read and manipulated using the
+ * functions below.
+ * @class 
+ */
+class IntervalTree extends GObject.Object {
+
+    // Own properties of EDataCal-2.0.EDataCal.IntervalTree
+
     static name: string
-    constructor (config?: IntervalTree_ConstructProps)
-    _init (config?: IntervalTree_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<IntervalTree>
+
+    // Constructors of EDataCal-2.0.EDataCal.IntervalTree
+
+    constructor(config?: IntervalTree_ConstructProps) 
+    /**
+     * Creates a new #EIntervalTree.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #EIntervalTree.
+     * @constructor 
+     */
     static new(): IntervalTree
-    static $gtype: GObject.Type
+    _init(config?: IntervalTree_ConstructProps): void
 }
-interface SubprocessCalFactory_ConstructProps extends EBackend.SubprocessFactory_ConstructProps {
+
+interface SubprocessCalFactory_ConstructProps extends Gio.Initable_ConstructProps, EBackend.SubprocessFactory_ConstructProps {
 }
-class SubprocessCalFactory {
-    /* Properties of EBackend-1.2.EBackend.SubprocessFactory */
-    readonly registry: EDataServer.SourceRegistry
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of EBackend-1.2.EBackend.SubprocessFactory */
-    /**
-     * Calls e_backend_prepare_shutdown() for the list of used backends.
-     */
-    call_backends_prepare_shutdown(): void
-    /**
-     * Returns a list of used backends.
-     */
-    get_backends_list(): EBackend.Backend[]
-    /**
-     * Returns the #ESourceRegistry owned by `subprocess_factory`.
-     */
-    get_registry(): EDataServer.SourceRegistry
-    /**
-     * Returns the #EBackend data D-Bus object path
-     * @param connection a #GDBusConnection
-     * @param uid UID of an #ESource to open
-     * @param backend_factory_type_name the name of the backend factory type
-     * @param module_filename the name (full-path) of the backend module to be loaded
-     * @param proxy a #GDBusInterfaceSkeleton, used to communicate to the subprocess backend
-     * @param cancellable a #GCancellable
-     */
-    open_backend(connection: Gio.DBusConnection, uid: string, backend_factory_type_name: string, module_filename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Returns either a newly-created or existing #EBackend for #ESource.
-     * The returned #EBackend is referenced for thread-safety and must be
-     * unreferenced with g_object_unref() when finished with it.
-     * 
-     * If the newly-created backend implements the #GInitable interface, then
-     * g_initable_init() is also called on it using `cancellable` and `error`.
-     * 
-     * The `subprocess_factory` retains a strong reference to `backend`.
-     * 
-     * If no suitable #EBackendFactory exists, or if the #EBackend fails to
-     * initialize, the function sets `error` and returns %NULL.
-     * @param uid UID of an #ESource to open
-     * @param backend_factory_type_name the name of the backend factory type
-     * @param module_filename the name (full-path) of the backend module to be loaded
-     * @param cancellable optional #GCancellable object, or %NULL
-     */
-    ref_initable_backend(uid: string, backend_factory_type_name: string, module_filename: string, cancellable?: Gio.Cancellable | null): EBackend.Backend | null
-    /**
-     * Installs a toggle reference on the backend, that can receive a signal to
-     * shutdown once all client connections are closed.
-     * @param backend an #EBackend
-     * @param proxy a #GDBusInterfaceSkeleton, used to communicate to the subprocess backend
-     */
-    set_backend_callbacks(backend: EBackend.Backend, proxy: Gio.DBusInterfaceSkeleton): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Methods of Gio-2.0.Gio.Initable */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EDataCal-2.0.EDataCal.SubprocessCalFactory */
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of EBackend-1.2.EBackend.SubprocessFactory */
-    vfunc_backend_closed(backend: EBackend.Backend): void
-    vfunc_backend_created(backend: EBackend.Backend): void
-    vfunc_open_data(backend: EBackend.Backend, connection: Gio.DBusConnection, data?: object | null, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Initializes the object implementing the interface.
-     * 
-     * This method is intended for language bindings. If writing in C,
-     * g_initable_new() should typically be used instead.
-     * 
-     * The object must be initialized before any real use after initial
-     * construction, either with this function or g_async_initable_init_async().
-     * 
-     * Implementations may also support cancellation. If `cancellable` is not %NULL,
-     * then initialization can be cancelled by triggering the cancellable object
-     * from another thread. If the operation was cancelled, the error
-     * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-     * the object doesn't support cancellable initialization the error
-     * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-     * 
-     * If the object is not initialized, or initialization returns with an
-     * error, then all operations on the object except g_object_ref() and
-     * g_object_unref() are considered to be invalid, and have undefined
-     * behaviour. See the [introduction][ginitable] for more details.
-     * 
-     * Callers should not assume that a class which implements #GInitable can be
-     * initialized multiple times, unless the class explicitly documents itself as
-     * supporting this. Generally, a class’ implementation of init() can assume
-     * (and assert) that it will only be called once. Previously, this documentation
-     * recommended all #GInitable implementations should be idempotent; that
-     * recommendation was relaxed in GLib 2.54.
-     * 
-     * If a class explicitly supports being initialized multiple times, it is
-     * recommended that the method is idempotent: multiple calls with the same
-     * arguments should return the same results. Only the first call initializes
-     * the object; further calls return the result of the first call.
-     * 
-     * One reason why a class might need to support idempotent initialization is if
-     * it is designed to be used via the singleton pattern, with a
-     * #GObjectClass.constructor that sometimes returns an existing instance.
-     * In this pattern, a caller would expect to be able to call g_initable_init()
-     * on the result of g_object_new(), regardless of whether it is in fact a new
-     * instance.
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    vfunc_init(cancellable?: Gio.Cancellable | null): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: SubprocessCalFactory, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: SubprocessCalFactory, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+interface SubprocessCalFactory extends Gio.Initable {
+
+    // Own fields of EDataCal-2.0.EDataCal.SubprocessCalFactory
+
+    parent: EBackend.SubprocessFactory
+    priv: SubprocessCalFactoryPrivate
+
+    // Class property signals of EDataCal-2.0.EDataCal.SubprocessCalFactory
+
     connect(sigName: "notify::registry", callback: (($obj: SubprocessCalFactory, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::registry", callback: (($obj: SubprocessCalFactory, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::registry", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: SubprocessCalFactory_ConstructProps)
-    _init (config?: SubprocessCalFactory_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(cancellable?: Gio.Cancellable | null): SubprocessCalFactory
-    /**
-     * Helper function for constructing #GInitable object. This is
-     * similar to g_object_newv() but also initializes the object
-     * and returns %NULL, setting an error on failure.
-     * @param object_type a #GType supporting #GInitable.
-     * @param parameters the parameters to use to construct the object
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     */
-    static newv(object_type: GObject.Type, parameters: GObject.Parameter[], cancellable?: Gio.Cancellable | null): GObject.Object
-    static $gtype: GObject.Type
 }
-abstract class CalBackendClass {
-    /* Fields of EDataCal-2.0.EDataCal.CalBackendClass */
+
+class SubprocessCalFactory extends EBackend.SubprocessFactory {
+
+    // Own properties of EDataCal-2.0.EDataCal.SubprocessCalFactory
+
+    static name: string
+    static $gtype: GObject.GType<SubprocessCalFactory>
+
+    // Constructors of EDataCal-2.0.EDataCal.SubprocessCalFactory
+
+    constructor(config?: SubprocessCalFactory_ConstructProps) 
+    constructor(cancellable: Gio.Cancellable | null) 
+    static new(cancellable: Gio.Cancellable | null): SubprocessCalFactory
+    _init(config?: SubprocessCalFactory_ConstructProps): void
+}
+
+interface CalBackendClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalBackendClass
+
     /**
      * Whether a serial dispatch queue should
      *                             be used for this backend or not. The default is %TRUE.
+     * @field 
      */
     use_serial_dispatch_queue: boolean
     impl_get_backend_property: (backend: CalBackend, prop_name: string) => string
-    impl_open: (backend: CalBackend, cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null) => void
-    impl_refresh: (backend: CalBackend, cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null) => void
+    impl_open: (backend: CalBackend, cal: DataCal, opid: number, cancellable: Gio.Cancellable | null) => void
+    impl_refresh: (backend: CalBackend, cal: DataCal, opid: number, cancellable: Gio.Cancellable | null) => void
     impl_get_object: (backend: CalBackend, cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, uid: string, rid: string) => void
     impl_get_object_list: (backend: CalBackend, cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string) => void
     impl_receive_objects: (backend: CalBackend, cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags) => void
@@ -9860,203 +3174,520 @@ abstract class CalBackendClass {
     closed: (backend: CalBackend, sender: string) => void
     shutdown: (backend: CalBackend) => void
     reserved_padding: object[]
+}
+
+/**
+ * Class structure for the #ECalBackend class.
+ * 
+ * These virtual methods must be implemented when writing
+ * a calendar backend.
+ * @record 
+ */
+abstract class CalBackendClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendClass
+
     static name: string
 }
-abstract class CalBackendFactoryClass {
-    /* Fields of EDataCal-2.0.EDataCal.CalBackendFactoryClass */
+
+interface CalBackendFactoryClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalBackendFactoryClass
+
     /**
      * The string identifier for this book backend type
+     * @field 
      */
     factory_name: string
     /**
      * The type if component this calendar backend should be created for
+     * @field 
      */
     component_kind: ICalGLib.ComponentKind
     /**
      * The #GType to use to build #EBookBackends for this factory
+     * @field 
      */
-    backend_type: GObject.Type
+    backend_type: GObject.GType
+}
+
+/**
+ * Class structure for the #ECalBackendFactory class.
+ * 
+ * Subclasses need to set the factory name and backend type
+ * at initialization, the base class will take care of creating
+ * backends of the specified type on demand.
+ * @record 
+ */
+abstract class CalBackendFactoryClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendFactoryClass
+
     static name: string
 }
+
+interface CalBackendFactoryPrivate {
+}
+
 class CalBackendFactoryPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendFactoryPrivate
+
     static name: string
 }
+
+interface CalBackendPrivate {
+}
+
 class CalBackendPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendPrivate
+
     static name: string
 }
+
+interface CalBackendSExpClass {
+}
+
 abstract class CalBackendSExpClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendSExpClass
+
     static name: string
 }
+
+interface CalBackendSExpPrivate {
+}
+
 class CalBackendSExpPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendSExpPrivate
+
     static name: string
 }
-abstract class CalBackendSyncClass {
-    /* Fields of EDataCal-2.0.EDataCal.CalBackendSyncClass */
-    open_sync: (backend: CalBackendSync, cal: DataCal, cancellable?: Gio.Cancellable | null) => void
-    refresh_sync: (backend: CalBackendSync, cal: DataCal, cancellable?: Gio.Cancellable | null) => void
+
+interface CalBackendSyncClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalBackendSyncClass
+
+    open_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null) => void
+    refresh_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null) => void
     get_object_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, calobj: string) => void
     receive_objects_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags) => void
     discard_alarm_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags) => void
     get_timezone_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string) => void
     add_timezone_sync: (backend: CalBackendSync, cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string) => void
     reserved_padding: object[]
+}
+
+/**
+ * Base class structure for the #ECalBackendSync class
+ * @record 
+ */
+abstract class CalBackendSyncClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendSyncClass
+
     static name: string
 }
+
+interface CalBackendSyncPrivate {
+}
+
 class CalBackendSyncPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalBackendSyncPrivate
+
     static name: string
 }
-abstract class CalCacheClass {
-    /* Fields of EDataCal-2.0.EDataCal.CalCacheClass */
+
+interface CalCacheClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalCacheClass
+
     dup_component_revision: (cal_cache: CalCache, icomp: ICalGLib.Component) => string
+}
+
+/**
+ * Class structure for the #ECalCache class.
+ * @record 
+ */
+abstract class CalCacheClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalCacheClass
+
     static name: string
 }
-class CalCacheOfflineChange {
-    /* Fields of EDataCal-2.0.EDataCal.CalCacheOfflineChange */
+
+interface CalCacheOfflineChange {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalCacheOfflineChange
+
     /**
      * UID of the component
+     * @field 
      */
     uid: string
     /**
      * Recurrence-ID of the component
+     * @field 
      */
     rid: string
     /**
      * stored revision of the component
+     * @field 
      */
     revision: string
     /**
      * the component itself, as an iCalendar string
+     * @field 
      */
     object: string
     /**
      * an #EOfflineState of the component
+     * @field 
      */
     state: EBackend.OfflineState
-    /* Methods of EDataCal-2.0.EDataCal.CalCacheOfflineChange */
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalCacheOfflineChange
+
     copy(): CalCacheOfflineChange | null
+}
+
+/**
+ * Holds the information about offline change for one component.
+ * @record 
+ */
+class CalCacheOfflineChange {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalCacheOfflineChange
+
     static name: string
-    static new(uid: string, rid: string | null, revision: string | null, object: string | null, state: EBackend.OfflineState): CalCacheOfflineChange
-    constructor(uid: string, rid: string | null, revision: string | null, object: string | null, state: EBackend.OfflineState)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of EDataCal-2.0.EDataCal.CalCacheOfflineChange
+
+    /**
+     * Creates a new #ECalCacheOfflineChange with the offline `state`
+     * information for the given `uid`.
+     * @constructor 
+     * @param uid a unique component identifier
+     * @param rid a Recurrence-ID of the component
+     * @param revision a revision of the component
+     * @param object component itself
+     * @param state an #EOfflineState
+     */
+    constructor(uid: string, rid: string | null, revision: string | null, object: string | null, state: EBackend.OfflineState) 
+    /**
+     * Creates a new #ECalCacheOfflineChange with the offline `state`
+     * information for the given `uid`.
+     * @constructor 
+     * @param uid a unique component identifier
+     * @param rid a Recurrence-ID of the component
+     * @param revision a revision of the component
+     * @param object component itself
+     * @param state an #EOfflineState
+     */
     static new(uid: string, rid: string | null, revision: string | null, object: string | null, state: EBackend.OfflineState): CalCacheOfflineChange
     /**
      * Frees the `change` structure, previously allocated with e_cal_cache_offline_change_new()
      * or e_cal_cache_offline_change_copy().
      * @param change an #ECalCacheOfflineChange
      */
-    static free(change?: object | null): void
+    static free(change: object | null): void
 }
+
+interface CalCachePrivate {
+}
+
 class CalCachePrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalCachePrivate
+
     static name: string
 }
-class CalCacheSearchData {
-    /* Fields of EDataCal-2.0.EDataCal.CalCacheSearchData */
+
+interface CalCacheSearchData {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalCacheSearchData
+
     /**
      * the UID of this component
+     * @field 
      */
     uid: string
     /**
      * the Recurrence-ID of this component
+     * @field 
      */
     rid: string
     /**
      * the component string
+     * @field 
      */
     object: string
     /**
      * any extra data associated with the component
+     * @field 
      */
     extra: string
-    /* Methods of EDataCal-2.0.EDataCal.CalCacheSearchData */
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalCacheSearchData
+
     copy(): CalCacheSearchData | null
+}
+
+/**
+ * This structure is used to represent components returned
+ * by the #ECalCache from various functions
+ * such as e_cal_cache_search().
+ * 
+ * The `extra` parameter will contain any data which was
+ * previously passed for this component in e_cal_cache_put_component()
+ * or set with e_cal_cache_set_component_extra().
+ * 
+ * These should be freed with e_cal_cache_search_data_free().
+ * @record 
+ */
+class CalCacheSearchData {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalCacheSearchData
+
     static name: string
-    static new(uid: string, rid: string | null, object: string, extra?: string | null): CalCacheSearchData
-    constructor(uid: string, rid: string | null, object: string, extra?: string | null)
-    /* Static methods and pseudo-constructors */
-    static new(uid: string, rid: string | null, object: string, extra?: string | null): CalCacheSearchData
+
+    // Constructors of EDataCal-2.0.EDataCal.CalCacheSearchData
+
+    /**
+     * Creates a new #ECalCacheSearchData prefilled with the given values.
+     * @constructor 
+     * @param uid a component UID; cannot be %NULL
+     * @param rid a component Recurrence-ID; can be %NULL
+     * @param object the component as an iCal string; cannot be %NULL
+     * @param extra any extra data stored with the component, or %NULL
+     */
+    constructor(uid: string, rid: string | null, object: string, extra: string | null) 
+    /**
+     * Creates a new #ECalCacheSearchData prefilled with the given values.
+     * @constructor 
+     * @param uid a component UID; cannot be %NULL
+     * @param rid a component Recurrence-ID; can be %NULL
+     * @param object the component as an iCal string; cannot be %NULL
+     * @param extra any extra data stored with the component, or %NULL
+     */
+    static new(uid: string, rid: string | null, object: string, extra: string | null): CalCacheSearchData
     /**
      * Frees the `ptr` structure, previously allocated with e_cal_cache_search_data_new()
      * or e_cal_cache_search_data_copy().
      * @param ptr an #ECalCacheSearchData
      */
-    static free(ptr?: object | null): void
+    static free(ptr: object | null): void
 }
-abstract class CalMetaBackendClass {
-    /* Fields of EDataCal-2.0.EDataCal.CalMetaBackendClass */
-    connect_sync: (meta_backend: CalMetaBackend, credentials?: EDataServer.NamedParameters | null, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_auth_result */ EDataServer.SourceAuthenticationResult, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
-    disconnect_sync: (meta_backend: CalMetaBackend, cancellable?: Gio.Cancellable | null) => boolean
-    get_changes_sync: (meta_backend: CalMetaBackend, last_sync_tag: string | null, is_repeat: boolean, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_repeat */ boolean, /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] ]
-    list_existing_sync: (meta_backend: CalMetaBackend, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_existing_objects */ CalMetaBackendInfo[] ]
-    load_component_sync: (meta_backend: CalMetaBackend, uid: string, extra?: string | null, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_component */ ICalGLib.Component, /* out_extra */ string ]
-    save_component_sync: (meta_backend: CalMetaBackend, overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_new_uid */ string, /* out_new_extra */ string ]
-    remove_component_sync: (meta_backend: CalMetaBackend, conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable?: Gio.Cancellable | null) => boolean
-    search_sync: (meta_backend: CalMetaBackend, expr?: string | null, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
-    search_components_sync: (meta_backend: CalMetaBackend, expr?: string | null, cancellable?: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
+
+interface CalMetaBackendClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalMetaBackendClass
+
+    connect_sync: (meta_backend: CalMetaBackend, credentials: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_auth_result */ EDataServer.SourceAuthenticationResult, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
+    disconnect_sync: (meta_backend: CalMetaBackend, cancellable: Gio.Cancellable | null) => boolean
+    get_changes_sync: (meta_backend: CalMetaBackend, last_sync_tag: string | null, is_repeat: boolean, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_repeat */ boolean, /* out_created_objects */ CalMetaBackendInfo[], /* out_modified_objects */ CalMetaBackendInfo[], /* out_removed_objects */ CalMetaBackendInfo[] ]
+    list_existing_sync: (meta_backend: CalMetaBackend, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_new_sync_tag */ string, /* out_existing_objects */ CalMetaBackendInfo[] ]
+    load_component_sync: (meta_backend: CalMetaBackend, uid: string, extra: string | null, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_component */ ICalGLib.Component, /* out_extra */ string ]
+    save_component_sync: (meta_backend: CalMetaBackend, overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_new_uid */ string, /* out_new_extra */ string ]
+    remove_component_sync: (meta_backend: CalMetaBackend, conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null) => boolean
+    search_sync: (meta_backend: CalMetaBackend, expr: string | null, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_icalstrings */ string[] ]
+    search_components_sync: (meta_backend: CalMetaBackend, expr: string | null, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_components */ ECal.Component[] ]
     requires_reconnect: (meta_backend: CalMetaBackend) => boolean
     source_changed: (meta_backend: CalMetaBackend) => void
     get_ssl_error_details: (meta_backend: CalMetaBackend) => [ /* returnType */ boolean, /* out_certificate_pem */ string, /* out_certificate_errors */ Gio.TlsCertificateFlags ]
+}
+
+/**
+ * Class structure for the #ECalMetaBackend class.
+ * @record 
+ */
+abstract class CalMetaBackendClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalMetaBackendClass
+
     static name: string
 }
-class CalMetaBackendInfo {
-    /* Fields of EDataCal-2.0.EDataCal.CalMetaBackendInfo */
+
+interface CalMetaBackendInfo {
+
+    // Own fields of EDataCal-2.0.EDataCal.CalMetaBackendInfo
+
     uid: string
     revision: string
     object: string
     extra: string
-    /* Methods of EDataCal-2.0.EDataCal.CalMetaBackendInfo */
+
+    // Owm methods of EDataCal-2.0.EDataCal.CalMetaBackendInfo
+
     copy(): CalMetaBackendInfo
+}
+
+class CalMetaBackendInfo {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalMetaBackendInfo
+
     static name: string
-    static new(uid: string, revision?: string | null, object?: string | null, extra?: string | null): CalMetaBackendInfo
-    constructor(uid: string, revision?: string | null, object?: string | null, extra?: string | null)
-    /* Static methods and pseudo-constructors */
-    static new(uid: string, revision?: string | null, object?: string | null, extra?: string | null): CalMetaBackendInfo
+
+    // Constructors of EDataCal-2.0.EDataCal.CalMetaBackendInfo
+
+    /**
+     * Creates a new #ECalMetaBackendInfo prefilled with the given values.
+     * @constructor 
+     * @param uid a component UID; cannot be %NULL
+     * @param revision the component revision; can be %NULL
+     * @param object the component object as an iCalendar string; can be %NULL
+     * @param extra extra backend-specific data; can be %NULL
+     */
+    constructor(uid: string, revision: string | null, object: string | null, extra: string | null) 
+    /**
+     * Creates a new #ECalMetaBackendInfo prefilled with the given values.
+     * @constructor 
+     * @param uid a component UID; cannot be %NULL
+     * @param revision the component revision; can be %NULL
+     * @param object the component object as an iCalendar string; can be %NULL
+     * @param extra extra backend-specific data; can be %NULL
+     */
+    static new(uid: string, revision: string | null, object: string | null, extra: string | null): CalMetaBackendInfo
     /**
      * Frees the `ptr` structure, previously allocated with e_cal_meta_backend_info_new()
      * or e_cal_meta_backend_info_copy().
      * @param ptr an #ECalMetaBackendInfo
      */
-    static free(ptr?: object | null): void
+    static free(ptr: object | null): void
 }
+
+interface CalMetaBackendPrivate {
+}
+
 class CalMetaBackendPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.CalMetaBackendPrivate
+
     static name: string
 }
+
+interface DataCalClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.DataCalClass
+
+    parent_class: GObject.ObjectClass
+}
+
 abstract class DataCalClass {
-    /* Fields of EDataCal-2.0.EDataCal.DataCalClass */
-    parent_class: GObject.ObjectClass
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalClass
+
     static name: string
 }
-abstract class DataCalFactoryClass {
-    /* Fields of EDataCal-2.0.EDataCal.DataCalFactoryClass */
+
+interface DataCalFactoryClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.DataCalFactoryClass
+
     parent_class: EBackend.DataFactoryClass
+}
+
+abstract class DataCalFactoryClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalFactoryClass
+
     static name: string
 }
+
+interface DataCalFactoryPrivate {
+}
+
 class DataCalFactoryPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalFactoryPrivate
+
     static name: string
 }
+
+interface DataCalPrivate {
+}
+
 class DataCalPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalPrivate
+
     static name: string
 }
-abstract class DataCalViewClass {
-    /* Fields of EDataCal-2.0.EDataCal.DataCalViewClass */
+
+interface DataCalViewClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.DataCalViewClass
+
     parent_class: GObject.ObjectClass
+}
+
+abstract class DataCalViewClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalViewClass
+
     static name: string
 }
+
+interface DataCalViewPrivate {
+}
+
 class DataCalViewPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.DataCalViewPrivate
+
     static name: string
 }
+
+interface IntervalTreeClass {
+}
+
+/**
+ * Class structure for the #EIntervalTree class.
+ * @record 
+ */
 abstract class IntervalTreeClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.IntervalTreeClass
+
     static name: string
 }
+
+interface IntervalTreePrivate {
+}
+
 class IntervalTreePrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.IntervalTreePrivate
+
     static name: string
 }
-abstract class SubprocessCalFactoryClass {
-    /* Fields of EDataCal-2.0.EDataCal.SubprocessCalFactoryClass */
+
+interface SubprocessCalFactoryClass {
+
+    // Own fields of EDataCal-2.0.EDataCal.SubprocessCalFactoryClass
+
     parent_class: EBackend.SubprocessFactoryClass
+}
+
+abstract class SubprocessCalFactoryClass {
+
+    // Own properties of EDataCal-2.0.EDataCal.SubprocessCalFactoryClass
+
     static name: string
 }
+
+interface SubprocessCalFactoryPrivate {
+}
+
 class SubprocessCalFactoryPrivate {
+
+    // Own properties of EDataCal-2.0.EDataCal.SubprocessCalFactoryPrivate
+
     static name: string
 }
+
 }
 export default EDataCal;

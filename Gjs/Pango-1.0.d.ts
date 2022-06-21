@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -1350,6 +1352,7 @@ enum WrapMode {
 /**
  * The bits in a `PangoFontMask` correspond to the set fields in a
  * `PangoFontDescription`.
+ * @bitfield 
  */
 enum FontMask {
     /**
@@ -1389,6 +1392,7 @@ enum FontMask {
  * Flags that influence the behavior of [func`Pango`.Layout.deserialize].
  * 
  * New members may be added to this enumeration over time.
+ * @bitfield 
  */
 enum LayoutDeserializeFlags {
     /**
@@ -1405,6 +1409,7 @@ enum LayoutDeserializeFlags {
  * Flags that influence the behavior of [method`Pango`.Layout.serialize].
  * 
  * New members may be added to this enumeration over time.
+ * @bitfield 
  */
 enum LayoutSerializeFlags {
     /**
@@ -1424,6 +1429,7 @@ enum LayoutSerializeFlags {
  * Flags influencing the shaping process.
  * 
  * `PangoShapeFlags` can be passed to [func`Pango`.shape_with_flags].
+ * @bitfield 
  */
 enum ShapeFlags {
     /**
@@ -1439,6 +1445,7 @@ enum ShapeFlags {
 /**
  * These flags affect how Pango treats characters that are normally
  * not visible in the output.
+ * @bitfield 
  */
 enum ShowFlags {
     /**
@@ -1534,108 +1541,1089 @@ const VERSION_MINOR: number
  * A string literal containing the version of Pango available at compile-time.
  */
 const VERSION_STRING: string
+/**
+ * Create a new allow-breaks attribute.
+ * 
+ * If breaks are disabled, the range will be kept in a
+ * single run, as far as possible.
+ * @param allow_breaks %TRUE if we line breaks are allowed
+ */
 function attr_allow_breaks_new(allow_breaks: boolean): Attribute
+/**
+ * Create a new background alpha attribute.
+ * @param alpha the alpha value, between 1 and 65536
+ */
 function attr_background_alpha_new(alpha: number): Attribute
+/**
+ * Create a new background color attribute.
+ * @param red the red value (ranging from 0 to 65535)
+ * @param green the green value
+ * @param blue the blue value
+ */
 function attr_background_new(red: number, green: number, blue: number): Attribute
+/**
+ * Create a new baseline displacement attribute.
+ * 
+ * The effect of this attribute is to shift the baseline of a run,
+ * relative to the run of preceding run.
+ * 
+ * <picture>
+ *   <source srcset="baseline-shift-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img alt="Baseline Shift" src="baseline-shift-light.png">
+ * </picture>
+ * @param shift either a `PangoBaselineShift` enumeration value or an absolute value (> 1024)   in Pango units, relative to the baseline of the previous run.   Positive values displace the text upwards.
+ */
 function attr_baseline_shift_new(shift: number): Attribute
+/**
+ * Apply customization from attributes to the breaks in `attrs`.
+ * 
+ * The line breaks are assumed to have been produced
+ * by [func`Pango`.default_break] and [func`Pango`.tailor_break].
+ * @param text text to break. Must be valid UTF-8
+ * @param length length of text in bytes (may be -1 if `text` is nul-terminated)
+ * @param attr_list `PangoAttrList` to apply
+ * @param offset Byte offset of `text` from the beginning of the paragraph
+ * @param attrs array with one `PangoLogAttr`   per character in `text,` plus one extra, to be filled in
+ */
 function attr_break(text: string, length: number, attr_list: AttrList, offset: number, attrs: LogAttr[]): void
+/**
+ * Create a new font fallback attribute.
+ * 
+ * If fallback is disabled, characters will only be
+ * used from the closest matching font on the system.
+ * No fallback will be done to other fonts on the system
+ * that might contain the characters in the text.
+ * @param enable_fallback %TRUE if we should fall back on other fonts   for characters the active font is missing
+ */
 function attr_fallback_new(enable_fallback: boolean): Attribute
+/**
+ * Create a new font family attribute.
+ * @param family the family or comma-separated list of families
+ */
 function attr_family_new(family: string): Attribute
+/**
+ * Create a new font description attribute.
+ * 
+ * This attribute allows setting family, style, weight, variant,
+ * stretch, and size simultaneously.
+ * @param desc the font description
+ */
 function attr_font_desc_new(desc: FontDescription): Attribute
+/**
+ * Create a new font features tag attribute.
+ * 
+ * You can use this attribute to select OpenType font features like small-caps,
+ * alternative glyphs, ligatures, etc. for fonts that support them.
+ * @param features a string with OpenType font features, with the syntax of the [CSS font-feature-settings property](https://www.w3.org/TR/css-fonts-4/#font-rend-desc)
+ */
 function attr_font_features_new(features: string): Attribute
+/**
+ * Create a new font scale attribute.
+ * 
+ * The effect of this attribute is to change the font size of a run,
+ * relative to the size of preceding run.
+ * @param scale a `PangoFontScale` value, which indicates font size change relative   to the size of the previous run.
+ */
 function attr_font_scale_new(scale: FontScale): Attribute
+/**
+ * Create a new foreground alpha attribute.
+ * @param alpha the alpha value, between 1 and 65536
+ */
 function attr_foreground_alpha_new(alpha: number): Attribute
+/**
+ * Create a new foreground color attribute.
+ * @param red the red value (ranging from 0 to 65535)
+ * @param green the green value
+ * @param blue the blue value
+ */
 function attr_foreground_new(red: number, green: number, blue: number): Attribute
+/**
+ * Create a new gravity hint attribute.
+ * @param hint the gravity hint value
+ */
 function attr_gravity_hint_new(hint: GravityHint): Attribute
+/**
+ * Create a new gravity attribute.
+ * @param gravity the gravity value; should not be %PANGO_GRAVITY_AUTO
+ */
 function attr_gravity_new(gravity: Gravity): Attribute
+/**
+ * Create a new insert-hyphens attribute.
+ * 
+ * Pango will insert hyphens when breaking lines in
+ * the middle of a word. This attribute can be used
+ * to suppress the hyphen.
+ * @param insert_hyphens %TRUE if hyphens should be inserted
+ */
 function attr_insert_hyphens_new(insert_hyphens: boolean): Attribute
+/**
+ * Create a new language tag attribute.
+ * @param language language tag
+ */
 function attr_language_new(language: Language): Attribute
+/**
+ * Create a new letter-spacing attribute.
+ * @param letter_spacing amount of extra space to add between   graphemes of the text, in Pango units
+ */
 function attr_letter_spacing_new(letter_spacing: number): Attribute
+/**
+ * Modify the height of logical line extents by a factor.
+ * 
+ * This affects the values returned by
+ * [method`Pango`.LayoutLine.get_extents],
+ * [method`Pango`.LayoutLine.get_pixel_extents] and
+ * [method`Pango`.LayoutIter.get_line_extents].
+ * @param factor the scaling factor to apply to the logical height
+ */
 function attr_line_height_new(factor: number): Attribute
+/**
+ * Override the height of logical line extents to be `height`.
+ * 
+ * This affects the values returned by
+ * [method`Pango`.LayoutLine.get_extents],
+ * [method`Pango`.LayoutLine.get_pixel_extents] and
+ * [method`Pango`.LayoutIter.get_line_extents].
+ * @param height the line height, in %PANGO_SCALE-ths of a point
+ */
 function attr_line_height_new_absolute(height: number): Attribute
+/**
+ * Deserializes a `PangoAttrList` from a string.
+ * 
+ * This is the counterpart to [method`Pango`.AttrList.to_string].
+ * See that functions for details about the format.
+ * @param text a string
+ */
 function attr_list_from_string(text: string): AttrList | null
+/**
+ * Create a new overline color attribute.
+ * 
+ * This attribute modifies the color of overlines.
+ * If not set, overlines will use the foreground color.
+ * @param red the red value (ranging from 0 to 65535)
+ * @param green the green value
+ * @param blue the blue value
+ */
 function attr_overline_color_new(red: number, green: number, blue: number): Attribute
+/**
+ * Create a new overline-style attribute.
+ * @param overline the overline style
+ */
 function attr_overline_new(overline: Overline): Attribute
+/**
+ * Create a new baseline displacement attribute.
+ * @param rise the amount that the text should be displaced vertically,   in Pango units. Positive values displace the text upwards.
+ */
 function attr_rise_new(rise: number): Attribute
+/**
+ * Create a new font size scale attribute.
+ * 
+ * The base font for the affected text will have
+ * its size multiplied by `scale_factor`.
+ * @param scale_factor factor to scale the font
+ */
 function attr_scale_new(scale_factor: number): Attribute
+/**
+ * Marks the range of the attribute as a single sentence.
+ * 
+ * Note that this may require adjustments to word and
+ * sentence classification around the range.
+ */
 function attr_sentence_new(): Attribute
+/**
+ * Create a new shape attribute.
+ * 
+ * A shape is used to impose a particular ink and logical
+ * rectangle on the result of shaping a particular glyph.
+ * This might be used, for instance, for embedding a picture
+ * or a widget inside a `PangoLayout`.
+ * @param ink_rect ink rectangle to assign to each character
+ * @param logical_rect logical rectangle to assign to each character
+ */
 function attr_shape_new(ink_rect: Rectangle, logical_rect: Rectangle): Attribute
-function attr_shape_new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data?: object | null, copy_func?: AttrDataCopyFunc | null): Attribute
+/**
+ * Creates a new shape attribute.
+ * 
+ * Like [func`Pango`.AttrShape.new], but a user data pointer
+ * is also provided; this pointer can be accessed when later
+ * rendering the glyph.
+ * @param ink_rect ink rectangle to assign to each character
+ * @param logical_rect logical rectangle to assign to each character
+ * @param data user data pointer
+ * @param copy_func function to copy `data` when the   attribute is copied. If %NULL, `data` is simply copied   as a pointer
+ */
+function attr_shape_new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data: object | null, copy_func: AttrDataCopyFunc | null): Attribute
+/**
+ * Create a new attribute that influences how invisible
+ * characters are rendered.
+ * @param flags `PangoShowFlags` to apply
+ */
 function attr_show_new(flags: ShowFlags): Attribute
+/**
+ * Create a new font-size attribute in fractional points.
+ * @param size the font size, in %PANGO_SCALE-ths of a point
+ */
 function attr_size_new(size: number): Attribute
+/**
+ * Create a new font-size attribute in device units.
+ * @param size the font size, in %PANGO_SCALE-ths of a device unit
+ */
 function attr_size_new_absolute(size: number): Attribute
+/**
+ * Create a new font stretch attribute.
+ * @param stretch the stretch
+ */
 function attr_stretch_new(stretch: Stretch): Attribute
+/**
+ * Create a new strikethrough color attribute.
+ * 
+ * This attribute modifies the color of strikethrough lines.
+ * If not set, strikethrough lines will use the foreground color.
+ * @param red the red value (ranging from 0 to 65535)
+ * @param green the green value
+ * @param blue the blue value
+ */
 function attr_strikethrough_color_new(red: number, green: number, blue: number): Attribute
+/**
+ * Create a new strike-through attribute.
+ * @param strikethrough %TRUE if the text should be struck-through
+ */
 function attr_strikethrough_new(strikethrough: boolean): Attribute
+/**
+ * Create a new font slant style attribute.
+ * @param style the slant style
+ */
 function attr_style_new(style: Style): Attribute
+/**
+ * Create a new attribute that influences how characters
+ * are transformed during shaping.
+ * @param transform `PangoTextTransform` to apply
+ */
 function attr_text_transform_new(transform: TextTransform): Attribute
+/**
+ * Fetches the attribute type name.
+ * 
+ * The attribute type name is the string passed in
+ * when registering the type using
+ * [func`Pango`.AttrType.register].
+ * 
+ * The returned value is an interned string (see
+ * g_intern_string() for what that means) that should
+ * not be modified or freed.
+ * @param type an attribute type ID to fetch the name for
+ */
 function attr_type_get_name(type: AttrType): string | null
+/**
+ * Allocate a new attribute type ID.
+ * 
+ * The attribute type name can be accessed later
+ * by using [func`Pango`.AttrType.get_name].
+ * @param name an identifier for the type
+ */
 function attr_type_register(name: string): AttrType
+/**
+ * Create a new underline color attribute.
+ * 
+ * This attribute modifies the color of underlines.
+ * If not set, underlines will use the foreground color.
+ * @param red the red value (ranging from 0 to 65535)
+ * @param green the green value
+ * @param blue the blue value
+ */
 function attr_underline_color_new(red: number, green: number, blue: number): Attribute
+/**
+ * Create a new underline-style attribute.
+ * @param underline the underline style
+ */
 function attr_underline_new(underline: Underline): Attribute
+/**
+ * Create a new font variant attribute (normal or small caps).
+ * @param variant the variant
+ */
 function attr_variant_new(variant: Variant): Attribute
+/**
+ * Create a new font weight attribute.
+ * @param weight the weight
+ */
 function attr_weight_new(weight: Weight): Attribute
+/**
+ * Marks the range of the attribute as a single word.
+ * 
+ * Note that this may require adjustments to word and
+ * sentence classification around the range.
+ */
 function attr_word_new(): Attribute
-function bidi_type_for_unichar(ch: number): BidiType
+/**
+ * Determines the bidirectional type of a character.
+ * 
+ * The bidirectional type is specified in the Unicode Character Database.
+ * 
+ * A simplified version of this function is available as [func`unichar_direction]`.
+ * @param ch a Unicode character
+ */
+function bidi_type_for_unichar(ch: string): BidiType
+/**
+ * Determines possible line, word, and character breaks
+ * for a string of Unicode text with a single analysis.
+ * 
+ * For most purposes you may want to use [func`Pango`.get_log_attrs].
+ * @param text the text to process. Must be valid UTF-8
+ * @param length length of `text` in bytes (may be -1 if `text` is nul-terminated)
+ * @param analysis `PangoAnalysis` structure for `text`
+ * @param attrs an array to store character information in
+ */
 function break_TODO(text: string, length: number, analysis: Analysis, attrs: LogAttr[]): void
+/**
+ * This is the default break algorithm.
+ * 
+ * It applies rules from the [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/)
+ * without language-specific tailoring, therefore the `analyis` argument is unused
+ * and can be %NULL.
+ * 
+ * See [func`Pango`.tailor_break] for language-specific breaks.
+ * 
+ * See [func`Pango`.attr_break] for attribute-based customization.
+ * @param text text to break. Must be valid UTF-8
+ * @param length length of text in bytes (may be -1 if `text` is nul-terminated)
+ * @param analysis a `PangoAnalysis` structure for the `text`
+ * @param attrs logical attributes to fill in
+ * @param attrs_len size of the array passed as `attrs`
+ */
 function default_break(text: string, length: number, analysis: Analysis | null, attrs: LogAttr, attrs_len: number): void
-function extents_to_pixels(inclusive?: Rectangle | null, nearest?: Rectangle | null): void
+/**
+ * Converts extents from Pango units to device units.
+ * 
+ * The conversion is done by dividing by the %PANGO_SCALE factor and
+ * performing rounding.
+ * 
+ * The `inclusive` rectangle is converted by flooring the x/y coordinates
+ * and extending width/height, such that the final rectangle completely
+ * includes the original rectangle.
+ * 
+ * The `nearest` rectangle is converted by rounding the coordinates
+ * of the rectangle to the nearest device unit (pixel).
+ * 
+ * The rule to which argument to use is: if you want the resulting device-space
+ * rectangle to completely contain the original rectangle, pass it in as
+ * `inclusive`. If you want two touching-but-not-overlapping rectangles stay
+ * touching-but-not-overlapping after rounding to device units, pass them in
+ * as `nearest`.
+ * @param inclusive rectangle to round to pixels inclusively
+ * @param nearest rectangle to round to nearest pixels
+ */
+function extents_to_pixels(inclusive: Rectangle | null, nearest: Rectangle | null): void
+/**
+ * Searches a string the first character that has a strong
+ * direction, according to the Unicode bidirectional algorithm.
+ * @param text the text to process. Must be valid UTF-8
+ * @param length length of `text` in bytes (may be -1 if `text` is nul-terminated)
+ */
 function find_base_dir(text: string, length: number): Direction
+/**
+ * Locates a paragraph boundary in `text`.
+ * 
+ * A boundary is caused by delimiter characters, such as
+ * a newline, carriage return, carriage return-newline pair,
+ * or Unicode paragraph separator character.
+ * 
+ * The index of the run of delimiters is returned in
+ * `paragraph_delimiter_index`. The index of the start of the
+ * next paragraph (index after all delimiters) is stored n
+ * `next_paragraph_start`.
+ * 
+ * If no delimiters are found, both `paragraph_delimiter_index`
+ * and `next_paragraph_start` are filled with the length of `text`
+ * (an index one off the end).
+ * @param text UTF-8 text
+ * @param length length of `text` in bytes, or -1 if nul-terminated
+ */
 function find_paragraph_boundary(text: string, length: number): [ /* paragraph_delimiter_index */ number, /* next_paragraph_start */ number ]
+/**
+ * Creates a new font description from a string representation.
+ * 
+ * The string must have the form
+ * 
+ *     "\[FAMILY-LIST] \[STYLE-OPTIONS] \[SIZE] \[VARIATIONS]",
+ * 
+ * where FAMILY-LIST is a comma-separated list of families optionally
+ * terminated by a comma, STYLE_OPTIONS is a whitespace-separated list
+ * of words where each word describes one of style, variant, weight,
+ * stretch, or gravity, and SIZE is a decimal number (size in points)
+ * or optionally followed by the unit modifier "px" for absolute size.
+ * VARIATIONS is a comma-separated list of font variation
+ * specifications of the form "\`axis=`value" (the = sign is optional).
+ * 
+ * The following words are understood as styles:
+ * "Normal", "Roman", "Oblique", "Italic".
+ * 
+ * The following words are understood as variants:
+ * "Small-Caps", "All-Small-Caps", "Petite-Caps", "All-Petite-Caps",
+ * "Unicase", "Title-Caps".
+ * 
+ * The following words are understood as weights:
+ * "Thin", "Ultra-Light", "Extra-Light", "Light", "Semi-Light",
+ * "Demi-Light", "Book", "Regular", "Medium", "Semi-Bold", "Demi-Bold",
+ * "Bold", "Ultra-Bold", "Extra-Bold", "Heavy", "Black", "Ultra-Black",
+ * "Extra-Black".
+ * 
+ * The following words are understood as stretch values:
+ * "Ultra-Condensed", "Extra-Condensed", "Condensed", "Semi-Condensed",
+ * "Semi-Expanded", "Expanded", "Extra-Expanded", "Ultra-Expanded".
+ * 
+ * The following words are understood as gravity values:
+ * "Not-Rotated", "South", "Upside-Down", "North", "Rotated-Left",
+ * "East", "Rotated-Right", "West".
+ * 
+ * Any one of the options may be absent. If FAMILY-LIST is absent, then
+ * the family_name field of the resulting font description will be
+ * initialized to %NULL. If STYLE-OPTIONS is missing, then all style
+ * options will be set to the default values. If SIZE is missing, the
+ * size in the resulting font description will be set to 0.
+ * 
+ * A typical example:
+ * 
+ *     "Cantarell Italic Light 15 \`wght=`200"
+ * @param str string representation of a font description.
+ */
 function font_description_from_string(str: string): FontDescription
+/**
+ * Computes a `PangoLogAttr` for each character in `text`.
+ * 
+ * The `attrs` array must have one `PangoLogAttr` for
+ * each position in `text;` if `text` contains N characters,
+ * it has N+1 positions, including the last position at the
+ * end of the text. `text` should be an entire paragraph;
+ * logical attributes can't be computed without context
+ * (for example you need to see spaces on either side of
+ * a word to know the word is a word).
+ * @param text text to process. Must be valid UTF-8
+ * @param length length in bytes of `text`
+ * @param level embedding level, or -1 if unknown
+ * @param language language tag
+ * @param attrs array with one `PangoLogAttr`   per character in `text,` plus one extra, to be filled in
+ */
 function get_log_attrs(text: string, length: number, level: number, language: Language, attrs: LogAttr[]): void
-function get_mirror_char(ch: number, mirrored_ch: number): boolean
-function gravity_get_for_matrix(matrix?: Matrix | null): Gravity
+/**
+ * Returns the mirrored character of a Unicode character.
+ * 
+ * Mirror characters are determined by the Unicode mirrored property.
+ * @param ch a Unicode character
+ * @param mirrored_ch location to store the mirrored character
+ */
+function get_mirror_char(ch: string, mirrored_ch: string): boolean
+/**
+ * Finds the gravity that best matches the rotation component
+ * in a `PangoMatrix`.
+ * @param matrix a `PangoMatrix`
+ */
+function gravity_get_for_matrix(matrix: Matrix | null): Gravity
+/**
+ * Returns the gravity to use in laying out a `PangoItem`.
+ * 
+ * The gravity is determined based on the script, base gravity, and hint.
+ * 
+ * If `base_gravity` is %PANGO_GRAVITY_AUTO, it is first replaced with the
+ * preferred gravity of `script`.  To get the preferred gravity of a script,
+ * pass %PANGO_GRAVITY_AUTO and %PANGO_GRAVITY_HINT_STRONG in.
+ * @param script `PangoScript` to query
+ * @param base_gravity base gravity of the paragraph
+ * @param hint orientation hint
+ */
 function gravity_get_for_script(script: Script, base_gravity: Gravity, hint: GravityHint): Gravity
+/**
+ * Returns the gravity to use in laying out a single character
+ * or `PangoItem`.
+ * 
+ * The gravity is determined based on the script, East Asian width,
+ * base gravity, and hint,
+ * 
+ * This function is similar to [func`Pango`.Gravity.get_for_script] except
+ * that this function makes a distinction between narrow/half-width and
+ * wide/full-width characters also. Wide/full-width characters always
+ * stand *upright*, that is, they always take the base gravity,
+ * whereas narrow/full-width characters are always rotated in vertical
+ * context.
+ * 
+ * If `base_gravity` is %PANGO_GRAVITY_AUTO, it is first replaced with the
+ * preferred gravity of `script`.
+ * @param script `PangoScript` to query
+ * @param wide %TRUE for wide characters as returned by g_unichar_iswide()
+ * @param base_gravity base gravity of the paragraph
+ * @param hint orientation hint
+ */
 function gravity_get_for_script_and_width(script: Script, wide: boolean, base_gravity: Gravity, hint: GravityHint): Gravity
+/**
+ * Converts a `PangoGravity` value to its natural rotation in radians.
+ * 
+ * Note that [method`Pango`.Matrix.rotate] takes angle in degrees, not radians.
+ * So, to call [method`Pango`.Matrix,rotate] with the output of this function
+ * you should multiply it by (180. / G_PI).
+ * @param gravity gravity to query, should not be %PANGO_GRAVITY_AUTO
+ */
 function gravity_to_rotation(gravity: Gravity): number
-function is_zero_width(ch: number): boolean
-function itemize(context: Context, text: string, start_index: number, length: number, attrs: AttrList, cached_iter?: AttrIterator | null): Item[]
-function itemize_with_base_dir(context: Context, base_dir: Direction, text: string, start_index: number, length: number, attrs: AttrList, cached_iter?: AttrIterator | null): Item[]
-function language_from_string(language?: string | null): Language | null
+/**
+ * Checks if a character that should not be normally rendered.
+ * 
+ * This includes all Unicode characters with "ZERO WIDTH" in their name,
+ * as well as *bidi* formatting characters, and a few other ones.
+ * 
+ * This is totally different from [func`GLib`.unichar_iszerowidth] and is at best misnamed.
+ * @param ch a Unicode character
+ */
+function is_zero_width(ch: string): boolean
+/**
+ * Breaks a piece of text into segments with consistent directional
+ * level and font.
+ * 
+ * Each byte of `text` will be contained in exactly one of the items in the
+ * returned list; the generated list of items will be in logical order (the
+ * start offsets of the items are ascending).
+ * 
+ * `cached_iter` should be an iterator over `attrs` currently positioned
+ * at a range before or containing `start_index;` `cached_iter` will be
+ * advanced to the range covering the position just after
+ * `start_index` + `length`. (i.e. if itemizing in a loop, just keep passing
+ * in the same `cached_iter)`.
+ * @param context a structure holding information that affects   the itemization process.
+ * @param text the text to itemize. Must be valid UTF-8
+ * @param start_index first byte in `text` to process
+ * @param length the number of bytes (not characters) to process   after `start_index`. This must be >= 0.
+ * @param attrs the set of attributes that apply to `text`.
+ * @param cached_iter Cached attribute iterator
+ */
+function itemize(context: Context, text: string, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator | null): Item[]
+/**
+ * Like `pango_itemize()`, but with an explicitly specified base direction.
+ * 
+ * The base direction is used when computing bidirectional levels.
+ * [func`itemize]` gets the base direction from the `PangoContext`
+ * (see [method`Pango`.Context.set_base_dir]).
+ * @param context a structure holding information that affects   the itemization process.
+ * @param base_dir base direction to use for bidirectional processing
+ * @param text the text to itemize.
+ * @param start_index first byte in `text` to process
+ * @param length the number of bytes (not characters) to process   after `start_index`. This must be >= 0.
+ * @param attrs the set of attributes that apply to `text`.
+ * @param cached_iter Cached attribute iterator
+ */
+function itemize_with_base_dir(context: Context, base_dir: Direction, text: string, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator | null): Item[]
+/**
+ * Convert a language tag to a `PangoLanguage`.
+ * 
+ * The language tag must be in a RFC-3066 format. `PangoLanguage` pointers
+ * can be efficiently copied (copy the pointer) and compared with other
+ * language tags (compare the pointer.)
+ * 
+ * This function first canonicalizes the string by converting it to
+ * lowercase, mapping '_' to '-', and stripping all characters other
+ * than letters and '-'.
+ * 
+ * Use [func`Pango`.Language.get_default] if you want to get the
+ * `PangoLanguage` for the current locale of the process.
+ * @param language a string representing a language tag
+ */
+function language_from_string(language: string | null): Language | null
+/**
+ * Returns the `PangoLanguage` for the current locale of the process.
+ * 
+ * On Unix systems, this is the return value is derived from
+ * `setlocale (LC_CTYPE, NULL)`, and the user can
+ * affect this through the environment variables LC_ALL, LC_CTYPE or
+ * LANG (checked in that order). The locale string typically is in
+ * the form lang_COUNTRY, where lang is an ISO-639 language code, and
+ * COUNTRY is an ISO-3166 country code. For instance, sv_FI for
+ * Swedish as written in Finland or pt_BR for Portuguese as written in
+ * Brazil.
+ * 
+ * On Windows, the C library does not use any such environment
+ * variables, and setting them won't affect the behavior of functions
+ * like ctime(). The user sets the locale through the Regional Options
+ * in the Control Panel. The C library (in the setlocale() function)
+ * does not use country and language codes, but country and language
+ * names spelled out in English.
+ * However, this function does check the above environment
+ * variables, and does return a Unix-style locale string based on
+ * either said environment variables or the thread's current locale.
+ * 
+ * Your application should call `setlocale(LC_ALL, "")` for the user
+ * settings to take effect. GTK does this in its initialization
+ * functions automatically (by calling gtk_set_locale()).
+ * See the setlocale() manpage for more details.
+ * 
+ * Note that the default language can change over the life of an application.
+ * 
+ * Also note that this function will not do the right thing if you
+ * use per-thread locales with uselocale(). In that case, you should
+ * just call pango_language_from_string() yourself.
+ */
 function language_get_default(): Language
+/**
+ * Returns the list of languages that the user prefers.
+ * 
+ * The list is specified by the `PANGO_LANGUAGE` or `LANGUAGE`
+ * environment variables, in order of preference. Note that this
+ * list does not necessarily include the language returned by
+ * [func`Pango`.Language.get_default].
+ * 
+ * When choosing language-specific resources, such as the sample
+ * text returned by [method`Pango`.Language.get_sample_string],
+ * you should first try the default language, followed by the
+ * languages returned by this function.
+ */
 function language_get_preferred(): Language | null
 function layout_deserialize_error_quark(): GLib.Quark
+/**
+ * Return the bidirectional embedding levels of the input paragraph.
+ * 
+ * The bidirectional embedding levels are defined by the [Unicode Bidirectional
+ * Algorithm](http://www.unicode.org/reports/tr9/).
+ * 
+ * If the input base direction is a weak direction, the direction of the
+ * characters in the text will determine the final resolved direction.
+ * @param text the text to itemize.
+ * @param length the number of bytes (not characters) to process, or -1   if `text` is nul-terminated and the length should be calculated.
+ * @param pbase_dir input base direction, and output resolved direction.
+ */
 function log2vis_get_embedding_levels(text: string, length: number, pbase_dir: Direction): number
-function markup_parser_finish(context: GLib.MarkupParseContext): [ /* returnType */ boolean, /* attr_list */ AttrList | null, /* text */ string | null, /* accel_char */ number | null ]
-function markup_parser_new(accel_marker: number): GLib.MarkupParseContext
-function parse_enum(type: GObject.Type, str: string | null, warn: boolean): [ /* returnType */ boolean, /* value */ number | null, /* possible_values */ string | null ]
-function parse_markup(markup_text: string, length: number, accel_marker: number): [ /* returnType */ boolean, /* attr_list */ AttrList | null, /* text */ string | null, /* accel_char */ number | null ]
+/**
+ * Finishes parsing markup.
+ * 
+ * After feeding a Pango markup parser some data with [method`GLib`.MarkupParseContext.parse],
+ * use this function to get the list of attributes and text out of the
+ * markup. This function will not free `context,` use [method`GLib`.MarkupParseContext.free]
+ * to do so.
+ * @param context A valid parse context that was returned from [func`markup_parser_new]`
+ */
+function markup_parser_finish(context: GLib.MarkupParseContext): [ /* returnType */ boolean, /* attr_list */ AttrList, /* text */ string, /* accel_char */ string ]
+/**
+ * Incrementally parses marked-up text to create a plain-text string
+ * and an attribute list.
+ * 
+ * See the [Pango Markup](pango_markup.html) docs for details about the
+ * supported markup.
+ * 
+ * If `accel_marker` is nonzero, the given character will mark the
+ * character following it as an accelerator. For example, `accel_marker`
+ * might be an ampersand or underscore. All characters marked
+ * as an accelerator will receive a %PANGO_UNDERLINE_LOW attribute,
+ * and the first character so marked will be returned in `accel_char,`
+ * when calling [func`markup_parser_finish]`. Two `accel_marker` characters
+ * following each other produce a single literal `accel_marker` character.
+ * 
+ * To feed markup to the parser, use [method`GLib`.MarkupParseContext.parse]
+ * on the returned [struct`GLib`.MarkupParseContext]. When done with feeding markup
+ * to the parser, use [func`markup_parser_finish]` to get the data out
+ * of it, and then use [method`GLib`.MarkupParseContext.free] to free it.
+ * 
+ * This function is designed for applications that read Pango markup
+ * from streams. To simply parse a string containing Pango markup,
+ * the [func`Pango`.parse_markup] API is recommended instead.
+ * @param accel_marker character that precedes an accelerator, or 0 for none
+ */
+function markup_parser_new(accel_marker: string): GLib.MarkupParseContext
+/**
+ * Parses an enum type and stores the result in `value`.
+ * 
+ * If `str` does not match the nick name of any of the possible values
+ * for the enum and is not an integer, %FALSE is returned, a warning
+ * is issued if `warn` is %TRUE, and a string representing the list of
+ * possible values is stored in `possible_values`. The list is
+ * slash-separated, eg. "none/start/middle/end".
+ * 
+ * If failed and `possible_values` is not %NULL, returned string should
+ * be freed using g_free().
+ * @param type enum type to parse, eg. %PANGO_TYPE_ELLIPSIZE_MODE
+ * @param str string to parse
+ * @param warn if %TRUE, issue a g_warning() on bad input
+ */
+function parse_enum(type: GObject.GType, str: string | null, warn: boolean): [ /* returnType */ boolean, /* value */ number, /* possible_values */ string ]
+/**
+ * Parses marked-up text to create a plain-text string and an attribute list.
+ * 
+ * See the [Pango Markup](pango_markup.html) docs for details about the
+ * supported markup.
+ * 
+ * If `accel_marker` is nonzero, the given character will mark the
+ * character following it as an accelerator. For example, `accel_marker`
+ * might be an ampersand or underscore. All characters marked
+ * as an accelerator will receive a %PANGO_UNDERLINE_LOW attribute,
+ * and the first character so marked will be returned in `accel_char`.
+ * Two `accel_marker` characters following each other produce a single
+ * literal `accel_marker` character.
+ * 
+ * To parse a stream of pango markup incrementally, use [func`markup_parser_new]`.
+ * 
+ * If any error happens, none of the output arguments are touched except
+ * for `error`.
+ * @param markup_text markup to parse (see the [Pango Markup](pango_markup.html) docs)
+ * @param length length of `markup_text,` or -1 if nul-terminated
+ * @param accel_marker character that precedes an accelerator, or 0 for none
+ */
+function parse_markup(markup_text: string, length: number, accel_marker: string): [ /* returnType */ boolean, /* attr_list */ AttrList, /* text */ string, /* accel_char */ string ]
+/**
+ * Parses a font stretch.
+ * 
+ * The allowed values are
+ * "ultra_condensed", "extra_condensed", "condensed",
+ * "semi_condensed", "normal", "semi_expanded", "expanded",
+ * "extra_expanded" and "ultra_expanded". Case variations are
+ * ignored and the '_' characters may be omitted.
+ * @param str a string to parse.
+ * @param warn if %TRUE, issue a g_warning() on bad input.
+ */
 function parse_stretch(str: string, warn: boolean): [ /* returnType */ boolean, /* stretch */ Stretch ]
+/**
+ * Parses a font style.
+ * 
+ * The allowed values are "normal", "italic" and "oblique", case
+ * variations being
+ * ignored.
+ * @param str a string to parse.
+ * @param warn if %TRUE, issue a g_warning() on bad input.
+ */
 function parse_style(str: string, warn: boolean): [ /* returnType */ boolean, /* style */ Style ]
+/**
+ * Parses a font variant.
+ * 
+ * The allowed values are "normal", "small-caps", "all-small-caps",
+ * "petite-caps", "all-petite-caps", "unicase" and "title-caps",
+ * case variations being ignored.
+ * @param str a string to parse.
+ * @param warn if %TRUE, issue a g_warning() on bad input.
+ */
 function parse_variant(str: string, warn: boolean): [ /* returnType */ boolean, /* variant */ Variant ]
+/**
+ * Parses a font weight.
+ * 
+ * The allowed values are "heavy",
+ * "ultrabold", "bold", "normal", "light", "ultraleight"
+ * and integers. Case variations are ignored.
+ * @param str a string to parse.
+ * @param warn if %TRUE, issue a g_warning() on bad input.
+ */
 function parse_weight(str: string, warn: boolean): [ /* returnType */ boolean, /* weight */ Weight ]
+/**
+ * Quantizes the thickness and position of a line to whole device pixels.
+ * 
+ * This is typically used for underline or strikethrough. The purpose of
+ * this function is to avoid such lines looking blurry.
+ * 
+ * Care is taken to make sure `thickness` is at least one pixel when this
+ * function returns, but returned `position` may become zero as a result
+ * of rounding.
+ * @param thickness pointer to the thickness of a line, in Pango units
+ * @param position corresponding position
+ */
 function quantize_line_geometry(thickness: number, position: number): [ /* thickness */ number, /* position */ number ]
+/**
+ * Reads an entire line from a file into a buffer.
+ * 
+ * Lines may be delimited with '\n', '\r', '\n\r', or '\r\n'. The delimiter
+ * is not written into the buffer. Text after a '#' character is treated as
+ * a comment and skipped. '\' can be used to escape a # character.
+ * '\' proceeding a line delimiter combines adjacent lines. A '\' proceeding
+ * any other character is ignored and written into the output buffer
+ * unmodified.
+ * @param stream a stdio stream
+ * @param str `GString` buffer into which to write the result
+ */
 function read_line(stream: object | null, str: GLib.String): number
+/**
+ * Reorder items from logical order to visual order.
+ * 
+ * The visual order is determined from the associated directional
+ * levels of the items. The original list is unmodified.
+ * 
+ * (Please open a bug if you use this function.
+ *  It is not a particularly convenient interface, and the code
+ *  is duplicated elsewhere in Pango for that reason.)
+ * @param items a `GList` of `PangoItem`   in logical order.
+ */
 function reorder_items(items: Item[]): Item[]
+/**
+ * Scans an integer.
+ * 
+ * Leading white space is skipped.
+ * @param pos in/out string position
+ */
 function scan_int(pos: string): [ /* returnType */ boolean, /* pos */ string, /* out */ number ]
+/**
+ * Scans a string into a `GString` buffer.
+ * 
+ * The string may either be a sequence of non-white-space characters,
+ * or a quoted string with '"'. Instead a quoted string, '\"' represents
+ * a literal quote. Leading white space outside of quotes is skipped.
+ * @param pos in/out string position
+ * @param out a `GString` into which to write the result
+ */
 function scan_string(pos: string, out: GLib.String): [ /* returnType */ boolean, /* pos */ string ]
+/**
+ * Scans a word into a `GString` buffer.
+ * 
+ * A word consists of [A-Za-z_] followed by zero or more
+ * [A-Za-z_0-9]. Leading white space is skipped.
+ * @param pos in/out string position
+ * @param out a `GString` into which to write the result
+ */
 function scan_word(pos: string, out: GLib.String): [ /* returnType */ boolean, /* pos */ string ]
-function script_for_unichar(ch: number): Script
+/**
+ * Looks up the script for a particular character.
+ * 
+ * The script of a character is defined by
+ * [Unicode Standard Annex 24: Script names](http://www.unicode.org/reports/tr24/).
+ * 
+ * No check is made for `ch` being a valid Unicode character; if you pass
+ * in invalid character, the result is undefined.
+ * 
+ * Note that while the return type of this function is declared
+ * as `PangoScript`, as of Pango 1.18, this function simply returns
+ * the return value of [func`GLib`.unichar_get_script]. Callers must be
+ * prepared to handle unknown values.
+ * @param ch a Unicode character
+ */
+function script_for_unichar(ch: string): Script
+/**
+ * Finds a language tag that is reasonably representative of `script`.
+ * 
+ * The language will usually be the most widely spoken or used language
+ * written in that script: for instance, the sample language for
+ * %PANGO_SCRIPT_CYRILLIC is ru (Russian), the sample language for
+ * %PANGO_SCRIPT_ARABIC is ar.
+ * 
+ * For some scripts, no sample language will be returned because
+ * there is no language that is sufficiently representative. The
+ * best example of this is %PANGO_SCRIPT_HAN, where various different
+ * variants of written Chinese, Japanese, and Korean all use
+ * significantly different sets of Han characters and forms
+ * of shared characters. No sample language can be provided
+ * for many historical scripts as well.
+ * 
+ * As of 1.18, this function checks the environment variables
+ * `PANGO_LANGUAGE` and `LANGUAGE` (checked in that order) first.
+ * If one of them is set, it is parsed as a list of language tags
+ * separated by colons or other separators. This function
+ * will return the first language in the parsed list that Pango
+ * believes may use `script` for writing. This last predicate
+ * is tested using [method`Pango`.Language.includes_script]. This can
+ * be used to control Pango's font selection for non-primary
+ * languages. For example, a `PANGO_LANGUAGE` enviroment variable
+ * set to "en:fa" makes Pango choose fonts suitable for Persian (fa)
+ * instead of Arabic (ar) when a segment of Arabic text is found
+ * in an otherwise non-Arabic text. The same trick can be used to
+ * choose a default language for %PANGO_SCRIPT_HAN when setting
+ * context language is not feasible.
+ * @param script a `PangoScript`
+ */
 function script_get_sample_language(script: Script): Language | null
+/**
+ * Convert the characters in `text` into glyphs.
+ * 
+ * Given a segment of text and the corresponding `PangoAnalysis` structure
+ * returned from [func`Pango`.itemize], convert the characters into glyphs. You
+ * may also pass in only a substring of the item from [func`Pango`.itemize].
+ * 
+ * It is recommended that you use [func`Pango`.shape_full] instead, since
+ * that API allows for shaping interaction happening across text item
+ * boundaries.
+ * 
+ * Note that the extra attributes in the `analyis` that is returned from
+ * [func`Pango`.itemize] have indices that are relative to the entire paragraph,
+ * so you need to subtract the item offset from their indices before
+ * calling [func`Pango`.shape].
+ * @param text the text to process
+ * @param length the length (in bytes) of `text`
+ * @param analysis `PangoAnalysis` structure from [func`Pango`.itemize]
+ * @param glyphs glyph string in which to store results
+ */
 function shape(text: string, length: number, analysis: Analysis, glyphs: GlyphString): void
+/**
+ * Convert the characters in `text` into glyphs.
+ * 
+ * Given a segment of text and the corresponding `PangoAnalysis` structure
+ * returned from [func`Pango`.itemize], convert the characters into glyphs.
+ * You may also pass in only a substring of the item from [func`Pango`.itemize].
+ * 
+ * This is similar to [func`Pango`.shape], except it also can optionally take
+ * the full paragraph text as input, which will then be used to perform
+ * certain cross-item shaping interactions. If you have access to the broader
+ * text of which `item_text` is part of, provide the broader text as
+ * `paragraph_text`. If `paragraph_text` is %NULL, item text is used instead.
+ * 
+ * Note that the extra attributes in the `analyis` that is returned from
+ * [func`Pango`.itemize] have indices that are relative to the entire paragraph,
+ * so you do not pass the full paragraph text as `paragraph_text,` you need
+ * to subtract the item offset from their indices before calling
+ * [func`Pango`.shape_full].
+ * @param item_text valid UTF-8 text to shape.
+ * @param item_length the length (in bytes) of `item_text`. -1 means nul-terminated text.
+ * @param paragraph_text text of the paragraph (see details).
+ * @param paragraph_length the length (in bytes) of `paragraph_text`. -1 means nul-terminated text.
+ * @param analysis `PangoAnalysis` structure from [func`Pango`.itemize].
+ * @param glyphs glyph string in which to store results.
+ */
 function shape_full(item_text: string, item_length: number, paragraph_text: string | null, paragraph_length: number, analysis: Analysis, glyphs: GlyphString): void
+/**
+ * Convert the characters in `item` into glyphs.
+ * 
+ * This is similar to [func`Pango`.shape_with_flags], except it takes a
+ * `PangoItem` instead of separate `item_text` and `analysis` arguments.
+ * It also takes `log_attrs,` which may be used in implementing text
+ * transforms.
+ * 
+ * Note that the extra attributes in the `analyis` that is returned from
+ * [func`Pango`.itemize] have indices that are relative to the entire paragraph,
+ * so you do not pass the full paragraph text as `paragraph_text,` you need
+ * to subtract the item offset from their indices before calling
+ * [func`Pango`.shape_with_flags].
+ * @param item `PangoItem` to shape
+ * @param paragraph_text text of the paragraph (see details).
+ * @param paragraph_length the length (in bytes) of `paragraph_text`.     -1 means nul-terminated text.
+ * @param log_attrs array of `PangoLogAttr` for `item`
+ * @param glyphs glyph string in which to store results
+ * @param flags flags influencing the shaping process
+ */
 function shape_item(item: Item, paragraph_text: string | null, paragraph_length: number, log_attrs: LogAttr | null, glyphs: GlyphString, flags: ShapeFlags): void
+/**
+ * Convert the characters in `text` into glyphs.
+ * 
+ * Given a segment of text and the corresponding `PangoAnalysis` structure
+ * returned from [func`Pango`.itemize], convert the characters into glyphs.
+ * You may also pass in only a substring of the item from [func`Pango`.itemize].
+ * 
+ * This is similar to [func`Pango`.shape_full], except it also takes flags
+ * that can influence the shaping process.
+ * 
+ * Note that the extra attributes in the `analyis` that is returned from
+ * [func`Pango`.itemize] have indices that are relative to the entire paragraph,
+ * so you do not pass the full paragraph text as `paragraph_text,` you need
+ * to subtract the item offset from their indices before calling
+ * [func`Pango`.shape_with_flags].
+ * @param item_text valid UTF-8 text to shape
+ * @param item_length the length (in bytes) of `item_text`.     -1 means nul-terminated text.
+ * @param paragraph_text text of the paragraph (see details).
+ * @param paragraph_length the length (in bytes) of `paragraph_text`.     -1 means nul-terminated text.
+ * @param analysis `PangoAnalysis` structure from [func`Pango`.itemize]
+ * @param glyphs glyph string in which to store results
+ * @param flags flags influencing the shaping process
+ */
 function shape_with_flags(item_text: string, item_length: number, paragraph_text: string | null, paragraph_length: number, analysis: Analysis, glyphs: GlyphString, flags: ShapeFlags): void
+/**
+ * Skips 0 or more characters of white space.
+ * @param pos in/out string position
+ */
 function skip_space(pos: string): [ /* returnType */ boolean, /* pos */ string ]
+/**
+ * Splits a %G_SEARCHPATH_SEPARATOR-separated list of files, stripping
+ * white space and substituting ~/ with $HOME/.
+ * @param str a %G_SEARCHPATH_SEPARATOR separated list of filenames
+ */
 function split_file_list(str: string): string[]
+/**
+ * Deserializes a `PangoTabArray` from a string.
+ * 
+ * This is the counterpart to [method`Pango`.TabArray.to_string].
+ * See that functions for details about the format.
+ * @param text a string
+ */
 function tab_array_from_string(text: string): TabArray | null
+/**
+ * Apply language-specific tailoring to the breaks in `attrs`.
+ * 
+ * The line breaks are assumed to have been produced by [func`Pango`.default_break].
+ * 
+ * If `offset` is not -1, it is used to apply attributes from `analysis` that are
+ * relevant to line breaking.
+ * 
+ * Note that it is better to pass -1 for `offset` and use [func`Pango`.attr_break]
+ * to apply attributes to the whole paragraph.
+ * @param text text to process. Must be valid UTF-8
+ * @param length length in bytes of `text`
+ * @param analysis `PangoAnalysis` for `text`
+ * @param offset Byte offset of `text` from the beginning of the   paragraph, or -1 to ignore attributes from `analysis`
+ * @param attrs array with one `PangoLogAttr`   per character in `text,` plus one extra, to be filled in
+ */
 function tailor_break(text: string, length: number, analysis: Analysis, offset: number, attrs: LogAttr[]): void
+/**
+ * Trims leading and trailing whitespace from a string.
+ * @param str a string
+ */
 function trim_string(str: string): string
-function unichar_direction(ch: number): Direction
+/**
+ * Determines the inherent direction of a character.
+ * 
+ * The inherent direction is either `PANGO_DIRECTION_LTR`, `PANGO_DIRECTION_RTL`,
+ * or `PANGO_DIRECTION_NEUTRAL`.
+ * 
+ * This function is useful to categorize characters into left-to-right
+ * letters, right-to-left letters, and everything else. If full Unicode
+ * bidirectional type of a character is needed, [func`Pango`.BidiType.for_unichar]
+ * can be used instead.
+ * @param ch a Unicode character
+ */
+function unichar_direction(ch: string): Direction
+/**
+ * Converts a floating-point number to Pango units.
+ * 
+ * The conversion is done by multiplying `d` by %PANGO_SCALE and
+ * rounding the result to nearest integer.
+ * @param d double floating-point value
+ */
 function units_from_double(d: number): number
+/**
+ * Converts a number in Pango units to floating-point.
+ * 
+ * The conversion is done by dividing `i` by %PANGO_SCALE.
+ * @param i value in Pango units
+ */
 function units_to_double(i: number): number
+/**
+ * Returns the encoded version of Pango available at run-time.
+ * 
+ * This is similar to the macro %PANGO_VERSION except that the macro
+ * returns the encoded version available at compile-time. A version
+ * number can be encoded into an integer using PANGO_VERSION_ENCODE().
+ */
 function version(): number
+/**
+ * Checks that the Pango library in use is compatible with the
+ * given version.
+ * 
+ * Generally you would pass in the constants %PANGO_VERSION_MAJOR,
+ * %PANGO_VERSION_MINOR, %PANGO_VERSION_MICRO as the three arguments
+ * to this function; that produces a check that the library in use at
+ * run-time is compatible with the version of Pango the application or
+ * module was compiled against.
+ * 
+ * Compatibility is defined by two things: first the version
+ * of the running library is newer than the version
+ * `required_major`.required_minor.`required_micro`. Second
+ * the running library must be binary compatible with the
+ * version `required_major`.required_minor.`required_micro`
+ * (same major version.)
+ * 
+ * For compile-time version checking use PANGO_VERSION_CHECK().
+ * @param required_major the required major version
+ * @param required_minor the required minor version
+ * @param required_micro the required major version
+ */
 function version_check(required_major: number, required_minor: number, required_micro: number): string | null
+/**
+ * Returns the version of Pango available at run-time.
+ * 
+ * This is similar to the macro %PANGO_VERSION_STRING except that the
+ * macro returns the version available at compile-time.
+ */
 function version_string(): string
 /**
  * Type of a function that can duplicate user data for an attribute.
+ * @callback 
  */
 interface AttrDataCopyFunc {
     (): object | null
 }
 /**
  * Type of a function filtering a list of attributes.
+ * @callback 
+ * @param attribute a Pango attribute
  */
 interface AttrFilterFunc {
     (attribute: Attribute): boolean
@@ -1644,16 +2632,20 @@ interface AttrFilterFunc {
  * Callback used when enumerating fonts in a fontset.
  * 
  * See [method`Pango`.Fontset.foreach].
+ * @callback 
+ * @param fontset a `PangoFontset`
+ * @param font a font from `fontset`
  */
 interface FontsetForeachFunc {
     (fontset: Fontset, font: Font): boolean
 }
 interface Context_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Context {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.Context */
+
+interface Context {
+
+    // Owm methods of Pango-1.0.Pango.Context
+
     /**
      * Forces a change in the context, which will cause any `PangoLayout`
      * using this context to re-layout.
@@ -1725,7 +2717,7 @@ class Context {
      * @param desc a `PangoFontDescription` structure. %NULL means that the   font description from the context will be used.
      * @param language language tag used to determine which script to get   the metrics for. %NULL means that the language tag from the context   will be used. If no language tag is set on the context, metrics   for the default language (as determined by [func`Pango`.Language.get_default]   will be returned.
      */
-    get_metrics(desc?: FontDescription | null, language?: Language | null): FontMetrics
+    get_metrics(desc: FontDescription | null, language: Language | null): FontMetrics
     /**
      * Returns whether font rendering with this context should
      * round glyph positions and widths.
@@ -1826,7 +2818,7 @@ class Context {
      * text is fit to the pixel grid.
      * @param matrix a `PangoMatrix`, or %NULL to unset any existing matrix. (No matrix set is the same as setting the identity matrix.)
      */
-    set_matrix(matrix?: Matrix | null): void
+    set_matrix(matrix: Matrix | null): void
     /**
      * Sets whether font rendering with this context should
      * round glyph positions and widths to integral positions,
@@ -1840,392 +2832,76 @@ class Context {
      * @param round_positions whether to round glyph positions
      */
     set_round_glyph_positions(round_positions: boolean): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Context, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.Context
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Context_ConstructProps)
-    _init (config?: Context_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Context
-    static $gtype: GObject.Type
 }
+
+/**
+ * A `PangoContext` stores global information used to control the
+ * itemization process.
+ * 
+ * The information stored by `PangoContext` includes the fontmap used
+ * to look up fonts, and default values such as the default language,
+ * default gravity, or default font.
+ * 
+ * To obtain a `PangoContext`, use [method`Pango`.FontMap.create_context].
+ * @class 
+ */
+class Context extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.Context
+
+    static name: string
+    static $gtype: GObject.GType<Context>
+
+    // Constructors of Pango-1.0.Pango.Context
+
+    constructor(config?: Context_ConstructProps) 
+    /**
+     * Creates a new `PangoContext` initialized to default values.
+     * 
+     * This function is not particularly useful as it should always
+     * be followed by a [method`Pango`.Context.set_font_map] call, and the
+     * function [method`Pango`.FontMap.create_context] does these two steps
+     * together and hence users are recommended to use that.
+     * 
+     * If you are using Pango as part of a higher-level system,
+     * that system may have it's own way of create a `PangoContext`.
+     * For instance, the GTK toolkit has, among others,
+     * `gtk_widget_get_pango_context()`. Use those instead.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new `PangoContext` initialized to default values.
+     * 
+     * This function is not particularly useful as it should always
+     * be followed by a [method`Pango`.Context.set_font_map] call, and the
+     * function [method`Pango`.FontMap.create_context] does these two steps
+     * together and hence users are recommended to use that.
+     * 
+     * If you are using Pango as part of a higher-level system,
+     * that system may have it's own way of create a `PangoContext`.
+     * For instance, the GTK toolkit has, among others,
+     * `gtk_widget_get_pango_context()`. Use those instead.
+     * @constructor 
+     */
+    static new(): Context
+    _init(config?: Context_ConstructProps): void
+}
+
 interface Coverage_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Coverage {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.Coverage */
+
+interface Coverage {
+
+    // Owm methods of Pango-1.0.Pango.Coverage
+
     /**
      * Copy an existing `PangoCoverage`.
      */
@@ -2246,6 +2922,20 @@ class Coverage {
      * Increase the reference count on the `PangoCoverage` by one.
      */
     ref(): Coverage
+
+    // Overloads of ref
+
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     */
+    ref(): GObject.Object
+    ref(...args: any[]): any
+    ref(...args: any[]): Coverage | GObject.Object | any
     /**
      * Modify a particular index within `coverage`
      * @param index_ the index to modify
@@ -2262,388 +2952,66 @@ class Coverage {
      * If the result is zero, free the coverage and all associated memory.
      */
     unref(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Coverage, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Coverage, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.Coverage
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * A `PangoCoverage` structure is a map from Unicode characters
+ * to [enum`Pango`.CoverageLevel] values.
+ * 
+ * It is often necessary in Pango to determine if a particular
+ * font can represent a particular character, and also how well
+ * it can represent that character. The `PangoCoverage` is a data
+ * structure that is used to represent that information. It is an
+ * opaque structure with no public fields.
+ * @class 
+ */
+class Coverage extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.Coverage
+
     static name: string
-    constructor (config?: Coverage_ConstructProps)
-    _init (config?: Coverage_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Coverage>
+
+    // Constructors of Pango-1.0.Pango.Coverage
+
+    constructor(config?: Coverage_ConstructProps) 
+    /**
+     * Create a new `PangoCoverage`
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Create a new `PangoCoverage`
+     * @constructor 
+     */
     static new(): Coverage
+    _init(config?: Coverage_ConstructProps): void
     /**
      * Convert data generated from [method`Pango`.Coverage.to_bytes]
      * back to a `PangoCoverage`.
      * @param bytes binary data   representing a `PangoCoverage`
      */
     static from_bytes(bytes: Uint8Array): Coverage | null
-    static $gtype: GObject.Type
 }
+
 interface Font_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Font {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.Font */
+
+interface Font {
+
+    // Own fields of Pango-1.0.Pango.Font
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Pango-1.0.Pango.Font
+
     /**
      * Returns a description of the font, with font size set in points.
      * 
@@ -2706,7 +3074,7 @@ class Font {
      * output variables and returns.
      * @param glyph the glyph index
      */
-    get_glyph_extents(glyph: Glyph): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_glyph_extents(glyph: Glyph): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Returns the languages that are supported by `font`.
      * 
@@ -2729,12 +3097,12 @@ class Font {
      * output variables and returns.
      * @param language language tag used to determine which script   to get the metrics for, or %NULL to indicate to get the metrics for   the entire font.
      */
-    get_metrics(language?: Language | null): FontMetrics
+    get_metrics(language: Language | null): FontMetrics
     /**
      * Returns whether the font provides a glyph for this character.
      * @param wc a Unicode character
      */
-    has_char(wc: number): boolean
+    has_char(wc: string): boolean
     /**
      * Serializes the `font` in a way that can be uniquely identified.
      * 
@@ -2747,332 +3115,22 @@ class Font {
      * To recreate a font from its serialized form, use [func`Pango`.Font.deserialize].
      */
     serialize(): GLib.Bytes
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.Font */
+
+    // Own virtual methods of Pango-1.0.Pango.Font
+
     vfunc_create_hb_font(): HarfBuzz.font_t
     /**
      * Returns a description of the font, with font size set in points.
      * 
      * Use [method`Pango`.Font.describe_with_absolute_size] if you want
      * the font size in device units.
+     * @virtual 
      */
     vfunc_describe(): FontDescription
     vfunc_describe_absolute(): FontDescription
     /**
      * Computes the coverage map for a given font and language tag.
+     * @virtual 
      * @param language the language tag
      */
     vfunc_get_coverage(language: Language): Coverage
@@ -3084,6 +3142,7 @@ class Font {
      * 
      * Note that this does not include OpenType features which the
      * rendering system enables by default.
+     * @virtual 
      * @param num_features the number of used items in `features`
      */
     vfunc_get_features(num_features: number): [ /* features */ HarfBuzz.feature_t[], /* num_features */ number ]
@@ -3099,6 +3158,7 @@ class Font {
      * It is the responsibility of the user to ensure that the
      * font map is kept alive. In most uses this is not an issue
      * as a `PangoContext` holds a reference to the font map.
+     * @virtual 
      */
     vfunc_get_font_map(): FontMap | null
     /**
@@ -3113,9 +3173,10 @@ class Font {
      * 
      * If `font` is %NULL, this function gracefully sets some sane values in the
      * output variables and returns.
+     * @virtual 
      * @param glyph the glyph index
      */
-    vfunc_get_glyph_extents(glyph: Glyph): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    vfunc_get_glyph_extents(glyph: Glyph): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Gets overall metric information for a font.
      * 
@@ -3125,72 +3186,35 @@ class Font {
      * 
      * If `font` is %NULL, this function gracefully sets some sane values in the
      * output variables and returns.
+     * @virtual 
      * @param language language tag used to determine which script   to get the metrics for, or %NULL to indicate to get the metrics for   the entire font.
      */
-    vfunc_get_metrics(language?: Language | null): FontMetrics
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Font, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Font, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    vfunc_get_metrics(language: Language | null): FontMetrics
+
+    // Class property signals of Pango-1.0.Pango.Font
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * A `PangoFont` is used to represent a font in a
+ * rendering-system-independent manner.
+ * @class 
+ */
+class Font extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.Font
+
     static name: string
-    constructor (config?: Font_ConstructProps)
-    _init (config?: Font_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Font>
+
+    // Constructors of Pango-1.0.Pango.Font
+
+    constructor(config?: Font_ConstructProps) 
+    _init(config?: Font_ConstructProps): void
     /**
      * Frees an array of font descriptions.
      * @param descs a pointer   to an array of `PangoFontDescription`, may be %NULL
@@ -3208,14 +3232,19 @@ class Font {
      * @param bytes the bytes containing the data
      */
     static deserialize(context: Context, bytes: GLib.Bytes): Font | null
-    static $gtype: GObject.Type
 }
+
 interface FontFace_ConstructProps extends GObject.Object_ConstructProps {
 }
-class FontFace {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.FontFace */
+
+interface FontFace {
+
+    // Own fields of Pango-1.0.Pango.FontFace
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Pango-1.0.Pango.FontFace
+
     /**
      * Returns a font description that matches the face.
      * 
@@ -3253,327 +3282,16 @@ class FontFace {
      * in ascending order.
      */
     list_sizes(): /* sizes */ number[] | null
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.FontFace */
+
+    // Own virtual methods of Pango-1.0.Pango.FontFace
+
     /**
      * Returns a font description that matches the face.
      * 
      * The resulting font description will have the family, style,
      * variant, weight and stretch of the face, but its size field
      * will be unset.
+     * @virtual 
      */
     vfunc_describe(): FontDescription
     /**
@@ -3582,10 +3300,12 @@ class FontFace {
      * Note that a font family may contain multiple faces
      * with the same name (e.g. a variable and a non-variable
      * face for the same style).
+     * @virtual 
      */
     vfunc_get_face_name(): string
     /**
      * Gets the `PangoFontFamily` that `face` belongs to.
+     * @virtual 
      */
     vfunc_get_family(): FontFamily
     /**
@@ -3594,6 +3314,7 @@ class FontFace {
      * This will be the case if the underlying font rendering engine
      * creates this face from another face, by shearing, emboldening,
      * lightening or modifying it in some other way.
+     * @virtual 
      */
     vfunc_is_synthesized(): boolean
     /**
@@ -3603,83 +3324,52 @@ class FontFace {
      * %NULL at the location pointed to by `sizes` and 0 at the location pointed
      * to by `n_sizes`. The sizes returned are in Pango units and are sorted
      * in ascending order.
+     * @virtual 
      */
     vfunc_list_sizes(): /* sizes */ number[] | null
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: FontFace, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: FontFace, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.FontFace
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: FontFace_ConstructProps)
-    _init (config?: FontFace_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * A `PangoFontFace` is used to represent a group of fonts with
+ * the same family, slant, weight, and width, but varying sizes.
+ * @class 
+ */
+class FontFace extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.FontFace
+
+    static name: string
+    static $gtype: GObject.GType<FontFace>
+
+    // Constructors of Pango-1.0.Pango.FontFace
+
+    constructor(config?: FontFace_ConstructProps) 
+    _init(config?: FontFace_ConstructProps): void
+}
+
 interface FontFamily_ConstructProps extends GObject.Object_ConstructProps {
 }
-class FontFamily {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.FontFamily */
+
+interface FontFamily {
+
+    // Own fields of Pango-1.0.Pango.FontFamily
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Pango-1.0.Pango.FontFamily
+
     /**
      * Gets the `PangoFontFace` of `family` with the given name.
      * @param name the name of a face. If the name is %NULL,   the family's default face (fontconfig calls it "Regular")   will be returned.
      */
-    get_face(name?: string | null): FontFace | null
+    get_face(name: string | null): FontFace | null
     /**
      * Gets the name of the family.
      * 
@@ -3725,333 +3415,23 @@ class FontFamily {
      * `PangoFontFamily` also implemented the [iface`Gio`.ListModel] interface
      * for enumerating faces.
      */
-    list_faces(): /* faces */ FontFace[] | null
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.FontFamily */
+    list_faces(): /* faces */ FontFace[]
+
+    // Own virtual methods of Pango-1.0.Pango.FontFamily
+
     /**
      * Gets the `PangoFontFace` of `family` with the given name.
+     * @virtual 
      * @param name the name of a face. If the name is %NULL,   the family's default face (fontconfig calls it "Regular")   will be returned.
      */
-    vfunc_get_face(name?: string | null): FontFace | null
+    vfunc_get_face(name: string | null): FontFace | null
     /**
      * Gets the name of the family.
      * 
      * The name is unique among all fonts for the font backend and can
      * be used in a `PangoFontDescription` to specify that a face from
      * this family is desired.
+     * @virtual 
      */
     vfunc_get_name(): string
     /**
@@ -4069,6 +3449,7 @@ class FontFamily {
      * [method`Pango`.FontMetrics.get_approximate_digit_width], since the
      * results of [method`Pango`.FontMetrics.get_approximate_char_width] may
      * be affected by double-width characters.
+     * @virtual 
      */
     vfunc_is_monospace(): boolean
     /**
@@ -4077,6 +3458,7 @@ class FontFamily {
      * 
      * Such axes are also known as _variations_; see
      * [method`Pango`.FontDescription.set_variations] for more information.
+     * @virtual 
      */
     vfunc_is_variable(): boolean
     /**
@@ -4090,78 +3472,50 @@ class FontFamily {
      * 
      * `PangoFontFamily` also implemented the [iface`Gio`.ListModel] interface
      * for enumerating faces.
+     * @virtual 
      */
-    vfunc_list_faces(): /* faces */ FontFace[] | null
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: FontFamily, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: FontFamily, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    vfunc_list_faces(): /* faces */ FontFace[]
+
+    // Class property signals of Pango-1.0.Pango.FontFamily
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: FontFamily_ConstructProps)
-    _init (config?: FontFamily_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * A `PangoFontFamily` is used to represent a family of related
+ * font faces.
+ * 
+ * The font faces in a family share a common design, but differ in
+ * slant, weight, width or other aspects.
+ * @class 
+ */
+class FontFamily extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.FontFamily
+
+    static name: string
+    static $gtype: GObject.GType<FontFamily>
+
+    // Constructors of Pango-1.0.Pango.FontFamily
+
+    constructor(config?: FontFamily_ConstructProps) 
+    _init(config?: FontFamily_ConstructProps): void
+}
+
 interface FontMap_ConstructProps extends GObject.Object_ConstructProps {
 }
-class FontMap {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.FontMap */
+
+interface FontMap {
+
+    // Own fields of Pango-1.0.Pango.FontMap
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Pango-1.0.Pango.FontMap
+
     /**
      * Forces a change in the context, which will cause any `PangoContext`
      * using this fontmap to change.
@@ -4227,321 +3581,9 @@ class FontMap {
      * @param language a `PangoLanguage` the fonts will be used for
      */
     load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.FontMap */
+
+    // Own virtual methods of Pango-1.0.Pango.FontMap
+
     /**
      * Forces a change in the context, which will cause any `PangoContext`
      * using this fontmap to change.
@@ -4550,10 +3592,12 @@ class FontMap {
      * for Pango, something applications won't do. Backends should
      * call this function if they have attached extra data to the
      * context and such data is changed.
+     * @virtual 
      */
     vfunc_changed(): void
     /**
      * Gets a font family by name.
+     * @virtual 
      * @param name a family name
      */
     vfunc_get_family(name: string): FontFamily
@@ -4570,6 +3614,7 @@ class FontMap {
      * 
      * This can be used to automatically detect changes to a `PangoFontMap`,
      * like in `PangoContext`.
+     * @virtual 
      */
     vfunc_get_serial(): number
     /**
@@ -4579,10 +3624,12 @@ class FontMap {
      * 
      * `PangoFontMap` also implemented the [iface`Gio`.ListModel] interface
      * for enumerating families.
+     * @virtual 
      */
     vfunc_list_families(): /* families */ FontFamily[]
     /**
      * Load the font in the fontmap that is the closest match for `desc`.
+     * @virtual 
      * @param context the `PangoContext` the font will be used with
      * @param desc a `PangoFontDescription` describing the font to load
      */
@@ -4590,81 +3637,53 @@ class FontMap {
     /**
      * Load a set of fonts in the fontmap that can be used to render
      * a font matching `desc`.
+     * @virtual 
      * @param context the `PangoContext` the font will be used with
      * @param desc a `PangoFontDescription` describing the font to load
      * @param language a `PangoLanguage` the fonts will be used for
      */
     vfunc_load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: FontMap, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: FontMap, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.FontMap
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: FontMap_ConstructProps)
-    _init (config?: FontMap_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * A `PangoFontMap` represents the set of fonts available for a
+ * particular rendering system.
+ * 
+ * This is a virtual object with implementations being specific to
+ * particular rendering systems.
+ * @class 
+ */
+class FontMap extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.FontMap
+
+    static name: string
+    static $gtype: GObject.GType<FontMap>
+
+    // Constructors of Pango-1.0.Pango.FontMap
+
+    constructor(config?: FontMap_ConstructProps) 
+    _init(config?: FontMap_ConstructProps): void
+}
+
 interface Fontset_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Fontset {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.Fontset */
+
+interface Fontset {
+
+    // Own fields of Pango-1.0.Pango.Fontset
+
+    parent_instance: GObject.Object
+
+    // Owm methods of Pango-1.0.Pango.Fontset
+
     /**
      * Iterates through all the fonts in a fontset, calling `func` for
      * each one.
@@ -4683,412 +3702,69 @@ class Fontset {
      * Get overall metric information for the fonts in the fontset.
      */
     get_metrics(): FontMetrics
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.Fontset */
+
+    // Own virtual methods of Pango-1.0.Pango.Fontset
+
     /**
      * Iterates through all the fonts in a fontset, calling `func` for
      * each one.
      * 
      * If `func` returns %TRUE, that stops the iteration.
+     * @virtual 
      * @param func Callback function
      */
     vfunc_foreach(func: FontsetForeachFunc): void
     /**
      * Returns the font in the fontset that contains the best
      * glyph for a Unicode character.
+     * @virtual 
      * @param wc a Unicode character
      */
     vfunc_get_font(wc: number): Font
     vfunc_get_language(): Language
     /**
      * Get overall metric information for the fonts in the fontset.
+     * @virtual 
      */
     vfunc_get_metrics(): FontMetrics
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Fontset, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Fontset, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.Fontset
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Fontset_ConstructProps)
-    _init (config?: Fontset_ConstructProps): void
-    static $gtype: GObject.Type
 }
+
+/**
+ * A `PangoFontset` represents a set of `PangoFont` to use when rendering text.
+ * 
+ * A `PangoFontset` is the result of resolving a `PangoFontDescription`
+ * against a particular `PangoContext`. It has operations for finding the
+ * component font for a particular Unicode character, and for finding a
+ * composite set of metrics for the entire fontset.
+ * @class 
+ */
+class Fontset extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.Fontset
+
+    static name: string
+    static $gtype: GObject.GType<Fontset>
+
+    // Constructors of Pango-1.0.Pango.Fontset
+
+    constructor(config?: Fontset_ConstructProps) 
+    _init(config?: Fontset_ConstructProps): void
+}
+
 interface FontsetSimple_ConstructProps extends Fontset_ConstructProps {
 }
-class FontsetSimple {
-    /* Fields of Pango-1.0.Pango.Fontset */
-    parent_instance: GObject.Object
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.FontsetSimple */
+
+interface FontsetSimple {
+
+    // Owm methods of Pango-1.0.Pango.FontsetSimple
+
     /**
      * Adds a font to the fontset.
      * 
@@ -5100,431 +3776,55 @@ class FontsetSimple {
      * Returns the number of fonts in the fontset.
      */
     size(): number
-    /* Methods of Pango-1.0.Pango.Fontset */
-    /**
-     * Iterates through all the fonts in a fontset, calling `func` for
-     * each one.
-     * 
-     * If `func` returns %TRUE, that stops the iteration.
-     * @param func Callback function
-     */
-    foreach(func: FontsetForeachFunc): void
-    /**
-     * Returns the font in the fontset that contains the best
-     * glyph for a Unicode character.
-     * @param wc a Unicode character
-     */
-    get_font(wc: number): Font
-    /**
-     * Get overall metric information for the fonts in the fontset.
-     */
-    get_metrics(): FontMetrics
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.Fontset */
-    /**
-     * Iterates through all the fonts in a fontset, calling `func` for
-     * each one.
-     * 
-     * If `func` returns %TRUE, that stops the iteration.
-     * @param func Callback function
-     */
-    vfunc_foreach(func: FontsetForeachFunc): void
-    /**
-     * Returns the font in the fontset that contains the best
-     * glyph for a Unicode character.
-     * @param wc a Unicode character
-     */
-    vfunc_get_font(wc: number): Font
-    vfunc_get_language(): Language
-    /**
-     * Get overall metric information for the fonts in the fontset.
-     */
-    vfunc_get_metrics(): FontMetrics
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: FontsetSimple, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: FontsetSimple, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.FontsetSimple
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: FontsetSimple_ConstructProps)
-    _init (config?: FontsetSimple_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(language: Language): FontsetSimple
-    static $gtype: GObject.Type
 }
+
+/**
+ * `PangoFontsetSimple` is a implementation of the abstract
+ * `PangoFontset` base class as an array of fonts.
+ * 
+ * When creating a `PangoFontsetSimple`, you have to provide
+ * the array of fonts that make up the fontset.
+ * @class 
+ */
+class FontsetSimple extends Fontset {
+
+    // Own properties of Pango-1.0.Pango.FontsetSimple
+
+    static name: string
+    static $gtype: GObject.GType<FontsetSimple>
+
+    // Constructors of Pango-1.0.Pango.FontsetSimple
+
+    constructor(config?: FontsetSimple_ConstructProps) 
+    /**
+     * Creates a new `PangoFontsetSimple` for the given language.
+     * @constructor 
+     * @param language a `PangoLanguage` tag
+     */
+    constructor(language: Language) 
+    /**
+     * Creates a new `PangoFontsetSimple` for the given language.
+     * @constructor 
+     * @param language a `PangoLanguage` tag
+     */
+    static new(language: Language): FontsetSimple
+    _init(config?: FontsetSimple_ConstructProps): void
+}
+
 interface Layout_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Layout {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.Layout */
+
+interface Layout {
+
+    // Owm methods of Pango-1.0.Pango.Layout
+
     /**
      * Forces recomputation of any state in the `PangoLayout` that
      * might depend on the layout's context.
@@ -5574,7 +3874,7 @@ class Layout {
      * </picture>
      * @param index_ the byte index of the cursor
      */
-    get_caret_pos(index_: number): [ /* strong_pos */ Rectangle | null, /* weak_pos */ Rectangle | null ]
+    get_caret_pos(index_: number): [ /* strong_pos */ Rectangle, /* weak_pos */ Rectangle ]
     /**
      * Returns the number of Unicode characters in the
      * the text of `layout`.
@@ -5614,7 +3914,7 @@ class Layout {
      * will insert it at the end.
      * @param index_ the byte index of the cursor
      */
-    get_cursor_pos(index_: number): [ /* strong_pos */ Rectangle | null, /* weak_pos */ Rectangle | null ]
+    get_cursor_pos(index_: number): [ /* strong_pos */ Rectangle, /* weak_pos */ Rectangle ]
     /**
      * Gets the text direction at the given character position in `layout`.
      * @param index the byte index of the char
@@ -5641,7 +3941,7 @@ class Layout {
      * The extents are given in layout coordinates and in Pango units; layout
      * coordinates begin at the top left corner of the layout.
      */
-    get_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Gets the font description for the layout, if any.
      */
@@ -5741,7 +4041,7 @@ class Layout {
      * such that the rounded rectangles fully contain the unrounded one (that is,
      * passes them as first argument to [func`Pango`.extents_to_pixels]).
      */
-    get_pixel_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_pixel_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Determines the logical width and height of a `PangoLayout` in device
      * units.
@@ -5750,7 +4050,7 @@ class Layout {
      * scaled by %PANGO_SCALE. This is simply a convenience function
      * around [method`Pango`.Layout.get_pixel_extents].
      */
-    get_pixel_size(): [ /* width */ number | null, /* height */ number | null ]
+    get_pixel_size(): [ /* width */ number, /* height */ number ]
     /**
      * Returns the current serial number of `layout`.
      * 
@@ -5778,7 +4078,7 @@ class Layout {
      * 
      * This is simply a convenience function around [method`Pango`.Layout.get_extents].
      */
-    get_size(): [ /* width */ number | null, /* height */ number | null ]
+    get_size(): [ /* width */ number, /* height */ number ]
     /**
      * Gets the amount of spacing between the lines of the layout.
      */
@@ -5825,7 +4125,7 @@ class Layout {
      * @param index_ the byte index of a grapheme within the layout
      * @param trailing an integer indicating the edge of the grapheme to retrieve the   position of. If > 0, the trailing edge of the grapheme, if 0,   the leading of the grapheme
      */
-    index_to_line_x(index_: number, trailing: boolean): [ /* line */ number | null, /* x_pos */ number | null ]
+    index_to_line_x(index_: number, trailing: boolean): [ /* line */ number, /* x_pos */ number ]
     /**
      * Converts from an index within a `PangoLayout` to the onscreen position
      * corresponding to the grapheme at that index.
@@ -5903,7 +4203,7 @@ class Layout {
      * References `attrs,` so the caller can unref its reference.
      * @param attrs a `PangoAttrList`
      */
-    set_attributes(attrs?: AttrList | null): void
+    set_attributes(attrs: AttrList | null): void
     /**
      * Sets whether to calculate the base direction
      * for the layout according to its contents.
@@ -5950,7 +4250,7 @@ class Layout {
      * font description from the layout's context is used.
      * @param desc the new `PangoFontDescription`   to unset the current font description
      */
-    set_font_description(desc?: FontDescription | null): void
+    set_font_description(desc: FontDescription | null): void
     /**
      * Sets the height to which the `PangoLayout` should be ellipsized at.
      * 
@@ -6077,7 +4377,7 @@ class Layout {
      * @param length length of marked-up text in bytes, or -1 if `markup` is   `NUL`-terminated
      * @param accel_marker marker for accelerators in the text
      */
-    set_markup_with_accel(markup: string, length: number, accel_marker: number): /* accel_char */ number | null
+    set_markup_with_accel(markup: string, length: number, accel_marker: string): /* accel_char */ string
     /**
      * Sets the single paragraph mode of `layout`.
      * 
@@ -6126,7 +4426,7 @@ class Layout {
      * %PANGO_ALIGN_LEFT.
      * @param tabs a `PangoTabArray`
      */
-    set_tabs(tabs?: TabArray | null): void
+    set_tabs(tabs: TabArray | null): void
     /**
      * Sets the text of the layout.
      * 
@@ -6189,384 +4489,81 @@ class Layout {
      * @param y the Y offset (in Pango units) from the top edge of the layout
      */
     xy_to_index(x: number, y: number): [ /* returnType */ boolean, /* index_ */ number, /* trailing */ number ]
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Layout, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.Layout
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * A `PangoLayout` structure represents an entire paragraph of text.
+ * 
+ * While complete access to the layout capabilities of Pango is provided
+ * using the detailed interfaces for itemization and shaping, using
+ * that functionality directly involves writing a fairly large amount
+ * of code. `PangoLayout` provides a high-level driver for formatting
+ * entire paragraphs of text at once. This includes paragraph-level
+ * functionality such as line breaking, justification, alignment and
+ * ellipsization.
+ * 
+ * A `PangoLayout` is initialized with a `PangoContext`, UTF-8 string
+ * and set of attributes for that string. Once that is done, the set of
+ * formatted lines can be extracted from the object, the layout can be
+ * rendered, and conversion between logical character positions within
+ * the layout's text, and the physical position of the resulting glyphs
+ * can be made.
+ * 
+ * There are a number of parameters to adjust the formatting of a
+ * `PangoLayout`. The following image shows adjustable parameters
+ * (on the left) and font metrics (on the right):
+ * 
+ * <picture>
+ *   <source srcset="layout-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img alt="Pango Layout Parameters" src="layout-light.png">
+ * </picture>
+ * 
+ * The following images demonstrate the effect of alignment and
+ * justification on the layout of text:
+ * 
+ * | | |
+ * | --- | --- |
+ * | ![align=left](align-left.png) | ![align=left, justify](align-left-justify.png) |
+ * | ![align=center](align-center.png) | ![align=center, justify](align-center-justify.png) |
+ * | ![align=right](align-right.png) | ![align=right, justify](align-right-justify.png) |
+ * 
+ * 
+ * It is possible, as well, to ignore the 2-D setup,
+ * and simply treat the results of a `PangoLayout` as a list of lines.
+ * @class 
+ */
+class Layout extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.Layout
+
     static name: string
-    constructor (config?: Layout_ConstructProps)
-    _init (config?: Layout_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Layout>
+
+    // Constructors of Pango-1.0.Pango.Layout
+
+    constructor(config?: Layout_ConstructProps) 
+    /**
+     * Create a new `PangoLayout` object with attributes initialized to
+     * default values for a particular `PangoContext`.
+     * @constructor 
+     * @param context a `PangoContext`
+     */
+    constructor(context: Context) 
+    /**
+     * Create a new `PangoLayout` object with attributes initialized to
+     * default values for a particular `PangoContext`.
+     * @constructor 
+     * @param context a `PangoContext`
+     */
     static new(context: Context): Layout
+    _init(config?: Layout_ConstructProps): void
     /**
      * Loads data previously created via [method`Pango`.Layout.serialize].
      * 
@@ -6580,14 +4577,25 @@ class Layout {
      * @param flags `PangoLayoutDeserializeFlags`
      */
     static deserialize(context: Context, bytes: GLib.Bytes, flags: LayoutDeserializeFlags): Layout | null
-    static $gtype: GObject.Type
 }
+
 interface Renderer_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Renderer {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Pango-1.0.Pango.Renderer */
+
+interface Renderer {
+
+    // Own fields of Pango-1.0.Pango.Renderer
+
+    /**
+     * the current transformation matrix for
+     *   the Renderer; may be %NULL, which should be treated the
+     *   same as the identity matrix.
+     * @field 
+     */
+    matrix: Matrix
+
+    // Owm methods of Pango-1.0.Pango.Renderer
+
     /**
      * Does initial setup before rendering operations on `renderer`.
      * 
@@ -6781,327 +4789,15 @@ class Renderer {
      * @param part the part to change the color of
      * @param color the new color or %NULL to unset the current color
      */
-    set_color(part: RenderPart, color?: Color | null): void
+    set_color(part: RenderPart, color: Color | null): void
     /**
      * Sets the transformation matrix that will be applied when rendering.
      * @param matrix a `PangoMatrix`, or %NULL to unset any existing matrix  (No matrix set is the same as setting the identity matrix.)
      */
-    set_matrix(matrix?: Matrix | null): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Pango-1.0.Pango.Renderer */
+    set_matrix(matrix: Matrix | null): void
+
+    // Own virtual methods of Pango-1.0.Pango.Renderer
+
     vfunc_begin(): void
     /**
      * Draw a squiggly line that approximately covers the given rectangle
@@ -7113,6 +4809,7 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @virtual 
      * @param x X coordinate of underline, in Pango units in user coordinate system
      * @param y Y coordinate of underline, in Pango units in user coordinate system
      * @param width width of underline, in Pango units in user coordinate system
@@ -7121,6 +4818,7 @@ class Renderer {
     vfunc_draw_error_underline(x: number, y: number, width: number, height: number): void
     /**
      * Draws a single glyph with coordinates in device space.
+     * @virtual 
      * @param font a `PangoFont`
      * @param glyph the glyph index of a single glyph
      * @param x X coordinate of left edge of baseline of glyph
@@ -7146,6 +4844,7 @@ class Renderer {
      * 
      * The default implementation of this method simply falls back to
      * [method`Pango`.Renderer.draw_glyphs].
+     * @virtual 
      * @param text the UTF-8 text that `glyph_item` refers to
      * @param glyph_item a `PangoGlyphItem`
      * @param x X position of left edge of baseline, in user space coordinates   in Pango units
@@ -7154,6 +4853,7 @@ class Renderer {
     vfunc_draw_glyph_item(text: string | null, glyph_item: GlyphItem, x: number, y: number): void
     /**
      * Draws the glyphs in `glyphs` with the specified `PangoRenderer`.
+     * @virtual 
      * @param font a `PangoFont`
      * @param glyphs a `PangoGlyphString`
      * @param x X position of left edge of baseline, in user space coordinates   in Pango units.
@@ -7166,6 +4866,7 @@ class Renderer {
      * 
      * This should be called while `renderer` is already active.
      * Use [method`Pango`.Renderer.activate] to activate a renderer.
+     * @virtual 
      * @param part type of object this rectangle is part of
      * @param x X position at which to draw rectangle, in user space coordinates   in Pango units
      * @param y Y position at which to draw rectangle, in user space coordinates   in Pango units
@@ -7177,6 +4878,7 @@ class Renderer {
     /**
      * Draws a trapezoid with the parallel sides aligned with the X axis
      * using the given `PangoRenderer`; coordinates are in device space.
+     * @virtual 
      * @param part type of object this trapezoid is part of
      * @param y1_ Y coordinate of top of trapezoid
      * @param x11 X coordinate of left end of top of trapezoid
@@ -7203,187 +4905,300 @@ class Renderer {
      * When the stipple changes or underlines with different stipples
      * might be joined together. Pango automatically calls this for
      * changes to colors. (See [method`Pango`.Renderer.set_color])
+     * @virtual 
      * @param part the part for which rendering has changed.
      */
     vfunc_part_changed(part: RenderPart): void
     vfunc_prepare_run(run: LayoutRun): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Renderer, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Pango-1.0.Pango.Renderer
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Renderer_ConstructProps)
-    _init (config?: Renderer_ConstructProps): void
-    static $gtype: GObject.Type
 }
-class Analysis {
-    /* Fields of Pango-1.0.Pango.Analysis */
+
+/**
+ * `PangoRenderer` is a base class for objects that can render text
+ * provided as `PangoGlyphString` or `PangoLayout`.
+ * 
+ * By subclassing `PangoRenderer` and overriding operations such as
+ * `draw_glyphs` and `draw_rectangle,` renderers for particular font
+ * backends and destinations can be created.
+ * @class 
+ */
+class Renderer extends GObject.Object {
+
+    // Own properties of Pango-1.0.Pango.Renderer
+
+    static name: string
+    static $gtype: GObject.GType<Renderer>
+
+    // Constructors of Pango-1.0.Pango.Renderer
+
+    constructor(config?: Renderer_ConstructProps) 
+    _init(config?: Renderer_ConstructProps): void
+}
+
+interface Analysis {
+
+    // Own fields of Pango-1.0.Pango.Analysis
+
     /**
      * unused, reserved
+     * @field 
      */
     shape_engine: object
     /**
      * unused, reserved
+     * @field 
      */
     lang_engine: object
     /**
      * the font for this segment.
+     * @field 
      */
     font: Font
     /**
      * the bidirectional level for this segment.
+     * @field 
      */
     level: number
     /**
      * the glyph orientation for this segment (A `PangoGravity`).
+     * @field 
      */
     gravity: number
     /**
      * boolean flags for this segment (Since: 1.16).
+     * @field 
      */
     flags: number
     /**
      * the detected script for this segment (A `PangoScript`) (Since: 1.18).
+     * @field 
      */
     script: number
     /**
      * the detected language for this segment.
+     * @field 
      */
     language: Language
     /**
      * extra attributes for this segment.
+     * @field 
      */
     extra_attrs: object[]
+}
+
+/**
+ * The `PangoAnalysis` structure stores information about
+ * the properties of a segment of text.
+ * @record 
+ */
+class Analysis {
+
+    // Own properties of Pango-1.0.Pango.Analysis
+
     static name: string
 }
-class AttrClass {
-    /* Fields of Pango-1.0.Pango.AttrClass */
+
+interface AttrClass {
+
+    // Own fields of Pango-1.0.Pango.AttrClass
+
     /**
      * the type ID for this attribute
+     * @field 
      */
     type: AttrType
     copy: (attr: Attribute) => Attribute
     destroy: (attr: Attribute) => void
     equal: (attr1: Attribute, attr2: Attribute) => boolean
+}
+
+/**
+ * The `PangoAttrClass` structure stores the type and operations for
+ * a particular type of attribute.
+ * 
+ * The functions in this structure should not be called directly. Instead,
+ * one should use the wrapper functions provided for `PangoAttribute`.
+ * @record 
+ */
+class AttrClass {
+
+    // Own properties of Pango-1.0.Pango.AttrClass
+
     static name: string
 }
-class AttrColor {
-    /* Fields of Pango-1.0.Pango.AttrColor */
+
+interface AttrColor {
+
+    // Own fields of Pango-1.0.Pango.AttrColor
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the `PangoColor` which is the value of the attribute
+     * @field 
      */
     color: Color
+}
+
+/**
+ * The `PangoAttrColor` structure is used to represent attributes that
+ * are colors.
+ * @record 
+ */
+class AttrColor {
+
+    // Own properties of Pango-1.0.Pango.AttrColor
+
     static name: string
 }
-class AttrFloat {
-    /* Fields of Pango-1.0.Pango.AttrFloat */
+
+interface AttrFloat {
+
+    // Own fields of Pango-1.0.Pango.AttrFloat
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the value of the attribute
+     * @field 
      */
     value: number
+}
+
+/**
+ * The `PangoAttrFloat` structure is used to represent attributes with
+ * a float or double value.
+ * @record 
+ */
+class AttrFloat {
+
+    // Own properties of Pango-1.0.Pango.AttrFloat
+
     static name: string
 }
-class AttrFontDesc {
-    /* Fields of Pango-1.0.Pango.AttrFontDesc */
+
+interface AttrFontDesc {
+
+    // Own fields of Pango-1.0.Pango.AttrFontDesc
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the font description which is the value of this attribute
+     * @field 
      */
     desc: FontDescription
-    static name: string
 }
-class AttrFontFeatures {
-    /* Fields of Pango-1.0.Pango.AttrFontFeatures */
+
+/**
+ * The `PangoAttrFontDesc` structure is used to store an attribute that
+ * sets all aspects of the font description at once.
+ * @record 
+ */
+class AttrFontDesc {
+
+    // Own properties of Pango-1.0.Pango.AttrFontDesc
+
+    static name: string
+
+    // Constructors of Pango-1.0.Pango.AttrFontDesc
+
+    /**
+     * Create a new font description attribute.
+     * 
+     * This attribute allows setting family, style, weight, variant,
+     * stretch, and size simultaneously.
+     * @param desc the font description
+     */
+    static new(desc: FontDescription): Attribute
+}
+
+interface AttrFontFeatures {
+
+    // Own fields of Pango-1.0.Pango.AttrFontFeatures
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the features, as a string in CSS syntax
+     * @field 
      */
     features: string
-    static name: string
 }
-class AttrInt {
-    /* Fields of Pango-1.0.Pango.AttrInt */
+
+/**
+ * The `PangoAttrFontFeatures` structure is used to represent OpenType
+ * font features as an attribute.
+ * @record 
+ */
+class AttrFontFeatures {
+
+    // Own properties of Pango-1.0.Pango.AttrFontFeatures
+
+    static name: string
+
+    // Constructors of Pango-1.0.Pango.AttrFontFeatures
+
+    /**
+     * Create a new font features tag attribute.
+     * 
+     * You can use this attribute to select OpenType font features like small-caps,
+     * alternative glyphs, ligatures, etc. for fonts that support them.
+     * @param features a string with OpenType font features, with the syntax of the [CSS font-feature-settings property](https://www.w3.org/TR/css-fonts-4/#font-rend-desc)
+     */
+    static new(features: string): Attribute
+}
+
+interface AttrInt {
+
+    // Own fields of Pango-1.0.Pango.AttrInt
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the value of the attribute
+     * @field 
      */
     value: number
+}
+
+/**
+ * The `PangoAttrInt` structure is used to represent attributes with
+ * an integer or enumeration value.
+ * @record 
+ */
+class AttrInt {
+
+    // Own properties of Pango-1.0.Pango.AttrInt
+
     static name: string
 }
-class AttrIterator {
-    /* Methods of Pango-1.0.Pango.AttrIterator */
+
+interface AttrIterator {
+
+    // Owm methods of Pango-1.0.Pango.AttrIterator
+
     /**
      * Copy a `PangoAttrIterator`.
      */
@@ -7412,7 +5227,7 @@ class AttrIterator {
      * iterator position.
      * @param desc a `PangoFontDescription` to fill in with the current   values. The family name in this structure will be set using   [method`Pango`.FontDescription.set_family_static] using   values from an attribute in the `PangoAttrList` associated   with the iterator, so if you plan to keep it around, you   must call:   `pango_font_description_set_family (desc, pango_font_description_get_family (desc))`.
      */
-    get_font(desc: FontDescription): [ /* language */ Language | null, /* extra_attrs */ Attribute[] | null ]
+    get_font(desc: FontDescription): [ /* language */ Language, /* extra_attrs */ Attribute[] ]
     /**
      * Advance the iterator until the next change of style.
      */
@@ -7426,22 +5241,65 @@ class AttrIterator {
      * a signed integer are clamped to %G_MAXINT.
      */
     range(): [ /* start */ number, /* end */ number ]
+}
+
+/**
+ * A `PangoAttrIterator` is used to iterate through a `PangoAttrList`.
+ * 
+ * A new iterator is created with [method`Pango`.AttrList.get_iterator].
+ * Once the iterator is created, it can be advanced through the style
+ * changes in the text using [method`Pango`.AttrIterator.next]. At each
+ * style change, the range of the current style segment and the attributes
+ * currently in effect can be queried.
+ * @record 
+ */
+class AttrIterator {
+
+    // Own properties of Pango-1.0.Pango.AttrIterator
+
     static name: string
 }
-class AttrLanguage {
-    /* Fields of Pango-1.0.Pango.AttrLanguage */
+
+interface AttrLanguage {
+
+    // Own fields of Pango-1.0.Pango.AttrLanguage
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the `PangoLanguage` which is the value of the attribute
+     * @field 
      */
     value: Language
-    static name: string
 }
-class AttrList {
-    /* Methods of Pango-1.0.Pango.AttrList */
+
+/**
+ * The `PangoAttrLanguage` structure is used to represent attributes that
+ * are languages.
+ * @record 
+ */
+class AttrLanguage {
+
+    // Own properties of Pango-1.0.Pango.AttrLanguage
+
+    static name: string
+
+    // Constructors of Pango-1.0.Pango.AttrLanguage
+
+    /**
+     * Create a new language tag attribute.
+     * @param language language tag
+     */
+    static new(language: Language): Attribute
+}
+
+interface AttrList {
+
+    // Owm methods of Pango-1.0.Pango.AttrList
+
     /**
      * Insert the given attribute into the `PangoAttrList`.
      * 
@@ -7573,10 +5431,41 @@ class AttrList {
      * @param add the number of added bytes
      */
     update(pos: number, remove: number, add: number): void
+}
+
+/**
+ * A `PangoAttrList` represents a list of attributes that apply to a section
+ * of text.
+ * 
+ * The attributes in a `PangoAttrList` are, in general, allowed to overlap in
+ * an arbitrary fashion. However, if the attributes are manipulated only through
+ * [method`Pango`.AttrList.change], the overlap between properties will meet
+ * stricter criteria.
+ * 
+ * Since the `PangoAttrList` structure is stored as a linear list, it is not
+ * suitable for storing attributes for large amounts of text. In general, you
+ * should not use a single `PangoAttrList` for more than one paragraph of text.
+ * @record 
+ */
+class AttrList {
+
+    // Own properties of Pango-1.0.Pango.AttrList
+
     static name: string
-    static new(): AttrList
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.AttrList
+
+    /**
+     * Create a new empty attribute list with a reference
+     * count of one.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Create a new empty attribute list with a reference
+     * count of one.
+     * @constructor 
+     */
     static new(): AttrList
     /**
      * Deserializes a `PangoAttrList` from a string.
@@ -7587,34 +5476,67 @@ class AttrList {
      */
     static from_string(text: string): AttrList | null
 }
-class AttrShape {
-    /* Fields of Pango-1.0.Pango.AttrShape */
+
+interface AttrShape {
+
+    // Own fields of Pango-1.0.Pango.AttrShape
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the ink rectangle to restrict to
+     * @field 
      */
     ink_rect: Rectangle
     /**
      * the logical rectangle to restrict to
+     * @field 
      */
     logical_rect: Rectangle
     /**
      * user data set (see [func`Pango`.AttrShape.new_with_data])
+     * @field 
      */
     data: object
     /**
      * copy function for the user data
+     * @field 
      */
     copy_func: AttrDataCopyFunc
     /**
      * destroy function for the user data
+     * @field 
      */
     destroy_func: GLib.DestroyNotify
+}
+
+/**
+ * The `PangoAttrShape` structure is used to represent attributes which
+ * impose shape restrictions.
+ * @record 
+ */
+class AttrShape {
+
+    // Own properties of Pango-1.0.Pango.AttrShape
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.AttrShape
+
+    /**
+     * Create a new shape attribute.
+     * 
+     * A shape is used to impose a particular ink and logical
+     * rectangle on the result of shaping a particular glyph.
+     * This might be used, for instance, for embedding a picture
+     * or a widget inside a `PangoLayout`.
+     * @param ink_rect ink rectangle to assign to each character
+     * @param logical_rect logical rectangle to assign to each character
+     */
+    static new(ink_rect: Rectangle, logical_rect: Rectangle): Attribute
     /**
      * Creates a new shape attribute.
      * 
@@ -7626,17 +5548,22 @@ class AttrShape {
      * @param data user data pointer
      * @param copy_func function to copy `data` when the   attribute is copied. If %NULL, `data` is simply copied   as a pointer
      */
-    static new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data?: object | null, copy_func?: AttrDataCopyFunc | null): Attribute
+    static new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data: object | null, copy_func: AttrDataCopyFunc | null): Attribute
 }
-class AttrSize {
-    /* Fields of Pango-1.0.Pango.AttrSize */
+
+interface AttrSize {
+
+    // Own fields of Pango-1.0.Pango.AttrSize
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * size of font, in units of 1/%PANGO_SCALE of a point (for
      *   %PANGO_ATTR_SIZE) or of a device unit (for %PANGO_ATTR_ABSOLUTE_SIZE)
+     * @field 
      */
     size: number
     /**
@@ -7644,44 +5571,87 @@ class AttrSize {
      *   This field is only present for compatibility with Pango-1.8.0
      *   (%PANGO_ATTR_ABSOLUTE_SIZE was added in 1.8.1); and always will
      *   be %FALSE for %PANGO_ATTR_SIZE and %TRUE for %PANGO_ATTR_ABSOLUTE_SIZE.
+     * @field 
      */
     absolute: number
+}
+
+/**
+ * The `PangoAttrSize` structure is used to represent attributes which
+ * set font size.
+ * @record 
+ */
+class AttrSize {
+
+    // Own properties of Pango-1.0.Pango.AttrSize
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.AttrSize
+
+    /**
+     * Create a new font-size attribute in fractional points.
+     * @param size the font size, in %PANGO_SCALE-ths of a point
+     */
+    static new(size: number): Attribute
     /**
      * Create a new font-size attribute in device units.
      * @param size the font size, in %PANGO_SCALE-ths of a device unit
      */
     static new_absolute(size: number): Attribute
 }
-class AttrString {
-    /* Fields of Pango-1.0.Pango.AttrString */
+
+interface AttrString {
+
+    // Own fields of Pango-1.0.Pango.AttrString
+
     /**
      * the common portion of the attribute
+     * @field 
      */
     attr: Attribute
     /**
      * the string which is the value of the attribute
+     * @field 
      */
     value: string
+}
+
+/**
+ * The `PangoAttrString` structure is used to represent attributes with
+ * a string value.
+ * @record 
+ */
+class AttrString {
+
+    // Own properties of Pango-1.0.Pango.AttrString
+
     static name: string
 }
-class Attribute {
-    /* Fields of Pango-1.0.Pango.Attribute */
+
+interface Attribute {
+
+    // Own fields of Pango-1.0.Pango.Attribute
+
     /**
      * the class structure holding information about the type of the attribute
+     * @field 
      */
     klass: AttrClass
     /**
      * the start index of the range (in bytes).
+     * @field 
      */
     start_index: number
     /**
      * end index of the range (in bytes). The character at this index
      *   is not included in the range.
+     * @field 
      */
     end_index: number
-    /* Methods of Pango-1.0.Pango.Attribute */
+
+    // Owm methods of Pango-1.0.Pango.Attribute
+
     /**
      * Returns the attribute cast to `PangoAttrColor`.
      * 
@@ -7761,23 +5731,48 @@ class Attribute {
      * @param klass a `PangoAttrClass`
      */
     init(klass: AttrClass): void
+}
+
+/**
+ * The `PangoAttribute` structure represents the common portions of all
+ * attributes.
+ * 
+ * Particular types of attributes include this structure as their initial
+ * portion. The common portion of the attribute holds the range to which
+ * the value in the type-specific part of the attribute applies and should
+ * be initialized using [method`Pango`.Attribute.init]. By default, an attribute
+ * will have an all-inclusive range of [0,%G_MAXUINT].
+ * @record 
+ */
+class Attribute {
+
+    // Own properties of Pango-1.0.Pango.Attribute
+
     static name: string
 }
-class Color {
-    /* Fields of Pango-1.0.Pango.Color */
+
+interface Color {
+
+    // Own fields of Pango-1.0.Pango.Color
+
     /**
      * value of red component
+     * @field 
      */
     red: number
     /**
      * value of green component
+     * @field 
      */
     green: number
     /**
      * value of blue component
+     * @field 
      */
     blue: number
-    /* Methods of Pango-1.0.Pango.Color */
+
+    // Owm methods of Pango-1.0.Pango.Color
+
     /**
      * Creates a copy of `src`.
      * 
@@ -7822,7 +5817,7 @@ class Color {
      * solid color).
      * @param spec a string specifying the new color
      */
-    parse_with_alpha(spec: string): [ /* returnType */ boolean, /* alpha */ number | null ]
+    parse_with_alpha(spec: string): [ /* returnType */ boolean, /* alpha */ number ]
     /**
      * Returns a textual specification of `color`.
      * 
@@ -7831,26 +5826,56 @@ class Color {
      * red, green, and blue components respectively.
      */
     to_string(): string
+}
+
+/**
+ * The `PangoColor` structure is used to
+ * represent a color in an uncalibrated RGB color-space.
+ * @record 
+ */
+class Color {
+
+    // Own properties of Pango-1.0.Pango.Color
+
     static name: string
 }
+
+interface ContextClass {
+}
+
 abstract class ContextClass {
+
+    // Own properties of Pango-1.0.Pango.ContextClass
+
     static name: string
 }
-abstract class FontClass {
-    /* Fields of Pango-1.0.Pango.FontClass */
+
+interface FontClass {
+
+    // Own fields of Pango-1.0.Pango.FontClass
+
     parent_class: GObject.ObjectClass
     describe: (font: Font) => FontDescription
     get_coverage: (font: Font, language: Language) => Coverage
-    get_glyph_extents: (font: Font | null, glyph: Glyph) => [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
-    get_metrics: (font?: Font | null, language?: Language | null) => FontMetrics
-    get_font_map: (font?: Font | null) => FontMap | null
+    get_glyph_extents: (font: Font | null, glyph: Glyph) => [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
+    get_metrics: (font: Font | null, language: Language | null) => FontMetrics
+    get_font_map: (font: Font | null) => FontMap | null
     describe_absolute: (font: Font) => FontDescription
     get_features: (font: Font, num_features: number) => [ /* features */ HarfBuzz.feature_t[], /* num_features */ number ]
     create_hb_font: (font: Font) => HarfBuzz.font_t
+}
+
+abstract class FontClass {
+
+    // Own properties of Pango-1.0.Pango.FontClass
+
     static name: string
 }
-class FontDescription {
-    /* Methods of Pango-1.0.Pango.FontDescription */
+
+interface FontDescription {
+
+    // Owm methods of Pango-1.0.Pango.FontDescription
+
     /**
      * Determines if the style attributes of `new_match` are a closer match
      * for `desc` than those of `old_match` are, or if `old_match` is %NULL,
@@ -8087,7 +6112,7 @@ class FontDescription {
      * for example [hb_ot_var_get_axis_infos](https://harfbuzz.github.io/harfbuzz-hb-ot-var.html#hb-ot-var-get-axis-infos).
      * @param variations a string representing the variations
      */
-    set_variations(variations?: string | null): void
+    set_variations(variations: string | null): void
     /**
      * Sets the variations field of a font description.
      * 
@@ -8135,10 +6160,34 @@ class FontDescription {
      * @param to_unset bitmask of fields in the `desc` to unset.
      */
     unset_fields(to_unset: FontMask): void
+}
+
+/**
+ * A `PangoFontDescription` describes a font in an implementation-independent
+ * manner.
+ * 
+ * `PangoFontDescription` structures are used both to list what fonts are
+ * available on the system and also for specifying the characteristics of
+ * a font to load.
+ * @record 
+ */
+class FontDescription {
+
+    // Own properties of Pango-1.0.Pango.FontDescription
+
     static name: string
-    static new(): FontDescription
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.FontDescription
+
+    /**
+     * Creates a new font description structure with all fields unset.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new font description structure with all fields unset.
+     * @constructor 
+     */
     static new(): FontDescription
     /**
      * Creates a new font description from a string representation.
@@ -8189,30 +6238,52 @@ class FontDescription {
      */
     static from_string(str: string): FontDescription
 }
-abstract class FontFaceClass {
-    /* Fields of Pango-1.0.Pango.FontFaceClass */
+
+interface FontFaceClass {
+
+    // Own fields of Pango-1.0.Pango.FontFaceClass
+
     parent_class: GObject.ObjectClass
     get_face_name: (face: FontFace) => string
     describe: (face: FontFace) => FontDescription
     list_sizes: (face: FontFace) => /* sizes */ number[] | null
     is_synthesized: (face: FontFace) => boolean
     get_family: (face: FontFace) => FontFamily
+}
+
+abstract class FontFaceClass {
+
+    // Own properties of Pango-1.0.Pango.FontFaceClass
+
     static name: string
 }
-abstract class FontFamilyClass {
-    /* Fields of Pango-1.0.Pango.FontFamilyClass */
+
+interface FontFamilyClass {
+
+    // Own fields of Pango-1.0.Pango.FontFamilyClass
+
     parent_class: GObject.ObjectClass
-    list_faces: (family: FontFamily) => /* faces */ FontFace[] | null
+    list_faces: (family: FontFamily) => /* faces */ FontFace[]
     get_name: (family: FontFamily) => string
     is_monospace: (family: FontFamily) => boolean
     is_variable: (family: FontFamily) => boolean
-    get_face: (family: FontFamily, name?: string | null) => FontFace | null
+    get_face: (family: FontFamily, name: string | null) => FontFace | null
+}
+
+abstract class FontFamilyClass {
+
+    // Own properties of Pango-1.0.Pango.FontFamilyClass
+
     static name: string
 }
-abstract class FontMapClass {
-    /* Fields of Pango-1.0.Pango.FontMapClass */
+
+interface FontMapClass {
+
+    // Own fields of Pango-1.0.Pango.FontMapClass
+
     /**
      * parent `GObjectClass`
+     * @field 
      */
     parent_class: GObject.ObjectClass
     load_font: (fontmap: FontMap, context: Context, desc: FontDescription) => Font | null
@@ -8221,15 +6292,30 @@ abstract class FontMapClass {
     /**
      * the type of rendering-system-dependent engines that
      * can handle fonts of this fonts loaded with this fontmap.
+     * @field 
      */
     shape_engine_type: string
     get_serial: (fontmap: FontMap) => number
     changed: (fontmap: FontMap) => void
     get_family: (fontmap: FontMap, name: string) => FontFamily
+}
+
+/**
+ * The `PangoFontMapClass` structure holds the virtual functions for
+ * a particular `PangoFontMap` implementation.
+ * @record 
+ */
+abstract class FontMapClass {
+
+    // Own properties of Pango-1.0.Pango.FontMapClass
+
     static name: string
 }
-class FontMetrics {
-    /* Methods of Pango-1.0.Pango.FontMetrics */
+
+interface FontMetrics {
+
+    // Owm methods of Pango-1.0.Pango.FontMetrics
+
     /**
      * Gets the approximate character width for a font metrics structure.
      * 
@@ -8308,81 +6394,183 @@ class FontMetrics {
      * If the result is zero, frees the structure and any associated memory.
      */
     unref(): void
+}
+
+/**
+ * A `PangoFontMetrics` structure holds the overall metric information
+ * for a font.
+ * 
+ * The information in a `PangoFontMetrics` structure may be restricted
+ * to a script. The fields of this structure are private to implementations
+ * of a font backend. See the documentation of the corresponding getters
+ * for documentation of their meaning.
+ * 
+ * For an overview of the most important metrics, see:
+ * 
+ * <picture>
+ *   <source srcset="fontmetrics-dark.png" media="(prefers-color-scheme: dark)">
+ *   <img alt="Font metrics" src="fontmetrics-light.png">
+ * </picture>
+ * @record 
+ */
+class FontMetrics {
+
+    // Own properties of Pango-1.0.Pango.FontMetrics
+
     static name: string
 }
-abstract class FontsetClass {
-    /* Fields of Pango-1.0.Pango.FontsetClass */
+
+interface FontsetClass {
+
+    // Own fields of Pango-1.0.Pango.FontsetClass
+
     /**
      * parent `GObjectClass`
+     * @field 
      */
     parent_class: GObject.ObjectClass
     get_font: (fontset: Fontset, wc: number) => Font
     get_metrics: (fontset: Fontset) => FontMetrics
     get_language: (fontset: Fontset) => Language
     foreach: (fontset: Fontset, func: FontsetForeachFunc) => void
+}
+
+/**
+ * The `PangoFontsetClass` structure holds the virtual functions for
+ * a particular `PangoFontset` implementation.
+ * @record 
+ */
+abstract class FontsetClass {
+
+    // Own properties of Pango-1.0.Pango.FontsetClass
+
     static name: string
 }
+
+interface FontsetSimpleClass {
+}
+
 abstract class FontsetSimpleClass {
+
+    // Own properties of Pango-1.0.Pango.FontsetSimpleClass
+
     static name: string
 }
-class GlyphGeometry {
-    /* Fields of Pango-1.0.Pango.GlyphGeometry */
+
+interface GlyphGeometry {
+
+    // Own fields of Pango-1.0.Pango.GlyphGeometry
+
     /**
      * the logical width to use for the the character.
+     * @field 
      */
     width: GlyphUnit
     /**
      * horizontal offset from nominal character position.
+     * @field 
      */
     x_offset: GlyphUnit
     /**
      * vertical offset from nominal character position.
+     * @field 
      */
     y_offset: GlyphUnit
+}
+
+/**
+ * The `PangoGlyphGeometry` structure contains width and positioning
+ * information for a single glyph.
+ * 
+ * Note that `width` is not guaranteed to be the same as the glyph
+ * extents. Kerning and other positioning applied during shaping will
+ * affect both the `width` and the `x_offset` for the glyphs in the
+ * glyph string that results from shaping.
+ * 
+ * The information in this struct is intended for rendering the glyphs,
+ * as follows:
+ * 
+ * 1. Assume the current point is (x, y)
+ * 2. Render the current glyph at (x + x_offset, y + y_offset),
+ * 3. Advance the current point to (x + width, y)
+ * 4. Render the next glyph
+ * @record 
+ */
+class GlyphGeometry {
+
+    // Own properties of Pango-1.0.Pango.GlyphGeometry
+
     static name: string
 }
-class GlyphInfo {
-    /* Fields of Pango-1.0.Pango.GlyphInfo */
+
+interface GlyphInfo {
+
+    // Own fields of Pango-1.0.Pango.GlyphInfo
+
     /**
      * the glyph itself.
+     * @field 
      */
     glyph: Glyph
     /**
      * the positional information about the glyph.
+     * @field 
      */
     geometry: GlyphGeometry
     /**
      * the visual attributes of the glyph.
+     * @field 
      */
     attr: GlyphVisAttr
+}
+
+/**
+ * A `PangoGlyphInfo` structure represents a single glyph with
+ * positioning information and visual attributes.
+ * @record 
+ */
+class GlyphInfo {
+
+    // Own properties of Pango-1.0.Pango.GlyphInfo
+
     static name: string
 }
-class GlyphItem {
-    /* Fields of Pango-1.0.Pango.GlyphItem */
+
+interface GlyphItem {
+
+    // Own fields of Pango-1.0.Pango.GlyphItem
+
     /**
      * corresponding `PangoItem`
+     * @field 
      */
     item: Item
     /**
      * corresponding `PangoGlyphString`
+     * @field 
      */
     glyphs: GlyphString
     /**
      * shift of the baseline, relative to the baseline
      *   of the containing line. Positive values shift upwards
+     * @field 
      */
     y_offset: number
     /**
      * horizontal displacement to apply before the
      *   glyph item. Positive values shift right
+     * @field 
      */
     start_x_offset: number
     /**
      * horizontal displacement to apply after th
      *   glyph item. Positive values shift right
+     * @field 
      */
     end_x_offset: number
-    /* Methods of Pango-1.0.Pango.GlyphItem */
+
+    // Owm methods of Pango-1.0.Pango.GlyphItem
+
     /**
      * Splits a shaped item (`PangoGlyphItem`) into multiple items based
      * on an attribute list.
@@ -8449,10 +6637,28 @@ class GlyphItem {
      * @param split_index byte index of position to split item, relative to the   start of the item
      */
     split(text: string, split_index: number): GlyphItem
+}
+
+/**
+ * A `PangoGlyphItem` is a pair of a `PangoItem` and the glyphs
+ * resulting from shaping the items text.
+ * 
+ * As an example of the usage of `PangoGlyphItem`, the results
+ * of shaping text with `PangoLayout` is a list of `PangoLayoutLine`,
+ * each of which contains a list of `PangoGlyphItem`.
+ * @record 
+ */
+class GlyphItem {
+
+    // Own properties of Pango-1.0.Pango.GlyphItem
+
     static name: string
 }
-class GlyphItemIter {
-    /* Fields of Pango-1.0.Pango.GlyphItemIter */
+
+interface GlyphItemIter {
+
+    // Own fields of Pango-1.0.Pango.GlyphItemIter
+
     glyph_item: GlyphItem
     text: string
     start_glyph: number
@@ -8461,7 +6667,9 @@ class GlyphItemIter {
     end_glyph: number
     end_index: number
     end_char: number
-    /* Methods of Pango-1.0.Pango.GlyphItemIter */
+
+    // Owm methods of Pango-1.0.Pango.GlyphItemIter
+
     /**
      * Make a shallow copy of an existing `PangoGlyphItemIter` structure.
      */
@@ -8499,24 +6707,81 @@ class GlyphItemIter {
      * See `PangoGlyphItemIter` for details of cluster orders.
      */
     prev_cluster(): boolean
+}
+
+/**
+ * A `PangoGlyphItemIter` is an iterator over the clusters in a
+ * `PangoGlyphItem`.
+ * 
+ * The *forward direction* of the iterator is the logical direction of text.
+ * That is, with increasing `start_index` and `start_char` values. If `glyph_item`
+ * is right-to-left (that is, if `glyph_item->item->analysis.level` is odd),
+ * then `start_glyph` decreases as the iterator moves forward.  Moreover,
+ * in right-to-left cases, `start_glyph` is greater than `end_glyph`.
+ * 
+ * An iterator should be initialized using either
+ * pango_glyph_item_iter_init_start() or
+ * pango_glyph_item_iter_init_end(), for forward and backward iteration
+ * respectively, and walked over using any desired mixture of
+ * pango_glyph_item_iter_next_cluster() and
+ * pango_glyph_item_iter_prev_cluster().
+ * 
+ * A common idiom for doing a forward iteration over the clusters is:
+ * 
+ * ```
+ * PangoGlyphItemIter cluster_iter;
+ * gboolean have_cluster;
+ * 
+ * for (have_cluster = pango_glyph_item_iter_init_start (&cluster_iter,
+ *                                                       glyph_item, text);
+ *      have_cluster;
+ *      have_cluster = pango_glyph_item_iter_next_cluster (&cluster_iter))
+ * {
+ *   ...
+ * }
+ * ```
+ * 
+ * Note that `text` is the start of the text for layout, which is then
+ * indexed by `glyph_item->item->offset` to get to the text of `glyph_item`.
+ * The `start_index` and `end_index` values can directly index into `text`. The
+ * `start_glyph,` `end_glyph,` `start_char,` and `end_char` values however are
+ * zero-based for the `glyph_item`.  For each cluster, the item pointed at by
+ * the start variables is included in the cluster while the one pointed at by
+ * end variables is not.
+ * 
+ * None of the members of a `PangoGlyphItemIter` should be modified manually.
+ * @record 
+ */
+class GlyphItemIter {
+
+    // Own properties of Pango-1.0.Pango.GlyphItemIter
+
     static name: string
 }
-class GlyphString {
-    /* Fields of Pango-1.0.Pango.GlyphString */
+
+interface GlyphString {
+
+    // Own fields of Pango-1.0.Pango.GlyphString
+
     /**
      * number of glyphs in this glyph string
+     * @field 
      */
     num_glyphs: number
     /**
      * array of glyph information
+     * @field 
      */
     glyphs: GlyphInfo[]
     /**
      * logical cluster info, indexed by the byte index
      *   within the text corresponding to the glyph string
+     * @field 
      */
     log_clusters: number
-    /* Methods of Pango-1.0.Pango.GlyphString */
+
+    // Owm methods of Pango-1.0.Pango.GlyphString
+
     /**
      * Copy a glyph string and associated storage.
      */
@@ -8532,7 +6797,7 @@ class GlyphString {
      * ![](rects1.png) ![](rects2.png)
      * @param font a `PangoFont`
      */
-    extents(font: Font): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    extents(font: Font): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Computes the extents of a sub-portion of a glyph string.
      * 
@@ -8543,7 +6808,7 @@ class GlyphString {
      * @param end end index (the range is the set of bytes with   indices such that start <= index < end)
      * @param font a `PangoFont`
      */
-    extents_range(start: number, end: number, font: Font): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    extents_range(start: number, end: number, font: Font): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Free a glyph string and associated storage.
      */
@@ -8624,43 +6889,99 @@ class GlyphString {
      * @param x_pos the x offset (in Pango units)
      */
     x_to_index(text: string, length: number, analysis: Analysis, x_pos: number): [ /* index_ */ number, /* trailing */ number ]
+}
+
+/**
+ * A `PangoGlyphString` is used to store strings of glyphs with geometry
+ * and visual attribute information.
+ * 
+ * The storage for the glyph information is owned by the structure
+ * which simplifies memory management.
+ * @record 
+ */
+class GlyphString {
+
+    // Own properties of Pango-1.0.Pango.GlyphString
+
     static name: string
-    static new(): GlyphString
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.GlyphString
+
+    /**
+     * Create a new `PangoGlyphString`.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Create a new `PangoGlyphString`.
+     * @constructor 
+     */
     static new(): GlyphString
 }
-class GlyphVisAttr {
-    /* Fields of Pango-1.0.Pango.GlyphVisAttr */
+
+interface GlyphVisAttr {
+
+    // Own fields of Pango-1.0.Pango.GlyphVisAttr
+
     /**
      * set for the first logical glyph in each cluster.
+     * @field 
      */
     is_cluster_start: number
     /**
      * set if the the font will render this glyph with color. Since 1.50
+     * @field 
      */
     is_color: number
+}
+
+/**
+ * A `PangoGlyphVisAttr` structure communicates information between
+ * the shaping and rendering phases.
+ * 
+ * Currently, it contains cluster start and color information.
+ * More attributes may be added in the future.
+ * 
+ * Clusters are stored in visual order, within the cluster, glyphs
+ * are always ordered in logical order, since visual order is meaningless;
+ * that is, in Arabic text, accent glyphs follow the glyphs for the
+ * base character.
+ * @record 
+ */
+class GlyphVisAttr {
+
+    // Own properties of Pango-1.0.Pango.GlyphVisAttr
+
     static name: string
 }
-class Item {
-    /* Fields of Pango-1.0.Pango.Item */
+
+interface Item {
+
+    // Own fields of Pango-1.0.Pango.Item
+
     /**
      * byte offset of the start of this item in text.
+     * @field 
      */
     offset: number
     /**
      * length of this item in bytes.
+     * @field 
      */
     length: number
     /**
      * number of Unicode characters in the item.
+     * @field 
      */
     num_chars: number
     /**
      * analysis results for the item.
+     * @field 
      */
     analysis: Analysis
-    /* Methods of Pango-1.0.Pango.Item */
+
+    // Owm methods of Pango-1.0.Pango.Item
+
     /**
      * Add attributes to a `PangoItem`.
      * 
@@ -8701,14 +7022,39 @@ class Item {
      * @param split_offset number of chars between start of `orig` and `split_index`
      */
     split(split_index: number, split_offset: number): Item
+}
+
+/**
+ * The `PangoItem` structure stores information about a segment of text.
+ * 
+ * You typically obtain `PangoItems` by itemizing a piece of text
+ * with [func`itemize]`.
+ * @record 
+ */
+class Item {
+
+    // Own properties of Pango-1.0.Pango.Item
+
     static name: string
-    static new(): Item
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.Item
+
+    /**
+     * Creates a new `PangoItem` structure initialized to default values.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new `PangoItem` structure initialized to default values.
+     * @constructor 
+     */
     static new(): Item
 }
-class Language {
-    /* Methods of Pango-1.0.Pango.Language */
+
+interface Language {
+
+    // Owm methods of Pango-1.0.Pango.Language
+
     /**
      * Get a string that is representative of the characters needed to
      * render a particular language.
@@ -8790,8 +7136,24 @@ class Language {
      * Returns (transfer none): a string representing the language tag
      */
     to_string(): string
+}
+
+/**
+ * The `PangoLanguage` structure is used to
+ * represent a language.
+ * 
+ * `PangoLanguage` pointers can be efficiently
+ * copied and compared with each other.
+ * @record 
+ */
+class Language {
+
+    // Own properties of Pango-1.0.Pango.Language
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.Language
+
     /**
      * Convert a language tag to a `PangoLanguage`.
      * 
@@ -8807,7 +7169,7 @@ class Language {
      * `PangoLanguage` for the current locale of the process.
      * @param language a string representing a language tag
      */
-    static from_string(language?: string | null): Language | null
+    static from_string(language: string | null): Language | null
     /**
      * Returns the `PangoLanguage` for the current locale of the process.
      * 
@@ -8857,11 +7219,21 @@ class Language {
      */
     static get_preferred(): Language | null
 }
+
+interface LayoutClass {
+}
+
 abstract class LayoutClass {
+
+    // Own properties of Pango-1.0.Pango.LayoutClass
+
     static name: string
 }
-class LayoutIter {
-    /* Methods of Pango-1.0.Pango.LayoutIter */
+
+interface LayoutIter {
+
+    // Owm methods of Pango-1.0.Pango.LayoutIter
+
     /**
      * Determines whether `iter` is on the last line of the layout.
      */
@@ -8895,7 +7267,7 @@ class LayoutIter {
      * 
      * Layout coordinates have the origin at the top left of the entire layout.
      */
-    get_cluster_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_cluster_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Gets the current byte index.
      * 
@@ -8912,7 +7284,7 @@ class LayoutIter {
     /**
      * Obtains the extents of the `PangoLayout` being iterated over.
      */
-    get_layout_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_layout_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Gets the current line.
      * 
@@ -8929,7 +7301,7 @@ class LayoutIter {
      * function will be the same width/height but not at the same x/y
      * as the extents returned from [method`Pango`.LayoutLine.get_extents].
      */
-    get_line_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_line_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Gets the current line for read-only access.
      * 
@@ -8951,7 +7323,7 @@ class LayoutIter {
      * Note: Since 1.44, Pango uses line heights for placing lines, and there
      * may be gaps between the ranges returned by this function.
      */
-    get_line_yrange(): [ /* y0_ */ number | null, /* y1_ */ number | null ]
+    get_line_yrange(): [ /* y0_ */ number, /* y1_ */ number ]
     /**
      * Gets the current run.
      * 
@@ -8979,7 +7351,7 @@ class LayoutIter {
      * 
      * Layout coordinates have the origin at the top left of the entire layout.
      */
-    get_run_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_run_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Gets the current run for read-only access.
      * 
@@ -9017,43 +7389,69 @@ class LayoutIter {
      * If `iter` was already at the end of the layout, returns %FALSE.
      */
     next_run(): boolean
+}
+
+/**
+ * A `PangoLayoutIter` can be used to iterate over the visual
+ * extents of a `PangoLayout`.
+ * 
+ * To obtain a `PangoLayoutIter`, use [method`Pango`.Layout.get_iter].
+ * 
+ * The `PangoLayoutIter` structure is opaque, and has no user-visible fields.
+ * @record 
+ */
+class LayoutIter {
+
+    // Own properties of Pango-1.0.Pango.LayoutIter
+
     static name: string
 }
-class LayoutLine {
-    /* Fields of Pango-1.0.Pango.LayoutLine */
+
+interface LayoutLine {
+
+    // Own fields of Pango-1.0.Pango.LayoutLine
+
     /**
      * the layout this line belongs to, might be %NULL
+     * @field 
      */
     layout: Layout
     /**
      * start of line as byte index into layout->text
+     * @field 
      */
     start_index: number
     /**
      * length of line in bytes
+     * @field 
      */
     length: number
     /**
      * list of runs in the
      *   line, from left to right
+     * @field 
      */
     runs: LayoutRun[]
     /**
      * #TRUE if this is the first line of the paragraph
+     * @field 
      */
     is_paragraph_start: number
     /**
      * #Resolved PangoDirection of line
+     * @field 
      */
     resolved_dir: number
-    /* Methods of Pango-1.0.Pango.LayoutLine */
+
+    // Owm methods of Pango-1.0.Pango.LayoutLine
+
     /**
      * Computes the logical and ink extents of a layout line.
      * 
      * See [method`Pango`.Font.get_glyph_extents] for details
      * about the interpretation of the rectangles.
      */
-    get_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Computes the height of the line, as the maximum of the heights
      * of fonts used in this line.
@@ -9063,7 +7461,7 @@ class LayoutLine {
      * [method`Pango`.Layout.set_spacing] and
      * [method`Pango`.Layout.set_line_spacing].
      */
-    get_height(): /* height */ number | null
+    get_height(): /* height */ number
     /**
      * Returns the length of the line, in bytes.
      */
@@ -9076,7 +7474,7 @@ class LayoutLine {
      * such that the rounded rectangles fully contain the unrounded one (that is,
      * passes them as first argument to [func`extents_to_pixels]`).
      */
-    get_pixel_extents(): [ /* ink_rect */ Rectangle | null, /* logical_rect */ Rectangle | null ]
+    get_pixel_extents(): [ /* ink_rect */ Rectangle, /* logical_rect */ Rectangle ]
     /**
      * Returns the resolved direction of the line.
      */
@@ -9129,24 +7527,46 @@ class LayoutLine {
      * @param x_pos the X offset (in Pango units) from the left edge of the line.
      */
     x_to_index(x_pos: number): [ /* returnType */ boolean, /* index_ */ number, /* trailing */ number ]
+}
+
+/**
+ * A `PangoLayoutLine` represents one of the lines resulting from laying
+ * out a paragraph via `PangoLayout`.
+ * 
+ * `PangoLayoutLine` structures are obtained by calling
+ * [method`Pango`.Layout.get_line] and are only valid until the text,
+ * attributes, or settings of the parent `PangoLayout` are modified.
+ * @record 
+ */
+class LayoutLine {
+
+    // Own properties of Pango-1.0.Pango.LayoutLine
+
     static name: string
 }
-class LogAttr {
-    /* Fields of Pango-1.0.Pango.LogAttr */
+
+interface LogAttr {
+
+    // Own fields of Pango-1.0.Pango.LogAttr
+
     /**
      * if set, can break line in front of character
+     * @field 
      */
     is_line_break: number
     /**
      * if set, must break line in front of character
+     * @field 
      */
     is_mandatory_break: number
     /**
      * if set, can break here when doing character wrapping
+     * @field 
      */
     is_char_break: number
     /**
      * is whitespace character
+     * @field 
      */
     is_white: number
     /**
@@ -9155,16 +7575,19 @@ class LogAttr {
      *   This flag implements Unicode's
      *   [Grapheme Cluster Boundaries](http://www.unicode.org/reports/tr29/)
      *   semantics.
+     * @field 
      */
     is_cursor_position: number
     /**
      * is first character in a word
+     * @field 
      */
     is_word_start: number
     /**
      * is first non-word char after a word
      *   Note that in degenerate cases, you could have both `is_word_start`
      *   and `is_word_end` set for some character.
+     * @field 
      */
     is_word_end: number
     /**
@@ -9175,10 +7598,12 @@ class LogAttr {
      *   the boundaries there. The second way doesn't assign
      *   between-sentence spaces, etc. to any sentence, so
      *   `is_sentence_start/``is_sentence_end` mark the boundaries of those sentences.
+     * @field 
      */
     is_sentence_boundary: number
     /**
      * is first character in a sentence
+     * @field 
      */
     is_sentence_start: number
     /**
@@ -9186,6 +7611,7 @@ class LogAttr {
      *   Note that in degenerate cases, you could have both `is_sentence_start`
      *   and `is_sentence_end` set for some character. (e.g. no space after a
      *   period, so the next sentence starts right away)
+     * @field 
      */
     is_sentence_end: number
     /**
@@ -9196,11 +7622,13 @@ class LogAttr {
      *   others, each decomposed character in the grapheme is a unit. In the default
      *   implementation of [func`break]`, this bit is set on all grapheme boundaries
      *   except those following Latin, Cyrillic or Greek base characters.
+     * @field 
      */
     backspace_deletes_character: number
     /**
      * is a whitespace character that can possibly be
      *   expanded for justification purposes. (Since: 1.18)
+     * @field 
      */
     is_expandable_space: number
     /**
@@ -9210,48 +7638,73 @@ class LogAttr {
      *   This flag is particularly useful when selecting text word-by-word. This flag
      *   implements Unicode's [Word Boundaries](http://www.unicode.org/reports/tr29/)
      *   semantics. (Since: 1.22)
+     * @field 
      */
     is_word_boundary: number
     /**
      * when breaking lines before this char, insert a hyphen.
      *   Since: 1.50
+     * @field 
      */
     break_inserts_hyphen: number
     /**
      * when breaking lines before this char, remove the
      *   preceding char. Since 1.50
+     * @field 
      */
     break_removes_preceding: number
     reserved: number
+}
+
+/**
+ * The `PangoLogAttr` structure stores information about the attributes of a
+ * single character.
+ * @record 
+ */
+class LogAttr {
+
+    // Own properties of Pango-1.0.Pango.LogAttr
+
     static name: string
 }
-class Matrix {
-    /* Fields of Pango-1.0.Pango.Matrix */
+
+interface Matrix {
+
+    // Own fields of Pango-1.0.Pango.Matrix
+
     /**
      * 1st component of the transformation matrix
+     * @field 
      */
     xx: number
     /**
      * 2nd component of the transformation matrix
+     * @field 
      */
     xy: number
     /**
      * 3rd component of the transformation matrix
+     * @field 
      */
     yx: number
     /**
      * 4th component of the transformation matrix
+     * @field 
      */
     yy: number
     /**
      * x translation
+     * @field 
      */
     x0: number
     /**
      * y translation
+     * @field 
      */
     y0: number
-    /* Methods of Pango-1.0.Pango.Matrix */
+
+    // Owm methods of Pango-1.0.Pango.Matrix
+
     /**
      * Changes the transformation represented by `matrix` to be the
      * transformation given by first applying transformation
@@ -9284,7 +7737,7 @@ class Matrix {
      * 
      * Note that output numbers will always be non-negative.
      */
-    get_font_scale_factors(): [ /* xscale */ number | null, /* yscale */ number | null ]
+    get_font_scale_factors(): [ /* xscale */ number, /* yscale */ number ]
     /**
      * Gets the slant ratio of a matrix.
      * 
@@ -9345,7 +7798,7 @@ class Matrix {
      * using [func`extents_to_pixels]`'s first argument.
      * @param rect in/out bounding box in device units
      */
-    transform_pixel_rectangle(rect?: Rectangle | null): /* rect */ Rectangle | null
+    transform_pixel_rectangle(rect?: Rectangle): /* rect */ Rectangle
     /**
      * Transforms the point (`x,` `y)` by `matrix`.
      * @param x in/out X position
@@ -9373,7 +7826,7 @@ class Matrix {
      * example).
      * @param rect in/out bounding box in Pango units
      */
-    transform_rectangle(rect?: Rectangle | null): /* rect */ Rectangle | null
+    transform_rectangle(rect?: Rectangle): /* rect */ Rectangle
     /**
      * Changes the transformation represented by `matrix` to be the
      * transformation given by first translating by (`tx,` `ty)`
@@ -9382,30 +7835,72 @@ class Matrix {
      * @param ty amount to translate in the Y direction
      */
     translate(tx: number, ty: number): void
+}
+
+/**
+ * A `PangoMatrix` specifies a transformation between user-space
+ * and device coordinates.
+ * 
+ * The transformation is given by
+ * 
+ * ```
+ * x_device = x_user * matrix->xx + y_user * matrix->xy + matrix->x0;
+ * y_device = x_user * matrix->yx + y_user * matrix->yy + matrix->y0;
+ * ```
+ * @record 
+ */
+class Matrix {
+
+    // Own properties of Pango-1.0.Pango.Matrix
+
     static name: string
 }
-class Rectangle {
-    /* Fields of Pango-1.0.Pango.Rectangle */
+
+interface Rectangle {
+
+    // Own fields of Pango-1.0.Pango.Rectangle
+
     /**
      * X coordinate of the left side of the rectangle.
+     * @field 
      */
     x: number
     /**
      * Y coordinate of the the top side of the rectangle.
+     * @field 
      */
     y: number
     /**
      * width of the rectangle.
+     * @field 
      */
     width: number
     /**
      * height of the rectangle.
+     * @field 
      */
     height: number
+}
+
+/**
+ * The `PangoRectangle` structure represents a rectangle.
+ * 
+ * `PangoRectangle` is frequently used to represent the logical or ink
+ * extents of a single glyph or section of text. (See, for instance,
+ * [method`Pango`.Font.get_glyph_extents].)
+ * @record 
+ */
+class Rectangle {
+
+    // Own properties of Pango-1.0.Pango.Rectangle
+
     static name: string
 }
-abstract class RendererClass {
-    /* Fields of Pango-1.0.Pango.RendererClass */
+
+interface RendererClass {
+
+    // Own fields of Pango-1.0.Pango.RendererClass
+
     draw_glyphs: (renderer: Renderer, font: Font, glyphs: GlyphString, x: number, y: number) => void
     draw_rectangle: (renderer: Renderer, part: RenderPart, x: number, y: number, width: number, height: number) => void
     draw_error_underline: (renderer: Renderer, x: number, y: number, width: number, height: number) => void
@@ -9417,13 +7912,48 @@ abstract class RendererClass {
     end: (renderer: Renderer) => void
     prepare_run: (renderer: Renderer, run: LayoutRun) => void
     draw_glyph_item: (renderer: Renderer, text: string | null, glyph_item: GlyphItem, x: number, y: number) => void
+}
+
+/**
+ * Class structure for `PangoRenderer`.
+ * 
+ * The following vfuncs take user space coordinates in Pango units
+ * and have default implementations:
+ * - draw_glyphs
+ * - draw_rectangle
+ * - draw_error_underline
+ * - draw_shape
+ * - draw_glyph_item
+ * 
+ * The default draw_shape implementation draws nothing.
+ * 
+ * The following vfuncs take device space coordinates as doubles
+ * and must be implemented:
+ * - draw_trapezoid
+ * - draw_glyph
+ * @record 
+ */
+abstract class RendererClass {
+
+    // Own properties of Pango-1.0.Pango.RendererClass
+
     static name: string
 }
+
+interface RendererPrivate {
+}
+
 class RendererPrivate {
+
+    // Own properties of Pango-1.0.Pango.RendererPrivate
+
     static name: string
 }
-class ScriptIter {
-    /* Methods of Pango-1.0.Pango.ScriptIter */
+
+interface ScriptIter {
+
+    // Owm methods of Pango-1.0.Pango.ScriptIter
+
     /**
      * Frees a `PangoScriptIter`.
      */
@@ -9439,7 +7969,7 @@ class ScriptIter {
      * `GUnicodeScript` values. Callers must be prepared to handle unknown
      * values.
      */
-    get_range(): [ /* start */ string | null, /* end */ string | null, /* script */ Script | null ]
+    get_range(): [ /* start */ string, /* end */ string, /* script */ Script ]
     /**
      * Advances a `PangoScriptIter` to the next range.
      * 
@@ -9447,14 +7977,51 @@ class ScriptIter {
      * and %FALSE is returned.
      */
     next(): boolean
+}
+
+/**
+ * A `PangoScriptIter` is used to iterate through a string
+ * and identify ranges in different scripts.
+ * @record 
+ */
+class ScriptIter {
+
+    // Own properties of Pango-1.0.Pango.ScriptIter
+
     static name: string
-    static new(text: string, length: number): ScriptIter
-    constructor(text: string, length: number)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.ScriptIter
+
+    /**
+     * Create a new `PangoScriptIter`, used to break a string of
+     * Unicode text into runs by Unicode script.
+     * 
+     * No copy is made of `text,` so the caller needs to make
+     * sure it remains valid until the iterator is freed with
+     * [method`Pango`.ScriptIter.free].
+     * @constructor 
+     * @param text a UTF-8 string
+     * @param length length of `text,` or -1 if `text` is nul-terminated
+     */
+    constructor(text: string, length: number) 
+    /**
+     * Create a new `PangoScriptIter`, used to break a string of
+     * Unicode text into runs by Unicode script.
+     * 
+     * No copy is made of `text,` so the caller needs to make
+     * sure it remains valid until the iterator is freed with
+     * [method`Pango`.ScriptIter.free].
+     * @constructor 
+     * @param text a UTF-8 string
+     * @param length length of `text,` or -1 if `text` is nul-terminated
+     */
     static new(text: string, length: number): ScriptIter
 }
-class TabArray {
-    /* Methods of Pango-1.0.Pango.TabArray */
+
+interface TabArray {
+
+    // Owm methods of Pango-1.0.Pango.TabArray
+
     /**
      * Copies a `PangoTabArray`.
      */
@@ -9474,7 +8041,7 @@ class TabArray {
      * decimal point according to the current locale.
      * @param tab_index the index of a tab stop
      */
-    get_decimal_point(tab_index: number): number
+    get_decimal_point(tab_index: number): string
     /**
      * Returns %TRUE if the tab positions are in pixels,
      * %FALSE if they are in Pango units.
@@ -9488,7 +8055,7 @@ class TabArray {
      * Gets the alignment and position of a tab stop.
      * @param tab_index tab stop index
      */
-    get_tab(tab_index: number): [ /* alignment */ TabAlign | null, /* location */ number | null ]
+    get_tab(tab_index: number): [ /* alignment */ TabAlign, /* location */ number ]
     /**
      * If non-%NULL, `alignments` and `locations` are filled with allocated
      * arrays.
@@ -9496,7 +8063,7 @@ class TabArray {
      * The arrays are of length [method`Pango`.TabArray.get_size].
      * You must free the returned array.
      */
-    get_tabs(): [ /* alignments */ TabAlign | null, /* locations */ number[] | null ]
+    get_tabs(): [ /* alignments */ TabAlign, /* locations */ number[] ]
     /**
      * Resizes a tab array.
      * 
@@ -9517,7 +8084,7 @@ class TabArray {
      * @param tab_index the index of a tab stop
      * @param decimal_point the decimal point to use
      */
-    set_decimal_point(tab_index: number, decimal_point: number): void
+    set_decimal_point(tab_index: number, decimal_point: string): void
     /**
      * Sets whether positions in this array are specified in
      * pixels.
@@ -9546,10 +8113,43 @@ class TabArray {
      * storage format.
      */
     to_string(): string
+}
+
+/**
+ * A `PangoTabArray` contains an array of tab stops.
+ * 
+ * `PangoTabArray` can be used to set tab stops in a `PangoLayout`.
+ * Each tab stop has an alignment, a position, and optionally
+ * a character to use as decimal point.
+ * @record 
+ */
+class TabArray {
+
+    // Own properties of Pango-1.0.Pango.TabArray
+
     static name: string
-    static new(initial_size: number, positions_in_pixels: boolean): TabArray
-    constructor(initial_size: number, positions_in_pixels: boolean)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of Pango-1.0.Pango.TabArray
+
+    /**
+     * Creates an array of `initial_size` tab stops.
+     * 
+     * Tab stops are specified in pixel units if `positions_in_pixels` is %TRUE,
+     * otherwise in Pango units. All stops are initially at position 0.
+     * @constructor 
+     * @param initial_size Initial number of tab stops to allocate, can be 0
+     * @param positions_in_pixels whether positions are in pixel units
+     */
+    constructor(initial_size: number, positions_in_pixels: boolean) 
+    /**
+     * Creates an array of `initial_size` tab stops.
+     * 
+     * Tab stops are specified in pixel units if `positions_in_pixels` is %TRUE,
+     * otherwise in Pango units. All stops are initially at position 0.
+     * @constructor 
+     * @param initial_size Initial number of tab stops to allocate, can be 0
+     * @param positions_in_pixels whether positions are in pixel units
+     */
     static new(initial_size: number, positions_in_pixels: boolean): TabArray
     /**
      * Deserializes a `PangoTabArray` from a string.
@@ -9560,6 +8160,7 @@ class TabArray {
      */
     static from_string(text: string): TabArray | null
 }
+
     type Glyph = number
     type GlyphUnit = number
     type LayoutRun = GlyphItem

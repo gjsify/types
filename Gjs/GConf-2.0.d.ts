@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -57,16 +59,35 @@ enum UnsetFlags {
     NAMES,
 }
 function concat_dir_and_key(dir: string, key: string): string
+/**
+ * Detach from the config server and release
+ * all related resources
+ */
 function debug_shutdown(): number
 function enum_to_string(lookup_table: EnumStringPair, enum_value: number): string
 function error_quark(): GLib.Quark
+/**
+ * Escape `arbitrary_text` such that it's a valid key element (i.e. one
+ * part of the key path). The escaped key won't pass gconf_valid_key()
+ * because it isn't a whole key (i.e. it doesn't have a preceding
+ * slash), but prepending a slash to the escaped text should always
+ * result in a valid key.
+ * @param arbitrary_text some text in any encoding or format
+ * @param len length of `arbitrary_text` in bytes, or -1 if `arbitrary_text` is nul-terminated
+ */
 function escape_key(arbitrary_text: string, len: number): string
 function init(argc: number, argv: string): boolean
 function is_initialized(): boolean
 function key_is_below(above: string, below: string): boolean
-function postinit(app?: object | null, mod_info?: object | null): void
-function preinit(app?: object | null, mod_info?: object | null): void
+function postinit(app: object | null, mod_info: object | null): void
+function preinit(app: object | null, mod_info: object | null): void
 function string_to_enum(lookup_table: EnumStringPair, str: string, enum_value_retloc: number): boolean
+/**
+ * Converts a string escaped with gconf_escape_key() back into its original
+ * form.
+ * @param escaped_key a key created with gconf_escape_key()
+ * @param len length of `escaped_key` in bytes, or -1 if `escaped_key` is nul-terminated
+ */
 function unescape_key(escaped_key: string, len: number): string
 function unique_key(): string
 function valid_key(key: string, why_invalid: string): boolean
@@ -81,17 +102,43 @@ interface ClientNotifyFunc {
     (client: Client, cnxn_id: number, entry: Entry): void
 }
 interface ListenersForeach {
-    (location: string, cnxn_id: number, listener_data?: object | null): void
+    (location: string, cnxn_id: number, listener_data: object | null): void
 }
 interface ListenersPredicate {
-    (location: string, cnxn_id: number, listener_data?: object | null): boolean
+    (location: string, cnxn_id: number, listener_data: object | null): boolean
 }
 interface Client_ConstructProps extends GObject.Object_ConstructProps {
 }
-class Client {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of GConf-2.0.GConf.Client */
+
+/**
+ * Signal callback interface for `error`
+ */
+interface Client_ErrorSignalCallback {
+    ($obj: Client, object: object | null): void
+}
+
+/**
+ * Signal callback interface for `unreturned-error`
+ */
+interface Client_UnreturnedErrorSignalCallback {
+    ($obj: Client, object: object | null): void
+}
+
+/**
+ * Signal callback interface for `value-changed`
+ */
+interface Client_ValueChangedSignalCallback {
+    ($obj: Client, object: string, p0: object | null): void
+}
+
+interface Client {
+
+    // Own fields of GConf-2.0.GConf.Client
+
+    object: GObject.Object
+
+    // Owm methods of GConf-2.0.GConf.Client
+
     add_dir(dir: string, preload: ClientPreloadType): void
     /**
      * Lists the subdirectories in `dir`. The returned list contains
@@ -124,7 +171,7 @@ class Client {
     get_entry(key: string, locale: string, use_schema_default: boolean): Entry
     get_float(key: string): number
     get_int(key: string): number
-    get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc?: object | null, cdr_retloc?: object | null): boolean
+    get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc: object | null, cdr_retloc: object | null): boolean
     get_string(key: string): string
     get_without_default(key: string): Value
     key_is_writable(key: string): boolean
@@ -140,403 +187,50 @@ class Client {
     set_error_handling(mode: ClientErrorHandlingMode): void
     set_float(key: string, val: number): boolean
     set_int(key: string, val: number): boolean
-    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car?: object | null, address_of_cdr?: object | null): boolean
+    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: object | null, address_of_cdr: object | null): boolean
     set_string(key: string, val: string): boolean
     suggest_sync(): void
     unreturned_error(error: GLib.Error): void
     unset(key: string): boolean
     value_changed(key: string, value: Value): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of GConf-2.0.GConf.Client */
+
+    // Own virtual methods of GConf-2.0.GConf.Client
+
     vfunc_error(error: GLib.Error): void
     vfunc_unreturned_error(error: GLib.Error): void
     vfunc_value_changed(key: string, value: Value): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of GConf-2.0.GConf.Client */
-    connect(sigName: "error", callback: (($obj: Client, object?: object | null) => void)): number
-    connect_after(sigName: "error", callback: (($obj: Client, object?: object | null) => void)): number
-    emit(sigName: "error", object?: object | null): void
-    connect(sigName: "unreturned-error", callback: (($obj: Client, object?: object | null) => void)): number
-    connect_after(sigName: "unreturned-error", callback: (($obj: Client, object?: object | null) => void)): number
-    emit(sigName: "unreturned-error", object?: object | null): void
-    connect(sigName: "value-changed", callback: (($obj: Client, object: string, p0?: object | null) => void)): number
-    connect_after(sigName: "value-changed", callback: (($obj: Client, object: string, p0?: object | null) => void)): number
-    emit(sigName: "value-changed", object: string, p0?: object | null): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Client, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of GConf-2.0.GConf.Client
+
+    connect(sigName: "error", callback: Client_ErrorSignalCallback): number
+    connect_after(sigName: "error", callback: Client_ErrorSignalCallback): number
+    emit(sigName: "error", object: object | null, ...args: any[]): void
+    connect(sigName: "unreturned-error", callback: Client_UnreturnedErrorSignalCallback): number
+    connect_after(sigName: "unreturned-error", callback: Client_UnreturnedErrorSignalCallback): number
+    emit(sigName: "unreturned-error", object: object | null, ...args: any[]): void
+    connect(sigName: "value-changed", callback: Client_ValueChangedSignalCallback): number
+    connect_after(sigName: "value-changed", callback: Client_ValueChangedSignalCallback): number
+    emit(sigName: "value-changed", object: string, p0: object | null, ...args: any[]): void
+
+    // Class property signals of GConf-2.0.GConf.Client
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+class Client extends GObject.Object {
+
+    // Own properties of GConf-2.0.GConf.Client
+
     static name: string
-    constructor (config?: Client_ConstructProps)
-    _init (config?: Client_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Client>
+
+    // Constructors of GConf-2.0.GConf.Client
+
+    constructor(config?: Client_ConstructProps) 
+    _init(config?: Client_ConstructProps): void
     /**
      * Creates a new #GConfClient using the default #GConfEngine. Normally this is the
      * engine you want. If someone else is already using the default
@@ -544,10 +238,12 @@ class Client {
      * with the reference count incremented. So you have to unref either way.
      */
     static get_default(): Client
-    static $gtype: GObject.Type
 }
-class ChangeSet {
-    /* Methods of GConf-2.0.GConf.ChangeSet */
+
+interface ChangeSet {
+
+    // Owm methods of GConf-2.0.GConf.ChangeSet
+
     check_value(key: string, value_retloc: Value): boolean
     clear(): void
     /**
@@ -566,19 +262,29 @@ class ChangeSet {
     set_float(key: string, val: number): void
     set_int(key: string, val: number): void
     set_nocopy(key: string, value: Value): void
-    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car?: object | null, address_of_cdr?: object | null): void
+    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: object | null, address_of_cdr: object | null): void
     set_string(key: string, val: string): void
     size(): number
     unref(): void
     unset(key: string): void
+}
+
+class ChangeSet {
+
+    // Own properties of GConf-2.0.GConf.ChangeSet
+
     static name: string
-    static new(): ChangeSet
-    constructor()
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GConf-2.0.GConf.ChangeSet
+
+    constructor() 
     static new(): ChangeSet
 }
-abstract class ClientClass {
-    /* Fields of GConf-2.0.GConf.ClientClass */
+
+interface ClientClass {
+
+    // Own fields of GConf-2.0.GConf.ClientClass
+
     parent_class: GObject.ObjectClass
     value_changed: (client: Client, key: string, value: Value) => void
     unreturned_error: (client: Client, error: GLib.Error) => void
@@ -586,10 +292,19 @@ abstract class ClientClass {
     pad1: GLib.Func
     pad2: GLib.Func
     pad3: GLib.Func
+}
+
+abstract class ClientClass {
+
+    // Own properties of GConf-2.0.GConf.ClientClass
+
     static name: string
 }
-class Engine {
-    /* Methods of GConf-2.0.GConf.Engine */
+
+interface Engine {
+
+    // Owm methods of GConf-2.0.GConf.Engine
+
     /**
      * Lists the subdirectories in `dir`. The returned list contains
      * allocated strings. Each string is the absolute path of a
@@ -620,7 +335,7 @@ class Engine {
     get_float(key: string): number
     get_full(key: string, locale: string, use_schema_default: boolean, is_default_p: boolean, is_writable_p: boolean): Value
     get_int(key: string): number
-    get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc?: object | null, cdr_retloc?: object | null): boolean
+    get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc: object | null, cdr_retloc: object | null): boolean
     get_string(key: string): string
     get_user_data(): object | null
     get_with_locale(key: string, locale: string): Value
@@ -635,19 +350,34 @@ class Engine {
     set_float(key: string, val: number): boolean
     set_int(key: string, val: number): boolean
     set_list(key: string, list_type: ValueType, list: object[]): boolean
-    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car?: object | null, address_of_cdr?: object | null): boolean
+    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: object | null, address_of_cdr: object | null): boolean
     set_string(key: string, val: string): boolean
     set_user_data(data: object | null, dnotify: GLib.DestroyNotify): void
     suggest_sync(): void
     unref(): void
     unset(key: string): boolean
+}
+
+/**
+ * An opaque data type representing one or more configuration sources.
+ * @record 
+ */
+class Engine {
+
+    // Own properties of GConf-2.0.GConf.Engine
+
     static name: string
 }
-class Entry {
-    /* Fields of GConf-2.0.GConf.Entry */
+
+interface Entry {
+
+    // Own fields of GConf-2.0.GConf.Entry
+
     key: string
     value: Value
-    /* Methods of GConf-2.0.GConf.Entry */
+
+    // Owm methods of GConf-2.0.GConf.Entry
+
     copy(): Entry
     equal(b: Entry): boolean
     free(): void
@@ -664,21 +394,40 @@ class Entry {
     set_value_nocopy(val: Value): void
     steal_value(): Value
     unref(): void
+}
+
+class Entry {
+
+    // Own properties of GConf-2.0.GConf.Entry
+
     static name: string
-    static new(key: string, val: Value): Entry
-    constructor(key: string, val: Value)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GConf-2.0.GConf.Entry
+
+    constructor(key: string, val: Value) 
     static new(key: string, val: Value): Entry
     static new_nocopy(key: string, val: Value): Entry
 }
-class EnumStringPair {
-    /* Fields of GConf-2.0.GConf.EnumStringPair */
+
+interface EnumStringPair {
+
+    // Own fields of GConf-2.0.GConf.EnumStringPair
+
     enum_value: number
     str: string
+}
+
+class EnumStringPair {
+
+    // Own properties of GConf-2.0.GConf.EnumStringPair
+
     static name: string
 }
-class Listeners {
-    /* Methods of GConf-2.0.GConf.Listeners */
+
+interface Listeners {
+
+    // Owm methods of GConf-2.0.GConf.Listeners
+
     add(listen_point: string, listener_data: object | null, destroy_notify: GLib.FreeFunc): number
     count(): number
     foreach(callback: ListenersForeach): void
@@ -687,24 +436,52 @@ class Listeners {
     notify(all_above: string, callback: any): void
     remove(cnxn_id: number): void
     remove_if(predicate: ListenersPredicate): void
+}
+
+/**
+ * The #GConfListeners structure contains nothing other than a dummy pointer. Internally
+ * the data about listeners is maintained through a listener table structure,
+ * LTable which contains data like the namespace, an array to hold the listeners, count of
+ * active listeners,value to be given to the next connection and the list of connection indices
+ * to be recycled. There is also a Listener structure maintaining data pertaining to listeners.
+ * @record 
+ */
+class Listeners {
+
+    // Own properties of GConf-2.0.GConf.Listeners
+
     static name: string
 }
-class MetaInfo {
-    /* Fields of GConf-2.0.GConf.MetaInfo */
+
+interface MetaInfo {
+
+    // Own fields of GConf-2.0.GConf.MetaInfo
+
     schema: string
     mod_user: string
     mod_time: GLib.Time
-    /* Methods of GConf-2.0.GConf.MetaInfo */
+
+    // Owm methods of GConf-2.0.GConf.MetaInfo
+
     free(): void
     get_mod_user(): string
     get_schema(): string
     set_mod_time(mod_time: GLib.Time): void
     set_mod_user(mod_user: string): void
     set_schema(schema_name: string): void
+}
+
+class MetaInfo {
+
+    // Own properties of GConf-2.0.GConf.MetaInfo
+
     static name: string
 }
-class Schema {
-    /* Methods of GConf-2.0.GConf.Schema */
+
+interface Schema {
+
+    // Owm methods of GConf-2.0.GConf.Schema
+
     free(): void
     get_car_type(): ValueType
     get_cdr_type(): ValueType
@@ -725,12 +502,27 @@ class Schema {
     set_owner(owner: string): void
     set_short_desc(desc: string): void
     set_type(type: ValueType): void
+}
+
+/**
+ * An opaque data type representing a description of a key-value pair.
+ * @record 
+ */
+class Schema {
+
+    // Own properties of GConf-2.0.GConf.Schema
+
     static name: string
 }
-class Value {
-    /* Fields of GConf-2.0.GConf.Value */
+
+interface Value {
+
+    // Own fields of GConf-2.0.GConf.Value
+
     type: ValueType
-    /* Methods of GConf-2.0.GConf.Value */
+
+    // Owm methods of GConf-2.0.GConf.Value
+
     compare(value_b: Value): number
     copy(): Value
     encode(): string
@@ -760,13 +552,21 @@ class Value {
     set_list_type(type: ValueType): void
     set_string(the_str: string): void
     to_string(): string
+}
+
+class Value {
+
+    // Own properties of GConf-2.0.GConf.Value
+
     static name: string
-    static new(type: ValueType): Value
-    constructor(type: ValueType)
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of GConf-2.0.GConf.Value
+
+    constructor(type: ValueType) 
     static new(type: ValueType): Value
     static new_from_string(type: ValueType, str: string): Value
     static decode(encoded: string): Value
 }
+
 }
 export default GConf;

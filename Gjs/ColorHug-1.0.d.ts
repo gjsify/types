@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -108,6 +110,7 @@ enum SpectrumKind {
  * other commands to the same device will not be submitted.
  * 
  * Flags for controlling processing options
+ * @bitfield 
  */
 enum DeviceQueueProcessFlags {
     NONE,
@@ -1297,57 +1300,296 @@ const USB_VID_LEGACY: number
 const WRITE_EEPROM_MAGIC: string
 function color_select_to_string(color_select: ColorSelect): string
 function command_to_string(cmd: Cmd): string
+/**
+ * Checks the firmware is suitable for the ColorHug device that is attached.
+ * @param device 
+ * @param data firmware binary data
+ * @param data_len size of `data`
+ */
 function device_check_firmware(device: GUsb.Device, data: number, data_len: number): boolean
 function device_close(device: GUsb.Device): boolean
 function device_error_quark(): GLib.Quark
-function device_get_adc_calibration_neg(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
-function device_get_adc_calibration_pos(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
-function device_get_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable?: Gio.Cancellable | null): boolean
-function device_get_error(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* status */ Error, /* cmd */ Cmd ]
+/**
+ * Gets the ADC positive calibration value.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_adc_calibration_neg(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
+/**
+ * Gets the ADC positive calibration value.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_adc_calibration_pos(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
+/**
+ * Gets any PCB wavelength_cal from the device.
+ * @param device A #GUsbDevice
+ * @param nm_start 
+ * @param c0 
+ * @param c1 
+ * @param c2 
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Gets the status for the last operation.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_error(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* status */ Error, /* cmd */ Cmd ]
+/**
+ * Returns the GUID for the connected ColorHug device.
+ * @param device A #GUsbDevice
+ */
 function device_get_guid(device: GUsb.Device): string
-function device_get_illuminants(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ Illuminant ]
-function device_get_integral_time(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
-function device_get_leds(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ StatusLed ]
+/**
+ * Gets the illuminants from the device.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_illuminants(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ Illuminant ]
+/**
+ * Gets the integration time used for taking the next samples.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_integral_time(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
+/**
+ * Gets the LEDs from the device.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_leds(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ StatusLed ]
 function device_get_mode(device: GUsb.Device): DeviceMode
-function device_get_pcb_errata(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ PcbErrata ]
+/**
+ * Gets any PCB errata from the device.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_pcb_errata(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ PcbErrata ]
+/**
+ * Returns the runcode address for the ColorHug device.
+ * @param device A #GUsbDevice
+ */
 function device_get_runcode_address(device: GUsb.Device): number
-function device_get_serial_number(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
-function device_get_spectrum(device: GUsb.Device, cancellable?: Gio.Cancellable | null): Colord.Spectrum
-function device_get_spectrum_full(device: GUsb.Device, kind: SpectrumKind, cancellable?: Gio.Cancellable | null): Colord.Spectrum
-function device_get_temperature(device: GUsb.Device, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
+/**
+ * Gets the serial number from the device.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_serial_number(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
+/**
+ * Gets the spectrum from the device. This queries the device multiple times
+ * until the spectrum has been populated.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_spectrum(device: GUsb.Device, cancellable: Gio.Cancellable | null): Colord.Spectrum
+/**
+ * Gets the spectrum from the device. This queries the device multiple times
+ * until the spectrum has been populated.
+ * @param device A #GUsbDevice
+ * @param kind A #ChSpectrumKind
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_spectrum_full(device: GUsb.Device, kind: SpectrumKind, cancellable: Gio.Cancellable | null): Colord.Spectrum
+/**
+ * Gets the PCB board temperature from the device.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_get_temperature(device: GUsb.Device, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* value */ number ]
 function device_is_colorhug(device: GUsb.Device): boolean
-function device_load_sram(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean
+/**
+ * Loads the entire SRAM from the device EEPROM.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_load_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Gets the device mode from the unique code stored in the firmware data.
+ * The firmware identifier has been present since colorhug-1.2.2.bin for
+ * ColorHug and all firmware versions for ColorHug2 and ColorHug+.
+ * @param data firmware binary data
+ * @param data_len size of `data`
+ */
 function device_mode_from_firmware(data: number, data_len: number): DeviceMode
 function device_mode_to_string(device_mode: DeviceMode): string
 function device_open(device: GUsb.Device): boolean
-function device_open_full(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean
-function device_read_sram(device: GUsb.Device, addr: number, len: number, cancellable?: Gio.Cancellable | null): GLib.Bytes
-function device_save_sram(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean
-function device_self_test(device: GUsb.Device, cancellable?: Gio.Cancellable | null): boolean
-function device_set_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable?: Gio.Cancellable | null): boolean
-function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable?: Gio.Cancellable | null): boolean
-function device_set_illuminants(device: GUsb.Device, value: Illuminant, cancellable?: Gio.Cancellable | null): boolean
-function device_set_integral_time(device: GUsb.Device, value: number, cancellable?: Gio.Cancellable | null): boolean
-function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable?: Gio.Cancellable | null): boolean
-function device_set_pcb_errata(device: GUsb.Device, value: PcbErrata, cancellable?: Gio.Cancellable | null): boolean
-function device_set_serial_number(device: GUsb.Device, value: number, cancellable?: Gio.Cancellable | null): boolean
-function device_set_spectrum_full(device: GUsb.Device, kind: SpectrumKind, sp: Colord.Spectrum, cancellable?: Gio.Cancellable | null): boolean
-function device_take_reading_spectral(device: GUsb.Device, value: SpectrumKind, cancellable?: Gio.Cancellable | null): boolean
-function device_take_reading_xyz(device: GUsb.Device, calibration_idx: number, cancellable?: Gio.Cancellable | null): Colord.ColorXYZ
-function device_write_command(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number, cancellable?: Gio.Cancellable | null): boolean
-function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+/**
+ * Opens the device ready for use.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_open_full(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Reads a value from the SRAM.
+ * @param device A #GUsbDevice
+ * @param addr 
+ * @param len 
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_read_sram(device: GUsb.Device, addr: number, len: number, cancellable: Gio.Cancellable | null): GLib.Bytes
+/**
+ * Saves the entire SRAM space into the device EEPROM.
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_save_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Performs a self test on the device
+ * @param device A #GUsbDevice
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_self_test(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets any PCB wavelength_cal on the device
+ * @param device A #GUsbDevice
+ * @param nm_start 
+ * @param c0 
+ * @param c1 
+ * @param c2 
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets the firmware signing keys on the device.
+ * 
+ * IMPORTANT: This can only be called once until the device is unlocked.
+ * @param device A #GUsbDevice
+ * @param keys a set of XTEA keys
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets the illuminants on the device
+ * @param device A #GUsbDevice
+ * @param value serial number
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_illuminants(device: GUsb.Device, value: Illuminant, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets the integration value for the next sample.
+ * @param device A #GUsbDevice
+ * @param value integration time in ms
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_integral_time(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets the LEDs on the device
+ * @param device A #GUsbDevice
+ * @param value serial number
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets any PCB errata on the device
+ * @param device A #GUsbDevice
+ * @param value #ChPcbErrata, e.g. %CH_PCB_ERRATA_SWAPPED_LEDS
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_pcb_errata(device: GUsb.Device, value: PcbErrata, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets the serial number on the device
+ * @param device A #GUsbDevice
+ * @param value serial number
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_serial_number(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sets the spectrum from the device. This sends data multiple multiple times
+ * until the spectrum has been populated.
+ * @param device A #GUsbDevice
+ * @param kind A #ChSpectrumKind
+ * @param sp A #CdSpectrum
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_set_spectrum_full(device: GUsb.Device, kind: SpectrumKind, sp: Colord.Spectrum, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Takes a reading from the device.
+ * @param device A #GUsbDevice
+ * @param value a #ChSpectrumKind, e.g. %CH_SPECTRUM_KIND_RAW
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_take_reading_spectral(device: GUsb.Device, value: SpectrumKind, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Takes a reading from the device and returns the XYZ value.
+ * @param device A #GUsbDevice
+ * @param calibration_idx A calibration index or 0 for none
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_take_reading_xyz(device: GUsb.Device, calibration_idx: number, cancellable: Gio.Cancellable | null): Colord.ColorXYZ
+/**
+ * Sends a message to the device and waits for a reply.
+ * @param device A #GUsbDevice
+ * @param cmd The command to use, e.g. %CH_CMD_GET_COLOR_SELECT
+ * @param buffer_in The input buffer of data, or %NULL
+ * @param buffer_in_len The input buffer length
+ * @param buffer_out The output buffer of data, or %NULL
+ * @param buffer_out_len The output buffer length
+ * @param cancellable A #GCancellable or %NULL
+ */
+function device_write_command(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number, cancellable: Gio.Cancellable | null): boolean
+/**
+ * Sends a message to the device and waits for a reply.
+ * @param device A #GUsbDevice
+ * @param cmd The command to use, e.g. %CH_CMD_GET_COLOR_SELECT
+ * @param buffer_in The input buffer of data, or %NULL
+ * @param buffer_in_len The input buffer length
+ * @param buffer_out The output buffer of data, or %NULL
+ * @param buffer_out_len The output buffer length
+ * @param cancellable A #GCancellable, or %NULL
+ * @param callback A #GAsyncReadyCallback that will be called when finished.
+ */
+function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: number, buffer_out: number, buffer_out_len: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+/**
+ * Gets the result from the asynchronous function.
+ * @param device a #GUsbDevice instance.
+ * @param res the #GAsyncResult
+ */
 function device_write_command_finish(device: GUsb.Device, res: Gio.AsyncResult): boolean
-function device_write_sram(device: GUsb.Device, addr: number, data: GLib.Bytes, cancellable?: Gio.Cancellable | null): boolean
+/**
+ * Loads the entire SRAM from the device EEPROM.
+ * @param device A #GUsbDevice
+ * @param addr 
+ * @param data A #GBytes
+ * @param cancellable a #GCancellable, or %NULL
+ */
+function device_write_sram(device: GUsb.Device, addr: number, data: GLib.Bytes, cancellable: Gio.Cancellable | null): boolean
 function measure_mode_to_string(measure_mode: MeasureMode): string
 function multiplier_to_string(multiplier: FreqScale): string
+/**
+ * Parses a SHA1 hash from a string value.
+ * @param value A string representation of the SHA1 hash
+ * @param sha1 A %ChSha1
+ */
 function sha1_parse(value: string, sha1: Sha1): boolean
 function strerror(error_enum: Error): string
 interface DeviceQueue_ConstructProps extends GObject.Object_ConstructProps {
 }
-class DeviceQueue {
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of ColorHug-1.0.ColorHug.DeviceQueue */
+
+/**
+ * Signal callback interface for `device-failed`
+ */
+interface DeviceQueue_DeviceFailedSignalCallback {
+    ($obj: DeviceQueue, object: GObject.Object, p0: string): void
+}
+
+/**
+ * Signal callback interface for `progress-changed`
+ */
+interface DeviceQueue_ProgressChangedSignalCallback {
+    ($obj: DeviceQueue, object: number): void
+}
+
+interface DeviceQueue {
+
+    // Own fields of ColorHug-1.0.ColorHug.DeviceQueue
+
+    parent_instance: GObject.Object
+
+    // Owm methods of ColorHug-1.0.ColorHug.DeviceQueue
+
     /**
      * Adds a raw command to the device queue.
      * @param device A #GUsbDevice
@@ -1570,14 +1812,14 @@ class DeviceQueue {
      * @param process_flags Flags how to process the queue, e.g. %CH_DEVICE_QUEUE_PROCESS_FLAGS_CONTINUE_ERRORS
      * @param cancellable #GCancellable or %NULL
      */
-    process(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null): boolean
+    process(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Processes all commands in the command queue.
      * @param process_flags 
      * @param cancellable A #GCancellable, or %NULL
      * @param callback A #GAsyncReadyCallback that will be called when finished.
      */
-    process_async(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1878,413 +2120,82 @@ class DeviceQueue {
      * @param len Size of `data`
      */
     write_sram(device: GUsb.Device, address: number, data: number, len: number): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of ColorHug-1.0.ColorHug.DeviceQueue */
+
+    // Own virtual methods of ColorHug-1.0.ColorHug.DeviceQueue
+
     vfunc_device_failed(device: GUsb.Device, error_message: string): void
     vfunc_progress_changed(percentage: number): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of ColorHug-1.0.ColorHug.DeviceQueue */
-    connect(sigName: "device-failed", callback: (($obj: DeviceQueue, object: GObject.Object, p0: string) => void)): number
-    connect_after(sigName: "device-failed", callback: (($obj: DeviceQueue, object: GObject.Object, p0: string) => void)): number
-    emit(sigName: "device-failed", object: GObject.Object, p0: string): void
-    connect(sigName: "progress-changed", callback: (($obj: DeviceQueue, object: number) => void)): number
-    connect_after(sigName: "progress-changed", callback: (($obj: DeviceQueue, object: number) => void)): number
-    emit(sigName: "progress-changed", object: number): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: DeviceQueue, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: DeviceQueue, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Own signals of ColorHug-1.0.ColorHug.DeviceQueue
+
+    connect(sigName: "device-failed", callback: DeviceQueue_DeviceFailedSignalCallback): number
+    connect_after(sigName: "device-failed", callback: DeviceQueue_DeviceFailedSignalCallback): number
+    emit(sigName: "device-failed", object: GObject.Object, p0: string, ...args: any[]): void
+    connect(sigName: "progress-changed", callback: DeviceQueue_ProgressChangedSignalCallback): number
+    connect_after(sigName: "progress-changed", callback: DeviceQueue_ProgressChangedSignalCallback): number
+    emit(sigName: "progress-changed", object: number, ...args: any[]): void
+
+    // Class property signals of ColorHug-1.0.ColorHug.DeviceQueue
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: DeviceQueue_ConstructProps)
-    _init (config?: DeviceQueue_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): DeviceQueue
-    static $gtype: GObject.Type
 }
-abstract class DeviceQueueClass {
-    /* Fields of ColorHug-1.0.ColorHug.DeviceQueueClass */
+
+class DeviceQueue extends GObject.Object {
+
+    // Own properties of ColorHug-1.0.ColorHug.DeviceQueue
+
+    static name: string
+    static $gtype: GObject.GType<DeviceQueue>
+
+    // Constructors of ColorHug-1.0.ColorHug.DeviceQueue
+
+    constructor(config?: DeviceQueue_ConstructProps) 
+    constructor() 
+    static new(): DeviceQueue
+    _init(config?: DeviceQueue_ConstructProps): void
+}
+
+interface DeviceQueueClass {
+
+    // Own fields of ColorHug-1.0.ColorHug.DeviceQueueClass
+
     parent_class: GObject.ObjectClass
     device_failed: (device_queue: DeviceQueue, device: GUsb.Device, error_message: string) => void
     progress_changed: (device_queue: DeviceQueue, percentage: number) => void
+}
+
+abstract class DeviceQueueClass {
+
+    // Own properties of ColorHug-1.0.ColorHug.DeviceQueueClass
+
     static name: string
 }
-class Sha1 {
-    /* Fields of ColorHug-1.0.ColorHug.Sha1 */
+
+interface Sha1 {
+
+    // Own fields of ColorHug-1.0.ColorHug.Sha1
+
     bytes: Uint8Array
-    /* Methods of ColorHug-1.0.ColorHug.Sha1 */
+
+    // Owm methods of ColorHug-1.0.ColorHug.Sha1
+
     /**
      * Gets a string representation of the SHA1 hash.
      */
     to_string(): string
+}
+
+class Sha1 {
+
+    // Own properties of ColorHug-1.0.ColorHug.Sha1
+
     static name: string
-    /* Static methods and pseudo-constructors */
+
+    // Constructors of ColorHug-1.0.ColorHug.Sha1
+
     /**
      * Parses a SHA1 hash from a string value.
      * @param value A string representation of the SHA1 hash
@@ -2292,6 +2203,7 @@ class Sha1 {
      */
     static parse(value: string, sha1: Sha1): boolean
 }
+
     type Cmd = number
 }
 export default ColorHug;

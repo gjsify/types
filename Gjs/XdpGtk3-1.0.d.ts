@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,6 +27,10 @@ import type Atk from './Atk-1.0';
 
 export namespace XdpGtk3 {
 
+/**
+ * Creates a new [struct`Parent]` from `window`.
+ * @param window a [class`Gtk`.Window]
+ */
 function parent_new_gtk(window: Gtk.Window): Xdp.Parent
 }
 export default XdpGtk3;

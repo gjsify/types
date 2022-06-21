@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -42,13 +44,11 @@ const MICRO_VERSION: number
 const MINOR_VERSION: number
 interface Resolver_ConstructProps extends Gio.Resolver_ConstructProps {
 }
-class Resolver {
-    /* Fields of Gio-2.0.Gio.Resolver */
-    parent_instance: GObject.Object
-    priv: Gio.ResolverPrivate
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Uhm-0.0.Uhm.Resolver */
+
+interface Resolver {
+
+    // Owm methods of Uhm-0.0.Uhm.Resolver
+
     /**
      * Adds a resolution mapping from the host name `hostname` to the IP address `addr`.
      * @param hostname the hostname to match
@@ -68,784 +68,57 @@ class Resolver {
      * Resets the state of the #UhmResolver, deleting all records added with uhm_resolver_add_A() and uhm_resolver_add_SRV().
      */
     reset(): void
-    /* Methods of Gio-2.0.Gio.Resolver */
-    /**
-     * Synchronously reverse-resolves `address` to determine its
-     * associated hostname.
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * @param address the address to reverse-resolve
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    lookup_by_address(address: Gio.InetAddress, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Begins asynchronously reverse-resolving `address` to determine its
-     * associated hostname, and eventually calls `callback,` which must
-     * call g_resolver_lookup_by_address_finish() to get the final result.
-     * @param address the address to reverse-resolve
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    lookup_by_address_async(address: Gio.InetAddress, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a previous call to
-     * g_resolver_lookup_by_address_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    lookup_by_address_finish(result: Gio.AsyncResult): string
-    /**
-     * Synchronously resolves `hostname` to determine its associated IP
-     * address(es). `hostname` may be an ASCII-only or UTF-8 hostname, or
-     * the textual form of an IP address (in which case this just becomes
-     * a wrapper around g_inet_address_new_from_string()).
-     * 
-     * On success, g_resolver_lookup_by_name() will return a non-empty #GList of
-     * #GInetAddress, sorted in order of preference and guaranteed to not
-     * contain duplicates. That is, if using the result to connect to
-     * `hostname,` you should attempt to connect to the first address
-     * first, then the second if the first fails, etc. If you are using
-     * the result to listen on a socket, it is appropriate to add each
-     * result using e.g. g_socket_listener_add_address().
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to a
-     * value from #GResolverError and %NULL will be returned.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * 
-     * If you are planning to connect to a socket on the resolved IP
-     * address, it may be easier to create a #GNetworkAddress and use its
-     * #GSocketConnectable interface.
-     * @param hostname the hostname to look up
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    lookup_by_name(hostname: string, cancellable?: Gio.Cancellable | null): Gio.InetAddress[]
-    /**
-     * Begins asynchronously resolving `hostname` to determine its
-     * associated IP address(es), and eventually calls `callback,` which
-     * must call g_resolver_lookup_by_name_finish() to get the result.
-     * See g_resolver_lookup_by_name() for more details.
-     * @param hostname the hostname to look up the address of
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    lookup_by_name_async(hostname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a call to
-     * g_resolver_lookup_by_name_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    lookup_by_name_finish(result: Gio.AsyncResult): Gio.InetAddress[]
-    /**
-     * This differs from g_resolver_lookup_by_name() in that you can modify
-     * the lookup behavior with `flags`. For example this can be used to limit
-     * results with %G_RESOLVER_NAME_LOOKUP_FLAGS_IPV4_ONLY.
-     * @param hostname the hostname to look up
-     * @param flags extra #GResolverNameLookupFlags for the lookup
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    lookup_by_name_with_flags(hostname: string, flags: Gio.ResolverNameLookupFlags, cancellable?: Gio.Cancellable | null): Gio.InetAddress[]
-    /**
-     * Begins asynchronously resolving `hostname` to determine its
-     * associated IP address(es), and eventually calls `callback,` which
-     * must call g_resolver_lookup_by_name_with_flags_finish() to get the result.
-     * See g_resolver_lookup_by_name() for more details.
-     * @param hostname the hostname to look up the address of
-     * @param flags extra #GResolverNameLookupFlags for the lookup
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    lookup_by_name_with_flags_async(hostname: string, flags: Gio.ResolverNameLookupFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a call to
-     * g_resolver_lookup_by_name_with_flags_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    lookup_by_name_with_flags_finish(result: Gio.AsyncResult): Gio.InetAddress[]
-    /**
-     * Synchronously performs a DNS record lookup for the given `rrname` and returns
-     * a list of records as #GVariant tuples. See #GResolverRecordType for
-     * information on what the records contain for each `record_type`.
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError and %NULL will be returned.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * @param rrname the DNS name to look up the record for
-     * @param record_type the type of DNS record to look up
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    lookup_records(rrname: string, record_type: Gio.ResolverRecordType, cancellable?: Gio.Cancellable | null): GLib.Variant[]
-    /**
-     * Begins asynchronously performing a DNS lookup for the given
-     * `rrname,` and eventually calls `callback,` which must call
-     * g_resolver_lookup_records_finish() to get the final result. See
-     * g_resolver_lookup_records() for more details.
-     * @param rrname the DNS name to look up the record for
-     * @param record_type the type of DNS record to look up
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    lookup_records_async(rrname: string, record_type: Gio.ResolverRecordType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a previous call to
-     * g_resolver_lookup_records_async(). Returns a non-empty list of records as
-     * #GVariant tuples. See #GResolverRecordType for information on what the
-     * records contain.
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    lookup_records_finish(result: Gio.AsyncResult): GLib.Variant[]
-    /**
-     * Synchronously performs a DNS SRV lookup for the given `service` and
-     * `protocol` in the given `domain` and returns an array of #GSrvTarget.
-     * `domain` may be an ASCII-only or UTF-8 hostname. Note also that the
-     * `service` and `protocol` arguments do not include the leading underscore
-     * that appears in the actual DNS entry.
-     * 
-     * On success, g_resolver_lookup_service() will return a non-empty #GList of
-     * #GSrvTarget, sorted in order of preference. (That is, you should
-     * attempt to connect to the first target first, then the second if
-     * the first fails, etc.)
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError and %NULL will be returned.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * 
-     * If you are planning to connect to the service, it is usually easier
-     * to create a #GNetworkService and use its #GSocketConnectable
-     * interface.
-     * @param service the service type to look up (eg, "ldap")
-     * @param protocol the networking protocol to use for `service` (eg, "tcp")
-     * @param domain the DNS domain to look up the service in
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    lookup_service(service: string, protocol: string, domain: string, cancellable?: Gio.Cancellable | null): Gio.SrvTarget[]
-    /**
-     * Begins asynchronously performing a DNS SRV lookup for the given
-     * `service` and `protocol` in the given `domain,` and eventually calls
-     * `callback,` which must call g_resolver_lookup_service_finish() to
-     * get the final result. See g_resolver_lookup_service() for more
-     * details.
-     * @param service the service type to look up (eg, "ldap")
-     * @param protocol the networking protocol to use for `service` (eg, "tcp")
-     * @param domain the DNS domain to look up the service in
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    lookup_service_async(service: string, protocol: string, domain: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a previous call to
-     * g_resolver_lookup_service_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    lookup_service_finish(result: Gio.AsyncResult): Gio.SrvTarget[]
-    /**
-     * Sets `resolver` to be the application's default resolver (reffing
-     * `resolver,` and unreffing the previous default resolver, if any).
-     * Future calls to g_resolver_get_default() will return this resolver.
-     * 
-     * This can be used if an application wants to perform any sort of DNS
-     * caching or "pinning"; it can implement its own #GResolver that
-     * calls the original default resolver for DNS operations, and
-     * implements its own cache policies on top of that, and then set
-     * itself as the default resolver for all later code to use.
-     */
-    set_default(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Gio-2.0.Gio.Resolver */
-    /**
-     * Synchronously reverse-resolves `address` to determine its
-     * associated hostname.
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * @param address the address to reverse-resolve
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    vfunc_lookup_by_address(address: Gio.InetAddress, cancellable?: Gio.Cancellable | null): string
-    /**
-     * Begins asynchronously reverse-resolving `address` to determine its
-     * associated hostname, and eventually calls `callback,` which must
-     * call g_resolver_lookup_by_address_finish() to get the final result.
-     * @param address the address to reverse-resolve
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    vfunc_lookup_by_address_async(address: Gio.InetAddress, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a previous call to
-     * g_resolver_lookup_by_address_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    vfunc_lookup_by_address_finish(result: Gio.AsyncResult): string
-    /**
-     * Synchronously resolves `hostname` to determine its associated IP
-     * address(es). `hostname` may be an ASCII-only or UTF-8 hostname, or
-     * the textual form of an IP address (in which case this just becomes
-     * a wrapper around g_inet_address_new_from_string()).
-     * 
-     * On success, g_resolver_lookup_by_name() will return a non-empty #GList of
-     * #GInetAddress, sorted in order of preference and guaranteed to not
-     * contain duplicates. That is, if using the result to connect to
-     * `hostname,` you should attempt to connect to the first address
-     * first, then the second if the first fails, etc. If you are using
-     * the result to listen on a socket, it is appropriate to add each
-     * result using e.g. g_socket_listener_add_address().
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to a
-     * value from #GResolverError and %NULL will be returned.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * 
-     * If you are planning to connect to a socket on the resolved IP
-     * address, it may be easier to create a #GNetworkAddress and use its
-     * #GSocketConnectable interface.
-     * @param hostname the hostname to look up
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    vfunc_lookup_by_name(hostname: string, cancellable?: Gio.Cancellable | null): Gio.InetAddress[]
-    /**
-     * Begins asynchronously resolving `hostname` to determine its
-     * associated IP address(es), and eventually calls `callback,` which
-     * must call g_resolver_lookup_by_name_finish() to get the result.
-     * See g_resolver_lookup_by_name() for more details.
-     * @param hostname the hostname to look up the address of
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    vfunc_lookup_by_name_async(hostname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a call to
-     * g_resolver_lookup_by_name_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    vfunc_lookup_by_name_finish(result: Gio.AsyncResult): Gio.InetAddress[]
-    /**
-     * This differs from g_resolver_lookup_by_name() in that you can modify
-     * the lookup behavior with `flags`. For example this can be used to limit
-     * results with %G_RESOLVER_NAME_LOOKUP_FLAGS_IPV4_ONLY.
-     * @param hostname the hostname to look up
-     * @param flags extra #GResolverNameLookupFlags for the lookup
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    vfunc_lookup_by_name_with_flags(hostname: string, flags: Gio.ResolverNameLookupFlags, cancellable?: Gio.Cancellable | null): Gio.InetAddress[]
-    /**
-     * Begins asynchronously resolving `hostname` to determine its
-     * associated IP address(es), and eventually calls `callback,` which
-     * must call g_resolver_lookup_by_name_with_flags_finish() to get the result.
-     * See g_resolver_lookup_by_name() for more details.
-     * @param hostname the hostname to look up the address of
-     * @param flags extra #GResolverNameLookupFlags for the lookup
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    vfunc_lookup_by_name_with_flags_async(hostname: string, flags: Gio.ResolverNameLookupFlags, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a call to
-     * g_resolver_lookup_by_name_with_flags_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    vfunc_lookup_by_name_with_flags_finish(result: Gio.AsyncResult): Gio.InetAddress[]
-    /**
-     * Synchronously performs a DNS record lookup for the given `rrname` and returns
-     * a list of records as #GVariant tuples. See #GResolverRecordType for
-     * information on what the records contain for each `record_type`.
-     * 
-     * If the DNS resolution fails, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError and %NULL will be returned.
-     * 
-     * If `cancellable` is non-%NULL, it can be used to cancel the
-     * operation, in which case `error` (if non-%NULL) will be set to
-     * %G_IO_ERROR_CANCELLED.
-     * @param rrname the DNS name to look up the record for
-     * @param record_type the type of DNS record to look up
-     * @param cancellable a #GCancellable, or %NULL
-     */
-    vfunc_lookup_records(rrname: string, record_type: Gio.ResolverRecordType, cancellable?: Gio.Cancellable | null): GLib.Variant[]
-    /**
-     * Begins asynchronously performing a DNS lookup for the given
-     * `rrname,` and eventually calls `callback,` which must call
-     * g_resolver_lookup_records_finish() to get the final result. See
-     * g_resolver_lookup_records() for more details.
-     * @param rrname the DNS name to look up the record for
-     * @param record_type the type of DNS record to look up
-     * @param cancellable a #GCancellable, or %NULL
-     * @param callback callback to call after resolution completes
-     */
-    vfunc_lookup_records_async(rrname: string, record_type: Gio.ResolverRecordType, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a previous call to
-     * g_resolver_lookup_records_async(). Returns a non-empty list of records as
-     * #GVariant tuples. See #GResolverRecordType for information on what the
-     * records contain.
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    vfunc_lookup_records_finish(result: Gio.AsyncResult): GLib.Variant[]
-    vfunc_lookup_service_async(rrname: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Retrieves the result of a previous call to
-     * g_resolver_lookup_service_async().
-     * 
-     * If the DNS resolution failed, `error` (if non-%NULL) will be set to
-     * a value from #GResolverError. If the operation was cancelled,
-     * `error` will be set to %G_IO_ERROR_CANCELLED.
-     * @param result the result passed to your #GAsyncReadyCallback
-     */
-    vfunc_lookup_service_finish(result: Gio.AsyncResult): Gio.SrvTarget[]
-    vfunc_reload(): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Gio-2.0.Gio.Resolver */
-    /**
-     * Emitted when the resolver notices that the system resolver
-     * configuration has changed.
-     */
-    connect(sigName: "reload", callback: (($obj: Resolver) => void)): number
-    connect_after(sigName: "reload", callback: (($obj: Resolver) => void)): number
-    emit(sigName: "reload"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Resolver, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Resolver, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+
+    // Class property signals of Uhm-0.0.Uhm.Resolver
+
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
-    static name: string
-    constructor (config?: Resolver_ConstructProps)
-    _init (config?: Resolver_ConstructProps): void
-    /* Static methods and pseudo-constructors */
-    static new(): Resolver
-    static $gtype: GObject.Type
 }
+
+/**
+ * All the fields in the #UhmResolver structure are private and should never be accessed directly.
+ * @class 
+ */
+class Resolver extends Gio.Resolver {
+
+    // Own properties of Uhm-0.0.Uhm.Resolver
+
+    static name: string
+    static $gtype: GObject.GType<Resolver>
+
+    // Constructors of Uhm-0.0.Uhm.Resolver
+
+    constructor(config?: Resolver_ConstructProps) 
+    /**
+     * Creates a new #UhmResolver with default property values.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #UhmResolver with default property values.
+     * @constructor 
+     */
+    static new(): Resolver
+    _init(config?: Resolver_ConstructProps): void
+}
+
 interface Server_ConstructProps extends GObject.Object_ConstructProps {
-    /* Constructor properties of Uhm-0.0.Uhm.Server */
+
+    // Own constructor properties of Uhm-0.0.Uhm.Server
+
     /**
      * %TRUE if network traffic should be logged to a trace file (specified by calling uhm_server_start_trace()). This operates independently
      * of whether traffic is online or being handled locally by the mock server.
      * Use this in conjunction with #UhmServer:enable-online to either log online traffic, or replay logged traffic locally.
      */
-    enable_logging?: boolean
+    enable_logging?: boolean | null
     /**
      * %TRUE if network traffic should reach the Internet as normal; %FALSE to redirect it to the local mock server.
      * Use this in conjunction with #UhmServer:enable-logging to either log online traffic, or replay logged traffic locally.
      */
-    enable_online?: boolean
+    enable_online?: boolean | null
     /**
      * TLS certificate for the mock server to use when serving HTTPS pages. If this is non-%NULL, the server will always use HTTPS. If it is %NULL,
      * the server will always use HTTP. The TLS certificate may be changed after constructing the #UhmServer, but changes to the property will not
@@ -859,15 +132,32 @@ interface Server_ConstructProps extends GObject.Object_ConstructProps {
      * calling uhm_server_set_default_tls_certificate(). This may be used as the #UhmServer:tls-certificate if the code under test has no specific
      * requirements of the certificate used by the mock server it's tested against.
      */
-    tls_certificate?: Gio.TlsCertificate
+    tls_certificate?: Gio.TlsCertificate | null
     /**
      * Directory relative to which all trace files specified in calls to uhm_server_start_trace() will be resolved.
      * This is not used for any other methods, but must be non-%NULL if uhm_server_start_trace() is called.
      */
-    trace_directory?: Gio.File
+    trace_directory?: Gio.File | null
 }
-class Server {
-    /* Properties of Uhm-0.0.Uhm.Server */
+
+/**
+ * Signal callback interface for `compare-messages`
+ */
+interface Server_CompareMessagesSignalCallback {
+    ($obj: Server, expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext): boolean
+}
+
+/**
+ * Signal callback interface for `handle-message`
+ */
+interface Server_HandleMessageSignalCallback {
+    ($obj: Server, message: Soup.Message, client: Soup.ClientContext): boolean
+}
+
+interface Server {
+
+    // Own properties of Uhm-0.0.Uhm.Server
+
     /**
      * Address of the local mock server if it's running, or %NULL otherwise. This will be non-%NULL between calls to uhm_server_run() and
      * uhm_server_stop(). The address is a physical IP address, e.g. <code class="literal">127.0.0.1</code>.
@@ -923,9 +213,9 @@ class Server {
      * This is not used for any other methods, but must be non-%NULL if uhm_server_start_trace() is called.
      */
     trace_directory: Gio.File
-    /* Fields of GObject-2.0.GObject.Object */
-    g_type_instance: GObject.TypeInstance
-    /* Methods of Uhm-0.0.Uhm.Server */
+
+    // Owm methods of Uhm-0.0.Uhm.Server
+
     /**
      * Remove a #UhmServer:compare-messages filter function installed previously by
      * calling something like uhm_server_filter_ignore_parameter_values().
@@ -996,14 +286,14 @@ class Server {
      * @param trace_file trace file to load
      * @param cancellable a #GCancellable, or %NULL
      */
-    load_trace(trace_file: Gio.File, cancellable?: Gio.Cancellable | null): void
+    load_trace(trace_file: Gio.File, cancellable: Gio.Cancellable | null): void
     /**
      * Asynchronous version of uhm_server_load_trace(). In `callback,` call uhm_server_load_trace_finish() to complete the operation.
      * @param trace_file trace file to load
      * @param cancellable a #GCancellable, or %NULL
      * @param callback function to call once the async operation is complete
      */
-    load_trace_async(trace_file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started by uhm_server_load_trace_async().
      * 
@@ -1103,17 +393,17 @@ class Server {
      * that signal is emitted after the resolver is cleared and these `domain_names` are added.
      * @param domain_names %NULL-terminated array of domain names to expect, or %NULL to not expect any
      */
-    set_expected_domain_names(domain_names?: string[] | null): void
+    set_expected_domain_names(domain_names: string[] | null): void
     /**
      * Sets the value of the #UhmServer:tls-certificate property.
      * @param tls_certificate TLS certificate for the server to use; or %NULL to serve HTTP only
      */
-    set_tls_certificate(tls_certificate?: Gio.TlsCertificate | null): void
+    set_tls_certificate(tls_certificate: Gio.TlsCertificate | null): void
     /**
      * Sets the value of the #UhmServer:trace-directory property.
      * @param trace_directory a directory to load/store trace files from, or %NULL to unset it
      */
-    set_trace_directory(trace_directory?: Gio.File | null): void
+    set_trace_directory(trace_directory: Gio.File | null): void
     /**
      * Starts a mock server which follows the trace file of filename `trace_name` in the #UhmServer:trace-directory directory.
      * See uhm_server_start_trace_full() for further documentation.
@@ -1154,428 +444,75 @@ class Server {
      * Unloads the current trace file of network messages, as loaded by uhm_server_load_trace() or uhm_server_load_trace_async().
      */
     unload_trace(): void
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     * @param source_property the property on `source` to bind
-     * @param target the target #GObject
-     * @param target_property the property on `target` to bind
-     * @param flags flags to pass to #GBinding
-     * @param transform_to a #GClosure wrapping the transformation function     from the `source` to the `target,` or %NULL to use the default
-     * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     * @param key name of the key for that association
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     * @param property_name the name of the property to get
-     * @param value return location for the property value
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     * @param names the names of each property to get
-     * @param values the values of each property to get
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param property_name the name of a property installed on the class of `object`.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     * @param pspec the #GParamSpec of a property installed on the class of `object`.
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     * @param key name of the key
-     * @param data data to associate with that key
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     * @param property_name the name of the property to set
-     * @param value the value
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     * @param key name of the key
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     * @param quark A #GQuark, naming the user data pointer
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     * @param closure #GClosure to watch
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Uhm-0.0.Uhm.Server */
+
+    // Own virtual methods of Uhm-0.0.Uhm.Server
+
     vfunc_compare_messages(expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext): boolean
     vfunc_handle_message(message: Soup.Message, client: Soup.ClientContext): boolean
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     * @param pspec 
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Uhm-0.0.Uhm.Server */
-    /**
-     * Emitted whenever the mock server must compare two #SoupMessage<!-- -->s for equality; e.g. when in the testing or comparison modes.
-     * Test code may connect to this signal and implement a handler which checks custom properties of the messages. The default handler compares
-     * the URI and method of the messages, but no headers and not the message bodies.
-     * 
-     * Signal handlers should return %TRUE if the messages match; and %FALSE otherwise. The first signal handler executed when
-     * this signal is emitted wins.
-     * @param expected_message a message containing the expected HTTP(S) message provided by #UhmServer::handle-message
-     * @param actual_message a message containing the incoming HTTP(S) request
-     * @param actual_client additional data about the HTTP client making the request
-     */
-    connect(sigName: "compare-messages", callback: (($obj: Server, expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext) => boolean)): number
-    connect_after(sigName: "compare-messages", callback: (($obj: Server, expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext) => boolean)): number
-    emit(sigName: "compare-messages", expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext): void
-    /**
-     * Emitted whenever the mock server is running and receives a request from a client. Test code may connect to this signal and implement a handler
-     * which builds and returns a suitable response for a given message. The default handler reads a request–response pair from the current trace file,
-     * matches the requests and then returns the given response. If the requests don't match, an error is raised.
-     * 
-     * Signal handlers should return %TRUE if they have handled the request and set an appropriate response; and %FALSE otherwise.
-     * @param message a message containing the incoming HTTP(S) request, and which the outgoing HTTP(S) response should be set on
-     * @param client additional data about the HTTP client making the request
-     */
-    connect(sigName: "handle-message", callback: (($obj: Server, message: Soup.Message, client: Soup.ClientContext) => boolean)): number
-    connect_after(sigName: "handle-message", callback: (($obj: Server, message: Soup.Message, client: Soup.ClientContext) => boolean)): number
-    emit(sigName: "handle-message", message: Soup.Message, client: Soup.ClientContext): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     * @param pspec the #GParamSpec of the property which changed.
-     */
-    connect(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+
+    // Own signals of Uhm-0.0.Uhm.Server
+
+    connect(sigName: "compare-messages", callback: Server_CompareMessagesSignalCallback): number
+    connect_after(sigName: "compare-messages", callback: Server_CompareMessagesSignalCallback): number
+    emit(sigName: "compare-messages", expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext, ...args: any[]): void
+    connect(sigName: "handle-message", callback: Server_HandleMessageSignalCallback): number
+    connect_after(sigName: "handle-message", callback: Server_HandleMessageSignalCallback): number
+    emit(sigName: "handle-message", message: Soup.Message, client: Soup.ClientContext, ...args: any[]): void
+
+    // Class property signals of Uhm-0.0.Uhm.Server
+
     connect(sigName: "notify::address", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::address", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::address", ...args: any[]): void
     connect(sigName: "notify::enable-logging", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enable-logging", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enable-logging", ...args: any[]): void
     connect(sigName: "notify::enable-online", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::enable-online", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::enable-online", ...args: any[]): void
     connect(sigName: "notify::port", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::port", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::port", ...args: any[]): void
     connect(sigName: "notify::resolver", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::resolver", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::resolver", ...args: any[]): void
     connect(sigName: "notify::tls-certificate", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::tls-certificate", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::tls-certificate", ...args: any[]): void
     connect(sigName: "notify::trace-directory", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::trace-directory", callback: (($obj: Server, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
+    emit(sigName: "notify::trace-directory", ...args: any[]): void
+    connect(sigName: string, callback: (...args: any[]) => void): number
+    connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
+}
+
+/**
+ * All the fields in the #UhmServer structure are private and should never be accessed directly.
+ * @class 
+ */
+class Server extends GObject.Object {
+
+    // Own properties of Uhm-0.0.Uhm.Server
+
     static name: string
-    constructor (config?: Server_ConstructProps)
-    _init (config?: Server_ConstructProps): void
-    /* Static methods and pseudo-constructors */
+    static $gtype: GObject.GType<Server>
+
+    // Constructors of Uhm-0.0.Uhm.Server
+
+    constructor(config?: Server_ConstructProps) 
+    /**
+     * Creates a new #UhmServer with default properties.
+     * @constructor 
+     */
+    constructor() 
+    /**
+     * Creates a new #UhmServer with default properties.
+     * @constructor 
+     */
     static new(): Server
+    _init(config?: Server_ConstructProps): void
     static error_quark(): GLib.Quark
     /**
      * Convenience version of uhm_server_received_message_chunk() which can be passed directly to soup_logger_set_printer()
@@ -1603,23 +540,61 @@ class Server {
      * @param data message data
      * @param user_data user data passed to the #SoupLogger, or %NULL
      */
-    static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string, user_data?: object | null): void
-    static $gtype: GObject.Type
+    static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string, user_data: object | null): void
 }
+
+interface ResolverClass {
+}
+
+/**
+ * All the fields in the #UhmResolverClass structure are private and should never be accessed directly.
+ * @record 
+ */
 abstract class ResolverClass {
+
+    // Own properties of Uhm-0.0.Uhm.ResolverClass
+
     static name: string
 }
+
+interface ResolverPrivate {
+}
+
 class ResolverPrivate {
+
+    // Own properties of Uhm-0.0.Uhm.ResolverPrivate
+
     static name: string
 }
-abstract class ServerClass {
-    /* Fields of Uhm-0.0.Uhm.ServerClass */
+
+interface ServerClass {
+
+    // Own fields of Uhm-0.0.Uhm.ServerClass
+
     handle_message: (self: Server, message: Soup.Message, client: Soup.ClientContext) => boolean
     compare_messages: (self: Server, expected_message: Soup.Message, actual_message: Soup.Message, actual_client: Soup.ClientContext) => boolean
+}
+
+/**
+ * Most of the fields in the #UhmServerClass structure are private and should never be accessed directly.
+ * @record 
+ */
+abstract class ServerClass {
+
+    // Own properties of Uhm-0.0.Uhm.ServerClass
+
     static name: string
 }
+
+interface ServerPrivate {
+}
+
 class ServerPrivate {
+
+    // Own properties of Uhm-0.0.Uhm.ServerPrivate
+
     static name: string
 }
+
 }
 export default Uhm;
